@@ -7,9 +7,6 @@
 
 
 <script type="text/javascript">
-
-
-
 function cambiarUs(){
   var id = $("#id").val();
   var alias = $("#alias").val();
