@@ -34,8 +34,12 @@ function btncambiarCorreo(){
     }
     if(email2 != email)
     {
+      bandera="1"
       $('#alertMsjinputCorreoNoCoicende').css({"visibility":"visible"}); 
+    }else{
+      $('#alertMsjinputCorreoNoCoicende').css({"visibility":"hidden"}); 
     }
+
 
     if (bandera==="0") { 
     	alert("pp");
@@ -48,7 +52,8 @@ function btncambiarCorreo(){
         }).done(function(data) {  
           if (data.res!=1 && data.res!=0){
               $('#formulario').css({"visibility":"hidden"});
-             $('#listo').css({"visibility":"visible"});  
+              $('#listo').css({"visibility":"visible"}); 
+          
            }else if(data.res==1){  
              $("#alertMsjinputCorreoEnUso").css({"visibility":"visible"});  
            }
@@ -78,8 +83,8 @@ function btncambiarCorreo(){
 					<tr>
 						<td colspan="2" style="width: 20%; margin-top: 15px">Repetir e-mail nuevo</td>
 						<td style="width: 30%; margin-top: 15px"><input type="email" name="email2" id="email2" style=" width:100%; height:30px; border: 1px solid rgb(205, 205, 205)    ;border-radius: 4px 4px 4px 4px;"></td>
-						<td><div id="alertMsjinputCorreo2" style="visibility: hidden"> <input  value="Completa este dato." "  style="width: 130px ;margin-right: 10px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px"></div>
-							<input type="hidden" value="No coinciden los correos" id="alertMsjinputCorreoNoCoicende"  style="width: 150px ;margin-right: 10px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px"> </td>
+						<td > <input  value="Completa este dato." id="alertMsjinputCorreo2"  style="width: 130px ;margin-right: 10px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px; visibility: hidden">  </td>
+							<td style="width: 0%"><input  value="No coinciden los correos" id="alertMsjinputCorreoNoCoicende"  style="width: 150px ; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px; visibility: hidden;margin-left: -233px ;"> </td>
 					</tr>
 					<tr>
 						<td colspan="2" style="width: 33%; margin-top: 13px ; height: 44px"><a href="javascript:btncambiarCorreo()" name="btncambiarCorreo" style="padding:6px" class="boton-azul" id="btncambiaarCorreo">Guardar</a></td>
