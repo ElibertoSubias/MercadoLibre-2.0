@@ -74,7 +74,7 @@
 		        data: { apellido: apellido, id: id, nombre:nombre} 
 		        }).done(function(data) {  
 		          if (data.res!=1 && data.res!=0){
-		          	return(" /MercadoLibre-2.0/public/perfil");
+		          location.href ="/MercadoLibre-2.0/public/perfil";
 		          }else if(data.res==1){  
 		            $("#lblCorreoExistente").empty();
 		            $("#lblCorreoExistente").append(data.email);
@@ -97,10 +97,7 @@
 		    }else{
 		    	$('#alertMsjinputTelefono').css({"visibility":"hidden"});  
 		    }
-
-		   
-
-
+            
 		    if(bandera==="0")
 		    {
 		      $.ajax({
@@ -109,10 +106,9 @@
 		        type: 'POST',
 		        dataType: 'json',
 		        data: { telefono: telefono, id: id} 
-		        }).done(function(data) {
-		        alert("si se agrego");  
+		        }).done(function(data) { 
 		          if (data.res!=1 && data.res!=0){
-		          	return(" /MercadoLibre-2.0/public/perfil");
+		          	location.href ="/MercadoLibre-2.0/public/perfil";
 		          }else if(data.res==1){  
 		            $("#lblCorreoExistente").empty();
 		            $("#lblCorreoExistente").append(data.email);
