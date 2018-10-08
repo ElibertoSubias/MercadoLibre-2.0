@@ -1,0 +1,46 @@
+db.ventas.insert([{ "tipoVenta" : "vehiculos", "categorias" : {"categoria":"Autos de Colección", "categoria":"Autos y Camionetas"}}])
+
+
+
+"marcas":{"marca":["Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler","Citren","Datsun","Dodge","Ferrari","Fiat","Ford","GMC","Honda","Infiniti","Isuzu","Jaguar","Jeep","Land Rover","Lincoln","Mazda","Mercedes Benz","MG","Mitsubishi","Nissan","Opel","Peugeot","Plymouth","Pontiac","Porsche","Renault","Suziki","Toyota","Volkswagen","Volvo","Otras Marcas"]},
+
+,"categoria":"Autos y Camionetas", "marcas":{"marca":"Acura"},"modelos":{"modelos":{"modelo":"ILX"},"año":"2018","version":{"2.4 A-spec At"}},"Alfa Romeo"
+
+
+
+
+db.ventas.update({ grades: { $gte: 100 } },{ $set: { "grades.$[element]" : 100 } },{multi: true,arrayFilters: [ { "element": { $gte: 100 } } ]})
+
+
+
+
+
+
+
+
+db.ventas.insert([{ "tipoVenta" : "vehiculos", "categorias" : {"categoria":[{"Autos de Colección":[{"marcas":[{"marca":["Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler","Citren","Datsun","Dodge","Ferrari","Fiat","Ford","GMC","Honda","Infiniti","Isuzu","Jaguar","Jeep","Land Rover","Lincoln","Mazda","Mercedes Benz","MG","Mitsubishi","Nissan","Opel","Peugeot","Plymouth","Pontiac","Porsche","Renault","Suziki","Toyota","Volkswagen","Volvo","Otras Marcas"]}]}],"Autos y Camionetas":[{"marcas":[{"marca":[{"Acura":[{"modelos":[{"ILX":[{"año":[{"2018":[{"versiones":[{"version":["2.4 A-spect At"]}]}]}]}]}]}]}]}]}]}]}}])
+
+
+//Categorias debe llevar [ No {
+	"categorias" : {
+                "categoria" : [
+                        {
+
+	"categorias" : [
+                {
+                        "categoria" : "Autos de Colección"
+
+
+db.ventas.insert([{"tipo":"vehiculos","categorias":[{"categoria":[{"Autos de Colección":[{"marcas":["Alfa Romeo","Aston Martin","Audi"]}]}]},{"categoria":[{"Autos y Camionetas":[{}]}]}]}]);
+
+
+
+
+
+
+db.inventory.insertMany( [
+   { tipo: "vehiculos", categorias: [ { categoria: "Autos de Colección", modelos: "Alfa Romeo" }, { categoria: "Autos y Camionetas", modelos: "Aston Martin" } ] },
+   { tipo: "inmuebles", categorias: [ { categoria: "C", qty: 5 } ] },
+   { tipo: "servicios", categorias: [ { categoria: "A", qty: 60 }, { warehouse: "B", qty: 15 } ] },
+   { tipo: "productos", categorias: [ { categoria: "A", qty: 40 }, { warehouse: "B", qty: 5 } ] }
+]);

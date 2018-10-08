@@ -1,0 +1,139 @@
+
+	.divperfil{
+     background-color: white;
+     margin: -1px 0px 15px;
+     padding: 0px 30px 15px;
+     float: right;
+     width: 80%;
+     height: 100%
+	}
+
+   
+
+    .padre{  /*padre*/
+    overflow: hidden;
+    width: 100%; 
+    }
+ .menu{  /*hijos*/
+    float: left;
+    width: 18%;
+    height: 800px;
+    background-color: #F2F2EF;
+}
+  .formulario{  /*hijos*/
+    float: right;
+    width: 80%;
+    background-color: white;
+}
+	
+    .h2{
+	  border-collapse: collapse;
+    text-align: left;
+    height: 20px;
+    width: 530px;
+    font: normal normal 500 normal 22px / 45px Arial, Helvetica, "Nimbus Sans L", sans-serif;
+    margin: 30px 40px 60px;
+    padding: 0px 0px 15px;	}
+	
+	.H3_1 {
+    border-collapse: collapse;
+    color: rgb(245, 147, 0);
+    height: 20px;
+    width: 530px;
+    border-bottom: 1px dotted rgb(221, 221, 221);
+    font: normal normal 400 normal 18px / 20px Arial, Helvetica, "Nimbus Sans L", sans-serif;
+    margin: 0px 40px 15px;
+    padding: 0px 0px 15px;
+	}
+    table{
+        margin-bottom: 30px;
+    }
+
+	td {
+    display: inline-block;
+    height: 20px;
+    left: 0px;
+    margin: 0px 0px 15px;
+    right: 0px;
+    text-align: right;
+    width: 150px;
+    font: normal normal 400 normal 13px / 20px Arial, Helvetica, "Nimbus Sans L", sans-serif;
+    padding: 20px 0px 0px 0px;
+    }
+
+    .boton-azul {
+    border-collapse: collapse;
+    box-shadow: rgb(142, 162, 223) 0px 1px 0px 0px inset;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    height: 39px;
+    text-align: center;
+    text-decoration: none solid rgb(255, 255, 255);
+    text-size-adjust: 100%;
+    white-space: pre;
+    width: 107.141px;
+    column-rule-color: rgb(255, 255, 255);
+    align-items: flex-start;
+    perspective-origin: 53.5625px 19.5px;
+    transform-origin: 53.5625px 19.5px;
+    user-select: none;
+    caret-color: rgb(255, 255, 255);
+    background: rgb(62, 82, 161) linear-gradient(rgb(62, 82, 161), rgb(45, 50, 119)) repeat scroll 0% 0% / auto padding-box border-box;
+    border: 1px solid rgb(45, 50, 119);
+    border-radius: 4px 4px 4px 4px;
+    font: normal normal 400 normal 20px / 25px Arial, Helvetica, sans-serif;
+    outline: rgb(255, 255, 255) none 0px;
+    padding: 6px 12px;
+    }
+
+    .CajaTex {
+    border-collapse: collapse;
+    height: 29px;
+    text-size-adjust: 100%;
+    text-transform: uppercase;
+    width: 252px;
+    perspective-origin: 126px 14.5px;
+    transform-origin: 126px 14.5px;
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 3px 3px 3px 3px;
+    font: normal normal 400 normal 13px / normal Arial, Helvetica, "Nimbus Sans L", sans-serif;
+    margin: 0px 0px;
+    padding: 6px;
+    }
+
+   
+    .container{
+        width: 50%;
+        height: 50%;
+        background-color: black;
+        border: 2px solid red;
+        margin: auto;
+        font-family: arial;
+        padding:20px;
+    }
+
+    .ventana{
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.5); 
+        top:0;
+        left: 0;
+        position: fixed;
+        display: none;
+    }
+
+   
+
+    .form{
+        width: 45%;
+        height: 230px;
+        padding: 25px;
+        background-color: #fff;
+        color: black;
+        top: 27%;
+        left: 38%;
+        position: absolute;
+        margin-left: -160px;
+      border-radius: 5px 5px 5px 5px;
+    }

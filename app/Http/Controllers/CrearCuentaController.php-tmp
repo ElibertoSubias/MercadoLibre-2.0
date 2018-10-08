@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use \App\User;
+
+class CrearCuentaController extends Controller {
+	public function crearCuenta(Request $request) {
+		if ($request->ajax()) {
+
+			if (!User::where('email', '=', $request->email)->exists()) {
+				$usuario           = new User;
+				$usuario->nombre   = $request->nombre;
+				$usuario->apellido = $request->apellido;
+				$usuario->email    = $request->email;
+				$usuario->clave    = Hash::make($request->clave);
+				$usuario->save();
+				$idUsuario = $usuario->getKey();
+				//return redirect()->action('FrontController@index');
+				return response()->json([
+						"res"      => $idUsuario,
+						"nombre"   => $request->nombre,
+						"apellido" => $request->apellido,
+						"email"    => $request->email
+					]);
+			} else {
+				return response()->json([
+						"res"      => 1,
+						"nombre"   => $request->nombre,
+						"apellido" => $request->apellido,
+						"email"    => $request->email
+					]);
+			}
+		}
+	}
+}
