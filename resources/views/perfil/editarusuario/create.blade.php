@@ -1,12 +1,15 @@
 @extends('layouts.masterRegistro')
 
- {!! Html::style('css/styleEditar.css') !!} 
+
+@section('content') 
+{!! Html::style('css/styleEditar.css') !!} 
 {!! Html::style('css/app.css') !!}
 {!! Html::script('js/validaciones.js') !!}
-@section('content') 
-
 
 <script type="text/javascript">
+
+
+
 function cambiarUs(){
   var id = $("#id").val();
   var alias = $("#alias").val();
@@ -60,10 +63,10 @@ function cambiarUs(){
 			<tr>
 				<td width="30px"></td>
 				<td>Usuario nuevo</td>
-				<td colspan="2"><input type="text" name="alias"  id="alias" class="CajaTex" style="width: 150px"></td>
-				<td width="50%">
-					<input  value="Completa este dato."  id="alertMsjinputalias" style="width: 120px ;margin-right: 0px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px; visibility: hidden;">
-					<input id="alertMsjinputaliasYaExiste" value="El nombre de usuario ya esta en uso."   style="width: 220px ;margin-right: 10px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px; visibility: hidden;margin-left: 400"> </td>
+				<td colspan="1"><input type="text" name="alias"  id="alias" class="CajaTexa" style="width: 150px"></td>
+				<td width="23%">
+					<input  value="Completa este dato."  id="alertMsjinputalias" style="width: 124px ;margin-right: 120px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding:4px; visibility: hidden; position: relative; "></td>
+				<td width="15%">	<input id="alertMsjinputaliasYaExiste" value="El nombre de usuario ya esta en uso."   style="width: 220px ;margin-right: 10px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px; visibility: hidden;margin-left: -233px ;  top: 33%"> </td>
 			</tr>
 			<tr>
 				<td style="width: 44%; margin-top: 9px">
