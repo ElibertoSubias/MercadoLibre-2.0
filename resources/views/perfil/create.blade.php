@@ -82,10 +82,46 @@
 		        });
 		    }
 		}
+        
+        function guardarDocumento(){
+		
+	
 
-		function agregarTel(){
+		  var id = $("#id").val();
+		  var dato = $("#dato").val();
+		  var tipo = $('#documento').val();
+		  var route = "/MercadoLibre-2.0/public/agregardocumento";
+		  var token = $("#token").val();
+		  var bandera="0";
+		  
+		  	if(dato === "")
+		    { 
+		        bandera="1";  
+		         $('#alertMsjinputDato').css({"visibility":"visible"});     
+		        $('#nombre').css({"border-color":"#ff5a5f"}); 
+		    }else{
+		    	$('#alertMsjinputDato').css({"visibility":"hidden"});  
+		    }
+		    if(bandera==="0")
+		    {
+		      $.ajax({
+		        url: route,
+		        headers: {'X-CSRF-TOKEN': token},
+		        type: 'POST',
+		        dataType: 'json',
+		        data: { dato: dato, id:id, tipo: tipo} 
+		        }).done(function(data) {  
+		          if (data.res!=1 && data.res!=0){
+		          	location.href ="/MercadoLibre-2.0/public/perfil";
+		          }
+		        });
+		    }
+		}
+
+			function agregarTel(){
 		  var id = $("#id").val();
 		  var telefono = $("#telefono").val();
+		  var telefono2= $("#telefono2").val();
 		  var route = "/MercadoLibre-2.0/public/agregartelefono";
 		  var token = $("#token").val();
 		  var bandera="0";
@@ -97,7 +133,7 @@
 		    }else{
 		    	$('#alertMsjinputTelefono').css({"visibility":"hidden"});  
 		    }
-            
+
 		    if(bandera==="0")
 		    {
 		      $.ajax({
@@ -105,8 +141,8 @@
 		        headers: {'X-CSRF-TOKEN': token},
 		        type: 'POST',
 		        dataType: 'json',
-		        data: { telefono: telefono, id: id} 
-		        }).done(function(data) { 
+		        data: { telefono: telefono,telefono2: telefono2, id: id} 
+		        }).done(function(data) {
 		          if (data.res!=1 && data.res!=0){
 		          	location.href ="/MercadoLibre-2.0/public/perfil";
 		          }else if(data.res==1){  
@@ -160,8 +196,9 @@
 			 	</tr>
 			 	<tr>
 			 		<td>Telefono</td>
-			 		<td>{{$usuario->telefono}}</td>
-			 	<td><a href="javascript:openventana3()"> Agregar</a> </td>
+			 		<td style="width: 60%"><label style="margin-right: 6px; font-size: 12px">{{$usuario->telefono}}</label>/<label style="margin-left: 2px; margin-right: 100px; font-size: 12px; text-align: right;" id="tel">  {{$usuario->telefono2}}</label> 
+			 			<a href='javascript:openventana3()' style='margin-right: 10px'> Agregar</a>
+			 		</td>
 			 	</tr>
 			 </table>
 			  <p class="H3_1">Tarjetas de credito <a href="#" style="padding-left: 270px; font-size: 12px">Necesito ayuda</a> </p>
@@ -220,7 +257,7 @@
 
 <div id="openModal2" class="ventana">
 		<div class="form">
-		<form method="post" action="{{route('cambiarnombre')}}">
+		<form method="post" action="{{route('agregardocumento')}}">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
 	 	<input type="hidden" name="id" value="{{ auth()->user()->id }}" id="id">
 		
@@ -228,17 +265,18 @@
 				<div>
 					 Documento *
 				   
-						<select>
-							<option value="1">RFC</option>
-							<option value="2">CURP</option>
-							<option value="3">IFE</option>
-							<option value="4">Otro</option>
+						<select id="documento" name="documento">
+							<option value="RFC">RFC</option>
+							<option value="CURP">CURP</option>
+							<option value="IFE">IFE</option>
+							<option value="Otro">Otro</option>
 						</select>
 					
-						<input type="text" name="documento" class="CajaTex" style="width: 40%" required="" style="width: 100%">
+						<input type="text" id="dato" class="CajaTex" style="width: 40%"  style="width: 100%">
+						<input type="" value="Completa este dato." id="alertMsjinputDato"  style="width: 130px ;margin-left: 10px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px; visibility: hidden;">
 				</div>
 				<div style="margin-top: 15px; width: 100%">
-					<input type="button" name="Cambiar" class="boton-azul" style="margin-top: 1px" value="Guardar" >
+					<a href="javascript:guardarDocumento()" name="Cambiar" class="boton-azul" style="margin-top: 1px" >Guardar</a>
 					<a href="javascript:closeventana()">Cancelar</a>
 				</div>
 	</form>
