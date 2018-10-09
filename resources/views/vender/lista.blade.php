@@ -162,7 +162,8 @@
     max-width: 841px;
     margin: 55px auto 0;
     overflow: auto;">
-            <form id="ven_mot" class="hub-card syi-hub__image--mot" action="{{route('vehiculos')}}" method="get">
+            <form id="ven_mot" class="hub-card syi-hub__image--mot" action="{{route('vehiculos')}}" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                 <button id="btn_ven_mot" type="submit" form="MOTORS">
                     <span class="hub-car-titulo">Vehículos</span>
                     <span class="syi-hub__image syi-hub__image--mot"> </span></button>

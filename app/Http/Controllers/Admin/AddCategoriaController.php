@@ -136,6 +136,7 @@ class AddCategoriaController extends Controller
 
     public function showCategorias(Request $request)
     {
+    	return view('vender.vehiculos');
     	if ($request->ajax()) { 
     		if ($request->tipoVenta==0) 
     			$tipoVenta = 'vehiculos';
@@ -155,5 +156,9 @@ class AddCategoriaController extends Controller
                 ]); 
     		} 
     	}
+    }
+    public function showDescrip(Request $request)
+    {
+        return view('vender.descripcion');
     }
 }

@@ -191,18 +191,29 @@ $('#categoria').change(function(){
         type: 'POST',
         dataType: 'json',
         data: {tipoVenta: tipoVenta, categoria: categoria} 
-        }).done(function(data) {  
+        }).done(function(data) { 
+          $('#car-marca').html(""); 
+          $('.menu-marcas').hide();
+        try { 
           $.each(data.categorias, function(i, fila){    
               $.each(fila.categoria, function(j, fila2){ 
-                $.each(fila2['Autos de Colección'], function(x, fila3){ 
-                  var aux = fila2['Autos de Colección'][i].marcas;
-                  for (var m = aux.length - 1; m >= 0; m--) {
-                      alert(aux[m]);
+                $.each(fila2[categoria], function(x, fila3){ 
+                  var aux = fila2[categoria][i].marcas; 
+                  for (var m = 0; m < aux.length; m++) { 
+                      var htmlString = $('#car-marca').html(); 
+                      $('#car-marca').html(htmlString+"<option class='category-option' value='"+aux[m]+"'>"+aux[m]+"</option>"); 
+                      $('.menu-marcas').show();
                   }
                 });   
               }); 
           }); 
-              
+        }
+        catch(err) {
+        }
         });
   }
+});
+
+$('#car-marca').change(function(){
+  $('.menu-publicar').show();
 });

@@ -40,5 +40,7 @@ Route::post('cargarMarcas', 'Admin\AddCategoriaController@showMarcas')->name('ca
 Route::post('guardarCategoria', 'Admin\AddCategoriaController@create')->name('guardarCategoria');
 Route::post('guardarMarca', 'Admin\AddCategoriaController@addMarca')->name('guardarMarca');
 
-Route::get('vehiculos', 'Admin\AddCategoriaController@showCategorias')->name('vehiculos');
+Route::post('vehiculos', 'Admin\AddCategoriaController@showCategorias')->name('vehiculos');
+
+Route::post('descripcion', 'Admin\AddCategoriaController@showDescrip')->name('descripcion');
 

@@ -59,26 +59,27 @@
     .hub-nav {
         border-collapse: separate;
         border-spacing: 1em;
-        max-width: 841px;
-        margin: 55px auto 0;
+        margin: 0;
         overflow: auto;
     }
     .hub-card {
+        border-color: #f0ad4e !important;
+        border-width: 2px !important;
         display: block;
-        height: 260px;
         float: left;
+        margin-right: 20px;
         text-align: center;
         padding: 0;
-        width: 23.5%;
+        width: 220px;
         cursor: pointer;
-
         background-color: #fff;
         border: 1px solid #dedede;
         border-radius: 5px;
         cursor: pointer;
         display: block;
-        margin: .8%;
-            margin-right: 0;
+        margin-top: .8%;
+        margin-bottom: .8%;
+        margin-left: .8%;
     }
     .hub-card>button {
             -webkit-font-smoothing: antialiased;
@@ -86,8 +87,8 @@
     }
     .hub-card button {
     padding-bottom: 41px;
-            text-align: center;
-            background: none;
+    text-align: center;
+    background: none;
     border: 0;
     color: inherit;
     cursor: pointer;
@@ -110,7 +111,8 @@
         padding-bottom: 0px;
     }
     .syi-hub__image--mot {
-        background-position: -1.9% bottom;
+        color: #f0ad4e;
+
         color: #f0ad4e;
     }
     .syi-hub__image--res {
@@ -132,7 +134,8 @@
         background-size: 400%;
         display: block;
         height: 180px;
-        margin: 0 auto;
+            margin-top: 40px;
+    margin-bottom: -20px;
     }
     .syi-terms-conditions {
     color: #999;
@@ -143,11 +146,12 @@
 }
 
 </style>
+{!! Html::script('js/venderJS.js') !!}
 <div style="margin: 30px auto 20px;max-width: 1220px;background-color: #fff;
     border: 1px solid #e2e2e2;
     border-radius: 5px; ">
 
-    <div style="">
+    <div>
     	<ol class="syi-ui-wizard__breadcrumb syi-ui-wizard__step--4" data-reactid="7" style="display: block;list-style: none;    overflow: hidden;padding: 0;margin: 0 0 30px;">
     		<li class="syi-ui-wizard__step syi-ui-wizard__step--current" data-reactid="8"><span data-reactid="9" style="font-weight: 700;
     	color: #333;">Elige qué quieres publicar</span></li>
@@ -156,16 +160,35 @@
     		<li class="syi-ui-wizard__step" data-reactid="14"><span data-reactid="15">Confirma tu publicación</span></li>
     	</ol>
     </div>
-    <div style="position: relative;">
-        <nav class="hub-nav" style="    border-collapse: separate;
-    border-spacing: 1em;
-    max-width: 841px;
-    margin: 55px auto 0;
+    <div>
+        <nav class="hub-nav" style="border-collapse: separate;border-spacing: 1em;margin: 45px;
     overflow: auto;">
+            <a href="" style="display: block;float: left;"> < volver atras</a><br>
             <form id="ven_mot" class="hub-card syi-hub__image--mot" action="" method="post" accept-charset="utf-8">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                 <button id="btn_ven_mot" type="submit" form="MOTORS" data-reactid="19">
                     <span class="hub-car-titulo" data-reactid="20">Vehículos</span>
                     <span class="syi-hub__image syi-hub__image--mot" data-reactid="21"> </span></button>
+            </form>
+            <form id="frmCategoria" name="frmCategoria" action="{{route('descripcion')}}" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+                <div class="wrapper">
+                    <div class="scrooller">
+                        <div id="cont-categorias" class="category-column">
+                            <select name="categoria" id="categoria" size="15" style="height:260px;font-size: 14px">
+                            </select>
+                        </div>
+                        <div id="cont-categorias" class="category-column menu-marcas">
+                            <select name="car-marca" id="car-marca" size="15" style="height:260px;font-size: 14px">
+                            </select>
+                        </div>
+                        <div id="cont-categorias" class="category-column menu-publicar">
+                            <img src="img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
+                            <p>¡Listo!</p>
+                            <button type="submit" id="btn-continuar">Continuar</button>
+                        </div>
+                    </div>
+                </div>
             </form>
         </nav>
     </div>
