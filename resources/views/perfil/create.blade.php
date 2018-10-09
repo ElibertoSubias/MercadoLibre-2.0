@@ -6,6 +6,7 @@
 	{!! Html::script('js/jquery-3.3.1.min.js') !!}
 
 
+
 <script type="text/javascript">
 	function openventana()
 	{
@@ -19,18 +20,109 @@
 	function openventana3()
 	{
 		document.getElementById('openModal3').style.display = 'block';
+		if ({{$usuario->telefono}} ==="") {
+		
+			$('#formTel').css({"height": "200px"});
+			$('#GuardarTel').css({"margin-top": "-50px"});
+			$('#ocultarTelLeyenda').css({"visibility":"hidden"});
+			$('#ocultarTel').css({"visibility":"hidden"});
+
+		}else{
+			
+			$('#ocultarTelLeyenda').css({"visibility":"visible"});
+			$('#ocultarTel').css({"visibility":"visible"});
+		}
+
 	}
 	function closeventana()
 	{
 		$(".ventana").slideUp("fast");
 	}
+	function btnCambiarnombreAP(){
+		  var id = $("#id").val();
+		  var nombre = $("#nombre").val();
+		  var apellido = $("#apellido").val();
+		  var route = "/MercadoLibre-2.0/public/cambiarnombre";
+		  var token = $("#token").val();
+		  var bandera="0";
+		  	 if(nombre === "")
+		    { 
+		        bandera="1";  
+		         $('#alertMsjinputNombre').css({"visibility":"visible"});     
+		        $('#nombre').css({"border-color":"#ff5a5f"}); 
+		    }else{
+		    	$('#alertMsjinputNombre').css({"visibility":"hidden"});  
+		    }
+
+		    if(apellido === "")
+		    {   
+		        bandera="1";   
+		         $('#alertMsjinputApellido').css({"visibility":"visible"}); 
+		        $('#apellido').css({"border-color":"#ff5a5f"}); 
+		    }else{
+		    	 $('#alertMsjinputApellido').css({"visibility":"hidden"}); 
+		    }
+
+
+		    if(bandera==="0")
+		    {
+		      $.ajax({
+		        url: route,
+		        headers: {'X-CSRF-TOKEN': token},
+		        type: 'POST',
+		        dataType: 'json',
+		        data: { apellido: apellido, id: id, nombre:nombre} 
+		        }).done(function(data) {  
+		          if (data.res!=1 && data.res!=0){
+		          location.href ="/MercadoLibre-2.0/public/perfil";
+		          }else if(data.res==1){  
+		            $("#lblCorreoExistente").empty();
+		            $("#lblCorreoExistente").append(data.email);
+		          }
+		        });
+		    }
+		}
+
+		function agregarTel(){
+		  var id = $("#id").val();
+		  var telefono = $("#telefono").val();
+		  var route = "/MercadoLibre-2.0/public/agregartelefono";
+		  var token = $("#token").val();
+		  var bandera="0";
+		  	 if(telefono === "")
+		    { 
+		        bandera="1";  
+		         $('#alertMsjinputTelefono').css({"visibility":"visible"});     
+		        $('#telefono').css({"border-color":"#ff5a5f"}); 
+		    }else{
+		    	$('#alertMsjinputTelefono').css({"visibility":"hidden"});  
+		    }
+            
+		    if(bandera==="0")
+		    {
+		      $.ajax({
+		        url: route,
+		        headers: {'X-CSRF-TOKEN': token},
+		        type: 'POST',
+		        dataType: 'json',
+		        data: { telefono: telefono, id: id} 
+		        }).done(function(data) { 
+		          if (data.res!=1 && data.res!=0){
+		          	location.href ="/MercadoLibre-2.0/public/perfil";
+		          }else if(data.res==1){  
+		            $("#lblCorreoExistente").empty();
+		            $("#lblCorreoExistente").append(data.email);
+		          }
+		        });
+		    }
+		}
 </script>	
 
 <div class="padre">
 	<div class="menu">
 		menu
 	</div>
-	<div class="formulario" ">
+	<div class="formulario">
 		<form>
 			
 		 		<div><p class="h2">Mis datos</p>
@@ -58,7 +150,7 @@
 			 <table>
 			 	<tr>
 			 		<td>Nombre y apellido</td>
-			 		<td>{{ auth()->user()->nombre }}</td>
+			 		<td>{{ auth()->user()->nombre }} {{$usuario->apellido}}</td>
 			 		<td><a href="javascript:openventana()"> Modificar</a> </td>
 			 	</tr>
 			 	<tr>
@@ -68,7 +160,7 @@
 			 	</tr>
 			 	<tr>
 			 		<td>Telefono</td>
-			 		<td></td>
+			 		<td>{{$usuario->telefono}}</td>
 			 	<td><a href="javascript:openventana3()"> Agregar</a> </td>
 			 	</tr>
 			 </table>
@@ -96,29 +188,31 @@
 	
 
 
-	<div id="openModal1" class="ventana">
+<div id="openModal1" class="ventana">
 		<div class="form">
-		<form >
-			<table align="left">
+		<form method="post" action="{{route('cambiarnombre')}}">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+	 		<input type="hidden" name="id" value="{{ auth()->user()->id }}" id="id">
+			<table  align="left" style="width: 100%">
 				<p style=" font-size: 22px; text-align-last: left;">Modificar nombre y apellidos</p>
-				
 				<tr>
-					
 					<td style="padding: 20px 15px 10px 10px">Nombre *</td>
-					<td colspan="2"><input type="text" name="nombre" class="CajaTex" style="width: 200%"></td>
+					<td colspan="2"><input type="text" name="nombre" id="nombre" class="CajaTex" value="{{ auth()->user()->nombre }}" style="width: 130%"></td>
+					<td><input type="" value="Completa este dato." id="alertMsjinputNombre"  style="width: 150px ;margin-left:  40px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px; visibility: hidden;">
+					</td>
 				</tr>
-					<tr>
-					
-					<td style="padding: 20px 15px 10px 10px">Apellido *</td>
-					<td colspan="2"><input type="text" name="apellido" class="CajaTex" style="width: 200%"></td>
-					
-				</tr>
-
 				<tr>
-					<td></td>
-					<td><input type="button" name="Cambiar" class="boton-azul" style="margin-top: 5px" value="Guardar" ></td>
-					<td style="margin-top: 10px; margin-left: -40px"><a href="javascript:closeventana()">Cancelar</a></td>
+					<td style="padding: 20px 15px 10px 10px" >Apellido *</td>
+					<td colspan="2"><input type="text"  id="apellido" name="apellido" class="CajaTex" value="{{$usuario->apellido}}" style="width: 130%"  style="width: 200%"></td>
+					<td><input type="" value="Completa este dato." id="alertMsjinputApellido"  style="width: 150px ;margin-left: 40px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px; visibility: hidden;">
+					</td>
 				</tr>
+				<tr>
+					
+					<td style="width: 40%; margin-top: 9px">
+					<a href="javascript:btnCambiarnombreAP()" class="boton-azul" style="padding-left: 9PX">Actualizar</a> <a href="{{route('perfil')}}" style="padding-left: 9PX">Cancelar</a></td>
+					
+			</tr>
 			</table>
 	</form>
 	</div>
@@ -126,60 +220,61 @@
 
 <div id="openModal2" class="ventana">
 		<div class="form">
-		<form >
-			<table align="left">
+		<form method="post" action="{{route('cambiarnombre')}}">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+	 	<input type="hidden" name="id" value="{{ auth()->user()->id }}" id="id">
+		
 				<p style=" font-size: 22px; text-align-last: left;">Agrega mi documento</p>
-				<tr>
-				    <td style="padding: 20px 2px 1px 0px">
+				<div>
 					 Documento *
-				   </td>
-					<td style="padding: 20px 9px 10px 10px">
+				   
 						<select>
 							<option value="1">RFC</option>
 							<option value="2">CURP</option>
 							<option value="3">IFE</option>
 							<option value="4">Otro</option>
 						</select>
-					</td>
-					<td >
-						<input type="text" name="documento" class="CajaTex" required="" style="width: 100%">
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="button" name="Cambiar" class="boton-azul" style="margin-top: 1px" value="Guardar" ></td>
-					<td style="margin-top: 10px; margin-left: -40px"><a href="javascript:closeventana()">Cancelar</a></td>
-				</tr>
-			</table>
+					
+						<input type="text" name="documento" class="CajaTex" style="width: 40%" required="" style="width: 100%">
+				</div>
+				<div style="margin-top: 15px; width: 100%">
+					<input type="button" name="Cambiar" class="boton-azul" style="margin-top: 1px" value="Guardar" >
+					<a href="javascript:closeventana()">Cancelar</a>
+				</div>
 	</form>
 	</div>
 </div>
 
 
 <div id="openModal3" class="ventana">
-		<div class="form">
-		<form >
-			<table align="left">
+		<div class="form" style="height: 250px" id="formTel">
+		<form  method="post" action="">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+	 	<input type="hidden" name="id" value="{{ auth()->user()->id }}" id="id">
+			
+				
 				<p style=" font-size: 22px; text-align-last: left;">Agrega Telefono</p>
-				<tr>
-				    <td style="padding-left: 30px" >
-					 Telefono *
-				   </td>
-					
-					<td colspan="2">
-						<input type="text" name="documento" class="CajaTex" style="width: 200%">
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td colspan="3" style="width: 300px;padding-top: 35PX; color: #D5D5D3" >Código de área + Nº. Ejemplo: (11) 4323-4556.</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="button" name="Cambiar" class="boton-azul" style="margin-top: 10px" value="Guardar" ></td>
-					<td><a href="javascript:closeventana()">Cancelar</a></td>
-				</tr>
-			</table>
+				<div style="width: 100%">
+					<label style="margin-right: 10px;  font-size: 13px; ">Telefono * </label> 
+					<input type="number" value="{{$usuario->telefono}}" name="tel" id="telefono" style="width: 25%; padding-left: 2px; margin-left: 30px" class="CajaTex">
+					<input type="" value="Completa este dato." id="alertMsjinputTelefono"  style="width: 130px ;margin-left: 10px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px; visibility: hidden;">
+				</div>	
+				<div style="margin-top: 10px;margin-left: 50px; color: #999; width: 93%; font-size: 12px">
+					Código de área + Nº. Ejemplo: (11) 4323-4556.
+				</div>
+
+				<div style="width: 100%; visibility: hidden;" id="ocultarTel" >
+					  Telefono Alternativo*
+					<input type="number" value="" name="tel" id="telefono2" style="width: 25%" class="CajaTex">
+					<input type="" value="Completa este dato." id="alertMsjinputTelefono"  style="width: 130px ;margin-left: 10px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px; visibility: hidden;">
+				</div>	
+				<div id="ocultarTelLeyenda" style="margin-top: 15px;margin-left: 50px; color: #999; width: 93%; font-size: 12px">
+					Código de área + Nº. Ejemplo: (11) 4323-4556.
+				</div>
+				<div style="margin-top: 15px; margin-left: 50px width: 65%" id="GuardarTel">
+					 <a href="javascript:agregarTel()" class="boton-azul" style="height: 35px"  >Guardar</a>
+					<a href="javascript:closeventana()">Cancelar</a>
+				</div>	
 	</form>
 	</div>
 </div>

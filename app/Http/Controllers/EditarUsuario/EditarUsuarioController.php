@@ -33,6 +33,29 @@ class EditarUsuarioController extends Controller
     {
          return view('perfil/editarusuario.create');
     }
+     public function cambiarUsuario(Request $request)
+    {
+    
+        if ($request->ajax()) { 
+
+            if(!User::where('alias', '=', $request->alias)->exists()){ 
+                $usuario = User::find($request->id);
+                $usuario->alias = $request->alias;
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+                return response()->json([
+                    "res" => $idUsuario,
+                    "alias" => $request->alias
+                ]); 
+            }else{
+                return response()->json([
+                    "res" => 1,
+                    "alias" => $request->alias
+                ]);
+            }  
+        }
+  
+    }
 
     /**
      * Store a newly created resource in storage.

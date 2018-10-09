@@ -44,3 +44,15 @@ Route::post('vehiculos', 'Admin\AddCategoriaController@showCategorias')->name('v
 
 Route::post('descripcion', 'Admin\AddCategoriaController@showDescrip')->name('descripcion');
 
+Route::post('cambiarnombre', 'EditarUsuario\PerfilController@cambiarNombreAp')->name('cambiarnombre');
+Route::post('agregartelefono', 'EditarUsuario\PerfilController@agregarTelefono')->name('agregartelefono');
+
+Route::any('editarcorreo', 'EditarUsuario\EditarCorreoController@index')->name('editarcorreo');
+Route::post('cambiarcorreo', 'EditarUsuario\EditarCorreoController@actualizarCorreo')->name('cambiarcorreo');
+
+Route::any('editarusuario', 'EditarUsuario\EditarUsuarioController@index')->name('editarusuario');
+Route::post('cambiarusuario', 'EditarUsuario\EditarUsuarioController@cambiarUsuario')->name('cambiarusuario');
+
+Route::any('editarpassword', 'EditarUsuario\EditarPasswordController@index')->name('editarpassword');
+Route::post('cambiarclave', 'EditarUsuario\EditarPasswordController@actualizarClave')->name('cambiarclave');
+

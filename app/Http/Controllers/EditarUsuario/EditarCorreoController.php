@@ -24,10 +24,7 @@ class EditarCorreoController extends Controller
         return view('perfil/editarcorreo.create');
     }
 
-    public function decirHola()
-    {
-        return "Hola";
-    }
+  
     /**
      * Show the form for creating a new resource.
      *
@@ -37,7 +34,28 @@ class EditarCorreoController extends Controller
     {
              return view('perfil/editarcorreo.create');
     }
+     public function actualizarCorreo(Request $request)
+    {
+        if ($request->ajax()) { 
 
+            if(!User::where('email', '=', $request->email2)->exists()){ 
+                $usuario = User::find($request->id);
+                $usuario->email = $request->email;
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+                //return redirect()->action('FrontController@index');
+                return response()->json([
+                    "res" => $idUsuario,
+                    "email" => $request->email
+                ]); 
+            }else{
+                return response()->json([
+                    "res" => 1,
+                    "email" => $request->email
+                ]);
+            }  
+        }
+    } 
     /**
      * Store a newly created resource in storage.
      *
