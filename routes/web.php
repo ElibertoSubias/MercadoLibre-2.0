@@ -56,3 +56,4 @@ Route::post('cambiarusuario', 'EditarUsuario\EditarUsuarioController@cambiarUsua
 Route::any('editarpassword', 'EditarUsuario\EditarPasswordController@index')->name('editarpassword');
 Route::post('cambiarclave', 'EditarUsuario\EditarPasswordController@actualizarClave')->name('cambiarclave');
 
+Route::post('agregardocumento', 'EditarUsuario\PerfilController@agregarDocumento')->name('agregardocumento');
