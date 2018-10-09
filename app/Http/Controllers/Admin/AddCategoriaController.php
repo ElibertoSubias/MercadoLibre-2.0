@@ -159,6 +159,6 @@ class AddCategoriaController extends Controller
     }
     public function showDescrip(Request $request)
     {
-        return view('vender.descripcion');
+        return view('vender.descripcion')->with(['categoria'=>$request->categoria,'tipo'=>$request->tipo,'marca'=>$request->input('car-marca')]);  
     }
 }

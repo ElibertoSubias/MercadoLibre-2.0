@@ -20,7 +20,7 @@
 	function openventana3()
 	{
 		document.getElementById('openModal3').style.display = 'block';
-		if ({{$usuario->telefono}} ==="") {
+		if (document.getElementById('lblTel').Text =="_") {
 		
 			$('#formTel').css({"height": "200px"});
 			$('#GuardarTel').css({"margin-top": "-50px"});
@@ -31,8 +31,7 @@
 			
 			$('#ocultarTelLeyenda').css({"visibility":"visible"});
 			$('#ocultarTel').css({"visibility":"visible"});
-		}
-
+		} 
 	}
 	function closeventana()
 	{
@@ -160,7 +159,7 @@
 			 	</tr>
 			 	<tr>
 			 		<td>Telefono</td>
-			 		<td>{{$usuario->telefono}}</td>
+			 		<td><label id="lblTel"><?php if($usuario->telefono=="_"){}else{echo $usuario->telefono;}?></label></td>
 			 	<td><a href="javascript:openventana3()"> Agregar</a> </td>
 			 	</tr>
 			 </table>

@@ -175,6 +175,7 @@
                 <div class="wrapper">
                     <div class="scrooller">
                         <div id="cont-categorias" class="category-column">
+                            <input type="text" name="tipo" id="tipo" value="vehiculos" hidden>
                             <select name="categoria" id="categoria" size="15" style="height:260px;font-size: 14px"> 
                             </select>
                         </div>

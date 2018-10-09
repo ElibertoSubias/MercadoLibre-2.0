@@ -17,8 +17,8 @@
                     <div class="row col-md-12">
                         <fieldset id="categoriaSeleccionada">
                             <legend>Categorías</legend>
-                            <h3>Vehiculos</h3>
-                            <p>Autos, Motos y Otros > Autos de Colección > Volvo <a href="">Modificar</a></p>
+                            <h3 style="text-transform: capitalize;">{{ $tipo }}</h3>
+                            <p>Autos, Motos y Otros > {{ $categoria }} > {{ $marca }} <a href="">Modificar</a></p>
                         </fieldset>                    
                     </div>
                     <div class="row col-md-12" style="margin-top:10px;">

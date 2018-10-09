@@ -76,7 +76,7 @@ $('#crearCuenta').click(function(){
         data: {nombre: nombre, apellido: apellido, email: email, clave: clave} 
         }).done(function(data) {  
           if (data.res!=1 && data.res!=0){
-            location.href ="/MercadoLibre-2.0/public";
+            $( "#frmInsertarUsuario" ).submit();
           }else if(data.res==1){  
             $("#lblCorreoExistente").empty();
             $("#lblCorreoExistente").append(data.email);
