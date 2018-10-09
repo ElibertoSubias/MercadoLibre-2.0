@@ -88,7 +88,7 @@ function cambiarUs(){
 				<td style=" margin: 10px ;width: 55%; height: 40px "> <img src="{{ asset('img/palomita.png') }}"> </td>
 			</tr>
 			<tr>
-				<td style="width: 84%"><h2> ¡Listo! Modificaste tu usuario</h2></td>
+				<td style="width: 70% ; padding-top: 14px"><h2> ¡Listo! Modificaste tu usuario</h2></td>
 			<tr>
 				<td style="width: 60%; margin-top: 9px">
 					<a href="{{route('perfil')}}" name="cambiarUs"  class="boton-azul" id="cambiarUs"  style="padding: 4px" >Ir a Mi cuenta </a></td>
