@@ -2,7 +2,7 @@
 
 @section('content')
 {!! Html::style('css/descripStyle.css') !!}
-<div style="margin: 30px auto 20px;max-width: 1220px;background-color: #fff;border: 1px solid #e2e2e2;border-radius: 5px;height:400%; ">
+<div style="margin: 30px auto 20px;max-width: 1220px;background-color: #fff;border: 1px solid #e2e2e2;border-radius: 5px;height:450%; ">
     <div style="" class="cont-ruta">
     	<ol class="syi-ui-wizard__breadcrumb syi-ui-wizard__step--4" data-reactid="7" style="display: block;list-style: none;    overflow: hidden;padding: 0;margin: 0 0 30px;">
     		<li class="syi-ui-wizard__step syi-ui-wizard__step--current" data-reactid="8"><span data-reactid="9"><a href="">Elige qué quieres publicar</a></span></li>
@@ -377,23 +377,32 @@
                                     </div>
                                     <div class="col-md-11">
                                         <div class="desc-message-warning">
-    <div class="desc-message-warning__text classifieds">
-        <h3 class="desc-message-warning__title">Completa tu descripción sin agregar datos de contacto</h3>
-        <div class="desc-message-warning__content">
-            <p>
-                No incluyas teléfonos, e-mails, direcciones ni sitios web en la descripción ni en el título.
-            </p>
-            <p>
-                Las publicaciones que tengan datos de contacto en esas secciones aparecerán más abajo en los resultados de búsquedas.
-            </p>
+                                            <div class="desc-message-warning__text classifieds">
+                                                <h3 class="desc-message-warning__title">Completa tu descripción sin agregar datos de contacto</h3>
+                                                <div class="desc-message-warning__content">
+                                                    <p>
+                                                        No incluyas teléfonos, e-mails, direcciones ni sitios web en la descripción ni en el título.
+                                                    </p>
+                                                    <p>
+                                                        Las publicaciones que tengan datos de contacto en esas secciones aparecerán más abajo en los resultados de búsquedas.
+                                                    </p>
 
-        </div>
-    </div>
+                                                </div>
+                                            </div>
 
-    <div class="desc-message-warning__image">
-        <img src="https://http2.mlstatic.com/secure/sell/1.0.0/syi-fixing.svg">
-    </div>
-</div>
+                                            <div class="desc-message-warning__image">
+                                                <img src="https://http2.mlstatic.com/secure/sell/1.0.0/syi-fixing.svg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="ch-form">
+                                            <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><p style="text-align: right;">Versión:</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input class="form-control col-md-2" type="text" name="numPuertas" id="numPuertas">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                         </fieldset>
