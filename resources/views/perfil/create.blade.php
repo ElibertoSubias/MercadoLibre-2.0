@@ -191,7 +191,6 @@
 			 	</tr>
 			 	<tr>
 			 		<td>documentos</td>
-			 		<td></td>
 			 		<td><a href="javascript:openventana2()"> Agregar</a> </td>
 			 	</tr>
 			 	<tr>
