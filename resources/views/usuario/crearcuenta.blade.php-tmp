@@ -9,7 +9,7 @@
 			</div>
 <?php if (isset($data)) {echo $data[0]->id;} else {}?>
 			<div class="col-md-10 col-md-offset-1">
-				{!! Form::open(['url'=>'usuario', 'method'=>'POST', 'id'=>'frmInsertarUsuario', 'name'=>'frmInsertarUsuario','autocomplete'=>'off']) !!}
+				{!! Form::open(['url'=>'login', 'method'=>'POST', 'id'=>'frmInsertarUsuario', 'name'=>'frmInsertarUsuario','autocomplete'=>'off']) !!}
 				<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 					<div id="cont-form1" style="background: #fff;    display: table;padding: 1px 32px 60px;box-shadow: 0 1px 3px 0 rgba(0,0,0,.3);-webkit-border-radius: 0 0 4px 4px;border-radius: 0 0 4px 4px;">
 						<div class="col-md-6" style="height: 30px;">
@@ -23,12 +23,12 @@
 							<div id="alertMsjinputApellido" class="ch-validation-message ui-form__message">Completa este dato.</div>
 						</div>
 						<div class="col-md-6" style="height: 30px;">
-							{!!Form::text('email',null,['class'=>'form-control','id'=>'inputEmail','autocomplete'=>'new-mail'])!!}
+							{!!Form::text('login',null,['class'=>'form-control','id'=>'inputEmail','autocomplete'=>'new-mail'])!!}
 							{!!Form::label('E-mail', null, array('id' => 'lblMsjinputEmail'))!!}
 							<div id="alertMsjinputEmail" class="ch-validation-message ui-form__message">Completa este dato.</div>
 						</div>
 						<div class="col-md-6" style="height: 30px;">
-							{!!Form::password('clave',['class'=>'form-control','id'=>'inputClave'])!!}
+							{!!Form::password('password',['class'=>'form-control','id'=>'inputClave'])!!}
 							{!!Form::label('Clave', null, array('id' => 'lblMsjinputClave'))!!}
 							<div id="alertMsjinputClave" class="ch-validation-message ui-form__message">Completa este dato.</div>
 						</div>

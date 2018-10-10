@@ -19,6 +19,9 @@ class CrearCuentaController extends Controller
                 $usuario->nombre = $request->nombre;
                 $usuario->apellido = $request->apellido;
                 $usuario->email = $request->email;
+                $usuario->telefono = "_";
+                $usuario->telefono2 = "_";
+                $usuario->documento = "_";
                 $usuario->alias = "01".$request->nombre;
                 $usuario->password = Hash::make($request->clave);
                 $usuario->save(); 

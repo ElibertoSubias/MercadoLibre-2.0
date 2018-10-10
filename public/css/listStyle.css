@@ -1,0 +1,139 @@
+.nav-footer-navigation>a{
+        font-size: 12px;
+    color: #333;
+    font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+    float: left;
+    text-decoration: none !important;
+    margin-left: 30px;
+}
+.nav-footer-primaryinfo>small{ 
+    margin-left: 30px;
+    color: #999;
+    vertical-align: initial;
+    position: absolute; 
+    display: block;
+    width: auto;
+    margin-top: 20px;
+    line-height: initial;
+    font-size: 11px;
+}
+	li {
+        border-bottom: 1px solid;
+        border-right: 1px solid;
+        border-left-color: #ddd;
+        border-right-color: #ddd; 
+		width: 25%;
+		float: left;
+	    position: relative;
+	    color: #ccc;
+	    text-align: center; 
+	    display: block;
+	    line-height: 42px;
+	    text-align: center;   
+    	top: -2px; 
+
+	}
+	li:before {
+	      border-width: 23px 11px;
+    border-top-width: 23px;
+    border-right-width: 11px;
+    border-bottom-width: 23px;
+    border-left-width: 11px;
+    border-left-color: #ddd;
+ 
+    border: solid transparent;
+    content: " ";
+    position: absolute;
+    top: -1px;
+    right: -24px;
+    z-index: 1;
+	}
+	span {
+		font-size: 13px;
+		display: block;
+	}
+    .hub-nav {
+        border-collapse: separate;
+        border-spacing: 1em;
+        max-width: 841px;
+        margin: 55px auto 0;
+        overflow: auto;
+    }
+    .hub-card {
+        display: block;
+        height: 260px;
+        float: left;
+        text-align: center;
+        padding: 0;
+        width: 23.5%;
+        cursor: pointer;
+
+        background-color: #fff;
+        border: 1px solid #dedede;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        margin: .8%;
+            margin-right: 0;
+    }
+    .hub-card>button {
+            -webkit-font-smoothing: antialiased;
+    padding: 10px;
+    }
+    .hub-card button {
+    padding-bottom: 41px;
+            text-align: center;
+            background: none;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    width: 100%;
+    -webkit-appearance: button;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    }
+    .hub-card .hub-car-titulo {
+        font-size: 22px;
+    }
+    .syi-hub__title {
+        font-size: 22px;
+        -webkit-font-smoothing: antialiased;
+        padding: 10px;
+        padding-bottom: 0px;
+    }
+    .syi-hub__image--mot {
+        background-position: -1.9% bottom; 
+        color: #f0ad4e;
+    }
+    .syi-hub__image--res {
+        background-position: 33.5% bottom; 
+        color: #dd6259;
+    }
+    .syi-hub__image--srv{
+        background-position: 67.5% bottom;
+        color: #428bca;
+            
+    }
+    .syi-hub__image--mas{
+        background-position: 100% bottom;
+        width: 180px;
+    } 
+    .syi-hub__image {
+        background-image: url(../img/vender-icono.png); 
+        background-repeat: no-repeat;
+        background-size: 400%;
+        display: block;
+        height: 180px;
+        margin: 0 auto;
+    }
+    .syi-terms-conditions {
+    color: #999;
+    font-size: 12px;
+    line-height: 12px;
+    margin: 30px 0 20px 20px;
+    text-align: left;
+}

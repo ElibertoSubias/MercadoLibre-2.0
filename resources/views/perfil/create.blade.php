@@ -20,7 +20,7 @@
 	function openventana3()
 	{
 		document.getElementById('openModal3').style.display = 'block';
-		if ({{$usuario->telefono}} ==="") {
+		if (document.getElementById('lblTel').Text =="_") {
 		
 			$('#formTel').css({"height": "200px"});
 			$('#GuardarTel').css({"margin-top": "-50px"});
@@ -31,8 +31,7 @@
 			
 			$('#ocultarTelLeyenda').css({"visibility":"visible"});
 			$('#ocultarTel').css({"visibility":"visible"});
-		}
-
+		} 
 	}
 	function closeventana()
 	{
@@ -191,13 +190,16 @@
 			 	</tr>
 			 	<tr>
 			 		<td>documentos</td>
+			 		<td><?php if($usuario->documento=="_"){}else{echo $usuario->documento;}?></td>
 			 		<td><a href="javascript:openventana2()"> Agregar</a> </td>
 			 	</tr>
 			 	<tr>
-			 		<td>Telefono</td>
-			 		<td style="width: 60%"><label style="margin-right: 6px; font-size: 12px">{{$usuario->telefono}}</label>/<label style="margin-left: 2px; margin-right: 100px; font-size: 12px; text-align: right;" id="tel">  {{$usuario->telefono2}}</label> 
+			 		<td>Telefono</td> 
+			 		<td><label id="lblTel"><?php if($usuario->telefono=="_"){}else{echo $usuario->telefono;}?></label></td>
+			 	<td><a href="javascript:openventana3()"> Agregar</a> </td> 
+			 		<td style="width: 60%"><label style="margin-right: 6px; font-size: 12px"><?php if($usuario->documento=="_"){}else{echo $usuario->documento;}?></label>/<label style="margin-left: 2px; margin-right: 100px; font-size: 12px; text-align: right;" id="tel"><?php if($usuario->telefono=="_"){}else{echo $usuario->telefono2;}?></label> 
 			 			<a href='javascript:openventana3()' style='margin-right: 10px'> Agregar</a>
-			 		</td>
+			 		</td> 
 			 	</tr>
 			 </table>
 			  <p class="H3_1">Tarjetas de credito <a href="#" style="padding-left: 270px; font-size: 12px">Necesito ayuda</a> </p>

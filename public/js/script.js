@@ -113,3 +113,35 @@ function desactivarInput(id){
 	    }
 	}
 } 
+
+
+function clickbtn(){
+	document.getElementById('select_file').click();
+}
+$('#select_file').change(function(){
+	$('#upload').click();
+});
+
+$('#upload_form').on('submit', function(event){
+	if ($('#clickimg1').hasClass('on')){
+        $('#upload_form').submit();
+    }else{
+        event.preventDefault();
+	  $.ajax({
+	   url:"/MercadoLibre-2.0/public/loadimage",
+	   method:"POST",
+	   data:new FormData(this),
+	   dataType:'JSON',
+	   contentType: false,
+	   cache: false,
+	   processData: false,
+	   success:function(data)
+	   {
+	    $('#message').css('display', 'block');
+	    $('#message').html(data.message);
+	    $('#clickimg1').addClass('on');
+	    $('#clickimg1').html(data.uploaded_image);
+	   }
+	  })
+    }
+	 });

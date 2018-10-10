@@ -40,7 +40,7 @@ Route::post('cargarMarcas', 'Admin\AddCategoriaController@showMarcas')->name('ca
 Route::post('guardarCategoria', 'Admin\AddCategoriaController@create')->name('guardarCategoria');
 Route::post('guardarMarca', 'Admin\AddCategoriaController@addMarca')->name('guardarMarca');
 
-Route::post('vehiculos', 'Admin\AddCategoriaController@showCategorias')->name('vehiculos');
+Route::any('vehiculos', 'Admin\AddCategoriaController@showCategorias')->name('vehiculos');
 
 Route::post('descripcion', 'Admin\AddCategoriaController@showDescrip')->name('descripcion');
 
@@ -56,3 +56,8 @@ Route::post('cambiarusuario', 'EditarUsuario\EditarUsuarioController@cambiarUsua
 Route::any('editarpassword', 'EditarUsuario\EditarPasswordController@index')->name('editarpassword');
 Route::post('cambiarclave', 'EditarUsuario\EditarPasswordController@actualizarClave')->name('cambiarclave');
 
+Route::post('agregardocumento', 'EditarUsuario\PerfilController@agregarDocumento')->name('agregardocumento');
+
+Route::post('loadimage', 'Venta\VentaController@store')->name('loadimage'); 
+
+Route::post('articulo/precio', 'Venta\VentaController@showPrecio')->name('precio');
