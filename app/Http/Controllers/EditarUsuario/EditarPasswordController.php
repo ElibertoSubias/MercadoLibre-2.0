@@ -33,7 +33,21 @@ class EditarPasswordController extends Controller
     {
         return view('perfil/editarpassword.create');
     }
-
+    
+    
+    public function actualizarClave(Request $request)
+    {
+    
+        if ($request->ajax()) { 
+                $usuario = User::find($request->id);
+                $usuario->password = Hash::make($request->password);
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+                return response()->json([
+                    "res" => $idUsuario
+                ]); 
+            }
+    }
     /**
      * Store a newly created resource in storage.
      *

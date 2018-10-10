@@ -1,4 +1,5 @@
 
+   
     .divp{
     
    padding: 10px 15px 15px;
@@ -72,11 +73,11 @@ td {
     padding: 2px 1px 0px 0px;
 }
 
-.CajaTex {
+.CajaTexa {
     border-collapse: collapse;
     height: 29px;
     text-transform: uppercase;
-    width: 160%;
+    width: 100px;
     perspective-origin: 126px 14.5px;
     transform-origin: 126px 14.5px;
     border: 1px solid rgb(205, 205, 205);

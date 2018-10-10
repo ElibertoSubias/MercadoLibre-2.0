@@ -21,7 +21,8 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        return view('perfil.create');
+      	$usuario=User::find( auth()->user()->id );
+        return view('perfil.create',compact('usuario') );
     }
 
     /**
@@ -33,7 +34,53 @@ class PerfilController extends Controller
     {
         return view('perfil.create');
     }
+    
+     public function cambiarNombreAp(Request $request)
+    {
 
+         if ($request->ajax()) {
+                $usuario = User::find($request->id);
+                $usuario->nombre = $request->nombre;
+                $usuario->apellido = $request->apellido;
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+                return response()->json([
+                    "res" => $idUsuario 
+              
+             ]); 
+            }     
+    }
+	
+	 public function agregarTelefono(Request $request)
+    {
+            if ($request->ajax()) {
+                $usuario = User::find($request->id);
+                $usuario->telefono = $request->telefono;
+                $usuario->telefono2 = $request->telefono2;
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+               
+                 return response()->json([
+                    "res" => $idUsuario 
+              
+             ]); 
+            }    
+    }
+    
+    public function agregarDocumento(Request $request)
+    {
+       $datos = $request->tipo . " " . $request->dato;
+       if ($request->ajax()) {
+                $usuario = User::find($request->id);
+                $usuario->documento = ($datos);///QQuieres a tipo o a Dato
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+               
+                 return response()->json([
+                    "res" => $idUsuario 
+             ]); 
+        }     
+    }
     /**
      * Store a newly created resource in storage.
      *
