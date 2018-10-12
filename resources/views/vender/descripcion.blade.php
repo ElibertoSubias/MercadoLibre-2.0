@@ -15,6 +15,12 @@
             <div style="width: 100%;height: 100%;text-align: left;margin:20px;">
                 <form method="post" id="upload_form" enctype="multipart/form-data" action="{{route('precio')}}"> 
                     <div class="row col-md-12">
+                        <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{ $idPublicacion }}">
+                        <input type="hidden" name="idUser" id="idUser" value="{{ auth()->user()->_id }}">
+                        <input type="hidden" name="categoria" id="categoria" value="{{ $categoria }}">
+                        <input type="hidden" name="tipo" id="tipo" value="{{ $tipo }}">
+                        <input type="hidden" name="marca" id="marca" value="{{ $marca }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                         <fieldset id="categoriaSeleccionada">
                             <legend>Categorías</legend>
                             <h3 style="text-transform: capitalize;">{{ $tipo }}</h3>
@@ -41,7 +47,7 @@
                                             
                                                 {{ csrf_field() }}
                                                         <input type="file" name="select_file" id="select_file" class="btn-car" /> 
-                                                <li data-picture-status="no" class="off" id="clickimg1" onclick="clickbtn()"> 
+                                                <li data-picture-status="no" class="off" id="clickimg1" onclick="clickbtn(id)"> 
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
@@ -50,7 +56,7 @@
                                                 </li> 
                                                 
                                             
-                                                <li data-picture-status="off">
+                                                <li data-picture-status="off" id="clickimg2" onclick="clickbtn(id)">
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
@@ -146,7 +152,7 @@
                             <legend>Ingresa un video</legend>
                             <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><p>Link de YouTube</p></div>
                             <div class="col-md-4">
-                                <input class="form-control col-md-4" type="text" name="videURL" id="videURL">
+                                <input class="form-control col-md-4" type="text" name="videoURL" id="videoURL">
                                 <span>Ingresa el link de tu video de YouTube.</span>
                             </div>
                         </fieldset>
@@ -158,20 +164,22 @@
                                 <div>
                                     <div class="ch-form">
                                         <label class="lblUbicacion">Estado:*</label>
-                                        <select name="estado">
-                                            <option value="">Selecciona un estado</option>
+                                        <select name="estado" id="estado">
+                                            <option value="">Selecciona un estado</option>  
                                         </select>
                                     </div> 
                                     <div class="ch-form">
                                         <label class="lblUbicacion">Municipio:*</label>
-                                        <select name="municipio">
+                                        <select name="municipio" id="municipio">
                                             <option value="">Selecciona un municipio</option>
                                         </select>  
                                     </div>
                                     <div class="ch-form">
                                         <label class="lblUbicacion">Colonia:*</label>
-                                        <select name="colonia">
+                                        <select name="colonia" id="colonia">
                                             <option value="">Selecciona una colonia</option>
+                                            <option value="Fracc.Los Angeles">Fracc.Los Angeles</option>}
+                                            option
                                         </select>
                                     </div> 
                                 </div>
@@ -220,8 +228,9 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><label class="lblUbicacion">Año:*</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <select name="anio">
+                                            <select name="anio" id="anio">
                                                 <option value="">Elejir</option>
+                                                <option value="1994">1994</option>
                                             </select>
                                         </div>
                                     </div> 
@@ -240,7 +249,7 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><label class="lblUbicacion">Kilometros:*</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input class="form-control col-md-2" type="text" name="numPuertas" id="numPuertas"><p style="    display: flex;margin-top: 10px;">km</p> 
+                                            <input class="form-control col-md-2" type="text" name="kilometros" id="kilometros"><p style="    display: flex;margin-top: 10px;">km</p> 
                                         </div>
                                     </div>  
                                 </div>
@@ -249,7 +258,7 @@
                                         <div class="col-md-1" style="text-align: right;padding: 0px;margin: 0px;margin-top: 8px;width: 131.5px;"><p>Color:</p>
                                         </div>
                                         <div class="col-md-2">
-                                            <input class="form-control col-md-2" type="text" name="numPuertas" id="numPuertas">
+                                            <input class="form-control col-md-2" type="text" name="color" id="color">
                                         </div>
                                     </div>  
                                 </div>
@@ -283,7 +292,7 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><p style="text-align: right;">Motor:</p>
                                         </div>
                                         <div class="col-md-2">
-                                            <input class="form-control col-md-2" type="text" name="numPuertas" id="numPuertas"> 
+                                            <input class="form-control col-md-2" type="text" name="motor" id="motor"> 
                                         </div>
                                     </div>  
                                 </div>
@@ -321,7 +330,7 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><p style="text-align: right;">Versión:</p>
                                         </div>
                                         <div class="col-md-2">
-                                            <input class="form-control col-md-2" type="text" name="numPuertas" id="numPuertas"> 
+                                            <input class="form-control col-md-2" type="text" name="version" id="version"> 
                                         </div>
                                     </div>  
                                 </div> 
@@ -329,11 +338,26 @@
                                     <h4 class="attributes-section-title">Confort</h4>
                                     <div class="ch-g1-4">
                                         <ul class="ch-form-options ch-box-list ch-leftcolumn">
-                                            <li class="ch-form-row"><input type="checkbox" name="HAS_AIR_CONDITIONING" id="HAS_AIR_CONDITIONING" class=""><label for="HAS_AIR_CONDITIONING" class="">Aire acondicionado</label></li>
-                                            <li class="ch-form-row"><input type="checkbox" name="HAS_AMFM_RADIO" id="HAS_AMFM_RADIO" class=""><label for="HAS_AMFM_RADIO" class="">AM/FM</label></li>
-                                            <li class="ch-form-row"><input type="checkbox" name="HAS_ELECTRIC_MIRRORS" id="HAS_ELECTRIC_MIRRORS" class=""><label for="HAS_ELECTRIC_MIRRORS" class="">Espejos eléctricos</label></li>
-                                            <li class="ch-form-row"><input type="checkbox" name="HAS_LEATHER_UPHOLSTERY" id="HAS_LEATHER_UPHOLSTERY" class=""><label for="HAS_LEATHER_UPHOLSTERY" class="">Tapizado de cuero</label></li>
-                                            <li class="ch-form-row"><input type="checkbox" name="HAS_SLIDING_ROOF" id="HAS_SLIDING_ROOF" class=""><label for="HAS_SLIDING_ROOF" class="">Techo corredizo</label></li>
+                                            <li class="ch-form-row">
+                                                <input type="checkbox" name="HAS_AIR_CONDITIONING" id="HAS_AIR_CONDITIONING" class="">
+                                                <label for="HAS_AIR_CONDITIONING" class="">Aire acondicionado</label>
+                                            </li>
+                                            <li class="ch-form-row">
+                                                <input type="checkbox" name="HAS_AMFM_RADIO" id="HAS_AMFM_RADIO" class="">
+                                                <label for="HAS_AMFM_RADIO" class="">AM/FM</label>
+                                            </li>
+                                            <li class="ch-form-row">
+                                                <input type="checkbox" name="HAS_ELECTRIC_MIRRORS" id="HAS_ELECTRIC_MIRRORS" class="">
+                                                <label for="HAS_ELECTRIC_MIRRORS" class="">Espejos eléctricos</label>
+                                            </li>
+                                            <li class="ch-form-row">
+                                                <input type="checkbox" name="HAS_LEATHER_UPHOLSTERY" id="HAS_LEATHER_UPHOLSTERY" class="">
+                                                <label for="HAS_LEATHER_UPHOLSTERY" class="">Tapizado de cuero</label>
+                                            </li>
+                                            <li class="ch-form-row">
+                                                <input type="checkbox" name="HAS_SLIDING_ROOF" id="HAS_SLIDING_ROOF" class="">
+                                                <label for="HAS_SLIDING_ROOF" class="">Techo corredizo</label>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -341,10 +365,22 @@
                                     <h4 class="attributes-section-title">Seguridad</h4>
                                     <div class="ch-g1-4">
                                         <ul class="ch-form-options ch-box-list ch-leftcolumn">
-                                            <li class="ch-form-row"><input type="checkbox" name="HAS_AIR_CONDITIONING" id="HAS_AIR_CONDITIONING" class=""><label for="HAS_AIR_CONDITIONING" class="">Alarma</label></li>
-                                            <li class="ch-form-row"><input type="checkbox" name="HAS_AMFM_RADIO" id="HAS_AMFM_RADIO" class=""><label for="HAS_AMFM_RADIO" class="">Faros antinieblas delanteros</label></li>
-                                            <li class="ch-form-row"><input type="checkbox" name="HAS_ELECTRIC_MIRRORS" id="HAS_ELECTRIC_MIRRORS" class=""><label for="HAS_ELECTRIC_MIRRORS" class="">Apoya cabeza en asientos traseros</label></li>
-                                            <li class="ch-form-row"><input type="checkbox" name="HAS_LEATHER_UPHOLSTERY" id="HAS_LEATHER_UPHOLSTERY" class=""><label for="HAS_LEATHER_UPHOLSTERY" class="">Faros antinieblas traseros</label></li> 
+                                            <li class="ch-form-row">
+                                                <input type="checkbox" name="HAS_AIR_CONDITIONING" id="HAS_AIR_CONDITIONING" class="">
+                                                <label for="HAS_AIR_CONDITIONING" class="">Alarma</label>
+                                            </li>
+                                            <li class="ch-form-row">
+                                                <input type="checkbox" name="HAS_AMFM_RADIO" id="HAS_AMFM_RADIO" class="">
+                                                <label for="HAS_AMFM_RADIO" class="">Faros antinieblas delanteros</label>
+                                            </li>
+                                            <li class="ch-form-row">
+                                                <input type="checkbox" name="HAS_ELECTRIC_MIRRORS" id="HAS_ELECTRIC_MIRRORS" class="">
+                                                <label for="HAS_ELECTRIC_MIRRORS" class="">Apoya cabeza en asientos traseros</label>
+                                            </li>
+                                            <li class="ch-form-row">
+                                                <input type="checkbox" name="HAS_LEATHER_UPHOLSTERY" id="HAS_LEATHER_UPHOLSTERY" class="">
+                                                <label for="HAS_LEATHER_UPHOLSTERY" class="">Faros antinieblas traseros</label>
+                                            </li> 
                                         </ul>
                                     </div>
                                 </div>
@@ -352,9 +388,18 @@
                                     <h4 class="attributes-section-title">Exterior</h4>
                                     <div class="ch-g1-4">
                                         <ul class="ch-form-options ch-box-list ch-leftcolumn">
-                                            <li class="ch-form-row"><input type="checkbox" name="HAS_AIR_CONDITIONING" id="HAS_AIR_CONDITIONING" class=""><label for="HAS_AIR_CONDITIONING" class="">Paragolpes pintados</label></li>
-                                            <li class="ch-form-row"><input type="checkbox" name="HAS_AMFM_RADIO" id="HAS_AMFM_RADIO" class=""><label for="HAS_AMFM_RADIO" class="">Soporte para rueda de auxilio</label></li>
-                                            <li class="ch-form-row"><input type="checkbox" name="HAS_ELECTRIC_MIRRORS" id="HAS_ELECTRIC_MIRRORS" class=""><label for="HAS_ELECTRIC_MIRRORS" class="">Limpia/lava luneta</label></li> 
+                                            <li class="ch-form-row">
+                                                <input type="checkbox" name="HAS_AIR_CONDITIONING" id="HAS_AIR_CONDITIONING" class="">
+                                                <label for="HAS_AIR_CONDITIONING" class="">Paragolpes pintados</label>
+                                            </li>
+                                            <li class="ch-form-row">
+                                                <input type="checkbox" name="HAS_AMFM_RADIO" id="HAS_AMFM_RADIO" class="">
+                                                <label for="HAS_AMFM_RADIO" class="">Soporte para rueda de auxilio</label>
+                                            </li>
+                                            <li class="ch-form-row">
+                                                <input type="checkbox" name="HAS_ELECTRIC_MIRRORS" id="HAS_ELECTRIC_MIRRORS" class="">
+                                                <label for="HAS_ELECTRIC_MIRRORS" class="">Limpia/lava luneta</label>
+                                            </li> 
                                         </ul>
                                     </div>
                                 </div>
@@ -362,7 +407,10 @@
                                     <h4 class="attributes-section-title">Exterior</h4>
                                     <div class="ch-g1-4">
                                         <ul class="ch-form-options ch-box-list ch-leftcolumn">
-                                            <li class="ch-form-row"><input type="checkbox" name="HAS_AIR_CONDITIONING" id="HAS_AIR_CONDITIONING" class=""><label for="HAS_AIR_CONDITIONING" class="">Único dueño</label></li> 
+                                            <li class="ch-form-row">
+                                                <input type="checkbox" name="unicoDueno" id="unicoDueno" class="">
+                                                <label for="unicoDueno" class="">Único dueño</label>
+                                            </li> 
                                         </ul>
                                     </div>
                                 </div>
@@ -371,7 +419,7 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><label class="lblUbicacion">Titulo:*</label>
                                         </div>
                                         <div class="col-md-5">
-                                            <input class="form-control col-md-12" type="text" name="modelo" id="modelo"> 
+                                            <input class="form-control col-md-12" type="text" name="titulo" id="titulo"> 
                                             <span>Restan 60 caracteres.</span>
                                         </div>
                                     </div>  
@@ -398,15 +446,6 @@
                                                 <img src="https://http2.mlstatic.com/secure/sell/1.0.0/syi-fixing.svg">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="ch-form">
-                                            <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><p style="text-align: right;">Versión:</p>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <input class="addMarginIzquierdaInput form-control col-md-2" type="text" name="numPuertas" id="numPuertas"> 
-                                            </div>
-                                        </div>  
                                     </div> 
                                     <div class="row">
                                         <div class="ch-form">
@@ -420,8 +459,7 @@
                                 </div>
                         </fieldset>
                     </div>
-                    <div class="row col-md-12" id="footer-descripcion">
-                        <input style="display: none;" type="submit" name="upload" id="upload" class="btn btn-primary" value="Upload">
+                    <div class="row col-md-12" id="footer-descripcion"> 
                         <input type="submit"  class="btn-azul" name="des-continuar2" id="btn-continuar2" value="Continuar" style="font-size: 18px;padding: 6px 12px;margin-top:0px">
                         <a href="{{ URL::previous() }}" title="">Volver</a>
                     </div>
@@ -442,5 +480,5 @@
             </div>
         </div> 
     </div>
-</footer>
+</footer> 
 @stop

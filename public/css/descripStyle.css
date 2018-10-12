@@ -17,6 +17,17 @@
     line-height: initial;
     font-size: 11px;
 }
+.btnOff {
+    background: #F0F0F0 !important;
+    border-color: #00e6ff78 !important;
+}
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}
+.payment-methodsli li img{
+    height: 120px !important;
+}
 .cont-ruta li {
     border-bottom: 1px solid;
     border-right: 1px solid;
@@ -122,6 +133,55 @@ z-index: 1;
         background-position: 100% bottom;
         width: 180px;
     } 
+
+.ch-btn-small {
+    color: #000 !important;
+    font-size: 12px;
+    line-height: 1em;
+    padding: 5px 8px;
+    background-color: #cce3f7;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#cce3f7),color-stop(100%,#aad0ef));
+    background-image: -webkit-linear-gradient(#cce3f7,#aad0ef);
+    background-image: -moz-linear-gradient(#cce3f7,#aad0ef);
+    background-image: -o-linear-gradient(#cce3f7,#aad0ef);
+    background-image: linear-gradient(#cce3f7,#aad0ef);
+    border: 1px solid #79a8c7;
+    -webkit-box-shadow: inset 0 1px #e5f2fc;
+    box-shadow: inset 0 1px #e5f2fc;
+    color: #476274;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+        font-family: Arial,Helvetica,"Nimbus Sans L",sans-serif;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial,Helvetica,sans-serif;
+    height: auto;
+    text-decoration: none;
+    font-size: 13px;
+}
+.img-listo{
+    position: absolute;
+    margin-top: -15px;
+    margin-left: 100px;
+    width: 38%;
+}
+.text-listo{
+    font-size: 20px;
+    margin: 0px;
+    display: block;
+    color: #999;
+    margin-bottom: 10px;
+}
+.cont-listo p strong{
+    color: #000;
+}
+.cont-listo p{ 
+    margin-bottom: 20px;
+    color: #999;
+}
     .syi-hub__image {
         background-image: url(img/vender-icono.png); 
         background-repeat: no-repeat;
@@ -354,7 +414,7 @@ a.ch-close, a.ch-close:focus, a.ch-close:visited {
 .picture-uploader-principal {
     background: none;
     color: #333;
-    bottom: -33px;
+    margin-bottom:0; 
     font-size: 11px;
     white-space: nowrap;
 }
@@ -447,7 +507,7 @@ a.ch-close, a.ch-close:focus, a.ch-close:visited {
 }
 #footer-descripcion {
     background: #F0F0F0;
-    padding: 20px 20px;
+    padding: 10px 20px;
     margin-top: 50px;
     margin-left: -20px;
     border-radius: 0 0 5px 5px;

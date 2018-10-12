@@ -6,12 +6,12 @@
 	{!! Html::style('css/bootstrap.css') !!}
 	<meta charset="UTF-8">
 </head>
-<body>
+<body style="background-color: #f5f5f5!important;">
 	<header id="cabecera_principal">
 		<div class="nav_registro">
 			<div class="col-1">
 				<a  href="{{ route('dashboard') }}">
-					<div class="nav-logo">
+					<div class="nav-logo" style="    margin-left: 0px;">
 					</div>
 				</a>
 			</div>
@@ -31,7 +31,7 @@
 			<div style="width: 70%;display: inline-block;
     float: left;">
 				<ul class="nav-menu-lista">
-					<li class="nav-menu-categorias">
+					<li class="nav-menu-categorias" style="text-align: left;    margin-right: 0px;">
 						<a href="#" class="nav-menu-categories-link" rel="nofollow" data-js="nav-menu-categories-trigger">Categorías</a>
 					</li>
 					<li class="nav-menu-elementos">
@@ -120,6 +120,7 @@
 				{!! Html::script('js/bootstrap.min.js') !!}
 				{!! Html::script('js/operaciones.js') !!}
 				{!! Html::script('js/script.js') !!}
+				{!! Html::script('js/ubicacion.js') !!}
 
 		</div>
 	</footer>

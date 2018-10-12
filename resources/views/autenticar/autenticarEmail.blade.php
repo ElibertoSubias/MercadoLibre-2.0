@@ -4,7 +4,7 @@
 
 <div class="row col-md-4 col-md-offset-4" style="position: relative;z-index: 1;">  
 	<div class="row col-md-12" style="margin-top: -260px;height: 120px; position:relative;z-index: 0;width: 546px;max-width: 456px;"> 
-		<img src="../svg/user.svg" alt="">
+		<img src="../public/svg/user.svg" alt="">
 		<h2 style="line-height: 1.5;letter-spacing: 2px;color: #333;font-size:2rem;font-weight: 300;">¡Hola! Para seguir, ingresa tu e-mail
 		o usuario</h2>
 	</div>

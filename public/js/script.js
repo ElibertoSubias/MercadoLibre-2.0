@@ -113,24 +113,78 @@ function desactivarInput(id){
 	    }
 	}
 } 
-
-
-function clickbtn(){
-	document.getElementById('select_file').click();
-}
-$('#select_file').change(function(){
-	$('#upload').click();
+$('#form_precio').on('submit', function(){
+	if ($('#precio').val()==="") {
+		$('#precio').focus();
+		return false;
+	}else{
+		event.preventDefault();
+		$('#btnContinuarPrecio').addClass('btnOff');
+		$('#modalMsjPago').modal();
+	} 
+});
+$('#btnEntendi').click(function(){
+	$('#form_precio').submit();
 });
 
-$('#upload_form').on('submit', function(event){
-	if ($('#clickimg1').hasClass('on')){
+var idLIFoto;
+function clickbtn(id){
+	idLIFoto=id;
+	document.getElementById('select_file').click();
+}  
+$("#upload_form").on("submit", function(){ 
+	if ($('#estado').val()==="") {
+		$('#estado').focus();
+		return false;
+	}else if($('#municipio').val()===""){
+		$('#municipio').focus();
+		return false;
+	}else if($('#colonia').val()===""){
+		$('#colonia').focus();
+		return false;
+	}else if($('#telefono').val()===""){
+		$('#telefono').focus();
+		return false;
+	}else if($('#modelo').val()===""){
+		$('#modelo').focus();
+		return false;
+	}else if($('#anio').val()===""){
+		$('#anio').focus();
+		return false;
+	}else if($('#numPuertas').val()===""){
+		$('#numPuertas').focus();
+		return false;
+	}else if($('#kilometros').val()===""){
+		$('#kilometros').focus();
+		return false;
+	}else if($('#titulo').val()===""){
+		$('#titulo').focus();
+		return false;
+	}else{
+		return true;
+	}
+	
+ })
+$('#select_file').change(function(){
+	if ($('#'+idLIFoto).hasClass('on')){
         $('#upload_form').submit();
-    }else{
-        event.preventDefault();
+    }else{ 
+    	var token = $("#token").val();
+    	var idPublicacion = $('#idPublicacion').val();
+    	var idUser = $('#idUser').val();
+    	event.preventDefault(); 
+    	var data = new FormData(this);
+    	data.append('idImg', idLIFoto);
+    	data.append('idPublicacion', idPublicacion);
+    	data.append('idUser', idUser);
+    	var propiedades = document.getElementById('select_file').files[0];
+    	data.append('select_file', propiedades);
+        
 	  $.ajax({
 	   url:"/MercadoLibre-2.0/public/loadimage",
+	   headers: {'X-CSRF-TOKEN': token},
 	   method:"POST",
-	   data:new FormData(this),
+	   data:data,
 	   dataType:'JSON',
 	   contentType: false,
 	   cache: false,
@@ -139,8 +193,8 @@ $('#upload_form').on('submit', function(event){
 	   {
 	    $('#message').css('display', 'block');
 	    $('#message').html(data.message);
-	    $('#clickimg1').addClass('on');
-	    $('#clickimg1').html(data.uploaded_image);
+	    $('#'+idLIFoto).addClass('on');
+	    $('#'+idLIFoto).html(data.uploaded_image);
 	   }
 	  })
     }

@@ -78,7 +78,7 @@
 				{!! Html::script('js/bootstrap.min.js') !!}
 				{!! Html::script('js/operaciones.js') !!}
 				{!! Html::script('js/script.js') !!}
-
+				{!! Html::script('js/ubicacion.js') !!}
 		</div>
 	</footer>
 </body>

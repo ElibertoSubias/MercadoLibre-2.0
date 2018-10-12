@@ -1,4 +1,5 @@
 window.onload = catDisponibles;
+
 function catDisponibles() {
     var tipoVenta = "vehiculos";
 	var route = "/MercadoLibre-2.0/public/cargarCategorias";

@@ -16,9 +16,26 @@
 					</div>
 				</a> 
 			</div>
-			<div class="col-2"> 				 		
+			@if(isset(auth()->user()->nombre))
+				<div class="col-2" style="padding: 15px;width: 20%;"> 
+					<div class="col-md-8" style="padding: 0px;    text-align: right;">
+						<label for="nav-header-user-switch">
+							{{auth()->user()->alias}}
+							
+						</label>
+					</div>
+					<div class="col-md-3" style="padding: 0px;    padding-top: 3px;    border-right: 1px solid #ccc;">
+						<img src="../img/user_icon.png" alt="" width="15" height="15">	
+					</div>
+					<div class="col-md-1" style="padding: 0px;padding-left: 15px;">
+						<img src="../img/icon_help.png" alt="" width="20" height="20">	
+					</div> 
+				</div>	
+			@else
+				<div class="col-2"> 				 		
 					<a tabindex="4" class="option-help" href="#">Ayuda</a> 
-			</div>	
+				</div>	
+			@endif 
 		</div>
 	</header>
 	<main class="col-md-12" style="    font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;    font-size: 16px;    font-weight: 300;    line-height: 1.35;
@@ -30,6 +47,6 @@
 	{!! Html::script('js/bootstrap.min.js') !!}   
 	{!! Html::script('js/script.js') !!}  
 	{!! Html::script('js/validaciones.js') !!}  
-
+	{!! Html::script('js/ubicacion.js') !!} 
 </body>
 </html>

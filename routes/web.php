@@ -61,3 +61,11 @@ Route::post('agregardocumento', 'EditarUsuario\PerfilController@agregarDocumento
 Route::post('loadimage', 'Venta\VentaController@store')->name('loadimage'); 
 
 Route::post('articulo/precio', 'Venta\VentaController@showPrecio')->name('precio');
+
+Route::post('articulo/confirmar', 'Venta\VentaController@showConfirmar')->name('confirmarventa');
+
+Route::post('articulo/agregarventa', 'Venta\VentaController@create')->name('agregar');
+
+Route::any('articulo/estado', 'Venta\VentaController@showEstado')->name('estado');
+
+Route::any('ver', 'Venta\VentaController@showPublicacion')->name('verpublicacion');
