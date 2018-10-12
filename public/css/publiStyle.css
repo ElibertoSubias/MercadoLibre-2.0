@@ -1,0 +1,31 @@
+h2.typo {
+    font-size: 24px;
+    margin: 0 0 20px; 
+    line-height: 1.25;
+    font-family: Proxima Nova,Verdana,DejaVu Sans,sans-serif;
+    display: inline-block;
+}
+.textIzquierda{
+	text-align: left;
+}
+.textIzquierda h2 {
+	padding: 40px;
+    margin-bottom: 0px;
+}
+.megaFilterer {
+    z-index: 2;
+}
+.ayuda-gestor {
+    float: right;
+    position: relative;
+    bottom: 6px;
+}
+
+.ch-dropdown {
+    display: inline-block;
+}
+.nav-tabs > li > a { 
+    border: 1px solid #ddd;
+	padding-top: 5px;
+    padding-bottom: 5px;
+}

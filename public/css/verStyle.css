@@ -164,6 +164,7 @@ a, a:link, a:visited {
     position: relative;
 }
 .vip-nav-bounds {
+	padding: 0px !important;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
@@ -197,7 +198,9 @@ a, a:link, a:visited {
 .item-status .item-status-notification .ch-box-info .ui-icon--content {
     height: 18px;
 }
-
+.ui-icon--content {
+	width: 20px;
+}
 element.style {
 }
 .item-status .item-status-notification .ch-box-info .ui-icon--content {
@@ -526,7 +529,7 @@ a img {
     width: 40px;
     height: 40px;
     position: absolute;
-    left: 50%;
+    left: 890%;
     top: 50%;
     -webkit-transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
@@ -1094,4 +1097,316 @@ section.short-description.short-description--blocked .ui-icon--content {
 section.short-description.short-description--blocked .ch-box-info .ui-icon--content+p {
     font-size: 14px;
     padding-bottom: 4px;
+}
+section.ui-view-more.vip-section-seller-info {
+    border-top: 0;
+}
+section.ui-view-more.vip-section-seller-info .card-section, section.ui-view-more.vip-section-seller-info .card-title {
+    margin: 0;
+    padding: 0;
+}
+section.ui-view-more.vip-section-seller-info .card-title {
+    padding-bottom: 24px;
+}
+section.ui-view-more .card-title {
+    color: #333;
+    font-weight: 600;
+}
+.vip-section-seller-info .card-title {
+    color: #333;
+    font-weight: 600;
+    line-height: 1;
+}
+.ui-view-more .card-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #666;
+    font-weight: 300;
+}
+
+.ui-view-more p {
+    color: #666;
+}
+section.ui-view-more.vip-section-seller-info .card-subtitle.name {
+    font-weight: 300;
+}
+section.ui-view-more.vip-section-seller-info .card-subtitle {
+    color: #333;
+    margin: 24px 0 10px;
+    font-weight: 400!important;
+}
+
+section.ui-view-more.vip-section-seller-info .card-subtitle {
+    font-size: 16px;
+    font-weight: 600;
+}
+.vip-section-seller-info .card-subtitle {
+    font-weight: 600;
+    display: inline-block;
+}
+.ui-view-more .card-subtitle {
+    font-weight: 400;
+}
+.ui-view-more .card-subtitle {
+    margin: 16px 0 0;
+    font-weight: inherit;
+}
+.vip-section-seller-info .card-subtitle {
+    margin: 25px 0 0;
+}
+.ui-view-more .card-subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+.ui-view-more p {
+    color: #666;
+}
+p+p {
+    margin: 1em 0 0;
+}
+section.ui-view-more.vip-section-seller-info .card-description--bold {
+    color: #333 !important;
+    font-size: 16px;
+}
+
+section.ui-view-more.vip-section-seller-info .card-description {
+    font-size: 14px;
+}
+section.ui-view-more.vip-section-seller-info .card-description--bold {
+    font-weight: 600 !important;
+}
+section.ui-view-more.vip-section-seller-info .card-description {
+    color: #666;
+    font-weight: 300;
+}
+.vip-section-seller-info .card-description {
+    margin: 0;
+    color: #666;
+    font-weight: inherit;
+    overflow: auto;
+    overflow-y: hidden;
+}
+.ui-view-more p {
+    color: #666;
+}
+p+p {
+    margin: 1em 0 0;
+}
+section.ui-view-more.vip-section-seller-info .card-section, section.ui-view-more.vip-section-seller-info .card-title {
+    margin: 0;
+    padding: 0;
+}
+
+.vip-section-seller-info .card-section {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 10px 0 0;
+}
+.card-section-reputation .reputation-thermometer, .vip-section-seller-info .reputation-thermometer {
+    display: block;
+    overflow: hidden;
+    padding: 24px 0 5px;
+}
+
+menu, ol, ul {
+    list-style: none;
+}
+.card-section-reputation .reputation-level-newbie .reputation-thermometer li, .vip-section-seller-info .reputation-level-newbie .reputation-thermometer li {
+    background-color: #eee;
+    height: 8px;
+    margin-top: -2px;
+}
+ 
+.card-section-reputation .reputation-thermometer li, .vip-section-seller-info .reputation-thermometer li {
+    width: 18%;
+    float: left;
+    height: 8px;
+    text-indent: -999px;
+    padding: 0 4px;
+    margin: 0 2% 0 0;
+    border: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+section.ui-view-more.vip-section-seller-info .card-description--bold {
+    color: #333;
+    font-size: 16px;
+}
+
+section.ui-view-more.vip-section-seller-info .card-description {
+    font-size: 14px;
+}
+section.ui-view-more.vip-section-seller-info .card-description--bold {
+    font-weight: 600;
+}
+section.ui-view-more.vip-section-seller-info .card-description {
+    color: #666;
+    font-weight: 300;
+}
+.vip-section-seller-info .card-description {
+    margin: 0;
+    color: #666;
+    font-weight: inherit;
+    overflow: auto;
+    overflow-y: hidden;
+}
+.ui-view-more p {
+    color: #666;
+}
+.ui-view-more {
+    padding: 48px 32px;
+    font-size: 14px;
+}
+.vip-section-seller-info .reputation-info {
+    color: #333;
+}
+.vip-section-seller-info .feedback-title {
+    font-size: 14px;
+}
+.vip-section-seller-info .feedback-title {
+    margin-top: 0;
+    color: #666;
+}
+.vip-section-seller-info .location-info {
+    margin-top: 14px;
+    font-size: 14px;
+}
+section.ui-view-more.vip-section-seller-info .location-info .ui-icon--content {
+    margin: 0;
+    height: 18px;
+    vertical-align: bottom;
+}
+section.ui-view-more.vip-section-seller-info .location-info .ui-icon--info-exclamation, section.ui-view-more.vip-section-seller-info .location-info .ui-icon--location-mark {
+    display: block;
+    height: 18px;
+}
+section.ui-view-more.vip-section-seller-info .card-description {
+    font-size: 14px;
+}
+
+section.ui-view-more.vip-section-seller-info .card-description {
+    color: #666;
+    font-weight: 300;
+}
+.vip-section-seller-info .card-description {
+    margin: 0;
+    color: #666;
+    font-weight: inherit;
+    overflow: auto;
+    overflow-y: hidden;
+}
+.ui-view-more p {
+    color: #666;
+}
+p+p {
+    margin: 1em 0 0;
+}
+section.ui-view-more.vip-section-seller-info .location-info .ui-icon--content {
+    margin: 0;
+    height: 18px;
+    vertical-align: bottom;
+}
+
+section.ui-view-more.vip-section-seller-info .ui-icon--content {
+    margin-top: 16px;
+    margin-right: 8px;
+}
+.vip-section-seller-info .location-info .ui-icon--content {
+    display: inline-block;
+    float: none;
+    vertical-align: bottom;
+    height: 18px;
+    margin-right: 0;
+}
+.vip-section-seller-info .ui-icon--content {
+    margin: 8px;
+    margin-left: 0;
+}
+.vip-section-seller-info .ui-icon--content {
+    float: left;
+    height: 38px;
+    margin: -4px 14px 0 0;
+}
+section.vip-section-related-services {
+    padding: 0;
+    border: none;
+}
+section.ui-view-more .card-title {
+    color: #333;
+    font-weight: 600;
+}
+
+.vip-section-security .card-title {
+    padding: 0;
+}
+.vip-section-security .card-title {
+    padding: 9px 0 22px;
+}
+.ui-view-more .card-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #666;
+    font-weight: 300;
+}
+.vip-section-security ul {
+    list-style: disc;
+}
+.vip-section-security ul li {
+    padding: 8px 0 8px 8px;
+    margin: 0 18px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.vip-section-security ul li {
+    padding: 10px 0;
+}
+.item-info {
+    margin-top: 16px;
+    margin-bottom: 26px;
+    text-align: right;
+}
+.item-info {
+    font-size: 0;
+}
+.item-info p.item-info__id {
+    padding-left: 0;
+}
+
+.item-info p {
+    margin: 0;
+    padding: 0 12px;
+    display: inline-block;
+    font-size: 14px;
+}
+.item-info__denounce, .item-info__id {
+    position: relative;
+}
+.item-info__id {
+    color: #666;
+}
+.item-info__id-number {
+    font-weight: 500;
+}
+.item-info p {
+    margin: 0;
+    padding: 0 12px;
+    display: inline-block;
+    font-size: 14px;
+}
+.item-info__denounce, .item-info__id {
+    position: relative;
+}
+.item-info__denounce:before {
+    content: '';
+    width: 1px;
+    height: 12px;
+    display: inline-block;
+    background-color: #d8d8d8;
+    position: absolute;
+    top: 3px;
+    left: 0;
 }

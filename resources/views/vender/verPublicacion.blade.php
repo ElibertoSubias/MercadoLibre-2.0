@@ -108,10 +108,8 @@
             <div id="similarItemsCarousel" class="vip-section-carousel"></div>
         </section>    
     </div>
-</section>
-<div style="margin-top: 10px;max-width: 1220px;    background: #fff;border: 1px solid #e2e2e2;border-radius: 5px;height:auto;display: inline-block;width: 100%;"> 
-    <div style="width: 100%;height: 100%;text-align: left;margin:20px;"> 
-        <div class="vip-nav-bounds">
+</section> 
+        <div class="vip-nav-bounds" style="text-align: left;">
                 <a id="contactAnchor"></a>
                 <div class="layout-main u-clearfix">
                     <div class="layout-col layout-col--left">
@@ -174,9 +172,7 @@
             <label for="thumbgallery_default-1" class="gallery__thumbnail">
                 <img class="icon-video__img" src="//img.youtube.com/vi/DCJCazILkCE/hqdefault.jpg" data-imgindex="2" data-video-id="DCJCazILkCE" width="70" height="70">
                 <div class="icon-video ui-icon--content ui-icon__video">
-                    <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-icon--video">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--video"></use>
-                    </svg>
+                    <svg viewBox="0 0 60 60" id="ui-icon--video" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><g fill="none" fill-rule="evenodd"><rect fill-opacity=".7" fill="#FFF" width="60" height="60" rx="30"></rect><path fill="#3483FA" d="M23 20v20.395l17.709-10.191z"></path></g></svg>
                 </div>
             </label>
         
@@ -516,9 +512,7 @@
         <span> 
     </span></p><div class="location-info">
         <div class="ui-icon--content">
-            <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-icon--location-mark">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--location-mark"></use>
-            </svg>
+            <svg viewBox="0 0 14 19" id="ui-icon--location-mark" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><path d="M6.984.003C3.162.003.053 3.198.053 7.125c0 5.84 6.28 10.799 6.547 11.007a.622.622 0 0 0 .78-.01c.266-.218 6.536-5.416 6.536-10.997 0-3.927-3.11-7.122-6.932-7.122zm-.009 16.762c-1.341-1.159-5.652-5.228-5.652-9.64 0-3.208 2.54-5.818 5.66-5.818 3.123 0 5.663 2.61 5.663 5.818 0 4.21-4.335 8.437-5.671 9.64zm.009-12.494c-1.531 0-2.777 1.28-2.777 2.854 0 1.573 1.246 2.853 2.777 2.853 1.53 0 2.777-1.28 2.777-2.853 0-1.574-1.246-2.854-2.777-2.854zm0 4.403c-.831 0-1.507-.695-1.507-1.549s.676-1.55 1.507-1.55c.83 0 1.507.696 1.507 1.55 0 .854-.676 1.549-1.507 1.549z" fill-rule="nonzero" fill="#333"></path></svg>
         </div> 
             Los Angeles - Culiacán - Sinaloa 
     </div> 
@@ -570,9 +564,7 @@
     <p class="item-info__id">Publicación <span class="item-info__id-number">#646934777</span></p> 
     <p class="item-info__denounce"><a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM646934777&amp;element_type=ITM" id="denounce" rel="nofollow">Denunciar</a></p> 
 </section> 
-            </div>
-    </div>
-</div> 
+            </div> 
 
 <footer role="contentinfo" class="nav-footer" style="    margin-top: 5rem;">
     <div class="nav-bounds">

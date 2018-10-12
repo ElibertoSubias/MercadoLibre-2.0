@@ -29,7 +29,7 @@
 		</div>
 		<div class="nav-menu">
 			<div style="width: 70%;display: inline-block;
-    float: left;">
+    float: left;height: 35px;">
 				<ul class="nav-menu-lista">
 					<li class="nav-menu-categorias" style="text-align: left;    margin-right: 0px;">
 						<a href="#" class="nav-menu-categories-link" rel="nofollow" data-js="nav-menu-categories-trigger">Categorías</a>
