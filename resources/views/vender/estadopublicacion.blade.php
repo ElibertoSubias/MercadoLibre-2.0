@@ -33,7 +33,7 @@
                                     </b> y dura <b style="color: #000">30</b> días</p>
                                  <p>Esposible que tu publicación demore en aparecer en los resultados de busqueda.</p> 
                                  <a href="{{route('verpublicacion')}}" title="" class="ch-btn-small">Ver publicación</a>
-                                 <a href="" title="" style="margin-left:10px;font-size: 13px;color: blue;">Ir a publicaciones</a>
+                                 <a href="{{route('publicaciones')}}" title="" style="margin-left:10px;font-size: 13px;color: blue;">Ir a publicaciones</a>
                              </div> 
                         </div>         
                     </div> 
