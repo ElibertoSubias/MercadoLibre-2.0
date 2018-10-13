@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use \App\Ventas;
+use \App\Categorias;
+use \App\Anios;
+use \App\Modelos;
+use \App\Marcas;
 use \Crypt;
 
 class AddCategoriaController extends Controller
@@ -88,19 +92,16 @@ class AddCategoriaController extends Controller
 
     public function show(Request $request)
     {
-    	if ($request->ajax()) { 
-    		if ($request->tipoVenta==0) 
-    			$tipoVenta = 'vehiculos';
-    		elseif ($request->tipoVenta==1) 
-    			$tipoVenta = 'inmuebles';
-    		elseif ($request->tipoVenta==2)
-    			$tipoVenta = 'servicios';
-    		elseif ($request->tipoVenta==3)
-    			$tipoVenta='productos';
-
-    		$categorias = Ventas::where('tipo', '=', $tipoVenta)->get(['categorias']);
+    	if ($request->ajax()) {  
+            $opciones="";
+    		$categorias = Ventas::where(['tipo'=>$request->tipoVenta])->get(['categorias']);
     		if ($categorias != "[]") {
-    			return $categorias->get(0);
+                foreach ($categorias[0]['categorias'] as $key => $value) {
+                    $opciones = $opciones."<option class='category-option' value='".$value."'>".$value."</optin>";
+                }
+                return response()->json([
+                    "res" => $opciones
+                ]);  
     		}else {
     			return response()->json([
                     "res" => 1
@@ -111,33 +112,116 @@ class AddCategoriaController extends Controller
     	}
     }
 
-    public function showMarcas(Request $request)
-    {
-    	if ($request->ajax()) { 
-    		if ($request->tipoVenta==0) 
-    			$tipoVenta = 'vehiculos';
-    		elseif ($request->tipoVenta==1) 
-    			$tipoVenta = 'inmuebles';
-    		elseif ($request->tipoVenta==2)
-    			$tipoVenta = 'servicios';
-    		elseif ($request->tipoVenta==3)
-    			$tipoVenta='productos';
-
-    		$marcas = Ventas::where(['tipo'=> $tipoVenta])->get(['categorias']);
-    		if ($marcas != "[]") {
-    			return $marcas->get(0);
-    		}else {
-    			return response()->json([
+    public function showAnios(Request $request)
+    { 
+        if ($request->ajax()) {  
+            $modelos = Modelos::where(['marca'=> $request->marca,'nombre'=>$request->modelo])->get(['anio']);
+            if ($modelos != "[]") {
+                $opciones=""; 
+                foreach ($modelos[0]['anio'] as $key => $value) {
+                    $opciones = $opciones."<option class='category-option' value='".$value."'>".$value."</optin>";
+                }
+                return response()->json([
+                    "res" => $opciones
+                ]);  
+            }else {
+                return response()->json([
                     "res" => 1
                 ]); 
-    		} 
-    	}
+            }
+        }
+    }
+
+    public function showVersiones(Request $request)
+    { 
+        if ($request->ajax()) {  
+            $marcas = Marcas::where(['categoria'=> $request->categoria])->get(['modelos']);
+            if ($marcas != "[]") {
+                $opciones=""; 
+                foreach ($marcas[0]['modelos'] as $key => $value) {
+                    $opciones = $opciones."<option class='category-option' value='".$value."'>".$value."</optin>";
+                }
+                return response()->json([
+                    "res" => $opciones
+                ]);  
+            }else {
+                return response()->json([
+                    "res" => 1
+                ]); 
+            }
+        }
+    }
+
+    public function showModelos(Request $request)
+    { 
+        if ($request->ajax()) {  
+            $marcas = Marcas::where(['categoria'=> $request->categoria])->get(['modelos']);
+            if ($marcas != "[]") {
+                $opciones=""; 
+                foreach ($marcas[0]['modelos'] as $key => $value) {
+                    $opciones = $opciones."<option class='category-option' value='".$value."'>".$value."</optin>";
+                }
+                return response()->json([
+                    "res" => $opciones
+                ]);  
+            }else {
+                return response()->json([
+                    "res" => 1
+                ]); 
+            }
+        }
+    }
+
+    public function showMarcas(Request $request)
+    { 
+    	if ($request->ajax()) {  
+    		$marcas = Categorias::where(['nombre'=> $request->categoria])->get(['marcas']);
+    		if ($marcas != "[]") {
+                $opciones=""; 
+                foreach ($marcas[0]['marcas'] as $key => $value) {
+                    $opciones = $opciones."<option class='category-option' value='".$value."'>".$value."</optin>";
+                }
+                return response()->json([
+                    "res" => $opciones
+                ]);  
+            }else {
+                return response()->json([
+                    "res" => 1
+                ]); 
+            }
+    	}else{
+            /*$marcas = Ventas::where(['tipo'=>'vehiculos'])->get(['categorias']);
+            $array = array();
+            foreach ($marcas as $key => $value) { 
+                //Develve el nombre de las MARCAS
+                return response()->json([
+                                        "resultado" => $marcas[0]['categorias']['categoria'][0]["Autos y Camionetas"][0]['marcas'][0]['marca']
+                                    ]);
+                foreach ($value['categorias'] as $key => $value) { 
+                    
+                    foreach ($value[0] as $key => $value) {  
+                        
+                        foreach ($value[0] as $key => $value) { 
+
+                            foreach ($value[0] as $key => $value) { 
+                                return response()->json([
+                                        "marcas" => implode("|",$value)
+                                    ]);
+                                foreach ($value as $key => $value) { 
+                                     
+                                } 
+                            } 
+                        } 
+                    } 
+                } 
+            } */
+        }
     }
 
     public function showCategorias(Request $request)
     {
-    	return view('vender.vehiculos');
-    	if ($request->ajax()) { 
+    	return view('vender.categorias')->with('tipoCategoria',$request->tipoCategoria);
+    	/*if ($request->ajax()) { 
     		if ($request->tipoVenta==0) 
     			$tipoVenta = 'vehiculos';
     		elseif ($request->tipoVenta==1) 
@@ -155,7 +239,7 @@ class AddCategoriaController extends Controller
                     "res" => 1
                 ]); 
     		} 
-    	}
+    	}*/
     }
     public function showDescrip(Request $request)
     {

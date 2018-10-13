@@ -18,8 +18,217 @@ db.ventas.update({ grades: { $gte: 100 } },{ $set: { "grades.$[element]" : 100 }
 
 
 
-db.ventas.insert([{ "tipoVenta" : "vehiculos", "categorias" : {"categoria":[{"Autos de Colección":[{"marcas":[{"marca":["Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler","Citren","Datsun","Dodge","Ferrari","Fiat","Ford","GMC","Honda","Infiniti","Isuzu","Jaguar","Jeep","Land Rover","Lincoln","Mazda","Mercedes Benz","MG","Mitsubishi","Nissan","Opel","Peugeot","Plymouth","Pontiac","Porsche","Renault","Suziki","Toyota","Volkswagen","Volvo","Otras Marcas"]}]}],"Autos y Camionetas":[{"marcas":[{"marca":[{"Acura":[{"modelos":[{"ILX":[{"año":[{"2018":[{"versiones":[{"version":["2.4 A-spect At"]}]}]}]}]}]}]}]}]}]}]}}])
+db.ventas.insert([
+  { 
+    "tipo" : "vehiculos", 
+    "categorias" : {
+      "categoria":[
+        {
+          "Autos de Colección":[
+            {
+              "marcas":[{"marca":["Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler","Citren","Datsun","Dodge","Ferrari","Fiat","Ford","GMC","Honda","Infiniti","Isuzu","Jaguar","Jeep","Land Rover","Lincoln","Mazda","Mercedes Benz","MG","Mitsubishi","Nissan","Opel","Peugeot","Plymouth","Pontiac","Porsche","Renault","Suziki","Toyota","Volkswagen","Volvo","Otras Marcas"]}]
+            }
+          ],
+          "Autos y Camionetas":[
+            {
+              "marcas":[{"marca":[{"Acura":[{"modelos":[{"ILX":[{"año":[{"2018":[{"versiones":[{"version":["2.4 A-spect At"]}]}]}]}]}]}]}]}]
+            }
+          ],
+          "Camiones":[
+            {
+              "marcas":[{"marca":[{"Acura":[{"modelos":[{"ILX":[{"año":[{"2018":[{"versiones":[{"version":["2.4 A-spect At"]}]}]}]}]}]}]}]}]
+            }
+          ],
+          "Colectivos y Autobuses":[
+            {
+              "marcas":[{"marca":[{"Acura":[{"modelos":[{"ILX":[{"año":[{"2018":[{"versiones":[{"version":["2.4 A-spect At"]}]}]}]}]}]}]}]}]
+            }
+          ],
+          "Motos":[
+            {
+              "marcas":[{"marca":[{"Acura":[{"modelos":[{"ILX":[{"año":[{"2018":[{"versiones":[{"version":["2.4 A-spect At"]}]}]}]}]}]}]}]}]
+            }
+          ],
+          "Náutica":[
+            {
+              "marcas":[{"marca":[{"Acura":[{"modelos":[{"ILX":[{"año":[{"2018":[{"versiones":[{"version":["2.4 A-spect At"]}]}]}]}]}]}]}]}]
+            }
+          ],
+          "Vehículos Pesados":[
+            {
+              "marcas":[{"marca":[{"Acura":[{"modelos":[{"ILX":[{"año":[{"2018":[{"versiones":[{"version":["2.4 A-spect At"]}]}]}]}]}]}]}]}]
+            }
+          ],
+          "Otros Vehículos":[
+            {
+              "marcas":[{"marca":[{"Acura":[{"modelos":[{"ILX":[{"año":[{"2018":[{"versiones":[{"version":["2.4 A-spect At"]}]}]}]}]}]}]}]}]
+            }
+          ]
+        }
+      ]
+    }
+  }
+])
 
+db.ventas.insert([
+  { 
+    "tipo":"VEHI", 
+    "categorias" : ["Autos de Colección","Autos y Camionetas","Camiones","Colectivos y Autobuses","Motos","Náutica","Vehículos Pesados","Vehículos Pesados","Otros Vehículos"]
+  },
+  {
+    "tipo":"INMU",
+    "categorias":[]
+  }
+])
+
+db.categorias.insert([
+  {
+    "nombre":"Autos de Colección",
+    "marcas":["Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler","Citren","Datsun","Dodge","Ferrari","Fiat","Ford","GMC","Honda","Infiniti","Isuzu","Jaguar","Jeep","Land Rover","Lincoln","Mazda","Mercedes Benz","MG","Mitsubishi","Nissan","Opel","Peugeot","Plymouth","Pontiac","Porsche","Renault","Suziki","Toyota","Volkswagen","Volvo","Otras Marcas"]
+  },
+  {
+    "nombre":"Autos y Camionetas",
+    "marcas":["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler","Citren","Datsun","Dodge","Ferrari","Fiat","Ford","GMC","Honda","Infiniti","Isuzu","Jaguar","Jeep","Land Rover","Lincoln","Mazda","Mercedes Benz","MG","Mitsubishi","Nissan","Opel","Peugeot","Plymouth","Pontiac","Porsche","Renault","Suziki","Toyota","Volkswagen","Volvo","Otras Marcas"]
+  },
+  {
+    "nombre":"Camiones",
+    "marcas":["Chevrolet","Dina","Dodge","Famsa","Faw","Ford","Foton","Freightliner","GMC","Hino","Hyundai","International","Isuzu","Iveco","Jac","Jmc","Kenworth","Isuzu","Jaguar","Jeep","Land Rover","Lincoln","Mazda","Mercedes Benz","MG","Mitsubishi","Nissan","Opel","Peugeot","Plymouth","Pontiac","Porsche","Renault","Suziki","Toyota","Volkswagen","Volvo","Otras Marcas"]
+  },
+  {
+    "nombre":"Colectivos y Autobuses",
+    "marcas":["Autobuses","Camiones Colectivos","Microbuses","Otros"]
+  },
+  {
+    "nombre":"Motos",
+    "marcas":["Chopper","Cross","Crucero","Cuatrimotos","Deportivas","Doble Propósito","Enduro","Minimotos","Motocarros","Naked","Skooter","Otros Tipos"]
+  },
+  {
+    "nombre":"Náutica",
+    "marcas":["Inflables","Lanchas","Motores","Motos Acuaticas","Veleros","Yates","Otros"]
+  }, 
+  {
+    "nombre":"Vehículos Pesados",
+    "marcas":["Barredoras","Cajas Secas","Maquinaria Agricola","Maquinaria de Construcción","Remolques","Otros Vehiculos Pesados"]
+  },
+  {
+    "nombre":"Otros Vehiculos",
+    "marcas":["Ambulancias","Aviones y Avionestas","Buggies","Carros de Golf","Kartings","Limusinas","Motorhomes","Yonkes","Otros"]
+  }
+])
+
+db.marcas.insert([
+  {
+    "categoria":"Autos de Colección",
+    "nombre":"Alfa Romeo",
+    "modelos":[]
+  },
+  {
+    "categoria":"Autos y Camionetas",
+    "nombre":"Alfa Romeo",
+    "modelos":[145,147,156,159,166,"4C","Brera","Giulia"]
+  }
+])
+
+db.modelos.insert([
+  {
+    "marca":"Alfa Romeo",
+    "nombre":"145",
+    "anio":[]
+  },
+  {
+    "marca":"Alfa Romeo",
+    "nombre":"4C",
+    "anio":[2018,2017,2016,"Otros años"]
+  }
+])
+
+db.anios.insert([
+  {
+    "modelo":"4C",
+    "anio":"2018",
+    "versiones":["1.8 Tct At","Otras versiones"]
+  }
+])
+
+modelos: [
+          {
+            "ILK":[
+              {
+                "anio":[
+                    {2018:["2.4 A-spec At","2.4 Tech At","Otras versiones"]},
+                    {2017:["2.4 A-spec At","2.4 Tech At","Otras versiones"]},
+                    {2016:["2.4 A-spec At","2.4 Tech At","Otras versiones"]},
+                    {2015:["2.0 Premium At","2.4 Tech At","Otras versiones"]},
+                    {2014:["2.0 Premium At","2.4 Tech At","Otras versiones"]},
+                    {2013:["2.0 Premium At","2.4 Tech At","Otras versiones"]},
+                    {"Otros años":["2.4 A-spec At","2.4 Tech At","Otras versiones"]}
+                  ]
+              }
+            ]
+          },
+          {
+            "MDX":[
+              {
+                "anio":[
+                  {2018:["3.5 Sh-awd At","Otras versiones"]},
+                  {2017:["3.5 Sh-awd At","Otras versiones"]},
+                  {2016:["3.5 Sh-awd At","Otras versiones"]},
+                  {2015:["3.5 Sh-awd At","Otras versiones"]},
+                  {2014:["3.7 Awd At","Otras versiones"]},
+                  {2013:["3.7 At","3.7 Awd At","Otras versiones"]},
+                  {2012:["3.7 At","Otras versiones"]},
+                  {2011:["3.7 At","Otras versiones"]},
+                  {2010:["3.7 At","Otras versiones"]},
+                  {2009:["3.7 At","Otras versiones"]},
+                  {2008:["3.7 At","Otras versiones"]},
+                  {2007:["3.7 At","Otras versiones"]},
+                  {2006:["3.7 At","Otras versiones"]},
+                  {2005:["3.5 At","3.7 At","Otras versiones"]},
+                  {"Otros años":[]}
+                ]
+              }
+            ]
+          },
+          {
+            "NSX":[
+              {
+                "anio":[
+                  {2018:["3.5 L At","Otras versiones"]},
+                  {2017:["3.5 L At","Otras versiones"]},
+                  {2016:["3.5 At","3.5 L At","Otras versiones"]},
+                ]
+              }
+            ]
+          },
+         ]
+
+
+db.ventas.insert([
+                { 
+                  "tipoVenta" : "VEHI",  
+                  "categorias": 
+                              [{
+                                  "id": 1,
+                                  "nombre": "Autos de Colección",
+                                  "marcas":
+                                          {
+                                            "id":1,
+                                            "nombre": "Alfa Romeo"
+                                          }                         
+                              },
+                              {
+                                  "id": 1,
+                                  "nombre": "Autos y Camionetas",
+                                  "marcas":
+                                          {
+                                            "id":1,
+                                            "nombre": "Acura"
+                                          }                         
+                              }]
+                }])
+
+
+db.ventas.find({'categorias.nombre': {$all: ["VEHI"]}})
 
 //Categorias debe llevar [ No {
 	"categorias" : {

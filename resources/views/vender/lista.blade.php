@@ -21,26 +21,28 @@
     max-width: 841px;
     margin: 55px auto 0;
     overflow: auto;">
-            <form id="ven_mot" class="hub-card syi-hub__image--mot" action="{{route('vehiculos')}}" method="post">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+            <form id="ven_mot" class="hub-card syi-hub__image--mot" action="{{route('vehiculos')}}" method="get"> 
+                <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="VEHI">
                 <button id="btn_ven_mot" type="submit" form="MOTORS">
                     <span class="hub-car-titulo">Vehículos</span>
                     <span class="syi-hub__image syi-hub__image--mot"> </span></button>
             </form> 
-            <form id="ven_res" class="hub-card syi-hub__image--res" action="" method="post" accept-charset="utf-8">
-                <button type="submit" form="REAL_ESTATE" data-reactid="23">
+            <form id="ven_res" class="hub-card syi-hub__image--res" action="{{route('vehiculos')}}" method="get" accept-charset="utf-8"> 
+                <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="INMU">
+                <button type="submit" form="ven_res">
                     <span class="hub-car-titulo" data-reactid="24">Inmuebles</span>
                     <span class="syi-hub__image syi-hub__image--res" data-reactid="25"> </span></button>
             </form>
-            <form id="ven_srv" class="hub-card syi-hub__image--srv" action="" method="post" accept-charset="utf-8">
-                <button type="submit" form="SERVICES" data-reactid="27">
+            <form id="ven_srv" class="hub-card syi-hub__image--srv" action="{{route('vehiculos')}}" method="get" accept-charset="utf-8"> 
+                <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="SERV">
+                <button type="submit" form="ven_srv">
                     <span class="hub-car-titulo" data-reactid="28">Servicios</span>
-                    <span class="syi-hub__image syi-hub__image--srv" data-reactid="29"> </span></button>
+                    <span class="syi-hub__image syi-hub__image--srv"> </span></button>
             </form>
             <div id="ve_mas" class="hub-card " style="color: #5cb85c;">
                 <div>
                     <span class="syi-hub__title" data-reactid="32">Productos y otros</span>
-                    <span class="syi-hub__image syi-hub__image--mas" data-reactid="33"> </span>
+                    <span class="syi-hub__image syi-hub__image--mas"> </span>
                 </div>
                 <form action="" method="post" accept-charset="utf-8">
                      

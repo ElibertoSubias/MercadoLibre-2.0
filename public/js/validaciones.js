@@ -104,9 +104,11 @@ $('#tipoVenta').change(function(){
             $('#categoria').html("");
           }else{
             $('#categoria').html('<option value="">Seleccione...</option>');
+            var htmlString = $('#categoria').html();
+            $('#categoria').html(data.res);
               $.each(data.categorias, function(i, fila){
-                  var htmlString = $('#categoria').html(); 
-              $('#categoria').html(htmlString+"<option value='"+Object.keys(fila.categoria[0])+"'>"+Object.keys(fila.categoria[0])+"</option>"); 
+                   
+              //$('#categoria').html(htmlString+"<option value='"+Object.keys(fila.categoria[0])+"'>"+Object.keys(fila.categoria[0])+"</option>"); 
               }); 
               $('#btnOpcion').html('<input type="text" value='+tipoVenta+' id="tipoVentaMarca" hidden><a href="#" id="btnCategoria" class="btn btn-primary btn-xs btn-block" onclick="btnAgregarMarca()">Agregar Marca</a>');
           }
@@ -191,28 +193,70 @@ $('#categoria').change(function(){
         type: 'POST',
         dataType: 'json',
         data: {tipoVenta: tipoVenta, categoria: categoria} 
-        }).done(function(data) { 
+        }).done(function(data) {  
           $('#car-marca').html(""); 
           $('.menu-marcas').hide();
-        try { 
-          $.each(data.categorias, function(i, fila){    
-              $.each(fila.categoria, function(j, fila2){ 
-                $.each(fila2[categoria], function(x, fila3){ 
-                  var aux = fila2[categoria][x].marcas; 
-                  for (var m = 0; m < aux.length; m++) { 
-                      var htmlString = $('#car-marca').html(); 
-                      $('#car-marca').html(htmlString+"<option class='category-option' value='"+aux[m]+"'>"+aux[m]+"</option>"); 
-                      $('.menu-marcas').show();
-                  }
-                });   
-              }); 
-          }); 
+        try {     
+            $('#car-marca').html(data.res); 
+            $('.menu-marcas').show();    
         }
         catch(err) {
         }
         });
   }
 });
+
+$('#car-marca').change(function(){ 
+  var categoria = $("#categoria").val();
+  var route = "/MercadoLibre-2.0/public/cargarModelos";
+  var marca = $("#car-marca").val();
+  var token = $("#token").val();
+  if (categoria != "") {
+      $.ajax({
+        url: route,
+        headers: {'X-CSRF-TOKEN': token},
+        type: 'POST',
+        dataType: 'json',
+        data: {marca: marca, categoria: categoria} 
+        }).done(function(data) {  
+          $('#car-modelo').html(""); 
+          $('.menu-modelo').hide();
+          try {     
+              $('#car-modelo').html(""); 
+              $('#car-modelo').html(data.res); 
+              $('.menu-modelo').show();    
+          }
+          catch(err) {
+          }
+        });
+  }
+});
+
+$('#car-modelo').change(function(){  
+  var route = "/MercadoLibre-2.0/public/cargarAnios";
+  var marca = $("#car-marca").val();
+  var modelo = $('#car-modelo').val();
+  var token = $("#token").val();
+  if (categoria != "") {
+      $.ajax({
+        url: route,
+        headers: {'X-CSRF-TOKEN': token},
+        type: 'POST',
+        dataType: 'json',
+        data: {marca: marca, modelo: modelo} 
+        }).done(function(data) {  
+          $('#car-anio').html(""); 
+          $('.menu-anio').hide();
+          try {     
+              $('#car-anio').html(data.res); 
+              $('.menu-anio').show();    
+          }
+          catch(err) {
+          }
+        });
+  }
+});
+
 
 $('#car-marca').change(function(){
   $('.menu-publicar').show();

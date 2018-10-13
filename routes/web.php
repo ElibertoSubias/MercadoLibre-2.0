@@ -35,7 +35,10 @@ Route::get('nuevaCategoria', 'Admin\AddCategoriaController@index')->name('nuevaC
 
 
 Route::post('cargarCategorias', 'Admin\AddCategoriaController@show')->name('cargarCategorias');
-Route::post('cargarMarcas', 'Admin\AddCategoriaController@showMarcas')->name('cargarMarcas');
+Route::any('cargarMarcas', 'Admin\AddCategoriaController@showMarcas')->name('cargarMarcas');
+Route::any('cargarModelos', 'Admin\AddCategoriaController@showModelos')->name('cargarModelos');
+Route::any('cargarAnios', 'Admin\AddCategoriaController@showAnios')->name('cargarAnios');
+Route::any('cargarVersiones', 'Admin\AddCategoriaController@showVersiones')->name('cargarVersiones');
 
 Route::post('guardarCategoria', 'Admin\AddCategoriaController@create')->name('guardarCategoria');
 Route::post('guardarMarca', 'Admin\AddCategoriaController@addMarca')->name('guardarMarca');
