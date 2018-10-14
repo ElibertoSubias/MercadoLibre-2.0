@@ -24,83 +24,61 @@
                 <div class="col-md-12">
                     <a href="{{route('vender')}}" style="display: block;float: left;"> < volver atras</a><br>
                 </div>
-                <div class="col-md-3">
-                    <form id="ven_mot" class="hub-card syi-hub__image--mot" action="" method="post" accept-charset="utf-8">
+                <div class="col-md-3 hub-card syi-hub__image--mot" style="cursor: auto !important;">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                        <button id="btn_ven_mot" type="submit" form="MOTORS" data-reactid="19">
                             <span class="hub-car-titulo" data-reactid="20">Vehículos</span>
                             <span class="syi-hub__image syi-hub__image--mot" data-reactid="21"> </span></button> 
-                    </form> 
+                   
                 </div> 
                 <div class="col-md-9">
-                    <!-- <form id="frmCategoria" name="frmCategoria" action="{{route('descripcion')}}" method="post">
+                    <form id="frmCategoria" name="frmCategoria" action="{{route('descripcion')}}" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                        <div class="wrapper">
-                            <div class="scrooller">
+                        <div class="col-md-12 testimonial-group" id="cont-scroller">
+                          <div class="row text-center" >
+                            <div class="col-xs-4">
                                 <div id="cont-categorias" class="category-column">
                                     <input type="text" name="tipo" id="tipo" value="vehiculos" hidden>
                                     <select name="categoria" id="categoria" size="15" style="height:260px;font-size: 14px"> 
                                     </select>
                                 </div>
-                                <div id="cont-categorias" class="category-column menu-marcas">
+                            </div>
+                            <div class="col-xs-4">
+                                <div id="cont-categorias" class="category-column menu-marcas" hidden>
                                     <select name="car-marca" id="car-marca" size="15" style="height:260px;font-size: 14px"> 
                                     </select>
                                 </div>
-                                <div id="cont-categorias" class="category-column menu-publicar">
+                            </div>
+                            <div class="col-xs-4">
+                                <div id="cont-categorias" class="category-column menu-modelo" hidden>
+                                    <select name="car-modelo" id="car-modelo" size="15" style="height:260px;font-size: 14px"> 
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div id="cont-categorias" class="category-column menu-anio" hidden>
+                                    <select name="car-anio" id="car-anio" size="15" style="height:260px;font-size: 14px"> 
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div id="cont-categorias" class="category-column menu-publicar" hidden>
                                     <img src="img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
                                     <p>¡Listo!</p>
                                     <button type="submit" id="btn-continuar" class="btn-azul">Continuar</button>
                                 </div>
                             </div>
-                        </div> 
-                    </form> -->
-                    <div class="col-md-12 testimonial-group" id="cont-scroller">
-                      <div class="row text-center" >
-                        <div class="col-xs-4">
-                            <div id="cont-categorias" class="category-column">
-                                <input type="text" name="tipo" id="tipo" value="vehiculos" hidden>
-                                <select name="categoria" id="categoria" size="15" style="height:260px;font-size: 14px"> 
-                                </select>
-                            </div>
+                          </div>
                         </div>
-                        <div class="col-xs-4">
-                            <div id="cont-categorias" class="category-column menu-marcas" hidden>
-                                <select name="car-marca" id="car-marca" size="15" style="height:260px;font-size: 14px"> 
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-xs-4">
-                            <div id="cont-categorias" class="category-column menu-modelo" hidden>
-                                <select name="car-modelo" id="car-modelo" size="15" style="height:260px;font-size: 14px"> 
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-xs-4">
-                            <div id="cont-categorias" class="category-column menu-anio" hidden>
-                                <select name="car-anio" id="car-anio" size="15" style="height:260px;font-size: 14px"> 
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-xs-4">
-                            <div id="cont-categorias" class="category-column menu-publicar" hidden>
-                                <img src="img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
-                                <p>¡Listo!</p>
-                                <button type="submit" id="btn-continuar" class="btn-azul">Continuar</button>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
+                    </form>
                 </div>
         @elseif($tipoCategoria=="INMU") 
-                <form id="ven_res" class="hub-card syi-hub__image--res" action="{{route('vehiculos')}}" method="post" accept-charset="utf-8">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                    <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="INMU">
-                    <button type="submit" form="ven_res">
+                <div class="col-md-3 hub-card syi-hub__image--res" style="cursor: auto !important;height:300px !important;">
                         <span class="hub-car-titulo" data-reactid="24">Inmuebles</span>
-                        <span class="syi-hub__image syi-hub__image--res" data-reactid="25"> </span></button>
-                </form> 
+                        <span class="syi-hub__image syi-hub__image--res" data-reactid="25"> </span>
+                </div> 
                 <form id="frmCategoria" name="frmCategoria" action="{{route('descripcion')}}" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+                    <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="INMU">
                     <div class="wrapper">
                         <div class="scrooller">
                             <div id="cont-categorias" class="category-column">
@@ -121,15 +99,13 @@
                     </div> 
                 </form>
         @elseif($tipoCategoria=="SERV") 
-                <form id="ven_srv" class="hub-card syi-hub__image--srv" action="{{route('vehiculos')}}" method="post" accept-charset="utf-8">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                    <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="SERV">
-                    <button type="submit" form="ven_srv">
+                <div class="col-md-3 hub-card syi-hub__image--srv" style="cursor: auto !important;height:300px !important;">
                         <span class="hub-car-titulo" data-reactid="28">Servicios</span>
-                        <span class="syi-hub__image syi-hub__image--srv"> </span></button>
-                </form>
+                        <span class="syi-hub__image syi-hub__image--srv"> </span>
+                </div>
                 <form id="frmCategoria" name="frmCategoria" action="{{route('descripcion')}}" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+                    <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="SERV">
                     <div class="wrapper">
                         <div class="scrooller">
                             <div id="cont-categorias" class="category-column">

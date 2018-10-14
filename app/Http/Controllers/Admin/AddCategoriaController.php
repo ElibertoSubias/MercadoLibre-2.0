@@ -21,17 +21,7 @@ class AddCategoriaController extends Controller
     public function create(Request $request)
     {
     	if ($request->ajax()) { 
-    		if ($request->venta == 0) {
-    			$tipoVenta = "vehiculos";
-    		}elseif ($request->venta == 1) {
-    			$tipoVenta = "inmuebles";
-    		}elseif ($request->venta == 2) {
-    			$tipoVenta = "servicios";
-    		}elseif($request->venta == 3){
-    			$tipoVenta = "productos";
-    		}
-
-    		if(Ventas::where('tipo', $tipoVenta)->push('categorias', ['categoria'=>$request->nombreCategoria], true)){
+    		if(Ventas::where('tipo', $request->tipoVenta)->push('categorias', [$request->nombreCategoria], true)){
     			return response()->json([
                     "res" => 1,
                     "nombre" => $request->nombreCategoria
@@ -155,7 +145,7 @@ class AddCategoriaController extends Controller
     public function showModelos(Request $request)
     { 
         if ($request->ajax()) {  
-            $marcas = Marcas::where(['categoria'=> $request->categoria])->get(['modelos']);
+            $marcas = Marcas::where(['categoria'=> $request->categoria,'nombre'=>$request->marca])->get(['modelos']);
             if ($marcas != "[]") {
                 $opciones=""; 
                 foreach ($marcas[0]['modelos'] as $key => $value) {

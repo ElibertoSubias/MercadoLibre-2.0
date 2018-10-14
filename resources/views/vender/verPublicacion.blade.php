@@ -12,7 +12,7 @@
 <section class="vip-section-navigation vip-bg-alt no-deep-links">
     <nav class="vip-container u-clearfix">
         <div class="vip-navigation-breadcrumb">
-            <a id="backToCateg" class="navigation-back" href="https://vehiculos.mercadolibre.com.mx/camiones/chevrolet/otros-modelos/" title="Volver al listado">Volver al listado</a>
+            <a id="backToCateg" class="navigation-back" href="{{route('publicaciones')}}" title="Volver al listado">Volver al listado</a>
             <ul class="vip-navigation-breadcrumb-list">
                 <li>
                     <a class="breadcrumb " href="https://vehiculos.mercadolibre.com.mx/" title="">
@@ -151,7 +151,7 @@
                         <span class="ch-icon ch-icon-search"></span>
                     
                     
-                    <img src="https://http2.mlstatic.com/alfa-romeo-D_Q_NP_918874-MLM28336465626_102018-R.webp" width="70" height="70">
+                    <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="70" height="70">
                     
                 </label>
            
@@ -161,7 +161,7 @@
             <figure class="gallery-image-container thumbgallery_default-0" data-side="right" data-align="top">
                 
                 <a href="https://http2.mlstatic.com/alfa-romeo-D_NQ_NP_918874-MLM28336465626_102018-F.webp" class="gallery-trigger gallery-item--landscape ch-zoom-trigger ch-shownby-pointerenter" data-imgindex="0" data-size="1118x698" style="height: 312px; width: 500px;" data-uid="1" aria-owns="ch-zoom-1" aria-haspopup="true">
-                    <img src="https://http2.mlstatic.com/alfa-romeo-D_NQ_NP_918874-MLM28336465626_102018-O.webp" width="500" height="312" data-srcset="https://http2.mlstatic.com/D_NQ_NP_918874-MLM28336465626_102018-F.webp 2x" alt="alfa romeo" data-imgindex="0" srcset="https://http2.mlstatic.com/D_NQ_NP_918874-MLM28336465626_102018-F.webp 2x">
+                    <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="500" height="312" data-srcset="https://http2.mlstatic.com/D_NQ_NP_918874-MLM28336465626_102018-F.webp 2x" alt="alfa romeo" data-imgindex="0" srcset="https://http2.mlstatic.com/D_NQ_NP_918874-MLM28336465626_102018-F.webp 2x">
                 <div class="ch-zoom-loading ch-hide" style="left: 201px; top: 107px;"><div class="ch-loading-large"></div><p>Cargando zoom...</p></div><div class="ch-zoom-seeker ch-hide" style="width: 186px; height: 169px; left: 0px; top: 45.4063px;"></div></a>
             </figure>
         
@@ -170,7 +170,7 @@
     
         
             <label for="thumbgallery_default-1" class="gallery__thumbnail">
-                <img class="icon-video__img" src="//img.youtube.com/vi/DCJCazILkCE/hqdefault.jpg" data-imgindex="2" data-video-id="DCJCazILkCE" width="70" height="70">
+                <img class="icon-video__img" src="{{$datos->urlvideo}}" data-imgindex="2" data-video-id="DCJCazILkCE" width="70" height="70">
                 <div class="icon-video ui-icon--content ui-icon__video">
                     <svg viewBox="0 0 60 60" id="ui-icon--video" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><g fill="none" fill-rule="evenodd"><rect fill-opacity=".7" fill="#FFF" width="60" height="60" rx="30"></rect><path fill="#3483FA" d="M23 20v20.395l17.709-10.191z"></path></g></svg>
                 </div>
@@ -293,22 +293,22 @@
                 
                     <li class="specs-item">
                     <strong>Kilómetros</strong>
-                    <span>10,000 km</span>
+                    <span>{{$datos->kilometros}} km</span>
                     </li>
                 
                     <li class="specs-item">
                     <strong>Marca</strong>
-                    <span>Chevrolet</span>
+                    <span>{{$datos->marca}}</span>
                     </li>
                 
                     <li class="specs-item">
                     <strong>Modelo</strong>
-                    <span>210</span>
+                    <span>{{$datos->modelos}}</span>
                     </li>
                 
                     <li class="specs-item">
                     <strong>Año</strong>
-                    <span>1994</span>
+                    <span>{{$datos->anio}}</span>
                     </li>
                 
             </ul>
@@ -437,23 +437,23 @@
     <dl>
         
             <dt>Año</dt>
-            <dd>1994</dd>
+            <dd>{{$datos->anio}}</dd>
         
             <dt>Kilómetros</dt>
-            <dd>10,000 km</dd>
+            <dd>{{$datos->kilometros}} km</dd>
         
     </dl>
 </article>
         <header class="item-title" data-js-item-title="">
     <h1 class="item-title__primary ">
-        Alfa Romeo
+        {{$datos->titulo}}
     </h1>
 </header> 
         <fieldset class="item-price "> 
     <span class="price-tag price-tag-motors"> 
             
             <span class="price-tag-symbol" content="100000.0">$</span>
-<span class="price-tag-fraction">100,000</span> 
+<span class="price-tag-fraction">{{$datos->precio}}</span> 
     </span> 
 </fieldset>   
     <div class="ch-box-info">
@@ -480,7 +480,7 @@
 
     <p class="card-subtitle name">Nombre</p>
     <p class="card-description card-description--bold">
-        <span>Eliberto</span>
+        <span>{{ auth()->user()->nombre }}</span>
     </p> 
 
     <div class="card-section"> 
@@ -514,7 +514,7 @@
         <div class="ui-icon--content">
             <svg viewBox="0 0 14 19" id="ui-icon--location-mark" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><path d="M6.984.003C3.162.003.053 3.198.053 7.125c0 5.84 6.28 10.799 6.547 11.007a.622.622 0 0 0 .78-.01c.266-.218 6.536-5.416 6.536-10.997 0-3.927-3.11-7.122-6.932-7.122zm-.009 16.762c-1.341-1.159-5.652-5.228-5.652-9.64 0-3.208 2.54-5.818 5.66-5.818 3.123 0 5.663 2.61 5.663 5.818 0 4.21-4.335 8.437-5.671 9.64zm.009-12.494c-1.531 0-2.777 1.28-2.777 2.854 0 1.573 1.246 2.853 2.777 2.853 1.53 0 2.777-1.28 2.777-2.853 0-1.574-1.246-2.854-2.777-2.854zm0 4.403c-.831 0-1.507-.695-1.507-1.549s.676-1.55 1.507-1.55c.83 0 1.507.696 1.507 1.55 0 .854-.676 1.549-1.507 1.549z" fill-rule="nonzero" fill="#333"></path></svg>
         </div> 
-            Los Angeles - Culiacán - Sinaloa 
+            {{$datos->colonia}} - {{$datos->municipio}} - {{$datos->estado}} 
     </div> 
     <p></p> 
                 <span class="seller-info-link"> 

@@ -86,34 +86,31 @@ $('#crearCuenta').click(function(){
     }
 });
 
- 
- 
-$('#tipoVenta').change(function(){ 
-  var tipoVenta = $("#tipoVenta").val();
+function cargarCategorias(){
+  var tipoCategoria = $('#tipoVenta').val();
   var route = "/MercadoLibre-2.0/public/cargarCategorias";
   var token = $("#token").val();
-  if (tipoVenta != "") {
-      $.ajax({
-        url: route,
-        headers: {'X-CSRF-TOKEN': token},
-        type: 'POST',
-        dataType: 'json',
-        data: {tipoVenta: tipoVenta} 
-        }).done(function(data) {   
-          if (data.res==1) {
-            $('#categoria').html("");
-          }else{
-            $('#categoria').html('<option value="">Seleccione...</option>');
-            var htmlString = $('#categoria').html();
-            $('#categoria').html(data.res);
-              $.each(data.categorias, function(i, fila){
-                   
-              //$('#categoria').html(htmlString+"<option value='"+Object.keys(fila.categoria[0])+"'>"+Object.keys(fila.categoria[0])+"</option>"); 
-              }); 
-              $('#btnOpcion').html('<input type="text" value='+tipoVenta+' id="tipoVentaMarca" hidden><a href="#" id="btnCategoria" class="btn btn-primary btn-xs btn-block" onclick="btnAgregarMarca()">Agregar Marca</a>');
-          }
-        });
+  if (tipoCategoria != "") {
+    $.ajax({
+      url: route,
+      headers: {'X-CSRF-TOKEN': token},
+      type: 'POST',
+      dataType: 'json',
+      data: {tipoVenta: tipoCategoria} 
+      }).done(function(data) {   
+        if (data.res==1) {
+          $('#categoria').html("");
+        }else{
+          $('#categoria').html("");
+          var htmlString = $('#categoria').html();
+            $('#categoria').html(data.res);  
+        }
+      });
   }
+}
+ 
+$('#tipoVenta').change(function(){ 
+  cargarCategorias();
 });
 
 function btnAgregarMarca() {
@@ -137,11 +134,13 @@ $('#btnAgregar').click(function(){
         }).done(function(data) {  
           
           if (data.res==1){
+            cargarCategorias();
+              $('#nombreCategoria').val("");
               $('#msjAlert').html(
             '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>¡Listo!</strong> Categoria agregada con exito.</div>'
             );
             $('#nombre').val('');
-          }else if(data.res==0){  
+          }else if(data.res==0){   
               $('#msjAlert').html(
             '<div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Ups!</strong> No fue posible agregar la categoria.</div>'
             );
@@ -219,12 +218,18 @@ $('#car-marca').change(function(){
         dataType: 'json',
         data: {marca: marca, categoria: categoria} 
         }).done(function(data) {  
-          $('#car-modelo').html(""); 
-          $('.menu-modelo').hide();
           try {     
+
+            if (data.res==1 || data.res == "") {
+              $('#car-modelo').html(""); 
+              $('.menu-modelo').hide();
+              document.getElementsByClassName('menu-modelo').style.display="none";
+              document.getElementsByClassName('menu-anio').style.display="none";
+            }else{
               $('#car-modelo').html(""); 
               $('#car-modelo').html(data.res); 
               $('.menu-modelo').show();    
+            }
           }
           catch(err) {
           }
@@ -244,12 +249,16 @@ $('#car-modelo').change(function(){
         type: 'POST',
         dataType: 'json',
         data: {marca: marca, modelo: modelo} 
-        }).done(function(data) {  
-          $('#car-anio').html(""); 
-          $('.menu-anio').hide();
+        }).done(function(data) {   
           try {     
+            if(data.res == 1 || data.res == ""){
+              $('#car-anio').html(""); 
+              $('.menu-anio').hide();
+              document.getElementsByClassName('menu-anio').style.display="none";
+            }else{
               $('#car-anio').html(data.res); 
-              $('.menu-anio').show();    
+              $('.menu-anio').show();  
+            } 
           }
           catch(err) {
           }

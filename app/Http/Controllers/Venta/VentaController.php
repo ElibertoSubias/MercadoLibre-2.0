@@ -74,9 +74,19 @@ class VentaController extends Controller
         return view('vender.estadopublicacion')->with("datos",$datos)->with("imagen",$imagen);
     }
 
-    public function showPublicacion()
+    public function showPublicacion(Request $request)
     {
-        return view('vender.verPublicacion');
+        $user = Auth::user();
+        $idUser = Auth::id(); 
+
+        $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first();
+        if ($datos!="") {
+            $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first(); 
+            return view('vender.verPublicacion')->with('datos',$datos)->with('imagen',$imagen);
+        }else{
+            return view('usuario.menu.adminPublicaciones');
+        }
+        
     }
 
     public function actualizarCorreo(Request $request)

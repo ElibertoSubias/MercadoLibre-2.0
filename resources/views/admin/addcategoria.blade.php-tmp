@@ -11,10 +11,10 @@
 			<label for="venta">Ventas:</label>
 				<select class="form-control" name="tipoVenta" id="tipoVenta">
 					<option value="">Seleccione...</option>
-					<option value="0">Vehículo</option>
-					<option value="1">Inmuebles</option>
-					<option value="2">Servicios</option>
-					<option value="3">Productos y otros</option>
+					<option value="VEHI">Vehículo</option>
+					<option value="INMU">Inmuebles</option>
+					<option value="SERV">Servicios</option>
+					<option value="PROD">Productos y otros</option>
 				</select>
 			</div>
 				<div id="contenedor">

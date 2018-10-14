@@ -1,7 +1,6 @@
 window.onload = catDisponibles;
 
-function catDisponibles() {
-	document.getElementById('cont-scroller').scrollBy(5, 5);
+function catDisponibles() { 
 	var tipoCategoria = $('#tipoCategoria').val();
 	var route = "/MercadoLibre-2.0/public/cargarCategorias";
 	var token = $("#token").val();
@@ -18,13 +17,8 @@ function catDisponibles() {
 	      }else{
 	      	$('#categoria').html("");
 	      	var htmlString = $('#categoria').html();
-            $('#categoria').html(data.res);
-	          //$.each(Object.keys(data.categorias.categoria[0]), function(i, fila){
-	          	//alert(Object.keys(fila)); 
-	          	//alert(Object.keys(data.categorias.categoria[0]));
-	            var htmlString = $('#categoria').html(); 
-	          //$('#categoria').html(htmlString+"<option class='category-option' value='"+fila+"'>"+fila+"</option>"); 
-	          //}); 
+            $('#categoria').html(data.res); 
+	            var htmlString = $('#categoria').html();  
 	      }
 	    });
 	}

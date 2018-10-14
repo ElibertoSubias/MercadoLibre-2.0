@@ -71,6 +71,8 @@ Route::post('articulo/agregarventa', 'Venta\VentaController@create')->name('agre
 
 Route::any('articulo/estado', 'Venta\VentaController@showEstado')->name('estado');
 
-Route::any('ver', 'Venta\VentaController@showPublicacion')->name('verpublicacion');
+Route::get('id={id}', 'Venta\VentaController@showPublicacion')->name('verpublicacion');
 
 Route::any('publicaciones', 'Usuario\MenuUsuarioController@showAllPublicaciones')->name('publicaciones');
+
+Route::post('buscar','BuscarController@buscarPublicaciones')->name('buscar');

@@ -1,2 +1,56 @@
+<?php
 
-Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 12582920 bytes) in C:\Users\elibe\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 52
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
+
+use App\User;
+use Auth;
+use Illuminate\Http\Request;
+
+use Redirect;
+
+class LoginController extends Controller {
+	//Aplicando middleware solo para el metodo showLoginForm
+	//Asi que solo podemos entrar al login si estamos NO autenticados
+	public function __construct() {
+		$this->middleware('guest', ['only' => 'showLoginForm']);
+	}
+
+	public function showLoginForm(Request $request) {
+		if (!User::where('email', '=', $request->email)->exists()) {
+			return back();
+		} else {
+			return view('auth.validarPassword')->with('email', $request->input('email'));
+		}
+	}
+
+	public function login(Request $request) {
+		if ($request->password) {
+			$this->validate($request, [
+					'login'    => 'required|string',
+					'password' => 'required|string'
+				]);
+
+			$login_type = filter_var($request->input('login'), FILTER_VALIDATE_EMAIL)?'email':'alias';
+
+			$request->merge([$login_type => $request->input('login')]);
+
+			if (Auth::attempt($request->only($login_type, 'password'))) {
+				return redirect()        ->route('dashboard');
+			}
+			return view('auth.validarPassword')->with('email', $request->login);
+		}
+		return view('auth.validarPassword')->with('email', $request->login);
+
+	}
+
+	public function logout() {
+		Auth::logout();
+		return redirect('/');
+	}
+
+	public function username() {
+		return 'alias';
+	}
+}

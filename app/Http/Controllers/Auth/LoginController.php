@@ -24,7 +24,11 @@ class LoginController extends Controller
 
     public function showLoginForm(Request $request)
     {
-        return view('auth.validarPassword')->with('email', $request->input('email')); 
+        if(!User::where('email', '=', $request->email)->exists()){
+            return back();
+        }else{
+            return view('auth.validarPassword')->with('email', $request->input('email'));
+        }
     }
 
     public function login(Request $request)
@@ -45,8 +49,7 @@ class LoginController extends Controller
             {
                 return redirect()->route('dashboard');
             } 
-            return back()->withErrors(['password' => trans('auth.failed')])
-            ->withInput(request(['login']));
+            return view('auth.validarPassword')->with('email', $request->login);
         }
         return view('auth.validarPassword')->with('email', $request->login);
 
