@@ -176,10 +176,9 @@
                                     </div>
                                     <div class="ch-form">
                                         <label class="lblUbicacion">Colonia:*</label>
-                                        <select name="colonia" id="colonia">
+                                        <select name="colonia" id="colonia" style="width: 280px;">
                                             <option value="">Selecciona una colonia</option>
-                                            <option value="Fracc.Los Angeles">Fracc.Los Angeles</option>}
-                                            option
+                                            <option value="Fracc.Los Angeles">Fracc.Los Angeles</option>
                                         </select>
                                     </div>
                                 </div>
@@ -452,7 +451,7 @@
                                             <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><p style="text-align: right;">Descripción:</p>
                                             </div>
                                             <div class="col-md-10">
-                                                <textarea placeholder="Escribe tu descripción" name="descripcion" rows="10" class="desc-textarea form-control addMarginIzquierdaInput"></textarea>
+                                                <textarea placeholder="Escribe tu descripción" id="descripcion" name="descripcion" rows="10" class="desc-textarea form-control addMarginIzquierdaInput"></textarea>
                                             </div>
                                         </div>
                                     </div>

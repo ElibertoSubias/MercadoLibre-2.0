@@ -23,11 +23,11 @@ class VentaController extends Controller {
 	}
 
 	public function showPrecio(Request $request) {
-		return view('vender.precio')->with(['idPublicacion' => $request->idPublicacion, 'categoria' => $request->categoria, 'tipo' => $request->tipo, 'marca' => $request->marca, 'videoURL' => $request->videoURL, 'estado' => $request->estado, 'municipio' => $request->municipio, 'colonia' => $request->colonia, 'telefono' => $request->telefono, 'modelo' => $request->modelo, 'anio' => $request->anio, 'numPuertas' => $request->numPuertas, 'kilometros' => $request->kilometros, 'titulo' => $request->titulo]);
+		return view('vender.precio')->with(['idPublicacion' => $request->idPublicacion, 'categoria' => $request->categoria, 'tipo' => $request->tipo, 'marca' => $request->marca, 'videoURL' => $request->videoURL, 'estado' => $request->estado, 'municipio' => $request->municipio, 'colonia' => $request->colonia, 'telefono' => $request->telefono, 'modelo' => $request->modelo, 'anio' => $request->anio, 'numPuertas' => $request->numPuertas, 'kilometros' => $request->kilometros, 'titulo' => $request->titulo, 'descripcion' => $request->descripcion]);
 	}
 
 	public function showConfirmar(Request $request) {
-		return view('vender.confirmar')->with(['idPublicacion' => $request->idPublicacion, 'categoria' => $request->categoria, 'tipo' => $request->tipo, 'marca' => $request->marca, 'videoURL' => $request->videoURL, 'estado' => $request->estado, 'municipio' => $request->municipio, 'colonia' => $request->colonia, 'telefono' => $request->telefono, 'modelo' => $request->modelo, 'anio' => $request->anio, 'numPuertas' => $request->numPuertas, 'kilometros' => $request->kilometros, 'titulo' => $request->titulo, 'moneda' => $request->moneda, 'precio' => $request->precio]);
+		return view('vender.confirmar')->with(['idPublicacion' => $request->idPublicacion, 'categoria' => $request->categoria, 'tipo' => $request->tipo, 'marca' => $request->marca, 'videoURL' => $request->videoURL, 'estado' => $request->estado, 'municipio' => $request->municipio, 'colonia' => $request->colonia, 'telefono' => $request->telefono, 'modelo' => $request->modelo, 'anio' => $request->anio, 'numPuertas' => $request->numPuertas, 'kilometros' => $request->kilometros, 'titulo' => $request->titulo, 'moneda' => $request->moneda, 'precio' => $request->precio, 'descripcion' => $request->descripcion]);
 	}
 	/**
 	 * Show the form for creating a new resource.
@@ -57,12 +57,14 @@ class VentaController extends Controller {
 		$Articulos->numPuertas      = $request->numPuertas;
 		$Articulos->kilometros      = $request->kilometros;
 		$Articulos->idPublicacion   = $request->idPublicacion;
+		$Articulos->descripcion     = $request->descripcion;
 		$Articulos->save();
 		return Redirect::route('estado', ['idPublicacion' => $request->idPublicacion]);
 	}
 
 	public function showEstado(Request $request) {
 		//Cambiar de idImg a idPublicacion
+
 		$datos  = Articulos::where('idPublicacion', '=', $request->idPublicacion)->first();
 		$imagen = Urlimagenes::where('idPublicacion', '=', $request->idPublicacion)->first();
 		return view('vender.estadopublicacion')->with("datos", $datos)->with("imagen", $imagen);

@@ -42,6 +42,7 @@
                         <input type="hidden" name="moneda" id="moneda" value="{{$moneda}}">
                         <input type="hidden" name="precio" id="precio" value="{{$precio}}">
                         <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{$idPublicacion}}">
+                        <input type="hidden" name="descripcion" id="descripcion" value="{{$descripcion}}">
                         <tbody>   
                             <tr class="ch-form-row true true  listingtypes-exposition exposition-gold_premium" data-listid="gold_premium">
                                 <td class="listingtypes-exposition-data gold_premium">

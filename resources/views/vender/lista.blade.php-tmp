@@ -21,19 +21,19 @@
     max-width: 841px;
     margin: 55px auto 0;
     overflow: auto;">
-            <form id="ven_mot" class="hub-card syi-hub__image--mot" action="{{route('vehiculos')}}" method="get">
+            <form id="ven_mot" class="hub-card syi-hub__image--mot" action="{{route('categorias')}}" method="get">
                 <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="VEHI">
                 <button id="btn_ven_mot" type="submit" form="MOTORS">
                     <span class="hub-car-titulo">Vehículos</span>
                     <span class="syi-hub__image syi-hub__image--mot"> </span></button>
             </form>
-            <form id="ven_res" class="hub-card syi-hub__image--res" action="{{route('vehiculos')}}" method="get" accept-charset="utf-8">
+            <form id="ven_res" class="hub-card syi-hub__image--res" action="{{route('categorias')}}" method="get" accept-charset="utf-8">
                 <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="INMU">
                 <button type="submit" form="ven_res">
                     <span class="hub-car-titulo" data-reactid="24">Inmuebles</span>
                     <span class="syi-hub__image syi-hub__image--res" data-reactid="25"> </span></button>
             </form>
-            <form id="ven_srv" class="hub-card syi-hub__image--srv" action="{{route('vehiculos')}}" method="get" accept-charset="utf-8">
+            <form id="ven_srv" class="hub-card syi-hub__image--srv" action="{{route('categorias')}}" method="get" accept-charset="utf-8">
                 <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="SERV">
                 <button type="submit" form="ven_srv">
                     <span class="hub-car-titulo" data-reactid="28">Servicios</span>

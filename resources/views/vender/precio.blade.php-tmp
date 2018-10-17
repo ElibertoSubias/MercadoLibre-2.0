@@ -5,7 +5,7 @@
 <div style="margin: 30px auto 20px;max-width: 1220px;background-color: #fff;border: 1px solid #e2e2e2;border-radius: 5px;height:auto;display: inline-block;width: 100%;">
     <div style="" class="cont-ruta" style="width: 100%z">
         <ol class="syi-ui-wizard__breadcrumb syi-ui-wizard__step--4" data-reactid="7" style="display: block;list-style: none;    overflow: hidden;padding: 0;margin: 0 0 30px;">
-            <li class="syi-ui-wizard__step syi-ui-wizard__step--current" data-reactid="8" style="background: #F0F0F0;"><span data-reactid="9"><a href="{{ route('vehiculos') }}" style="background: #F0F0F0;">Elige qué quieres publicar</a></span></li>
+            <li class="syi-ui-wizard__step syi-ui-wizard__step--current" data-reactid="8" style="background: #F0F0F0;"><span data-reactid="9"><a href="{{ route('categorias') }}" style="background: #F0F0F0;">Elige qué quieres publicar</a></span></li>
             <li class="syi-ui-wizard__step" data-reactid="10" style="background: #F0F0F0;"><span data-reactid="11"><a href="{{route('descripcion')}}" title="">Describe tu producto</a></span></li>
             <li class="syi-ui-wizard__step" data-reactid="12"><span data-reactid="13" style="font-weight: 700;color: #333;border-bottom: 0;">Ingrese un precio</span></li>
             <li class="syi-ui-wizard__step" data-reactid="14"><span data-reactid="15">Confirma tu publicación</span></li>
@@ -50,6 +50,7 @@
                     <input type="hidden" name="kilometros" id="kilometros" value="{{$kilometros}}">
                     <input type="hidden" name="titulo" id="titulo" value="{{$titulo}}">
                     <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{$idPublicacion}}">
+                    <input type="hidden" name="descripcion" id="descripcion" value="{{$descripcion}}">
 
                     <div class="row col-md-12" id="footer-descripcion">
                         <input type="submit"  class="btn-azul" name="btnContinuarPrecio" id="btnContinuarPrecio" value="Continuar" style="font-size: 18px;padding: 6px 12px;margin-top:0px">

@@ -78,6 +78,14 @@ db.ventas.insert([
   {
     "tipo":"INMU",
     "categorias":[]
+  },
+  {
+    "tipo":"SERV",
+    "categorias":[]
+  },
+  {
+    "tipo":"PROD",
+    "categorias":[]
   }
 ])
 

@@ -5,7 +5,7 @@
 </div>
 <div class="row col-md-10 col-md-offset-1" style="height: 100%">
 	<div class="col-md-3">
-		<form action="{{route('guardarCategoria')}}" method="post" accept-charset="utf-8">
+		<form action="{{route('guardarCategoria')}}" method="post" accept-charset="utf-8" id="frm_agregarCategoria">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 			<div class="form-group">
 			<label for="venta">Ventas:</label>

@@ -123,7 +123,7 @@
         width: 180px;
     } 
     .syi-hub__image {
-        background-image: url(../img/vender-icono.png); 
+        background-image: url(/MercadoLibre-2.0/public/img/vender-icono.png); 
         background-repeat: no-repeat;
         background-size: 400%;
         display: block;

@@ -15,7 +15,7 @@
             <a id="backToCateg" class="navigation-back" href="{{route('publicaciones')}}" title="Volver al listado">Volver al listado</a>
             <ul class="vip-navigation-breadcrumb-list">
                 <li>
-                    <a class="breadcrumb " href="https://vehiculos.mercadolibre.com.mx/" title="">
+                    <a class="breadcrumb " href="#" title="">
                     Autos, Motos y Otros
                     </a>
                     <svg width="22" height="22" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" class="ui-icon ui-icon--chevron-right">
@@ -37,7 +37,7 @@
                     </svg>
                 </li>
                 <li>
-                    <a class="breadcrumb " href="https://vehiculos.mercadolibre.com.mx/camiones/chevrolet/" title="">
+                    <a class="breadcrumb " href="#" title="">
                     Chevrolet
                     </a>
                     <svg width="22" height="22" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" class="ui-icon ui-icon--chevron-right">
@@ -48,7 +48,7 @@
                     </svg>
                 </li>
                 <li>
-                    <a class="breadcrumb " href="https://vehiculos.mercadolibre.com.mx/camiones/chevrolet/otros-modelos/" title="">
+                    <a class="breadcrumb " href="#" title="">
                     Otros Modelos
                     </a>
                     <svg width="22" height="22" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" class="ui-icon ui-icon--chevron-right">
@@ -303,7 +303,7 @@
 
                     <li class="specs-item">
                     <strong>Modelo</strong>
-                    <span>{{$datos->modelos}}</span>
+                    <span>{{$datos->modelo}}</span>
                     </li>
 
                     <li class="specs-item">
@@ -396,7 +396,7 @@
 
 
     <div class="item-description__text">
-        <p>Ninguna por el momento</p>
+        <p>{{$datos->descripcion}}</p>
     </div>
 
 

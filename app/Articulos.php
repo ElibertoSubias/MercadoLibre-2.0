@@ -20,7 +20,7 @@ class Articulos extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'idUser','titulo', 'precio', 'moneda', 'estado', 'municipio', 'colonia', 'telefono', 'categoria', 'modelo', 'marca', 'anio', 'urlvideo', 'numPuertas', 'kilometros','tipoPublicacion','idPublicacion',
+        'idUser','titulo', 'precio', 'moneda', 'estado', 'municipio', 'colonia', 'telefono', 'categoria', 'modelo', 'marca', 'anio', 'urlvideo', 'numPuertas', 'kilometros','tipoPublicacion','idPublicacion','descripcion',
     ];
 
     /**

@@ -117,14 +117,15 @@ function btnAgregarMarca() {
   $('#cont-guardar-cat').css('display','block');
   $('#btnCategoria').css('display','none');
 
-}
+} 
 
-$('#btnAgregar').click(function(){ 
+function agregarCategoria(){
   var tipoVenta = $("#tipoVenta").val();
   var nombreCategoria = $("#nombreCategoria").val(); 
   var route = "/MercadoLibre-2.0/public/guardarCategoria";
   var token = $("#token").val();
-  if (tipoVenta != "" && nombreCategoria != "") {
+  if (nombreCategoria != "") {
+    if (tipoVenta != "") {
       $.ajax({
         url: route,
         headers: {'X-CSRF-TOKEN': token},
@@ -139,6 +140,9 @@ $('#btnAgregar').click(function(){
               $('#msjAlert').html(
             '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>¡Listo!</strong> Categoria agregada con exito.</div>'
             );
+            $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+                $(".alert-success").alert('close');
+            });
             $('#nombre').val('');
           }else if(data.res==0){   
               $('#msjAlert').html(
@@ -147,8 +151,20 @@ $('#btnAgregar').click(function(){
 
           }
         });
+    }else{
+      $('#tipoVenta').focus();
+    }
+  }else{
+    $('#nombreCategoria').focus();
   }
+}
+$('#btnAgregar').click(function(){ 
+  agregarCategoria();
 });
+$('#frm_agregarCategoria').on('submit', function(){
+  event.preventDefault();
+  agregarCategoria();
+}); 
 
 $('#btnAgregarMarca').click(function(){
   var nombreMarca = $('#nombreMarca').val();

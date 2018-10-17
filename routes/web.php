@@ -43,7 +43,7 @@ Route::any('cargarVersiones', 'Admin\AddCategoriaController@showVersiones')->nam
 Route::post('guardarCategoria', 'Admin\AddCategoriaController@create')->name('guardarCategoria');
 Route::post('guardarMarca', 'Admin\AddCategoriaController@addMarca')->name('guardarMarca');
 
-Route::any('vehiculos', 'Admin\AddCategoriaController@showCategorias')->name('vehiculos');
+Route::any('categorias', 'Admin\AddCategoriaController@showCategorias')->name('categorias');
 
 Route::post('descripcion', 'Admin\AddCategoriaController@showDescrip')->name('descripcion');
 
@@ -69,7 +69,7 @@ Route::post('articulo/confirmar', 'Venta\VentaController@showConfirmar')->name('
 
 Route::post('articulo/agregarventa', 'Venta\VentaController@create')->name('agregar');
 
-Route::any('articulo/estado', 'Venta\VentaController@showEstado')->name('estado');
+Route::any('estado', 'Venta\VentaController@showEstado')->name('estado');
 
 Route::get('id={id}', 'Venta\VentaController@showPublicacion')->name('verpublicacion');
 

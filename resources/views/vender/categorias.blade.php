@@ -18,8 +18,7 @@
     <div>
         <nav class="hub-nav" style="border-collapse: separate;border-spacing: 1em;margin: 45px;
     overflow: auto;">
-    @if($tipoCategoria!="")
-        <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="{{$tipoCategoria}}">
+    @if($tipoCategoria!="") 
         @if($tipoCategoria=="VEHI")
                 <div class="col-md-12">
                     <a href="{{route('vender')}}" style="display: block;float: left;"> < volver atras</a><br>
@@ -32,6 +31,7 @@
                 </div> 
                 <div class="col-md-9">
                     <form id="frmCategoria" name="frmCategoria" action="{{route('descripcion')}}" method="post">
+                        <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="{{$tipoCategoria}}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                         <div class="col-md-12 testimonial-group" id="cont-scroller">
                           <div class="row text-center" >
@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-xs-4">
                                 <div id="cont-categorias" class="category-column menu-publicar" hidden>
-                                    <img src="img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
+                                    <img src="/MercadoLibre-2.0/public/img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
                                     <p>¡Listo!</p>
                                     <button type="submit" id="btn-continuar" class="btn-azul">Continuar</button>
                                 </div>
@@ -91,7 +91,7 @@
                                 </select>
                             </div>
                             <div id="cont-categorias" class="category-column menu-publicar">
-                                <img src="img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
+                                <img src="/MercadoLibre-2.0/public/img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
                                 <p>¡Listo!</p>
                                 <button type="submit" id="btn-continuar" class="btn-azul">Continuar</button>
                             </div>
@@ -118,7 +118,7 @@
                                 </select>
                             </div>
                             <div id="cont-categorias" class="category-column menu-publicar">
-                                <img src="img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
+                                <img src="/MercadoLibre-2.0/public/img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
                                 <p>¡Listo!</p>
                                 <button type="submit" id="btn-continuar" class="btn-azul">Continuar</button>
                             </div>
