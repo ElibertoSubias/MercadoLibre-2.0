@@ -421,7 +421,7 @@
                     
                     <td style="width: 40%; margin-top: 9px">
                     <a href="javascript:btnCambiarnombreAP()" class="boton-azul" style="padding-left: 9PX">Actualizar</a> 
-                    <a href="{{route('perfil')}}" style="padding-left: 9PX; color: red">Cancelar</a></td>
+                    <a href="{{route('perfil')}}" style="padding-left: 9PX; color: blue">Cancelar</a></td>
                     
             </tr>
             </table>
