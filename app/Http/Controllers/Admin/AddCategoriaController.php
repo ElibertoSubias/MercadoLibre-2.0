@@ -240,4 +240,7 @@ class AddCategoriaController extends Controller
         }
         return view('vender.descripcion')->with(['idPublicacion'=>$_SESSION["idPublicacion"],'categoria'=>$request->categoria,'tipo'=>$request->tipo,'marca'=>$request->input('car-marca')]);  
     }
+    public function backDescrip(Request $request){
+        return redirect()->route('descripcion')->withInput();
+    }
 }

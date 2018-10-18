@@ -48,5 +48,6 @@
 	{!! Html::script('js/script.js') !!}  
 	{!! Html::script('js/validaciones.js') !!}  
 	{!! Html::script('js/ubicacion.js') !!} 
+	{!! Html::script('js/arrayCaracteristicas.js') !!} 
 </body>
 </html>

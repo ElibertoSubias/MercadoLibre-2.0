@@ -240,6 +240,9 @@ fieldset>h3 {
 .picture-uploader-preview {
     cursor: pointer;
 }
+.picture-uploader-preview  img{
+    height: 119px;
+}
 .picture-uploader .picture-uploader-preview>ul {
     position: relative;
     overflow: visible;

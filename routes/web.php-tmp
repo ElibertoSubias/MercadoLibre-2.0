@@ -43,7 +43,8 @@ Route::post('guardarMarca', 'Admin\AddCategoriaController@addMarca')->name('guar
 
 Route::any('categorias', 'Admin\AddCategoriaController@showCategorias')->name('categorias');
 
-Route::post('descripcion', 'Admin\AddCategoriaController@showDescrip')->name('descripcion');
+Route::any('descripcion', 'Admin\AddCategoriaController@showDescrip')->name('descripcion');
+Route::any('backdescripcion', 'Admin\AddCategoriaController@backDescrip')->name('backdescripcion');
 
 Route::post('cambiarnombre', 'EditarUsuario\PerfilController@cambiarNombreAp')->name('cambiarnombre');
 Route::post('agregartelefono', 'EditarUsuario\PerfilController@agregarTelefono')->name('agregartelefono');
@@ -74,3 +75,5 @@ Route::get('id={id}', 'Venta\VentaController@showPublicacion')->name('verpublica
 Route::any('publicaciones', 'Usuario\MenuUsuarioController@showAllPublicaciones')->name('publicaciones');
 
 Route::post('buscar', 'BuscarController@buscarPublicaciones')->name('buscar');
+
+Route::get('resultados', 'BuscarController@listarResultados')->name('resultados');

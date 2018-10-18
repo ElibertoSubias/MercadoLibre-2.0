@@ -11,9 +11,12 @@ class BuscarController extends Controller {
 			$datos = Articulos::where('titulo', 'like', '%'.$request->consulta.'%')->get();
 			$aux   = "";
 			foreach ($datos as $key => $value) {
-				$aux = $aux."<li><a href='id=".$value->_id."''>".$value->titulo."</a></li>";
+				$aux = $aux."<li><a href='resultados?busqueda=".$value->categoria."'>".$value->titulo."</a></li>";
 			}
 			return $aux;
 		}
+	}
+	public function listarResultados(Request $request) {
+		return view('listarResultados')->with('busqueda', $request->busqueda);
 	}
 }

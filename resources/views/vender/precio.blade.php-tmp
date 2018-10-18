@@ -6,7 +6,7 @@
     <div style="" class="cont-ruta" style="width: 100%z">
         <ol class="syi-ui-wizard__breadcrumb syi-ui-wizard__step--4" data-reactid="7" style="display: block;list-style: none;    overflow: hidden;padding: 0;margin: 0 0 30px;">
             <li class="syi-ui-wizard__step syi-ui-wizard__step--current" data-reactid="8" style="background: #F0F0F0;"><span data-reactid="9"><a href="{{ route('categorias') }}" style="background: #F0F0F0;">Elige qué quieres publicar</a></span></li>
-            <li class="syi-ui-wizard__step" data-reactid="10" style="background: #F0F0F0;"><span data-reactid="11"><a href="{{route('descripcion')}}" title="">Describe tu producto</a></span></li>
+            <li class="syi-ui-wizard__step" data-reactid="10" style="background: #F0F0F0;"><span data-reactid="11"><a href="{{route('backdescripcion')}}" title="">Describe tu producto</a></span></li>
             <li class="syi-ui-wizard__step" data-reactid="12"><span data-reactid="13" style="font-weight: 700;color: #333;border-bottom: 0;">Ingrese un precio</span></li>
             <li class="syi-ui-wizard__step" data-reactid="14"><span data-reactid="15">Confirma tu publicación</span></li>
         </ol>
@@ -37,20 +37,28 @@
 
                         </fieldset>
                     </div>
-                    <input type="hidden" name="videoURL" id="videoURL" value="{{$videoURL}}">
-                    <input type="hidden" name="marca" id="marca" value="{{$marca}}">
-                    <input type="hidden" name="categoria" id="categoria" value="{{$categoria}}">
-                    <input type="hidden" name="estado" id="estado" value="{{$estado}}">
-                    <input type="hidden" name="municipio" id="municipio" value="{{$municipio}}">
-                    <input type="hidden" name="colonia" id="colonia" value="{{$colonia}}">
-                    <input type="hidden" name="telefono" id="telefono" value="{{$telefono}}">
-                    <input type="hidden" name="modelo" id="modelo" value="{{$modelo}}">
-                    <input type="hidden" name="anio" id="anio" value="{{$anio}}">
-                    <input type="hidden" name="numPuertas" id="numPuertas" value="{{$numPuertas}}">
-                    <input type="hidden" name="kilometros" id="kilometros" value="{{$kilometros}}">
-                    <input type="hidden" name="titulo" id="titulo" value="{{$titulo}}">
-                    <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{$idPublicacion}}">
-                    <input type="hidden" name="descripcion" id="descripcion" value="{{$descripcion}}">
+                    <input type="hidden" name="videoURL" id="videoURL" value="{{$objectArticulo->videoURL}}">
+                    <input type="hidden" name="marca" id="marca" value="{{$objectArticulo->marca}}">
+                    <input type="hidden" name="categoria" id="categoria" value="{{$objectArticulo->categoria}}">
+                    <input type="hidden" name="estado" id="estado" value="{{$objectArticulo->estado}}">
+                    <input type="hidden" name="municipio" id="municipio" value="{{$objectArticulo->municipio}}">
+                    <input type="hidden" name="colonia" id="colonia" value="{{$objectArticulo->colonia}}">
+                    <input type="hidden" name="telefono" id="telefono" value="{{$objectArticulo->telefono}}">
+                    <input type="hidden" name="modelo" id="modelo" value="{{$objectArticulo->modelo}}">
+                    <input type="hidden" name="anio" id="anio" value="{{$objectArticulo->anio}}">
+                    <input type="hidden" name="numPuertas" id="numPuertas" value="{{$objectArticulo->numPuertas}}">
+                    <input type="hidden" name="kilometros" id="kilometros" value="{{$objectArticulo->kilometros}}">
+                    <input type="hidden" name="titulo" id="titulo" value="{{$objectArticulo->titulo}}">
+                    <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{$objectArticulo->idPublicacion}}">
+                    <input type="hidden" name="descripcion" id="descripcion" value="{{$objectArticulo->descripcion}}">
+                    <input type="hidden" name="horarioContacto" id="horarioContacto" value="{{$objectArticulo->horarioContacto}}">
+                    <input type="hidden" name="color" id="color" value="{{$objectArticulo->color}}">
+                    <input type="hidden" name="tipoCombustible" id="tipoCombustible" value="{{$objectArticulo->tipoCombustible}}">
+                    <input type="hidden" name="motor" id="motor" value="{{$objectArticulo->motor}}">
+                    <input type="hidden" name="direccionAuto" id="direccionAuto" value="{{$objectArticulo->direccionAuto}}">
+                    <input type="hidden" name="transmicion" id="transmicion" value="{{$objectArticulo->transmicion}}">
+                    <input type="hidden" name="version" id="version" value="{{$objectArticulo->version}}">
+                    <input type="hidden" name="arrayCaracteristicas" id="arrayCaracteristicas" value="{{$objectArticulo->arrayCaracteristicas}}">
 
                     <div class="row col-md-12" id="footer-descripcion">
                         <input type="submit"  class="btn-azul" name="btnContinuarPrecio" id="btnContinuarPrecio" value="Continuar" style="font-size: 18px;padding: 6px 12px;margin-top:0px">

@@ -195,7 +195,22 @@ $('#select_file').change(function(){
 	    $('#message').html(data.message);
 	    $('#'+idLIFoto).addClass('on');
 	    $('#'+idLIFoto).html(data.uploaded_image);
+	    $('#select_file').val("");
 	   }
 	  })
     }
 	 });
+
+
+$('#btn_MostrarMas').click(function(){
+	event.preventDefault();
+	document.getElementById('masCaracteriticas').style.display="block";
+	document.getElementById('btn_MostrarMas').style.display="none";
+	document.getElementById('btn_MostrarMenos').style.display="block"; 
+});
+$('#btn_MostrarMenos').click(function(){
+	event.preventDefault();
+	document.getElementById('masCaracteriticas').style.display="none";
+	document.getElementById('btn_MostrarMenos').style.display="none";
+	document.getElementById('btn_MostrarMas').style.display="block"; 
+});

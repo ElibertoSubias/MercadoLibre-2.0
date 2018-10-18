@@ -16,7 +16,7 @@
                             <div class="col-md-2">
                                 <img class="img-listo" src="/MercadoLibre-2.0/public/img/palomita.png" alt="">
                                  <img style="border: 2px solid #e2e2e2;padding: 0px;height: 146.08px;" src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$datos->idPublicacion}}/{{$imagen->url}}" class="img-thumbnail" width="500" alt="">
-                             </div>
+                             </div> {{$datos->idPublicacion}}
                              <div class="col-md-8 cont-listo">
                                  <h1 class="text-listo">¡Listo! Ya publicaste</h1>
                                  <p><strong>{{$datos->titulo}} a ${{$datos->precio}}°°.</strong></p>

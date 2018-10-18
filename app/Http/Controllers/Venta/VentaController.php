@@ -26,12 +26,12 @@ class VentaController extends Controller
 
     public function showPrecio(Request $request)
     {
-        return view('vender.precio')->with(['idPublicacion'=>$request->idPublicacion,'categoria'=>$request->categoria,'tipo'=>$request->tipo,'marca'=>$request->marca,'videoURL'=>$request->videoURL,'estado'=>$request->estado,'municipio'=>$request->municipio,'colonia'=>$request->colonia,'telefono'=>$request->telefono,'modelo'=>$request->modelo,'anio'=>$request->anio,'numPuertas'=>$request->numPuertas,'kilometros'=>$request->kilometros,'titulo'=>$request->titulo,'descripcion'=>$request->descripcion]);
+        return view('vender.precio')->with('objectArticulo',$request);
     }
     
     public function showConfirmar(Request $request)
     {
-        return view('vender.confirmar')->with(['idPublicacion'=>$request->idPublicacion,'categoria'=>$request->categoria,'tipo'=>$request->tipo,'marca'=>$request->marca,'videoURL'=>$request->videoURL,'estado'=>$request->estado,'municipio'=>$request->municipio,'colonia'=>$request->colonia,'telefono'=>$request->telefono,'modelo'=>$request->modelo,'anio'=>$request->anio,'numPuertas'=>$request->numPuertas,'kilometros'=>$request->kilometros,'titulo'=>$request->titulo,'moneda'=>$request->moneda,'precio'=>$request->precio,'descripcion'=>$request->descripcion]);
+        return view('vender.confirmar')->with('objectArticulo',$request);
     }
     /**
      * Show the form for creating a new resource.
@@ -63,6 +63,15 @@ class VentaController extends Controller
         $Articulos->kilometros = $request->kilometros;
         $Articulos->idPublicacion = $request->idPublicacion;
         $Articulos->descripcion = $request->descripcion;
+        $Articulos->estado = 1;
+        $Articulos->horarioContacto =$request->horarioContacto;
+        $Articulos->color = $request->color;
+        $Articulos->tipoCombustible = $request->tipoCombustible;
+        $Articulos->motor = $request->motor;
+        $Articulos->direccionAuto = $request->direccionAuto;
+        $Articulos->transmicion = $request->transmicion;
+        $Articulos->version = $request->version;
+        $Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
         $Articulos->save();
         return Redirect::route('estado',['idPublicacion' => $request->idPublicacion]);
     }
@@ -108,9 +117,14 @@ class VentaController extends Controller
          ]);
          if($validation->passes())
          {
-          $image = $request->file('select_file');
-          $new_name = $request->idImg .'_'. rand() . '.' . $image->getClientOriginalExtension();
-          $image->move(public_path('images/'.$request->idUser.'/'.$request->idPublicacion.'/'), $new_name);
+            $image = $request->file('select_file');
+            $new_name = $request->idImg . '.' . $image->getClientOriginalExtension();
+            $dir = 'images/'.$request->idUser.'/'.$request->idPublicacion.'/'.$new_name;
+            if(file_exists($dir)) //verifica que el archivo existe 
+             {  
+                unlink($dir); // si es true, llama la función   
+             }  
+            $image->move(public_path('images/'.$request->idUser.'/'.$request->idPublicacion.'/'), $new_name);
             //Almacenamiento de la URL de la imagen agregada
             $Imagen = new Urlimagenes;
             $Imagen->idPublicacion = $request->idPublicacion;

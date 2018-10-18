@@ -27,22 +27,30 @@
                                 <th class="cost">Costo por publicar</th>
                             </tr>
                         </thead>
-                        <input type="hidden" name="videoURL" id="videoURL" value="{{$videoURL}}">
-                        <input type="hidden" name="marca" id="marca" value="{{$marca}}">
-                        <input type="hidden" name="categoria" id="categoria" value="{{$categoria}}">
-                        <input type="hidden" name="estado" id="estado" value="{{$estado}}">
-                        <input type="hidden" name="municipio" id="municipio" value="{{$municipio}}">
-                        <input type="hidden" name="colonia" id="colonia" value="{{$colonia}}">
-                        <input type="hidden" name="telefono" id="telefono" value="{{$telefono}}">
-                        <input type="hidden" name="modelo" id="modelo" value="{{$modelo}}">
-                        <input type="hidden" name="anio" id="anio" value="{{$anio}}">
-                        <input type="hidden" name="numPuertas" id="numPuertas" value="{{$numPuertas}}">
-                        <input type="hidden" name="kilometros" id="kilometros" value="{{$kilometros}}">
-                        <input type="hidden" name="titulo" id="titulo" value="{{$titulo}}">
-                        <input type="hidden" name="moneda" id="moneda" value="{{$moneda}}">
-                        <input type="hidden" name="precio" id="precio" value="{{$precio}}">
-                        <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{$idPublicacion}}">
-                        <input type="hidden" name="descripcion" id="descripcion" value="{{$descripcion}}">
+<input type="hidden" name="videoURL" id="videoURL" value="{{$objectArticulo->videoURL}}">
+<input type="hidden" name="marca" id="marca" value="{{$objectArticulo->marca}}">
+<input type="hidden" name="categoria" id="categoria" value="{{$objectArticulo->categoria}}">
+<input type="hidden" name="estado" id="estado" value="{{$objectArticulo->estado}}">
+<input type="hidden" name="municipio" id="municipio" value="{{$objectArticulo->municipio}}">
+<input type="hidden" name="colonia" id="colonia" value="{{$objectArticulo->colonia}}">
+<input type="hidden" name="telefono" id="telefono" value="{{$objectArticulo->telefono}}">
+<input type="hidden" name="modelo" id="modelo" value="{{$objectArticulo->modelo}}">
+<input type="hidden" name="anio" id="anio" value="{{$objectArticulo->anio}}">
+<input type="hidden" name="numPuertas" id="numPuertas" value="{{$objectArticulo->numPuertas}}">
+<input type="hidden" name="kilometros" id="kilometros" value="{{$objectArticulo->kilometros}}">
+<input type="hidden" name="titulo" id="titulo" value="{{$objectArticulo->titulo}}">
+<input type="hidden" name="moneda" id="moneda" value="{{$objectArticulo->moneda}}">
+<input type="hidden" name="precio" id="precio" value="{{$objectArticulo->precio}}">
+<input type="hidden" name="idPublicacion" id="idPublicacion" value="{{$objectArticulo->idPublicacion}}">
+<input type="hidden" name="descripcion" id="descripcion" value="{{$objectArticulo->descripcion}}">
+<input type="hidden" name="horarioContacto" id="horarioContacto" value="{{$objectArticulo->horarioContacto}}">
+<input type="hidden" name="color" id="color" value="{{$objectArticulo->color}}">
+<input type="hidden" name="tipoCombustible" id="tipoCombustible" value="{{$objectArticulo->tipoCombustible}}">
+<input type="hidden" name="motor" id="motor" value="{{$objectArticulo->motor}}">
+<input type="hidden" name="direccionAuto" id="direccionAuto" value="{{$objectArticulo->direccionAuto}}">
+<input type="hidden" name="transmicion" id="transmicion" value="{{$objectArticulo->transmicion}}">
+<input type="hidden" name="version" id="version" value="{{$objectArticulo->version}}"> 
+<input type="hidden" name="arrayCaracteristicas" id="arrayCaracteristicas" value="{{$objectArticulo->arrayCaracteristicas}}">
                         <tbody>   
                             <tr class="ch-form-row true true  listingtypes-exposition exposition-gold_premium" data-listid="gold_premium">
                                 <td class="listingtypes-exposition-data gold_premium">

@@ -26,7 +26,7 @@
 						<span class="buscar-icono">Buscar</span>
 					</i>
 				</button>
-				<div id="resultados" style="display: none;">
+				<div id="resultados" style="z-index: 122222;display: none;border-top: 1px solid #e6e6e6;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;">
 					<ul id="cont-resultado">
 						
 					</ul>
