@@ -11,7 +11,7 @@ use App\User;
 class InicioController extends Controller
 {
     public function index() {
-		return view('inicio');
+		return view('dashboard');
 	}
 
 	public function autenticarEmail()
@@ -22,12 +22,7 @@ class InicioController extends Controller
     public function validarPassword(Request $request)
     {
         return view('autenticar.validarPassword')->with('email', $request->input('email')); 
-    }
-
-    public function crearcuenta()
-    {
-        return view('usuario.crearcuenta');
-    }
+    } 
 
     public function checkEmail(Request $request)
     {

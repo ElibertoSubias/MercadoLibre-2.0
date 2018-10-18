@@ -23,8 +23,12 @@ Route::any('autenticar', 'InicioController@autenticarEmail')->name('autenticar')
 Route::any('validar', 'Auth\LoginController@showLoginForm')->name('validar');
 Route::post('checkemail', 'InicioController@checkEmail')->name('checkemail');
 
-Route::get('crearcuenta', 'InicioController@crearcuenta')->name('crearcuenta');
-Route::post('usuario', 'CrearCuentaController@crearCuenta')->name('usuario');
+//Route::get('crearcuentapersonal', 'InicioController@crearcuentaPersonal')->name('crearcuentapersonal');
+//Route::get('crearcuentaempresarial', 'InicioController@crearcuentaEmpresarial')->name('crearcuentaempresarial');
+Route::get('crearcuenta-personal', 'CrearCuentaController@showPersonal')->name('crearcuentapersonal');
+Route::post('aggcuentapersonal', 'CrearCuentaController@crearcuentaPersonal')->name('aggcuentapersonal');
+Route::get('crearcuenta-empresarial', 'CrearCuentaController@showEmpresarial')->name('crearcuentaempresarial');
+Route::post('aggcuentaempresarial', 'CrearCuentaController@crearcuentaEmpresarial')->name('aggcuentaempresarial');
 
 Route::any('vender', 'VenderProductoController@cargarLista')->name('vender');
 

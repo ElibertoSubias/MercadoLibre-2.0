@@ -6,7 +6,7 @@
 	{!! Html::style('css/bootstrap.css') !!}  
 	<meta charset="UTF-8"> 
 </head>
-<body>
+<body style="background-color: #f5f5f5!important;">
 	<header id="cabecera_principal">
 		<div class="nav_registro"> 
 			<div class="col-1">
@@ -15,15 +15,22 @@
 					</div>
 				</a>
 			</div>
-			<form class="nav-buscar" action="../index" method="GET" role="search" id="buscador-articulos">
-				<input type="text" class="nav-buscar-input" name="as_word" placeholder="Buscar productos, marcas y más..." maxlength="120" autofocus="" autocapitalize="off" autocorrect="off" spellcheck="false" tabindex="2" autocomplete="off">
+			<form class="nav-buscar" action="{{route('buscar')}}" method="post" role="search" id="buscador-articulos">
+				<input type="text" class="nav-buscar-input" name="as_word" placeholder="Buscar productos, marcas y más..." maxlength="120" autofocus="" autocapitalize="off" autocorrect="off" spellcheck="false" tabindex="2" autocomplete="off" id="caja_busqueda">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 				<button class="nav-buscar-limpiar-btn" type="button" title="Limpiar"></button>
 				<button class="nav-buscar-cerrar-btn" type="button" title="Cerrar"></button>
 				<button type="submit" class="nav-search-btn" tabindex="3">
 					<i class="nav-icon-search">
-						<span>Buscar</span>
+						<img src="../public/img/icon_buscar.png" alt="" style="width: 50%;height: 80%;">
+						<span class="buscar-icono">Buscar</span>
 					</i>
 				</button>
+				<div id="resultados" style="z-index: 122222;display: none;border-top: 1px solid #e6e6e6;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;">
+					<ul id="cont-resultado">
+						
+					</ul>
+				</div>
 			</form>
 			<a href="https://www.mercadolibre.com.mx/tutoriales" class="exhibitor__picture"><img src="img/mlm-menu-desktop-notification-picture.png" title="Tutoriales"></a>
 		</div>
@@ -79,6 +86,7 @@
 				{!! Html::script('js/operaciones.js') !!}  
 				{!! Html::script('js/script.js') !!}  
 				{!! Html::script('js/ubicacion.js') !!} 
+				{!! Html::script('js/buscador.js') !!} 
 		</div> 
 	</footer>
 </body>

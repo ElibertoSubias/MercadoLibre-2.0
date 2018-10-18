@@ -30,7 +30,7 @@ $('#crearCuenta').click(function(){
   var apellido = $("#inputApellido").val();
   var email = $("#inputEmail").val();
   var clave = $("#inputClave").val();
-  var route = "/MercadoLibre-2.0/public/usuario";
+  var route = "/MercadoLibre-2.0/public/aggcuentapersonal";
   var token = $("#token").val();
   var bandera="0";
   if(nombre === "")
@@ -77,6 +77,67 @@ $('#crearCuenta').click(function(){
         }).done(function(data) {  
           if (data.res!=1 && data.res!=0){
             $( "#frmInsertarUsuario" ).submit();
+          }else if(data.res==1){  
+            $("#lblCorreoExistente").empty();
+            $("#lblCorreoExistente").append(data.email);
+            $("#idExistente").modal();
+          }
+        });
+    }
+});
+
+$('#crearCuentaEmpresarial').click(function(){
+  var rfc = $("#inputNombre").val();
+  var razonSocial = $("#inputApellido").val();
+  var email = $("#inputEmail").val();
+  var clave = $("#inputClave").val();
+  var route = "/MercadoLibre-2.0/public/aggcuentaempresarial";
+  var token = $("#token").val();
+  var bandera="0";
+  if(rfc === "")
+    {
+      bandera="1"; 
+        $('#alertMsjinputNombre').css({"visibility":"visible"}); 
+        $('#inputNombre').css({"border-color":"#ff5a5f"});  
+    }else{ 
+      $('#alertMsjinputNombre').css({"visibility":"hidden"}); 
+    }
+    if(razonSocial === "")
+    {  
+        bandera="1";  
+        $('#alertMsjinputApellido').css({"visibility":"visible"});   
+        $('#inputApellido').css({"border-color":"#ff5a5f"}); 
+    }else{ 
+      $('#alertMsjinputApellido').css({"visibility":"hidden"});  
+    }
+    if(email === "")
+    { 
+        bandera="1";   
+        $('#alertMsjinputEmail').css({"visibility":"visible"});  
+        $('#inputEmail').css({"border-color":"#ff5a5f"}); 
+    }else{ 
+      $('#alertMsjinputEmail').css({"visibility":"hidden"}); 
+    }
+    if(clave === "")
+    {   
+        bandera="1";  
+        $('#alertMsjinputClave').css({"visibility":"visible"});  
+        $('#inputClave').css({"border-color":"#ff5a5f"}); 
+    }
+    else{ 
+      $('#alertMsjinputClave').css({"visibility":"hidden"}); 
+    }
+    if (bandera==="0") { 
+      //verificarCorreo()
+      $.ajax({
+        url: route,
+        headers: {'X-CSRF-TOKEN': token},
+        type: 'POST',
+        dataType: 'json',
+        data: {rfc: rfc, razonSocial: razonSocial, email: email, clave: clave} 
+        }).done(function(data) {  
+          if (data.res!=1 && data.res!=0){
+            $( "#frmInsertarEmpresa" ).submit();
           }else if(data.res==1){  
             $("#lblCorreoExistente").empty();
             $("#lblCorreoExistente").append(data.email);

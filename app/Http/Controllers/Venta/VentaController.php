@@ -43,7 +43,9 @@ class VentaController extends Controller
         session_start();
         unset($_SESSION['idPublicacion']);
         $user = Auth::user();
-        $id = Auth::id();   
+        $id = Auth::id();    
+        $urlPrincipal = Urlimagenes::where('idPublicacion', '=', $request->idPublicacion)->first(); 
+
         $Articulos = new Articulos;
         $Articulos->idUser = $id; 
         $Articulos->titulo = $request->titulo;
@@ -72,6 +74,7 @@ class VentaController extends Controller
         $Articulos->transmicion = $request->transmicion;
         $Articulos->version = $request->version;
         $Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
+        $Articulos->urlPrincipal = $urlPrincipal->url;
         $Articulos->save();
         return Redirect::route('estado',['idPublicacion' => $request->idPublicacion]);
     }
@@ -95,7 +98,7 @@ class VentaController extends Controller
             $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first(); 
             return view('vender.verPublicacion')->with('datos',$datos)->with('imagen',$imagen);
         }else{
-            return view('usuario.menu.adminPublicaciones');
+            return view('dashboard');
         }
         
     }

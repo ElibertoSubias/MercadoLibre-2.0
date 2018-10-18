@@ -21,8 +21,8 @@ class PerfilController extends Controller
      */
     public function index()
     {
-      	$usuario=User::find( auth()->user()->id );
-        return view('perfil.create',compact('usuario') );
+      	$usuario=User::find( auth()->user()->id);
+        return view('perfil.create',compact('usuario'));
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('layouts.masterAutenticado')
+@extends('layouts.master')
 
 @section('content')
 	<div id="inicio" class="carousel_cell">

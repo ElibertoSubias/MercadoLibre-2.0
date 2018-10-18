@@ -1,9 +1,10 @@
 <?php
-
 namespace App\Http\Controllers\Usuario;
+use App\Articulos;
 
 use App\Http\Controllers\Controller;
 
+use Auth;
 use Illuminate\Http\Request;
 
 class MenuUsuarioController extends Controller {
@@ -23,9 +24,10 @@ class MenuUsuarioController extends Controller {
 	public function create(Request $request) {
 		//
 	}
-
 	public function showAllPublicaciones() {
-		return view('usuario.menu.adminPublicaciones');
+		$articulos = Articulos::where('idUser', '=', auth()->user()->id)->get();
+
+		return view('usuario.menu.adminPublicaciones', compact('articulos'));
 	}
 
 	/**
@@ -37,7 +39,6 @@ class MenuUsuarioController extends Controller {
 	public function store(Request $request) {
 		//
 	}
-
 	/**
 	 * Display the specified resource.
 	 *
@@ -47,7 +48,6 @@ class MenuUsuarioController extends Controller {
 	public function show($id) {
 		//
 	}
-
 	/**
 	 * Show the form for editing the specified resource.
 	 *
@@ -57,7 +57,6 @@ class MenuUsuarioController extends Controller {
 	public function edit($id) {
 		//
 	}
-
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -68,7 +67,6 @@ class MenuUsuarioController extends Controller {
 	public function update(Request $request, $id) {
 		//
 	}
-
 	/**
 	 * Remove the specified resource from storage.
 	 *

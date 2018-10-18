@@ -23,7 +23,7 @@
 					{!!link_to('#', $title='Continuar', $attributes = ['id'=>'continuar','class'=>'col-md-12 btn btn-primary btn-lg','name'=>'continuar','style'=>'outline: 0px;background: #3483fa;border-color: #3483fa;'], $secure = null)!!}
 			</div>
 			<div class="col-md-12" style="margin-top: 20px;width: 100%;">
-					<a href="{{route('crearcuenta')}}" class="btn btn-default" style="background:none;border:none;text-decoration: none;color: #3483fa;">Crear Cuenta</a>
+					<a href="{{route('crearcuentapersonal')}}" class="btn btn-default" style="background:none;border:none;text-decoration: none;color: #3483fa;">Crear Cuenta</a>
 			</div>
 		{!! Form::close() !!}
 	</div>

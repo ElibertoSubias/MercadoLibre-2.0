@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Usuario;
-
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
  
 use App\Http\Controllers\Controller; 
@@ -11,7 +9,6 @@ use Auth;
 use Redirect;
 use App\Articulos;
 use App\Urlimagenes;
-
 class MenuUsuarioController extends Controller
 {
     /**
@@ -32,12 +29,13 @@ class MenuUsuarioController extends Controller
     {
         //
     } 
-
     public function showAllPublicaciones()
     {
-        return view('usuario.menu.adminPublicaciones');
+        $articulos = Articulos::where('idUser','=',auth()->user()->id)->get();
+          
+        return view('usuario.menu.adminPublicaciones',compact('articulos') );
     }
-
+   
     /**
      * Store a newly created resource in storage.
      *
@@ -48,7 +46,6 @@ class MenuUsuarioController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -59,7 +56,6 @@ class MenuUsuarioController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -70,7 +66,6 @@ class MenuUsuarioController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -82,7 +77,6 @@ class MenuUsuarioController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
