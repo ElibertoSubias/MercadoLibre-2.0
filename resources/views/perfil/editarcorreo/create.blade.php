@@ -42,7 +42,6 @@ function btncambiarCorreo(){
 
 
     if (bandera==="0") { 
-    	alert("pp");
        $.ajax({
          url: route,
          headers: {'X-CSRF-TOKEN': token},
@@ -77,8 +76,8 @@ function btncambiarCorreo(){
 					<tr>
 						<td colspan="2" style="width: 20%">E-mail nuevo</td>
 						<td style="width: 30%"><input type="email" name="email" id="email" style=" width:100%; height:30px; border: 1px solid rgb(205, 205, 205)    ;border-radius: 4px 4px 4px 4px;"></td>
-						<td><div id="alertMsjinputCorreo" style="visibility: hidden;"><input type="" value="Completa este dato."   style="width: 130px ;margin-right: 10px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px"> </div>
-							<div id="alertMsjinputCorreoEnUso" style="visibility: hidden;><input  value="El correo ya esta en uso"  style="width: 160px ;margin-right: 10px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px"></div></td>
+						<td style="width: 20%">  <input type="" id="alertMsjinputCorreo" value="Completa este dato."  style="width: 130px ;margin-right: 10px; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px; visibility: hidden">  </td>
+						<td style="width: 0%">	<input type="" id="alertMsjinputCorreoEnUso"  value="El correo ya esta en uso"  style="width: 150px ; background-color: #F5B7B1;border: 0.5px solid #CD6155 ; border-radius: 4px; color: #C0392B; padding: 3px; visibility: hidden;margin-left: -233px ;"></td>
 					</tr>
 					<tr>
 						<td colspan="2" style="width: 20%; margin-top: 15px">Repetir e-mail nuevo</td>
@@ -119,3 +118,4 @@ function btncambiarCorreo(){
 
 
 @stop
+
