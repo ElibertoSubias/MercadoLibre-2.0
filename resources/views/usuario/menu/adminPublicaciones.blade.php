@@ -31,33 +31,19 @@
     margin: 5px 0px;
     outline: rgb(71, 98, 116) none 0px;
     padding: 5px 8px;
-}/*#A_1*/
-<<<<<<< HEAD
-=======
-
->>>>>>> f6491eba1d7f961859a3ab449894fb4232dba7d1
+}/*#A_1*/ 
 .price, .price.light {
     font-size: 13px;
     color: #900;
     font-weight: 700;
     margin-right: 5px;
-}
-<<<<<<< HEAD
-=======
-
->>>>>>> f6491eba1d7f961859a3ab449894fb4232dba7d1
+} 
 .mfOrders {
     padding: 8px ;
     height: 40px;
     border-top: 1px solid #e9e9e9;
     background-color: #f7f7f7;
-}
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> f6491eba1d7f961859a3ab449894fb4232dba7d1
+}  
 </style>
 <div class="col-md-12" style="padding: 0px;    background: white;"> 
     <div class="col-md-2" style="padding: 0px;">
