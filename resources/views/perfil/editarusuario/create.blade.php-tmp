@@ -1,8 +1,8 @@
 @extends('layouts.masterRegistro')
 
 
-@section('content') 
-{!! Html::style('css/styleEditar.css') !!} 
+@section('content')
+{!! Html::style('css/styleEditar.css') !!}
 {!! Html::style('css/app.css') !!}
 {!! Html::script('js/validaciones.js') !!}
 
@@ -11,50 +11,50 @@
 
 
 function cambiarUs(){
-	$('#alertMsjinputaliasYaExiste').css({"visibility":"hidden"}); 
+	$('#alertMsjinputaliasYaExiste').css({"visibility":"hidden"});
   var id = $("#id").val();
   var alias = $("#alias").val();
   var route = "/MercadoLibre-2.0/public/cambiarusuario";
   var token = $("#token").val();
   var bandera="0";
     if(alias === "")
-    {   
-        bandera="1";  
-        $('#alertMsjinputalias').css({"visibility":"visible"});  
-        $('#alias').css({"border-color":"#ff5a5f"}); 
+    {
+        bandera="1";
+        $('#alertMsjinputalias').css({"visibility":"visible"});
+        $('#alias').css({"border-color":"#ff5a5f"});
     }
-    else{ 
-      $('#alertMsjinputalias').css({"visibility":"hidden"}); 
+    else{
+      $('#alertMsjinputalias').css({"visibility":"hidden"});
     }
 
-    if (bandera==="0") { 
+    if (bandera==="0") {
       $.ajax({
         url: route,
         headers: {'X-CSRF-TOKEN': token},
         type: 'POST',
         dataType: 'json',
-        data: { alias: alias, id: id} 
-        }).done(function(data) {  
+        data: { alias: alias, id: id}
+        }).done(function(data) {
           if (data.res!=1 && data.res!=0){
-          	$('#alertMsjinputaliasYaExiste').css({"visibility":"hidden"}); 
-             $('#formulario').css({"visibility":"hidden"}); 
-            $('#listo').css({"visibility":"visible"}); 
-          }else if(data.res==1){  
-            $('#alertMsjinputaliasYaExiste').css({"visibility":"visible"}); 
-          
+          	$('#alertMsjinputaliasYaExiste').css({"visibility":"hidden"});
+             $('#formulario').css({"visibility":"hidden"});
+            $('#listo').css({"visibility":"visible"});
+          }else if(data.res==1){
+            $('#alertMsjinputaliasYaExiste').css({"visibility":"visible"});
+
           }
         });
     }
-}	
+}
 
 </script>
 
 
-<div  id="formulario" style="background-color: #f7f7f7;padding: 90px 150px 170px 150px;">	
+<div  id="formulario" style="background-color: #f7f7f7;padding: 90px 150px 170px 150px;">
 <center>
 <div style="background-color: white; width: 60%;padding: 1px 15px 5px; border-radius: 5px;border: 1px solid #DEDEDE;"  >
 <form method="post" action="{{route('cambiarusuario')}}" >
-	<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+	<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 	<input type="hidden" name="id" value="{{ auth()->user()->id }}" id="id">
 	<fieldset >
 		<table   style="width: 100%" align="left">
@@ -80,7 +80,7 @@ function cambiarUs(){
 </center>
 </div>
 
-<div  id="listo" style="background-color: #f7f7f7;padding: 90px 150px 170px 150px; visibility: hidden; margin-top: -400px">	
+<div  id="listo" style="background-color: #f7f7f7;padding: 90px 150px 170px 150px; visibility: hidden; margin-top: -400px">
 <center>
 <div style="background-color: white; width: 60% ; height: 200px;padding: 1px 15px 5px; border-radius: 5px;border: 1px solid #DEDEDE;"  >
 	<fieldset >
