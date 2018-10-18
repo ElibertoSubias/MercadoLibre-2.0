@@ -74,6 +74,7 @@ class VentaController extends Controller
         $Articulos->transmicion = $request->transmicion;
         $Articulos->version = $request->version;
         $Articulos->urlPrincipal = $urlPrincipal->url;
+        $Articulos->estadoPublicacion = 'activa';
         $Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
         $Articulos->urlPrincipal = $urlPrincipal->url;
         $Articulos->save();
