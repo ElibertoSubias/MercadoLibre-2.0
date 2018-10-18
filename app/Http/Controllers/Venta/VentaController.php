@@ -43,7 +43,8 @@ class VentaController extends Controller
         session_start();
         unset($_SESSION['idPublicacion']);
         $user = Auth::user();
-        $id = Auth::id();   
+        $id = Auth::id();
+         $urlPrincipal = Urlimagenes::where('idPublicacion', '=', $request->idPublicacion)->first();  
         $Articulos = new Articulos;
         $Articulos->idUser = $id; 
         $Articulos->titulo = $request->titulo;
@@ -71,6 +72,7 @@ class VentaController extends Controller
         $Articulos->direccionAuto = $request->direccionAuto;
         $Articulos->transmicion = $request->transmicion;
         $Articulos->version = $request->version;
+        $Articulos->urlPrincipal = $urlPrincipal->url;
         $Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
         $Articulos->save();
         return Redirect::route('estado',['idPublicacion' => $request->idPublicacion]);
