@@ -5,46 +5,6 @@
 {!! Html::style('css/menuStyle.css') !!} 
 {!! Html::style('css/publiStyle.css') !!} 
 
-
-
-<style type="text/css">
-    #A_1 {
-    border-collapse: collapse;
-    box-shadow: rgba(71, 98, 116, 0.6) 0px 1px 6px 0px inset;
-    color: rgb(71, 98, 116);
-    display: inline-block;
-    height: 12px;
-    text-align: right;
-    text-decoration: none solid rgb(71, 98, 116);
-    text-shadow: rgba(255, 255, 255, 0.75) 0px 1px 1px;
-    text-size-adjust: 100%;
-    width: 112.063px;
-    column-rule-color: rgb(71, 98, 116);
-    perspective-origin: 65.0313px 12px;
-    transform-origin: 65.0313px 12px;
-    caret-color: rgb(71, 98, 116);
-    background: rgb(122, 182, 220) linear-gradient(rgb(162, 201, 225), rgb(122, 182, 220)) repeat scroll 0% 0% / auto padding-box border-box;
-    border: 1px solid rgb(121, 168, 199);
-    border-radius: 4px 4px 4px 4px;
-    font: normal normal 400 normal 12px / 12px Arial, Helvetica, sans-serif;
-    list-style: none outside none;
-    margin: 5px 0px;
-    outline: rgb(71, 98, 116) none 0px;
-    padding: 5px 8px;
-}/*#A_1*/ 
-.price, .price.light {
-    font-size: 13px;
-    color: #900;
-    font-weight: 700;
-    margin-right: 5px;
-} 
-.mfOrders {
-    padding: 8px ;
-    height: 40px;
-    border-top: 1px solid #e9e9e9;
-    background-color: #f7f7f7;
-}  
-</style>
 <div class="col-md-12" style="padding: 0px;    background: white;"> 
     <div class="col-md-2" style="padding: 0px;">
         <div class="menu-wrapper" style="padding: 0px;">

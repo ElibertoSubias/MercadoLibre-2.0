@@ -4,8 +4,6 @@
 {!! Html::style('css/verStyle.css') !!}
 {!! Html::style('css/menuStyle.css') !!}
 {!! Html::style('css/publiStyle.css') !!}
-{!! Html::style('css/stylePerfil.css') !!}
-    {!! Html::script('js/jquery-3.3.1.min.js') !!}
 
 <script type="text/javascript">
     function openventana()
@@ -161,7 +159,14 @@
             <div class="myml-nav__container">
                 <section class="myml-nav__section myml-nav__section--toggle">
                     <div class="myml-nav__section-heading">
-                        <img src="img/icon_menu.png" alt="" style="width: 25px;height: 25px;margin-left: 15px;margin-right: 15px;">
+                        <span class="myml-nav__section-icon">
+                            <label class="myml-nav__toggle" for="myml-menu-toggle">
+                                <span class="myml-nav__ham--top"></span>
+                                <span class="myml-nav__ham--middle"></span>
+                                <span class="myml-nav__ham--bottom"></span>
+                                <span class="myml-nav__ham--cross"></span>
+                            </label>
+                        </span>
                         <p class="myml-nav__section-title">
                             <span class="myml-nav__user-permalink">Mi cuenta</span>
                             <span class="myml-nav__section-subtitle">¡Hola Eliberto!</span>
@@ -239,7 +244,7 @@
                         </div>
                     </section>
                     <section class="myml-nav__section">
-                        <input class="myml-nav__section-toggle-trigger" type="checkbox" id="myml-menu-section-toggle-my_sales"'="">
+                        <input class="myml-nav__section-toggle-trigger" type="checkbox" id="myml-menu-section-toggle-my_sales" checked="true" '="">
                         <span class="myml-nav__section-heading myml-nav__section-heading--has-items">
                             <label for="myml-menu-toggle" class="myml-nav__section-icon myml-nav__section-icon--my_sales" data-tooltip="Ventas">
                                 <svg viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg">
@@ -250,7 +255,7 @@
                         </span>
 
                         <div class="myml-nav__section-list">
-                            <a id="myml-nav__menu-item-publications" class="myml-nav__menu-item" href="{{route('publicaciones')}}">
+                            <a id="myml-nav__menu-item-publications" class="myml-nav__menu-item  myml-nav__menu-item--active" href="#">
                                 <span class="myml-nav__menu-item-text">Publicaciones</span>
                             </a>
                         </div>
@@ -276,7 +281,7 @@
                         </div>
                     </section>
                     <section class="myml-nav__section ">
-                        <input class="myml-nav__section-toggle-trigger" type="checkbox" id="myml-menu-section-toggle-config" checked="true">
+                        <input class="myml-nav__section-toggle-trigger" type="checkbox" id="myml-menu-section-toggle-config" '="">
                         <span class="myml-nav__section-heading myml-nav__section-heading--has-items">
                             <label for="myml-menu-toggle" class="myml-nav__section-icon myml-nav__section-icon--config" data-tooltip="Configuración">
                                 <svg viewBox="0 0 15 14" xmlns="http://www.w3.org/2000/svg">
@@ -286,7 +291,7 @@
                             <label for="myml-menu-section-toggle-config" class="myml-nav__section-title">Configuración</label>
                         </span>
                         <div class="myml-nav__section-list">
-                            <a id="myml-nav__menu-item-my_details" class="myml-nav__menu-item myml-nav__menu-item--active" href="{{route('perfil')}}">
+                            <a id="myml-nav__menu-item-my_details" class="myml-nav__menu-item " href="#">
                                 <span class="myml-nav__menu-item-text">Mis datos</span>
                             </a>
                         </div>
@@ -328,49 +333,46 @@
         <div class="col-md-12" style="padding-left: 55px;">
             <form>
 
-                <div>
+                <div><p class="h2">Mis datos</p>
                     <p class="H3_1">Datos de la cuenta <a href="" style="padding-left: 270px; font-size: 12px">Necesito ayuda</a> </p>
                 </div>
              <table>
                 <tr>
                     <td>Usuario</td>
-                    <td style="text-align: left;margin-left: 20px;">{{ auth()->user()->alias }}</td>
-                    <td style="text-align: left;margin-left: 20px;"><a href="editarusuario"> Modificar</a> </td>
+                    <td>{{ auth()->user()->alias }}</td>
+                    <td><a href="editarusuario"> Modificar</a> </td>
                 </tr>
                 <tr>
                     <td>E-mail</td>
-                    <td style="text-align: left;margin-left: 20px;">{{ auth()->user()->email }}</td>
-                    <td style="text-align: left;margin-left: 20px;"><a href="editarcorreo"> Modificar</a> </td>
+                    <td>{{ auth()->user()->email }}</td>
+                    <td><a href="editarcorreo"> Modificar</a> </td>
                 </tr>
                 <tr>
                     <td>Clave</td>
-                    <td style="text-align: left;margin-left: 20px;">********</td>
-                    <td style="text-align: left;margin-left: 20px;"><a href=editarpassword> Modificar</a> </td>
+                    <td>********</td>
+                    <td><a href=editarpassword> Modificar</a> </td>
                 </tr>
              </table>
              <p class="H3_1">Datos personales <a href="#" style="padding-left: 270px; font-size: 12px">Necesito ayuda</a> </p>
 
-             <table class="nombre-user">
+             <table >
                 <tr>
-                    <td >Nombre y apellido</td>
-                    <td style="padding-left: 20px;text-align: left;">{{ auth()->user()->nombre }} {{$usuario->apellido}}</td>
+                    <td>Nombre y apellido</td>
+                    <td>{{ auth()->user()->nombre }} {{$usuario->apellido}}</td>
                     <td><a href="javascript:openventana()"> Modificar</a> </td>
                 </tr>
                 <tr>
-                    <td >documentos</td>
-                    <td style="padding-left: 20px;text-align: left;"><?php if ($usuario->documento == "_") {} else {echo $usuario->documento;}?></td>
+                    <td>documentos</td>
+                    <td><?php if ($usuario->documento == "_") {} else {echo $usuario->documento;}?></td>
                     <td><a href="javascript:openventana2()"> Agregar</a> </td>
                 </tr>
                 <tr>
-                    <td >Telefono</td>
+                    <td>Telefono</td>
                     <td style="width: 200px">
-                        <label id="lblTel">
-<?php if ($usuario->telefono == "_") {} else {echo $usuario->telefono;}?>
-</label>
-                        <label style="margin-left: 2px; margin-right: 100px; font-size: 12px; text-align: right;" id="tel">
-<?php if ($usuario->telefono2 == "_") {} else {echo "/".$usuario->telefono2;}?></label>
+                        <label id="lblTel"><?php if ($usuario->telefono == "_") {} else {echo $usuario->telefono;}?></label>
+                        <label style="margin-left: 2px; margin-right: 100px; font-size: 12px; text-align: right;" id="tel"><?php if ($usuario->telefono2 == "_") {} else {echo "/".$usuario->telefono2;}?></label>
                     </td>
-                    <td><a href="javascript:openventana3()"> Agregar</a> </td>
+                <td><a href="javascript:openventana3()"> Agregar</a> </td>
 
                 </tr>
              </table>
