@@ -420,7 +420,8 @@
                 <tr>
                     
                     <td style="width: 40%; margin-top: 9px">
-                    <a href="javascript:btnCambiarnombreAP()" class="boton-azul" style="padding-left: 9PX">Actualizar</a> <a href="{{route('perfil')}}" style="padding-left: 9PX">Cancelar</a></td>
+                    <a href="javascript:btnCambiarnombreAP()" class="boton-azul" style="padding-left: 9PX">Actualizar</a> 
+                    <a href="{{route('perfil')}}" style="padding-left: 9PX; color: blue">Cancelar</a></td>
                     
             </tr>
             </table>
@@ -450,7 +451,7 @@
                 </div>
                 <div style="margin-top: 15px; width: 100%">
                     <a href="javascript:guardarDocumento()" name="Cambiar" class="boton-azul" style="margin-top: 1px" >Guardar</a>
-                    <a href="javascript:closeventana()">Cancelar</a>
+                    <a href="javascript:closeventana()" style="color: blue">Cancelar</a>
                 </div>
     </form>
     </div>
@@ -484,7 +485,7 @@
                 </div>
                 <div style="margin-top: 15px; margin-left: 50px width: 65%" id="GuardarTel">
                      <a href="javascript:agregarTel()" class="boton-azul" style="height: 35px"  >Guardar</a>
-                    <a href="javascript:closeventana()">Cancelar</a>
+                    <a href="javascript:closeventana()" style="color: blue">Cancelar</a>
                 </div>  
     </form>
     </div>

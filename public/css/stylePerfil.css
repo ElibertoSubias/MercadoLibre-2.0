@@ -9,8 +9,13 @@
      height: 100%
 	}
 
+.ventana {
+    z-index: 10000 !important;
+}
    
-
+.ventana a {
+    color: #fff;
+}
     .padre{  /*padre*/
     overflow: hidden;
     width: 100%; 
@@ -63,6 +68,7 @@
 
     .boton-azul {
     border-collapse: collapse;
+    color: white;
     box-shadow: rgb(142, 162, 223) 0px 1px 0px 0px inset;
     color: rgb(255, 255, 255);
     cursor: pointer;
