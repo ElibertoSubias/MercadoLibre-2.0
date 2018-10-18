@@ -69,7 +69,7 @@
 				</div> 
 		</section>
 		<section class="metodo_pago">
-			<h1>Metodos de Pago</h1>
+			<h1>Metodos de Pago de MercaPago</h1>
 		</section>
 	</div> 
 @stop
