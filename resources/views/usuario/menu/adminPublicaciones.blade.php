@@ -32,18 +32,32 @@
     outline: rgb(71, 98, 116) none 0px;
     padding: 5px 8px;
 }/*#A_1*/
+<<<<<<< HEAD
+=======
+
+>>>>>>> f6491eba1d7f961859a3ab449894fb4232dba7d1
 .price, .price.light {
     font-size: 13px;
     color: #900;
     font-weight: 700;
     margin-right: 5px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f6491eba1d7f961859a3ab449894fb4232dba7d1
 .mfOrders {
     padding: 8px ;
     height: 40px;
     border-top: 1px solid #e9e9e9;
     background-color: #f7f7f7;
 }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> f6491eba1d7f961859a3ab449894fb4232dba7d1
 </style>
 <div class="col-md-12" style="padding: 0px;    background: white;"> 
     <div class="col-md-2" style="padding: 0px;">
@@ -240,11 +254,11 @@
         <button style="border-radius: 5px; background-color: #cce3f7; color:#566573 ; margin-left: 10px; border:1px solid #79a8c7">Buscar</button>
         <label style="margin: 10px">Filtros:</label>
         <a href="">Ninguno</a>
-    </div>
+    </div> 
         <table border="all" style="width: 100%">
            
             <thead class="mfOrders" style="height: 50px; padding: 12px">
-              <tr>
+              <tr> 
                 <th style="height: 30px; padding-left: 10px" ><input type="checkbox" name="todo"></th>
                 <th></th>
                 <th></th>
@@ -276,7 +290,7 @@
               </tr>
               @endforeach
             </tbody>
-        </table>
+        </table> 
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">...</div>
     <div role="tabpanel" class="tab-pane" id="messages">...</div>

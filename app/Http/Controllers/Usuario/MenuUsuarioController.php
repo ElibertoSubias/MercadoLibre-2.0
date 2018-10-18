@@ -32,7 +32,6 @@ class MenuUsuarioController extends Controller
     public function showAllPublicaciones()
     {
         $articulos = Articulos::where('idUser','=',auth()->user()->id)->get();
-          
         return view('usuario.menu.adminPublicaciones',compact('articulos') );
     }
    
