@@ -145,7 +145,7 @@
                             <label for="myml-menu-section-toggle-config" class="myml-nav__section-title">Configuración</label>
                         </span>
                         <div class="myml-nav__section-list">
-                            <a id="myml-nav__menu-item-my_details" class="myml-nav__menu-item " href="#">
+                            <a id="myml-nav__menu-item-my_details" class="myml-nav__menu-item " href="{{ route('perfil') }}">
                                 <span class="myml-nav__menu-item-text">Mis datos</span>
                             </a>
                         </div>

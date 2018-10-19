@@ -89,7 +89,7 @@ height: 35px;
 										<p class="user-menu__user-badge-email">Nivel 1 - Inicial</p>
 										<p class="user-menu__loyalty-goal">Te faltan 12 puntos para ser Aficionado</p>
 									</div>
-									<a href="" class="btn btn-primary btn-md btn-block" data-id="my-account" rel="nofollow">Mi cuenta</a>
+									<a style="color:white;" href="" class="btn btn-primary btn-md btn-block" data-id="my-account" rel="nofollow">Mi cuenta</a>
 								</div>
 							</div>
 							<div id="info_menu" style="float: right;margin-right: 100px;">
