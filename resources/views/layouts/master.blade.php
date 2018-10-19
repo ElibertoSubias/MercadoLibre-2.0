@@ -25,13 +25,13 @@
 						<img src="../public/img/icon_buscar.png" alt="" style="width: 50%;height: 80%;">
 						<span class="buscar-icono">Buscar</span>
 					</i>
-				</button>
-				<div id="resultados" style="z-index: 122222;display: none;border-top: 1px solid #e6e6e6;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;">
+				</button> 
+			</form>
+			<div id="resultados" style="z-index: 122222;display: none;border-top: 1px solid #e6e6e6;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;">
 					<ul id="cont-resultado">
 						
 					</ul>
-				</div>
-			</form>
+				</div> 
 			<a href="" class="exhibitor__picture"><img src="img/mlm-menu-desktop-notification-picture.png" title="Tutoriales"></a>
 		</div>
 		<div class="nav-menu">

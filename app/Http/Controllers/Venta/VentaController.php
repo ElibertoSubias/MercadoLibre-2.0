@@ -64,8 +64,7 @@ class VentaController extends Controller
         $Articulos->numPuertas = $request->numPuertas;
         $Articulos->kilometros = $request->kilometros;
         $Articulos->idPublicacion = $request->idPublicacion;
-        $Articulos->descripcion = $request->descripcion;
-        $Articulos->estado = 1;
+        $Articulos->descripcion = $request->descripcion; 
         $Articulos->horarioContacto =$request->horarioContacto;
         $Articulos->color = $request->color;
         $Articulos->tipoCombustible = $request->tipoCombustible;
@@ -74,7 +73,7 @@ class VentaController extends Controller
         $Articulos->transmicion = $request->transmicion;
         $Articulos->version = $request->version;
         $Articulos->urlPrincipal = $urlPrincipal->url;
-        $Articulos->estadoPublicacion = 'activa';
+        $Articulos->estadoPublicacion = 1;
         $Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
         $Articulos->urlPrincipal = $urlPrincipal->url;
         $Articulos->save();

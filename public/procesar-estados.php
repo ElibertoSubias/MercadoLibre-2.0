@@ -11,7 +11,7 @@ Luis Potosí","Sinaloa","Sonora","Tabasco","Tamaulipas","Tlaxcala","Veracruz","Y
      
     
     foreach($countryArr[$country] as $value){
-        echo "<option>". $value . "</option>";
+        echo "<option value='".$value."'>". $value . "</option>";
     }
 }
 

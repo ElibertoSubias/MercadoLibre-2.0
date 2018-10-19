@@ -11,12 +11,20 @@ class BuscarController extends Controller {
 			$datos = Articulos::where('titulo', 'like', '%'.$request->consulta.'%')->get();
 			$aux   = "";
 			foreach ($datos as $key => $value) {
-				$aux = $aux."<li><a href='resultados?busqueda=".$value->categoria."'>".$value->titulo."</a></li>";
+				$aux = $aux."<li><a href='resultados?busqueda=".$request->consulta."&categoria=".$value->categoria."'>".$value->titulo."</a></li>";
 			}
 			return $aux;
 		}
 	}
 	public function listarResultados(Request $request) {
-		return view('listarResultados')->with('busqueda', $request->busqueda);
+		try {
+			$datos = Articulos::where('titulo', 'like', '%'.$request->busqueda.'%')->get();
+			return view('listarResultados')->with('datos', $datos);
+
+		} catch (Exception $e) {
+			return "Error en la consulta de productos";
+		}
+		//return $request->busqueda;
+
 	}
 }

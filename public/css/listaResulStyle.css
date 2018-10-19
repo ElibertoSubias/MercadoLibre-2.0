@@ -10,6 +10,9 @@
     padding-right: 120px;
     color: black;
 }
+.item__info {
+    text-align: left;
+}
 h2{
     color: #666;
     position: static;
@@ -85,10 +88,7 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
 .search-results .results-item * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-}
-.item__price-discount{
-    margin-left: -60px !important;
-}
+} 
 .layout-base .search-results.grid.search-results-mot, .layout-deal .search-results.grid.search-results-mot, .layout-officialStore .search-results.grid.search-results-mot {
     min-height: 384px;
 }

@@ -704,9 +704,9 @@ ul {
 #resultados {
     display:none;
     background: #fff;
-    width: 45.9%;
+    width: 50.9%;
     height:auto; 
-    position: fixed;
+    position: absolute;
     display: flex;
     margin-left: 150px;
     margin-top: 26px;
