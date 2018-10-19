@@ -30,7 +30,7 @@
 						<div class="col-md-6" style="height: 30px;">
 							{!!Form::password('password',['class'=>'form-control','id'=>'inputClave'])!!}
 							{!!Form::label('Clave', null, array('id' => 'lblMsjinputClave'))!!}
-							<div id="alertMsjinputClave" class="ch-validation-message ui-form__message">Completa este dato.</div>
+							<div id="alertMsjinputClave" class="ch-validation-message ui-form__message"></div>
 						</div>
 					</div>
 			</div>

@@ -61,7 +61,7 @@
                                             <ul class="ch-carousel-list" role="list"> 
                                                 <li class="ch-carousel-item" role="listitem" aria-hidden="false" aria-setsize="13" aria-posinset="1" aria-label="page1" style="width: 284px;  margin-right: 0px;"> 
                                                     <a href="{{route('verpublicacion', ['id' => $articulo->_id])}}" class="item-link item__js-link"> 
-                                                        <img width="284" height="284" alt="Bmw Z4 Convertible Mt 2003 Autos Puebla" src="/MercadoLibre-2.0/public/images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}}" class="lazy-load"> 
+                                                        <img width="284" height="284" alt="Bmw Z4 Convertible Mt 2003 Autos Puebla" src="/MercadoLibre-2.0/public/images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}}" class="lazy-load" srcset="/MercadoLibre-2.0/public/images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}} 1x, /MercadoLibre-2.0/public/images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}} 2x"> 
                                                     </a> 
                                                 </li> 
                                             </ul>
