@@ -70,6 +70,7 @@
 		</section>
 		<section class="metodo_pago">
 			<h1>Metodos de Pago</h1>
+            <h2>hi</h2>
 		</section>
 	</div>  
 @stop
