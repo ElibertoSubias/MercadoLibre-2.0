@@ -1,0 +1,312 @@
+.breadcrumb {
+    padding-top: 7px; 
+    margin:0px;
+}
+blockquote, figure, h1, h2, h3, h4, ol, p, ul {
+    margin: 0;
+    padding: 0;
+}
+.breadcrumb h1{
+    text-transform: capitalize;
+    margin-bottom: 0px !important;
+}
+.breadcrumb__title {
+    color: #333;
+    display: block;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 30px;
+    margin: 16px 16px 8px 0;
+    position: relative;
+    word-wrap: break-word;
+    z-index: 1;
+} 
+menu, ol, ul {
+    list-style: none;
+}
+.breadcrumb__path {
+    display: inline;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0 0 2px;
+    line-height: 1.45;
+}
+
+li, main {
+    display: block;
+}
+.breadcrumb__path a {
+    color: #666;
+}
+.breadcrumb-chevron {
+    display: inline-block;
+    color: #666;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.quantity-results {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    margin-bottom: 14px;
+}
+.quantity-results {
+    color: #333;
+    font-size: 14px;
+    line-height: 1.29;
+    font-weight: 300;
+}
+.view-options {
+    display: inline-block;
+    width: 100%;
+    padding-right: 15px;
+    margin-bottom: 24px;
+    margin-top: 44px;
+    position: relative;
+}
+.view-options dt {
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 0 12px;
+    color: #333;
+}
+.sort-by {
+    float: left;
+    padding-bottom: 8px;
+    position: relative;
+} 
+.ui-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-trigger, .sort-by-options-trigger {
+    display: none;
+}
+.sort-by .ui-dropdown__link {
+    color: #666;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    width: 113px;
+} 
+.ui-dropdown__link {
+    padding: 0;
+} 
+.ui-dropdown__link, .ui-dropdown__link:link {
+    color: inherit;
+} 
+.ui-dropdown__link {
+    font-size: 18px;
+    font-weight: inherit;
+}
+.sort-by .ui-dropdown__indicator {
+    display: inline-block;
+    height: 12px;
+    position: absolute;
+    right: -2px;
+    top: 2px;
+} 
+.ui-dropdown__indicator {
+    display: inline-block;
+    margin-left: 8px;
+}
+.ui-dropdown__indicator {
+    width: 16px;
+    height: 16px;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    color: #3483fa;
+    -webkit-transition: -webkit-transform .3s ease-out;
+    transition: transform .3s ease-out;
+}
+.sort-by .ui-dropdown__indicator:after {
+    position: relative;
+    top: 0;
+    left: 4px;
+    font-size: 12px;
+}
+.ui-dropdown__indicator:after {
+    content: '\e904';
+    font-family: search-icons;
+    position: relative;
+} 
+.ui-dropdown__content {
+    top: 32px;
+    left: 0;
+    max-height: 0;
+    max-width: 0;
+    overflow: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+} 
+.ui-dropdown__content {
+    min-width: 264px;
+    position: absolute;
+    z-index: 10;
+    background-color: #fff;
+    margin: auto;
+    display: inline-block;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+    right: 0;
+}
+.sort-by .ui-list {
+    width: 134px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+.ui-list {
+    position: relative;
+    width: 100%;
+    background: #fff;
+}
+.ui-list__content {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+blockquote, figure, h1, h2, h3, h4, ol, p, ul {
+    margin: 0;
+    padding: 0;
+}
+menu, ol, ul {
+    list-style: none;
+}
+.ui-list__item:first-child {
+    border-top: 0;
+}
+.ui-list__item--selected {
+    position: relative;
+}
+.ui-list__item {
+    border-top: 1px solid #d8d8d8;
+}
+.ui-list__header, .ui-list__item {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+}
+.sort-by .ui-list__item--selected .ui-list__item-option {
+    cursor: default;
+}
+.sort-by .ui-list__item-option {
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #333;
+}
+.ui-list__item-option {
+    padding: 30px;
+}
+.ui-list__item-option {
+    font-size: 18px;
+    padding: 18px 15px;
+    display: block;
+    cursor: pointer;
+    margin: 0;
+    border: 0;
+    width: 100%;
+    text-align: left;
+    background: 0 0;
+    color: #333;
+    font-weight: 300;
+    line-height: 1.25;
+}
+.ui-list__item {
+    border-top: 1px solid #d8d8d8;
+}
+.ui-list__header, .ui-list__item {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+}
+.sort-by .ui-list__item a {
+    text-decoration: none;
+}
+.sort-by .ui-list__item-option {
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #333;
+}
+.ui-list__item:last-child {
+    border-bottom: 1px solid #d8d8d8;
+}
+.ui-list__item {
+    border-top: 1px solid #d8d8d8;
+}
+.ui-list__header, .ui-list__item {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+}
+.sort-by .ui-list__item a {
+    text-decoration: none;
+}
+.sort-by .ui-list__item-option {
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #333;
+}
+.dropdown-trigger:checked~.ui-dropdown__content {
+    max-height: 125px;
+    max-width: 134px;
+    min-width: 134px;
+}
+.dropdown-trigger:checked~.ui-dropdown__content {
+    display: block!important;
+}
+.sort-by .ui-dropdown__content {
+    left: -20px;
+    top: 24px;
+}
+@media (min-width: 768px)
+.ui-dropdown__content {
+    top: 32px;
+    left: 0;
+    max-height: 0;
+    max-width: 0;
+    overflow: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+} 
+.ui-dropdown__content {
+    min-width: 264px;
+    position: absolute;
+    z-index: 10;
+    background-color: #fff;
+    margin: auto;
+    display: inline-block;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+    right: 0;
+}
+.sort-by .ui-list {
+    width: 134px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+        -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+}
+.ui-list {
+    position: relative;
+    width: 100%;
+    background: #fff;
+}
+.ui-list__content {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
