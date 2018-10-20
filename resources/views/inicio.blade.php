@@ -69,7 +69,9 @@
 				</div> 
 		</section>
 		<section class="metodo_pago">
+			<h3>Esto es nuevo</h3>
 			<h1>Metodos de Pago</h1>
+            <h2>hi</h2>
 		</section>
 	</div>  
 @stop

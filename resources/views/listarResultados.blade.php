@@ -103,6 +103,17 @@
                 </ul> 
             </dl>
         </section>
+        <section class="filters__groups">
+            <dl class="filters__group filters__official_store " id="id_official_store" role="listbox"> 
+                <dt class="dt-title" role="presentation">Tiendas oficiales</dt> 
+                <dd class="filters__group__option" role="option"> 
+                    <a class="qcat-truncate " style="max-width:137px;" title="Solo tiendas oficiales" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/asador_DisplayType_G_Tienda_all" rel="nofollow"> 
+                        <span class="filter-name">Solo tiendas oficiales</span> 
+                        <span class="filter-results-qty">(483)</span> 
+                    </a> 
+                </dd>
+            </dl>
+        </section>
     </div>
     <div style="width: 80%;margin-left: 25%;">
     	<!-- Div para mostrar Modelos o tipos de subcategorias -->	
