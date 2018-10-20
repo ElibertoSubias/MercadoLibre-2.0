@@ -71,3 +71,121 @@ h2.typo {
 .nombre-user td {
     display: table-cell !important;
 }
+.mymlDropdownMassiveActions { 
+    left: 31px;
+    top: 4px;
+    display: inline;
+}
+.ch-dropdown-trigger.ch-dropdown-ico {
+    padding-right: 2em;
+}
+.itemsSecondaryActionsContainer {
+    padding: 5px 19px 3px 8px!important;
+    height: 14px;
+    margin: 0;
+}
+.ch-dropdown-trigger {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+.ch-btn-small, .ch-btn-small:focus {
+    font-size: 12px;
+    line-height: 1em;
+    padding: 5px 8px;
+}
+.ch-btn-skin, .ch-btn-skin:focus, .ch-btn-skin:visited {
+    background-color: #cce3f7;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#cce3f7),color-stop(100%,#aad0ef));
+    background-image: -webkit-linear-gradient(#cce3f7,#aad0ef);
+    background-image: -moz-linear-gradient(#cce3f7,#aad0ef);
+    background-image: -o-linear-gradient(#cce3f7,#aad0ef);
+    background-image: linear-gradient(#cce3f7,#aad0ef);
+    border: 1px solid #79a8c7;
+    -webkit-box-shadow: inset 0 1px #e5f2fc;
+    box-shadow: inset 0 1px #e5f2fc;
+    color: #476274;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+}
+[class*="ch-btn"], [class*="ch-btn"]:focus {
+    font-family: Arial,Helvetica,"Nimbus Sans L",sans-serif;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial,Helvetica,sans-serif;
+    height: auto;
+    text-decoration: none;
+    font-size: 18px;
+}
+.ch-user-no-select {
+    -o-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.ico.itemsSecondaryActionsIcn {
+    position: relative;
+    display: block;
+}
+.ico.itemsSecondaryActionsIcn .ch-icon-cog {
+    margin-top: 3px;
+}
+.lt-ie8 [class*='ch-icon-'], [class*='ch-icon-']:before, .ch-box-attention:before, .ch-box-help:before, .ch-box-information:before, .ch-box-error:before, .ch-box-ok:before, .ch-list-options li a:after, .ch-tag:after {
+    font-family: icons;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    vertical-align: middle;
+    margin-right: .2em;
+    line-height: 1em;
+    font-size: 1.429em;
+}
+.ch-dropdown .ch-dropdown-content.ch-points-ltlb {
+    -webkit-border-radius: 0 5px 5px 5px;
+    border-radius: 0 5px 5px 5px;
+}
+.massive .ch-dropdown-content {
+    left: 0;
+}
+.itemsSecondaryActions .ch-dropdown-content, .massive .ch-dropdown-content, .opFilters.secondary .ch-dropdown-content, .opFiltersMenvios .ch-dropdown-content, .orderDrop.secondary .ch-dropdown-content {
+    border: 1px solid #79a8c7;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.ch-hide {
+    display: none!important;
+}
+.ch-dropdown-content {
+    background-color: #fff;
+    min-width: 120px;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+    -webkit-box-shadow: 2px 2px 2px rgba(100,100,100,.1);
+    box-shadow: 2px 2px 2px rgba(100,100,100,.1);
+    border: 1px solid #c8c8c8;
+    border-radius: 0 5px 5px 5px;
+}
+.ch-hide {
+    display: none;
+}
+ol, ul, menu {
+    list-style: none;
+}
+.ch-dropdown-content li a, .ch-dropdown-content li p {
+    display: block;
+    height: 21px;
+    line-height: 21px;
+    margin: 2px 5px;
+    padding: 0 20px 0 5px;
+}
+.ch-dropdown-content li p {
+    color: #ccc;
+    text-decoration: none;
+}
