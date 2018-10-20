@@ -1,3 +1,43 @@
+/*Eliberto*/
+.filters__group .dt-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0 0 12px;
+    line-height: 1.25;
+    color: #333;
+}
+.filters__group dd {
+    display: table;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0 0 10px;
+    position: relative;
+}
+.filters__group dd a:focus, .filters .filters__group dd a:hover, .filters .filters__group dd a:visited {
+    text-decoration: none;
+}
+
+.filters__group dd span.filter-name {
+    color: #666 !important;
+    font-weight: 400;
+    font-size: 14px;
+    margin-left: 0;
+} 
+.filters__group dd span {
+    font-weight: 300;
+    color: #999;
+    font-size: 14px;
+    margin-left: 2px;
+}
+.filters__group dd span {
+    font-weight: 300;
+    color: #999;
+    font-size: 14px;
+    margin-left: 2px;
+}
+/*FIN-Eliberto*/
+
+
 .breadcrumb {
     padding-top: 7px; 
     margin:0px;
