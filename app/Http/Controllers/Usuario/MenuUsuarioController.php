@@ -31,16 +31,49 @@ class MenuUsuarioController extends Controller
     } 
     public function showAllPublicaciones()
     {
-        $articulos = Articulos::where('idUser','=',auth()->user()->id)->get();
+        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
         return view('usuario.menu.adminPublicaciones',compact('articulos') );
+    }
+
+    public function showAllPublicacionesPausadas()
+    {
+        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
+        return view('usuario.menu.adminPublicaciones',compact('articulos') );
+    
+    }
+
+    public function showAllPublicacionesFinalizadas()
+    {
+        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
+        return view('usuario.menu.adminPublicaciones',compact('articulos') );
+    
     }
    
    public function editar($id)
     {
 
-        
                 $usuario = articulos::find($id);
-                $usuario->estadoPublicacion = 1;
+                $usuario->estadopublicacion = 2;
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+                return redirect()->action('Usuario\MenuUsuarioController@showAllPublicaciones');
+                
+    }
+    public function activar($id)
+    {
+
+                $usuario = articulos::find($id);
+                $usuario->estadopublicacion = 1;
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+                return redirect()->action('Usuario\MenuUsuarioController@showAllPublicaciones');
+                
+    }
+    public function finalizar($id)
+    {
+
+                $usuario = articulos::find($id);
+                $usuario->estadopublicacion = 3;
                 $usuario->save(); 
                 $idUsuario = $usuario->getKey(); 
                 return redirect()->action('Usuario\MenuUsuarioController@showAllPublicaciones');

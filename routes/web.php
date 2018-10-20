@@ -80,6 +80,8 @@ Route::get('id={id}', 'Venta\VentaController@showPublicacion')->name('verpublica
 
 Route::any('publicaciones', 'Usuario\MenuUsuarioController@showAllPublicaciones')->name('publicaciones');
 Route::any('id={id}', 'Usuario\MenuUsuarioController@editar')->name('cambiarestado');
+Route::any('publicacionesp', 'Usuario\MenuUsuarioController@showAllPublicacionesPausadas')->name('publicacionesp');
+Route::any('publicacionesF', 'Usuario\MenuUsuarioController@showAllPublicacionesFinalizadas')->name('publicacionesF');
 
 Route::post('buscar','BuscarController@buscarPublicaciones')->name('buscar');
 
