@@ -5,8 +5,9 @@
 {!! Html::style('css/menuStyle.css') !!}
 {!! Html::style('css/listaResulStyle.css') !!}
 {!! Html::style('css/publiStyle.css') !!}
+{!! Html::style('css/estilosParra.css') !!}
 <!-- Div para mostrar banner de publicidad -->
-	<div class="row">
+	<div class="row" style="    margin: 0px;">
 		<div class="banner-container">	<a rel="nofollow" href="#" class="top-banner">	</a>	</div>
 	</div>
 <div style="width: 90%;margin: 0 auto;">
@@ -38,8 +39,70 @@
 	</div>
 	<!-- Div para mostrar Menu de Filtros -->
 	<div class="row" style="margin:0px">
-    <div style="width: 25%;float: left;">
-        <h2>Filtros</h2>
+    <div style="width: 25%;float: left;text-align: left;">
+        <div class="breadcrumb">
+            <ol>
+                <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb__path">
+                    <a title="Hogar, Muebles y Jardín" href="https://home.mercadolibre.com.mx/hogar-muebles-jardin/">
+                        <span itemprop="title">Hogar, Muebles y Jardín</span>
+                    </a>
+                </li>
+                <div class="breadcrumb-chevron"></div>
+                <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb__path">
+                    <a class="" style="" itemprop="url" title="Jardín y Exterior" href="https://hogar.mercadolibre.com.mx/jardin-y-exterior/">
+                        <span itemprop="title">Jardín y Exterior</span>
+                    </a>
+                </li>
+                <div class="breadcrumb-chevron"></div>
+                <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb__path">
+                    <a class="" style="" itemprop="url" title="Asadoras y Accesorios" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras-accesorios/"><span itemprop="title">Asadoras y Accesorios</span></a>
+                </li>
+                <div class="breadcrumb-chevron"></div>
+                <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb__path">
+                    <a class="" style="" itemprop="url" title="Asadoras" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/"><span itemprop="title">Asadoras</span></a>
+                </li>
+            </ol>
+            <h1 class="breadcrumb__title">asador</h1>
+        </div>
+        <div class="quantity-results"> 4,640 resultados</div>
+        <section class="view-options">
+            <dl>
+                <dt>Ordenar publicaciones</dt>
+                <div class="sort-by">
+                    <div class="ui-dropdown custom">
+                        <input type="checkbox" id="sort-by-options-trigger" class="dropdown-trigger sort-by-options-trigger" autocomplete="off" hidden="">
+                        <label for="sort-by-options-trigger" class="ui-dropdown__link"> Más relevantes
+                            <div class="ui-dropdown__indicator"></div>
+                        </label>
+                        <div class="ui-dropdown__content sorty-by-ui-dropdown__content" style="    display: contents;">
+                            <div class="ui-list">
+                                <ul class="ui-list__content">
+                                    <li class="ui-list__item ui-list__item--selected">
+                                        <span class="ui-list__item-option" href="#">Más relevantes</span>
+                                    </li>
+                                    <li class="ui-list__item">
+                                        <a class="ui-list__item-option" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/asador_DisplayType_G_OrderId_PRICE"> Menor precio </a>
+                                    </li>
+                                    <li class="ui-list__item">
+                                        <a class="ui-list__item-option" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/asador_DisplayType_G_OrderId_PRICE*DESC"> Mayor precio </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="view-options-buttons">
+                    <li>
+                        <a href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/asador_DisplayType_LF" title="Listado" class="ico stack">
+                            <div class="ico view-option-stack"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="ico view-option-grid selected"></div>
+                    </li>
+                </ul>
+            </dl>
+        </section>
     </div>
     <div style="width: 80%;margin-left: 25%;">
     	<!-- Div para mostrar Modelos o tipos de subcategorias -->

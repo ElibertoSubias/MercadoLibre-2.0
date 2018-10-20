@@ -140,7 +140,7 @@
 				{!! Html::script('js/script.js') !!}  
 				{!! Html::script('js/ubicacion.js') !!}
 				{!! Html::script('js/buscador.js') !!} 
-					
+				{!! Html::script('js/menusFlotantes.js') !!}
 		</div> 
 	</footer>
 </body>
