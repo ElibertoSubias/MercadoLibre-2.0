@@ -35,6 +35,17 @@ class MenuUsuarioController extends Controller
         return view('usuario.menu.adminPublicaciones',compact('articulos') );
     }
    
+   public function editar($id)
+    {
+
+        
+                $usuario = articulos::find($id);
+                $usuario->estadoPublicacion = 1;
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+                return redirect()->action('Usuario\MenuUsuarioController@showAllPublicaciones');
+                
+    }
     /**
      * Store a newly created resource in storage.
      *

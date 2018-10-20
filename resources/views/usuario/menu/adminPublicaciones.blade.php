@@ -5,6 +5,9 @@
 {!! Html::style('css/menuStyle.css') !!} 
 {!! Html::style('css/publiStyle.css') !!} 
 
+
+
+
 <div class="col-md-12" style="padding: 0px;    background: white;"> 
     <div class="col-md-2" style="padding: 0px;">
         <div class="menu-wrapper" style="padding: 0px;">
@@ -232,7 +235,7 @@
                     <td colspan=2 style="text-align: left;padding-left: 6px"> {{$venta->tipoPublicacion}}| Merca envios| {{$venta->id}}</td>
                     <td></td>
                     <td></td>
-                    <td style="width: 150px; "><a href="" class="" id="A_1" style="height: 25px; width: 100%">Aumentar exposicion</a></td>
+                    <td style="width: 150px; "><a href="#" class="" id="A_1" style="height: 25px; width: 40%; text-align: center;">Modificar</a>/td>
               </tr>
               @endforeach
             </tbody>
