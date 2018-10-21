@@ -235,12 +235,12 @@
         <div class="col-md-12" style="padding-left: 55px;">
             <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation"  id="activas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicaciones')}}" >Activas ( {{$totalActivos}} )</a></li>
+    <li role="presentation"  id="activas" class="active"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicaciones')}}" >Activas ( {{$totalActivos}} )</a></li>
     <li role="presentation"  id="pausadas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesPausadas')}}">Pausadas ({{$totalPausados}})</a></li>
     <li role="presentation" id="finalizadas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesFinalizadas')}}" >Finalizadas ({{$totalFinalizados}})</a></li>
   </ul>
   <!-- Tab panes -->
-  <div class="tab-content" id="activas" style="">
+  <div class="tab-content" id="activas">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
     <div role="tabpanel" class="tab-pane active" id="home">
     <div style=" height: 60px; text-align: left; padding: 10px" >
@@ -250,7 +250,7 @@
         <label style="margin: 10px">Filtros:</label>
         <a href="">Ninguno</a>
     </div> 
-        <table border="all" style="width: 100%">
+        <table border="2" style="width: 100%">
            
             <thead class="mfOrders" style="height: 50px; padding: 12px">
               <tr> 
@@ -280,29 +280,28 @@
               
                 ?> -->
               <tr>
-                <td style="padding-top: 0px"><input type="checkbox" name="" class="settings"></td>
-                <td rowspan="2" width="50xp" >
-                   <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$venta->idPublicacion}}/{{$venta->urlPrincipal}}" width="80"  style="padding-top: 10px; margin-right: 8px">
-                  </td>
-                <td style=" text-align:left;padding-left: 9px ">{{$venta->titulo}}</td>
-                <td ></td>
-                <td></td>
-                <td ><label class="price">{{$venta->precio}}</label> X 1 disponible</td>
-                <td>Finaliza en 59 días</td>
+                     <td  rowspan="2" style="padding-top: 25px"><input type="checkbox" name="" class="settings"></td>
+                     <td rowspan="2" width="50xp" >
+                           <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$venta->idPublicacion}}/{{$venta->urlPrincipal}}" width="80"  style="margin-bottom: -25px">
+                     </td>
+                    <td style=" text-align:left; padding-left: 6px;">{{$venta->titulo}}</td>
+                     <td></td>
+                    <td></td>
+                     <td  style="margin-bottom: 20px" ><label class="price">{{$venta->precio}}</label> X 1 disponible</td>
+                     <td>Finaliza en 59 días</td>
+
               </tr>
                <tr>
+                    <td colspan=2 style="text-align: left;padding-left: 6px;">
+                     <?php if($venta->tipoPublicacion=="free"){echo "Gratis";}?> | Merca envios| {{$venta->id}}</td>
                     <td></td>
-                    <td colspan=2 style="text-align: left;padding-left: 6px"> {{$venta->tipoPublicacion}}| Merca envios| {{$venta->id}}</td>
                     <td></td>
-                    <td></td>
-                    <td style="width: 150px; "><a href="#" class="" id="A_1" style="height: 25px; width: 40%; text-align: center;">Modificar</a>
-                   
-                     <div class="menu">
-                  
+                    <td style="width: 150px; "><a href="#" class="" id="A_1" style="height: 25px; width: 43%; text-align: center;">Modificar</a>
                                 <a href="javascript:finalizar('{{$venta->id}}', 2)">pausar</a>
                                 <a href="javascript:finalizar('{{$venta->id}}', 1)">reactivar</a>
                                 <a href="javascript:finalizar('{{$venta->id}}', 3)">Finalizar</a>
-                    </div>
+                     <div class="menu">
+                  
                     </td>
               </tr>
               @endforeach
@@ -313,7 +312,20 @@
     <div role="tabpanel" class="tab-pane" id="messages">...</div>
   </div>
   <!-- ----------------------publicaciones pausadas -->
- 
+       <!--  <div style="background-color: #D6EAF8; margin-top: -330px; height: 60px; border-radius: 5px">
+            <table>
+                <tr  style="height: 0px"> 
+                    <td style="height: 0px"> <label style="padding: 18px; color: #3498DB;  font-size: 12px; visibility: hidden;">No tienes publicaciones Activas, Tal vez estes buscando en tus publicaciones <a href="">Finalizadas</label></td>
+                </tr>
+                <tr>
+                    <td> <label style="padding: 18px; color: #3498DB; margin-top: -50px;  font-size: 12px; visibility: hidaden;">No tienes publicaciones Activas, Tal vez estes buscando en tus publicaciones <a href="">Finalizadas</label></td>
+                </tr>
+                <tr>
+                    <td> <label style="margin-top: -200px; color: #3498DB;  font-size: 12px">No tienes publicaciones Pausadas, Tal vez estes buscando en tus publicaciones <a href="">Finalizadas</label></td>
+                </tr>
+            </table>
+           
+        </div> -->
     <!-- ------------------------ -->
         </div>
     <div> 
