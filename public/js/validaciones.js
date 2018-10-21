@@ -306,8 +306,7 @@ $('#frm_agregarCategoria').on('submit', function(){
 
 $('#btnAgregarMarca').click(function(){
   var nombreMarca = $('#nombreMarca').val();
-  var tipoVenta = $('#tipoVentaMarca').val();
-  var categoria = $('#categoria').val();
+  var categoria = $('#categoria').val(); 
   var route = "/MercadoLibre-2.0/public/guardarMarca";
   var token = $("#token").val();
   if (categoria != "" && nombreMarca != "") {
@@ -316,7 +315,7 @@ $('#btnAgregarMarca').click(function(){
         headers: {'X-CSRF-TOKEN': token},
         type: 'POST',
         dataType: 'json',
-        data: {nombreMarca: nombreMarca, categoria: categoria, tipoVenta: tipoVenta} 
+        data: {nombreMarca: nombreMarca, categoria: categoria} 
         }).done(function(data) {  
           
           if (data.res==1){
@@ -349,6 +348,8 @@ $('#categoria').change(function(){
         }).done(function(data) {  
           $('#car-marca').html(""); 
           $('.menu-marcas').hide();
+          
+          document.getElementById('cont-guardar-cat').style.display="block";
         try {     
             $('#car-marca').html(data.res); 
             $('.menu-marcas').show();    
