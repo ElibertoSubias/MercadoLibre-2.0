@@ -77,7 +77,7 @@ class VentaController extends Controller
         $Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
         $Articulos->urlPrincipal = $urlPrincipal->url;
         $Articulos->save();
-        return Redirect::route('estado',['idPublicacion' => $request->idPublicacion]);
+        return Redirect::route('estado',['idPublicacion' => $request->idPublicacion,'user'=>$user]);
     }
 
     public function showEstado(Request $request)
@@ -92,9 +92,9 @@ class VentaController extends Controller
     public function showPublicacion(Request $request)
     {
         $user = Auth::user();
-        $idUser = Auth::id(); 
+        $idUser = $request->user; 
 
-        $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first();
+        $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first(); 
         if ($datos!="") {
             $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first(); 
             return view('vender.verPublicacion')->with('datos',$datos)->with('imagen',$imagen);

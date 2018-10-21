@@ -28,7 +28,14 @@ class MenuUsuarioController extends Controller
     public function create(Request $request)
     {
         //
-    } 
+    } /*
+<<<<<<< HEAD
+    public function showAllPublicaciones(Request $request)
+    {
+        $User = Auth::user();   
+        $articulos = Articulos::where([['idUser' , '=', $User->_id] ,['estadopublicacion', '=', 1]])->get();
+        return view('usuario.menu.adminPublicaciones',compact('articulos') );
+=======*/
     public function showAllPublicaciones() 
     {
         $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
@@ -44,7 +51,7 @@ class MenuUsuarioController extends Controller
         
 
 
-        return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados' ) );
+        return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados' ) ); 
     }
 
     public function showAllPublicacionesPausadas() 

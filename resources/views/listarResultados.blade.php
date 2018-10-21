@@ -114,6 +114,182 @@
                 </dd>
             </dl>
         </section>
+         <!--CATEGORIAS-->
+    <section class="filters__group">
+        <dl class="filters__group filters__category " id="id_category" role="listbox">
+            <dt class="dt-title" role="presentation">Categorías</dt>
+
+            <dd class="filters__group__option" role="option"> 
+                <h3> 
+                    <a class="qcat-truncate " style="max-width:137px;" title="A Carbón" href="https://hogar.mercadolibre.com.mx/asadoras-accesorios-a-carbon/asador" rel="nofollow"> 
+                        <span class="filter-name">A Carbón</span> 
+                        <span class="filter-results-qty">(995)</span> 
+                    </a> 
+                </h3> 
+            </dd>                    
+
+            <dd class="filters__group__option" role="option">
+                 <h3>
+                    <a class="qcat-truncate " style="max-width:137px;" title="A Gas" href="https://hogar.mercadolibre.com.mx/asadoras-accesorios-a-gas/asador" rel="nofollow"> 
+                        <span class="filter-name">A Gas</span> 
+                        <span class="filter-results-qty">(574)</span> 
+                    </a> 
+                 </h3> 
+            </dd>
+
+            <dd class="filters__group__option" role="option"> 
+                <h3> 
+                    <a class="qcat-truncate " style="max-width:144px;" title="Eléctricas" href="https://hogar.mercadolibre.com.mx/asadoras-accesorios-electricas/asador" rel="nofollow"> 
+                        <span class="filter-name">Eléctricas</span> 
+                        <span class="filter-results-qty">(52)</span> 
+                    </a> 
+                </h3> 
+            </dd>
+
+            <dd class="filters__group__option" role="option"> 
+                <h3> 
+                    <a class="qcat-truncate " style="max-width:130px;" title="Otras" href="https://hogar.mercadolibre.com.mx/asadoras-accesorios-otras/asador" rel="nofollow"> 
+                        <span class="filter-name">Otras</span> 
+                        <span class="filter-results-qty">(3,029)</span> 
+                    </a> 
+                </h3> 
+            </dd>
+
+        </dl>
+    </section>
+
+    <br>
+
+    <!--COSTO DE ENVIO-->
+    <section class="filters__group">
+        <dl class="filters__group filters__shipping_cost " id="id_shipping_cost" role="listbox">
+            <dt class="dt-title" role="presentation">Costo de envío</dt>
+            <dd class="filters__group__option" role="option"> 
+                <a class="qcat-truncate " style="max-width:137px;" title="Gratis" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/asador_CostoEnvio_Gratis" rel="nofollow"> 
+                    <span class="filter-name">Gratis</span> 
+                    <span class="filter-results-qty">(637)</span> 
+                </a> 
+            </dd>
+        </dl>
+    </section>
+
+    <br>
+
+    <!--TIPO DE ENVIO-->
+    <section class="filters__group">
+        <dl class="filters__group filters__shipping " id="id_shipping" role="listbox">
+            <dt class="dt-title" role="presentation">Tipo de envío</dt>
+            <dd class="filters__group__option" role="option"> 
+                <a class="qcat-truncate filter--is-full" style="max-width:151px;" title="Full" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/asador_Envio_Full" rel="nofollow"> <span class="filter-name">Full</span> <span class="filter-results-qty">(4)</span> 
+                </a> 
+                    <input type="checkbox" id="filter-full-tooltip" class="search-alerts-tooltip-input modal-trigger js-modal-trigger" autocomplete="off" hidden="">
+                    <div class="search-alerts-tooltip filter-full-tooltip"> 
+                        <div class="wrapper"> 
+                            <div class="text-container"> 
+                                <div class="description"> ¡Te da el envío más rápido y seguro de Mercado Libre! </div> 
+                            </div> 
+                            <label class="tooltip-close js-local-storage-close" for="filter-full-tooltip" data-local-storage="filter-full-tooltip"></label> 
+                        </div>
+                    </div> 
+            </dd>                
+        </dl>        
+    </section>
+
+    <br>
+
+    <!--PAGO-->
+    <section class="filters__group">
+        <dl class="filters__group filters__installments " id="id_installments" role="listbox">
+            <dt class="dt-title" role="presentation">Pago</dt>
+            <dd class="filters__group__option" role="option"> 
+                <a class="qcat-truncate " style="max-width:130px;" title="Meses sin intereses" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/asador_Installments_NoInterest" rel="nofollow"> 
+                    <span class="filter-name">Meses sin intereses</span> 
+                    <span class="filter-results-qty">(1,117)</span> 
+                </a> 
+            </dd>
+
+            <dd class="filters__group__option" role="option"> 
+                <a class="qcat-truncate " style="max-width:130px;" title="En mensualidades" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/asador_Installments_YES" rel="nofollow"> 
+                    <span class="filter-name">En mensualidades</span> 
+                    <span class="filter-results-qty">(4,646)</span> 
+                </a> 
+            </dd>
+        </dl>
+    </section>
+
+    <br>
+
+    <!--CONDICION-->
+    <section class="filters__group">
+        <dl class="filters__group filters__condition " id="id_condition" role="listbox">
+            <dt class="dt-title" role="presentation">Condición</dt>
+            <dd class="filters__group__option" role="option"> 
+                <a class="qcat-truncate " style="max-width:130px;" title="Nuevo" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/asador_ItemTypeID_N" rel="nofollow"> 
+                    <span class="filter-name">Nuevo</span> 
+                    <span class="filter-results-qty">(4,442)</span> 
+                </a> 
+            </dd>
+
+            <dd class="filters__group__option" role="option"> 
+                <a class="qcat-truncate " style="max-width:137px;" title="Usado" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/usados/asador" rel="nofollow"> 
+                    <span class="filter-name">Usado</span> 
+                    <span class="filter-results-qty">(182)</span> 
+                </a> 
+            </dd>
+        </dl>
+    </section>
+    
+    <br>
+
+    <!--UBICACION-->
+    <section class="filters__group">
+        
+    </section>
+
+    <br>
+
+    <!--PRECIO-->
+    <section class="filters__group">        
+        <dl class="filters__group filters__price " id="id_price" role="listbox">
+            <dt class="dt-title" role="presentation">Precio</dt>
+            <dd class="filters__group__option" role="option"> 
+                <a class="qcat-truncate " style="max-width:130px;" title="Hasta $1,500" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/asador_PriceRange_0-1500" rel="nofollow"> 
+                    <span class="filter-name">Hasta $1,500</span> 
+                    <span class="filter-results-qty">(1,416)</span> 
+                </a> 
+            </dd>
+
+            <dd class="filters__group__option" role="option"> 
+                <a class="qcat-truncate " style="max-width:130px;" title="$1,500 a $4,000" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/asador_PriceRange_1500-4000" rel="nofollow"> 
+                    <span class="filter-name">$1,500 a $4,000</span> 
+                    <span class="filter-results-qty">(1,591)</span> 
+                </a> 
+            </dd>
+
+            <dd class="filters__group__option" role="option"> 
+                <a class="qcat-truncate " style="max-width:130px;" title="Más de $4,000" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/asador_PriceRange_4000-0" rel="nofollow"> 
+                    <span class="filter-name">Más de $4,000</span> 
+                    <span class="filter-results-qty">(1,646)</span> 
+                </a> 
+            </dd>
+
+            <fieldset class="price-filter__fieldset"> <div class="price-filter__column"> <label class="price-filter__label" for="fromPrice"> <input type="number" name="fromPrice" id="fromPrice" class="price-filter__value" value="" placeholder="Mínimo" tabindex="93"> </label> </div> <div class="price-filter__column"> <label class="price-filter__label" for="toPrice"> <input type="number" name="toPrice" id="toPrice" class="price-filter__value" value="" placeholder="Máximo" tabindex="94"> </label> </div> </fieldset>
+        </dl>
+    </section>
+
+    <br>
+
+    <!--MAS ESPECIFICACIONES-->
+    <section class="filters__group">
+        <dl class="filters__group">
+            <dt class="dt-title">Más especificaciones</dt>
+            <dd> 
+                <a class="qcat-truncate" style="max-width:130px;" title="Compra inmediata" href="https://hogar.mercadolibre.com.mx/jardin-exterior-asadoras/asador_AuctTypeID_AFP" rel="nofollow"> Compra inmediata 
+                </a> 
+                <span>(4,652)</span> 
+            </dd>
+        </dl>
+    </section>
     </div>
     <div style="width: 80%;margin-left: 25%;">
     	<!-- Div para mostrar Modelos o tipos de subcategorias -->	
@@ -134,7 +310,7 @@
                                         <div class="ch-carousel-mask ch-carousel-adaptive" role="tabpanel" style="height:209px"> 
                                             <ul class="ch-carousel-list" role="list"> 
                                                 <li class="ch-carousel-item" role="listitem" aria-hidden="false" aria-setsize="13" aria-posinset="1" aria-label="page1" style="width: 284px;  margin-right: 0px;"> 
-                                                    <a href="{{route('verpublicacion', ['id' => $articulo->_id])}}" class="item-link item__js-link"> 
+                                                    <a href="{{route('verpublicacion', ['id' => $articulo->_id,'user'=>$articulo->idUser])}}" class="item-link item__js-link"> 
                                                         <img width="284" height="284" alt="Bmw Z4 Convertible Mt 2003 Autos Puebla" src="/MercadoLibre-2.0/public/images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}}" class="lazy-load" srcset="/MercadoLibre-2.0/public/images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}} 1x, /MercadoLibre-2.0/public/images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}} 2x"> 
                                                     </a> 
                                                 </li> 
