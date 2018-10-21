@@ -5,6 +5,36 @@
 {!! Html::style('css/menuStyle.css') !!} 
 {!! Html::style('css/publiStyle.css') !!} 
 
+<script type="text/javascript">
+    
+    
+ function ventanaPausadas(){
+    alert('ss');
+          var route = "/MercadoLibre-2.0/public/publicacionesp";
+          var token = $("#token").val();
+    
+           
+        $('#activas').css({"visibility":"hidden"});
+        $('#pausadas').css({"visibility":"visible"});
+
+              $.ajax({
+                url: route,
+                headers: {'X-CSRF-TOKEN': token},
+                type: 'POST',
+                dataType: 'json',
+                data: {} 
+                }).done(function(data) {
+                  if (data.res!=1 && data.res!=0){
+                   
+                  }else if(data.res==1){  
+                    $("#lblCorreoExistente").empty();
+                    $("#lblCorreoExistente").append(data.email);
+                  }
+                });
+        }
+</script>
+
+
 <div class="col-md-12" style="padding: 0px;    background: white;"> 
     <div class="col-md-2" style="padding: 0px;">
         <div class="menu-wrapper" style="padding: 0px;">
@@ -187,12 +217,12 @@
         <div class="col-md-12" style="padding-left: 55px;">
             <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Activas ()</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Pausadas ()</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Finalizadas ()</a></li>
+    <li role="presentation"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicaciones')}}" >Activas ()</a></li>
+    <li role="presentation" ><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesPausadas')}}"  >Pausadas ()</a></li>
+    <li role="presentation"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesFinalizadas')}}" >Finalizadas ()</a></li>
   </ul>
   <!-- Tab panes -->
-  <div class="tab-content">
+  <div class="tab-content" id="activas" style="">
     <div role="tabpanel" class="tab-pane active" id="home">
     <div style=" height: 60px; text-align: left; padding: 10px" >
     
@@ -208,22 +238,17 @@
                 <th style="height: 30px; padding-left: 10px" ><input type="checkbox" name="todo"></th>
                 <th>
                     
-                    <div class="mymlDropdownMassiveActions massive secondary ch-dropdown">
-                        <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select">
-                            <span class="ico itemsSecondaryActionsIcn"><i class="ch-icon-cog"></i></span>
-                        </p>
-                        <ul class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="position: absolute; left: 84px;top: 125px;">
-                            <a role="menuitem"></a>
-                                <li class="masiveActionOption cannot reactivate">                                
-                                    <p>Reactivar</p>                                
-                                </li>
-                                <li class="masiveActionOption cannot finalize">                                
-                                    <p>Finalizar</p>                                
-                                </li>
-                                <li class="masiveActionOption cannot modify_price">                                
-                                    <p>Modificar precio</p>                                
-                                </li>
-                        </ul>
+                    <div class="menu">
+                    <ul>
+                      
+                        <li><a href="#">Catalogo</a>
+                            <ul>
+                                <li><a href="#">pausar</a></li>
+                                <li><a href="#">Modificar</a>
+                                <li><a href="#">Finalizar</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                     </div>
 
                 </th>
@@ -252,7 +277,25 @@
                     <td colspan=2 style="text-align: left;padding-left: 6px"> {{$venta->tipoPublicacion}}| Merca envios| {{$venta->id}}</td>
                     <td></td>
                     <td></td>
-                    <td style="width: 150px; "><a href="" class="" id="A_1" style="height: 25px; width: 100%">Aumentar exposicion</a></td>
+                    <td style="width: 150px; "><a href="#" class="" id="A_1" style="height: 25px; width: 40%; text-align: center;">Modificar</a>
+                            <div class="mymlDropdownMassiveActions massive secondary ch-dropdown">
+                        <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select">
+                            <span class="ico itemsSecondaryActionsIcn"><i class="ch-icon-cog"></i></span>
+                        </p>
+                        <ul class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="position: absolute; left: 84px;top: 125px;">
+                            <a role="menuitem"></a>
+                                <li class="masiveActionOption cannot reactivate">                                
+                                    <a href="{{action('Usuario\MenuUsuarioController@editar', $venta->id)}}"><p>Pausar</p></a>                                
+                                </li>
+                                <li class="masiveActionOption cannot finalize">                                
+                                    <p>Finalizar</p>                                
+                                </li>
+                                <li class="masiveActionOption cannot modify_price">                                
+                                    <p>Modificar precio</p>                                
+                                </li>
+                        </ul>
+                    </div>
+                    </td>
               </tr>
               @endforeach
             </tbody>
@@ -261,6 +304,9 @@
     <div role="tabpanel" class="tab-pane" id="profile">...</div>
     <div role="tabpanel" class="tab-pane" id="messages">...</div>
   </div>
+  <!-- ----------------------publicaciones pausadas -->
+ 
+    <!-- ------------------------ -->
         </div>
     <div> 
 </div> 
