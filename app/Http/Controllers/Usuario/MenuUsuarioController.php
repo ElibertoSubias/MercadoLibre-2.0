@@ -29,54 +29,98 @@ class MenuUsuarioController extends Controller
     {
         //
     } 
-    public function showAllPublicaciones()
+    public function showAllPublicaciones() 
     {
         $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
         return view('usuario.menu.adminPublicaciones',compact('articulos') );
     }
 
-    public function showAllPublicacionesPausadas()
+    public function showAllPublicacionesPausadas() 
     {
         $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
         return view('usuario.menu.adminPublicaciones',compact('articulos') );
     
     }
 
-    public function showAllPublicacionesFinalizadas()
+    public function showAllPublicacionesFinalizadas() 
     {
         $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
         return view('usuario.menu.adminPublicaciones',compact('articulos') );
     
     }
    
-   public function editar($id)
+   public function editar(Request $request)
     {
 
-                $usuario = articulos::find($id);
-                $usuario->estadopublicacion = 2;
+             
+
+              if ($request->ajax()) {
+
+                if($request->estado=="1")
+                {
+                $usuario = articulos::find($request->publicacion); 
+                $usuario->estadopublicacion = 1; 
                 $usuario->save(); 
                 $idUsuario = $usuario->getKey(); 
-                return redirect()->action('Usuario\MenuUsuarioController@showAllPublicaciones');
+                return response()->json([
+                    "res" => $idUsuario   
+                    ]); 
+                }
+                if($request->estado=="2")
+                {
+                $usuario = articulos::find($request->publicacion); 
+                $usuario->estadopublicacion = 2; 
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+                return response()->json([
+                    "res" => $idUsuario   
+                    ]); 
+                }
+                if($request->estado=="3")
+                {
+                $usuario = articulos::find($request->publicacion); 
+                $usuario->estadopublicacion = 3; 
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+                return response()->json([
+                    "res" => $idUsuario   
+                    ]); 
+                }
+
+
+            } 
                 
     }
+
+    public function cambiarActivo($id)
+    {
+                $usuario = articulos::find($id); 
+                $usuario->estadopublicacion = 1; 
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+           
+                
+    }
+
     public function activar($id)
     {
 
-                $usuario = articulos::find($id);
-                $usuario->estadopublicacion = 1;
-                $usuario->save(); 
-                $idUsuario = $usuario->getKey(); 
-                return redirect()->action('Usuario\MenuUsuarioController@showAllPublicaciones');
+                $usuario = articulos::find($id); 
+                $usuario->estadopublicacion = 1;  
+                $usuario->save();  
+                $idUsuario = $usuario->getKey();  
+            
+                return redirect()->action('Usuario\MenuUsuarioController@showAllPublicaciones'); 
                 
     }
     public function finalizar($id)
     {
 
                 $usuario = articulos::find($id);
-                $usuario->estadopublicacion = 3;
+                $usuario->estadopublicacion = 3; 
                 $usuario->save(); 
                 $idUsuario = $usuario->getKey(); 
-                return redirect()->action('Usuario\MenuUsuarioController@showAllPublicaciones');
+              
                 
     }
     /**

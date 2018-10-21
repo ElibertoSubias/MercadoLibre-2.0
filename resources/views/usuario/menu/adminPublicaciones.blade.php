@@ -8,30 +8,26 @@
 <script type="text/javascript">
     
     
- function ventanaPausadas(){
-    alert('ss');
-          var route = "/MercadoLibre-2.0/public/publicacionesp";
+ function finalizar(publicacio, estad){
+         // var dato = $("#dato").val();
           var token = $("#token").val();
-    
-           
-        $('#activas').css({"visibility":"hidden"});
-        $('#pausadas').css({"visibility":"visible"});
+          var route = "/MercadoLibre-2.0/public/cambiarestado";
+          var publicacion = publicacio;
+          var estado = estad;
+        
 
+
+         
               $.ajax({
                 url: route,
                 headers: {'X-CSRF-TOKEN': token},
                 type: 'POST',
                 dataType: 'json',
-                data: {} 
-                }).done(function(data) {
-                  if (data.res!=1 && data.res!=0){
-                   
-                  }else if(data.res==1){  
-                    $("#lblCorreoExistente").empty();
-                    $("#lblCorreoExistente").append(data.email);
-                  }
+                data: { publicacion: publicacion, estado:estado} 
+                }).done(function(data) {  
+                    location.reload();
                 });
-        }
+          }
 </script>
 
 
@@ -223,6 +219,7 @@
   </ul>
   <!-- Tab panes -->
   <div class="tab-content" id="activas" style="">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
     <div role="tabpanel" class="tab-pane active" id="home">
     <div style=" height: 60px; text-align: left; padding: 10px" >
     
@@ -278,22 +275,12 @@
                     <td></td>
                     <td></td>
                     <td style="width: 150px; "><a href="#" class="" id="A_1" style="height: 25px; width: 40%; text-align: center;">Modificar</a>
-                            <div class="mymlDropdownMassiveActions massive secondary ch-dropdown">
-                        <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select">
-                            <span class="ico itemsSecondaryActionsIcn"><i class="ch-icon-cog"></i></span>
-                        </p>
-                        <ul class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="position: absolute; left: 84px;top: 125px;">
-                            <a role="menuitem"></a>
-                                <li class="masiveActionOption cannot reactivate">                                
-                                    <a href="{{action('Usuario\MenuUsuarioController@editar', $venta->id)}}"><p>Pausar</p></a>                                
-                                </li>
-                                <li class="masiveActionOption cannot finalize">                                
-                                    <p>Finalizar</p>                                
-                                </li>
-                                <li class="masiveActionOption cannot modify_price">                                
-                                    <p>Modificar precio</p>                                
-                                </li>
-                        </ul>
+                   
+                     <div class="menu">
+                  
+                                <a href="javascript:finalizar('{{$venta->id}}', 2)">pausar</a>
+                                <a href="javascript:finalizar('{{$venta->id}}', 1)">reactivar</a>
+                                <a href="javascript:finalizar('{{$venta->id}}', 3)">Finalizar</a>
                     </div>
                     </td>
               </tr>
