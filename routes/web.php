@@ -79,9 +79,11 @@ Route::any('estado', 'Venta\VentaController@showEstado')->name('estado');
 Route::get('id={id}&user={user}', 'Venta\VentaController@showPublicacion')->name('verpublicacion');
 
 Route::any('publicaciones', 'Usuario\MenuUsuarioController@showAllPublicaciones')->name('publicaciones');
-Route::any('id={id}', 'Usuario\MenuUsuarioController@editar')->name('cambiarestado');
 Route::any('publicacionesp', 'Usuario\MenuUsuarioController@showAllPublicacionesPausadas')->name('publicacionesp');
 Route::any('publicacionesF', 'Usuario\MenuUsuarioController@showAllPublicacionesFinalizadas')->name('publicacionesF');
+
+Route::post('cambiarestado', 'Usuario\MenuUsuarioController@editar')->name('cambiarestado');
+
 
 Route::post('buscar','BuscarController@buscarPublicaciones')->name('buscar');
 

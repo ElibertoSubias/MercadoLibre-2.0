@@ -28,58 +28,106 @@ class MenuUsuarioController extends Controller
     public function create(Request $request)
     {
         //
-    } 
+    } /*
+<<<<<<< HEAD
     public function showAllPublicaciones(Request $request)
     {
         $User = Auth::user();   
         $articulos = Articulos::where([['idUser' , '=', $User->_id] ,['estadopublicacion', '=', 1]])->get();
         return view('usuario.menu.adminPublicaciones',compact('articulos') );
+=======*/
+    public function showAllPublicaciones() 
+    {
+        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+          
+          $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
+          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
+           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+          
+
+        $totalActivos = count($activos);
+        $totalPausados = count($pausados);
+        $totalFinalizados = count($Finalizados);
+        
+
+
+        return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados' ) ); 
     }
 
-    public function showAllPublicacionesPausadas()
+    public function showAllPublicacionesPausadas() 
     {
         $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
-        return view('usuario.menu.adminPublicaciones',compact('articulos') );
+           $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
+          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
+           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+          
+
+        $totalActivos = count($activos);
+        $totalPausados = count($pausados);
+        $totalFinalizados = count($Finalizados);
+        return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados') );
     
     }
 
-    public function showAllPublicacionesFinalizadas()
+    public function showAllPublicacionesFinalizadas() 
     {
         $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
-        return view('usuario.menu.adminPublicaciones',compact('articulos') );
+           $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
+          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
+           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+          
+
+        $totalActivos = count($activos);
+        $totalPausados = count($pausados);
+        $totalFinalizados = count($Finalizados);
+        return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados') );
     
     }
    
-   public function editar($id)
+   public function editar(Request $request)
     {
 
-                $usuario = articulos::find($id);
-                $usuario->estadopublicacion = 2;
-                $usuario->save(); 
-                $idUsuario = $usuario->getKey(); 
-                return redirect()->action('Usuario\MenuUsuarioController@showAllPublicaciones');
-                
-    }
-    public function activar($id)
-    {
+             
 
-                $usuario = articulos::find($id);
-                $usuario->estadopublicacion = 1;
-                $usuario->save(); 
-                $idUsuario = $usuario->getKey(); 
-                return redirect()->action('Usuario\MenuUsuarioController@showAllPublicaciones');
-                
-    }
-    public function finalizar($id)
-    {
+              if ($request->ajax()) {
 
-                $usuario = articulos::find($id);
-                $usuario->estadopublicacion = 3;
+                if($request->estado=="1")
+                {
+                $usuario = articulos::find($request->publicacion); 
+                $usuario->estadopublicacion = 1; 
                 $usuario->save(); 
                 $idUsuario = $usuario->getKey(); 
-                return redirect()->action('Usuario\MenuUsuarioController@showAllPublicaciones');
+                return response()->json([
+                    "res" => $idUsuario   
+                    ]); 
+                }
+                if($request->estado=="2")
+                {
+                $usuario = articulos::find($request->publicacion); 
+                $usuario->estadopublicacion = 2; 
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+                return response()->json([
+                    "res" => $idUsuario   
+                    ]); 
+                }
+                if($request->estado=="3")
+                {
+                $usuario = articulos::find($request->publicacion); 
+                $usuario->estadopublicacion = 3; 
+                $usuario->save(); 
+                $idUsuario = $usuario->getKey(); 
+                return response()->json([
+                    "res" => $idUsuario   
+                    ]); 
+                }
+
+
+            } 
                 
     }
+
+   
     /**
      * Store a newly created resource in storage.
      *
