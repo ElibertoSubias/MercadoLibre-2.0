@@ -5,6 +5,7 @@
 {!! Html::style('css/menuStyle.css') !!} 
 {!! Html::style('css/publiStyle.css') !!} 
 
+
 <script type="text/javascript">
     
     
@@ -28,6 +29,27 @@
                     location.reload();
                 });
           }
+
+          function activar(){
+          
+            $('#pausadas').css({"font-weight": "600", "color": "#333"});
+            
+          }
+          function marcarTodo(){
+           
+            var checked = false;
+          
+            if(checked == false) {
+            $('.settings').prop('checked', true);
+            checked = true;
+            } else {
+            $('.settings').prop('checked', false);
+            checked = false;
+            }
+
+           
+          }
+         
 </script>
 
 
@@ -213,9 +235,9 @@
         <div class="col-md-12" style="padding-left: 55px;">
             <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicaciones')}}" >Activas ()</a></li>
-    <li role="presentation" ><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesPausadas')}}"  >Pausadas ()</a></li>
-    <li role="presentation"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesFinalizadas')}}" >Finalizadas ()</a></li>
+    <li role="presentation"  id="activas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicaciones')}}" >Activas ( {{$totalActivos}} )</a></li>
+    <li role="presentation"  id="pausadas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesPausadas')}}">Pausadas ({{$totalPausados}})</a></li>
+    <li role="presentation" id="finalizadas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesFinalizadas')}}" >Finalizadas ({{$totalFinalizados}})</a></li>
   </ul>
   <!-- Tab panes -->
   <div class="tab-content" id="activas" style="">
@@ -232,20 +254,15 @@
            
             <thead class="mfOrders" style="height: 50px; padding: 12px">
               <tr> 
-                <th style="height: 30px; padding-left: 10px" ><input type="checkbox" name="todo"></th>
+                <th style="height: 30px; padding-left: 10px" ><input type="checkbox" id="p" class="check-all" onclick="javascript:marcarTodo()" ></th>
                 <th>
                     
                     <div class="menu">
                     <ul>
-                      
-                        <li><a href="#">Catalogo</a>
-                            <ul>
-                                <li><a href="#">pausar</a></li>
-                                <li><a href="#">Modificar</a>
-                                <li><a href="#">Finalizar</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                          <li><a href="#">pausar</a></li>
+                          <li><a href="#">Modificar</a>
+                          <li><a href="#">Finalizar</a></li>
+                     </ul>
                     </div>
 
                 </th>
@@ -257,9 +274,13 @@
             </thead>
             <tbody>
               
+
               @foreach($articulos as $venta)
+             <!--  <?php
+              
+                ?> -->
               <tr>
-                <td style="padding-top: 0px"><input type="checkbox" name=""></td>
+                <td style="padding-top: 0px"><input type="checkbox" name="" class="settings"></td>
                 <td rowspan="2" width="50xp" >
                    <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$venta->idPublicacion}}/{{$venta->urlPrincipal}}" width="80"  style="padding-top: 10px; margin-right: 8px">
                   </td>

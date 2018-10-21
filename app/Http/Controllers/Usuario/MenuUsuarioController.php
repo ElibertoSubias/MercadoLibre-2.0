@@ -32,20 +32,48 @@ class MenuUsuarioController extends Controller
     public function showAllPublicaciones() 
     {
         $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
-        return view('usuario.menu.adminPublicaciones',compact('articulos') );
+          
+          $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
+          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
+           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+          
+
+        $totalActivos = count($activos);
+        $totalPausados = count($pausados);
+        $totalFinalizados = count($Finalizados);
+        
+
+
+        return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados' ) );
     }
 
     public function showAllPublicacionesPausadas() 
     {
         $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
-        return view('usuario.menu.adminPublicaciones',compact('articulos') );
+           $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
+          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
+           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+          
+
+        $totalActivos = count($activos);
+        $totalPausados = count($pausados);
+        $totalFinalizados = count($Finalizados);
+        return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados') );
     
     }
 
     public function showAllPublicacionesFinalizadas() 
     {
         $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
-        return view('usuario.menu.adminPublicaciones',compact('articulos') );
+           $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
+          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
+           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+          
+
+        $totalActivos = count($activos);
+        $totalPausados = count($pausados);
+        $totalFinalizados = count($Finalizados);
+        return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados') );
     
     }
    
@@ -92,37 +120,7 @@ class MenuUsuarioController extends Controller
                 
     }
 
-    public function cambiarActivo($id)
-    {
-                $usuario = articulos::find($id); 
-                $usuario->estadopublicacion = 1; 
-                $usuario->save(); 
-                $idUsuario = $usuario->getKey(); 
-           
-                
-    }
-
-    public function activar($id)
-    {
-
-                $usuario = articulos::find($id); 
-                $usuario->estadopublicacion = 1;  
-                $usuario->save();  
-                $idUsuario = $usuario->getKey();  
-            
-                return redirect()->action('Usuario\MenuUsuarioController@showAllPublicaciones'); 
-                
-    }
-    public function finalizar($id)
-    {
-
-                $usuario = articulos::find($id);
-                $usuario->estadopublicacion = 3; 
-                $usuario->save(); 
-                $idUsuario = $usuario->getKey(); 
-              
-                
-    }
+   
     /**
      * Store a newly created resource in storage.
      *
