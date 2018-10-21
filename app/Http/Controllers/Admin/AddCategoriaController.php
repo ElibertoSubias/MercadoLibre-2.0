@@ -51,33 +51,38 @@ class AddCategoriaController extends Controller
     }
 
     public function addMarca(Request $request)
-    {
-    	if ($request->ajax()) { 
-
-    		if ($request->tipoVenta == 0) {
-    			$tipoVenta = "vehiculos";
-    		}elseif ($request->tipoVenta == 1) {
-    			$tipoVenta = "inmuebles";
-    		}elseif ($request->tipoVenta == 2) {
-    			$tipoVenta = "servicios";
-    		}elseif($request->tipoVenta == 3){
-    			$tipoVenta = "productos";
-    		}
-
-    		//return $request->tipoVenta."/".$request->categoria."/".$request->nombreMarca."/".$tipoVenta;
-
-    		if(Ventas::where(['tipo' => $tipoVenta, 'categorias.categoria'=>$request->categoria])->push('categorias.marcas', ['marca'=>$request->nombreMarca], true)){
-    			return response()->json([
-                    "res" => 1,
-                    "nombre" => $request->nombreMarca
-                ]); 
-    		}else{
-    			return response()->json([
-                    "res" => 0,
-                    "nombre" => $request->nombreMarca
-                ]); 
-    		}
-        }
+    { 
+        try {
+            $res = Categorias::where(['nombre'=>$request->categoria])->get(['marcas']); 
+            if($res!="[]"){
+                if(Categorias::where('nombre', $request->categoria)->push('marcas', [$request->nombreMarca], true)){
+                    return response()->json([
+                        "res" => 1,
+                        "nombre" => $request->categoria
+                    ]); 
+                }else{
+                    return response()->json([
+                        "res" => 0,
+                        "nombre" => $request->categoria
+                    ]); 
+                }
+            }
+            else {
+                if(Categorias::insert(['nombre' => $request->categoria, 'marcas' => [$request->nombreMarca]])){
+                    return response()->json([
+                        "res" => 1,
+                        "nombre" => $request->nombreMarca
+                    ]); 
+                }else{
+                    return response()->json([
+                        "res" => 0,
+                        "nombre" => $request->nombreMarca
+                    ]); 
+                }
+            } 
+        } catch (Exception $e) {
+            
+        } 
     }
 
     public function show(Request $request)

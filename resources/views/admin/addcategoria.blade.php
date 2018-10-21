@@ -41,6 +41,14 @@
 			</div> 
 		</form> 
 	</div> 
+	<div class="col-md-3">
+		<form action="" method="post" accept-charset="utf-8">
+			<label for="">Marcas Disponibles:</label> 
+			<select name="car-marca" id="car-marca" class="form-control">
+					
+			</select>
+		</form>
+	</div>
 </div> 
 <!-- Modal -->
   <div class="modal fade in" id="idExistente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

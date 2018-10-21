@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-md-9">
                     <form id="frmCategoria" name="frmCategoria" action="{{route('descripcion')}}" method="post">
-                        <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="{{$tipoCategoria}}">
+                        <input type="hidden" name="tipoVenta" id="tipoVenta" value="{{$tipoCategoria}}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                         <div class="col-md-12 testimonial-group" id="cont-scroller">
                           <div class="row text-center" >
@@ -78,7 +78,7 @@
                 </div>
                 <form id="frmCategoria" name="frmCategoria" action="{{route('descripcion')}}" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                    <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="INMU">
+                    <input type="hidden" name="tipoVenta" id="tipoVenta" value="INMU">
                     <div class="wrapper">
                         <div class="scrooller">
                             <div id="cont-categorias" class="category-column">
