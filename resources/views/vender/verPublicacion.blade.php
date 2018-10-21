@@ -151,7 +151,7 @@
                         <span class="ch-icon ch-icon-search"></span>
                     
                     
-                    <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="70" height="70">
+                    <img src="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="70" height="70">
                     
                 </label>
            
@@ -161,7 +161,7 @@
             <figure class="gallery-image-container thumbgallery_default-0" data-side="right" data-align="top">
                 
                 <a href="https://http2.mlstatic.com/alfa-romeo-D_NQ_NP_918874-MLM28336465626_102018-F.webp" class="gallery-trigger gallery-item--landscape ch-zoom-trigger ch-shownby-pointerenter" data-imgindex="0" data-size="1118x698" style="height: 312px; width: 500px;" data-uid="1" aria-owns="ch-zoom-1" aria-haspopup="true">
-                    <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="500" height="312" data-srcset="https://http2.mlstatic.com/D_NQ_NP_918874-MLM28336465626_102018-F.webp 2x" alt="alfa romeo" data-imgindex="0" srcset="https://http2.mlstatic.com/D_NQ_NP_918874-MLM28336465626_102018-F.webp 2x">
+                    <img src="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="500" height="312" data-srcset="https://http2.mlstatic.com/D_NQ_NP_918874-MLM28336465626_102018-F.webp 2x" alt="alfa romeo" data-imgindex="0" srcset="https://http2.mlstatic.com/D_NQ_NP_918874-MLM28336465626_102018-F.webp 2x">
                 <div class="ch-zoom-loading ch-hide" style="left: 201px; top: 107px;"><div class="ch-loading-large"></div><p>Cargando zoom...</p></div><div class="ch-zoom-seeker ch-hide" style="width: 186px; height: 169px; left: 0px; top: 45.4063px;"></div></a>
             </figure>
         
@@ -480,7 +480,7 @@
 
     <p class="card-subtitle name">Nombre</p>
     <p class="card-description card-description--bold">
-        <span>{{ auth()->user()->nombre }}</span>
+        <span>Nombre</span>
     </p> 
 
     <div class="card-section"> 

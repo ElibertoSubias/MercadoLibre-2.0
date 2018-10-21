@@ -348,8 +348,12 @@ $('#categoria').change(function(){
         }).done(function(data) {  
           $('#car-marca').html(""); 
           $('.menu-marcas').hide();
-          
-          document.getElementById('cont-guardar-cat').style.display="block";
+          try {
+              document.getElementById('cont-guardar-cat').style.display="block";
+          }
+          catch(err) { 
+            
+          } 
         try {     
             $('#car-marca').html(data.res); 
             $('.menu-marcas').show();    

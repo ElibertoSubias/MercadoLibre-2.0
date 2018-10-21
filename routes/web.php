@@ -76,7 +76,7 @@ Route::post('articulo/agregarventa', 'Venta\VentaController@create')->name('agre
 
 Route::any('estado', 'Venta\VentaController@showEstado')->name('estado');
 
-Route::get('id={id}', 'Venta\VentaController@showPublicacion')->name('verpublicacion'); 
+Route::get('id={id}&user={user}', 'Venta\VentaController@showPublicacion')->name('verpublicacion');
 
 Route::any('publicaciones', 'Usuario\MenuUsuarioController@showAllPublicaciones')->name('publicaciones');
 Route::any('id={id}', 'Usuario\MenuUsuarioController@editar')->name('cambiarestado');
