@@ -217,11 +217,10 @@
         <div class="col-md-12" style="padding-left: 55px;">
             <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicaciones')}}" >Activas ()</a></li>
-    <li role="presentation" ><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesPausadas')}}"  >Pausadas ()</a></li>
-    <li role="presentation"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesFinalizadas')}}" >Finalizadas ()</a></li>
+    <li role="presentation"  id="activas" class="active"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicaciones')}}" >Activas ( {{$totalActivos}} )</a></li>
+    <li role="presentation"  id="pausadas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesPausadas')}}">Pausadas ({{$totalPausados}})</a></li>
+    <li role="presentation" id="finalizadas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesFinalizadas')}}" >Finalizadas ({{$totalFinalizados}})</a></li>
   </ul>
-  <!-- Tab panes -->
   <div class="tab-content" id="activas" style="">
     <div role="tabpanel" class="tab-pane active" id="home">
     <div style=" height: 60px; text-align: left; padding: 10px" >
@@ -231,72 +230,82 @@
         <label style="margin: 10px">Filtros:</label>
         <a href="">Ninguno</a>
     </div>
-        <table border="all" style="width: 100%">
+        <table border="2" style="width: 100%">
 
             <thead class="mfOrders" style="height: 50px; padding: 12px">
               <tr>
                 <th style="height: 30px; padding-left: 10px" ><input type="checkbox" name="todo"></th>
                 <th>
-
-                    <div class="menu">
-                    <ul>
-
-                        <li><a href="#">Catalogo</a>
-                            <ul>
-                                <li><a href="#">pausar</a></li>
-                                <li><a href="#">Modificar</a>
-                                <li><a href="#">Finalizar</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <div class="mymlDropdownMassiveActions massive secondary ch-dropdown" id="primerMenu" onclick="mostrarPrimerMenu()">
+                        <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select" style="height: 25px;margin:5px;">
+                            <span class="ico itemsSecondaryActionsIcn"><i style="width: 20px;margin-top: -3px;padding-top: 0px;height: 20px;margin-left: -5px;" class="ch-icon-cog"></i></span>
+                        </p>
+                        <ul id="primerMenuUL" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="position: absolute;left: 78px;top: 116px;overflow: hidden;">
+                            <a role="menuitem"></a>
+                                <li class="masiveActionOption cannot reactivate">
+                                    <a href="" style="padding:0px;margin:0px"><p>Catalago</p></a>
+                                </li>
+                                <li class="masiveActionOption cannot reactivate">
+                                    <a href="" style="padding:0px;margin:0px"><p>Pausar</p></a>
+                                </li>
+                                <li class="masiveActionOption cannot finalize">
+                                    <a href="" style="padding:0px;margin:0px"><p>Finalizar</p></a>
+                                </li>
+                                <li class="masiveActionOption cannot modify_price">
+                                    <a href="" style="padding:0px;margin:0px"><p>Modificar precio</p></a>
+                                </li>
+                        </ul>
                     </div>
 
                 </th>
                 <th></th>
                 <th></th>
-                <th colspan="2" style="text-align: right; padding: 5px">Publicaciones 1 a 1 de 1 | <a href=""> Con mas venta</a> </th>
-                <th> </th>
+                <th colspan="4" style="text-align: right; padding: 5px">Publicaciones 1 a 1 de 1 | <a href=""> Con mas venta</a> </th>
               </tr>
             </thead>
             <tbody>
 
               @foreach($articulos as $venta)
               <tr>
-                <td style="padding-top: 0px"><input type="checkbox" name=""></td>
-                <td rowspan="2" width="50xp" >
-                   <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$venta->idPublicacion}}/{{$venta->urlPrincipal}}" width="80"  style="padding-top: 10px; margin-right: 8px">
-                  </td>
-                <td style=" text-align:left;padding-left: 9px ">{{$venta->titulo}}</td>
-                <td ></td>
-                <td></td>
-                <td ><label class="price">{{$venta->precio}}</label> X 1 disponible</td>
-                <td>Finaliza en 59 días</td>
+                    <td  rowspan="2" style="padding-top: 25px"><input type="checkbox" name="" class="settings"></td>
+                    <td rowspan="2" width="50xp" >
+                        <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$venta->idPublicacion}}/{{$venta->urlPrincipal}}" width="80"  style="margin-bottom: -25px">
+                    </td>
+                    <td style=" text-align:left; padding-left: 6px;">{{$venta->titulo}}</td>
+                    <td></td>
+                    <td></td>
+                    <td style="margin-bottom: 20px" ><label class="price">{{$venta->precio}}</label> X 1 disponible</td>
+                    <td colspan="2" style="text-align: right;">Finaliza en 59 días</td>
               </tr>
                <tr>
+                    <td colspan=2 style="text-align: left;padding-left: 6px;">
+<?php if ($venta->tipoPublicacion == "free") {echo "Gratis";}?>| Merca envios| {{$venta->id}}</td>
                     <td></td>
-                    <td colspan=2 style="text-align: left;padding-left: 6px"> {{$venta->tipoPublicacion}}| Merca envios| {{$venta->id}}</td>
                     <td></td>
-                    <td></td>
-                    <td style="width: 150px; ">
-                        <a href="#" class="A_1" id="{{$venta->idPublicacion}}" style="height: 25px; width: 40%; text-align: center;" onclick="modificarPublicacion(id)">Modificar</a>
-                            <div class="mymlDropdownMassiveActions massive secondary ch-dropdown">
-                        <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select">
-                            <span class="ico itemsSecondaryActionsIcn"><i class="ch-icon-cog"></i></span>
-                        </p>
-                        <ul class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="position: absolute; left: 84px;top: 125px;">
-                            <a role="menuitem"></a>
+                    <td colspan="2" style="width: 150px;text-align: right;">
+                    <a href="#" class="A_1" id="{{$venta->idPublicacion}}" style="height: 25px; width: 30%;    color: #476274; text-align: center;" onclick="modificarPublicacion(id)">Modificar</a>
+                        <div style="" id="{{$venta->idPublicacion}}" onclick="mostrarSegundoMenu(id)" class="mymlDropdownMassiveActions massive secondary ch-dropdown">
+                            <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select" style="height: 25px;margin:5px;">
+                            <span class="ico itemsSecondaryActionsIcn"><i style="width: 20px;margin-top: -3px;padding-top: 0px;height: 20px;margin-left: -5px;" class="ch-icon-cog"></i></span>
+                            </p>
+                            <ul id="segundoMenu{{$venta->idPublicacion}}" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="overflow: hidden;">
+                                <a role="menuitem"></a>
                                 <li class="masiveActionOption cannot reactivate">
-                                    <a href="{{action('Usuario\MenuUsuarioController@editar', $venta->id)}}"><p>Pausar</p></a>
+                                    <a href="" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Catalago</p></a>
+                                </li>
+                                <li class="masiveActionOption cannot reactivate">
+                                    <a href="" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Pausar</p></a>
                                 </li>
                                 <li class="masiveActionOption cannot finalize">
-                                    <p>Finalizar</p>
+                                    <a href="" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Finalizar</p></a>
                                 </li>
                                 <li class="masiveActionOption cannot modify_price">
-                                    <p>Modificar precio</p>
+                                    <a href="" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Modificar precio</p></a>
                                 </li>
-                        </ul>
+                            </ul>
                     </div>
-                    <!-- Modal -->
+              </tr>
+              <!-- Modal -->
   <div class="modal fade in" id="modalModificarPublicacion_{{$venta->idPublicacion}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,0.7);">
     <div class="modal-dialog" style="width: 46%;height: auto;">
       <div class="modal-content" style="margin: 30% auto;">
@@ -409,8 +418,6 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
-                    </td>
-              </tr>
               @endforeach
             </tbody>
         </table>
@@ -419,7 +426,20 @@
     <div role="tabpanel" class="tab-pane" id="messages">...</div>
   </div>
   <!-- ----------------------publicaciones pausadas -->
+       <!--  <div style="background-color: #D6EAF8; margin-top: -330px; height: 60px; border-radius: 5px">
+            <table>
+                <tr  style="height: 0px">
+                    <td style="height: 0px"> <label style="padding: 18px; color: #3498DB;  font-size: 12px; visibility: hidden;">No tienes publicaciones Activas, Tal vez estes buscando en tus publicaciones <a href="">Finalizadas</label></td>
+                </tr>
+                <tr>
+                    <td> <label style="padding: 18px; color: #3498DB; margin-top: -50px;  font-size: 12px; visibility: hidaden;">No tienes publicaciones Activas, Tal vez estes buscando en tus publicaciones <a href="">Finalizadas</label></td>
+                </tr>
+                <tr>
+                    <td> <label style="margin-top: -200px; color: #3498DB;  font-size: 12px">No tienes publicaciones Pausadas, Tal vez estes buscando en tus publicaciones <a href="">Finalizadas</label></td>
+                </tr>
+            </table>
 
+        </div> -->
     <!-- ------------------------ -->
         </div>
     <div>

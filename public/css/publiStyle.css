@@ -130,6 +130,12 @@ h2.typo {
 .ico.itemsSecondaryActionsIcn {
     position: relative;
     display: block;
+} 
+.ch-icon-cog {  
+    background-image: url(/MercadoLibre-2.0/public/img/icon_engrane.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    padding: 10px;
 }
 .ico.itemsSecondaryActionsIcn .ch-icon-cog {
     margin-top: 3px;
