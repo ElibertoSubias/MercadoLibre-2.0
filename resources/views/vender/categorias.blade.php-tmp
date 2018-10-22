@@ -72,6 +72,9 @@
                     </form>
                 </div>
         @elseif($tipoCategoria=="INMU")
+                <ol id="ruta_venta" style="text-decoration: none;list-style: none;    text-align: left;margin: 0px;padding: 0px;margin-left: 15px;">
+                    <li>Inmuebles</li>
+                </ol>
                 <div class="col-md-3 hub-card syi-hub__image--res" style="cursor: auto !important;height:300px !important;">
                         <span class="hub-car-titulo" data-reactid="24">Inmuebles</span>
                         <span class="syi-hub__image syi-hub__image--res" data-reactid="25"> </span>
@@ -99,6 +102,9 @@
                     </div>
                 </form>
         @elseif($tipoCategoria=="SERV")
+                <ol id="ruta_venta" style="text-decoration: none;list-style: none;    text-align: left;margin: 0px;padding: 0px;margin-left: 15px;">
+                    <li>Servicios</li>
+                </ol>
                 <div class="col-md-3 hub-card syi-hub__image--srv" style="cursor: auto !important;height:300px !important;">
                         <span class="hub-car-titulo" data-reactid="28">Servicios</span>
                         <span class="syi-hub__image syi-hub__image--srv"> </span>
