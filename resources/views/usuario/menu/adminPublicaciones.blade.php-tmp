@@ -277,7 +277,8 @@
                     <td colspan=2 style="text-align: left;padding-left: 6px"> {{$venta->tipoPublicacion}}| Merca envios| {{$venta->id}}</td>
                     <td></td>
                     <td></td>
-                    <td style="width: 150px; "><a href="#" class="" id="A_1" style="height: 25px; width: 40%; text-align: center;">Modificar</a>
+                    <td style="width: 150px; ">
+                        <a href="#" class="A_1" id="{{$venta->idPublicacion}}" style="height: 25px; width: 40%; text-align: center;" onclick="modificarPublicacion(id)">Modificar</a>
                             <div class="mymlDropdownMassiveActions massive secondary ch-dropdown">
                         <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select">
                             <span class="ico itemsSecondaryActionsIcn"><i class="ch-icon-cog"></i></span>
@@ -296,7 +297,7 @@
                         </ul>
                     </div>
                     <!-- Modal -->
-  <div class="modal fade in" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade in" id="modalModificarPublicacion_{{$venta->idPublicacion}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,0.7);">
     <div class="modal-dialog" style="width: 46%;height: auto;">
       <div class="modal-content" style="margin: 30% auto;">
         {!! Html::style('css/updateModal-bc8b96c640.css') !!}
@@ -401,7 +402,7 @@
         <a class="secondary" href="https://vender.mercadolibre.com.mx/item/update?itemId=MLM646934777" onclick="redirectToML('https://vender.mercadolibre.com.mx/item/update?itemId=MLM646934777')">Modificar más
         </a>
 
-        <a href="#" onclick="ItemsGlobalValues.modal.hide();return false;">Cancelar</a>
+        <a href="#" onclick="ocultarModalModificar(modalModificarPublicacion_{{$venta->idPublicacion}})">Cancelar</a>
     </div>
 </form>
         </div>
