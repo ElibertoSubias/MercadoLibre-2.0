@@ -236,7 +236,7 @@
   <div class="tab-content" id="activas" style="">
     <div role="tabpanel" class="tab-pane active" id="home">
     <div style=" height: 60px; text-align: left; padding: 10px" >
-    
+     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
         <input type="text" name="" placeholder="Buscar en publicaciones" style="border-radius:  3px;padding: 2px; height: 30px;">
         <button style="border-radius: 5px; background-color: #cce3f7; color:#566573 ; margin-left: 10px; border:1px solid #79a8c7">Buscar</button>
         <label style="margin: 10px">Filtros:</label>
