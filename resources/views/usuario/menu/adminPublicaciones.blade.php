@@ -7,31 +7,43 @@
 
 <script type="text/javascript">
     
-    
- function ventanaPausadas(){
-    alert('ss');
-          var route = "/MercadoLibre-2.0/public/publicacionesp";
+    function finalizar(publicacio, estad){
+         // var dato = $("#dato").val();
           var token = $("#token").val();
-    
-           
-        $('#activas').css({"visibility":"hidden"});
-        $('#pausadas').css({"visibility":"visible"});
-
+          var route = "/MercadoLibre-2.0/public/cambiarestado";
+          var publicacion = publicacio;
+          var estado = estad;
+        
+         
               $.ajax({
                 url: route,
                 headers: {'X-CSRF-TOKEN': token},
                 type: 'POST',
                 dataType: 'json',
-                data: {} 
-                }).done(function(data) {
-                  if (data.res!=1 && data.res!=0){
-                   
-                  }else if(data.res==1){  
-                    $("#lblCorreoExistente").empty();
-                    $("#lblCorreoExistente").append(data.email);
-                  }
+                data: { publicacion: publicacion, estado:estado} 
+                }).done(function(data) {  
+                    location.reload();
                 });
-        }
+          }
+          function activar(){
+          
+            $('#pausadas').css({"font-weight": "600", "color": "#333"});
+            
+          }
+          function marcarTodo(){
+           
+            var checked = false;
+          
+            if(checked == false) {
+            $('.settings').prop('checked', true);
+            checked = true;
+            } else {
+            $('.settings').prop('checked', false);
+            checked = false;
+            }
+           
+          }
+
 </script>
 
 
@@ -291,17 +303,15 @@
                             <ul id="segundoMenu{{$venta->idPublicacion}}" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="overflow: hidden;">
                                 <a role="menuitem"></a>
                                 <li class="masiveActionOption cannot reactivate">                                
-                                    <a href="" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Catalago</p></a>                                
+                                    <a href="javascript:finalizar('{{$venta->id}}', 1)" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Reactivar</p></a>                                
                                 </li>
                                 <li class="masiveActionOption cannot reactivate">                                
-                                    <a href="" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Pausar</p></a>                                
+                                    <a href="javascript:finalizar('{{$venta->id}}', 2)" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Pausar</p></a>                                
                                 </li>
                                 <li class="masiveActionOption cannot finalize">                                
-                                    <a href="" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Finalizar</p></a>
+                                    <a href="javascript:finalizar('{{$venta->id}}', 3)" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Finalizar</p></a>
                                 </li>
-                                <li class="masiveActionOption cannot modify_price">                                
-                                    <a href="" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Modificar precio</p></a>
-                                </li>
+                               
                             </ul>
                     </div> 
               </tr>
