@@ -9,7 +9,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 class Articulos extends Eloquent
 {
     protected $connection = 'mongodb';
-    protected $collection = 'articulos'; 
+    protected $collection = 'carrito'; 
     protected $primarykey = 'id';
 
     use Notifiable;
@@ -20,7 +20,7 @@ class Articulos extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'idUser','titulo', 'precio', 'moneda', 'estado', 'municipio', 'colonia', 'telefono', 'categoria', 'modelo', 'marca', 'anio', 'urlvideo', 'numPuertas', 'kilometros','tipoPublicacion','idPublicacion','descripcion', 'estado', 'arrayCaracteristicas', 'horarioContacto', 'color', 'tipoCombustible', 'motor', 'direccionAuto', 'transmicion', 'version','urlPrincipal','estadopublicacion',
+        'idUser','idPublicacion', 'cantidad','precio',
     ];
 
     /**
