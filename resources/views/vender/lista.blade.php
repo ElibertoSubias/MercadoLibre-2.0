@@ -15,7 +15,7 @@
     		<li class="syi-ui-wizard__step" data-reactid="14"><span data-reactid="15">Confirma tu publicación</span></li>
     	</ol>
     </div>
-    <div style="position: relative;">
+    <div style="position: relative;" id="cont_lista">
         <nav class="hub-nav" style="    border-collapse: separate;
     border-spacing: 1em;
     max-width: 841px;

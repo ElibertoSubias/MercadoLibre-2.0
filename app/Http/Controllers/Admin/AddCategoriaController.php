@@ -243,7 +243,22 @@ class AddCategoriaController extends Controller
             $now = new \DateTime(); 
             $_SESSION["idPublicacion"]=$now->format('d-m-Y-H-i-s'); 
         }
-        return view('vender.descripcion')->with(['idPublicacion'=>$_SESSION["idPublicacion"],'categoria'=>$request->categoria,'tipo'=>$request->tipo,'marca'=>$request->input('car-marca')]);  
+        switch ($request->tipoVenta) {
+            case 'VEHI':
+                return view('vender.descripcionVEHI')->with(['idPublicacion'=>$_SESSION["idPublicacion"],'categoria'=>$request->categoria,'tipo'=>$request->tipo,'marca'=>$request->input('car-marca')]);  
+                break;
+
+            case 'INMU':
+                return view('vender.descripcionINMU')->with(['idPublicacion'=>$_SESSION["idPublicacion"],'categoria'=>$request->categoria,'tipo'=>$request->tipo,'marca'=>$request->input('car-marca')]);  
+                break;
+
+            case 'SERV':
+                return view('vender.descripcionSERV')->with(['idPublicacion'=>$_SESSION["idPublicacion"],'categoria'=>$request->categoria,'tipo'=>$request->tipo,'marca'=>$request->input('car-marca')]);  
+                break;
+            default:
+                return back()->withInput();
+                break;
+        } 
     }
     public function backDescrip(Request $request){
         return redirect()->route('descripcion')->withInput();
