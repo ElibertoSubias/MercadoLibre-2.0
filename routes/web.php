@@ -81,4 +81,6 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::any('publicacionesF', 'Usuario\MenuUsuarioController@showAllPublicacionesFinalizadas')->name('publicacionesF');
 
 	Route::post('cambiarestado', 'Usuario\MenuUsuarioController@editar')->name('cambiarestado');
+
+	Route::any('carrito', 'Usuario\CarritoController@index')->name('carrito');
 });
