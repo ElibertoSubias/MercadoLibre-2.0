@@ -90,6 +90,7 @@
                 </div>
             </div>
         </section>
+        @if($datos->estadoPublicacion===2)
         <section class="item-status bg-alt">
             <div class="item-status-notification">
                 <div class="ch-box-info">
@@ -98,12 +99,14 @@
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--question-blocked"></use>
                         </svg>
                     </div>
+
                     <p class="item-status-notification__title">
                     Publicación pausada
                     </p>
                 </div>
             </div>
         </section>
+        @endif
         <section class="carousel-common__section carousel-common--with-installments">
             <div id="similarItemsCarousel" class="vip-section-carousel"></div>
         </section>
@@ -139,7 +142,7 @@
 
 
 
-<div class="gallery-content item-gallery__wrapper" data-gallery-id="default" data-full-images="[{&quot;src&quot;:&quot;https://http2.mlstatic.com/alfa-romeo-D_NQ_NP_918874-MLM28336465626_102018-F.webp&quot;,&quot;w&quot;:&quot;1118&quot;,&quot;h&quot;:&quot;698&quot;}]">
+<div class="gallery-content item-gallery__wrapper" data-gallery-id="default" data-full-images="[{&quot;src&quot;:&quot;&quot;,&quot;w&quot;:&quot;1118&quot;,&quot;h&quot;:&quot;698&quot;}]">
 
 
 
@@ -160,8 +163,8 @@
 
             <figure class="gallery-image-container thumbgallery_default-0" data-side="right" data-align="top">
 
-                <a href="https://http2.mlstatic.com/alfa-romeo-D_NQ_NP_918874-MLM28336465626_102018-F.webp" class="gallery-trigger gallery-item--landscape ch-zoom-trigger ch-shownby-pointerenter" data-imgindex="0" data-size="1118x698" style="height: 312px; width: 500px;" data-uid="1" aria-owns="ch-zoom-1" aria-haspopup="true">
-                    <img src="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="500" height="312" data-srcset="https://http2.mlstatic.com/D_NQ_NP_918874-MLM28336465626_102018-F.webp 2x" alt="alfa romeo" data-imgindex="0" srcset="https://http2.mlstatic.com/D_NQ_NP_918874-MLM28336465626_102018-F.webp 2x">
+                <a href="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" class="gallery-trigger gallery-item--landscape ch-zoom-trigger ch-shownby-pointerenter" data-imgindex="0" data-size="1118x698" style="height: 312px; width: 500px;" data-uid="1" aria-owns="ch-zoom-1" aria-haspopup="true">
+                    <img src="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="500" height="312" data-srcset="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}} 2x" alt="alfa romeo" data-imgindex="0" srcset="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}">
                 <div class="ch-zoom-loading ch-hide" style="left: 201px; top: 107px;"><div class="ch-loading-large"></div><p>Cargando zoom...</p></div><div class="ch-zoom-seeker ch-hide" style="width: 186px; height: 169px; left: 0px; top: 45.4063px;"></div></a>
             </figure>
 
@@ -456,19 +459,19 @@
 <span class="price-tag-fraction">{{$datos->precio}}</span>
     </span>
 </fieldset>
+@if($datos->estadoPublicacion===2)
     <div class="ch-box-info">
-
-
         <div class="ui-icon--content">
             <svg viewBox="0 0 16 16" id="ui-icon--question-blocked" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><g fill="none" fill-rule="evenodd"><circle fill="#F57819" transform="rotate(-180 8 8)" cx="8" cy="8" r="8"></circle><path fill="#FFF" d="M7 3h1.882l-.235 5.176H7.235z"></path><ellipse fill="#FFF" cx="7.941" cy="10.941" rx=".941" ry=".941"></ellipse></g></svg>
         </div>
 
-        <p class="item-status-notification__title">
+            <p class="item-status-notification__title">
 
-                Publicación pausada
+                    Publicación pausada
 
-        </p>
-</div>
+            </p>
+    </div>
+@endif
     </div>
 </section>
     <section class="ui-view-more vip-section-seller-info">

@@ -141,6 +141,7 @@
 				{!! Html::script('js/ubicacion.js') !!}
 				{!! Html::script('js/buscador.js') !!} 
 				{!! Html::script('js/menusFlotantes.js') !!}
+				{!! Html::script('js/modificarPublicacion.js') !!}
 		</div> 
 	</footer>
 </body>

@@ -1,13 +1,20 @@
-$('.mymlDropdownMassiveActions').click(function(){ 
-	ocultar();
-}); 
 
-function ocultar(){
-	if (!$('.ch-dropdown-content').hasClass('bandera')) {
-		$('.ch-dropdown-content').removeClass("ch-hide"); 
-		$('.ch-dropdown-content').addClass( "bandera" ); 
+function mostrarPrimerMenu(){
+	if (!$('#primerMenuUL').hasClass('bandera')) {
+		$('#primerMenuUL').removeClass("ch-hide"); 
+		$('#primerMenuUL').addClass( "bandera" ); 
 	}else{
-		$('.ch-dropdown-content').addClass( "ch-hide" ); 
-		$('.ch-dropdown-content').removeClass("bandera");  
+		$('#primerMenuUL').addClass( "ch-hide" ); 
+		$('#primerMenuUL').removeClass("bandera");  
 	}
-}   
+}    
+ 
+function mostrarSegundoMenu(id){ 
+	if (!$('#segundoMenu'+id).hasClass('bandera')) { 
+		$('#segundoMenu'+id).removeClass("ch-hide"); 
+		$('#segundoMenu'+id).addClass( "bandera" ); 
+	}else{
+		$('#segundoMenu'+id).addClass( "ch-hide" ); 
+		$('#segundoMenu'+id).removeClass("bandera");  
+	}
+}

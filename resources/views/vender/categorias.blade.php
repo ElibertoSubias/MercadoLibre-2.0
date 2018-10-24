@@ -35,33 +35,33 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                         <div class="col-md-12 testimonial-group" id="cont-scroller">
                           <div class="row text-center" >
-                            <div class="col-xs-4">
+                            <div class="col-xs-4" style="float: left;" id="1">
                                 <div id="cont-categorias" class="category-column">
-                                    <input type="text" name="tipo" id="tipo" value="vehiculos" hidden>
+                                    <input type="text" name="tipo" id="tipo" value="vehiculos" style="display: none;">
                                     <select name="categoria" id="categoria" size="15" style="height:260px;font-size: 14px"> 
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-4">
-                                <div id="cont-categorias" class="category-column menu-marcas" hidden>
+                            <div class="col-xs-4" style="float: left;" id="2">
+                                <div id="cont-categorias" class="category-column menu-marcas" style="display: none;">
                                     <select name="car-marca" id="car-marca" size="15" style="height:260px;font-size: 14px"> 
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-4" style="display:none;">
-                                <div id="cont-categorias" class="category-column menu-modelo" hidden>
+                            <div class="col-xs-4" style="float: left;" id="3">
+                                <div id="cont-categorias" class="category-column menu-modelo" style="display: none;">
                                     <select name="car-modelo" id="car-modelo" size="15" style="height:260px;font-size: 14px"> 
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-4" style="display:none;">
-                                <div id="cont-categorias" class="category-column menu-anio" hidden>
+                            <div class="col-xs-4" style="float: left;" id="4">
+                                <div id="cont-categorias" class="category-column menu-anio" style="display: none;">
                                     <select name="car-anio" id="car-anio" size="15" style="height:260px;font-size: 14px"> 
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-4">
-                                <div id="cont-categorias" class="category-column menu-publicar" hidden>
+                            <div class="col-xs-4" style="float: left;" id="5">
+                                <div id="cont-categorias" class="category-column menu-publicar" style="display: none;">
                                     <img src="/MercadoLibre-2.0/public/img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
                                     <p>¡Listo!</p>
                                     <button type="submit" id="btn-continuar" class="btn-azul">Continuar</button>
@@ -72,6 +72,9 @@
                     </form>
                 </div>
         @elseif($tipoCategoria=="INMU") 
+                <ol id="ruta_venta" style="text-decoration: none;list-style: none;    text-align: left;margin: 0px;padding: 0px;margin-left: 15px;"> 
+                    <li>Inmuebles</li>
+                </ol>
                 <div class="col-md-3 hub-card syi-hub__image--res" style="cursor: auto !important;height:300px !important;">
                         <span class="hub-car-titulo" data-reactid="24">Inmuebles</span>
                         <span class="syi-hub__image syi-hub__image--res" data-reactid="25"> </span>
@@ -99,13 +102,16 @@
                     </div> 
                 </form>
         @elseif($tipoCategoria=="SERV") 
+                <ol id="ruta_venta" style="text-decoration: none;list-style: none;    text-align: left;margin: 0px;padding: 0px;margin-left: 15px;"> 
+                    <li>Servicios</li>
+                </ol>
                 <div class="col-md-3 hub-card syi-hub__image--srv" style="cursor: auto !important;height:300px !important;">
                         <span class="hub-car-titulo" data-reactid="28">Servicios</span>
                         <span class="syi-hub__image syi-hub__image--srv"> </span>
                 </div>
                 <form id="frmCategoria" name="frmCategoria" action="{{route('descripcion')}}" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                    <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="SERV">
+                    <input type="hidden" name="tipoVenta" id="tipoVenta" value="SERV">
                     <div class="wrapper">
                         <div class="scrooller">
                             <div id="cont-categorias" class="category-column">

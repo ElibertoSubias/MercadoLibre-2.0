@@ -11,7 +11,7 @@ class BuscarController extends Controller
     public function buscarPublicaciones(Request $request)
     {
     	if ($request->ajax()) { 
-    		$datos = Articulos::where('titulo', 'like', '%'.$request->consulta.'%')->get(); 
+    		$datos = Articulos::where([['titulo', 'like', '%'.$request->consulta.'%'],'estadoPublicacion'=>1])->get(); 
     		$aux="";
     		foreach ($datos as $key => $value) {
     			$aux = $aux."<li><a href='resultados?busqueda=".$request->consulta."&categoria=".$value->categoria."'>".$value->titulo."</a></li>"; 
@@ -21,7 +21,7 @@ class BuscarController extends Controller
     }
     public function listarResultados(Request $request){
         try {  
-            $datos = Articulos::where('titulo', 'like', '%'.$request->busqueda.'%')->get(); 
+            $datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion'=>1])->get(); 
             return view('listarResultados')->with('datos',$datos);
  
         } catch (Exception $e) {

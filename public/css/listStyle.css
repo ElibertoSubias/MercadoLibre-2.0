@@ -17,6 +17,16 @@
     line-height: initial;
     font-size: 11px;
 }
+#cont_lista form:hover {
+    outline: none;
+  border: 2px solid !important;
+}
+#cont_lista button {
+    outline: none;
+}
+#ve_mas:hover {
+    border: 2px solid !important;
+}
 	li {
         border-bottom: 1px solid;
         border-right: 1px solid;

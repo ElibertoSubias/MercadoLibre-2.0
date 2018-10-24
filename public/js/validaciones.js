@@ -239,15 +239,20 @@ function cargarCategorias(){
         if (data.res==1) {
           $('#categoria').html("");
         }else{
-          $('#categoria').html("");
-          var htmlString = $('#categoria').html();
-            $('#categoria').html(data.res);  
+          $('#categoria').html(""); 
+          $('#categoria').html(data.res);  
+          $('#contenedor-addCat').show();
+          $('#categoria').removeAttr("disabled");
         }
       });
   }
 }
  
-$('#tipoVenta').change(function(){ 
+$('#tipoVenta').change(function(){  
+  $('#car-marca').attr("disabled", true);
+  $('#categoria').attr("disabled", true);
+  $('#car-marca').html("");
+  $('#categoria').html(""); 
   cargarCategorias();
 });
 
@@ -333,11 +338,13 @@ $('#btnAgregarMarca').click(function(){
   }
 });
 
-$('#categoria').change(function(){ 
+$('#categoria').change(function(){  
   var categoria = $("#categoria").val();
   var route = "/MercadoLibre-2.0/public/cargarMarcas";
   var tipoVenta = $("#tipoVenta").val();
   var token = $("#token").val();
+  $('#car-marca').html("");
+  $('#2').hide(); 
   if (categoria != "") {
       $.ajax({
         url: route,
@@ -345,26 +352,41 @@ $('#categoria').change(function(){
         type: 'POST',
         dataType: 'json',
         data: {tipoVenta: tipoVenta, categoria: categoria} 
-        }).done(function(data) {  
-          $('#car-marca').html(""); 
-          $('.menu-marcas').hide();
-          try {
-              document.getElementById('cont-guardar-cat').style.display="block";
+        }).done(function(data) {   
+          if (data.res!=1 || data.res == "") { 
+              $('#car-marca').html(""); 
+              $('.menu-marcas').hide();
+              $('.menu-publicar').hide();
+              try {
+                  document.getElementById('cont-guardar-cat').style.display="block";
+              }
+              catch(err) { 
+                
+              }   
+            try {     
+                $('#car-marca').html(data.res); 
+                $('.menu-marcas').show();  
+                $('#2').show();
+                $('#car-marca').removeAttr("disabled");  
+            }
+            catch(err) {
+            } 
+          }else{ 
+            if ($('#car-marca').val()===null){
+              $('.menu-publicar').show();
+            }else{
+              $('#car-marca').html(""); 
+              $('.menu-marcas').hide();
+            }              
           }
-          catch(err) { 
-            
-          } 
-        try {     
-            $('#car-marca').html(data.res); 
-            $('.menu-marcas').show();    
-        }
-        catch(err) {
-        }
+          
         });
   }
 });
 
 $('#car-marca').change(function(){ 
+  if ($('#car-modelo').val()==null)
+    $('.menu-publicar').show(); 
   var categoria = $("#categoria").val();
   var route = "/MercadoLibre-2.0/public/cargarModelos";
   var marca = $("#car-marca").val();
@@ -397,6 +419,8 @@ $('#car-marca').change(function(){
 });
 
 $('#car-modelo').change(function(){  
+  if ($('#car-anio').val()==null)
+    $('.menu-publicar').show(); 
   var route = "/MercadoLibre-2.0/public/cargarAnios";
   var marca = $("#car-marca").val();
   var modelo = $('#car-modelo').val();
@@ -423,9 +447,4 @@ $('#car-modelo').change(function(){
           }
         });
   }
-});
-
-
-$('#car-marca').change(function(){
-  $('.menu-publicar').show();
-});
+}); 

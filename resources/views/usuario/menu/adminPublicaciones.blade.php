@@ -43,6 +43,8 @@
             }
            
           }
+
+
 </script>
 
 
@@ -253,7 +255,7 @@
                         </p>
                         <ul id="primerMenuUL" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="position: absolute;left: 78px;top: 116px;overflow: hidden;">
                             <a role="menuitem"></a>
-                                                            
+
                                 <li class="masiveActionOption cannot reactivate">                                
                                     <a href="" style="padding:0px;margin:0px"><p>Pausar</p></a>                                
                                 </li>
@@ -265,7 +267,7 @@
                                 </li>
                         </ul>
                     </div> 
-                </th>
+               </th>
                 <th></th>
                 <th></th>
                 <th colspan="4" style="text-align: right; padding: 5px">Publicaciones 1 a 1 de 1 | <a href=""> Con mas venta</a> </th> 
@@ -402,6 +404,10 @@
         <input type="submit" id="submitForm" class="ch-btn secondary" value="Guardar">
         <a class="secondary" href="https://vender.mercadolibre.com.mx/item/update?itemId=MLM646934777" onclick="redirectToML('https://vender.mercadolibre.com.mx/item/update?itemId=MLM646934777')">Modificar más
         </a>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 072e302db0f579168b1a5ee2fff6e118a4826062
         <a href="#" onclick="ocultarModalModificar(modalModificarPublicacion_{{$venta->idPublicacion}})">Cancelar</a>
     </div>
 </form>

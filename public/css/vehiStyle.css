@@ -17,7 +17,7 @@
     line-height: initial;
     font-size: 11px;
 }
-	li {
+.syi-ui-wizard__breadcrumb	li {
         border-bottom: 1px solid;
         border-right: 1px solid;
         border-left-color: #ddd;
@@ -33,7 +33,7 @@
     	top: -2px; 
 
 	}
-	li:before {
+.syi-ui-wizard__breadcrumb	li:before {
 	      border-width: 23px 11px;
     border-top-width: 23px;
     border-right-width: 11px;

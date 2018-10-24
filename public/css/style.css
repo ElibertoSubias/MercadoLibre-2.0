@@ -741,3 +741,13 @@ ul {
     color: white;
     font-weight: 700;
 }
+.cont-addCategoria label {
+    font-size: 13px !important;
+}
+.cont-addCategoria h4 {
+    border-radius: 20px;
+    margin: 20px 0px;
+    padding: 20px;
+    text-align: left;
+    background: #ccccd0;
+}
