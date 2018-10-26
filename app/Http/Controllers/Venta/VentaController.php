@@ -49,7 +49,7 @@ class VentaController extends Controller
         $Articulos = new Articulos;
         $Articulos->idUser = $id; 
         $Articulos->titulo = $request->titulo;
-        $Articulos->precio = $request->precio;
+        $Articulos->precio = floatval($request->precio);
         $Articulos->moneda = $request->moneda;
         $Articulos->tipoPublicacion = $request->listingTypes;
         $Articulos->estado = $request->estado;
@@ -73,7 +73,7 @@ class VentaController extends Controller
         $Articulos->transmicion = $request->transmicion;
         $Articulos->version = $request->version;
         $Articulos->urlPrincipal = $urlPrincipal->url;
-        $Articulos->estadopublicacion = 1;
+        $Articulos->estadoPublicacion = 1;
         $Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
         $Articulos->urlPrincipal = $urlPrincipal->url;
         $Articulos->save();
