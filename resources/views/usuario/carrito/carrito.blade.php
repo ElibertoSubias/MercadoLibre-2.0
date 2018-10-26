@@ -1,15 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
-{!! Html::style('css/styleCarrito.css') !!} 
+{!! Html::style('css/styleCarrito.css') !!} /
 <div style="margin: 30px auto 20px;max-width: 1220px;background-color: #fff;border: 1px solid #e2e2e2;border-radius: 5px;height:auto;display: inline-block;width: 100%;">
     
     <div style="position: relative;">
-            <div style="width: 100%;height: 100%;text-align: left;margin:20px;">
-                <div id="app-container" class="cart__list"><div>    <div class="top-disclaimers" data-region="top-disclaimers"></div>
-
-<div data-component="index" class="cart__list-items u-clearfix">
-    <div data-region="tabs" class="cart__tabs"><div><ul class="ui-tabs" role="tablist" data-tabs="">
+            <div style="width: 99%;height: 100%;text-align: left;margin:20px;"> 
+ 
+    <div data-region="tabs" class="cart__tabs"><div><ul class="ui-tabs" role="tablist" data-tabs="" style="width: 96.5%;">
     <li data-tab="cart" class="ui-tabs__item ui-tabs__item--selected"><a class="ui-tabs__item-link" href="/gz/cart" role="tab">Carrito (1)</a></li>
     <li data-tab="saved" class="ui-tabs__item"><a class="ui-tabs__item-link" href="/gz/cart/saved" role="tab">Guardados (0)</a></li>
 </ul>
@@ -20,7 +18,7 @@
     <div data-region="free-shipping-progress"><div></div></div>
 
 
-    <div data-region="items" class="cart__items-container" role="tabpanel" itemscope="" itemtype="http://schema.org/ItemList"><div><div><div data-component="item-cart" class="ui-panel" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
+    <div data-region="items" class="cart__items-container" role="tabpanel" itemscope="" itemtype="http://schema.org/ItemList" style="width: 95%;"><div><div><div data-component="item-cart" class="ui-panel" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
     <div class="ui-panel__content">
         <article class="item  ">
             <div data-region="item-loading"></div>
@@ -46,7 +44,7 @@
                                 </svg>
                             	<span class="item__payment-installments__label">Hasta 3 meses sin interés</span>
                             </p>
-                            <p class="item__information-detail item__shipping-info  u-float-left ">
+                            <p class="item__information-detail item__shipping-info  u-float-left " style="display: contents;">
                                 <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-icon--shipping-outline ">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--shipping-outline"></use>
                                 </svg>
@@ -77,7 +75,7 @@
                                     <input data-quantity="pop" type="submit" value="-" class="u-button-reset ui-quantity-selector__button" name="pop" disabled="">
                                 </form>
                         
-                                <input autocomplete="off" data-quantity="input" type="tel" value="1" class="u-button-reset ui-quantity-selector__input" name="quantity" disabled="">
+                                <input autocomplete="off" data-quantity="input" type="tel" value="1" class="u-button-reset ui-quantity-selector__input" name="quantity" disabled="" style="    width: 50px;">
                         
                                 <form class="u-float-left" action="/gz/cart/item/quantity?id=MLM572083257_22751685920" method="POST">
                                     <input data-quantity="push" type="submit" value="+" class="u-button-reset ui-quantity-selector__button" name="push" disabled="">
@@ -86,7 +84,7 @@
                             </div>
                             <div data-quantity="error" class="ui-quantity-selector__stock">Último disponible</div>
                         </div>
-                        <div class="item__price">
+                        <div class="item__price" style="font-size: 32px !important;">
                         
                         
                                 <span class="price-tag item__price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
@@ -105,7 +103,7 @@
     </div>
 </div>
 </div></div></div>
-    <div data-region="summary" class="cart__summary"><div>    <footer class="summary summary--static" aria-label="Resumen de tu carrito" data-summary="footer">
+    <div data-region="summary" class="cart__summary" style="    width: 95%;"><div>    <footer class="summary summary--static" aria-label="Resumen de tu carrito" data-summary="footer">
         <div class="summary__row-content">
                 <div class="summary__row summary__row--shipping summary__row--subtotal">
                     <span class="summary__label">Producto</span>
@@ -154,7 +152,6 @@
                 <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                     <meta itemprop="price" content="1,499.00">
                     
-                    
                     <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
                     <span class="price-tag-fraction">1,499</span>
                         <span class="price-tag-decimal-separator">.</span>
@@ -168,8 +165,7 @@
             <a href="/gz/checkout/cart/buy?items=MLM572083257-Q1-VAR22751685920&amp;destination_type=address_id&amp;destination_value=902260096&amp;unchecked=false&amp;context=cart&amp;siteId=MLM" data-summary="buy-action" class="ui-button ui-button--primary">Comprar todo</a>
         </div>
     </footer>
-</div></div>
-</div>
+</div></div> 
 </div></div>
             </div>
     </div> 
