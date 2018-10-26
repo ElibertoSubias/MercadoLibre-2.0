@@ -33,16 +33,16 @@ class MenuUsuarioController extends Controller
     public function showAllPublicaciones(Request $request)
     {
         $User = Auth::user();   
-        $articulos = Articulos::where([['idUser' , '=', $User->_id] ,['estadopublicacion', '=', 1]])->get();
+        $articulos = Articulos::where([['idUser' , '=', $User->_id] ,['estadoPublicacion', '=', 1]])->get();
         return view('usuario.menu.adminPublicaciones',compact('articulos') );
 =======*/
     public function showAllPublicaciones() 
     {
-        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 1]])->get();
           
-          $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
-          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
-           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+          $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 3]])->get();
+          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
+           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 1]])->get();
           
 
         $totalActivos = count($activos);
@@ -56,10 +56,10 @@ class MenuUsuarioController extends Controller
 
     public function showAllPublicacionesPausadas() 
     {
-        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
-           $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
-          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
-           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
+           $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 3]])->get();
+          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
+           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 1]])->get();
           
 
         $totalActivos = count($activos);
@@ -71,10 +71,10 @@ class MenuUsuarioController extends Controller
 
     public function showAllPublicacionesFinalizadas() 
     {
-        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
-           $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
-          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
-           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 3]])->get();
+           $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 3]])->get();
+          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
+           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 1]])->get();
           
 
         $totalActivos = count($activos);
@@ -94,7 +94,7 @@ class MenuUsuarioController extends Controller
                 if($request->estado=="1")
                 {
                 $usuario = articulos::find($request->publicacion); 
-                $usuario->estadopublicacion = 1; 
+                $usuario->estadoPublicacion = 1; 
                 $usuario->save(); 
                 $idUsuario = $usuario->getKey(); 
                 return response()->json([
@@ -104,7 +104,7 @@ class MenuUsuarioController extends Controller
                 if($request->estado=="2")
                 {
                 $usuario = articulos::find($request->publicacion); 
-                $usuario->estadopublicacion = 2; 
+                $usuario->estadoPublicacion = 2; 
                 $usuario->save(); 
                 $idUsuario = $usuario->getKey(); 
                 return response()->json([
@@ -114,7 +114,7 @@ class MenuUsuarioController extends Controller
                 if($request->estado=="3")
                 {
                 $usuario = articulos::find($request->publicacion); 
-                $usuario->estadopublicacion = 3; 
+                $usuario->estadoPublicacion = 3; 
                 $usuario->save(); 
                 $idUsuario = $usuario->getKey(); 
                 return response()->json([
