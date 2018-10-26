@@ -230,7 +230,7 @@
         <div class="col-md-12" style="padding-left: 55px;">
             <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation"  id="activas" class="active"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicaciones')}}" >Activas ( {{$totalActivos}} )</a></li>
+    <li role="presentation"  id="activas" class="active"><a style="background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#eee),color-stop(100%,#fff));background-image: -webkit-linear-gradient(#eee,#fff 25px);background-image: -moz-linear-gradient(#eee,#fff 25px);background-image: -o-linear-gradient(#eee,#fff 25px);background-image: linear-gradient(#eee,#fff 25px);" href="{{action('Usuario\MenuUsuarioController@showAllPublicaciones')}}" >Activas ( {{$totalActivos}} )</a></li>
     <li role="presentation"  id="pausadas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesPausadas')}}">Pausadas ({{$totalPausados}})</a></li>
     <li role="presentation" id="finalizadas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesFinalizadas')}}" >Finalizadas ({{$totalFinalizados}})</a></li>
   </ul> 
@@ -253,7 +253,7 @@
                         <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select" style="height: 25px;margin:5px;">
                             <span class="ico itemsSecondaryActionsIcn"><i style="width: 20px;margin-top: -3px;padding-top: 0px;height: 20px;margin-left: -5px;" class="ch-icon-cog"></i></span>
                         </p>
-                        <ul id="primerMenuUL" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="position: absolute;left: 78px;top: 116px;overflow: hidden;">
+                        <ul id="primerMenuUL" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="position: absolute;    left: 8.9%;top: 57.9%;z-index: 1;overflow: hidden;">
                             <a role="menuitem"></a>
 
                                 <li class="masiveActionOption cannot reactivate">                                
@@ -282,7 +282,9 @@
                     <td rowspan="2" width="50xp" >
                         <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$venta->idPublicacion}}/{{$venta->urlPrincipal}}" width="80"  style="margin-bottom: -25px">
                     </td>
-                    <td style=" text-align:left; padding-left: 6px;">{{$venta->titulo}}</td>
+                    <td style="color: blue;font-size: 15px; text-align:left; padding-left: 6px;">
+                        <a href="id={{$venta->_id}}&user={{$venta->idUser}}" style="color: blue">{{$venta->titulo}}</a>
+                    </td>
                     <td></td>
                     <td></td>
                     <td style="margin-bottom: 20px" ><label class="price">{{$venta->precio}}</label> X 1 disponible</td>
@@ -290,29 +292,42 @@
               </tr>
                <tr>
                     <td colspan=2 style="text-align: left;padding-left: 6px;">
-                     <?php if($venta->tipoPublicacion=="free"){echo "Gratis";}?> | Merca envios| {{$venta->id}}</td>
+                        <div class="row" style="    padding-top: 10px;">
+                            <div class="col-md-12">
+                                <p style="font-size: 11px;">Publicacion <?php if($venta->tipoPublicacion=="free"){echo "Gratuita";}?><span style="color: #999">| #{{$venta->id}}</span></p>  
+                            </div> 
+                        </div>
+                    </td>
                     <td></td>
                     <td></td>
                     <td colspan="2" style="width: 150px;text-align: right;">
-                    <a href="#" class="A_1" id="{{$venta->idPublicacion}}" style="height: 25px; width: 30%;    color: #476274; text-align: center;" onclick="modificarPublicacion(id)">Modificar</a> 
-                        <div id="{{$venta->idPublicacion}}" onclick="mostrarSegundoMenu(id)" class="mymlDropdownMassiveActions massive secondary ch-dropdown">
-                            <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select" style="height: 25px;margin:5px;">
-                            <span class="ico itemsSecondaryActionsIcn"><i style="width: 20px;margin-top: -3px;padding-top: 0px;height: 20px;margin-left: -5px;" class="ch-icon-cog"></i></span>
-                            </p>
-                            <ul id="segundoMenu{{$venta->idPublicacion}}" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="overflow: hidden;">
-                                <a role="menuitem"></a>
-                                <li class="masiveActionOption cannot reactivate">                                
-                                    <a href="javascript:finalizar('{{$venta->id}}', 1)" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Reactivar</p></a>                                
-                                </li>
-                                <li class="masiveActionOption cannot reactivate">                                
-                                    <a href="javascript:finalizar('{{$venta->id}}', 2)" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Pausar</p></a>                                
-                                </li>
-                                <li class="masiveActionOption cannot finalize">                                
-                                    <a href="javascript:finalizar('{{$venta->id}}', 3)" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Finalizar</p></a>
-                                </li>
-                               
-                            </ul>
-                    </div> 
+                        <div class="row">
+                            <div class="col-md-8" style="margin-top: 7px;">
+                                <a href="#" class="A_1" id="{{$venta->idPublicacion}}" style="height: 25px; width: 100%;margin-right: -25px;color: #476274; text-align: center;" onclick="modificarPublicacion(id)">Modificar</a> 
+                            </div>
+                            <div class="col-md-4">
+                                <div id="{{$venta->idPublicacion}}" onclick="mostrarSegundoMenu(id)" class="mymlDropdownMassiveActions massive secondary ch-dropdown">
+                                    <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select" style="height: 25px;margin:5px;">
+                                    <span class="ico itemsSecondaryActionsIcn"><i style="width: 20px;margin-top: -3px;padding-top: 0px;height: 20px;margin-left: -5px;" class="ch-icon-cog"></i></span>
+                                    </p>
+                                    <ul id="segundoMenu{{$venta->idPublicacion}}" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="overflow: hidden;    overflow: hidden;
+    margin-left: -65px;
+    margin-top: -6px;    border-radius: 5px 0px 5px 5px !important;">
+                                        <a role="menuitem"></a>
+                                        <li class="masiveActionOption cannot reactivate">                                
+                                            <a href="javascript:finalizar('{{$venta->id}}', 1)" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Reactivar</p></a>                                
+                                        </li>
+                                        <li class="masiveActionOption cannot reactivate">                                
+                                            <a href="javascript:finalizar('{{$venta->id}}', 2)" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Pausar</p></a>                                
+                                        </li>
+                                        <li class="masiveActionOption cannot finalize">                                
+                                            <a href="javascript:finalizar('{{$venta->id}}', 3)" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Finalizar</p></a>
+                                        </li>
+                                       
+                                    </ul>
+                                </div> 
+                            </div>
+                        </div> 
               </tr>
               <!-- Modal -->
   <div class="modal fade in" id="modalModificarPublicacion_{{$venta->idPublicacion}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,0.7);">
@@ -403,11 +418,7 @@
     <div class="ch-actions">
         <input type="submit" id="submitForm" class="ch-btn secondary" value="Guardar">
         <a class="secondary" href="https://vender.mercadolibre.com.mx/item/update?itemId=MLM646934777" onclick="redirectToML('https://vender.mercadolibre.com.mx/item/update?itemId=MLM646934777')">Modificar más
-        </a>
-<<<<<<< HEAD
-=======
-
->>>>>>> 072e302db0f579168b1a5ee2fff6e118a4826062
+        </a> 
         <a href="#" onclick="ocultarModalModificar(modalModificarPublicacion_{{$venta->idPublicacion}})">Cancelar</a>
     </div>
 </form>
