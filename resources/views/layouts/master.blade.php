@@ -15,14 +15,14 @@
 					</div>
 				</a>
 			</div>
-			<form class="nav-buscar" action="{{route('buscar')}}" method="post" role="search" id="buscador-articulos">
-				<input type="text" class="nav-buscar-input" name="as_word" placeholder="Buscar productos, marcas y más..." maxlength="120" autofocus="" autocapitalize="off" autocorrect="off" spellcheck="false" tabindex="2" autocomplete="off" id="caja_busqueda">
+			<form class="nav-buscar" action="{{route('resultados')}}" method="get" role="search" id="buscador-articulos">
+				<input type="text" class="nav-buscar-input" name="busqueda" placeholder="Buscar productos, marcas y más..." maxlength="120" autofocus="" autocapitalize="off" autocorrect="off" spellcheck="false" tabindex="2" autocomplete="off" id="caja_busqueda">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 				<button class="nav-buscar-limpiar-btn" type="button" title="Limpiar"></button>
 				<button class="nav-buscar-cerrar-btn" type="button" title="Cerrar"></button>
 				<button type="submit" class="nav-search-btn" tabindex="3">
 					<i class="nav-icon-search">
-						<img src="../public/img/icon_buscar.png" alt="" style="width: 50%;height: 80%;">
+						<img src="../public/img/icon_buscar.png" alt="" style="width: 50%;height: 80%;margin-left: 10px;">
 						<span class="buscar-icono">Buscar</span>
 					</i>
 				</button> 

@@ -1,3 +1,76 @@
+.clearfix {
+    clear: both;
+}
+.applied-filters {
+    clear: both;
+    display: block;
+    margin-top: -4px;
+    padding-right: 15px;
+    width: 100%;
+}
+.applied-filters a {
+    line-height: 10px;
+    margin: 8px 0;
+    overflow: hidden;
+    text-decoration: none;
+}
+.applied-filters dl dd {
+    padding: 0 8px;
+    background: #fff;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+.applied-filters dd {
+    float: left;
+    margin: 4px 12px 8px 0;
+    position: relative;
+}
+.applied-filters dd h2.applied-fliter {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    min-height: 26px;
+}
+.applied-filters dl dd h2 {
+    font-size: 13px;
+    color: #666;
+}
+.applied-filters dd h2 {
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 26px;
+    padding-right: 16px;
+}
+.applied-filters dd .close__icon {
+    position: absolute;
+    right: 7px;
+    top: 8px;
+}
+.applied-filters dd .close__icon:after {
+    font-family: search-icons;
+    content: '\e905';
+    color: #ccc;
+    font-size: 10px;
+}
+.ui-list__item--selected:before {
+    border-left: 5px solid #3483fa;
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+.ui-list__content a{
+    font-size: 13px !important;
+}
+.ui-dropdown__indicator {
+    background-image: url(/MercadoLibre-2.0/public/svg/desplegar.svg);
+}
 /*Carbon*/
 .filters__group dd span.filter-name {
     color: #666 !important;
@@ -603,18 +676,7 @@ li, main {
     color: #3483fa;
     -webkit-transition: -webkit-transform .3s ease-out;
     transition: transform .3s ease-out;
-}
-.sort-by .ui-dropdown__indicator:after {
-    position: relative;
-    top: 0;
-    left: 4px;
-    font-size: 12px;
-}
-.ui-dropdown__indicator:after {
-    content: '\e904';
-    font-family: search-icons;
-    position: relative;
-} 
+}  
 .ui-dropdown__content {
     top: 32px;
     left: 0;
@@ -941,7 +1003,8 @@ li, main {
     height: 12px;
     position: absolute;
     right: -2px;
-    top: 2px;
+        top: 6px;
+    left: 100px;
 } 
 .ui-dropdown__indicator {
     display: inline-block;
@@ -956,18 +1019,7 @@ li, main {
     color: #3483fa;
     -webkit-transition: -webkit-transform .3s ease-out;
     transition: transform .3s ease-out;
-}
-.sort-by .ui-dropdown__indicator:after {
-    position: relative;
-    top: 0;
-    left: 4px;
-    font-size: 12px;
-}
-.ui-dropdown__indicator:after {
-    content: '\e904';
-    font-family: search-icons;
-    position: relative;
-} 
+}  
 .ui-dropdown__content {
     top: 32px;
     left: 0;
