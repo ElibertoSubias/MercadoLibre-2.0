@@ -57,14 +57,14 @@
 				</ul> 
 			</div>  
 			@if(Auth::check()) 
-        		<div style="width: 30%;width: 30%;display: inline-block;">
+        		<div style="width: 30%;display: inline-block;text-align: right;">
 					<nav id="nav-menu-cabecera"> 
 						<label onmouseover="abrirMenu()" id="userswitch" class="nav-header-user-switch" tabindex="4"><span><span class="nav-header-avatar-user" data-js="user-menu:nav-header-avatar-user"><img src="../public/svg/user.svg" srcset="../public/svg/user.svg 2x" class="nav-header-avatar-user-img" height="20" width="20"></span><span class="nav-header-username">{{ auth()->user()->nombre }}</span><span class="nav-header-username-chevron"></span></span></label>
 						<input type="check" id="nav-header-user-switch">
 						<span id="detonador"><div id="info_user" onmouseleave="cerrarMenu()">
 							<div id="info_perfil">
 								<div class="user-menu__user-info-inner-container">
-									<div class="user-menu__user-badge">
+									<div class="user-menu__user-badge" style="text-align: center;">
 										<div class="user-menu__user-badge-image">
 											<div class="user-menu__loyalty-components">
 												<svg class="user-menu__user-progress user-menu--level-1" viewBox="0 0 100 100">
@@ -104,14 +104,16 @@
 							<span class="user-menu__chevron" style="right: 202px;"></span>
 						</div></span>
 						<a href="#" class="option-help" rel="nofollow">Ayuda</a>
+						<a style="padding-right: 0px" href="{{route('carrito')}}" title="Carrito de compras" class="nav-cart nav-cart-empty" id="nav-cart"><img style="vertical-align: baseline;" src="/MercadoLibre-2.0/public/img/icon_car.png" alt="" width="19"></a>
 					</nav>		
 				</div>
         	@else
-        		<div style="width: 30%;width: 30%;display: inline-block;">
+        		<div style="width: 30%;width: 30%;display: inline-block;text-align: right;">
 					<nav id="nav-menu-cabecera">
 						<a href="{{route('crearcuentapersonal')}}" class="opcion-registrar" rel="nofollow">Crea tu cuenta</a>
 						<a href="{{route('autenticar')}}" class="opcion-login" rel="nofollow">Ingresa</a>
 						<a href="#" class="option-help" rel="nofollow">Ayuda</a>
+						<a style="padding-right: 0px" href="{{route('carrito')}}" title="Carrito de compras" class="nav-cart nav-cart-empty" id="nav-cart"><img style="vertical-align: baseline;" src="/MercadoLibre-2.0/public/img/icon_car.png" alt="" width="19"></a>
 					</nav>		
 				</div>
         	@endif

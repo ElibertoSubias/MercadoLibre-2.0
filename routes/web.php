@@ -83,4 +83,5 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::post('cambiarestado', 'Usuario\MenuUsuarioController@editar')->name('cambiarestado');
 
 	Route::any('carrito', 'Usuario\CarritoController@index')->name('carrito');
+	
 });
