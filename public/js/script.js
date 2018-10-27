@@ -199,8 +199,21 @@ $('#select_file').change(function(){
 	   }
 	  })
     }
-	 });
+});
 
+function delateImg(id,tipo){
+	var token = document.getElementsByTagName('_token').value;
+	var route = "/MercadoLibre-2.0/public/detaleImg";
+	$.ajax({
+	url: route, 
+	headers: {'X-CSRF-TOKEN': token},
+	type: 'get',
+	dataType: 'json',
+	data: {link: id,tipo:tipo} 
+	}).done(function(data) {  
+		  
+    });
+}
 
 $('#btn_MostrarMas').click(function(){
 	event.preventDefault();

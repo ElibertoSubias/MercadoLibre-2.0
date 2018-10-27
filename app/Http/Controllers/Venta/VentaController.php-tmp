@@ -147,7 +147,29 @@ class VentaController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function showModificarVEHI(Request $request) {
-		return view('vender.modificarVEHI');
+		$user = Auth::user();
+
+		$datos = Articulos::where(['_id' => $request->itemId, 'idUser' => $user->_id])->first();
+		if ($datos != "") {
+			$imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->get();
+			return view('vender.modificarVEHI')->with('datos', $datos)->with('imagen', $imagen);
+
+		} else {
+			return "0";
+		}
+	}
+
+	public function delateImagen(Request $request) {
+		if ($request->ajax()) {
+			if (!unlink($request->link)) {
+				echo ("$link No fue posible eliminar la imagen");
+			} else {
+				if ($request->tipo == 1) {
+					echo '<p class="picture-uploader-add">Agregar</p><div class="picture-uploader-controls"><a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a> </div><p class="picture-uploader-principal">Foto principal</p>';
+				}
+				echo ('<p class="picture-uploader-add">Agregar</p><div class="picture-uploader-controls"><a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a></div>');
+			}
+		}
 	}
 
 	public function updateVEHI(Request $request) {

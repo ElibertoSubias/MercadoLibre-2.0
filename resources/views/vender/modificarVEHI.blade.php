@@ -28,108 +28,235 @@
                                     <div class="picture-uploader-preview " id="picture-uploader-preview" style="position: relative;z-index: 1;">
                                         <ul>
                                             
-                                                {{ csrf_field() }}
-                                                        <input type="file" name="select_file" id="select_file" class="btn-car" /> 
+                                            {{ csrf_field() }}
+                                            <input type="file" name="select_file" id="select_file" class="btn-car" /> 
+                                             
+                                            @isset($imagen[0]->_id) 
+                                                <li data-picture-status="on" class="off" id="principal"> 
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[0]->url}}" class="img-thumbnail" width="300" />
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close" href="#" id="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[0]->url}}" onclick="delateImg(id,1)"><span class="">x</span></a>
+                                                    </div>
+                                                    <p class="picture-uploader-principal">Foto principal</p>
+                                                </li>  
+                                            @endisset
+                                            @empty($imagen[0]->_id)
                                                 <li data-picture-status="on" class="off" id="principal" onclick="clickbtn(id)"> 
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
                                                     <p class="picture-uploader-principal">Foto principal</p>
+                                                </li>  
+                                            @endempty
+                                            @isset($imagen[1]->_id) 
+                                                <li data-picture-status="off" id="img1" onclick="clickbtn(id)">
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[1]->url}}" class="img-thumbnail" width="300" />
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close" href="#"><span class="">x</span></a>
+                                                    </div>
                                                 </li> 
-                                                
-                                            
+                                            @endisset
+                                            @empty($imagen[1]->_id)
                                                 <li data-picture-status="off" id="img1" onclick="clickbtn(id)">
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
+                                                </li> 
+                                            @endempty
+                                            @isset($imagen[2]->_id) 
+                                                <li data-picture-status="off" id="img2" onclick="clickbtn(id)">
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[2]->url}}" class="img-thumbnail" width="300" />
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close" href="#"><span class="">x</span></a>
+                                                    </div>
                                                 </li>
-                                            
+                                            @endisset
+                                            @empty($imagen[2]->_id)
                                                 <li data-picture-status="off" id="img2" onclick="clickbtn(id)">
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
                                                 </li>
-                                            
+                                            @endempty
+                                            @isset($imagen[3]->_id) 
+                                                <li data-picture-status="off" id="img3" onclick="clickbtn(id)">
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[3]->url}}" class="img-thumbnail" width="300" />
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close" href="#"><span class="">x</span></a>
+                                                    </div>
+                                                </li>
+                                            @endisset
+                                            @empty($imagen[3]->_id)
                                                 <li data-picture-status="off" id="img3" onclick="clickbtn(id)">
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
                                                 </li>
-                                            
+                                            @endempty
+                                            @isset($imagen[4]->_id) 
+                                                <li data-picture-status="off" id="img4" onclick="clickbtn(id)">
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[4]->url}}" class="img-thumbnail" width="300" />
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close" href="#"><span class="">x</span></a>
+                                                    </div>
+                                                </li>
+                                            @endisset
+                                            @empty($imagen[4]->_id)
                                                 <li data-picture-status="off" id="img4" onclick="clickbtn(id)">
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
                                                 </li>
-                                            
+                                            @endempty
+                                            @isset($imagen[5]->_id) 
+                                                <li data-picture-status="off" id="img5" onclick="clickbtn(id)">
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[5]->url}}" class="img-thumbnail" width="300" />
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close" href="#"><span class="">x</span></a>
+                                                    </div>
+                                                </li>
+                                            @endisset
+                                            @empty($imagen[5]->_id)
                                                 <li data-picture-status="off" id="img5" onclick="clickbtn(id)">
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
                                                 </li>
-                                            
+                                            @endempty
+                                            @isset($imagen[6]->_id) 
+                                                <li data-picture-status="off" id="img6" onclick="clickbtn(id)">
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[6]->url}}" class="img-thumbnail" width="300" />
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close" href="#"><span class="">x</span></a>
+                                                    </div>
+                                                </li>
+                                            @endisset
+                                            @empty($imagen[6]->_id)
                                                 <li data-picture-status="off" id="img6" onclick="clickbtn(id)">
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
                                                 </li>
-                                            
+                                            @endempty
+                                            @isset($imagen[7]->_id) 
+                                                <li data-picture-status="off" id="img7" onclick="clickbtn(id)">
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[7]->url}}" class="img-thumbnail" width="300" />
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close" href="#"><span class="">x</span></a>
+                                                    </div>
+                                                </li>
+                                            @endisset
+                                            @empty($imagen[7]->_id)
                                                 <li data-picture-status="off" id="img7" onclick="clickbtn(id)">
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
                                                 </li>
-                                            
+                                            @endempty
+                                            @isset($imagen[8]->_id)
+                                                <li data-picture-status="off" id="img8" onclick="clickbtn(id)">
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[8]->url}}" class="img-thumbnail" width="300" />
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close " href="#"><span class="">x</span></a>
+                                                    </div>
+                                                </li>
+                                            @endisset
+                                            @empty($imagen[8]->_id)
                                                 <li data-picture-status="off" id="img8" onclick="clickbtn(id)">
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
                                                 </li>
-                                            
+                                            @endempty
+                                            @isset($imagen[9]->_id)
+                                                <li data-picture-status="off" id="img9" onclick="clickbtn(id)">
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[9]->url}}" class="img-thumbnail" width="300" />
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close " href="#"><span class="">x</span></a>
+                                                    </div>
+                                                </li>
+                                            @endisset
+                                            @empty($imagen[9]->_id)
                                                 <li data-picture-status="off" id="img9" onclick="clickbtn(id)">
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
                                                 </li>
-                                            
+                                            @endempty
+                                            @isset($imagen[10]->_id)
                                                 <li data-picture-status="off" id="img10" onclick="clickbtn(id)">
-                                                    <p class="picture-uploader-add">Agregar</p>
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[10]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
-                                                        <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
+                                                        <a role="button" class="ch-close " href="#"><span class="">x</span></a>
                                                     </div>
                                                 </li>
-                                            
+                                            @endisset
+                                            @empty($imagen[10]->_id)
                                                 <li data-picture-status="off" id="img11" onclick="clickbtn(id)">
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
                                                 </li>
-                                            
+                                            @endempty
+                                            @isset($imagen[11]->_id)
+                                                <li data-picture-status="off" id="img12" onclick="clickbtn(id)"> 
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[11]->url}}" class="img-thumbnail" width="300" />
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close " href="#"><span class="">x</span></a>
+                                                    </div>
+                                                </li>
+                                            @endisset
+                                            @empty($imagen[11]->_id)
                                                 <li data-picture-status="off" id="img12" onclick="clickbtn(id)">
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
                                                 </li>
+                                            @endempty
+                                            @isset($imagen[12]->_id)
+                                                <li data-picture-status="off" id="img13" onclick="clickbtn(id)">
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[12]->url}}" class="img-thumbnail" width="300" />
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
+                                                    </div>
+                                                </li> 
+                                            @endisset
+                                            @empty($imagen[12]->_id)
                                                 <li data-picture-status="off" id="img13" onclick="clickbtn(id)">
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
-                                                        <a role="button" class="ch-close ch-hide" href="#">
-                                                            <span class="ch-hide">Borrar</span>
-                                                        </a>
+                                                        <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
                                                 </li>
+                                            @endempty
+                                            @isset($imagen[13]->_id)
+                                                <li data-picture-status="off" id="img14" onclick="clickbtn(id)">
+                                                    <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[13]->url}}" class="img-thumbnail" width="300" />
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
+                                                    </div>
+                                                </li> 
+                                            @endisset
+                                            @empty($imagen[13]->_id)
+                                                <li data-picture-status="off" id="img14" onclick="clickbtn(id)">
+                                                    <p class="picture-uploader-add">Agregar</p>
+                                                    <div class="picture-uploader-controls">
+                                                        <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
+                                                    </div>
+                                                </li>
+                                            @endempty
                                             </ul>
                                     </div>
                                     <div id="html5_1cpaullo31ni1nbioqm1s7f2mk3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 0px; width: 1024px; height: 0px; overflow: hidden; z-index: 0;"><input id="html5_1cpaullo31ni1nbioqm1s7f2mk3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,.JPG,.JPEG,image/gif,.GIF,image/png,.PNG,.webp">
@@ -143,7 +270,7 @@
                             <legend>Ingresa un video</legend>
                             <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><p>Link de YouTube</p></div>
                             <div class="col-md-4">
-                                <input class="form-control col-md-4" type="text" name="videoURL" id="videoURL" value="{{old('videoURL')}}">
+                                <input class="form-control col-md-4" type="text" name="videoURL" id="videoURL" value="{{$datos->urlvideo}}">
                                 <span>Ingresa el link de tu video de YouTube.</span>
                             </div>
                         </fieldset>
@@ -155,20 +282,23 @@
                                 <div>
                                     <div class="ch-form">
                                         <label class="lblUbicacion">Estado:*</label>
+                                        <input type="hidden" name="estadoSelected" id="estadoSelected" value="{{$datos->estado}}">
                                         <select name="estado" id="estado">
-                                            <option value="">Selecciona un estado</option>  
+                                            <option value="{{$datos->estado}}">Selecciona un estado</option>  
                                         </select>
                                     </div> 
                                     <div class="ch-form">
                                         <label class="lblUbicacion">Municipio:*</label>
+                                        <input type="hidden" name="municipioSelected" id="municipioSelected" value="{{$datos->municipio}}">
                                         <select name="municipio" id="municipio">
-                                            <option value="">Selecciona un municipio</option>
+                                            <option value="{{$datos->municipio}}">Selecciona un municipio</option>
                                         </select>  
                                     </div>
                                     <div class="ch-form">
                                         <label class="lblUbicacion">Colonia:*</label>
+                                        <input type="hidden" name="coloniaSelected" id="coloniaSelected" value="{{$datos->colonia}}">
                                         <select name="colonia" id="colonia" style="width: 280px;">
-                                            <option value="">Selecciona una colonia</option>
+                                            <option value="{{$datos->colonia}}">Selecciona una colonia</option>
                                             <option value="Fracc.Los Angeles">Fracc.Los Angeles</option>
                                         </select>
                                     </div> 
@@ -185,7 +315,7 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><label class="lblUbicacion">Teléfono:*</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input class="form-control col-md-2" type="number" name="telefono" id="telefono"> 
+                                            <input class="form-control col-md-2" type="number" name="telefono" id="telefono" value="{{$datos->telefono}}"> 
                                         </div>
                                     </div>  
                                 </div>
@@ -194,7 +324,7 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;width: 131.5px;"><p>Horario de contacto:</p>
                                         </div>
                                         <div class="col-md-2">
-                                            <input class="form-control col-md-2" type="text" name="horarioContacto" id="horarioContacto"> 
+                                            <input class="form-control col-md-2" type="text" name="horarioContacto" id="horarioContacto" value="{{$datos->horarioContacto}}"> 
                                         </div>
                                     </div> 
                                 </div>
@@ -209,7 +339,7 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><label class="lblUbicacion">Modelo:*</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input class="form-control col-md-2" type="text" name="modelo" id="modelo"> 
+                                            <input class="form-control col-md-2" type="text" name="modelo" id="modelo" value="{{$datos->modelo}}"> 
                                         </div>
                                     </div>  
                                 </div>
@@ -218,6 +348,7 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-left: 30px;"><label class="lblUbicacion">Año:*</label>
                                         </div>
                                         <div class="col-md-2">
+                                            <input type="hidden" name="anioM" id="anioM" value="{{$datos->anio}}">
                                             <select name="anio" id="anio">
                                                 <option value="">Elejir</option>
                                                 <option value="2018">2018</option>
@@ -348,7 +479,7 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><label class="lblUbicacion">Puertas:*</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input class="form-control col-md-2" type="text" name="numPuertas" id="numPuertas"> 
+                                            <input class="form-control col-md-2" type="text" name="numPuertas" id="numPuertas" value="{{$datos->numPuertas}}"> 
                                         </div>
                                     </div>  
                                 </div>
@@ -357,7 +488,7 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><label class="lblUbicacion">Kilometros:*</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input class="form-control col-md-2" type="text" name="kilometros" id="kilometros"><p style="    display: flex;margin-top: 10px;">km</p> 
+                                            <input class="form-control col-md-2" type="text" name="kilometros" id="kilometros" value="{{$datos->kilometros}}"><p style="    display: flex;margin-top: 10px;">km</p> 
                                         </div>
                                     </div>  
                                 </div>
@@ -366,7 +497,7 @@
                                         <div class="col-md-1" style="text-align: right;padding: 0px;margin: 0px;margin-top: 8px;width: 131.5px;"><p>Color:</p>
                                         </div>
                                         <div class="col-md-2">
-                                            <input class="form-control col-md-2" type="text" name="color" id="color">
+                                            <input class="form-control col-md-2" type="text" name="color" id="color" value="{{$datos->color}}">
                                         </div>
                                     </div>  
                                 </div>
@@ -375,6 +506,7 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;width: 131.5px;"><p>Tipo de Combustible:</p>
                                         </div>
                                         <div class="col-md-4"> 
+                                            <input type="hidden" name="tipoCombustibleM" id="tipoCombustibleM" value="{{$datos->tipoCombustible}}">
                                             <select style="margin-top: 5px;" name="tipoCombustible" id="tipoCombustible" class="" data-validate-type="list">
                                                 <option value="">Elegir</option>
                                                 <option class="attribute-list-option" value="60406">Diesel</option>
@@ -530,7 +662,7 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><label class="lblUbicacion">Titulo:*</label>
                                         </div>
                                         <div class="col-md-5">
-                                            <input class="form-control col-md-12" type="text" name="titulo" id="titulo" value="{{ old('titulo') }}"> 
+                                            <input class="form-control col-md-12" type="text" name="titulo" id="titulo" value="{{$datos->titulo}}"> 
                                             <span>Restan 60 caracteres.</span>
                                         </div>
                                     </div>  
@@ -563,7 +695,7 @@
                                             <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><p style="text-align: right;">Descripción:</p>
                                             </div>
                                             <div class="col-md-10"> 
-                                                <textarea value="{{ old('descripcion') }}" placeholder="Escribe tu descripción" id="descripcion" name="descripcion" rows="10" class="desc-textarea form-control addMarginIzquierdaInput"></textarea>
+                                                <textarea placeholder="Escribe tu descripción" id="descripcion" name="descripcion" rows="10" class="desc-textarea form-control addMarginIzquierdaInput">{{$datos->descripcion}}</textarea>
                                             </div>
                                         </div>  
                                     </div> 
@@ -583,7 +715,8 @@
                                             
                                                 <option value="USD">U$S</option> 
                                         </select> 
-                                        <span class="price-input" style="float: left;"><input type="tel" value="100000" name="price.price" id="price" class="price" title="Completa este dato" size="15" min="1" maxlength="14" data-js="price" data-price-decimal-separator="." data-price-decimal-places="0">
+                                        <span class="price-input" style="float: left;">
+                                            <input type="tel" value="{{$datos->precio}}" name="price.price" id="price" class="price" title="Completa este dato" size="15" min="1" maxlength="14" data-js="price" data-price-decimal-separator="." data-price-decimal-places="0">
                                         </span>
                                         <span class="error-icon"></span>
                                         <div class="error-message"></div> 
