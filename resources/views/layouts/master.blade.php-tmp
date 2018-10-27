@@ -6,7 +6,7 @@
 	{!! Html::style('css/bootstrap.css') !!}
 	<meta charset="UTF-8">
 </head>
-<body style="background-color: #f5f5f5!important;">
+<body style="background-color: #ebebeb !important;">
 	<header id="cabecera_principal">
 		<div class="nav_registro">
 			<div class="col-1">
@@ -15,14 +15,14 @@
 					</div>
 				</a>
 			</div>
-			<form class="nav-buscar" action="{{route('buscar')}}" method="post" role="search" id="buscador-articulos">
-				<input type="text" class="nav-buscar-input" name="as_word" placeholder="Buscar productos, marcas y más..." maxlength="120" autofocus="" autocapitalize="off" autocorrect="off" spellcheck="false" tabindex="2" autocomplete="off" id="caja_busqueda">
+			<form class="nav-buscar" action="{{route('resultados')}}" method="get" role="search" id="buscador-articulos">
+				<input type="text" class="nav-buscar-input" name="busqueda" placeholder="Buscar productos, marcas y más..." maxlength="120" autofocus="" autocapitalize="off" autocorrect="off" spellcheck="false" tabindex="2" autocomplete="off" id="caja_busqueda">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 				<button class="nav-buscar-limpiar-btn" type="button" title="Limpiar"></button>
 				<button class="nav-buscar-cerrar-btn" type="button" title="Cerrar"></button>
 				<button type="submit" class="nav-search-btn" tabindex="3">
 					<i class="nav-icon-search">
-						<img src="../public/img/icon_buscar.png" alt="" style="width: 50%;height: 80%;">
+						<img src="../public/img/icon_buscar.png" alt="" style="width: 50%;height: 80%;margin-left: 10px;">
 						<span class="buscar-icono">Buscar</span>
 					</i>
 				</button>
@@ -59,14 +59,14 @@ height: 35px;
 				</ul>
 			</div>
 			@if(Auth::check())
-        		<div style="width: 30%;width: 30%;display: inline-block;">
+        		<div style="width: 30%;display: inline-block;text-align: right;">
 					<nav id="nav-menu-cabecera">
 						<label onmouseover="abrirMenu()" id="userswitch" class="nav-header-user-switch" tabindex="4"><span><span class="nav-header-avatar-user" data-js="user-menu:nav-header-avatar-user"><img src="../public/svg/user.svg" srcset="../public/svg/user.svg 2x" class="nav-header-avatar-user-img" height="20" width="20"></span><span class="nav-header-username">{{ auth()->user()->nombre }}</span><span class="nav-header-username-chevron"></span></span></label>
 						<input type="check" id="nav-header-user-switch">
 						<span id="detonador"><div id="info_user" onmouseleave="cerrarMenu()">
 							<div id="info_perfil">
 								<div class="user-menu__user-info-inner-container">
-									<div class="user-menu__user-badge">
+									<div class="user-menu__user-badge" style="text-align: center;">
 										<div class="user-menu__user-badge-image">
 											<div class="user-menu__loyalty-components">
 												<svg class="user-menu__user-progress user-menu--level-1" viewBox="0 0 100 100">
@@ -106,14 +106,16 @@ height: 35px;
 							<span class="user-menu__chevron" style="right: 202px;"></span>
 						</div></span>
 						<a href="#" class="option-help" rel="nofollow">Ayuda</a>
+						<a style="padding-right: 0px" href="{{route('carrito')}}" title="Carrito de compras" class="nav-cart nav-cart-empty" id="nav-cart"><img style="vertical-align: baseline;" src="/MercadoLibre-2.0/public/img/icon_car.png" alt="" width="19"></a>
 					</nav>
 				</div>
         	@else
-        		<div style="width: 30%;width: 30%;display: inline-block;">
+        		<div style="width: 30%;width: 30%;display: inline-block;text-align: right;">
 					<nav id="nav-menu-cabecera">
 						<a href="{{route('crearcuentapersonal')}}" class="opcion-registrar" rel="nofollow">Crea tu cuenta</a>
 						<a href="{{route('autenticar')}}" class="opcion-login" rel="nofollow">Ingresa</a>
 						<a href="#" class="option-help" rel="nofollow">Ayuda</a>
+						<a style="padding-right: 0px" href="{{route('carrito')}}" title="Carrito de compras" class="nav-cart nav-cart-empty" id="nav-cart"><img style="vertical-align: baseline;" src="/MercadoLibre-2.0/public/img/icon_car.png" alt="" width="19"></a>
 					</nav>
 				</div>
         	@endif

@@ -20,11 +20,15 @@ function buscar_publicaciones(consulta){
         .fail(function(data){
         	document.getElementById('resultados').style.display="none";
         })
-}
-
-$(document).on('keyup','#caja_busqueda', function(){
-	var valor = $(this).val();
-	document.getElementById('resultados').style.display="flex";
+} 
+$('#buscador-articulos').on('submit', function(){
+    if ($('#caja_busqueda').val()==="") {
+        $('#precio').focus();
+        return false;
+    }
+});
+$(document).on('keyup','#caja_busqueda', function(){ 
+	var valor = $(this).val(); 
 	if (valor != "") {
 		buscar_publicaciones(valor);
 	}

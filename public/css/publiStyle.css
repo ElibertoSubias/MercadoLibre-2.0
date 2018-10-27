@@ -30,21 +30,15 @@ h2.typo {
     padding-bottom: 5px;
 }
 .A_1 {
-    border-collapse: collapse;
-    box-shadow: rgba(71, 98, 116, 0.6) 0px 1px 6px 0px inset;
-    color: rgb(71, 98, 116);
-    display: inline-block;
+    border-collapse: collapse; 
+    background-image: linear-gradient(#cce3f7,#aad0ef);
+    color: rgb(71, 98, 116); 
     height: 12px;
     text-align: right;
     text-decoration: none solid rgb(71, 98, 116);
     text-shadow: rgba(255, 255, 255, 0.75) 0px 1px 1px;
     text-size-adjust: 100%;
-    width: 112.063px;
-    column-rule-color: rgb(71, 98, 116);
-    perspective-origin: 65.0313px 12px;
-    transform-origin: 65.0313px 12px;
-    caret-color: rgb(71, 98, 116);
-    background: rgb(122, 182, 220) linear-gradient(rgb(162, 201, 225), rgb(122, 182, 220)) repeat scroll 0% 0% / auto padding-box border-box;
+    width: 112.063px; 
     border: 1px solid rgb(121, 168, 199);
     border-radius: 4px 4px 4px 4px;
     font: normal normal 400 normal 12px / 12px Arial, Helvetica, sans-serif;
@@ -52,6 +46,17 @@ h2.typo {
     margin: 5px 0px;
     outline: rgb(71, 98, 116) none 0px;
     padding: 5px 8px;
+        background-color: #cce3f7;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#cce3f7),color-stop(100%,#aad0ef));
+    background-image: -webkit-linear-gradient(#cce3f7,#aad0ef);
+    background-image: -moz-linear-gradient(#cce3f7,#aad0ef);
+    background-image: -o-linear-gradient(#cce3f7,#aad0ef);
+    background-image: linear-gradient(#cce3f7,#aad0ef);
+    border: 1px solid #79a8c7;
+    -webkit-box-shadow: inset 0 1px #e5f2fc;
+    box-shadow: inset 0 1px #e5f2fc;
+    color: #476274;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.75);
 }/*#A_1*/ 
 .price, .price.light {
     font-size: 13px;

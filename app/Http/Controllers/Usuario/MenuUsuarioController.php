@@ -8,6 +8,7 @@ use Validator;
 use Auth;
 use Redirect;
 use App\Articulos;
+use App\Carrito;
 use App\Urlimagenes;
 class MenuUsuarioController extends Controller
 {
@@ -29,13 +30,16 @@ class MenuUsuarioController extends Controller
     {
         //
     } 
+
+    
+
     public function showAllPublicaciones() 
     {
-        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 1]])->get();
           
-          $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
-          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
-           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+          $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 3]])->get();
+          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
+           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 1]])->get();
           
 
         $totalActivos = count($activos);
@@ -47,12 +51,14 @@ class MenuUsuarioController extends Controller
         return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados' ) ); 
     }
 
+   
+
     public function showAllPublicacionesPausadas() 
     {
-        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
-           $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
-          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
-           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
+           $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 3]])->get();
+          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
+           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 1]])->get();
           
 
         $totalActivos = count($activos);
@@ -64,10 +70,10 @@ class MenuUsuarioController extends Controller
 
     public function showAllPublicacionesFinalizadas() 
     {
-        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
-           $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 3]])->get();
-          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 2]])->get();
-           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadopublicacion', '=', 1]])->get();
+        $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 3]])->get();
+           $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 3]])->get();
+          $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
+           $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 1]])->get();
           
 
         $totalActivos = count($activos);
@@ -87,7 +93,7 @@ class MenuUsuarioController extends Controller
                 if($request->estado=="1")
                 {
                 $usuario = articulos::find($request->publicacion); 
-                $usuario->estadopublicacion = 1; 
+                $usuario->estadoPublicacion = 1; 
                 $usuario->save(); 
                 $idUsuario = $usuario->getKey(); 
                 return response()->json([
@@ -97,7 +103,7 @@ class MenuUsuarioController extends Controller
                 if($request->estado=="2")
                 {
                 $usuario = articulos::find($request->publicacion); 
-                $usuario->estadopublicacion = 2; 
+                $usuario->estadoPublicacion = 2; 
                 $usuario->save(); 
                 $idUsuario = $usuario->getKey(); 
                 return response()->json([
@@ -107,7 +113,7 @@ class MenuUsuarioController extends Controller
                 if($request->estado=="3")
                 {
                 $usuario = articulos::find($request->publicacion); 
-                $usuario->estadopublicacion = 3; 
+                $usuario->estadoPublicacion = 3; 
                 $usuario->save(); 
                 $idUsuario = $usuario->getKey(); 
                 return response()->json([
@@ -118,58 +124,5 @@ class MenuUsuarioController extends Controller
 
             } 
                 
-    }
-
-   
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    } 
 }

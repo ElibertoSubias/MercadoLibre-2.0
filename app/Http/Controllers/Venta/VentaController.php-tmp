@@ -44,7 +44,7 @@ class VentaController extends Controller {
 		$Articulos                       = new Articulos;
 		$Articulos->idUser               = $id;
 		$Articulos->titulo               = $request->titulo;
-		$Articulos->precio               = $request->precio;
+		$Articulos->precio               = floatval($request->precio);
 		$Articulos->moneda               = $request->moneda;
 		$Articulos->tipoPublicacion      = $request->listingTypes;
 		$Articulos->estado               = $request->estado;
@@ -146,10 +146,13 @@ class VentaController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id) {
-		//
+	public function showModificarVEHI(Request $request) {
+		return view('vender.modificarVEHI');
 	}
 
+	public function updateVEHI(Request $request) {
+
+	}
 	/**
 	 * Show the form for editing the specified resource.
 	 *

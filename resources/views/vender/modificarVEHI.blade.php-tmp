@@ -3,29 +3,11 @@
 @section('content')
 {!! Html::style('css/descripStyle.css') !!}
 <div style="margin: 30px auto 20px;max-width: 1220px;background-color: #fff;border: 1px solid #e2e2e2;border-radius: 5px;height:auto;display: inline-block; ">
-    <div style="" class="cont-ruta">
-    	<ol class="syi-ui-wizard__breadcrumb syi-ui-wizard__step--4" data-reactid="7" style="display: block;list-style: none;    overflow: hidden;padding: 0;margin: 0 0 30px;">
-    		<li class="syi-ui-wizard__step syi-ui-wizard__step--current" data-reactid="8"><span data-reactid="9"><a href="{{ route('vender') }}">Elige qué quieres publicar</a></span></li>
-    		<li class="syi-ui-wizard__step" data-reactid="10" style="font-weight: 700;color: #333;border-bottom: 0"><span data-reactid="11">Describe tu producto</span></li>
-    		<li class="syi-ui-wizard__step" data-reactid="12"><span data-reactid="13">Ingresa precio y cantidad</span></li>
-    		<li class="syi-ui-wizard__step" data-reactid="14"><span data-reactid="15">Confirma tu publicación</span></li>
-    	</ol>
-    </div>
     <div style="position: relative;">
             <div style="width: 100%;height: 100%;text-align: left;margin:20px;">
+                <h2 style="font-size: 20px;margin-top: -10px;margin-bottom: 0px;">Modificar publicación</h2>
                 <form method="post" id="upload_form" enctype="multipart/form-data" action="{{route('precio')}}">
                     <div class="row col-md-12">
-                        <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{ $idPublicacion }}">
-                        <input type="hidden" name="idUser" id="idUser" value="{{ auth()->user()->_id }}">
-                        <input type="hidden" name="categoria" id="categoria" value="{{ $categoria }}">
-                        <input type="hidden" name="tipo" id="tipo" value="{{ $tipo }}">
-                        <input type="hidden" name="marca" id="marca" value="{{ $marca }}">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                        <input type="hidden" name="arrayCaracteristicas" id="arrayCaracteristicas" value="">
-                        <fieldset id="categoriaSeleccionada">
-                            <legend>Categorías</legend>
-                            <h3 style="text-transform: capitalize;">{{ $tipo }}</h3>
-                            <p>Autos, Motos y Otros > {{ $categoria }} > <strong>{{ $marca }}</strong> <a href="{{ route('categorias') }}">Modificar</a></p>
                         </fieldset>
                     </div>
                     <div class="row col-md-12" style="margin-top:10px;">
@@ -587,10 +569,31 @@
                                     </div>
                                 </div>
                         </fieldset>
+                        <fieldset id="QuantityPriceGroup"style="margin-top: 4%;">
+                            <legend class="{2}" >Precio de venta</legend>
+                            <div id="category" data-value="MLM117653"></div>
+                                <p class="ch-form-hint">* Datos obligatorios</p>
+                                <div class="price-content" data-js="price-container" style="margin-left: 8%;">
+                                <div class="ch-form-row ch-form-required option-price " data-js="price-component">
+                                        <label for="price" style="float: left;">
+                                            Precio :   <em>*</em>
+                                        </label>
+                                        <select name="price.currency" id="currency" class="currency" data-js="currency" style="float: left;    margin: 5px;">
+                                                <option value="MXN" selected="">$</option>
+
+                                                <option value="USD">U$S</option>
+                                        </select>
+                                        <span class="price-input" style="float: left;"><input type="tel" value="100000" name="price.price" id="price" class="price" title="Completa este dato" size="15" min="1" maxlength="14" data-js="price" data-price-decimal-separator="." data-price-decimal-places="0">
+                                        </span>
+                                        <span class="error-icon"></span>
+                                        <div class="error-message"></div>
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
                     <div class="row col-md-12" id="footer-descripcion">
-                        <input type="submit"  class="btn-azul" name="des-continuar2" id="btn-continuar2" value="Continuar" style="font-size: 18px;padding: 6px 12px;margin-top:0px">
-                        <a href="{{ URL::previous() }}" title="">Volver</a>
+                        <input type="submit"  class="btn-azul" name="des-continuar2" id="btn-continuar2" value="Guardar" style="font-size: 18px;padding: 6px 12px;margin-top:0px">
+                        <a href="{{ URL::previous() }}" title="">Volver a ver Publicaciones</a>
                     </div>
                 </form>
             </div>

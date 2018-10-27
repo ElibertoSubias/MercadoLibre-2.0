@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;  
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Articulos extends Eloquent
+class Carrito extends Eloquent
 {
     protected $connection = 'mongodb';
     protected $collection = 'carrito'; 

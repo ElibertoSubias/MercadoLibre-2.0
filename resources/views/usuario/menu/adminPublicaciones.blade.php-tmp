@@ -7,31 +7,44 @@
 
 <script type="text/javascript">
 
-
- function ventanaPausadas(){
-    alert('ss');
-          var route = "/MercadoLibre-2.0/public/publicacionesp";
+    function finalizar(publicacio, estad){
+         // var dato = $("#dato").val();
           var token = $("#token").val();
+          var route = "/MercadoLibre-2.0/public/cambiarestado";
+          var publicacion = publicacio;
+          var estado = estad;
 
-
-        $('#activas').css({"visibility":"hidden"});
-        $('#pausadas').css({"visibility":"visible"});
 
               $.ajax({
                 url: route,
                 headers: {'X-CSRF-TOKEN': token},
                 type: 'POST',
                 dataType: 'json',
-                data: {}
+                data: { publicacion: publicacion, estado:estado}
                 }).done(function(data) {
-                  if (data.res!=1 && data.res!=0){
-
-                  }else if(data.res==1){
-                    $("#lblCorreoExistente").empty();
-                    $("#lblCorreoExistente").append(data.email);
-                  }
+                    location.reload();
                 });
-        }
+          }
+          function activar(){
+
+            $('#pausadas').css({"font-weight": "600", "color": "#333"});
+
+          }
+          function marcarTodo(){
+
+            var checked = false;
+
+            if(checked == false) {
+            $('.settings').prop('checked', true);
+            checked = true;
+            } else {
+            $('.settings').prop('checked', false);
+            checked = false;
+            }
+
+          }
+
+
 </script>
 
 
@@ -217,14 +230,14 @@
         <div class="col-md-12" style="padding-left: 55px;">
             <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation"  id="activas" class="active"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicaciones')}}" >Activas ( {{$totalActivos}} )</a></li>
+    <li role="presentation"  id="activas" class="active"><a style="background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#eee),color-stop(100%,#fff));background-image: -webkit-linear-gradient(#eee,#fff 25px);background-image: -moz-linear-gradient(#eee,#fff 25px);background-image: -o-linear-gradient(#eee,#fff 25px);background-image: linear-gradient(#eee,#fff 25px);" href="{{action('Usuario\MenuUsuarioController@showAllPublicaciones')}}" >Activas ( {{$totalActivos}} )</a></li>
     <li role="presentation"  id="pausadas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesPausadas')}}">Pausadas ({{$totalPausados}})</a></li>
     <li role="presentation" id="finalizadas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesFinalizadas')}}" >Finalizadas ({{$totalFinalizados}})</a></li>
   </ul>
   <div class="tab-content" id="activas" style="">
     <div role="tabpanel" class="tab-pane active" id="home">
     <div style=" height: 60px; text-align: left; padding: 10px" >
-
+     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
         <input type="text" name="" placeholder="Buscar en publicaciones" style="border-radius:  3px;padding: 2px; height: 30px;">
         <button style="border-radius: 5px; background-color: #cce3f7; color:#566573 ; margin-left: 10px; border:1px solid #79a8c7">Buscar</button>
         <label style="margin: 10px">Filtros:</label>
@@ -240,11 +253,9 @@
                         <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select" style="height: 25px;margin:5px;">
                             <span class="ico itemsSecondaryActionsIcn"><i style="width: 20px;margin-top: -3px;padding-top: 0px;height: 20px;margin-left: -5px;" class="ch-icon-cog"></i></span>
                         </p>
-                        <ul id="primerMenuUL" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="position: absolute;left: 78px;top: 116px;overflow: hidden;">
+                        <ul id="primerMenuUL" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="position: absolute;    left: 8.9%;top: 57.9%;z-index: 1;overflow: hidden;">
                             <a role="menuitem"></a>
-                                <li class="masiveActionOption cannot reactivate">
-                                    <a href="" style="padding:0px;margin:0px"><p>Catalago</p></a>
-                                </li>
+
                                 <li class="masiveActionOption cannot reactivate">
                                     <a href="" style="padding:0px;margin:0px"><p>Pausar</p></a>
                                 </li>
@@ -256,8 +267,7 @@
                                 </li>
                         </ul>
                     </div>
-
-                </th>
+               </th>
                 <th></th>
                 <th></th>
                 <th colspan="4" style="text-align: right; padding: 5px">Publicaciones 1 a 1 de 1 | <a href=""> Con mas venta</a> </th>
@@ -266,12 +276,15 @@
             <tbody>
 
               @foreach($articulos as $venta)
+
               <tr>
                     <td  rowspan="2" style="padding-top: 25px"><input type="checkbox" name="" class="settings"></td>
                     <td rowspan="2" width="50xp" >
                         <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$venta->idPublicacion}}/{{$venta->urlPrincipal}}" width="80"  style="margin-bottom: -25px">
                     </td>
-                    <td style=" text-align:left; padding-left: 6px;">{{$venta->titulo}}</td>
+                    <td style="color: blue;font-size: 15px; text-align:left; padding-left: 6px;">
+                        <a href="id={{$venta->_id}}&user={{$venta->idUser}}" style="color: blue">{{$venta->titulo}}</a>
+                    </td>
                     <td></td>
                     <td></td>
                     <td style="margin-bottom: 20px" ><label class="price">{{$venta->precio}}</label> X 1 disponible</td>
@@ -279,145 +292,139 @@
               </tr>
                <tr>
                     <td colspan=2 style="text-align: left;padding-left: 6px;">
-<?php if ($venta->tipoPublicacion == "free") {echo "Gratis";}?>| Merca envios| {{$venta->id}}</td>
+                        <div class="row" style="    padding-top: 10px;">
+                            <div class="col-md-12">
+                                <p style="font-size: 11px;">Publicacion <?php if ($venta->tipoPublicacion == "free") {echo "Gratuita";}?><span style="color: #999">| #{{$venta->id}}</span></p>
+                            </div>
+                        </div>
+                    </td>
                     <td></td>
                     <td></td>
                     <td colspan="2" style="width: 150px;text-align: right;">
-                    <a href="#" class="A_1" id="{{$venta->idPublicacion}}" style="height: 25px; width: 30%;    color: #476274; text-align: center;" onclick="modificarPublicacion(id)">Modificar</a>
-                        <div style="" id="{{$venta->idPublicacion}}" onclick="mostrarSegundoMenu(id)" class="mymlDropdownMassiveActions massive secondary ch-dropdown">
-                            <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select" style="height: 25px;margin:5px;">
-                            <span class="ico itemsSecondaryActionsIcn"><i style="width: 20px;margin-top: -3px;padding-top: 0px;height: 20px;margin-left: -5px;" class="ch-icon-cog"></i></span>
-                            </p>
-                            <ul id="segundoMenu{{$venta->idPublicacion}}" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="overflow: hidden;">
-                                <a role="menuitem"></a>
-                                <li class="masiveActionOption cannot reactivate">
-                                    <a href="" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Catalago</p></a>
-                                </li>
-                                <li class="masiveActionOption cannot reactivate">
-                                    <a href="" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Pausar</p></a>
-                                </li>
-                                <li class="masiveActionOption cannot finalize">
-                                    <a href="" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Finalizar</p></a>
-                                </li>
-                                <li class="masiveActionOption cannot modify_price">
-                                    <a href="" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Modificar precio</p></a>
-                                </li>
-                            </ul>
-                    </div>
+                        <div class="row">
+                            <div class="col-md-8" style="margin-top: 7px;">
+                                <a href="#" class="A_1" id="{{$venta->idPublicacion}}" style="height: 25px; width: 100%;margin-right: -25px;color: #476274; text-align: center;" onclick="modificarPublicacion(id)">Modificar</a>
+                            </div>
+                            <div class="col-md-4">
+                                <div id="{{$venta->idPublicacion}}" onclick="mostrarSegundoMenu(id)" class="mymlDropdownMassiveActions massive secondary ch-dropdown">
+                                    <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select" style="height: 25px;margin:5px;">
+                                    <span class="ico itemsSecondaryActionsIcn"><i style="width: 20px;margin-top: -3px;padding-top: 0px;height: 20px;margin-left: -5px;" class="ch-icon-cog"></i></span>
+                                    </p>
+                                    <ul id="segundoMenu{{$venta->idPublicacion}}" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="overflow: hidden;    overflow: hidden;
+    margin-left: -65px;
+    margin-top: -6px;
+    border-radius: 5px 0px 5px 5px !important;
+">
+                                        <a role="menuitem"></a>
+                                        <li class="masiveActionOption cannot reactivate">
+                                            <a href="javascript:finalizar('{{$venta->id}}', 1)" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Reactivar</p></a>
+                                        </li>
+                                        <li class="masiveActionOption cannot reactivate">
+                                            <a href="javascript:finalizar('{{$venta->id}}', 2)" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Pausar</p></a>
+                                        </li>
+                                        <li class="masiveActionOption cannot finalize">
+                                            <a href="javascript:finalizar('{{$venta->id}}', 3)" style="padding:0px;margin:0px"><p style="color: #000;text-align: left;">Finalizar</p></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
               </tr>
               <!-- Modal -->
-  <div class="modal fade in" id="modalModificarPublicacion_{{$venta->idPublicacion}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,0.7);">
-    <div class="modal-dialog" style="width: 46%;height: auto;">
-      <div class="modal-content" style="margin: 30% auto;">
-        {!! Html::style('css/updateModal-bc8b96c640.css') !!}
-        <form action="modifItem" class="modifFormClass " name="modifForm" id="modifFormModal" novalidate="novalidate">
-    <fieldset>
-        <input type="hidden" name="itemId" value="MLM646934777">
-        <input type="hidden" name="form_id" value="6a6a3d03d8e7aec151d58a01f8e10e980cbb76acf94ebe459decf7832abb0957">
+              <div class="modal fade in" id="modalModificarPublicacion_{{$venta->idPublicacion}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,0.7);">
+                <div class="modal-dialog" style="width: 46%;height: auto;">
+                  <div class="modal-content" style="margin: 30% auto;">
+                        {!! Html::style('css/updateModal-bc8b96c640.css') !!}
+                        <form action="{{route('modificarPublicacion')}}" class="modifFormClass " name="modifForm" id="modifFormModal" novalidate="novalidate">
+                            <fieldset>
+                                <input type="hidden" name="idPublicacion" value="{{$venta->_id}}">
+                                <input type="hidden" name="idUser" value="{{$venta->idUser}}">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+                                <!--
+                                Variables: status, buyingMode, cat. ofertas, categId, siteID
+                                Programada => muestro fecha activacion
+                                Clasificado - sin ofertas (SRV con precio esprecificado) => titulo, precio, telefono
+                                Con ofertas actuales o arrastradas (sold_quantity > 0) => No modif titulo    -->
+                                <legend> Modificar publicación</legend>
+                                <p class="required">* Datos obligatorios</p>
+                                <!-- Título -->
+                                <p class="ch-form-row">
+                                    <label class="required modif-title" for="title">
+                                        <span> Título: <em>*</em></span>
+                                    </label>
 
-        <!--
-        Variables: status, buyingMode, cat. ofertas, categId, siteID
-        Programada => muestro fecha activacion
-        Clasificado - sin ofertas (SRV con precio esprecificado) => titulo, precio, telefono
-        Con ofertas actuales o arrastradas (sold_quantity > 0) => No modif titulo
-    -->
-        <legend> Modificar publicación</legend>
-        <p class="required">* Datos obligatorios</p>
-        <!-- Título -->
-        <p class="ch-form-row">
-            <label class="required modif-title" for="title">
-                <span> Título: <em>*</em></span>
-            </label>
+                                        <input type="text" id="title" value="{{$venta->titulo}}" name="title" maxlength="60" class="ch-points-ltrt">
 
+                                </p>
+                                <input type="hidden" id="isRelistingForEver" name="isRelistingForEver" value="false">
+                                <!-- Precio -->
+                                <p class="ch-form-row ch-form-row-price-fix"></p>
+                                <div class="ch-form-row ch-form-row-price-fix">
+                                    <label class="required" for="priceTot">
+                                        <span>Precio: <em>*</em></span>
+                                    </label>
+                                    <select data-js="currency" id="currencyId">
+                                        <option value="USD">U$S</option>
+                                        <option value="MXN" selected="">$</option>
+                                    </select>
+                                    <input type="text" data-js="price" class="allprice ch-points-ltrt" name="priceTot" id="priceTot" value="{{$venta->precio}}" size="15">
+                                    <span class="error-indicator"></span>
+                                    <div class="error"></div>
+                                </div>
+                                <input type="hidden" id="isMotors" name="isMotors" value="true">
+                                <input type="hidden" id="attribute" name="attribute" value="{id=KILOMETERS, name=Kilómetros, value_id=null, value_name=10000 km, value_struct={number=10000, unit=km}, attribute_group_id=FIND, attribute_group_name=Ficha técnica}">
+                                <input type="hidden" id="attributeValueName" name="attributeValueName" value="10000">
+                                <p class="ch-form-row">
+                                        <label class="required" for="km">
+                                            <span>Kilómetros:  <em>*</em></span>
+                                        </label>
+                                    <input type="text" id="km" value="{{$venta->kilometros}}" name="km" maxlength="10">
+                                </p>
+                                <!-- Teléfono 1-->
+                                <div class="ch-form-row telephone-contact">
+                                    <label class="required" for="telephone1">
+                                        <span>Teléfono:  <em>*</em></span>
+                                    </label>
+                                    <div class="ui-telephone ui-telephone--with-flag ui-telephone--change-flag ui-telephone--success">
+                                        <div class="ui-telephone__number"><div class="ui-telephone__flags"><div class="ui-telephone__selected-flag"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--mx"></div></div><div class="ui-telephone__flags-list"><ul class="ui-telephone__flags-list-ul"><li data-country="mx" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--mx"></div><span class="ui-telephone__flag-name">México</span><span class="ui-telephone__flag-code">52</span></li></ul></div></div>
+                                            <input id="telephone1" class="ui-telephone__input ch-points-ltrt" type="tel" required="" value="{{$venta->telefono}}" data-validations="tel-validations" data-country="52" data-country-code="val_tel_country_code1" data-area-code="val_tel_pref" data-number="val_tel1" maxlength="22" placeholder="222 1234567">
 
-                <input type="text" id="title" value="Alfa Romeo" name="title" maxlength="60" class="ch-points-ltrt">
+                                            <input type="hidden" name="val_tel_country_code1" id="val_tel_country_code1" data-js="val_tel_country_code1" value="52">
+                                            <input type="hidden" name="val_tel_pref" id="val_tel_pref" data-js="val_tel_pref" value="667">
+                                            <input type="hidden" name="val_tel1" id="val_tel1" data-js="val_tel1" value="2273320">
+                                        <span class="ui-telephone__focus-line"></span></div>
+                                        <div class="ui-telephone__validations" data-js="tel-validations"><span class="ui-telephone__validation--success valid is-visible">El teléfono es correcto.</span><span class="ui-telephone__validation--error possible">El número ingresado no es un número de teléfono.</span><span class="ui-telephone__validation--error not-a-number">El número no es válido. Ingresa tu número de teléfono.</span><span class="ui-telephone__validation--error min">Este teléfono tiene menos dígitos de los requeridos.</span><span class="ui-telephone__validation--error invalid-default-number">El teléfono cargado en tu cuenta no es válido. Verifícalo por favor.</span><span class="ui-telephone__validation--error max">Este teléfono excede el máximo de dígitos posible.</span><span class="ui-telephone__validation--error onlyNumbers">Solo puedes ingresar números.</span><span class="ui-telephone__validation--success notMobile">El teléfono es correcto. Revisa que sea un celular y continúa.</span><span class="ui-telephone__validation--error required">Completa este dato.</span><span class="ui-telephone__validation--info zero">Ej.: 222 1234567</span></div>
+                                    </div>
+                                </div>
+                                <!-- Teléfono 2 -->
+                                <div class="ch-form-row telephone-contact">
+                                    <label for="telephone2">
+                                        <span>Teléfono opcional:</span>
+                                    </label>
+                                    <div class="ui-telephone ui-telephone--with-flag ui-telephone--change-flag">
+                                        <div class="ui-telephone__number"><div class="ui-telephone__flags"><div class="ui-telephone__selected-flag"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--mx"></div></div><div class="ui-telephone__flags-list"><ul class="ui-telephone__flags-list-ul"><li data-country="mx" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--mx"></div><span class="ui-telephone__flag-name">México</span><span class="ui-telephone__flag-code">52</span></li></ul></div></div>
+                                            <input id="telephone2" class="ui-telephone__input ch-points-ltrt" type="tel" value="{{$venta->telefono2}}" data-validations="tel-validations2" data-country="MX" data-country-code="val_tel_country_code2" data-area-code="val_tel_pref2" data-number="val_tel2" maxlength="22" placeholder="222 1234567">
 
-        </p>
-        <input type="hidden" id="isRelistingForEver" name="isRelistingForEver" value="false">
-
-
-        <!-- Precio -->
-
-            <p class="ch-form-row ch-form-row-price-fix">
-                </p><div class="ch-form-row ch-form-row-price-fix"><label class="required" for="priceTot"><span>Precio: <em>*</em></span> </label><select data-js="currency" id="currencyId"><option value="USD">U$S</option><option value="MXN" selected="">$</option></select><input type="text" data-js="price" class="allprice ch-points-ltrt" name="priceTot" id="priceTot" value="100000" size="15"><span class="error-indicator"></span><div class="error"></div></div>
-
-            <p></p>
-
-
-
-            <input type="hidden" id="isMotors" name="isMotors" value="true">
-
-
-
-
-                <input type="hidden" id="attribute" name="attribute" value="{id=KILOMETERS, name=Kilómetros, value_id=null, value_name=10000 km, value_struct={number=10000, unit=km}, attribute_group_id=FIND, attribute_group_name=Ficha técnica}">
-                <input type="hidden" id="attributeValueName" name="attributeValueName" value="10000">
-
-                    <p class="ch-form-row">
-
-                            <label class="required" for="km">
-                                <span>Kilómetros:  <em>*</em></span>
-                            </label>
-
-
-                        <input type="text" id="km" value="10000" name="km" maxlength="10">
-                    </p>
-
-
-
-
-    <!-- Teléfono 1-->
-    <div class="ch-form-row telephone-contact">
-        <label class="required" for="telephone1">
-            <span>Teléfono:  <em>*</em></span>
-        </label>
-        <div class="ui-telephone ui-telephone--with-flag ui-telephone--change-flag ui-telephone--success">
-            <div class="ui-telephone__number"><div class="ui-telephone__flags"><div class="ui-telephone__selected-flag"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--mx"></div></div><div class="ui-telephone__flags-list"><ul class="ui-telephone__flags-list-ul"><li data-country="ar" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--ar"></div><span class="ui-telephone__flag-name">Argentina</span><span class="ui-telephone__flag-code">54</span></li><li data-country="bo" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--bo"></div><span class="ui-telephone__flag-name">Bolivia</span><span class="ui-telephone__flag-code">591</span></li><li data-country="br" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--br"></div><span class="ui-telephone__flag-name">Brasil</span><span class="ui-telephone__flag-code">55</span></li><li data-country="cl" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--cl"></div><span class="ui-telephone__flag-name">Chile</span><span class="ui-telephone__flag-code">56</span></li><li data-country="co" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--co"></div><span class="ui-telephone__flag-name">Colombia</span><span class="ui-telephone__flag-code">57</span></li><li data-country="do" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--do"></div><span class="ui-telephone__flag-name">República Dominicana</span><span class="ui-telephone__flag-code">1</span></li><li data-country="ec" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--ec"></div><span class="ui-telephone__flag-name">Ecuador</span><span class="ui-telephone__flag-code">593</span></li><li data-country="sv" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--sv"></div><span class="ui-telephone__flag-name">El Salvador</span><span class="ui-telephone__flag-code">503</span></li><li data-country="gt" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--gt"></div><span class="ui-telephone__flag-name">Guatemala</span><span class="ui-telephone__flag-code">502</span></li><li data-country="hn" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--hn"></div><span class="ui-telephone__flag-name">Honduras</span><span class="ui-telephone__flag-code">504</span></li><li data-country="mx" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--mx"></div><span class="ui-telephone__flag-name">México</span><span class="ui-telephone__flag-code">52</span></li><li data-country="ni" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--ni"></div><span class="ui-telephone__flag-name">Nicaragua</span><span class="ui-telephone__flag-code">505</span></li><li data-country="pa" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--pa"></div><span class="ui-telephone__flag-name">Panamá</span><span class="ui-telephone__flag-code">507</span></li><li data-country="py" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--py"></div><span class="ui-telephone__flag-name">Paraguay</span><span class="ui-telephone__flag-code">595</span></li><li data-country="pe" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--pe"></div><span class="ui-telephone__flag-name">Perú</span><span class="ui-telephone__flag-code">51</span></li><li data-country="pt" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--pt"></div><span class="ui-telephone__flag-name">Portugal</span><span class="ui-telephone__flag-code">351</span></li><li data-country="us" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--us"></div><span class="ui-telephone__flag-name">Estados Unidos</span><span class="ui-telephone__flag-code">1</span></li><li data-country="uy" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--uy"></div><span class="ui-telephone__flag-name">Uruguay</span><span class="ui-telephone__flag-code">598</span></li><li data-country="ve" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--ve"></div><span class="ui-telephone__flag-name">Venezuela</span><span class="ui-telephone__flag-code">58</span></li></ul></div></div>
-                <input id="telephone1" class="ui-telephone__input ch-points-ltrt" type="tel" required="" value="6672273320" data-validations="tel-validations" data-country="52" data-country-code="val_tel_country_code1" data-area-code="val_tel_pref" data-number="val_tel1" maxlength="22" placeholder="222 1234567">
-
-
-                <input type="hidden" name="val_tel_country_code1" id="val_tel_country_code1" data-js="val_tel_country_code1" value="52">
-                <input type="hidden" name="val_tel_pref" id="val_tel_pref" data-js="val_tel_pref" value="667">
-                <input type="hidden" name="val_tel1" id="val_tel1" data-js="val_tel1" value="2273320">
-            <span class="ui-telephone__focus-line"></span></div>
-            <div class="ui-telephone__validations" data-js="tel-validations"><span class="ui-telephone__validation--success valid is-visible">El teléfono es correcto.</span><span class="ui-telephone__validation--error possible">El número ingresado no es un número de teléfono.</span><span class="ui-telephone__validation--error not-a-number">El número no es válido. Ingresa tu número de teléfono.</span><span class="ui-telephone__validation--error min">Este teléfono tiene menos dígitos de los requeridos.</span><span class="ui-telephone__validation--error invalid-default-number">El teléfono cargado en tu cuenta no es válido. Verifícalo por favor.</span><span class="ui-telephone__validation--error max">Este teléfono excede el máximo de dígitos posible.</span><span class="ui-telephone__validation--error onlyNumbers">Solo puedes ingresar números.</span><span class="ui-telephone__validation--success notMobile">El teléfono es correcto. Revisa que sea un celular y continúa.</span><span class="ui-telephone__validation--error required">Completa este dato.</span><span class="ui-telephone__validation--info zero">Ej.: 222 1234567</span></div>
-        </div>
-    </div>
-
-    <!-- Teléfono 2 -->
-    <div class="ch-form-row telephone-contact">
-        <label for="telephone2">
-            <span>Teléfono opcional:</span>
-        </label>
-        <div class="ui-telephone ui-telephone--with-flag ui-telephone--change-flag">
-            <div class="ui-telephone__number"><div class="ui-telephone__flags"><div class="ui-telephone__selected-flag"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--mx"></div></div><div class="ui-telephone__flags-list"><ul class="ui-telephone__flags-list-ul"><li data-country="ar" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--ar"></div><span class="ui-telephone__flag-name">Argentina</span><span class="ui-telephone__flag-code">54</span></li><li data-country="bo" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--bo"></div><span class="ui-telephone__flag-name">Bolivia</span><span class="ui-telephone__flag-code">591</span></li><li data-country="br" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--br"></div><span class="ui-telephone__flag-name">Brasil</span><span class="ui-telephone__flag-code">55</span></li><li data-country="cl" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--cl"></div><span class="ui-telephone__flag-name">Chile</span><span class="ui-telephone__flag-code">56</span></li><li data-country="co" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--co"></div><span class="ui-telephone__flag-name">Colombia</span><span class="ui-telephone__flag-code">57</span></li><li data-country="do" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--do"></div><span class="ui-telephone__flag-name">República Dominicana</span><span class="ui-telephone__flag-code">1</span></li><li data-country="ec" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--ec"></div><span class="ui-telephone__flag-name">Ecuador</span><span class="ui-telephone__flag-code">593</span></li><li data-country="sv" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--sv"></div><span class="ui-telephone__flag-name">El Salvador</span><span class="ui-telephone__flag-code">503</span></li><li data-country="gt" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--gt"></div><span class="ui-telephone__flag-name">Guatemala</span><span class="ui-telephone__flag-code">502</span></li><li data-country="hn" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--hn"></div><span class="ui-telephone__flag-name">Honduras</span><span class="ui-telephone__flag-code">504</span></li><li data-country="mx" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--mx"></div><span class="ui-telephone__flag-name">México</span><span class="ui-telephone__flag-code">52</span></li><li data-country="ni" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--ni"></div><span class="ui-telephone__flag-name">Nicaragua</span><span class="ui-telephone__flag-code">505</span></li><li data-country="pa" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--pa"></div><span class="ui-telephone__flag-name">Panamá</span><span class="ui-telephone__flag-code">507</span></li><li data-country="py" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--py"></div><span class="ui-telephone__flag-name">Paraguay</span><span class="ui-telephone__flag-code">595</span></li><li data-country="pe" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--pe"></div><span class="ui-telephone__flag-name">Perú</span><span class="ui-telephone__flag-code">51</span></li><li data-country="pt" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--pt"></div><span class="ui-telephone__flag-name">Portugal</span><span class="ui-telephone__flag-code">351</span></li><li data-country="us" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--us"></div><span class="ui-telephone__flag-name">Estados Unidos</span><span class="ui-telephone__flag-code">1</span></li><li data-country="uy" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--uy"></div><span class="ui-telephone__flag-name">Uruguay</span><span class="ui-telephone__flag-code">598</span></li><li data-country="ve" class="ui-telephone__flags-list-item"><div class="ui-telephone__flag-icon ui-telephone__flag-icon--ve"></div><span class="ui-telephone__flag-name">Venezuela</span><span class="ui-telephone__flag-code">58</span></li></ul></div></div>
-                <input id="telephone2" class="ui-telephone__input ch-points-ltrt" type="tel" value="" data-validations="tel-validations2" data-country="MX" data-country-code="val_tel_country_code2" data-area-code="val_tel_pref2" data-number="val_tel2" maxlength="22" placeholder="222 1234567">
-
-
-                <input type="hidden" name="val_tel_country_code2" id="val_tel_country_code2" data-js="val_tel_country_code2">
-                <input type="hidden" name="val_tel_pref2" id="val_tel_pref2" data-js="val_tel_pref2">
-                <input type="hidden" name="val_tel2" id="val_tel2" data-js="val_tel2">
-            <span class="ui-telephone__focus-line"></span></div>
-            <div class="ui-telephone__validations" data-js="tel-validations2"><span class="ui-telephone__validation--success valid">El teléfono es correcto.</span><span class="ui-telephone__validation--error possible">El número ingresado no es un número de teléfono.</span><span class="ui-telephone__validation--error not-a-number">El número no es válido. Ingresa tu número de teléfono.</span><span class="ui-telephone__validation--error min">Este teléfono tiene menos dígitos de los requeridos.</span><span class="ui-telephone__validation--error invalid-default-number">El teléfono cargado en tu cuenta no es válido. Verifícalo por favor.</span><span class="ui-telephone__validation--error max">Este teléfono excede el máximo de dígitos posible.</span><span class="ui-telephone__validation--error onlyNumbers">Solo puedes ingresar números.</span><span class="ui-telephone__validation--success notMobile">El teléfono es correcto. Revisa que sea un celular y continúa.</span><span class="ui-telephone__validation--error required">Completa este dato.</span><span class="ui-telephone__validation--info zero">Ej.: 222 1234567</span></div>
-        </div>
-    </div>
-
-        <!-- kilometraje de motors -->
-    </fieldset>
-
-    <div class="ch-actions">
-        <input type="submit" id="submitForm" class="ch-btn secondary" value="Guardar">
-
-        <a class="secondary" href="https://vender.mercadolibre.com.mx/item/update?itemId=MLM646934777" onclick="redirectToML('https://vender.mercadolibre.com.mx/item/update?itemId=MLM646934777')">Modificar más
-        </a>
-
-        <a href="#" onclick="ocultarModalModificar(modalModificarPublicacion_{{$venta->idPublicacion}})">Cancelar</a>
-    </div>
-</form>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+                                            <input type="hidden" name="val_tel_country_code2" id="val_tel_country_code2" data-js="val_tel_country_code2">
+                                            <input type="hidden" name="val_tel_pref2" id="val_tel_pref2" data-js="val_tel_pref2">
+                                            <input type="hidden" name="val_tel2" id="val_tel2" data-js="val_tel2">
+                                        <span class="ui-telephone__focus-line"></span></div>
+                                        <div class="ui-telephone__validations" data-js="tel-validations2"><span class="ui-telephone__validation--success valid">El teléfono es correcto.</span><span class="ui-telephone__validation--error possible">El número ingresado no es un número de teléfono.</span><span class="ui-telephone__validation--error not-a-number">El número no es válido. Ingresa tu número de teléfono.</span><span class="ui-telephone__validation--error min">Este teléfono tiene menos dígitos de los requeridos.</span><span class="ui-telephone__validation--error invalid-default-number">El teléfono cargado en tu cuenta no es válido. Verifícalo por favor.</span><span class="ui-telephone__validation--error max">Este teléfono excede el máximo de dígitos posible.</span><span class="ui-telephone__validation--error onlyNumbers">Solo puedes ingresar números.</span><span class="ui-telephone__validation--success notMobile">El teléfono es correcto. Revisa que sea un celular y continúa.</span><span class="ui-telephone__validation--error required">Completa este dato.</span><span class="ui-telephone__validation--info zero">Ej.: 222 1234567</span></div>
+                                    </div>
+                                </div>
+                                <!-- kilometraje de motors -->
+                            </fieldset>
+                            <div class="ch-actions">
+                                <input type="submit" id="submitForm" class="ch-btn secondary" value="Guardar">
+                                <a class="secondary" href="{{route('modificarVEHI')}}" onclick="redirectToML('modificarVEHI?itemId={{$venta->_id}}')">Modificar más
+                                </a>
+                                <a class="btn-secondary" data-dismiss="modal" style="cursor: pointer;text-decoration: none;">Cancelar</a>
+                            </div>
+                        </form>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
               @endforeach
             </tbody>
         </table>

@@ -10,6 +10,7 @@ use Validator;
 use Auth;
 use Redirect;
 use App\Articulos;
+use App\Carrito;
 use App\Urlimagenes;
 
 class VentaController extends Controller
@@ -49,7 +50,7 @@ class VentaController extends Controller
         $Articulos = new Articulos;
         $Articulos->idUser = $id; 
         $Articulos->titulo = $request->titulo;
-        $Articulos->precio = $request->precio;
+        $Articulos->precio = floatval($request->precio);
         $Articulos->moneda = $request->moneda;
         $Articulos->tipoPublicacion = $request->listingTypes;
         $Articulos->estado = $request->estado;
@@ -73,11 +74,33 @@ class VentaController extends Controller
         $Articulos->transmicion = $request->transmicion;
         $Articulos->version = $request->version;
         $Articulos->urlPrincipal = $urlPrincipal->url;
-        $Articulos->estadopublicacion = 1;
+        $Articulos->estadoPublicacion = 1;
         $Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
         $Articulos->urlPrincipal = $urlPrincipal->url;
         $Articulos->save();
         return Redirect::route('estado',['idPublicacion' => $request->idPublicacion,'user'=>$user]);
+    }
+
+     public function agregarCarrito(Request $request)
+    {   
+
+
+             $Carrito = new carrito;
+             $Carrito->idUser = auth()->user()->id;
+             $Carrito->idPublicacion = $request->post('idPublicacion');
+             $Carrito->cantidad = $request->post('cantidad'); 
+             $Carrito->precio = $request->post('precio');        
+             $Carrito->save();
+       
+       
+               
+             //    $idUsuario = $usuario->getKey(); 
+               
+             //     return response()->json([
+             //        "res" => $idUsuario 
+              
+             // ]); 
+            
     }
 
     public function showEstado(Request $request)
@@ -158,11 +181,15 @@ class VentaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showModificarVEHI(Request $request)
     {
-        //
+        return view('vender.modificarVEHI');
     }
 
+    public function updateVEHI(Request $request)
+    {
+        
+    }
     /**
      * Show the form for editing the specified resource.
      *

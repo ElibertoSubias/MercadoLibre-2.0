@@ -79,8 +79,7 @@ html,body {
     width: 134px;
     position: relative; 
     margin-bottom: 6px;
-    background-image: url(../img/logo__large_plus.png); 
-    margin-left: 23px;
+    background-image: url(../img/logo__large_plus.png);  
 }
 .nav_registro {
     width: 90%;
