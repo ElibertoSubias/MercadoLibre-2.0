@@ -82,3 +82,4 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::post('cambiarestado', 'Usuario\MenuUsuarioController@editar')->name('cambiarestado');
 });
+

@@ -32,3 +32,4 @@ $(document).on('keyup','#caja_busqueda', function(){
 $(document).on('click','body *',function(){
    document.getElementById('resultados').style.display="none";
 });
+

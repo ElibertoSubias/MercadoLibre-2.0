@@ -68,8 +68,11 @@
 				      <input type="radio" name="orientation" value="horizontal" checked hidden />  
 				</div> 
 		</section>
+		     
 		<section class="metodo_pago">
+
 			<h1>Metodos de Pago</h1>
+			
 		</section>
 	</div> 
 @stop
