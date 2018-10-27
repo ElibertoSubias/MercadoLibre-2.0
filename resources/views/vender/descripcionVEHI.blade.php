@@ -203,7 +203,7 @@
                                         <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><label class="lblUbicacion">Teléfono:*</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input class="form-control col-md-2" type="text" name="telefono" id="telefono"> 
+                                            <input class="form-control col-md-2" type="number" name="telefono" id="telefono"> 
                                         </div>
                                     </div>  
                                 </div>
@@ -233,7 +233,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="ch-form">
-                                        <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><label class="lblUbicacion">Año:*</label>
+                                        <div class="col-md-1" style="padding: 0px;margin: 0px;margin-left: 30px;"><label class="lblUbicacion">Año:*</label>
                                         </div>
                                         <div class="col-md-2">
                                             <select name="anio" id="anio">

@@ -19,7 +19,7 @@
 			@if(isset(auth()->user()->nombre))
 				<div class="col-2" style="padding: 15px;width: 20%;"> 
 					<div class="col-md-8" style="padding: 0px;    text-align: right;">
-						<label for="nav-header-user-switch" style="font-weight:normal !important;text-transform: uppercase;">
+						<label for="nav-header-user-switch" style="font-weight:normal !important;text-transform: uppercase;font-size: 11px;">
 							{{auth()->user()->alias}}
 							
 						</label>

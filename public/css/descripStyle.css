@@ -329,7 +329,13 @@ p {
 a.ch-close, a.ch-close:focus, a.ch-close:visited {
     color: #9c3535;
 }
-
+a.ch-close:hover {
+    background: red !important;
+    text-decoration: none;
+}
+.ch-close span{
+    margin-top: -5px;
+}
 .picture-uploader-controls .ch-close {
     line-height: 16px;
 }

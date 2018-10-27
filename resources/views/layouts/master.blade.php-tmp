@@ -6,7 +6,7 @@
 	{!! Html::style('css/bootstrap.css') !!}
 	<meta charset="UTF-8">
 </head>
-<body style="background-color: #f5f5f5!important;">
+<body style="background-color: #ebebeb !important;">
 	<header id="cabecera_principal">
 		<div class="nav_registro">
 			<div class="col-1">
