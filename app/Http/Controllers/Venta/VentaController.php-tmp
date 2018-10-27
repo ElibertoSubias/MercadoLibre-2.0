@@ -150,6 +150,9 @@ class VentaController extends Controller {
 		return view('vender.modificarVEHI');
 	}
 
+	public function updateVEHI(Request $request) {
+
+	}
 	/**
 	 * Show the form for editing the specified resource.
 	 *
