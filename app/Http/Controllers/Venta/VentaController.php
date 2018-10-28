@@ -130,16 +130,21 @@ class VentaController extends Controller
              }  
             $image->move(public_path('images/'.$request->idUser.'/'.$request->idPublicacion.'/'), $new_name);
             //Almacenamiento de la URL de la imagen agregada
-            $Imagen = new Urlimagenes;
-            $Imagen->idPublicacion = $request->idPublicacion;
-            $Imagen->url = $new_name;
-            $Imagen->tipoImg = $request->idImg;
-            $Imagen->save();
+            if(!Urlimagenes::where(['idPublicacion' => $request->idPublicacion,'tipoImg' => $request->idImg])->exists()){
+                $Imagen = new Urlimagenes;
+                $Imagen->idPublicacion = $request->idPublicacion;
+                $Imagen->url = $new_name;
+                $Imagen->tipoImg = $request->idImg;
+                $Imagen->save();
+            }else{
+                $datos = Urlimagenes::where(['idPublicacion' => $request->idPublicacion,'tipoImg'=>$request->idImg])->update(['url' => $new_name]);
+            }
 
           return response()->json([
            'message'   => 'Image Upload Successfully',
            'uploaded_image' => '<img src="../public/images/'.$request->idUser.'/'.$request->idPublicacion.'/'.$new_name.'" class="img-thumbnail" width="300" />',
-           'class_name'  => 'alert-success'
+           'class_name'  => 'alert-success',
+           'url' => $new_name
           ]);
          }
          else
@@ -181,17 +186,47 @@ class VentaController extends Controller
             }
             else
             {
-                if ($request->tipo == 1) {
-                    echo '<p class="picture-uploader-add">Agregar</p><div class="picture-uploader-controls"><a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a> </div><p class="picture-uploader-principal">Foto principal</p>';
+                $datos = Urlimagenes::where('_id', $request->idImg)->update(['url' => '']);
+                if ($request->tipo == "principal") {
+                    return response()->json([
+                       'contenido'   => '<p class="picture-uploader-add">Agregar</p><div class="picture-uploader-controls"><p role="button" class="ch-close ch-hide"><span class="ch-hide">x</span></p> </div><p class="picture-uploader-principal">Foto principal</p>'
+                      ]);
                 }
-               echo ('<p class="picture-uploader-add">Agregar</p><div class="picture-uploader-controls"><a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a></div>');
+               return response()->json([
+                    'contenido' =>'<p class="picture-uploader-add">Agregar</p><div class="picture-uploader-controls"><p role="button" class="ch-close ch-hide"><span class="ch-hide">x</span></p></div>'
+                ]);
             }
         }
     }
 
     public function updateVEHI(Request $request)
     {
-        
+        $datos = Articulos::where('_id', $request->idItem)->update([
+                                                                    'titulo' => $request->titulo,
+                                                                    'precio' => $request->precio,
+                                                                    'moneda' => $request->moneda,
+                                                                    'estado' => $request->estado,
+                                                                    'municipio' => $request->municipio,
+                                                                    'colonia' => $request->colonia,
+                                                                    'telefono' => $request->telefono,
+                                                                    'modelo' => $request->modelo,
+                                                                    'marca' => $request->marca,
+                                                                    'anio' => $request->anio,
+                                                                    'urlvideo' => $request->urlvideo,
+                                                                    'numPuertas' => $request->numPuertas,
+                                                                    'kilometros' => $request->kilometros,
+                                                                    'descripcion' => $request->descripcion,
+                                                                    'horarioContacto' => $request->horarioContacto,
+                                                                    'color' => $request->color,
+                                                                    'tipoCombustible' => $request->tipoCombustible,
+                                                                    'motor' => $request->motor,
+                                                                    'direccionAuto' => $request->direccionAuto,
+                                                                    'transmicion' => $request->transmicion,
+                                                                    'version' => $request->version,
+                                                                    'urlPrincipal' => $request->urlPrincipal,
+                                                                    'arrayCaracteristicas' => $request->arrayCaracteristicas
+                                                                 ]);
+        return Redirect::route('publicaciones');
     }
     /**
      * Show the form for editing the specified resource.

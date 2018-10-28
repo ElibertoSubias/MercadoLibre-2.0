@@ -6,9 +6,17 @@
     <div style="position: relative;">
             <div style="width: 100%;height: 100%;text-align: left;margin:20px;">
                 <h2 style="font-size: 20px;margin-top: -10px;margin-bottom: 0px;">Modificar publicación</h2>
-                <form method="post" id="upload_form" enctype="multipart/form-data" action="{{route('precio')}}">
+                <form method="post" id="upload_form" enctype="multipart/form-data" action="{{route('modificarPublicacion')}}">
                     <div class="row col-md-12">
-                        </fieldset>
+                        <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{ $datos->idPublicacion }}">
+                        <input type="hidden" name="idUser" id="idUser" value="{{ auth()->user()->_id }}">
+                        <input type="hidden" name="categoria" id="categoria" value="{{ $datos->categoria }}">
+                        <input type="hidden" name="tipo" id="tipo" value="VEHI">
+                        <input type="hidden" name="idItem" id="idItem" value="{{$datos->_id}}">
+                        <input type="hidden" name="marca" id="marca" value="{{ $datos->marca }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+                        <input type="hidden" name="urlPrincipal" id="urlPrincipal" value="{{$datos->urlPrincipal}}">
+                        <input type="hidden" name="arrayCaracteristicas" id="arrayCaracteristicas" value="">
                     </div>
                     <div class="row col-md-12" style="margin-top:10px;">
                         <fieldset id="grupoFotos">
@@ -31,14 +39,58 @@
                                             {{ csrf_field() }}
                                             <input type="file" name="select_file" id="select_file" class="btn-car" />
 
-                                            @isset($imagen[0]->_id)
+                                            @for ($i = 0; $i < 14; $i++)
+                                                @if(@isset($imagen[$i]->_id))
+                                                    @if($imagen[$i]->url!="")
+                                                        @if($imagen[$i]->tipoImg=="principal")
+                                                            <li data-picture-status="on" class="off" id="principal" onclick="clickbtn(id)">
+                                                                <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[$i]->url}}" class="img-thumbnail" width="300" />
+                                                                <div class="picture-uploader-controls">
+                                                                    <p role="button" class="ch-close" id="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[$i]->url}}" onclick="delateImg(id,'{{$imagen[$i]->_id}}','{{$imagen[$i]->tipoImg}}')"><span class="">x</span></p>
+                                                                </div>
+                                                                <p class="picture-uploader-principal">Foto principal</p>
+                                                            </li>
+                                                        @else
+                                                            <li data-picture-status="off" id="img{{$i}}" onclick="clickbtn(id)">
+                                                                <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[$i]->url}}" class="img-thumbnail" width="300" />
+                                                                <div class="picture-uploader-controls">
+                                                                    <p role="button" class="ch-close" id="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[$i]->url}}" onclick="delateImg(id,'{{$imagen[$i]->_id}}','{{$imagen[$i]->tipoImg}}')"><span class="">x</span></p>
+                                                                </div>
+                                                            </li>
+                                                        @endif
+                                                    @else
+                                                        @if($imagen[$i]->tipoImg=="principal")
+                                                            <li data-picture-status="on" class="off" id="principal" onclick="clickbtn(id)">
+                                                                <p class="picture-uploader-add">Agregar</p>
+                                                                <div class="picture-uploader-controls">
+                                                                    <p role="button" class="ch-close ch-hide"><span class="ch-hide">x</span></p>
+                                                                </div>
+                                                                <p class="picture-uploader-principal">Foto principal</p>
+                                                            </li>
+                                                        @else
+                                                            <li data-picture-status="off" id="img{{$i}}" onclick="clickbtn(id)">
+                                                                <p class="picture-uploader-add">Agregar</p>
+                                                                <div class="picture-uploader-controls">
+                                                                    <p role="button" class="ch-close ch-hide"><span class="ch-hide">x</span></p>
+                                                                </div>
+                                                            </li>
+                                                        @endif
+                                                    @endif
+                                                @else
+
+                                                @endif
+                                            @endfor
+
+                                            <!-- @isset($imagen[0]->_id)
+                                                @if($imagen[0]->tipo=="principal")
                                                 <li data-picture-status="on" class="off" id="principal">
                                                     <img src="/MercadoLibre-2.0/public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[0]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
-                                                        <a role="button" class="ch-close" href="#" id="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[0]->url}}" onclick="delateImg(id,1)"><span class="">x</span></a>
+                                                        <a role="button" class="ch-close" href="#" id="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[0]->url}}" onclick="delateImg(id,'{{$imagen[0]->_id}}',1)"><span class="">x</span></a>
                                                     </div>
                                                     <p class="picture-uploader-principal">Foto principal</p>
                                                 </li>
+                                                @endif
                                             @endisset
                                             @empty($imagen[0]->_id)
                                                 <li data-picture-status="on" class="off" id="principal" onclick="clickbtn(id)">
@@ -256,7 +308,7 @@
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
                                                 </li>
-                                            @endempty
+                                            @endempty -->
                                             </ul>
                                     </div>
                                     <div id="html5_1cpaullo31ni1nbioqm1s7f2mk3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 0px; width: 1024px; height: 0px; overflow: hidden; z-index: 0;"><input id="html5_1cpaullo31ni1nbioqm1s7f2mk3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,.JPG,.JPEG,image/gif,.GIF,image/png,.PNG,.webp">
@@ -270,7 +322,7 @@
                             <legend>Ingresa un video</legend>
                             <div class="col-md-1" style="padding: 0px;margin: 0px;margin-top: 8px;margin-left: 30px;"><p>Link de YouTube</p></div>
                             <div class="col-md-4">
-                                <input class="form-control col-md-4" type="text" name="videoURL" id="videoURL" value="{{$datos->urlvideo}}">
+                                <input class="form-control col-md-4" type="text" name="urlvideo" id="urlvideo" value="{{$datos->urlvideo}}">
                                 <span>Ingresa el link de tu video de YouTube.</span>
                             </div>
                         </fieldset>
@@ -710,13 +762,13 @@
                                         <label for="price" style="float: left;">
                                             Precio :   <em>*</em>
                                         </label>
-                                        <select name="price.currency" id="currency" class="currency" data-js="currency" style="float: left;    margin: 5px;">
+                                        <select name="moneda" id="moneda" class="currency" data-js="currency" style="float: left;    margin: 5px;">
                                                 <option value="MXN" selected="">$</option>
 
                                                 <option value="USD">U$S</option>
                                         </select>
                                         <span class="price-input" style="float: left;">
-                                            <input type="tel" value="{{$datos->precio}}" name="price.price" id="price" class="price" title="Completa este dato" size="15" min="1" maxlength="14" data-js="price" data-price-decimal-separator="." data-price-decimal-places="0">
+                                            <input type="tel" value="{{$datos->precio}}" name="precio" id="precio" class="price" title="Completa este dato" size="15" min="1" maxlength="14" data-js="price" data-price-decimal-separator="." data-price-decimal-places="0">
                                         </span>
                                         <span class="error-icon"></span>
                                         <div class="error-message"></div>

@@ -166,9 +166,6 @@ $("#upload_form").on("submit", function(){
 	
  })
 $('#select_file').change(function(){
-	if ($('#'+idLIFoto).hasClass('on')){
-        $('#upload_form').submit();
-    }else{ 
     	var token = $("#token").val();
     	var idPublicacion = $('#idPublicacion').val();
     	var idUser = $('#idUser').val();
@@ -196,22 +193,27 @@ $('#select_file').change(function(){
 	    $('#'+idLIFoto).addClass('on');
 	    $('#'+idLIFoto).html(data.uploaded_image);
 	    $('#select_file').val("");
+	    if (idLIFoto == "principal") {
+	    	$('#urlPrincipal').val(data.url);
+	    }
+	    
+	    //location.reload();
 	   }
 	  })
-    }
 });
 
-function delateImg(id,tipo){
-	var token = document.getElementsByTagName('_token').value;
+function delateImg(id,idImg,tipo){
+	var token = $('#token').val();
 	var route = "/MercadoLibre-2.0/public/detaleImg";
 	$.ajax({
 	url: route, 
 	headers: {'X-CSRF-TOKEN': token},
 	type: 'get',
 	dataType: 'json',
-	data: {link: id,tipo:tipo} 
-	}).done(function(data) {  
-		  
+	data: {link: id,idImg:idImg,tipo:tipo} 
+	}).done(function(data) {   
+		//location.reload();
+		 $('#'+tipo).html(data.contenido);
     });
 }
 
