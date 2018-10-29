@@ -75,6 +75,7 @@ class VentaController extends Controller
         $Articulos->version = $request->version;
         $Articulos->urlPrincipal = $urlPrincipal->url;
         $Articulos->estadoPublicacion = 1;
+        $Articulos->cantidad=0;
         $Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
         $Articulos->urlPrincipal = $urlPrincipal->url;
         $Articulos->save();
@@ -91,9 +92,8 @@ class VentaController extends Controller
              $Carrito->cantidad = $request->post('cantidad'); 
              $Carrito->precio = $request->post('precio');        
              $Carrito->save();
-       
-       
-               
+          
+             return  Redirect::route('dashboard');
              //    $idUsuario = $usuario->getKey(); 
                
              //     return response()->json([

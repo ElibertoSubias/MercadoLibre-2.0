@@ -6,14 +6,11 @@
 <script type="text/javascript">
     
 function agregarinfo(preci, ids){
-        alert(ids);
           var precio = preci;
           var cantidad = "1";
           var idPublicacion=ids;
           var route = "/MercadoLibre-2.0/public/agregadocarrito";
           var token = $("#token").val();
-    
-         alert(token);  
 
 
               $.ajax({
@@ -22,8 +19,11 @@ function agregarinfo(preci, ids){
                 type: 'POST',
                 dataType: 'json',
                 data: { precio: precio, cantidad: cantidad, idPublicacion:idPublicacion} 
-                }).done(function(data) {
-                alert('3');  
+                }).done(function(data){
+                    if (data.res!=1 && data.res!=0){
+                  location.href ="/MercadoLibre-2.0/public/perfil";
+                  }
+  
                   
                 });
          }
@@ -503,13 +503,16 @@ function agregarinfo(preci, ids){
     <div class="reputation-info block">
         <p class="card-subtitle reputation-title">Este vendedor <strong>aún no tiene suficientes ventas</strong> para calcular su reputación.</p> 
             <div class="feedback-title">
-                  <input type="hiddena" name="_token" value="{{ csrf_token() }}" id="token"> 
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
                 
                     Paga el apartado con Mercado Pago. Si cambias de opinión, te devolvemos el 100% de tu dinero.
-
-                <a  href="javascript:agregarinfo('{{$datos->precio}}', '{{$datos->idUser}}')"   style="font-size: 15px!important;min-width: 0;padding: 12px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 15px">Comprar ahora </a>
-                <input type="submit"  action="{{action('Venta\VentaController@agregarCarrito', $datos->precio)}}" data-js="vip-action-cart"  value="Agregar al carrito" class="ui-button ui-button--secondary "
-                style="font-size: 15px!important;min-width: 0;padding: 12px 16px;border: 1px solid #3483fa;    color: #3483fa;background: none;border-radius: 4px;">
+                    <br>
+                </br>
+                    <div>
+                <a   href="#"  style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px">Comprar ahora </a>
+                <a  href="javascript:agregarinfo('{{$datos->precio}}', '{{$datos->_id}}')" data-js="vip-action-cart"  class="ui-button ui-button--secondary "
+                style="font-size: 15px!important;min-width: 0;padding: 12px 16px;border: 1px solid #3483fa;    color: #3483fa;background: none;border-radius: 4px;">gregar al carrito </a>
+                </div>
             </div> 
     </div> 
     <p class="card-subtitle">Ubicación del vehículo</p>

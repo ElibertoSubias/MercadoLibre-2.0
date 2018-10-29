@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
-{!! Html::style('css/styleCarrito.css') !!} 
+{!! Html::style('css/styleCarrito.css') !!} /
 <div style="margin: 30px auto 20px;max-width: 1220px;background-color: #fff;border: 1px solid #e2e2e2;border-radius: 5px;height:auto;display: inline-block;width: 100%;">
     
     <div style="position: relative;">
             <div style="width: 99%;height: 100%;text-align: left;margin:20px;"> 
  
     <div data-region="tabs" class="cart__tabs"><div><ul class="ui-tabs" role="tablist" data-tabs="" style="width: 96.5%;">
-    <li data-tab="cart" class="ui-tabs__item ui-tabs__item--selected"><a class="ui-tabs__item-link" href="/gz/cart" role="tab">Carrito ({{$totalArticulos}})</a></li>
+    <li data-tab="cart" class="ui-tabs__item ui-tabs__item--selected"><a class="ui-tabs__item-link" href="/gz/cart" role="tab">Carrito (1)</a></li>
     <li data-tab="saved" class="ui-tabs__item"><a class="ui-tabs__item-link" href="/gz/cart/saved" role="tab">Guardados (0)</a></li>
 </ul>
 </div></div>
@@ -20,25 +20,23 @@
 
     <div data-region="items" class="cart__items-container" role="tabpanel" itemscope="" itemtype="http://schema.org/ItemList" style="width: 95%;"><div><div><div data-component="item-cart" class="ui-panel" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
     <div class="ui-panel__content">
-        
-            @for($k=0; $k < $totalArticulos; $k++ )
-
-           @foreach($articulo[$k] as $venta)
         <article class="item  ">
             <div data-region="item-loading"></div>
                 <figure class="item__image item__image--dimmer">
-               <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$venta->idPublicacion}}/{{$venta->urlPrincipal}}" width="80"  style="margin-bottom: -25px"> 
+                    <a itemprop="url" href="https://articulo.mercadolibre.com.mx/MLM-572083257-playera-polo-club-america-nike-utileria-original-mediana-_JM?variation=22751685920">
+                        <img itemprop="image" src="https://http2.mlstatic.com/playera-polo-club-america-nike-utileria-original-mediana-D_Q_NP_756071-MLM27152394553_042018-R.webp" alt="Playera Polo Club America Nike Utileria Original Mediana" width="48" height="48" data-srcset="https://http2.mlstatic.com/playera-polo-club-america-nike-utileria-original-mediana-D_Q_NP_756071-MLM27152394553_042018-Z.webp 2x" srcset="https://http2.mlstatic.com/playera-polo-club-america-nike-utileria-original-mediana-D_Q_NP_756071-MLM27152394553_042018-Z.webp 2x">
+                    </a>
                 </figure>
                 <div class="item__information">
                     <div class="u-float-left item__description">
-                    <h2 class="item__title" itemprop="name">
-                        <a class="item__title--link" href="https://articulo.mercadolibre.com.mx/MLM-572083257-playera-polo-club-america-nike-utileria-original-mediana-_JM?variation=22751685920" itemprop="url"> {{$venta->titulo}}</a>
-                    </h2>
-                   
+                    
+                       
                     
                         <div class="item__information-main u-clearfix">
                             <p class="item__information-detail item__payment-installments  u-float-left ">
-                            
+                                <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-icon--payment-outline ">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--payment-outline"></use>
+                                </svg>
                             	<span class="item__payment-installments__label">Hasta 3 meses sin interés</span>
                             </p>
                             <p class="item__information-detail item__shipping-info  u-float-left " style="display: contents;">
@@ -72,7 +70,7 @@
                                     <input data-quantity="pop" type="submit" value="-" class="u-button-reset ui-quantity-selector__button" name="pop" disabled="">
                                 </form>
                         
-                                <input autocomplete="off" data-quantity="input" type="tel" value=" {{$venta->cantidad}}" class="u-button-reset ui-quantity-selector__input" name="quantity" disabled="" style="    width: 50px;">
+                                <input autocomplete="off" data-quantity="input" type="tel" value="1" class="u-button-reset ui-quantity-selector__input" name="quantity" disabled="" style="    width: 50px;">
                         
                                 <form class="u-float-left" action="/gz/cart/item/quantity?id=MLM572083257_22751685920" method="POST">
                                     <input data-quantity="push" type="submit" value="+" class="u-button-reset ui-quantity-selector__button" name="push" disabled="">
@@ -89,7 +87,7 @@
                                     
                                     
                                     <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                                    <span class="price-tag-fraction"> {{$venta->precio}}</span>
+                                    <span class="price-tag-fraction">1,499</span>
                                     
                                 </span>
                         
@@ -98,8 +96,6 @@
                 </div>
         </article>
     </div>
-   @endforeach 
-   @endfor
 </div>
 </div></div></div>
     <div data-region="summary" class="cart__summary" style="    width: 95%;"><div>    <footer class="summary summary--static" aria-label="Resumen de tu carrito" data-summary="footer">
@@ -112,7 +108,7 @@
                             
                             
                             <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                            <span class="price-tag-fraction"> {{$i}}</span>
+                            <span class="price-tag-fraction">1,499</span>
                                 <span class="price-tag-decimal-separator">.</span>
                                 
                                 <span class="price-tag-cents">00</span>
@@ -152,7 +148,7 @@
                     <meta itemprop="price" content="1,499.00">
                     
                     <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                    <span class="price-tag-fraction">{{$i}}</span>
+                    <span class="price-tag-fraction">1,499</span>
                         <span class="price-tag-decimal-separator">.</span>
                         
                         <span class="price-tag-cents">00</span>

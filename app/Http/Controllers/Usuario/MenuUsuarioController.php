@@ -44,9 +44,9 @@ class MenuUsuarioController extends Controller
 
         $totalActivos = count($activos);
         $totalPausados = count($pausados);
-        $totalFinalizados = count($Finalizados);
+        $totalFinalizados = count($Finalizados); 
         
-
+        
 
         return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados' ) ); 
     }
