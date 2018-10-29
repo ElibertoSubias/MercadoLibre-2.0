@@ -88,7 +88,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('carrito', 'Usuario\CarritoController@index')->name('carrito');
 
-	Route::post('agregadocarrito', 'Venta\VentaController@agregarCarrito')->name('agregadocarrito');
+	Route::any('agregadocarrito', 'Usuario\CarritoController@agregadoCarrito')->name('agregadocarrito');
 
 });
 

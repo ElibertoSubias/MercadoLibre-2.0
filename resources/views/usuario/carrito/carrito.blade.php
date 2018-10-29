@@ -1,7 +1,35 @@
 @extends('layouts.master')
 
 @section('content')
-{!! Html::style('css/styleCarrito.css') !!} 
+{!! Html::style('css/styleCarrito.css') !!}
+<script type="text/javascript">
+    function eliminar(id){
+          var _id = id;
+        
+          var route = "/MercadoLibre-2.0/public/cambiarnombre";
+          var token = $("#token").val();
+    
+             
+
+
+      
+            
+              $.ajax({
+                url: route,
+                headers: {'X-CSRF-TOKEN': token},
+                type: 'POST',
+                dataType: 'json',
+                data: { apellido: apellido, id: id, nombre:nombre} 
+                }).done(function(data) {  
+                  if (data.res!=1 && data.res!=0){
+                  location.href ="/MercadoLibre-2.0/public/perfil";
+                  }else if(data.res==1){  
+                    $("#lblCorreoExistente").empty();
+                    $("#lblCorreoExistente").append(data.email);
+                  }
+                });
+            }
+</script> 
 <div style="margin: 30px auto 20px;max-width: 1220px;background-color: #fff;border: 1px solid #e2e2e2;border-radius: 5px;height:auto;display: inline-block;width: 100%;">
     
     <div style="position: relative;">
@@ -27,7 +55,7 @@
         <article class="item  ">
             <div data-region="item-loading"></div>
                 <figure class="item__image item__image--dimmer">
-               <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$venta->idPublicacion}}/{{$venta->urlPrincipal}}" width="80"  style="margin-bottom: -25px"> 
+               <img src="/MercadoLibre-2.0/public/images/{{ $venta->idUser}}/{{$venta->idPublicacion}}/{{$venta->urlPrincipal}}" width="80" height="80px" style="margin-bottom: -25px"> 
                 </figure>
                 <div class="item__information">
                     <div class="u-float-left item__description">
@@ -61,7 +89,7 @@
                                 <li>
                                     <form data-action="remove-from-cart" action="/gz/cart/item/delete" method="POST">
                                         <input type="hidden" name="id" value="MLM572083257_22751685920">
-                                        <input type="submit" class="u-button-reset  u-link item__action-menu-link " value="Eliminar">
+                                        <a href="javascript:eliminar('{{$venta->_id}}')">Eliminar</a>
                                     </form>
                                 </li>
                         </ul>
@@ -92,7 +120,7 @@
                                     <span class="price-tag-fraction"> {{$venta->precio}}</span>
                                     
                                 </span>
-                        
+                        <label id="idPublicacion" hidden="">{{$venta->_id}}</label>
                         
                         </div>
                 </div>

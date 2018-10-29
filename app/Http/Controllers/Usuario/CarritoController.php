@@ -35,9 +35,9 @@ class CarritoController extends Controller
     }
 
 
-    public function agregarCarrito()
+    public function agregadoCarrito()
     {
-    	return view('usuario.carrito.carrito');
+    	return view('usuario.carrito.agregadoCarrito');
     }
 
 
