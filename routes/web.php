@@ -78,6 +78,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('modificarVEHI', 'Venta\VentaController@showModificarVEHI')->name('modificarVEHI');
 	Route::any('modificarPublicacion', 'Venta\VentaController@updateVEHI')->name('modificarPublicacion');
+	Route::any('detaleImg', 'Venta\VentaController@delateImagen')->name('detaleImg');
 
 	Route::any('publicaciones', 'Usuario\MenuUsuarioController@showAllPublicaciones')->name('publicaciones');
 	Route::any('publicacionesp', 'Usuario\MenuUsuarioController@showAllPublicacionesPausadas')->name('publicacionesp');

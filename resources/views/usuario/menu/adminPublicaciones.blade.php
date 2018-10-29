@@ -415,7 +415,7 @@
                             </fieldset>
                             <div class="ch-actions">
                                 <input type="submit" id="submitForm" class="ch-btn secondary" value="Guardar">
-                                <a class="secondary" href="{{route('modificarVEHI')}}" onclick="redirectToML('modificarVEHI?itemId={{$venta->_id}}')">Modificar más
+                                <a class="secondary" href="modificarVEHI?itemId={{$venta->_id}}">Modificar más
                                 </a>  
                                 <a class="btn-secondary" data-dismiss="modal" style="cursor: pointer;text-decoration: none;">Cancelar</a>
                             </div>
