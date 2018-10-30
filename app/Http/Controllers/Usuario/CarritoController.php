@@ -25,10 +25,9 @@ class CarritoController extends Controller
     	   
            $i=$id->precio + $i;	
            
-    	}
-        
+    	} 
         $totalArticulos= count($articulo);
-    return view('usuario.carrito.carrito',compact('articulo', 'totalArticulos', 'i') );
+    return view('usuario.carrito.carrito',compact('articulo', 'totalArticulos', 'i','articulos') );
     
     }
 
@@ -84,4 +83,27 @@ class CarritoController extends Controller
 
     //     return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados' ) ); 
     // }
+
+
+    public function modificarCantidad(Request $request)
+    {   
+        $aux = Articulos::where('_id' , '=', $request->idPublicacion)->get();
+        //Codigo para incrementar o disminuir la cantidad en la colecccion de carrito
+        if ($request->caracter == "+") {
+            //Codigo de sumar 1
+            if ($aux[0]->cantidad > 1) {
+                //Incrementar
+                //1. HAcer una update al registro con el $request->idRegistro
+                $total = $request->cantidadArticulos+1;
+                //Actualizar $total en el campo cantidad
+                $datos = Carrito::where('_id', $request->idRegistro)->update(['cantidad' => $total]);
+                return response()->json([
+                    "cantidadArticulos" => $total
+                ]);
+            }
+        }else{
+            //Codigo de decrementar
+        }
+        return "Error ningun caracter...";    
+    }
 }

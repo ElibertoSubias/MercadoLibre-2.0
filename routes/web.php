@@ -94,6 +94,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::post('eliminarcarrito', 'Usuario\CarritoController@eliminarArticulo')->name('eliminarcarrito');
 
+	Route::post('modificarCantidad', 'Usuario\CarritoController@modificarCantidad')->name('modificarCantidad');
 });
 
 

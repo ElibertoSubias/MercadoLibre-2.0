@@ -27,3 +27,31 @@ function eliminar(id){
       // }
     });
 }
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function modificarCantidad(caracter,idRegistro, idPublicacion, cantidadArticulos){  
+	var route = "/MercadoLibre-2.0/public/modificarCantidad";
+	var token = $("#token").val(); 
+	  $.ajax({
+	    url: route,
+	    headers: {'X-CSRF-TOKEN': token},
+	    type: 'POST',
+	    dataType: 'json',
+	    data: {caracter: caracter, idRegistro:idRegistro, idPublicacion:idPublicacion, cantidadArticulos:cantidadArticulos} 
+	    }).done(function(data) {    
+	    	//Codigo en Javascript o eb jQuert pora actualizar el campo de cantidad
+	    	$('#idCantidad_'+idRegistro).val(data.cantidadArticulos);
+	    });
+}
+
+$('form input').click(function(){
+	event.preventDefault(); 
+	var cantidadArticulos = $('#idCantidad_'+this.id).val(); 
+	var idPublicacion = $('#idPublicacion_'+this.id).val();
+	modificarCantidad($(this).val(),this.id, idPublicacion, cantidadArticulos);
+});
+
+
