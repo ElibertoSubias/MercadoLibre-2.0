@@ -148,6 +148,9 @@
     margin: 0 0 10px;
     position: relative;
 }
+.list-castegoria {
+    margin: 0px !important;
+}
 
 .filters__group dd a:focus, .filters .filters__group dd a:hover, .filters .filters__group dd a:visited {
     text-decoration: none;
@@ -176,14 +179,7 @@
     line-height: 1.25;
     color: #333;
 }
-
-.filters .filters__group dd {
-    display: table;
-    font-size: 14px;
-    font-weight: 300;
-    margin: 0 0 10px;
-    position: relative;
-}
+ 
 
 .filters__group dd a:focus, .filters .filters__group dd a:hover, .filters .filters__group dd a:visited {
     text-decoration: none;
@@ -208,14 +204,7 @@
     line-height: 1.25;
     color: #333;
 }
-
-.filters__group dd {
-    display: table;
-    font-size: 14px;
-    font-weight: 300;
-    margin: 0 0 10px;
-    position: relative;
-}
+ 
 
 .filters__group dd a:focus, .filters .filters__group dd a:hover, .filters .filters__group dd a:visited {
     text-decoration: none;
@@ -260,15 +249,7 @@
     line-height: 1.25;
     color: #333;
 }
-
-.filters__group dd {
-    display: table;
-    font-size: 14px;
-    font-weight: 300;
-    margin: 0 0 10px;
-    position: relative;
-}
-
+ 
 .filters__group dd a:focus, .filters .filters__group dd a:hover, .filters .filters__group dd a:visited {
     text-decoration: none;
 }
@@ -312,14 +293,7 @@
     line-height: 1.25;
     color: #333;
 }
-
-.filters__group dd {
-    display: table;
-    font-size: 14px;
-    font-weight: 300;
-    margin: 0 0 10px;
-    position: relative;
-}
+ 
 
 .filters__group dd a:focus, .filters .filters__group dd a:hover, .filters .filters__group dd a:visited {
     text-decoration: none;
@@ -460,15 +434,7 @@
     line-height: 1.25;
     color: #333;
 }
-
-.filters__group dd {
-    display: table;
-    font-size: 14px;
-    font-weight: 300;
-    margin: 0 0 10px;
-    position: relative;
-}
-
+ 
 .filters__group dd a:focus, .filters .filters__group dd a:hover, .filters .filters__group dd a:visited {
     text-decoration: none;
 }
@@ -524,14 +490,7 @@
     line-height: 1.25;
     color: #333;
 }
-
-.filters__group dd {
-    display: table;
-    font-size: 14px;
-    font-weight: 300;
-    margin: 0 0 10px;
-    position: relative;
-}
+ 
 
 .filters__group dd a:focus, .filters .filters__group dd a:hover, .filters .filters__group dd a:visited {
     text-decoration: none;
@@ -861,14 +820,7 @@ menu, ol, ul {
     margin: 0 0 12px;
     line-height: 1.25;
     color: #333;
-}
-.filters__group dd {
-    display: table;
-    font-size: 14px;
-    font-weight: 300;
-    margin: 0 0 10px;
-    position: relative;
-}
+} 
 .filters__group dd a:focus, .filters .filters__group dd a:hover, .filters .filters__group dd a:visited {
     text-decoration: none;
 }

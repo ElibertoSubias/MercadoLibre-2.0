@@ -52,6 +52,26 @@ function seleccionarOpcion(id){
 		//urlFiltros=urlFiltros+"&ORDEN=DSC";
 	}
 } 
+function seleccionarCategoria(id){
+	if ($('#CATAUTCLA').html()!=null) { 
+		$('#CATAUTCLA').remove();
+	}else if($('#CATMOT').html()!=null){
+		$('#CATMOT').remove();
+	}else if ($('#CATAUTCAM').html()!=null) {
+		$('#CATAUTCAM').remove();
+	}
+	if (id=="Autos de Colección") { 
+		var filtros = $('.applied-filters').html();
+		$('.applied-filters').html(filtros+"<dl id='CATAUTCLA'><a href='resultados?busqueda="+$.get("busqueda")+"'><dd><h2 class='applied-fliter'><div>Autos de Colección</div></h2><div class='close__icon'></div></dd></a></dl>");
+	}else if (id=="Motos") { 
+		var filtros = $('.applied-filters').html();
+		$('.applied-filters').html(filtros+"<dl id='CATMOT'><a href='resultados?busqueda="+$.get("busqueda")+"'><dd><h2 class='applied-fliter'><div>Motos</div></h2><div class='close__icon'></div></dd></a></dl>");
+	}else if (id=="Autos y Camionetas") { 
+		var filtros = $('.applied-filters').html();
+		$('.applied-filters').html(filtros+"<dl id='CATAUTCAM'><a href='resultados?busqueda="+$.get("busqueda")+"'><dd><h2 class='applied-fliter'><div>Autos y Camionetas</div></h2><div class='close__icon'></div></dd></a></dl>");
+	}
+}
+
 function seleccionarPrecio(id){
 	if ($('#dl1500').html()!=null) { 
 		$('#dl1500').remove();
@@ -81,6 +101,7 @@ $('.sort-by-options-trigger').click(function(){
 function filtrar(){ 
 	var orden = $('#ORDEN').val();
 	var precio = $('#precio').val();
+	var categoria = $('#categoria_selected').val();
 	var busqueda = $.get('busqueda');
 	var route = "/MercadoLibre-2.0/public/resultados";
 	var token = $("#token").val(); 
@@ -89,7 +110,7 @@ function filtrar(){
 	    headers: {'X-CSRF-TOKEN': token},
 	    type: 'GET',
 	    dataType: 'json',
-	    data: {orden: orden,precio:precio, busqueda:busqueda} 
+	    data: {orden: orden,precio:precio, busqueda:busqueda, categoria:categoria} 
 	    }).done(function(data) {    
 	    	$('#searchResults').html("");
 	    	$.each(data.articulos, function(i, item) {
@@ -137,5 +158,11 @@ $('li a').click(function(){
 $('#id_price a').click(function(){
 	seleccionarPrecio(this.id);
 	$('#precio').val(this.id);
+	filtrar();
+});
+
+$('#id_category a').click(function(){
+	seleccionarCategoria(this.id);
+	$('#categoria_selected').val(this.id);
 	filtrar();
 });
