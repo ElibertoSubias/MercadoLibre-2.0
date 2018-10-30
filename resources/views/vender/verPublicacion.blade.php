@@ -9,7 +9,7 @@ function agregarinfo(preci, ids){
           var precio = preci;
           var cantidad = "1";
           var idPublicacion=ids;
-          var route = "/MercadoLibre-2.0/public/agregadocarrito";
+          var route = "/MercadoLibre-2.0/public/agregadocarr";
           var token = $("#token").val();
 
 
@@ -20,10 +20,8 @@ function agregarinfo(preci, ids){
                 dataType: 'json',
                 data: { precio: precio, cantidad: cantidad, idPublicacion:idPublicacion} 
                 }).done(function(data){
-                    if (data.res!=1 && data.res!=0){
+        
                   location.href ="/MercadoLibre-2.0/public/perfil";
-                  }
-  
                   
                 });
          }
@@ -511,7 +509,7 @@ function agregarinfo(preci, ids){
                     <div>
                 <a   href="#"  style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px">Comprar ahora </a>
                 <a  href="javascript:agregarinfo('{{$datos->precio}}', '{{$datos->_id}}')" data-js="vip-action-cart"  class="ui-button ui-button--secondary "
-                style="font-size: 15px!important;min-width: 0;padding: 12px 16px;border: 1px solid #3483fa;    color: #3483fa;background: none;border-radius: 4px;">gregar al carrito </a>
+                style="font-size: 15px!important;min-width: 0;padding: 12px 16px;border: 1px solid #3483fa;    color: #3483fa;background: none;border-radius: 4px;">Agregar al carrito </a>
                 </div>
             </div> 
     </div> 

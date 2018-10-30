@@ -6,11 +6,8 @@
     function eliminar(id){
           var _id = id;
         
-          var route = "/MercadoLibre-2.0/public/cambiarnombre";
+          var route = "/MercadoLibre-2.0/public/eliminarcarrito";
           var token = $("#token").val();
-    
-             
-
 
       
             
@@ -19,13 +16,12 @@
                 headers: {'X-CSRF-TOKEN': token},
                 type: 'POST',
                 dataType: 'json',
-                data: { apellido: apellido, id: id, nombre:nombre} 
+                data: { _id: _id} 
                 }).done(function(data) {  
-                  if (data.res!=1 && data.res!=0){
-                  location.href ="/MercadoLibre-2.0/public/perfil";
-                  }else if(data.res==1){  
-                    $("#lblCorreoExistente").empty();
-                    $("#lblCorreoExistente").append(data.email);
+                  if (data.totalArticulos!=1){
+                    $('#totalArticulos').html("Carrito ("+data.totalArticulos +")" ); 
+                    $totalArticulos=data.totalArticulos;
+                   // alert($totalArticulos);
                   }
                 });
             }
@@ -36,7 +32,7 @@
             <div style="width: 99%;height: 100%;text-align: left;margin:20px;"> 
  
     <div data-region="tabs" class="cart__tabs"><div><ul class="ui-tabs" role="tablist" data-tabs="" style="width: 96.5%;">
-    <li data-tab="cart" class="ui-tabs__item ui-tabs__item--selected"><a class="ui-tabs__item-link" href="/gz/cart" role="tab">Carrito ({{$totalArticulos}})</a></li>
+    <li data-tab="cart" class="ui-tabs__item ui-tabs__item--selected"><a class="ui-tabs__item-link" href="/gz/cart" role="tab">Carrito ({{$totalArticulos}}) <label id="totalArticulos" value=""></label> </a></li>
     <li data-tab="saved" class="ui-tabs__item"><a class="ui-tabs__item-link" href="/gz/cart/saved" role="tab">Guardados (0)</a></li>
 </ul>
 </div></div>
@@ -48,6 +44,7 @@
 
     <div data-region="items" class="cart__items-container" role="tabpanel" itemscope="" itemtype="http://schema.org/ItemList" style="width: 95%;"><div><div><div data-component="item-cart" class="ui-panel" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
     <div class="ui-panel__content">
+         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
         
             @for($k=0; $k < $totalArticulos; $k++ )
 
@@ -100,7 +97,7 @@
                                     <input data-quantity="pop" type="submit" value="-" class="u-button-reset ui-quantity-selector__button" name="pop" disabled="">
                                 </form>
                         
-                                <input autocomplete="off" data-quantity="input" type="tel" value=" {{$venta->cantidad}}" class="u-button-reset ui-quantity-selector__input" name="quantity" disabled="" style="    width: 50px;">
+                                <input autocomplete="off" data-quantity="input" type="tel" value=" 1" class="u-button-reset ui-quantity-selector__input" name="quantity" disabled="" style="    width: 50px;">
                         
                                 <form class="u-float-left" action="/gz/cart/item/quantity?id=MLM572083257_22751685920" method="POST">
                                     <input data-quantity="push" type="submit" value="+" class="u-button-reset ui-quantity-selector__button" name="push" disabled="">

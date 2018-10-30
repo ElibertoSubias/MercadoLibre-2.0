@@ -91,15 +91,7 @@ class VentaController extends Controller
              $Carrito->idPublicacion = $request->post('idPublicacion');
              $Carrito->cantidad = $request->post('cantidad'); 
              $Carrito->precio = $request->post('precio');        
-             $Carrito->save();
-          
-             return  Redirect::route('dashboard');
-             //    $idUsuario = $usuario->getKey(); 
-               
-             //     return response()->json([
-             //        "res" => $idUsuario 
-              
-             // ]); 
+             $Carrito->save(); 
             
     }
 
