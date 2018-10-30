@@ -123,22 +123,48 @@
                     </dl>
                 </section>-->
                  <!--CATEGORIAS-->
-                <!-- <section class="filters__group">
+                <section class="filters__group">
                     <dl class="filters__group filters__category " id="id_category" role="listbox">
+                        <input type="hidden" id="categoria_selected" value="">
                         <dt class="dt-title" role="presentation">Categorías</dt>
-                        @foreach($datos as $articulo)
-                        <dd class="filters__group__option" role="option">
-                            <h3>
-                                <a class="qcat-truncate " style="max-width:137px;" title="A Carbón" href="https://hogar.mercadolibre.com.mx/asadoras-accesorios-a-carbon/asador" rel="nofollow">
-                                    <span class="filter-name">{{$articulo->categoria}}</span>
-                                    <span class="filter-results-qty">(995)</span>
-                                </a>
-                            </h3>
-                        </dd>
-                        @endforeach
-                    </dl>
-                </section> -->
+<?php
+$categoriasRes   = array();
+$todasCategorias = array();
+function cuenta_veces_valor($array, $valor) {
+	$contadores = array_count_values($array);
+	return $contadores[$valor];
+}
+for ($x = 0; $x < count($datos); $x++) {
+	array_push($todasCategorias, $datos[$x]['categoria']);
+}
+function buscar($categoria, $categoriasRes) {
+	for ($i = 0; $i < count($categoriasRes); $i++) {
+		if ($categoriasRes[$i] == $categoria) {
+			return true;
+		}
+	}
+	return false;
+}
 
+for ($x = 0; $x < count($datos); $x++) {
+	if (!buscar($datos[$x]['categoria'], $categoriasRes)) {
+		array_push($categoriasRes, $datos[$x]['categoria']);
+	}
+}
+for ($i = 0; $i < count($categoriasRes); $i++) {
+	echo '<dd class="filters__group__option list-castegoria" role="option">
+                                                <h3>
+                                                    <a class="qcat-truncate " style="max-width:137px;" title="A Carbón" href="#" id="'.$categoriasRes[$i].'">
+                                                        <span class="filter-name">'.$categoriasRes[$i].'</span>
+                                                        <span class="filter-results-qty">('.cuenta_veces_valor($todasCategorias, $categoriasRes[$i]).')</span>
+                                                    </a>
+                                                </h3>
+                                        </dd>';
+}
+?></dl>
+                </section>
+                <br>
+                <br>
                 <!--COSTO DE ENVIO-->
                 <section class="filters__group">
                     <dl class="filters__group filters__shipping_cost " id="id_shipping_cost" role="listbox">
@@ -226,6 +252,8 @@ echo $contador;
                 <section class="filters__group">
 
                 </section>
+                <br>
+                <br>
                 <!--PRECIO-->
                 <section class="filters__group">
                     <dl class="filters__group filters__price " id="id_price" role="listbox">
@@ -268,7 +296,7 @@ echo $contador;
                 </section>
 
                 <br>
-
+                <br>
                 <!--MAS ESPECIFICACIONES-->
                 <section class="filters__group">
                     <dl class="filters__group">
@@ -329,7 +357,7 @@ echo $contador;
 
                                     <!-- <div class="item__discount ">5% OFF</div> -->
                                     <div class="item__attrs"> 2003 | 90000 km</div>
-                                    <h2 class="item__title list-view-item-title"> <span class="main-title"> {{$articulo->marca}} {{$articulo->modelo}} {{$articulo->transmicion}}  {{$articulo->anio}}  </span></h2>
+                                    <h2 class="item__title list-view-item-title"> <span class="main-title">{{$articulo->titulo}} {{$articulo->marca}} {{$articulo->modelo}} {{$articulo->transmicion}}  {{$articulo->anio}}  </span></h2>
                                     <div class="item__location">
                                         {{$articulo->estado}}
                                     </div>
