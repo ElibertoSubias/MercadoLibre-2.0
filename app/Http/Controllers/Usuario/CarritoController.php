@@ -17,27 +17,52 @@ class CarritoController extends Controller
     {	
     	$articulos = Carrito::where('idUser' , '=', auth()->user()->id)->get();
     	$i=0;
-        $p=0;
+    
         $articulo= array();
         foreach ($articulos as $id) {
     	array_push($articulo,  Articulos::where('_id' , '=', $id->idPublicacion)->get());
     	   
-          // $articulo= Articulos::where('_id' , '=', $id->idPublicacion)->get();
-           $p=$p+1;
            $i=$id->precio + $i;	
            
     	}
         $totalArticulos= count($articulo);
 
     return view('usuario.carrito.carrito',compact('articulo', 'totalArticulos', 'i') );
-    //return $articulo;
-      //  return $p;
+    
     }
 
 
     public function agregadoCarrito()
     {
     	return view('usuario.carrito.agregadoCarrito');
+    }
+
+    public function eliminarArticulo(Request $request)
+    {
+         if ($request->ajax()) {  
+            $articulo = Carrito::where('idPublicacion', '=' , $request->_id);
+            $articulo->delete();
+            $articulos = Carrito::where('idUser' , '=', auth()->user()->id)->get();
+            $i=0;
+    
+            $articulo= array();
+            foreach ($articulos as $id) {
+            array_push($articulo,  Articulos::where('_id' , '=', $id->idPublicacion)->get());
+           
+            $i=$id->precio + $i; 
+           
+            }
+            $totalArticulos= count($articulo);
+
+            return response()->json([
+                    "articulo" => $articulo,
+                    "totalArticulos" => $totalArticulos,
+                    "i" => $i
+                ]);
+        }
+
+        
+        
     }
 
 

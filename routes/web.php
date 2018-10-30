@@ -90,6 +90,10 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('agregadocarrito', 'Usuario\CarritoController@agregadoCarrito')->name('agregadocarrito');
 
+	Route::any('agregadocarr', 'Venta\VentaController@agregarCarrito')->name('agregadocarr');
+
+	Route::post('eliminarcarrito', 'Usuario\CarritoController@eliminarArticulo')->name('eliminarcarrito');
+
 });
 
 
