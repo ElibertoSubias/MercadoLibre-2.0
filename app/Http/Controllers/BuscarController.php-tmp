@@ -23,23 +23,74 @@ class BuscarController extends Controller {
 				if (isset($request->orden)) {
 					if ($request->orden == "masRe") {
 						$orden = "";
+						$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1])->get();
+						if (isset($request->precio)) {
+							if ($request->precio == "1500-4000") {
+								$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, ])->whereBetween('precio', ['1500', '4000'])->get();
+								if (isset($request->categoria)) {
+									$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, 'categoria' => $request->categoria])->whereBetween('precio', ['1500', '4000'])->get();
+								}
+							} elseif ($request->precio == "1500") {
+								$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, ['precio', '<', 1500]])->get();
+								if (isset($request->categoria)) {
+									$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, 'categoria' => $request->categoria, ['precio', '<', 1500]])->get();
+								}
+							} elseif ($request->precio == "4000") {
+								$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, ['precio', '>', 4000]])->get();
+								if (isset($request->categoria)) {
+									$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, 'categoria' => $request->categoria, ['precio', '>', 4000]])->get();
+								}
+							}
+						} elseif (isset($request->categoria)) {
+							$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, 'categoria' => $request->categoria])->get();
+						}
 					} elseif ($request->orden == "menorPre") {
 						$orden = "asc";
+						$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1])->orderBy('precio', $orden)->get();
+						if (isset($request->precio)) {
+							if ($request->precio == "1500-4000") {
+								$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, ])->whereBetween('precio', ['1500', '4000'])->get();
+								if (isset($request->categoria)) {
+									$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, 'categoria' => $request->categoria])->whereBetween('precio', ['1500', '4000'])->orderBy('precio', $orden)->get();
+								}
+							} elseif ($request->precio == "1500") {
+								$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, ['precio', '<', 1500]])->orderBy('precio', $orden)->get();
+								if (isset($request->categoria)) {
+									$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, 'categoria' => $request->categoria, ['precio', '<', 1500]])->orderBy('precio', $orden)->get();
+								}
+							} elseif ($request->precio == "4000") {
+								$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, ['precio', '>', 4000]])->get();
+								if (isset($request->categoria)) {
+									$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, 'categoria' => $request->categoria, ['precio', '>', 4000]])->orderBy('precio', $orden)->get();
+								}
+							}
+						} elseif (isset($request->categoria)) {
+							$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, 'categoria' => $request->categoria])->get();
+						}
 					} elseif ($request->orden == "mayorPre") {
 						$orden = "dsc";
-					}
-
-					$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1])->orderBy('precio', $orden)->get();
-					if (isset($request->precio)) {
-						if ($request->precio == "1500-4000") {
-							$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, ])->whereBetween('precio', ['1500', '4000'])->orderBy('precio', $orden)->get();
-						} elseif ($request->precio == "1500") {
-							$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, ['precio', '<', 1500]])->orderBy('precio', $orden)->get();
-						} elseif ($request->precio == "4000") {
-							$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, ['precio', '>', 4000]])->orderBy('precio', $orden)->get();
+						$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1])->orderBy('precio', $orden)->get();
+						if (isset($request->precio)) {
+							if ($request->precio == "1500-4000") {
+								$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, ])->whereBetween('precio', ['1500', '4000'])->get();
+								if (isset($request->categoria)) {
+									$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, 'categoria' => $request->categoria])->whereBetween('precio', ['1500', '4000'])->orderBy('precio', $orden)->get();
+								}
+							} elseif ($request->precio == "1500") {
+								$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, ['precio', '<', 1500]])->orderBy('precio', $orden)->get();
+								if (isset($request->categoria)) {
+									$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, 'categoria' => $request->categoria, ['precio', '<', 1500]])->orderBy('precio', $orden)->get();
+								}
+							} elseif ($request->precio == "4000") {
+								$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, ['precio', '>', 4000]])->get();
+								if (isset($request->categoria)) {
+									$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, 'categoria' => $request->categoria, ['precio', '>', 4000]])->orderBy('precio', $orden)->get();
+								}
+							}
+						} elseif (isset($request->categoria)) {
+							$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, 'categoria' => $request->categoria])->orderBy('precio', $orden)->get();
 						}
 					}
-
 					return response()->json([
 							"articulos" => $datos
 						]);
@@ -49,21 +100,6 @@ class BuscarController extends Controller {
 						]);
 				}
 
-			}
-			if (isset($_GET['ORDEN'])) {
-				switch ($_GET['ORDEN']) {
-					case 'ASC':
-						$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1])->orderBy('precio', 'asc')->get();
-						break;
-					case 'DSC':
-						$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1])->orderBy('precio', 'dsc')->get();
-						break;
-					default:
-						$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1])->get();
-						break;
-				}
-			} else if (isset($_GET['precio_rango'])) {
-				$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1, ])->get();
 			} else {
 				$datos = Articulos::where([['titulo', 'like', '%'.$request->busqueda.'%'], 'estadoPublicacion' => 1])->get();
 			}
