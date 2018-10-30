@@ -32,17 +32,17 @@ return [
     */
 
    'connections' => [
-        'mongodb'    => [
-            'driver'    => 'mongodb',
-            'dsn'       => 'mongodb://elisuor:eliberto-m.1@cluster0-shard-00-00-wqqma.mongodb.net:27017,cluster0-shard-00-01-wqqma.mongodb.net:27017,cluster0-shard-00-02-wqqma.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true',
-            'database'  => 'dbMercadoLibre',
+        // 'mongodb'    => [
+        //     'driver'    => 'mongodb',
+        //     'dsn'       => 'mongodb://elisuor:eliberto-m.1@cluster0-shard-00-00-wqqma.mongodb.net:27017,cluster0-shard-00-01-wqqma.mongodb.net:27017,cluster0-shard-00-02-wqqma.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true',
+        //     'database'  => 'dbMercadoLibre',
+        // ],
+    'mongodb' => [
+            'driver'   => 'mongodb',
+            'host'     => '127.0.0.1',
+            'port'     => 27017,
+            'database' => 'dbMercadoLibre', 
         ],
-    // 'mongodb' => [
-    //         'driver'   => 'mongodb',
-    //         'host'     => '127.0.0.1',
-    //         'port'     => 27017,
-    //         'database' => 'dbMercadoLibre', 
-    //     ],
          'sqlite' => [
             'driver' => 'sqlite',
             'database' => env('DB_DATABASE', database_path('database.sqlite')),

@@ -144,6 +144,7 @@
 				{!! Html::script('js/buscador.js') !!} 
 				{!! Html::script('js/menusFlotantes.js') !!}
 				{!! Html::script('js/modificarPublicacion.js') !!}
+				{!! Html::script('js/editCarrito.js') !!}
 		</div> 
 	</footer>
 </body>

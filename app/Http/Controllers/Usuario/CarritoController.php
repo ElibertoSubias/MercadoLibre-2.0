@@ -20,13 +20,14 @@ class CarritoController extends Controller
     
         $articulo= array();
         foreach ($articulos as $id) {
-    	array_push($articulo,  Articulos::where('_id' , '=', $id->idPublicacion)->get());
+        $aux = Articulos::where('_id' , '=', $id->idPublicacion)->get();
+    	array_push($articulo, $aux[0]);
     	   
            $i=$id->precio + $i;	
            
     	}
+        
         $totalArticulos= count($articulo);
-
     return view('usuario.carrito.carrito',compact('articulo', 'totalArticulos', 'i') );
     
     }
@@ -57,7 +58,7 @@ class CarritoController extends Controller
             return response()->json([
                     "articulo" => $articulo,
                     "totalArticulos" => $totalArticulos,
-                    "i" => $i
+                    "tipoMensaje" => "Ajax"
                 ]);
         }
 

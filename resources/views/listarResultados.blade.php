@@ -16,7 +16,7 @@
 	<div class="row" style="margin: 0;text-align: left;">
 		<section id="related-searches-section" class="related-searches"> 
 			<p> Búsquedas relacionadas:&nbsp; </p> 
-			<ul class="related-searches__list"> 
+			<ul class="related-searches__list">  
 				<li> 
 					<a href="#"> jeep compass </a> <span class="separator">-</span> 
 				</li> 

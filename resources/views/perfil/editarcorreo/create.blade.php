@@ -40,7 +40,7 @@ function btncambiarCorreo(){
       $('#alertMsjinputCorreoNoCoicende').css({"visibility":"hidden"}); 
     }
 
-
+ 
     if (bandera==="0") { 
        $.ajax({
          url: route,
