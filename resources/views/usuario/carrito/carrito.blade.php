@@ -24,31 +24,33 @@
     <div data-region="items" class="cart__items-container" role="tabpanel" itemscope="" itemtype="http://schema.org/ItemList" style="width: 95%;"><div><div><div data-component="item-cart" class="ui-panel" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
     <div class="ui-panel__content" id="contenedor_articulos">
-         
-        
-           @foreach($articulo as $venta)
-            <article class="item  ">
+            <?php
+                for($i=0; $i<count($articulos); $i++){ 
+                    ?>
+                    <article class="item  ">
                 <div data-region="item-loading"></div>
                     <figure class="item__image item__image--dimmer">
-                   <img src="/MercadoLibre-2.0/public/images/{{ $venta->idUser}}/{{$venta->idPublicacion}}/{{$venta->urlPrincipal}}" width="80" height="80px" style="margin-bottom: -25px"> 
+                   <img src="/MercadoLibre-2.0/public/images/{{ $articulo[$i]->idUser}}/{{$articulo[$i]->idPublicacion}}/{{$articulo[$i]->urlPrincipal}}" width="80" height="80px" style="margin-bottom: -25px"> 
                     </figure>
                     <div class="item__information">
                         <div class="u-float-left item__description">
                         <h2 class="item__title" itemprop="name">
-                            <a class="item__title--link" href="https://articulo.mercadolibre.com.mx/MLM-572083257-playera-polo-club-america-nike-utileria-original-mediana-_JM?variation=22751685920" itemprop="url"> {{$venta->titulo}}<label id="titulo"></label></a>
+
+                            <a class="item__title--link" href="https://articulo.mercadolibre.com.mx/MLM-572083257-playera-polo-club-america-nike-utileria-original-mediana-_JM?variation=22751685920" itemprop="url"> {{$articulo[$i]->titulo}}<label id="titulo"></label></a>
+
                         </h2>
                        
                         
                             <div class="item__information-main u-clearfix">
                                 <p class="item__information-detail item__payment-installments  u-float-left ">
                                 
-                                	<span class="item__payment-installments__label">Hasta 3 meses sin interés</span>
+                                    <span class="item__payment-installments__label">Hasta 3 meses sin interés</span>
                                 </p>
                                 <p class="item__information-detail item__shipping-info  u-float-left " style="display: contents;">
                                     <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-icon--shipping-outline ">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--shipping-outline"></use>
                                     </svg>
-                                	<span class="item__shipping-info__label">Envío gratis</span>
+                                    <span class="item__shipping-info__label">Envío gratis</span>
                                 </p>
                             </div>
                             <ul class="item__action-menu">
@@ -64,21 +66,21 @@
                                     <li>
                                         <form data-action="remove-from-cart" action="/gz/cart/item/delete" method="POST">
                                             <input type="hidden" name="id" value="MLM572083257_22751685920">
-                                            <a href="javascript:eliminar('{{$venta->_id}}')">Eliminar</a>
+                                            <a href="javascript:eliminar('{{$articulo[$i]->_id}}')">Eliminar</a>
                                         </form>
                                     </li>
                             </ul>
                         </div>
                             <div data-quantity="container" class="ui-quantity-selector u-float-left">
                                 <div class="ui-quantity-selector__container">
-                                    <form class="u-float-left" action="/gz/cart/item/quantity?id=MLM572083257_22751685920" method="POST">
-                                        <input data-quantity="pop" type="submit" value="-" class="u-button-reset ui-quantity-selector__button" name="pop" disabled="">
+                                    <form class="u-float-left" action="#" method="POST">
+                                        <input data-quantity="pop" type="submit" value="-" class="u-button-reset ui-quantity-selector__button" name="pop" id="pop" disabled="">
                                     </form>
                             
-                                    <input autocomplete="off" data-quantity="input" type="tel" value=" 1" class="u-button-reset ui-quantity-selector__input" name="quantity" disabled="" style="    width: 50px;">
+                                    <input autocomplete="off" data-quantity="input" id="idCantidad_{{$articulos[$i]->_id}}" type="tel" value="{{$articulos[$i]->cantidad}}" class="u-button-reset ui-quantity-selector__input" name="quantity" disabled="" style="    width: 50px;">
                             
-                                    <form class="u-float-left" action="/gz/cart/item/quantity?id=MLM572083257_22751685920" method="POST">
-                                        <input data-quantity="push" type="submit" value="+" class="u-button-reset ui-quantity-selector__button" name="push" disabled="">
+                                    <form class="u-float-left" action="#" method="POST">
+                                        <input data-quantity="push" type="submit" value="+" class="u-button-reset ui-quantity-selector__button" name="push" id="{{$articulos[$i]->_id}}" <?php if($articulo[$i]->cantidad > 1) {}else{echo "disabled=''";} ?>>
                                     </form>
                                     <div class="cart-inline-loading__quantity-selector" data-region="quantity-loading"></div>
                                 </div>
@@ -92,15 +94,17 @@
                                         
                                         
                                         <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                                        <span class="price-tag-fraction"> {{$venta->precio}}</span>
+                                        <span class="price-tag-fraction"> {{$articulo[$i]->precio}}</span>
                                         
                                     </span>
-                            <label id="idPublicacion" hidden="">{{$venta->_id}}</label>
+                            <input id="idPublicacion_{{$articulos[$i]->_id}}" hidden="" value="{{$articulo[$i]->_id}}">
                             
                             </div>
                     </div>
             </article>
-            @endforeach 
+                    <?php
+                } 
+            ?>  
     </div>
    
 </div>

@@ -69,12 +69,12 @@ class VentaController extends Controller {
 		$Articulos->version              = $request->version;
 		$Articulos->urlPrincipal         = $urlPrincipal->url;
 		$Articulos->estadoPublicacion    = 1;
+		$Articulos->cantidad             = 0;
 		$Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
 		$Articulos->urlPrincipal         = $urlPrincipal->url;
 		$Articulos->save();
 		return Redirect::route('estado', ['idPublicacion' => $request->idPublicacion, 'user' => $user]);
 	}
-
 	public function showEstado(Request $request) {
 		//Cambiar de idImg a idPublicacion
 
