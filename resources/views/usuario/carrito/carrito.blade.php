@@ -10,8 +10,8 @@
     <div style="position: relative;">
     <div style="width: 99%;height: 100%;text-align: left;margin:20px;"> 
  
-    <div data-region="tabs" class="cart__tabs"><div><ul class="ui-tabs" role="tablist" data-tabs="" id="Total" style="width: 96.5%;">
-    <li data-tab="cart" class="ui-tabs__item ui-tabs__item--selected"><a class="ui-tabs__item-link" href="/gz/cart" role="tab">Carrito ({{$totalArticulos}}) <label id="totalArticulos" value=""></label> </a></li>
+    <div data-region="tabs" class="cart__tabs"><div id="Total"><ul class="ui-tabs" role="tablist" data-tabs=""  style="width: 96.5%;">
+    <li data-tab="cart" class="ui-tabs__item ui-tabs__item--selected"><a class="ui-tabs__item-link" href="/gz/cart" role="tab"> <label id="totalArticulos">Carrito ({{$totalArticulos}})</label> </a></li>
     <li data-tab="saved" class="ui-tabs__item"><a class="ui-tabs__item-link" href="/gz/cart/saved" role="tab">Guardados (0)</a></li>
 </ul>
 </div></div>
@@ -35,7 +35,9 @@
                     <div class="item__information">
                         <div class="u-float-left item__description">
                         <h2 class="item__title" itemprop="name">
-                            <a class="item__title--link" href="https://articulo.mercadolibre.com.mx/MLM-572083257-playera-polo-club-america-nike-utileria-original-mediana-_JM?variation=22751685920" itemprop="url"> {{$articulo[$i]->titulo}}</a>
+
+                            <a class="item__title--link" href="https://articulo.mercadolibre.com.mx/MLM-572083257-playera-polo-club-america-nike-utileria-original-mediana-_JM?variation=22751685920" itemprop="url"> {{$articulo[$i]->titulo}}<label id="titulo"></label></a>
+
                         </h2>
                        
                         
@@ -117,7 +119,7 @@
                             
                             
                             <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                            <span class="price-tag-fraction"> {{$i}}</span>
+                            <span class="price-tag-fraction"><label id="subtotal">{{$i}}</label> </span>
                                 <span class="price-tag-decimal-separator">.</span>
                                 
                                 <span class="price-tag-cents">00</span>
@@ -157,7 +159,7 @@
                     <meta itemprop="price" content="1,499.00">
                     
                     <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                    <span class="price-tag-fraction">{{$i}}</span>
+                    <span class="price-tag-fraction"><label id="totalneto">{{$i}}</label></span>
                         <span class="price-tag-decimal-separator">.</span>
                         
                         <span class="price-tag-cents">00</span>

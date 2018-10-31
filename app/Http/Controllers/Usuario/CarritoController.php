@@ -23,7 +23,7 @@ class CarritoController extends Controller
         $aux = Articulos::where('_id' , '=', $id->idPublicacion)->get();
     	array_push($articulo, $aux[0]);
     	   
-           $i=$id->precio + $i;	
+           $i=$id->precio + $i;
            
     	} 
         $totalArticulos= count($articulo);
@@ -68,7 +68,7 @@ class CarritoController extends Controller
             return response()->json([
                     "articulo" => $articulo,
                     "totalArticulos" => $totalArticulos,
-                    "tipoMensaje" => "Ajax"
+                    "subtotal" => $i
                 ]);
         }
 
