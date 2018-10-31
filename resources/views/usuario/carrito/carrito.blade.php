@@ -119,7 +119,7 @@
                             
                             
                             <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                            <span class="price-tag-fraction"><label id="subtotal">{{$i}}</label> </span>
+                            <span class="price-tag-fraction"><label id="subtotal">{{$subtotal}}</label> </span>
                                 <span class="price-tag-decimal-separator">.</span>
                                 
                                 <span class="price-tag-cents">00</span>
@@ -159,7 +159,7 @@
                     <meta itemprop="price" content="1,499.00">
                     
                     <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                    <span class="price-tag-fraction"><label id="totalneto">{{$i}}</label></span>
+                    <span class="price-tag-fraction"><label id="totalneto">{{$subtotal}}</label></span>
                         <span class="price-tag-decimal-separator">.</span>
                         
                         <span class="price-tag-cents">00</span>

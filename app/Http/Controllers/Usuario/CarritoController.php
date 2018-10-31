@@ -16,31 +16,38 @@ class CarritoController extends Controller
     public function index()
     {	
     	$articulos = Carrito::where('idUser' , '=', auth()->user()->id)->get();
-    	$i=0;
+    	$subtotal=0;
     
         $articulo= array();
         foreach ($articulos as $id) {
         $aux = Articulos::where('_id' , '=', $id->idPublicacion)->get();
     	array_push($articulo, $aux[0]);
     	   
-           $i=$id->precio + $i;
+           $subtotal=$id->precio + $subtotal;
            
     	} 
         $totalArticulos= count($articulo);
-    return view('usuario.carrito.carrito',compact('articulo', 'totalArticulos', 'i','articulos') );
+    return view('usuario.carrito.carrito',compact('articulo', 'totalArticulos', 'subtotal','articulos') );
     
     }
 
     public function agregarAlCarrito(Request $request)
-    {    
+    {   
         $Carrito = new Carrito;
         $Carrito->idUser = auth()->user()->id;
+<<<<<<< HEAD
+        $Carrito->idPublicacion = $request->post('idPublicacion');
+        $Carrito->cantidad = $request->post('cantidad'); 
+        $Carrito->precio = $request->post('precio');        
+        $Carrito->save();             
+=======
         $Carrito->idPublicacion = $request->idArticulo;
         $Carrito->cantidad = $request->cantidad; 
         $Carrito->precio = $request->precio;        
         $Carrito->save();
         $urlImagen = $request->idUser."/".$request->idPublicacion; 
         return view('usuario.carrito.agregadocarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen]);            
+>>>>>>> d5c8c6b169c71add50ce114ff2d21110ce4a1d85
     }
 
     public function agregadoCarrito()
