@@ -2,32 +2,6 @@
 
 @section('content')  
 {!! Html::style('css/verStyle.css') !!} 
-
-<script type="text/javascript">
-    
-function agregarinfo(preci, ids){
-          var precio = preci;
-          var cantidad = "1";
-          var idPublicacion=ids;
-          var route = "/MercadoLibre-2.0/public/agregadocarr";
-          var token = $("#token").val();
-
-
-              $.ajax({
-                url: route,
-                headers: {'X-CSRF-TOKEN': token},
-                type: 'POST',
-                dataType: 'json',
-                data: { precio: precio, cantidad: cantidad, idPublicacion:idPublicacion} 
-                }).done(function(data){
-        
-                  location.href ="/MercadoLibre-2.0/public/perfil";
-                  
-                });
-         }
-        
-</script>
-
 <div style="margin-top: -5px;max-width: 1220px;height:auto;display: inline-block;width: 100%;"> 
     <nav class="nav-deep-links">
         <div class="container" style="margin-left: 0px;padding-left: 0px;"> 
@@ -52,7 +26,7 @@ function agregarinfo(preci, ids){
                     </svg> 
                 </li>
                 <li>
-                    <a class="breadcrumb " href="https://vehiculos.mercadolibre.com.mx/camiones/" title="">
+                    <a class="breadcrumb " href="#" title="">
                     Camiones
                     </a>
                     <svg width="22" height="22" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" class="ui-icon ui-icon--chevron-right">
@@ -199,7 +173,7 @@ function agregarinfo(preci, ids){
     
         
             <label for="thumbgallery_default-1" class="gallery__thumbnail">
-                <img class="icon-video__img" src="{{$datos->urlvideo}}" data-imgindex="2" data-video-id="DCJCazILkCE" width="70" height="70">
+                <img class="icon-video__img" src="#" data-imgindex="2" data-video-id="DCJCazILkCE" width="70" height="70">
                 <div class="icon-video ui-icon--content ui-icon__video">
                     <svg viewBox="0 0 60 60" id="ui-icon--video" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><g fill="none" fill-rule="evenodd"><rect fill-opacity=".7" fill="#FFF" width="60" height="60" rx="30"></rect><path fill="#3483FA" d="M23 20v20.395l17.709-10.191z"></path></g></svg>
                 </div>
@@ -207,10 +181,7 @@ function agregarinfo(preci, ids){
         
         
             <input type="radio" id="thumbgallery_default-1" class="thumbgallery_default-1" name="product-gallery-thumbnail_default">
-        
-        <figure class="gallery-image-container ">
-            <iframe id="video-player" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media" title="YouTube video player" width="500" height="281" src="https://www.youtube.com/embed/DCJCazILkCE?rel=0&amp;showinfo=0&amp;iv_load_policy=3&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fvehiculo.mercadolibre.com.mx&amp;widgetid=1"></iframe>
-        </figure>
+         
     
 </div>
 
@@ -235,8 +206,8 @@ function agregarinfo(preci, ids){
             Don't modify these 3 pswp__item elements, data is added later on. -->
         <div class="pswp__container" style="transform: translate3d(-1511px, 0px, 0px);">
             <div class="pswp__item" style="display: block; transform: translate3d(3022px, 0px, 0px);"></div>
-            <div class="pswp__item" style="transform: translate3d(0px, 0px, 0px);"><div class="pswp__zoom-wrap" style="transform: translate3d(258px, 44px, 0px) scale(0.744986);"><img class="pswp__img" src="https://http2.mlstatic.com/alfa-romeo-D_NQ_NP_918874-MLM28336465626_102018-F.webp" style="backface-visibility: hidden; opacity: 1; display: block;"></div></div>
-            <div class="pswp__item" style="display: block; transform: translate3d(1511px, 0px, 0px);"><div class="pswp__zoom-wrap" style="transform: translate3d(0px, 0px, 0px) scale(1);"><iframe id="yt-player" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media" title="YouTube video player" width="960" height="540" src="https://www.youtube.com/embed/DCJCazILkCE?rel=0&amp;showinfo=0&amp;iv_load_policy=3&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fvehiculo.mercadolibre.com.mx&amp;widgetid=2"></iframe></div></div>
+            <div class="pswp__item" style="transform: translate3d(0px, 0px, 0px);"><div class="pswp__zoom-wrap" style="transform: translate3d(258px, 44px, 0px) scale(0.744986);"><img class="pswp__img" src="#" style="backface-visibility: hidden; opacity: 1; display: block;"></div></div>
+            <div class="pswp__item" style="display: block; transform: translate3d(1511px, 0px, 0px);"><div class="pswp__zoom-wrap" style="transform: translate3d(0px, 0px, 0px) scale(1);"></div></div>
         </div>
 
         <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
@@ -528,10 +499,7 @@ function agregarinfo(preci, ids){
     </section> 
                             <section class="vip-section-related-services">
     <div id="related-services-container"></div>
-</section>
-<script type="text/javascript">
-    (function(b,d){var a=b.createElement("iframe");(a.frameElement||a).style.cssText="width: 0; height: 0; border: 0; position: absolute";a.src="javascript:false";a.id="relatedServicesIframe";var c=b.getElementsByTagName("script")[0];c.parentNode.insertBefore(a,c);a=a.contentWindow.document;a.open().write("<body onload=\"var js = document.createElement('script');js.src = '"+d+"';document.body.appendChild(js);\">");a.close();})(document,"https://advertising.mercadolibre.com.mx/cotizador/MLM646934777?divId=related-services-container&amp;newLook=true&amp;dfp=false&amp;redesign=true&amp;platform=desktop");
-</script> 
+</section> 
                             <section class="ui-view-more vip-section-security">
     <h3 class="card-title">
         Consejos de seguridad
@@ -556,19 +524,14 @@ function agregarinfo(preci, ids){
                 <div class="vip-section-display__container" id="motorsMiddleAdvertising"></div>
                 <p class="vip-section-display__text">Publicidad</p>
             </div>
-        </section>
-        <script type="application/javascript">
-    var gptadslots = [];
-    var googletag = googletag || {};
-    googletag.cmd = googletag.cmd || [];
-</script> 
+        </section> 
                         </div>
                         <div class="layout-anchor"></div>
                     </div>
                 </div> 
 <section class="item-info">
     <p class="item-info__id">Publicación <span class="item-info__id-number">#646934777</span></p> 
-    <p class="item-info__denounce"><a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM646934777&amp;element_type=ITM" id="denounce" rel="nofollow">Denunciar</a></p> 
+    <p class="item-info__denounce"><a href="#" id="denounce" rel="nofollow">Denunciar</a></p> 
 </section> 
             </div> 
 

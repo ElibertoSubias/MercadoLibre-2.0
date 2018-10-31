@@ -80,21 +80,7 @@ class VentaController extends Controller
         $Articulos->urlPrincipal = $urlPrincipal->url;
         $Articulos->save();
         return Redirect::route('estado',['idPublicacion' => $request->idPublicacion,'user'=>$user]);
-    }
-
-     public function agregarCarrito(Request $request)
-    {   
-
-
-             $Carrito = new carrito;
-             $Carrito->idUser = auth()->user()->id;
-             $Carrito->idPublicacion = $request->post('idPublicacion');
-             $Carrito->cantidad = $request->post('cantidad'); 
-             $Carrito->precio = $request->post('precio');        
-             $Carrito->save(); 
-            
-    }
-
+    } 
     public function showEstado(Request $request)
     {
         //Cambiar de idImg a idPublicacion

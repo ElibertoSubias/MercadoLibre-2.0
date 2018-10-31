@@ -1,3 +1,23 @@
+function agregarinfo(preci, ids){
+  var precio = preci;
+  var cantidad = "1";
+  var idPublicacion=ids;
+  var route = "/MercadoLibre-2.0/public/agregarAlCarrito";
+  var token = $("#token").val();
+  $.ajax({
+    url: route,
+    headers: {'X-CSRF-TOKEN': token},
+    type: 'POST',
+    dataType: 'json',
+    data: { precio: precio, cantidad: cantidad, idPublicacion:idPublicacion} 
+    }).done(function(data){
+
+      location.href ="/MercadoLibre-2.0/public/perfil";
+      
+    });
+}
+
+
 function eliminar(id){
   var _id = id;
 

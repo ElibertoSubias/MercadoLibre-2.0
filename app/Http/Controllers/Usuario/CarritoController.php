@@ -31,6 +31,15 @@ class CarritoController extends Controller
     
     }
 
+    public function agregarAlCarrito(Request $request)
+    {   
+        $Carrito = new Carrito;
+        $Carrito->idUser = auth()->user()->id;
+        $Carrito->idPublicacion = $request->post('idPublicacion');
+        $Carrito->cantidad = $request->post('cantidad'); 
+        $Carrito->precio = $request->post('precio');        
+        $Carrito->save();             
+    }
 
     public function agregadoCarrito()
     {
