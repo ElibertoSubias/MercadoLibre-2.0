@@ -20,7 +20,7 @@
     border-spacing: 1em;
     max-width: 841px;
     margin: 55px auto 0;
-    overflow: auto;">
+    overflow: auto;margin-bottom: 200px;">
             <form id="ven_mot" class="hub-card syi-hub__image--mot" action="{{route('categorias')}}" method="get"> 
                 <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="VEHI">
                 <button id="btn_ven_mot" type="submit" form="MOTORS">
@@ -44,8 +44,27 @@
                     <span class="syi-hub__title" data-reactid="32">Productos y otros</span>
                     <span class="syi-hub__image syi-hub__image--mas"> </span>
                 </div>
-                <form action="" method="post" accept-charset="utf-8">
-                     
+                <form action="" method="post" accept-charset="utf-8" style="border: none !important;">
+                     <div class="ui-box syi-title-wrapper" style="margin-left: 16% !important;width: 66.6%;">
+                        <div class="syi-title-text">
+                            <h3 class="syi-title-text__title">Escribe un título para tu publicación. Cuanta más información, ¡mejor!</h3>
+                        </div>
+                        <div class="syi-title">
+                            <div class="ui-form-row syi-title__form">
+                                <div class="syi-input-countdown">
+                                    <span>
+                                        <label class="syi-title__label u--arrange-fit ">Título:</label>
+                                        <input type="text" data-hj-whitelist="true" maxlength="60" label="Título:" placeholder="Ejemplo: camisa Lacoste hombre manga larga" class="syi-title__field syi-title__icon-tooltip u--arrange-fill" id="list-0.item.title" name="list-0.item.title">
+                                    </span>
+                                    <p class="ui-countdown">Restan 60 caracteres.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="syi-action-button">
+                            <input type="submit" value="Continuar" class="syi-action-button__primary ui-btn ">
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </nav>
