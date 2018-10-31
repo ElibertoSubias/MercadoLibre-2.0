@@ -29,10 +29,12 @@ class CarritoController extends Controller {
 	public function agregarAlCarrito(Request $request) {
 		$Carrito                = new Carrito;
 		$Carrito->idUser        = auth()->user()->id;
-		$Carrito->idPublicacion = $request->post('idPublicacion');
-		$Carrito->cantidad      = $request->post('cantidad');
-		$Carrito->precio        = $request->post('precio');
+		$Carrito->idPublicacion = $request->idPublicacion;
+		$Carrito->cantidad      = $request->cantidad;
+		$Carrito->precio        = $request->precio;
 		$Carrito->save();
+		$urlImagen = $request->idUser."/".$request->idPublicacion;
+		return view('usuario.carrito.agregadocarrito')->with(['precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $urlImagen]);
 	}
 
 	public function agregadoCarrito() {

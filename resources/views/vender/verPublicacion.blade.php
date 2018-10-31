@@ -478,9 +478,24 @@
                     <br>
                 </br>
                     <div>
-                <a   href="#"  style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px">Comprar ahora </a>
-                <a  href="javascript:agregarinfo('{{$datos->precio}}', '{{$datos->_id}}')" data-js="vip-action-cart"  class="ui-button ui-button--secondary "
-                style="font-size: 15px!important;min-width: 0;padding: 12px 16px;border: 1px solid #3483fa;    color: #3483fa;background: none;border-radius: 4px;">Agregar al carrito </a>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a   href="#"  style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px">Comprar ahora </a>
+                    </div>
+                    <div class="col-md-6">
+                        <form action="agregarAlCarrito" method="post" accept-charset="utf-8">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                            <input type="hidden" name="titulo" id="titulo" value="{{$datos->titulo}}">
+                            <input type="hidden" name="precio" id="precio" value="{{$datos->precio}}">
+                            <input type="hidden" name="color" id="color" value="{{$datos->color}}">
+                            <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{$datos->idPublicacion}}">
+                            <input type="hidden" name="idUser" id="idUser" value="{{$datos->idUser}}"> 
+                            <input type="hidden" name="cantidad" id="cantidad" value="{{$datos->cantidad}}">
+                            <input type="hidden" name="urlPrincipal" id="urlPrincipal" value="{{$datos->urlPrincipal}}">
+                            <input type="submit"  class="ui-button ui-button--secondary " style="font-size: 15px!important;min-width: 0;    margin-top: -15%;padding: 12px 16px;border: 1px solid #3483fa;    color: #3483fa;background: none;border-radius: 4px;" value="Agregar al carrito">
+                        </form> 
+                    </div>
+                </div> 
                 </div>
             </div> 
     </div> 

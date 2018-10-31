@@ -71,13 +71,13 @@
                         </div>
                             <div data-quantity="container" class="ui-quantity-selector u-float-left">
                                 <div class="ui-quantity-selector__container">
-                                    <form class="u-float-left" action="#" method="POST">
+                                    <form class="u-float-left formularioCantidad" action="#" method="POST">
                                         <input data-quantity="pop" type="submit" value="-" class="u-button-reset ui-quantity-selector__button" name="pop" id="pop" disabled="">
                                     </form>
                             
                                     <input autocomplete="off" data-quantity="input" id="idCantidad_{{$articulos[$i]->_id}}" type="tel" value="{{$articulos[$i]->cantidad}}" class="u-button-reset ui-quantity-selector__input" name="quantity" disabled="" style="    width: 50px;">
                             
-                                    <form class="u-float-left" action="#" method="POST">
+                                    <form class="u-float-left formularioCantidad" action="#" method="POST">
                                         <input data-quantity="push" type="submit" value="+" class="u-button-reset ui-quantity-selector__button" name="push" id="{{$articulos[$i]->_id}}" <?php if($articulo[$i]->cantidad > 1) {}else{echo "disabled=''";} ?>>
                                     </form>
                                     <div class="cart-inline-loading__quantity-selector" data-region="quantity-loading"></div>

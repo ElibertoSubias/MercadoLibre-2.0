@@ -67,7 +67,7 @@ function modificarCantidad(caracter,idRegistro, idPublicacion, cantidadArticulos
 	    });
 }
 
-$('form input').click(function(){
+$('.formularioCantidad input').click(function(){
 	event.preventDefault(); 
 	var cantidadArticulos = $('#idCantidad_'+this.id).val(); 
 	var idPublicacion = $('#idPublicacion_'+this.id).val();
