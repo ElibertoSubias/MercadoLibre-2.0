@@ -35,7 +35,7 @@ class CarritoController extends Controller
     {    
         $Carrito = new Carrito;
         $Carrito->idUser = auth()->user()->id;
-        $Carrito->idPublicacion = $request->idPublicacion;
+        $Carrito->idPublicacion = $request->idArticulo;
         $Carrito->cantidad = $request->cantidad; 
         $Carrito->precio = $request->precio;        
         $Carrito->save();
