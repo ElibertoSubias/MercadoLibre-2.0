@@ -44,24 +44,30 @@
                     <span class="syi-hub__title" data-reactid="32">Productos y otros</span>
                     <span class="syi-hub__image syi-hub__image--mas"> </span>
                 </div>
-                <form action="" method="post" accept-charset="utf-8" style="border: none !important;">
+                <form action="{{route('categorias')}}" method="get" accept-charset="utf-8" style="display:none;border: none !important;" id="frmProducto">
+                    <input type="hidden" name="tipoCategoria" id="tipoCategoria" value="PROD">
                      <div class="ui-box syi-title-wrapper" style="margin-left: 16% !important;width: 66.6%;">
                         <div class="syi-title-text">
                             <h3 class="syi-title-text__title">Escribe un título para tu publicación. Cuanta más información, ¡mejor!</h3>
                         </div>
-                        <div class="syi-title">
+                        <div class="syi-title" style="float: left;">
                             <div class="ui-form-row syi-title__form">
                                 <div class="syi-input-countdown">
                                     <span>
                                         <label class="syi-title__label u--arrange-fit ">Título:</label>
-                                        <input type="text" data-hj-whitelist="true" maxlength="60" label="Título:" placeholder="Ejemplo: camisa Lacoste hombre manga larga" class="syi-title__field syi-title__icon-tooltip u--arrange-fill" id="list-0.item.title" name="list-0.item.title">
+                                        <input type="text" data-hj-whitelist="true" maxlength="60" label="Título:" placeholder="Ejemplo: camisa Lacoste hombre manga larga" class="syi-title__field syi-title__icon-tooltip u--arrange-fill" id="nombreProducto" name="nombreProducto">
                                     </span>
-                                    <p class="ui-countdown">Restan 60 caracteres.</p>
+                                    <p class="ui-countdown" style="font-size: 11px;margin-left: 9%;">Restan 60 caracteres.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="syi-action-button">
-                            <input type="submit" value="Continuar" class="syi-action-button__primary ui-btn ">
+                            <input type="submit" value="Continuar" class="btn-azul syi-action-button__primary ui-btn " style="margin-left: 10px;
+    padding: 5px 10px;
+    padding-left: 30px;
+    font-size: 18px;
+    padding-right: 30px;
+    margin-top: 3px;margin-bottom: 50px;">
                         </div>
                     </div>
 

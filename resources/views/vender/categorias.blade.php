@@ -131,6 +131,36 @@
                         </div>
                     </div> 
                 </form>
+        @elseif($tipoCategoria=="PROD") 
+                <ol id="ruta_venta" style="text-decoration: none;list-style: none;    text-align: left;margin: 0px;padding: 0px;margin-left: 15px;"> 
+                    <li>Servicios</li>
+                </ol>
+                <div class="col-md-3 hub-card syi-hub__image--mas" style="cursor: auto !important;width: 220px; height:280px !important;">
+                        <span class="syi-hub__title" data-reactid="32">Productos y otros</span>
+                        <span class="syi-hub__image syi-hub__image--mas" style="margin-top: 0px;    margin-left: 20px;"> </span>
+                </div>
+                <form id="frmCategoria" name="frmCategoria" action="{{route('descripcion')}}" method="post">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+                    <input type="hidden" name="tipoVenta" id="tipoVenta" value="PROD">
+                    <div class="wrapper">
+                        <div class="scrooller">
+                            <div id="cont-categorias" class="category-column">
+                                <input type="text" name="tipo" id="tipo" value="vehiculos" hidden>
+                                <select name="categoria" id="categoria" size="15" style="height:260px;font-size: 14px"> 
+                                </select>
+                            </div>
+                            <div id="cont-categorias" class="category-column menu-marcas">
+                                <select name="car-marca" id="car-marca" size="15" style="height:260px;font-size: 14px"> 
+                                </select>
+                            </div>
+                            <div id="cont-categorias" class="category-column menu-publicar">
+                                <img src="/MercadoLibre-2.0/public/img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
+                                <p>¡Listo!</p>
+                                <button type="submit" id="btn-continuar" class="btn-azul">Continuar</button>
+                            </div>
+                        </div>
+                    </div> 
+                </form> 
         @endif
             
         </nav>

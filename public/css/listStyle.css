@@ -2,7 +2,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -65%;
+    bottom: -57%;
 } 
 .syi-title__field {
     width: 430px;
@@ -32,6 +32,9 @@
     color: #333;
     margin: 25px;
 } 
+.syi-title-text__title {
+    font-size: 15px;
+}
 .syi-title-wrapper {
     max-width: 841px;
     margin: 4px auto 20px;
