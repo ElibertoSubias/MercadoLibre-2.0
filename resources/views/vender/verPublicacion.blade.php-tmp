@@ -488,6 +488,7 @@
                             <input type="hidden" name="titulo" id="titulo" value="{{$datos->titulo}}">
                             <input type="hidden" name="precio" id="precio" value="{{$datos->precio}}">
                             <input type="hidden" name="color" id="color" value="{{$datos->color}}">
+                            <input type="hidden" name="idArticulo" id="idArticulo" value="{{$datos->_id}}">
                             <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{$datos->idPublicacion}}">
                             <input type="hidden" name="idUser" id="idUser" value="{{$datos->idUser}}">
                             <input type="hidden" name="cantidad" id="cantidad" value="{{$datos->cantidad}}">

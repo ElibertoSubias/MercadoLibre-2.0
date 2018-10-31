@@ -29,7 +29,7 @@ class CarritoController extends Controller {
 	public function agregarAlCarrito(Request $request) {
 		$Carrito                = new Carrito;
 		$Carrito->idUser        = auth()->user()->id;
-		$Carrito->idPublicacion = $request->idPublicacion;
+		$Carrito->idPublicacion = $request->idArticulo;
 		$Carrito->cantidad      = $request->cantidad;
 		$Carrito->precio        = $request->precio;
 		$Carrito->save();
@@ -60,7 +60,7 @@ class CarritoController extends Controller {
 			return response()->json([
 					"articulo"       => $articulo,
 					"totalArticulos" => $totalArticulos,
-					"tipoMensaje"    => "Ajax"
+					"subtotal"       => $i
 				]);
 		}
 
