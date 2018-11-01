@@ -21,13 +21,12 @@ $(document.getElementById('contenedor_articulos')).ready(function() {
 	$("label.precioUnitario").each(function(){
 	    var precioUnitario = formatearPrecio.new($(this).text());
 	    $(this).text(precioUnitario);
-	});
-      /*
+	}); 
       var subtotal = formatearPrecio.new($('#subtotal').text());
       var totalneto = formatearPrecio.new($('#totalneto').text());
       
       $('#subtotal').text(subtotal);
-      $('#totalneto').text(totalneto);*/
+      $('#totalneto').text(totalneto);
 });
 /*$(document.getElementById('searchResults')).ready(function() { 
 	var precioUnitario = formatearPrecio.new($('.precioUnitario').text()):
