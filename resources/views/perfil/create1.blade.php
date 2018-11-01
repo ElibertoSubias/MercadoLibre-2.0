@@ -41,7 +41,7 @@
 		  var id = $("#id").val();
 		  var nombre = $("#nombre").val();
 		  var apellido = $("#apellido").val();
-		  var route = "/MercadoLibre-2.0/public/cambiarnombre";
+		  var route = "../public/cambiarnombre";
 		  var token = $("#token").val();
 		  var bandera="0";
 		  	 if(nombre === "")
@@ -73,7 +73,7 @@
 		        data: { apellido: apellido, id: id, nombre:nombre} 
 		        }).done(function(data) {  
 		          if (data.res!=1 && data.res!=0){
-		          location.href ="/MercadoLibre-2.0/public/perfil";
+		          location.href ="../public/perfil";
 		          }else if(data.res==1){  
 		            $("#lblCorreoExistente").empty();
 		            $("#lblCorreoExistente").append(data.email);
@@ -89,7 +89,7 @@
 		  var id = $("#id").val();
 		  var dato = $("#dato").val();
 		  var tipo = $('#documento').val();
-		  var route = "/MercadoLibre-2.0/public/agregardocumento";
+		  var route = "../public/agregardocumento";
 		  var token = $("#token").val();
 		  var bandera="0";
 		  
@@ -111,7 +111,7 @@
 		        data: { dato: dato, id:id, tipo: tipo} 
 		        }).done(function(data) {  
 		          if (data.res!=1 && data.res!=0){
-		          	location.href ="/MercadoLibre-2.0/public/perfil";
+		          	location.href ="../public/perfil";
 		          }
 		        });
 		    }
@@ -121,7 +121,7 @@
 		  var id = $("#id").val();
 		  var telefono = $("#telefono").val();
 		  var telefono2= $("#telefono2").val();
-		  var route = "/MercadoLibre-2.0/public/agregartelefono";
+		  var route = "../public/agregartelefono";
 		  var token = $("#token").val();
 		  var bandera="0";
 		  	 if(telefono === "")
@@ -143,7 +143,7 @@
 		        data: { telefono: telefono,telefono2: telefono2, id: id} 
 		        }).done(function(data) {
 		          if (data.res!=1 && data.res!=0){
-		          	location.href ="/MercadoLibre-2.0/public/perfil";
+		          	location.href ="../public/perfil";
 		          }else if(data.res==1){  
 		            $("#lblCorreoExistente").empty();
 		            $("#lblCorreoExistente").append(data.email);

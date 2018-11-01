@@ -31,7 +31,7 @@
 <!-- Modal -->
   <div class="modal fade in" id="modalloading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,0.7);">
     <div class="modal-dialog" style="width: 46%;height: auto;">
-      <img src="/MercadoLibre-2.0/public/img/icon_loading.gif" alt="" width="100" height="100" style="margin: 50% auto">
+      <img src="../public/img/icon_loading.gif" alt="" width="100" height="100" style="margin: 50% auto">
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->   
 @stop

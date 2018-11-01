@@ -5,7 +5,7 @@ function agregarUsuario(){
 	var formData = new FormData(document.getElementById('frmInsertarUsuario'));
 	formData.append("opcion", 1);
 	$.ajax({
-		url : "/MercadoLibre/Controladora/ctrUsuario.php",
+		url : "../public/ctrUsuario.php",
 		type : "post", 
 		dataType : "html",
 		data : formData,
@@ -15,7 +15,7 @@ function agregarUsuario(){
 	}).done(function(data) { 
 		var informacion = JSON.parse(data); 
 		if (informacion.res!="1" && informacion!="0"){
-			location.href ="/MercadoLibre/index.php?id="+informacion.datos;
+			location.href ="../index.php?id="+informacion.datos;
 		}else if(informacion.res=="1"){  
 			$("#lblCorreoExistente").empty();
 			$("#lblCorreoExistente").append(informacion.datos);
@@ -29,7 +29,7 @@ function actualizarActividad(){
 	var formData = new FormData(document.getElementById('frmActualizar'));
 	formData.append("opcion", 2);
 	$.ajax({
-		url : "/MercadoLibre/Controladora/ctrPersona.php",
+		url : "../public/ctrPersona.php",
 		type : "post", 
 		dataType : "html",
 		data : formData,
@@ -47,7 +47,7 @@ function eliminarActividad(){
 	formData.append("opcion", 3);
 	formData.append("id",document.getElementById('idEliminar').value);
 	$.ajax({
-		url : "/MercadoLibre/Controladora/ctrPersona.php",
+		url : "../public/ctrPersona.php",
 		type : "post", 
 		dataType : "html",
 		data : formData,

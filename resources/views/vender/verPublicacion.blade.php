@@ -154,7 +154,7 @@
                         <span class="ch-icon ch-icon-search"></span>
                     
                     
-                    <img src="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="70" height="70">
+                    <img src="../public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="70" height="70">
                     
                 </label>
            
@@ -163,8 +163,8 @@
             
             <figure class="gallery-image-container thumbgallery_default-0" data-side="right" data-align="top">
                 
-                <a href="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" class="gallery-trigger gallery-item--landscape ch-zoom-trigger ch-shownby-pointerenter" data-imgindex="0" data-size="1118x698" style="height: 312px; width: 500px;" data-uid="1" aria-owns="ch-zoom-1" aria-haspopup="true">
-                    <img src="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="500" height="312" data-srcset="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}} 2x" alt="alfa romeo" data-imgindex="0" srcset="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}">
+                <a href="../public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" class="gallery-trigger gallery-item--landscape ch-zoom-trigger ch-shownby-pointerenter" data-imgindex="0" data-size="1118x698" style="height: 312px; width: 500px;" data-uid="1" aria-owns="ch-zoom-1" aria-haspopup="true">
+                    <img src="../public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="500" height="312" data-srcset="../public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}} 2x" alt="alfa romeo" data-imgindex="0" srcset="../public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}">
                 <div class="ch-zoom-loading ch-hide" style="left: 201px; top: 107px;"><div class="ch-loading-large"></div><p>Cargando zoom...</p></div><div class="ch-zoom-seeker ch-hide" style="width: 186px; height: 169px; left: 0px; top: 45.4063px;"></div></a>
             </figure>
         

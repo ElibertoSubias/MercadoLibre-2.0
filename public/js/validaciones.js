@@ -30,7 +30,7 @@ function llamarValidar(tipoRegistro){
       var apellido = $("#inputApellido").val();
       var email = $("#inputEmail").val();
       var clave = $("#inputClave").val();
-      var route = "/MercadoLibre-2.0/public/aggcuentapersonal";
+      var route = "../public/aggcuentapersonal";
       var token = $("#token").val();
       var bandera="0";
       if(nombre === "")
@@ -108,7 +108,7 @@ function llamarValidar(tipoRegistro){
       var razonSocial = $("#inputApellido").val();
       var email = $("#inputEmail").val();
       var clave = $("#inputClave").val();
-      var route = "/MercadoLibre-2.0/public/aggcuentaempresarial";
+      var route = "../public/aggcuentaempresarial";
       var token = $("#token").val();
       var bandera="0";
       if(rfc === "")
@@ -189,7 +189,7 @@ function llamarValidar(tipoRegistro){
 
 $('#continuar').click(function(){
   var email = $("#inputEmail").val(); 
-  var route = "/MercadoLibre-2.0/public/checkemail";
+  var route = "../public/checkemail";
   var token = $("#token").val();
   if (email != "") {
       $.ajax({
@@ -226,7 +226,7 @@ $('#crearCuentaEmpresarial').click(function(){
 
 function cargarCategorias(){
   var tipoCategoria = $('#tipoVenta').val();
-  var route = "/MercadoLibre-2.0/public/cargarCategorias";
+  var route = "../public/cargarCategorias";
   var token = $("#token").val();
   if (tipoCategoria != "") {
     $.ajax({
@@ -265,7 +265,7 @@ function btnAgregarMarca() {
 function agregarCategoria(){
   var tipoVenta = $("#tipoVenta").val();
   var nombreCategoria = $("#nombreCategoria").val(); 
-  var route = "/MercadoLibre-2.0/public/guardarCategoria";
+  var route = "../public/guardarCategoria";
   var token = $("#token").val();
   if (nombreCategoria != "") {
     if (tipoVenta != "") {
@@ -312,7 +312,7 @@ $('#frm_agregarCategoria').on('submit', function(){
 $('#btnAgregarMarca').click(function(){
   var nombreMarca = $('#nombreMarca').val();
   var categoria = $('#categoria').val(); 
-  var route = "/MercadoLibre-2.0/public/guardarMarca";
+  var route = "../public/guardarMarca";
   var token = $("#token").val();
   if (categoria != "" && nombreMarca != "") {
       $.ajax({
@@ -340,7 +340,7 @@ $('#btnAgregarMarca').click(function(){
 
 $('#categoria').change(function(){  
   var categoria = $("#categoria").val();
-  var route = "/MercadoLibre-2.0/public/cargarMarcas";
+  var route = "../public/cargarMarcas";
   var tipoVenta = $("#tipoVenta").val();
   var token = $("#token").val();
   $('#car-marca').html("");
@@ -388,7 +388,7 @@ $('#car-marca').change(function(){
   if ($('#car-modelo').val()==null)
     $('.menu-publicar').show(); 
   var categoria = $("#categoria").val();
-  var route = "/MercadoLibre-2.0/public/cargarModelos";
+  var route = "../public/cargarModelos";
   var marca = $("#car-marca").val();
   var token = $("#token").val();
   if (categoria != "") {
@@ -421,7 +421,7 @@ $('#car-marca').change(function(){
 $('#car-modelo').change(function(){  
   if ($('#car-anio').val()==null)
     $('.menu-publicar').show(); 
-  var route = "/MercadoLibre-2.0/public/cargarAnios";
+  var route = "../public/cargarAnios";
   var marca = $("#car-marca").val();
   var modelo = $('#car-modelo').val();
   var token = $("#token").val();

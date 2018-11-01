@@ -10,7 +10,7 @@
     function finalizar(publicacio, estad){
          // var dato = $("#dato").val();
           var token = $("#token").val();
-          var route = "/MercadoLibre-2.0/public/cambiarestado";
+          var route = "../public/cambiarestado";
           var publicacion = publicacio;
           var estado = estad;
         
@@ -280,7 +280,7 @@
               <tr>
                     <td  rowspan="2" style="padding-top: 25px"><input type="checkbox" name="" class="settings"></td>
                     <td rowspan="2" width="50xp" >
-                        <img src="/MercadoLibre-2.0/public/images/{{ auth()->user()->_id }}/{{$venta->idPublicacion}}/{{$venta->urlPrincipal}}" width="80"  style="margin-bottom: -25px">
+                        <img src="../public/images/{{ auth()->user()->_id }}/{{$venta->idPublicacion}}/{{$venta->urlPrincipal}}" width="80"  style="margin-bottom: -25px">
                     </td>
                     <td style="color: blue;font-size: 15px; text-align:left; padding-left: 6px;">
                         <a href="id={{$venta->_id}}&user={{$venta->idUser}}" style="color: blue">{{$venta->titulo}}</a>

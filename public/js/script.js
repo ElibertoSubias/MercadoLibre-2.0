@@ -178,7 +178,7 @@ $('#select_file').change(function(){
     	data.append('select_file', propiedades);
         
 	  $.ajax({
-	   url:"/MercadoLibre-2.0/public/loadimage",
+	   url:"../public/loadimage",
 	   headers: {'X-CSRF-TOKEN': token},
 	   method:"POST",
 	   data:data,
@@ -204,7 +204,7 @@ $('#select_file').change(function(){
 
 function delateImg(id,idImg,tipo){
 	var token = $('#token').val();
-	var route = "/MercadoLibre-2.0/public/detaleImg";
+	var route = "../public/detaleImg";
 	$.ajax({
 	url: route, 
 	headers: {'X-CSRF-TOKEN': token},

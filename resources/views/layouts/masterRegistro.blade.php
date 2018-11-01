@@ -25,10 +25,10 @@
 						</label>
 					</div>
 					<div class="col-md-3" style="padding: 0px;padding-top: 2px;border-right: 1px solid #ccc;">
-						<img src="/MercadoLibre-2.0/public/img/user_icon.png" alt="" width="15" height="15" style="    vertical-align: initial;">	
+						<img src="../public/img/user_icon.png" alt="" width="15" height="15" style="    vertical-align: initial;">	
 					</div>
 					<div class="col-md-1" style="padding: 0px;padding-left: 15px;">
-						<img src="/MercadoLibre-2.0/public/img/icon_help.png" alt="" width="20" height="20">	
+						<img src="../public/img/icon_help.png" alt="" width="20" height="20">	
 					</div> 
 				</div>	
 			@else

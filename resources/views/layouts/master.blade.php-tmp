@@ -106,7 +106,7 @@ height: 35px;
 							<span class="user-menu__chevron" style="right: 202px;"></span>
 						</div></span>
 						<a href="#" class="option-help" rel="nofollow">Ayuda</a>
-						<a style="padding-right: 0px" href="{{route('carrito')}}" title="Carrito de compras" class="nav-cart nav-cart-empty" id="nav-cart"><img style="vertical-align: baseline;" src="/MercadoLibre-2.0/public/img/icon_car.png" alt="" width="19"></a>
+						<a style="padding-right: 0px" href="{{route('carrito')}}" title="Carrito de compras" class="nav-cart nav-cart-empty" id="nav-cart"><img style="vertical-align: baseline;" src="../public/img/icon_car.png" alt="" width="19"></a>
 					</nav>
 				</div>
         	@else
@@ -115,7 +115,7 @@ height: 35px;
 						<a href="{{route('crearcuentapersonal')}}" class="opcion-registrar" rel="nofollow">Crea tu cuenta</a>
 						<a href="{{route('autenticar')}}" class="opcion-login" rel="nofollow">Ingresa</a>
 						<a href="#" class="option-help" rel="nofollow">Ayuda</a>
-						<a style="padding-right: 0px" href="{{route('carrito')}}" title="Carrito de compras" class="nav-cart nav-cart-empty" id="nav-cart"><img style="vertical-align: baseline;" src="/MercadoLibre-2.0/public/img/icon_car.png" alt="" width="19"></a>
+						<a style="padding-right: 0px" href="{{route('carrito')}}" title="Carrito de compras" class="nav-cart nav-cart-empty" id="nav-cart"><img style="vertical-align: baseline;" src="../public/img/icon_car.png" alt="" width="19"></a>
 					</nav>
 				</div>
         	@endif
@@ -146,6 +146,8 @@ height: 35px;
 				{!! Html::script('js/buscador.js') !!}
 				{!! Html::script('js/menusFlotantes.js') !!}
 				{!! Html::script('js/modificarPublicacion.js') !!}
+				{!! Html::script('js/editCarrito.js') !!}
+				{!! Html::script('js/formatearPrecio.js') !!}
 		</div>
 	</footer>
 </body>

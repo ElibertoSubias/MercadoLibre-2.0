@@ -30,7 +30,7 @@
                     <article class="item  ">
                 <div data-region="item-loading"></div>
                     <figure class="item__image item__image--dimmer">
-                   <img src="/MercadoLibre-2.0/public/images/{{ $articulo[$i]->idUser}}/{{$articulo[$i]->idPublicacion}}/{{$articulo[$i]->urlPrincipal}}" width="80" height="80px" style="margin-bottom: -25px"> 
+                   <img src="../public/images/{{ $articulo[$i]->idUser}}/{{$articulo[$i]->idPublicacion}}/{{$articulo[$i]->urlPrincipal}}" width="80" height="80px" style="margin-bottom: -25px"> 
                     </figure>
                     <div class="item__information">
                         <div class="u-float-left item__description">
@@ -94,7 +94,7 @@
                                         
                                         
                                         <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                                        <span class="price-tag-fraction"> {{$articulo[$i]->precio}}</span>
+                                        <span class="price-tag-fraction"> <label class="precioUnitario">{{$articulo[$i]->precio}}</label></span>
                                         
                                     </span>
                             <input id="idPublicacion_{{$articulos[$i]->_id}}" hidden="" value="{{$articulo[$i]->_id}}">
@@ -175,5 +175,5 @@
 </div></div>
             </div>
     </div> 
-</div>
+</div> 
 @stop
