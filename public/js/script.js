@@ -178,7 +178,7 @@ $('#select_file').change(function(){
     	data.append('select_file', propiedades);
         
 	  $.ajax({
-	   url:"loadimage",
+	   url:"loadImage",
 	   headers: {'X-CSRF-TOKEN': token},
 	   method:"POST",
 	   data:data,
@@ -204,7 +204,7 @@ $('#select_file').change(function(){
 
 function delateImg(id,idImg,tipo){
 	var token = $('#token').val();
-	var route = "detaleImg";
+	var route = "delateImg";
 	$.ajax({
 	url: route, 
 	headers: {'X-CSRF-TOKEN': token},
