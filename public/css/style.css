@@ -14,6 +14,30 @@ and (max-device-width : 667px) {
         width: 100% !important;
             padding: 1.5% 2.5%;
     }
+    .col-1 {
+        width: 12%;
+        margin-top: -10px;
+    }
+    .nav-buscar-input {
+        height: 32px !important;
+        padding-left: 35px !important;
+    }
+    .nav-search-btn {
+        background: transparent !important;
+        margin-left: -192px !important;
+        margin-top: 3px !important;
+        border-left: 0 !important; 
+    } 
+    -webkit-input-placeholder { color: red; } 
+     
+    -moz-placeholder { /* Firefox 18- */ color: red; } 
+     
+    -moz-placeholder { /* Firefox 19+ */ color: red; } 
+     
+    -ms-input-placeholder { color: red; }
+    .nav-buscar-input {
+        margin-top: 0px !important;
+    }
     .nav-logo {
         background-image: url(../img/favicon.ed1a7e19.ico)!important;
         background-repeat: no-repeat; 
