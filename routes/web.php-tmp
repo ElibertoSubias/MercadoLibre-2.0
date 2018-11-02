@@ -37,7 +37,7 @@ Route::get('resultados', 'BuscarController@listarResultados')->name('resultados'
 
 //Middleware para solo dejar pasar a estas rutas a usuarios autenticados
 Route::group(['middleware' => 'autenticado'], function () {
-		Route::post('loadImage', 'Venta\VentaController@store')->name('loadImage');
+		Route::any('loadImage', 'Venta\VentaController@store')->name('loadImage');
 		Route::any('vender', 'VenderProductoController@cargarLista')->name('vender');
 		Route::get('perfil', 'EditarUsuario\PerfilController@index')->name('perfil');
 		Route::post('cargarCategorias', 'Admin\AddCategoriaController@show')->name('cargarCategorias');
