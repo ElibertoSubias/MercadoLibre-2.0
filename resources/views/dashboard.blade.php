@@ -8,35 +8,35 @@
 				    <div class="carousel__cell">
 				    	<a class="exhibitor-item" href="#">
 							<div class="exhibitor-holder">
-								<img src="img/1.jpg" alt="canon">
+								<img src="img/viajes.jpg" alt="canon">
 							</div>
 						</a>
 				    </div>
 				    <div class="carousel__cell">
 				    	<a class="exhibitor-item" href="#">
 							<div class="exhibitor-holder">
-								<img src="img/2.jpg" alt="Feria del bebé ">
+								<img src="img/bebe.jpg" alt="Feria del bebé ">
 							</div>
 						</a>
 				    </div>
 				    <div class="carousel__cell">
 				    	<a class="exhibitor-item" href="#">
 							<div class="exhibitor-holder">
-								<img src="img/3.jpg" alt="Festejemos México ">
+								<img src="img/festejo.jpg" alt="Festejemos México ">
 							</div>
 						</a>
 				    </div> 
 				    <div class="carousel__cell">
 				    	<a class="exhibitor-item" href="#">
 							<div class="exhibitor-holder">
-								<img src="img/4.jpg" alt="marcas mexicanas">
+								<img src="img/mexicanas.jpg" alt="marcas mexicanas">
 							</div>
 						</a>
 				    </div>
 				    <div class="carousel__cell">
 				    	<a class="exhibitor-item" href="#">
 							<div class="exhibitor-holder">
-								<img src="img/5.jpg" alt="canon">
+								<img src="img/tiendas.jpg" alt="canon">
 							</div>
 						</a>
 				    </div>
