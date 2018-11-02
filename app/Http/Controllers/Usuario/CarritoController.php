@@ -45,7 +45,7 @@ class CarritoController extends Controller
         $Carrito->precio = $request->precio;        
         $Carrito->save();
         $urlImagen = $request->idUser."/".$request->idPublicacion; 
-        return view('usuario.carrito.agregadocarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen]);    
+        return view('usuario.carrito.agregadoCarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen]);    
     }
 
     public function agregadoCarrito()
