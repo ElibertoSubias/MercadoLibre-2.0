@@ -10,6 +10,17 @@ and (max-device-width : 667px) {
     .carousel__cell {
         width: 100% !important;
     }
+    .nav_registro {
+        width: 100% !important;
+        padding: 0% 2%;
+    }
+    .nav-logo {
+        background-image: url(../img/favicon.ed1a7e19.ico)!important;
+        background-repeat: no-repeat; 
+    }
+    .nav-menu{
+        display: none !important;
+    }
 }
 html,body {
     width:100%;
