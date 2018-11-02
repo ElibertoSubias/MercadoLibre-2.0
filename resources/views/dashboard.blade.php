@@ -7,20 +7,20 @@
 				  <div class="carousel"> 
 				    <div class="carousel__cell">
 				    	<a class="exhibitor-item" href="#">
-							<div class="exhibitor-holder">
-								<img src="img/viajes.jpg" alt="canon">
+							<div>
+								<img src="img/viajes.jpg"  >
 							</div>
 						</a>
 				    </div>
 				    <div class="carousel__cell">
-				    	<a class="exhibitor-item" href="#">
-							<div class="exhibitor-holder">
-								<img src="img/bebe.jpg" alt="Feria del bebé ">
+				    	<a  href="#">
+							<div>
+								<img src="img/bebe.jpg"  >
 							</div>
 						</a>
 				    </div>
 				    <div class="carousel__cell">
-				    	<a class="exhibitor-item" href="#">
+				    	<a  href="#">
 							<div class="exhibitor-holder">
 								<img src="img/festejo.jpg" alt="Festejemos México ">
 							</div>
@@ -72,7 +72,7 @@
 		<section class="metodo_pago">
 
 			<h1>Metodos de Pago</h1>
-			
+			<img src="../public/img/bebe.jpg"  >
 		</section>
 	</div> 
 @stop
