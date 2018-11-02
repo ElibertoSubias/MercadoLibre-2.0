@@ -8,35 +8,35 @@
 				    <div class="carousel__cell">
 				    	<a class="exhibitor-item" href="#">
 							<div class="exhibitor-holder">
-								<img src="img/viajes.jpg" alt="canon">
+								<img src="https://http2.mlstatic.com/optimize/o:f_webp/resources/deals/exhibitors_resources/mlm-home-desktop-slider-picture-4116e4e7-bb5e-43fc-9c02-e00543cacc75.jpg" alt="canon">
 							</div>
 						</a>
 				    </div>
 				    <div class="carousel__cell">
 				    	<a class="exhibitor-item" href="#">
 							<div class="exhibitor-holder">
-								<img src="img/bannerpublicidad.jpg" alt="Feria del bebé ">
+								<img src="https://http2.mlstatic.com/optimize/o:f_webp/resources/deals/exhibitors_resources/mlm-home-desktop-slider-picture-675da44b-4f8c-45f2-b40e-889133e8b6f8.jpg" alt="Feria del bebé ">
 							</div>
 						</a>
 				    </div>
 				    <div class="carousel__cell">
 				    	<a class="exhibitor-item" href="#">
 							<div class="exhibitor-holder">
-								<img src="img/festejo.jpg" alt="Festejemos México ">
+								<img src="https://http2.mlstatic.com/optimize/o:f_webp/resources/exhibitors/MLM-halloween/d255a920-ccbb-11e8-8edf-15d4004258d3-home-slider_desktop.jpg" alt="Festejemos México ">
 							</div>
 						</a>
 				    </div> 
 				    <div class="carousel__cell">
 				    	<a class="exhibitor-item" href="#">
 							<div class="exhibitor-holder">
-								<img src="img/mexicanas.jpg" alt="marcas mexicanas">
+								<img src="https://http2.mlstatic.com/optimize/o:f_webp/resources/deals/exhibitors_resources/mlm-home-desktop-slider-picture-53a0fec3-1d81-42de-a5b7-9c6cbd080b6e.jpg" alt="marcas mexicanas">
 							</div>
 						</a>
 				    </div>
 				    <div class="carousel__cell">
 				    	<a class="exhibitor-item" href="#">
 							<div class="exhibitor-holder">
-								<img src="img/tiendas.jpg" alt="canon">
+								<img src="https://http2.mlstatic.com/optimize/o:f_webp/resources/deals/exhibitors_resources/mlm-home-desktop-slider-picture-9b289967-c228-4e93-9ca1-2940be2cc6a1.jpg" alt="canon">
 							</div>
 						</a>
 				    </div>
