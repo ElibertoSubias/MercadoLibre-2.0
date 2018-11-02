@@ -5,6 +5,7 @@
 	{!! Html::style('css/style.css') !!}
 	{!! Html::style('css/bootstrap.css') !!}
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width"/>
 </head>
 <body style="background-color: #ebebeb !important;">
 	<header id="cabecera_principal">
