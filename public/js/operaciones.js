@@ -5,7 +5,7 @@ function agregarUsuario(){
 	var formData = new FormData(document.getElementById('frmInsertarUsuario'));
 	formData.append("opcion", 1);
 	$.ajax({
-		url : "../public/ctrUsuario.php",
+		url : "ctrUsuario.php",
 		type : "post", 
 		dataType : "html",
 		data : formData,
@@ -29,7 +29,7 @@ function actualizarActividad(){
 	var formData = new FormData(document.getElementById('frmActualizar'));
 	formData.append("opcion", 2);
 	$.ajax({
-		url : "../public/ctrPersona.php",
+		url : "ctrPersona.php",
 		type : "post", 
 		dataType : "html",
 		data : formData,
@@ -47,7 +47,7 @@ function eliminarActividad(){
 	formData.append("opcion", 3);
 	formData.append("id",document.getElementById('idEliminar').value);
 	$.ajax({
-		url : "../public/ctrPersona.php",
+		url : "ctrPersona.php",
 		type : "post", 
 		dataType : "html",
 		data : formData,

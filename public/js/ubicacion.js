@@ -2,7 +2,7 @@ $(document).ready(function() {
 	// Obtener estados
 	$.ajax({
 		type: "POST",
-		url: "../public/procesar-estados.php",
+		url: "procesar-estados.php",
 		data: { estados : "Mexico" } 
 	}).done(function(data){
 		$("#estado").html(data);
@@ -16,7 +16,7 @@ $(document).ready(function() {
 		var estado = $("#estado option:selected").val();
 		$.ajax({
 			type: "POST",
-			url: "../public/procesar-estados.php",
+			url: "procesar-estados.php",
 			data: { municipios : estado } 
 		}).done(function(data){
 			$("#municipio").html(data);
@@ -29,7 +29,7 @@ $(document).ready(function() {
 	// Obtener estados
 	$.ajax({
 		type: "POST",
-		url: "../public/procesar-estados.php",
+		url: "procesar-estados.php",
 		data: { estados : "Mexico" } 
 	}).done(function(data){
 		$("#estado").html(data);
@@ -43,7 +43,7 @@ $(document).ready(function() {
 		var estado = $("#estado option:selected").val();
 		$.ajax({
 		type: "POST",
-		url: "../public/procesar-estados.php",
+		url: "procesar-estados.php",
 		data: { municipios : estado } 
 	}).done(function(data){
 		$("#municipio").html(data);
@@ -57,7 +57,7 @@ $(document).ready(function() {
 	$("#municipio").change(function(){ 
 		var municipio = $("#municipio option:selected").val();
 		$.ajax({
-			url: "../public/js/colonias.php",
+			url: "js/colonias.php",
 			type: "POST",
 			data: {municipio:municipio}
 		}).done(function(data){

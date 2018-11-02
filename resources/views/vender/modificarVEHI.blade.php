@@ -44,17 +44,17 @@
                                                     @if($imagen[$i]->url!="")
                                                         @if($imagen[$i]->tipoImg=="principal")
                                                             <li data-picture-status="on" class="off" id="principal" onclick="clickbtn(id)"> 
-                                                                <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[$i]->url}}" class="img-thumbnail" width="300" />
+                                                                <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[$i]->url}}" class="img-thumbnail" width="300" />
                                                                 <div class="picture-uploader-controls">
-                                                                    <p role="button" class="ch-close" id="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[$i]->url}}" onclick="delateImg(id,'{{$imagen[$i]->_id}}','{{$imagen[$i]->tipoImg}}')"><span class="">x</span></p>
+                                                                    <p role="button" class="ch-close" id="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[$i]->url}}" onclick="delateImg(id,'{{$imagen[$i]->_id}}','{{$imagen[$i]->tipoImg}}')"><span class="">x</span></p>
                                                                 </div>
                                                                 <p class="picture-uploader-principal">Foto principal</p>
                                                             </li> 
                                                         @else
                                                             <li data-picture-status="off" id="img{{$i}}" onclick="clickbtn(id)">
-                                                                <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[$i]->url}}" class="img-thumbnail" width="300" />
+                                                                <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[$i]->url}}" class="img-thumbnail" width="300" />
                                                                 <div class="picture-uploader-controls">
-                                                                    <p role="button" class="ch-close" id="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[$i]->url}}" onclick="delateImg(id,'{{$imagen[$i]->_id}}','{{$imagen[$i]->tipoImg}}')"><span class="">x</span></p>
+                                                                    <p role="button" class="ch-close" id="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[$i]->url}}" onclick="delateImg(id,'{{$imagen[$i]->_id}}','{{$imagen[$i]->tipoImg}}')"><span class="">x</span></p>
                                                                 </div>
                                                             </li> 
                                                         @endif
@@ -84,9 +84,9 @@
                                             <!-- @isset($imagen[0]->_id) 
                                                 @if($imagen[0]->tipo=="principal")
                                                 <li data-picture-status="on" class="off" id="principal"> 
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[0]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[0]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
-                                                        <a role="button" class="ch-close" href="#" id="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[0]->url}}" onclick="delateImg(id,'{{$imagen[0]->_id}}',1)"><span class="">x</span></a>
+                                                        <a role="button" class="ch-close" href="#" id="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[0]->url}}" onclick="delateImg(id,'{{$imagen[0]->_id}}',1)"><span class="">x</span></a>
                                                     </div>
                                                     <p class="picture-uploader-principal">Foto principal</p>
                                                 </li> 
@@ -103,7 +103,7 @@
                                             @endempty
                                             @isset($imagen[1]->_id) 
                                                 <li data-picture-status="off" id="img1" onclick="clickbtn(id)">
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[1]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[1]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close" href="#"><span class="">x</span></a>
                                                     </div>
@@ -119,7 +119,7 @@
                                             @endempty
                                             @isset($imagen[2]->_id) 
                                                 <li data-picture-status="off" id="img2" onclick="clickbtn(id)">
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[2]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[2]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close" href="#"><span class="">x</span></a>
                                                     </div>
@@ -135,7 +135,7 @@
                                             @endempty
                                             @isset($imagen[3]->_id) 
                                                 <li data-picture-status="off" id="img3" onclick="clickbtn(id)">
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[3]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[3]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close" href="#"><span class="">x</span></a>
                                                     </div>
@@ -151,7 +151,7 @@
                                             @endempty
                                             @isset($imagen[4]->_id) 
                                                 <li data-picture-status="off" id="img4" onclick="clickbtn(id)">
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[4]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[4]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close" href="#"><span class="">x</span></a>
                                                     </div>
@@ -167,7 +167,7 @@
                                             @endempty
                                             @isset($imagen[5]->_id) 
                                                 <li data-picture-status="off" id="img5" onclick="clickbtn(id)">
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[5]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[5]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close" href="#"><span class="">x</span></a>
                                                     </div>
@@ -183,7 +183,7 @@
                                             @endempty
                                             @isset($imagen[6]->_id) 
                                                 <li data-picture-status="off" id="img6" onclick="clickbtn(id)">
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[6]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[6]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close" href="#"><span class="">x</span></a>
                                                     </div>
@@ -199,7 +199,7 @@
                                             @endempty
                                             @isset($imagen[7]->_id) 
                                                 <li data-picture-status="off" id="img7" onclick="clickbtn(id)">
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[7]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[7]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close" href="#"><span class="">x</span></a>
                                                     </div>
@@ -215,7 +215,7 @@
                                             @endempty
                                             @isset($imagen[8]->_id)
                                                 <li data-picture-status="off" id="img8" onclick="clickbtn(id)">
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[8]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[8]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close " href="#"><span class="">x</span></a>
                                                     </div>
@@ -231,7 +231,7 @@
                                             @endempty
                                             @isset($imagen[9]->_id)
                                                 <li data-picture-status="off" id="img9" onclick="clickbtn(id)">
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[9]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[9]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close " href="#"><span class="">x</span></a>
                                                     </div>
@@ -247,7 +247,7 @@
                                             @endempty
                                             @isset($imagen[10]->_id)
                                                 <li data-picture-status="off" id="img10" onclick="clickbtn(id)">
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[10]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[10]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close " href="#"><span class="">x</span></a>
                                                     </div>
@@ -263,7 +263,7 @@
                                             @endempty
                                             @isset($imagen[11]->_id)
                                                 <li data-picture-status="off" id="img12" onclick="clickbtn(id)"> 
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[11]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[11]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close " href="#"><span class="">x</span></a>
                                                     </div>
@@ -279,7 +279,7 @@
                                             @endempty
                                             @isset($imagen[12]->_id)
                                                 <li data-picture-status="off" id="img13" onclick="clickbtn(id)">
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[12]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[12]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>
@@ -295,7 +295,7 @@
                                             @endempty
                                             @isset($imagen[13]->_id)
                                                 <li data-picture-status="off" id="img14" onclick="clickbtn(id)">
-                                                    <img src="../public/images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[13]->url}}" class="img-thumbnail" width="300" />
+                                                    <img src="images/{{$datos->idUser}}/{{$datos->idPublicacion}}/{{$imagen[13]->url}}" class="img-thumbnail" width="300" />
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>
                                                     </div>

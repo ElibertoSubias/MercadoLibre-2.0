@@ -78,7 +78,7 @@
                                 <input type="checkbox" id="sort-by-options-trigger" class="dropdown-trigger sort-by-options-trigger" autocomplete="off" hidden=""> 
                                 <label for="sort-by-options-trigger" class="ui-dropdown__link"> <span class="tituloOpcion">Más relevantes</span> 
                                     <div class="ui-dropdown__indicator">
-                                        <img style="    transform: rotate(90deg);height: 15px;" src="../public/img/less.png" alt="insertar SVG con la etiqueta image">
+                                        <img style="    transform: rotate(90deg);height: 15px;" src="img/less.png" alt="insertar SVG con la etiqueta image">
                                     </div> 
                                 </label> 
                                 <div id="id-dropdown__content" class="ui-dropdown__content sorty-by-ui-dropdown__content"> 
@@ -331,7 +331,7 @@
                                             <ul class="ch-carousel-list" role="list"> 
                                                 <li class="ch-carousel-item" role="listitem" aria-hidden="false" aria-setsize="13" aria-posinset="1" aria-label="page1" style="width: 284px;  margin-right: 0px;"> 
                                                     <a href="{{route('verpublicacion', ['id' => $articulo->_id,'user'=>$articulo->idUser])}}" class="item-link item__js-link"> 
-                                                        <img width="284" height="284" alt="Bmw Z4 Convertible Mt 2003 Autos Puebla" src="../public/images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}}" class="lazy-load" srcset="../public/images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}} 1x, ../public/images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}} 2x"> 
+                                                        <img width="284" height="284" alt="Bmw Z4 Convertible Mt 2003 Autos Puebla" src="images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}}" class="lazy-load" srcset="images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}} 1x, images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}} 2x"> 
                                                     </a> 
                                                 </li> 
                                             </ul>

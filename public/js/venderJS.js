@@ -2,7 +2,7 @@ window.onload = catDisponibles;
 
 function catDisponibles() { 
 	var tipoCategoria = $('#tipoVenta').val();
-	var route = "../public/cargarCategorias";
+	var route = "cargarCategorias";
 	var token = $("#token").val();
 	if (tipoCategoria != "") {
 	  $.ajax({

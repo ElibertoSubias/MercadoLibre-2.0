@@ -12,7 +12,7 @@ function btncambiarCorreo(){
   var id = $("#id").val();
   var email = $("#email").val();
   var email2 = $("#email2").val();
-  var route = "../public/cambiarcorreo";
+  var route = "cambiarcorreo";
   var token = $("#token").val();
   var bandera="0";
     if(email === "")

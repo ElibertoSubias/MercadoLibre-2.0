@@ -30,7 +30,7 @@
                     <article class="item  ">
                 <div data-region="item-loading"></div>
                     <figure class="item__image item__image--dimmer">
-                   <img src="../public/images/{{ $articulo[$i]->idUser}}/{{$articulo[$i]->idPublicacion}}/{{$articulo[$i]->urlPrincipal}}" width="80" height="80px" style="margin-bottom: -25px"> 
+                   <img src="images/{{ $articulo[$i]->idUser}}/{{$articulo[$i]->idPublicacion}}/{{$articulo[$i]->urlPrincipal}}" width="80" height="80px" style="margin-bottom: -25px"> 
                     </figure>
                     <div class="item__information">
                         <div class="u-float-left item__description">

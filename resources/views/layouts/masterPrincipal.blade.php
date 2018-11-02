@@ -22,7 +22,7 @@
 				<button class="nav-buscar-cerrar-btn" type="button" title="Cerrar"></button>
 				<button type="submit" class="nav-search-btn" tabindex="3">
 					<i class="nav-icon-search">
-						<img src="../public/img/icon_buscar.png" alt="" style="width: 50%;height: 80%;">
+						<img src="img/icon_buscar.png" alt="" style="width: 50%;height: 80%;">
 						<span class="buscar-icono">Buscar</span>
 					</i>
 				</button>

@@ -103,7 +103,7 @@ function filtrar(){
 	var precio = $('#precio').val();
 	var categoria = $('#categoria_selected').val();
 	var busqueda = $.get('busqueda');
-	var route = "../public/resultados";
+	var route = "resultados";
 	var token = $("#token").val(); 
 	  $.ajax({
 	    url: route,
@@ -129,7 +129,7 @@ function filtrar(){
                                             <ul class="ch-carousel-list" role="list"> \
                                                 <li class="ch-carousel-item" role="listitem" aria-hidden="false" aria-setsize="13" aria-posinset="1" aria-label="page1" style="width: 284px;  margin-right: 0px;"> \
                                                     <a href="verpublicacion?id='+item._id+'&user='+item.idUser+'" class="item-link item__js-link"> \
-                                                        <img width="284" height="284" alt="Bmw Z4 Convertible Mt 2003 Autos Puebla" src="../public/images/'+item.idUser+'/'+item.idPublicacion+'/'+item.urlPrincipal+'" class="lazy-load" srcset="../public/images/'+item.idUser+'/'+item.idPublicacion+'/'+item.urlPrincipal+' 2x"> \
+                                                        <img width="284" height="284" alt="Bmw Z4 Convertible Mt 2003 Autos Puebla" src="images/'+item.idUser+'/'+item.idPublicacion+'/'+item.urlPrincipal+'" class="lazy-load" srcset="images/'+item.idUser+'/'+item.idPublicacion+'/'+item.urlPrincipal+' 2x"> \
                                                     </a> \
                                                 </li> \
                                             </ul>\

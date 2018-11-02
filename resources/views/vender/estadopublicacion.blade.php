@@ -14,8 +14,8 @@
                     <div class="row col-md-11" style="text-align: left;margin-bottom: 60px;">
                         <div class="row col-md-12">
                             <div class="col-md-2"> 
-                                <img class="img-listo" src="../public/img/palomita.png" alt="">
-                                 <img style="border: 2px solid #e2e2e2;padding: 0px;height: 146.08px;" src="../public/images/{{ auth()->user()->_id }}/{{$datos->idPublicacion}}/{{$imagen->url}}" class="img-thumbnail" width="500" alt="">
+                                <img class="img-listo" src="img/palomita.png" alt="">
+                                 <img style="border: 2px solid #e2e2e2;padding: 0px;height: 146.08px;" src="images/{{ auth()->user()->_id }}/{{$datos->idPublicacion}}/{{$imagen->url}}" class="img-thumbnail" width="500" alt="">
                              </div>
                              <div class="col-md-8 cont-listo">
                                  <h1 class="text-listo">¡Listo! Ya publicaste</h1>

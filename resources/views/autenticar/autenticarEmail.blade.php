@@ -4,7 +4,7 @@
 
 <div class="row col-md-4 col-md-offset-4" style="position: relative;z-index: 1;">  
 	<div class="row col-md-12" style="margin-top: -260px;height: 120px; position:relative;z-index: 0;width: 546px;max-width: 456px;"> 
-		<img src="../public/svg/user.svg" alt="">
+		<img src="svg/user.svg" alt="">
 		<h2 style="line-height: 1.5;letter-spacing: 2px;color: #333;font-size:2rem;font-weight: 300;">¡Hola! Para seguir, ingresa tu e-mail
 		o usuario</h2>
 	</div>
@@ -31,7 +31,7 @@
 <!-- Modal -->
   <div class="modal fade in" id="modalloading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,0.7);">
     <div class="modal-dialog" style="width: 46%;height: auto;">
-      <img src="../public/img/icon_loading.gif" alt="" width="100" height="100" style="margin: 50% auto">
+      <img src="img/icon_loading.gif" alt="" width="100" height="100" style="margin: 50% auto">
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->   
 @stop

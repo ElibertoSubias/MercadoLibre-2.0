@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-xs-4" style="float: left;" id="5">
                                 <div id="cont-categorias" class="category-column menu-publicar" style="display: none;">
-                                    <img src="../public/img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
+                                    <img src="img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
                                     <p>¡Listo!</p>
                                     <button type="submit" id="btn-continuar" class="btn-azul">Continuar</button>
                                 </div>
@@ -94,7 +94,7 @@
                                 </select>
                             </div>
                             <div id="cont-categorias" class="category-column menu-publicar">
-                                <img src="../public/img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
+                                <img src="img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
                                 <p>¡Listo!</p>
                                 <button type="submit" id="btn-continuar" class="btn-azul">Continuar</button>
                             </div>
@@ -124,7 +124,7 @@
                                 </select>
                             </div>
                             <div id="cont-categorias" class="category-column menu-publicar">
-                                <img src="../public/img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
+                                <img src="img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
                                 <p>¡Listo!</p>
                                 <button type="submit" id="btn-continuar" class="btn-azul">Continuar</button>
                             </div>
@@ -154,7 +154,7 @@
                                 </select>
                             </div>
                             <div id="cont-categorias" class="category-column menu-publicar">
-                                <img src="../public/img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
+                                <img src="img/ok.png" alt="publicar" style="width: 80px;height: 80px;display: -webkit-box;margin: 30px 80px 0px 80px;">
                                 <p>¡Listo!</p>
                                 <button type="submit" id="btn-continuar" class="btn-azul">Continuar</button>
                             </div>
