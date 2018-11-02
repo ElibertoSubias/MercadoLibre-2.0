@@ -12,11 +12,14 @@ and (max-device-width : 667px) {
     }
     .nav_registro {
         width: 100% !important;
-        padding: 0% 2%;
+            padding: 1.5% 2.5%;
     }
     .nav-logo {
         background-image: url(../img/favicon.ed1a7e19.ico)!important;
         background-repeat: no-repeat; 
+        height: 54px !important;
+        margin-top: -10% !important;
+        background-size: 49px 49px;
     }
     .nav-menu{
         display: none !important;
