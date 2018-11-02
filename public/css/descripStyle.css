@@ -194,7 +194,7 @@ z-index: 1;
     color: #999;
 }
     .syi-hub__image {
-        background-image: url(img/vender-icono.png); 
+        background-image: url(../img/vender-icono.png); 
         background-repeat: no-repeat;
         background-size: 400%;
         display: block;
