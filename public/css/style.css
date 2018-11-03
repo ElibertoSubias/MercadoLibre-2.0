@@ -8,6 +8,12 @@
     .payment-data{
         display: none !important;
     }
+    #lblMenuFlotante_login {
+        display: none !important;
+    }
+    .auth-title {
+        display: none !important;
+    }
 }
 @media only screen 
 and (min-device-width : 375px) 
@@ -42,6 +48,9 @@ and (max-device-width : 667px) {
     .col-1 {
         width: 12%;
         margin-top: -10px;
+    }
+    .option-help_login {
+        display: none !important;
     }
     .nav-buscar-input {
         padding: 7px 50px 9px 15px !important;
@@ -270,6 +279,34 @@ and (max-device-width : 667px) {
     .payment-data .payment-data-subtitle .ui-link, .payment-data .payment-data-subtitle a {
         color: #3483fa;
         text-decoration: none;
+    }
+    .cabecera_principal_login {
+        height: auto !important;
+    }
+    .cont_encabezado_login {
+        display: none !important;
+    }
+    .cont_form_login {
+        padding: 30% 0% !important; 
+        margin-top:0px !important;
+        width: 100% !important; 
+        margin: 0px !important;
+        border-radius: 0px !important;
+        height: 100% !important;
+    }
+    #msjForMovil {
+        display: block !important;
+    }
+    #frmValidar a {
+        width: 100% !important;
+    }
+    .cont_padre_login { 
+        padding: 0px !important;
+        margin: 0px !important;
+        height: 100% !important;
+    }
+    .main_aut_email {
+        height: 100% !important;
     }
 }
 /*/////////////////////////////////////////////////////////////*/

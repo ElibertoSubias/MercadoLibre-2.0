@@ -42,7 +42,67 @@
 				<a href="{{route('carrito')}}" title="Carrito" class="nav-cart nav-cart-full" id="nav-cart"><img src="img/icon_car.png" alt="" width="19">
 					<span class="nav-icon-cart-quantity">1</span>
 				</a>
-				<nav id="nav-header-menu-mobile" class="nav-header-menu-mobile-guest"><div id="nav-header-menu-mobile-content"><ul><li><a href="https://www.mercadolibre.com.mx/registration"><i class="nav-icon-create-account-mobile"></i><p>Crea tu cuenta</p></a></li><li><a href="https://www.mercadolibre.com/jms/mlm/lgz/login?go=https%3A%2F%2Fwww.mercadolibre.com.mx%2F&amp;loginType=explicit"><i class="nav-icon-logout-mobile"></i><p>Ingresa</p></a></li></ul><ul><li><a href="https://myaccount.mercadolibre.com.mx/purchases/list/"><i class="nav-icon-purchases-mobile"></i><p>Tus compras</p></a></li><li><a href="https://www.mercadolibre.com.mx/gz/home/navigation"><i class="nav-icon-history-mobile"></i><p>Tu historial</p></a></li></ul><ul><li><a href="https://home.mercadolibre.com.mx/categories"><i class="nav-icon-categories-mobile"></i><p>Categorías</p></a></li><li><a href="https://www.mercadolibre.com.mx/mercadopuntos/descuentosexclusivos"><i class="nav-icon-points-discounts-mobile"></i><p>Descuentos Mercado Puntos</p></a></li><li><a href="https://ofertas.mercadolibre.com.mx/supermercado"><i class="nav-icon-supermercado"></i><p>Supermercado</p></a></li><li><a href="https://www.mercadolibre.com.mx/tiendas-oficiales"><i class="nav-icon-stores-mobile"></i><p>Tiendas oficiales</p></a></li><li><a href="https://ofertas.mercadolibre.com.mx/ofertas-de-la-semana"><i class="nav-icon-deals-mobile"></i><p>Ofertas de la semana</p></a></li></ul><ul><li><a href="https://vender.mercadolibre.com.mx"><i class="nav-icon-vender-mobile"></i><p>Vender</p></a></li><li><a href="https://www.mercadolibre.com.mx/ayuda"><i class="nav-icon-help-mobile"></i><p>Ayuda</p></a></li></ul><ul><li><a href="https://www.mercadolibre.com.mx/gz/app" id="nav-header-menu-download-mobile" data-os="ios" data-app="homes-palpatine"><i class="nav-icon-download-mobile"></i><p>¡Compra y vende con la app!</p></a></li></ul></div></nav>
+				<nav id="nav-header-menu-mobile" class="nav-header-menu-mobile-guest">
+					<div id="nav-header-menu-mobile-content">
+						<ul>
+							<li>
+								<a href="{{route('crearcuentapersonal')}}">
+									<i class="nav-icon-create-account-mobile"></i>
+									<p>Crea tu cuenta</p>
+								</a>
+							</li>
+							<li>
+								<a href="{{route('autenticar')}}"><i class="nav-icon-logout-mobile"></i>
+									<p>Ingresa</p>
+								</a>
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<a href="#"><i class="nav-icon-purchases-mobile"></i>
+									<p>Tus compras</p>
+								</a>
+							</li>
+							<li>
+								<a href="#"><i class="nav-icon-history-mobile"></i>
+									<p>Tu historial</p>
+								</a>
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<a href="#"><i class="nav-icon-categories-mobile"></i>
+									<p>Categorías</p>
+								</a>
+							</li>
+							<li>
+								<a href="#"><i class="nav-icon-points-discounts-mobile"></i><p>Descuentos Mercado Puntos</p>
+								</a>
+							</li>
+							<li>
+								<a href="#"><i class="nav-icon-supermercado"></i><p>Supermercado</p>
+								</a>
+							</li>
+							<li>
+								<a href="#"><i class="nav-icon-stores-mobile"></i><p>Tiendas oficiales</p></a>
+							</li>
+							<li>
+								<a href="#"><i class="nav-icon-deals-mobile"></i><p>Ofertas de la semana</p>
+								</a>
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<a href="#"><i class="nav-icon-vender-mobile"></i><p>Vender</p>
+								</a>
+							</li>
+							<li>
+								<a href="#"><i class="nav-icon-help-mobile"></i><p>Ayuda</p>
+								</a>
+							</li>
+						</ul> 
+					</div>
+				</nav>
 			</div> 
 		</div>
 		<div class="nav-menu">

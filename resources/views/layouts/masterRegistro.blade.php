@@ -3,6 +3,7 @@
 <head>
 	<title>Regístrate en Mercado Libre</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width"/>
 	{!! Html::style('css/style.css') !!} 
 	{!! Html::style('css/bootstrap.css') !!}  
 </head>
