@@ -34,7 +34,7 @@ function mostrarSegundoMenu(id){
     }  
 })(jQuery); 
 var urlFiltros = "";
-function seleccionarOpcion(id){   
+function seleccionarOpcion(id){  
 	if (id=="masRe") { 
 		$('.applied-filters').html("<dl><a href='resultados?busqueda="+$.get("busqueda")+"'><dd><h2 class='applied-fliter'><div> Más relevantes </div></h2><div class='close__icon'></div></dd></a></dl>");
 		$('.ui-list__item:nth-child(2)').addClass('ui-list__item--selected');
@@ -166,3 +166,20 @@ $('#id_category a').click(function(){
 	$('#categoria_selected').val(this.id);
 	filtrar();
 });
+
+function abrirMenu(){
+	if ($('#lblMenuFlotante').hasClass("active")==false) { 
+		document.getElementById('nav-header-menu-mobile').style.display="block";
+		$('#lblMenuFlotante').addClass("active");
+		$('.hamburger-top-bread').css("transform","translate(0,8px) rotate(45deg)");
+		$('.hamburger-patty').css("display","none");
+		$('.hamburger-bottom-bread').css("transform","translate(0,-6px) rotate(-45deg)");
+	}
+	else{ 
+		$('#nav-header-menu-mobile').hide();
+		$('#lblMenuFlotante').removeClass("active");
+		$('.hamburger-top-bread').css("transform","initial");
+		$('.hamburger-patty').css("display","block");
+		$('.hamburger-bottom-bread').css("transform","initial");
+	} 
+} 

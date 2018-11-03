@@ -10,30 +10,40 @@
 <body style="background-color: #ebebeb !important;">
 	<header id="cabecera_principal">
 		<div class="nav_registro"> 
-			<div class="col-1">
-				<a  href="{{ route('dashboard') }}"> 
-					<div class="nav-logo" style="margin-left: 0px;">
-					</div>
-				</a>
-			</div>
-			<form class="nav-buscar" action="{{route('resultados')}}" method="get" role="search" id="buscador-articulos">
-				<input type="text" class="nav-buscar-input" name="busqueda" placeholder="Buscar productos, marcas y más..." maxlength="120" autofocus="" autocapitalize="off" autocorrect="off" spellcheck="false" tabindex="2" autocomplete="off" id="caja_busqueda">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-				<button class="nav-buscar-limpiar-btn" type="button" title="Limpiar"></button>
-				<button class="nav-buscar-cerrar-btn" type="button" title="Cerrar"></button>
-				<button type="submit" class="nav-search-btn" tabindex="3">
-					<i class="nav-icon-search">
-						<img src="img/icon_buscar.png" alt="" style="width: 50%;height: 80%;margin-left: 10px;">
-						<span class="buscar-icono">Buscar</span>
-					</i>
-				</button> 
-			</form>
-			<div id="resultados" style="z-index: 122222;display: none;border-top: 1px solid #e6e6e6;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;">
-					<ul id="cont-resultado">
-						
-					</ul>
+			<div id="cont_cabecera_movil">
+				<div class="col-1">
+					<a  href="{{ route('dashboard') }}"> 
+						<div class="nav-logo" style="margin-left: 0px;"></div>
+					</a>
+				</div>
+				<form class="nav-buscar" action="{{route('resultados')}}" method="get" role="search" id="buscador-articulos">
+					<input type="text" class="nav-buscar-input" name="busqueda" placeholder="Buscar productos, marcas y más..." maxlength="120" autofocus="" autocapitalize="off" autocorrect="off" spellcheck="false" tabindex="2" autocomplete="off" id="caja_busqueda">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+					<button class="nav-buscar-limpiar-btn" type="button" title="Limpiar"></button>
+					<button class="nav-buscar-cerrar-btn" type="button" title="Cerrar"></button>
+					<button type="submit" class="nav-search-btn" tabindex="3">
+						<i class="nav-icon-search">
+							<img src="img/icon_buscar.png" alt="" style="width: 50%;height: 80%;margin-left: 10px;">
+							<span class="buscar-icono">Buscar</span>
+						</i>
+					</button> 
+				</form>
+				<div id="resultados" style="z-index: 122222;display: none;border-top: 1px solid #e6e6e6;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;">
+						<ul id="cont-resultado"></ul>
 				</div> 
-			<a href="" class="exhibitor__picture"><img src="img/mlm-menu-desktop-notification-picture.png" title="Tutoriales"></a>
+				<a href="" class="exhibitor__picture"><img src="img/mlm-menu-desktop-notification-picture.png" title="Tutoriales"></a>
+			</div>
+			<div class="nav-header-menu-wrapper">
+				<label onclick="abrirMenu()" id="lblMenuFlotante" for="nav-header-menu-switch" aria-controls="nav-header-menu" tabindex="3">
+					<span class="hamburger-top-bread"></span>
+					<span class="hamburger-patty"></span>
+					<span class="hamburger-bottom-bread"></span>
+				</label>
+				<a href="{{route('carrito')}}" title="Carrito" class="nav-cart nav-cart-full" id="nav-cart"><img src="img/icon_car.png" alt="" width="19">
+					<span class="nav-icon-cart-quantity">1</span>
+				</a>
+				<nav id="nav-header-menu-mobile" class="nav-header-menu-mobile-guest"><div id="nav-header-menu-mobile-content"><ul><li><a href="https://www.mercadolibre.com.mx/registration"><i class="nav-icon-create-account-mobile"></i><p>Crea tu cuenta</p></a></li><li><a href="https://www.mercadolibre.com/jms/mlm/lgz/login?go=https%3A%2F%2Fwww.mercadolibre.com.mx%2F&amp;loginType=explicit"><i class="nav-icon-logout-mobile"></i><p>Ingresa</p></a></li></ul><ul><li><a href="https://myaccount.mercadolibre.com.mx/purchases/list/"><i class="nav-icon-purchases-mobile"></i><p>Tus compras</p></a></li><li><a href="https://www.mercadolibre.com.mx/gz/home/navigation"><i class="nav-icon-history-mobile"></i><p>Tu historial</p></a></li></ul><ul><li><a href="https://home.mercadolibre.com.mx/categories"><i class="nav-icon-categories-mobile"></i><p>Categorías</p></a></li><li><a href="https://www.mercadolibre.com.mx/mercadopuntos/descuentosexclusivos"><i class="nav-icon-points-discounts-mobile"></i><p>Descuentos Mercado Puntos</p></a></li><li><a href="https://ofertas.mercadolibre.com.mx/supermercado"><i class="nav-icon-supermercado"></i><p>Supermercado</p></a></li><li><a href="https://www.mercadolibre.com.mx/tiendas-oficiales"><i class="nav-icon-stores-mobile"></i><p>Tiendas oficiales</p></a></li><li><a href="https://ofertas.mercadolibre.com.mx/ofertas-de-la-semana"><i class="nav-icon-deals-mobile"></i><p>Ofertas de la semana</p></a></li></ul><ul><li><a href="https://vender.mercadolibre.com.mx"><i class="nav-icon-vender-mobile"></i><p>Vender</p></a></li><li><a href="https://www.mercadolibre.com.mx/ayuda"><i class="nav-icon-help-mobile"></i><p>Ayuda</p></a></li></ul><ul><li><a href="https://www.mercadolibre.com.mx/gz/app" id="nav-header-menu-download-mobile" data-os="ios" data-app="homes-palpatine"><i class="nav-icon-download-mobile"></i><p>¡Compra y vende con la app!</p></a></li></ul></div></nav>
+			</div> 
 		</div>
 		<div class="nav-menu">
 			<div style="width: 70%;display: inline-block;
