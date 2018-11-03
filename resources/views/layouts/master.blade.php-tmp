@@ -34,7 +34,7 @@
 				<a href="" class="exhibitor__picture"><img src="img/mlm-menu-desktop-notification-picture.png" title="Tutoriales"></a>
 			</div>
 			<div class="nav-header-menu-wrapper">
-				<label onclick="abrirMenu()" id="lblMenuFlotante" for="nav-header-menu-switch" aria-controls="nav-header-menu" tabindex="3">
+				<label onclick="abrirMenuMovil()" id="lblMenuFlotante" for="nav-header-menu-switch" aria-controls="nav-header-menu" tabindex="3">
 					<span class="hamburger-top-bread"></span>
 					<span class="hamburger-patty"></span>
 					<span class="hamburger-bottom-bread"></span>

@@ -167,7 +167,7 @@ $('#id_category a').click(function(){
 	filtrar();
 });
 
-function abrirMenu(){
+function abrirMenuMovil(){
 	if ($('#lblMenuFlotante').hasClass("active")==false) { 
 		document.getElementById('nav-header-menu-mobile').style.display="block";
 		$('#lblMenuFlotante').addClass("active");
