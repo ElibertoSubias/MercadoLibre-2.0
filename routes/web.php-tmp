@@ -68,6 +68,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 		Route::post('agregardocumento', 'EditarUsuario\PerfilController@agregarDocumento')->name('agregardocumento');
 		Route::post('articulo/precio', 'Venta\VentaController@showPrecio')->name('precio');
+		Route::post('articulo/precioproducto', 'Venta\VentaController@showPrecioPROD')->name('precioPROD');
 
 		Route::post('articulo/confirmar', 'Venta\VentaController@showConfirmar')->name('confirmarventa');
 

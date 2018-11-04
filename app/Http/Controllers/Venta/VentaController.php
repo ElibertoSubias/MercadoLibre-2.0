@@ -29,6 +29,11 @@ class VentaController extends Controller
     {
         return view('vender.precio')->with('objectArticulo',$request);
     }
+
+    public function showPrecioPROD(Request $request)
+    {
+        return view('vender.precioPROD')->with('objectArticulo',$request);
+    }
     
     public function showConfirmar(Request $request)
     {
