@@ -21,9 +21,42 @@
                         <fieldset id="upload_form">
                             <legend>Tipo y condiciones de venta</legend>
                             <span class="ch-form-hint">*Datos obligatorios</span>
-                            <div class="ui-form-row syi-buying-mode__container" data-reactid="25"><label class="syi-buying-mode__label" data-reactid="26"><!-- react-text: 27 -->Tipo de venta<!-- /react-text --><!-- react-text: 28 -->: <!-- /react-text --><em data-reactid="29">*</em></label><ul class="syi-buying-mode-option" data-reactid="30"><li class="ui-form-row syi-buying-mode-option" data-reactid="31"><input type="radio" name="list-0.item.buying_mode" id="buy_it_now" value="buy_it_now" data-reactid="32" checked=""><span data-reactid="33"><label for="buy_it_now" class="syi-buying-mode-option__label" data-reactid="34"><span data-reactid="35">Precio fijo</span></label><span class="ui-form-hint syi-buying-mode__text" data-reactid="36">Eliges el precio al que quieres vender tu producto.</span></span></li><li class="ui-form-row syi-buying-mode-option" data-reactid="37"><input type="radio" name="list-0.item.buying_mode" id="auction" value="auction" data-reactid="38"><span data-reactid="39"><label for="auction" class="syi-buying-mode-option__label" data-reactid="40"><span data-reactid="41">Subasta</span></label><span class="ui-form-hint syi-buying-mode__text" data-reactid="42">Ingresas el precio inicial a partir del que quieres comenzar a recibir ofertas.</span></span></li></ul></div>
+                            <div class="ui-form-row syi-buying-mode__container" data-reactid="25">
+                            	<label class="syi-buying-mode__label" data-reactid="26"><!-- react-text: 27 -->Tipo de venta<!-- /react-text --><!-- react-text: 28 -->: <!-- /react-text -->
+                            		<em data-reactid="29">*</em>
+                            	</label>
+                            	<ul class="syi-buying-mode-option" data-reactid="30">
+                            		<li style="    display: block;
+    float: left;
+    margin-right: 5%;" class="ui-form-row syi-buying-mode-option" data-reactid="31">
+                            			<input type="radio" name="list-0.item.buying_mode" id="buy_it_now" value="buy_it_now" data-reactid="32" checked="">
+                            			<span data-reactid="33">
+                            				<label for="buy_it_now" class="syi-buying-mode-option__label" data-reactid="34">
+                            					<span data-reactid="35">Precio fijo</span>
+                            				</label>
+                            				<span class="ui-form-hint syi-buying-mode__text" data-reactid="36">Eliges el precio al que quieres vender tu producto.</span>
+                            			</span>
+                            		</li>
+                            		<li style="    display: block;
+    float: left; " class="ui-form-row syi-buying-mode-option" data-reactid="37">
+                            			<input type="radio" name="list-0.item.buying_mode" id="auction" value="auction" data-reactid="38">
+                            			<span data-reactid="39">
+                            				<label for="auction" class="syi-buying-mode-option__label" data-reactid="40">
+                            					<span data-reactid="41">Subasta</span>
+                            				</label>
+                            				<span class="ui-form-hint syi-buying-mode__text" data-reactid="42">Ingresas el precio inicial a partir del que quieres comenzar a recibir ofertas.</span>
+                            			</span>
+                            		</li>
+                            	</ul>
+                            </div>
                             <div class="col-md-12" style="padding-left: 6%;padding-top: 1%;">
-                                <div class="ui-form-row" data-reactid="43"><span data-reactid="44"><label class="syi-quantity__label u--bold" data-reactid="45">Cantidad:<em>*</em></label><input type="text" data-hj-whitelist="true" label="Cantidad:<em>*</em>" required="" value="1" maxlength="5" class="syi-quantity__field" id="list-0.item.available_quantity" name="list-0.item.available_quantity" data-reactid="46"></span></div>
+                                <div class="ui-form-row" data-reactid="43" style="margin-bottom: 2%;">
+                                	<span data-reactid="44">
+                                		<label class="syi-quantity__label u--bold" data-reactid="45">Cantidad:<em>*</em>
+                                		</label>
+                                		<input style="width: 5%;" type="text" data-hj-whitelist="true" label="Cantidad:<em>*</em>" required="" value="1" maxlength="5" class="syi-quantity__field" id="list-0.item.available_quantity" name="list-0.item.available_quantity" data-reactid="46">
+                                	</span>
+                                </div>
                                 <div class="col-md-4">
                                     <label class="font-min">Precio:*</label>
                                     <select name="moneda" id="moneda">
@@ -35,7 +68,9 @@
                                 </div>
                             </div>
 
-                        </fieldset>                    
+                        </fieldset> 
+                        <fieldset class="syi-fieldset" id="list-0.item.shippingFieldset" data-reactid="61"><legend class="syi-fieldset__legend" data-reactid="62">Formas de entrega</legend><div class="syi-shipping__method syi-shipping" data-reactid="67"><div data-reactid="68"><fieldset class="ui-form-row syi-shipping__box syi-shipping-fieldset-checked"><svg class="ui-icon syi-shipping__icon--checked" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32"><path fill="#487210" d="M0 12.555c0-0.349 0.12-0.638 0.359-0.867l2.719-2.734c0.24-0.24 0.534-0.357 0.883-0.352s0.638 0.122 0.867 0.352l5.703 5.703c0.24 0.24 0.534 0.359 0.883 0.359s0.638-0.12 0.867-0.359l11.656-11.641c0.24-0.24 0.534-0.359 0.883-0.359s0.643 0.12 0.883 0.359l2.719 2.719c0.24 0.24 0.357 0.534 0.352 0.883s-0.122 0.638-0.352 0.867l-14.219 14.219c-0.24 0.24-0.565 0.443-0.977 0.609s-0.789 0.25-1.133 0.25h-1.375c-0.365 0-0.755-0.086-1.172-0.258s-0.74-0.372-0.969-0.602l-8.219-8.266c-0.24-0.24-0.359-0.534-0.359-0.883z"></path></svg><legend class="syi-shipping__legend syi-shipping__legend--checked"><span>Ofrecerás Mercado Envíos</span><!-- react-empty: 100 --></legend><div class="ui-form-row syi-shipping__option"><input type="radio" id="me2_buyer" name="list-0.item.shipping.free_methods" value="[]"><label for="me2_buyer"><span>Envío a cargo del comprador</span><!-- react-text: 105 --><!-- /react-text --></label></div><div><div class="ui-form-row syi-shipping__option"><input type="radio" id="free_shipping_501245_country" name="list-0.item.shipping.free_methods" value="[{&quot;id&quot;:501245,&quot;rule&quot;:{&quot;free_mode&quot;:&quot;country&quot;,&quot;value&quot;:null,&quot;free_shipping_flag&quot;:true,&quot;default&quot;:true}}]"><label for="free_shipping_501245_country"><span></span><span><span class="syi-shipping__free--text">Envío gratis. </span><span><span>Pagarás <span class="syi-shipping-price">$ 105 <sup> 00 </sup></span> por envío.</span></span></span></label></div></div></fieldset></div><!-- react-empty: 69 --></div></fieldset>
+                        <fieldset class="syi-fieldset" data-reactid="70"><legend class="syi-fieldset__legend" data-reactid="71">Garantía</legend><ul class="ui-form-options ui-box-list syi-warranty" data-reactid="72"><li class="ui-form-row " data-reactid="73"><span data-reactid="74"><input type="radio" data-hj-whitelist="true" value="" maxlength="80" class="" id="warranty-0" name="list-0.item.warranty" data-reactid="75"></span><label for="warranty-0" class="ui-form-options__label" data-reactid="76">Con garantía</label></li><li class="ui-form-row " data-reactid="77"><span data-reactid="78"><input type="radio" data-hj-whitelist="true" value="" maxlength="80" class="" id="warranty-1" name="list-0.item.warranty" data-reactid="79" checked=""></span><label for="warranty-1" class="ui-form-options__label" data-reactid="80">Sin garantía</label></li></ul></fieldset>                   
                     </div>     
                     <input type="hidden" name="videoURL" id="videoURL" value="{{$objectArticulo->videoURL}}">
                     <input type="hidden" name="marca" id="marca" value="{{$objectArticulo->marca}}">
