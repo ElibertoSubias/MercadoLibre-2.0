@@ -86,7 +86,6 @@
                                 </div>
                                 <div data-quantity="error" class="ui-quantity-selector__stock">
                                     
-                                    [{{$articulo[$i]->cantidad}}]
                                 @if($articulos[$i]->cantidad==1)
                                     Último disponible
                                 @else
