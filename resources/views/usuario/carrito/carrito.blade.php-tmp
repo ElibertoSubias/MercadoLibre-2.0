@@ -85,10 +85,12 @@ for ($i = 0; $i < count($articulos); $i++) {
 	                                    <div class="cart-inline-loading__quantity-selector" data-region="quantity-loading"></div>
 	                                </div>
 	                                <div data-quantity="error" class="ui-quantity-selector__stock">
+
+	                                    [{{$articulo[$i]->cantidad}}]
 	                                @if($articulos[$i]->cantidad==1)
 	                                    Último disponible
 	                                @else
-	                                    {{$articulos[$i]->cantidad}} dispobibles
+	                                    {{$articulo[$i]->cantidad}} dispobibles
 	                                @endif
 	                                </div>
 	                            </div>
