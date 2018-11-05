@@ -44,6 +44,29 @@
 				</a>
 				<nav id="nav-header-menu-mobile" class="nav-header-menu-mobile-guest">
 					<div id="nav-header-menu-mobile-content">
+						@if(Auth::check())
+						<ul>
+							<li>
+								<a href="{{route('publicaciones')}}"><i class="nav-icon-logout-mobile"></i>
+									<p>Ventas</p>
+								</a>
+							</li>
+							<li>
+								<a href="{{route('perfil')}}">
+									<i class="nav-icon-create-account-mobile"></i>
+									<p>Mis datos</p>
+								</a>
+							</li>
+							<li>
+								<a href="{{route('logout')}}">
+									<form style="padding-left: 15px;" action="{{ route('logout') }}" method="POST" accept-charset="utf-8">
+									{{ csrf_field() }}
+									<button class="btn-salir">Salir</button>
+								</form>
+								</a>
+							</li>
+						</ul>
+						@else
 						<ul>
 							<li>
 								<a href="{{route('crearcuentapersonal')}}">
@@ -57,6 +80,7 @@
 								</a>
 							</li>
 						</ul>
+						@endif
 						<ul>
 							<li>
 								<a href="#"><i class="nav-icon-purchases-mobile"></i>
