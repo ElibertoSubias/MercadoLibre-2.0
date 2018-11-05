@@ -173,9 +173,9 @@ class VentaController extends Controller
     {
         $user = Auth::user(); 
 
-        $datos = Articulos::where(['_id' => $request->itemId,'idUser'=>$user->_id])->first(); 
+        $datos = Articulos::where(['_id' => $request->itemId,'idUser'=>$user->_id])->first();  
         if ($datos!="") {
-            $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->get(); 
+            $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->get();  
             return view('vender.modificarVEHI')->with('datos',$datos)->with('imagen',$imagen); 
 
         }else{

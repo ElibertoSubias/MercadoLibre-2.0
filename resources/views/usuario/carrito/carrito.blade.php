@@ -29,7 +29,7 @@
                     ?>
                     <article class="item  ">
                 <div data-region="item-loading"></div>
-                    <figure class="item__image item__image--dimmer">
+                    <figure class="item__image item__image--dimmer" style="padding: 20px 30px;">
                    <img src="images/{{ $articulo[$i]->idUser}}/{{$articulo[$i]->idPublicacion}}/{{$articulo[$i]->urlPrincipal}}" width="80" height="80px" style="margin-bottom: -25px"> 
                     </figure>
                     <div class="item__information">
@@ -84,7 +84,13 @@
                                     </form>
                                     <div class="cart-inline-loading__quantity-selector" data-region="quantity-loading"></div>
                                 </div>
-                                <div data-quantity="error" class="ui-quantity-selector__stock">Último disponible</div>
+                                <div data-quantity="error" class="ui-quantity-selector__stock">
+                                @if($articulos[$i]->cantidad==1)
+                                    Último disponible
+                                @else
+                                    {{$articulos[$i]->cantidad}} dispobibles
+                                @endif
+                                </div>
                             </div>
                             <div class="item__price" style="font-size: 32px !important;">
                             
@@ -102,6 +108,7 @@
                             </div>
                     </div>
             </article>
+            <hr>
                     <?php
                 } 
             ?>  
@@ -119,9 +126,7 @@
                             
                             
                             <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                            <span class="price-tag-fraction"><label id="subtotal">{{$subtotal}}</label> </span>
-                                <span class="price-tag-decimal-separator">.</span>
-                                
+                            <span class="price-tag-fraction"><label id="subtotal">{{$subtotal}}</label> </span>  
                                 <span class="price-tag-cents">00</span>
                             
                         </span>
@@ -159,9 +164,7 @@
                     <meta itemprop="price" content="1,499.00">
                     
                     <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                    <span class="price-tag-fraction"><label id="totalneto">{{$subtotal}}</label></span>
-                        <span class="price-tag-decimal-separator">.</span>
-                        
+                    <span class="price-tag-fraction"><label id="totalneto">{{$subtotal}}</label></span>  
                         <span class="price-tag-cents">00</span>
                     
                 </span>

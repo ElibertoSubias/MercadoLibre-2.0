@@ -5,7 +5,19 @@
     /*background-color: #eee;*/
     height: auto;
 }
-
+.price-tag-cents {
+        font-size: 14px;
+    margin-top: -5px;
+}
+.ui-panel{
+    border-bottom: 0px !important;
+    padding: 0px !important;
+}
+.summary {border-top-width: 0px !important;}
+.summary__price--free{
+    color: #39b54a !important;
+        margin: 10px 0px !important;
+}
 .cart__list-items {
     -webkit-border-radius: 4px;
     border-radius: 4px;
