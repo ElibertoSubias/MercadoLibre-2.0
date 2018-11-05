@@ -94,7 +94,7 @@
                                         
                                         
                                         <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                                        <span class="price-tag-fraction"> <label class="precioUnitario">{{$articulo[$i]->precio}}</label></span>
+                                        <span class="price-tag-fraction"> <label class="precioUnitario">{{$articulos[$i]->precio}}</label></span>
                                         
                                     </span>
                             <input id="idPublicacion_{{$articulos[$i]->_id}}" hidden="" value="{{$articulo[$i]->_id}}">

@@ -15,7 +15,7 @@ function agregarinfo(preci, ids){
       location.href ="perfil";
       
     });
-}
+} 
 
 
 function eliminar(id){
@@ -75,11 +75,13 @@ function modificarCantidad(caracter,idRegistro, idPublicacion, cantidadArticulos
 	    });
 }
 
+
 $('.formularioCantidad input').click(function(){
 	event.preventDefault(); 
 	var cantidadArticulos = $('#idCantidad_'+this.id).val(); 
 	var idPublicacion = $('#idPublicacion_'+this.id).val();
 	modificarCantidad($(this).val(),this.id, idPublicacion, cantidadArticulos);
+   location.reload();
 });
 
 

@@ -23,6 +23,7 @@ class CarritoController extends Controller
         $aux = Articulos::where('_id' , '=', $id->idPublicacion)->get();
     	array_push($articulo, $aux[0]);
     	   
+           //$totalNeto=$id->precio * $id->cantidad;
            $subtotal=$id->precio + $subtotal;
            
     	} 
@@ -32,20 +33,40 @@ class CarritoController extends Controller
     }
 
     public function agregarAlCarrito(Request $request)
-    {   
-        $Carrito = new Carrito;
-        $Carrito->idUser = auth()->user()->id; 
-        /*$Carrito->idPublicacion = $request->post('idPublicacion');
-        $Carrito->cantidad = $request->post('cantidad'); 
-        $Carrito->precio = $request->post('precio');        
-        $Carrito->save();  */
+    { 
 
-        $Carrito->idPublicacion = $request->idArticulo;
-        $Carrito->cantidad = $request->cantidad; 
-        $Carrito->precio = $request->precio;        
-        $Carrito->save();
-        $urlImagen = $request->idUser."/".$request->idPublicacion; 
-        return view('usuario.carrito.agregadoCarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen]);    
+         if(!Carrito::where([['idUser' , '=', auth()->user()->id] ,['idPublicacion', '=',  $request->idArticulo]])->exists()){ 
+            $Carrito = new Carrito;
+            $Carrito->idUser = auth()->user()->id;
+
+            $Carrito->idPublicacion = $request->idArticulo;
+            $Carrito->cantidad = 1; 
+            $Carrito->precio = $request->precio;        
+            $Carrito->save();
+            $urlImagen = $request->idUser."/".$request->idPublicacion; 
+            return view('usuario.carrito.agregadocarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen]);
+
+            }
+            else
+                {
+                $aux=Carrito::where([['idUser' , '=', auth()->user()->id] ,['idPublicacion', '=',  $request->idArticulo]])->get();
+                $aux[0]->cantidad;
+                $total= $aux[0]->cantidad+1;
+                $nprecio=($total * $aux[0]->precio); 
+                $datos = Carrito::where([['idUser' , '=', auth()->user()->id] ,['idPublicacion', '=',  $request->idArticulo]])->update(['cantidad' => $total, 'precio' => $nprecio]);
+                $urlImagen = $request->idUser."/".$request->idPublicacion; 
+                return view('usuario.carrito.agregadocarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen]);
+        }
+        // $Carrito = new Carrito;
+        // $Carrito->idUser = auth()->user()->id;
+
+        // $Carrito->idPublicacion = $request->idArticulo;
+        // $Carrito->cantidad = $request->cantidad; 
+        // $Carrito->precio = $request->precio;        
+        // $Carrito->save();
+        // $urlImagen = $request->idUser."/".$request->idPublicacion; 
+        // return view('usuario.carrito.agregadocarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen]);            
+
     }
 
     public function agregadoCarrito()
@@ -111,10 +132,12 @@ class CarritoController extends Controller
                 //Incrementar
                 //1. HAcer una update al registro con el $request->idRegistro
                 $total = $request->cantidadArticulos+1;
+                 $nprecio=($total * $aux[0]->precio); 
                 //Actualizar $total en el campo cantidad
-                $datos = Carrito::where('_id', $request->idRegistro)->update(['cantidad' => $total]);
+                $datos = Carrito::where('_id', $request->idRegistro)->update(['cantidad' => $total, 'precio' => $nprecio]);
                 return response()->json([
-                    "cantidadArticulos" => $total
+                    "cantidadArticulos" => $total,
+                    'nuevoprecio' => $nprecio
                 ]);
             }
         }else{

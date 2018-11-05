@@ -73,8 +73,8 @@
 			
 
 	<div class="cart-congrats__actions">
-		<a href="/gz/cart" class="ui-button ui-button--primary">Ver carrito</a>
-		<a href="/gz/checkout/cart/buy?items=MLM577001157-Q1-VAR18596584220&amp;destination_type=address_id&amp;destination_value=902260096&amp;unchecked=false&amp;context=item_add" data-summary="buy-action" class="ui-button ui-button--secondary">Comprar carrito</a>
+		<a href="{{route('carrito')}}" class="ui-button ui-button--primary" style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px;">Ver carrito</a>
+		<a href="#" data-summary="buy-action" class="ui-button ui-button--secondary" style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px">Comprar carrito</a>
 	</div>
 
 
