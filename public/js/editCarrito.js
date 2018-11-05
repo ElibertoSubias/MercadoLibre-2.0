@@ -73,7 +73,7 @@ function modificarCantidad(caracter,idRegistro, idPublicacion, cantidadArticulos
 	    	//Codigo en Javascript o eb jQuert pora actualizar el campo de cantidad
 	    	$('#idCantidad_'+idRegistro).val(data.cantidadArticulos);
 	    });
-}
+
 
 
 $('.formularioCantidad input').click(function(){
