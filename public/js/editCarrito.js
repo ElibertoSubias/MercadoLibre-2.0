@@ -83,5 +83,6 @@ $('.formularioCantidad input').click(function(){
 	modificarCantidad($(this).val(),this.id, idPublicacion, cantidadArticulos);
    location.reload();
 });
+}
 
 
