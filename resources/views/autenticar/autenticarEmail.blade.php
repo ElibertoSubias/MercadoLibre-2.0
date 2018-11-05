@@ -1,8 +1,10 @@
 @extends('layouts.masterLogin')
 
 @section('content') 
-<main class="main_aut_email col-md-12" style="margin: 0px;padding: 0px;font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;    font-size: 16px;    font-weight: 300;    line-height: 1.35;
-    -webkit-text-size-adjust: 100%;-webkit-tap-highlight-color: rgba(0,0,0,.1);height: 47.1%;">
+<main class="main_aut_email col-md-12" style="margin: 0px;padding: 0px;font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;    font-size: 16px;    font-weight: 300;    line-height: 1.35;    -webkit-text-size-adjust: 100%;-webkit-tap-highlight-color: rgba(0,0,0,.1);height: 47.1%;">
+	<div style="width: 100%;height:350px;background-color:#fff059;position: absolute;margin-top: -15px;">
+		
+	</div>
 	<div class="cont_padre_login row col-md-4 col-md-offset-4" style="position: relative;z-index: 1;">  
 		<div class="cont_encabezado_login row col-md-12" style="margin-top: -260px;height: 120px; position:relative;z-index: 0;width: 546px;max-width: 456px;"> 
 			<img src="svg/user.svg" alt="">

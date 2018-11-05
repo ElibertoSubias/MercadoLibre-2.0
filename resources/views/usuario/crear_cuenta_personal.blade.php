@@ -3,7 +3,7 @@
 @section('content') 
 <main class="main_aut_email col-md-12" style="margin: 0px;padding: 0px;font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;    font-size: 16px;    font-weight: 300;    line-height: 1.35;
     -webkit-text-size-adjust: 100%;-webkit-tap-highlight-color: rgba(0,0,0,.1);height: 47.1%;">
-	<div class="cont_padre_login row col-md-8 col-md-offset-2"> 
+	<div class=" row col-md-8 col-md-offset-2" style="margin-right: 0px;"> 
 				<div class="col-md-10 col-md-offset-1"> 
 					<h3 style="font-weight: 600;display: inline-block;float: left;">Completa tus datos</h3> 
 					<a href="{{route('crearcuentaempresarial')}}" title="" style="float: right;margin-top: 25px;text-decoration: none; display: inline-block;color: #3483fa;">Crear una cuenta de empresa</a> 

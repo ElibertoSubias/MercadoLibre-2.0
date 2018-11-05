@@ -39,7 +39,7 @@
 	</div>
 	<!-- Div para mostrar Menu de Filtros -->
 	<div class="row" style="margin:0px">
-        <div style="width: 25%;float: left;text-align: left;"> 
+        <div id="cont_filtros" style="width: 25%;float: left;text-align: left;"> 
             <form action="resultados" method="get" id="frmFiltros">    
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">        
                 <div class="breadcrumb"> 
@@ -311,7 +311,7 @@
                 </section>  
             </form> 
     </div>
-    <div style="width: 80%;margin-left: 25%;">
+    <div id="cont_resultados_busqueda" style="width: 80%;margin-left: 25%;">
     	<!-- Div para mostrar Modelos o tipos de subcategorias -->	
     	<div class="">     		
     	</div>
@@ -320,6 +320,7 @@
         	<ol id="searchResults" class="section search-results list-view grid search-results-mot list--has-row-logos " imgtype="listingLightweight">
                 @foreach($datos as $articulo)
                     <li class="results-item article grid "> 
+                        <a href="{{route('verpublicacion', ['id' => $articulo->_id,'user'=>$articulo->idUser])}}" class="item-link item__js-link"> 
                         <div class="rowItem item item--grid item--has-row-logo new" id="MLM645463946">
                             <div class="item__image item__image--grid"> 
                                 <div class="images-viewer" item-url=#" item-id="MLM645463946">
@@ -330,9 +331,9 @@
                                         <div class="ch-carousel-mask ch-carousel-adaptive" role="tabpanel" style="height:209px"> 
                                             <ul class="ch-carousel-list" role="list"> 
                                                 <li class="ch-carousel-item" role="listitem" aria-hidden="false" aria-setsize="13" aria-posinset="1" aria-label="page1" style="width: 284px;  margin-right: 0px;"> 
-                                                    <a href="{{route('verpublicacion', ['id' => $articulo->_id,'user'=>$articulo->idUser])}}" class="item-link item__js-link"> 
+                                                    
                                                         <img width="284" height="284" alt="Bmw Z4 Convertible Mt 2003 Autos Puebla" src="images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}}" class="lazy-load" srcset="images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}} 1x, images/{{$articulo->idUser}}/{{$articulo->idPublicacion}}/{{$articulo->urlPrincipal}} 2x"> 
-                                                    </a> 
+                                                     
                                                 </li> 
                                             </ul>
                                         </div>
@@ -347,8 +348,7 @@
                                     </div> 
                                 </div>
                             </div> 
-                            <span class="item-loading__status-bar item-loading__hide"></span>
-                            <a href="#" class="item__info-link item__js-link "> 
+                            <span class="item-loading__status-bar item-loading__hide"></span> 
                                 <div class="item__info ">
                                     <div class="item__price item__price-discount"> 
                                         <span class="price__symbol">$</span> <span class="price__fraction"><label class="precioUnitario">{{$articulo->precio}}</label></span>
@@ -362,8 +362,7 @@
                                     <div class="item__location">
                                         {{$articulo->estado}}  
                                     </div> 
-                                </div>
-                            </a>
+                                </div> 
                             <form class="item__bookmark-form" action="#" method="post" id="bookmarkForm">         <button type="submit" class="bookmarks favorite " data-id="MLM645463946"> 
                                     <div class="item__bookmark"> 
                                         <div class="icon"></div> 
@@ -373,6 +372,7 @@
                                  <input type="hidden" name="itemId" value="MLM645463946">
                             </form> 
                         </div>
+                        </a>
                     </li>  
                 @endforeach 
             </ol> 
