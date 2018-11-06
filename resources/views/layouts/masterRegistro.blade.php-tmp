@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Mercado Libre 2.0</title>
+	<link rel="shortcut icon" href="img/favicon.ed1a7e19.ico">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width"/>
 	{!! Html::style('css/style.css') !!}
@@ -10,13 +11,12 @@
 <body>
 	<header role="banner" id="cabecera_principal">
 		<div class="nav_registro">
+			<div id="cont_cabecera_movil">
 			<div class="col-1">
-				<a  href="{{ route('dashboard') }}">
-					<div class="nav-logo">
-
-					</div>
-				</a>
-			</div>
+					<a  href="{{ route('dashboard') }}">
+						<div class="nav-logo" style="margin-left: 0px;"></div>
+					</a>
+				</div>
 			@if(isset(auth()->user()->nombre))
 				<div class="col-2 cont_info_user" style="padding: 15px;width: 20%;">
 					<div class="col-md-8" style="padding: 0px;    text-align: right;">
@@ -37,6 +37,7 @@
 					<a tabindex="4" class="option-help" href="#">Ayuda</a>
 				</div>
 			@endif
+		</div>
 		</div>
 	</header>
 

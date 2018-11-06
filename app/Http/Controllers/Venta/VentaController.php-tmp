@@ -193,31 +193,43 @@ class VentaController extends Controller {
 	}
 
 	public function updateVEHI(Request $request) {
-		$datos = Articulos::where('_id', $request->idItem)->update([
-				'titulo'               => $request->titulo,
-				'precio'               => $request->precio,
-				'moneda'               => $request->moneda,
-				'estado'               => $request->estado,
-				'municipio'            => $request->municipio,
-				'colonia'              => $request->colonia,
-				'telefono'             => $request->telefono,
-				'modelo'               => $request->modelo,
-				'marca'                => $request->marca,
-				'anio'                 => $request->anio,
-				'urlvideo'             => $request->urlvideo,
-				'numPuertas'           => $request->numPuertas,
-				'kilometros'           => $request->kilometros,
-				'descripcion'          => $request->descripcion,
-				'horarioContacto'      => $request->horarioContacto,
-				'color'                => $request->color,
-				'tipoCombustible'      => $request->tipoCombustible,
-				'motor'                => $request->motor,
-				'direccionAuto'        => $request->direccionAuto,
-				'transmicion'          => $request->transmicion,
-				'version'              => $request->version,
-				'urlPrincipal'         => $request->urlPrincipal,
-				'arrayCaracteristicas' => $request->arrayCaracteristicas
-			]);
+		if ($request->tipoUpdate == "opcional") {
+			$datos = Articulos::where('_id', $request->idItem)->update([
+					'titulo'     => $request->titulo,
+					'precio'     => $request->precio,
+					'moneda'     => $request->moneda,
+					'kilometros' => $request->kilometros,
+					'telefono'   => $request->telefono,
+					'telefono2'  => $request->telefono2,
+				]);
+		} else {
+			$datos = Articulos::where('_id', $request->idItem)->update([
+					'titulo'               => $request->titulo,
+					'precio'               => $request->precio,
+					'moneda'               => $request->moneda,
+					'estado'               => $request->estado,
+					'municipio'            => $request->municipio,
+					'colonia'              => $request->colonia,
+					'telefono'             => $request->telefono,
+					'modelo'               => $request->modelo,
+					'marca'                => $request->marca,
+					'anio'                 => $request->anio,
+					'urlvideo'             => $request->urlvideo,
+					'numPuertas'           => $request->numPuertas,
+					'kilometros'           => $request->kilometros,
+					'descripcion'          => $request->descripcion,
+					'horarioContacto'      => $request->horarioContacto,
+					'color'                => $request->color,
+					'tipoCombustible'      => $request->tipoCombustible,
+					'motor'                => $request->motor,
+					'direccionAuto'        => $request->direccionAuto,
+					'transmicion'          => $request->transmicion,
+					'version'              => $request->version,
+					'urlPrincipal'         => $request->urlPrincipal,
+					'arrayCaracteristicas' => $request->arrayCaracteristicas
+				]);
+		}
+
 		return Redirect::route('publicaciones');
 	}
 	/**

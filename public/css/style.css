@@ -35,6 +35,12 @@ and (max-device-width : 414px) {
         position: fixed;
         margin-left: -150px;
     }
+    .menu-wrapper {
+        display: none;
+    }
+    .cont_publicaciones_info {
+        padding-left: 0px !important; 
+    }
     .cont_info_user{
         padding: 24px !important;
     }
@@ -526,16 +532,14 @@ html,body {
 }
 #pie_pagina {
     border-top: .5px solid #ddd;
-    height: 80px;
+    height: 90px;
     position: unset;
     bottom: 0;
     width: 100%;
     margin: 0px;
     background: #fff; 
+    float: left;
 } 
-#pie_pagina a {
-    margin-left: 0px;
-}
 /*.nav-header-registro {
     width: 100%;
     height: 56px;

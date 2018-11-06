@@ -213,7 +213,17 @@ class VentaController extends Controller
 
     public function updateVEHI(Request $request)
     {
-        $datos = Articulos::where('_id', $request->idItem)->update([
+        if ($request->tipoUpdate=="opcional") {
+            $datos = Articulos::where('_id', $request->idItem)->update([
+                                                                    'titulo' => $request->titulo,
+                                                                    'precio' => $request->precio,
+                                                                    'moneda' => $request->moneda,   
+                                                                    'kilometros' => $request->kilometros,
+                                                                    'telefono' => $request->telefono,
+                                                                    'telefono2' => $request->telefono2, 
+                                                                 ]);
+        }else{
+            $datos = Articulos::where('_id', $request->idItem)->update([
                                                                     'titulo' => $request->titulo,
                                                                     'precio' => $request->precio,
                                                                     'moneda' => $request->moneda,
@@ -238,6 +248,8 @@ class VentaController extends Controller
                                                                     'urlPrincipal' => $request->urlPrincipal,
                                                                     'arrayCaracteristicas' => $request->arrayCaracteristicas
                                                                  ]);
+        }
+        
         return Redirect::route('publicaciones');
     }
     /**
