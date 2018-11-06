@@ -41,6 +41,7 @@
 	</header>
 	
 		@yield('content')
+
 	<footer id="pie_pagina"> 
 		<div class="politicas-pie" >
 			<div class="col-md-12">
@@ -62,6 +63,8 @@
 				{!! Html::script('js/menusFlotantes.js') !!}
 				{!! Html::script('js/modificarPublicacion.js') !!}
 				{!! Html::script('js/editCarrito.js') !!}
+				{!! Html::script('js/venderJS.js') !!} 
+				{!! Html::script('js/validaciones.js') !!}
 				{!! Html::script('js/formatearPrecio.js') !!}
 		</div> 
 	</footer> 

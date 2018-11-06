@@ -1,6 +1,6 @@
 window.onload = catDisponibles;
 
-function catDisponibles() { 
+function catDisponibles() {  
 	var tipoCategoria = $('#tipoVenta').val();
 	var route = "cargarCategorias";
 	var token = $("#token").val();
