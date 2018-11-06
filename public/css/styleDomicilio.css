@@ -1,0 +1,12 @@
+.ml-addresses-section {
+    margin: 7vh auto 0;
+}
+.ml-addresses-section {
+    margin: 4vh auto 0;
+    padding: 0 15px;
+    max-width: 782px;
+    width: 100%;
+}
+body main[role=main] {
+    font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+}
