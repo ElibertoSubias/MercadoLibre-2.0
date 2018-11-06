@@ -3,15 +3,13 @@
 @section('content')
 {!! Html::style('css/styleAgregado.css') !!}
 
-<div class="cart-congrats__box-container">
-			
-
+<div class="cart-congrats__box-container"> 
 <div class="cart-congrats__box">
 	<div class="cart-congrats cart-congrats__box-inner">
 		<div class="item cart-congrats__item clearfix cart-congrats__item--one">
 			
 				<figure class="cart-congrats__item-image">
-					<img src="https://http2.mlstatic.com/D_Q_NP_740327-MLM26410093626_112017-AE.webp" alt="" title="" data-srcset="https://http2.mlstatic.com/D_Q_NP_2X_740327-MLM26410093626_112017-AE.webp" srcset="https://http2.mlstatic.com/D_Q_NP_2X_740327-MLM26410093626_112017-AE.webp">
+					<img src="images/{{$urlImagen}}/principal.jpg" alt="" title="" >
 					
 						<span class="cart-congrats__item-icon">
 							<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ui-icon-check">
@@ -41,7 +39,7 @@
 					
 					Agregaste a tu carrito
 				</h2>
-				<p class="cart-congrats__item-title">Audífonos In- Ear Jbl T110 Manos Libres Colores </p>
+				<p class="cart-congrats__item-title">{{$titulo}}</p>
 			</div>
 		</div>
 
@@ -51,7 +49,7 @@
 					1 producto en tu carrito:
 					<span class="cart-congrats__price">
 						<span class="price-tag-symbol">$</span>
-						<span class="price-tag-fraction">299</span>
+						<span class="price-tag-fraction">{{$precio}}.</span>
 						<span class="price-tag-cents">00</span>
 						</span></p><ul class="cart-congrats__item-list">
 							
@@ -75,8 +73,8 @@
 			
 
 	<div class="cart-congrats__actions">
-		<a href="/gz/cart" class="ui-button ui-button--primary">Ver carrito</a>
-		<a href="/gz/checkout/cart/buy?items=MLM577001157-Q1-VAR18596584220&amp;destination_type=address_id&amp;destination_value=902260096&amp;unchecked=false&amp;context=item_add" data-summary="buy-action" class="ui-button ui-button--secondary">Comprar carrito</a>
+		<a href="{{route('carrito')}}" class="ui-button ui-button--primary" style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px;">Ver carrito</a>
+		<a href="#" data-summary="buy-action" class="ui-button ui-button--secondary" style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px">Comprar carrito</a>
 	</div>
 
 

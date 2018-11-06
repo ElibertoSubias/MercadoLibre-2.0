@@ -255,6 +255,9 @@ class AddCategoriaController extends Controller
             case 'SERV':
                 return view('vender.descripcionSERV')->with(['idPublicacion'=>$_SESSION["idPublicacion"],'categoria'=>$request->categoria,'tipo'=>$request->tipo,'marca'=>$request->input('car-marca')]);  
                 break;
+            case 'PROD':
+                return view('vender.descripcionPROD')->with(['idPublicacion'=>$_SESSION["idPublicacion"],'categoria'=>$request->categoria,'tipo'=>$request->tipo,'marca'=>$request->input('car-marca')]);  
+                break;
             default:
                 return back()->withInput();
                 break;

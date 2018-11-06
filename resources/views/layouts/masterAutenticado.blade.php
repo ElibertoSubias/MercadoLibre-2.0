@@ -5,6 +5,7 @@
 	{!! Html::style('css/style.css') !!} 
 	{!! Html::style('css/bootstrap.css') !!}   
 	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width"/>
 </head>
 <body style="background-color: #f5f5f5!important;">
 	<header id="cabecera_principal">
@@ -22,7 +23,7 @@
 				<button class="nav-buscar-cerrar-btn" type="button" title="Cerrar"></button>
 				<button type="submit" class="nav-search-btn" tabindex="3">
 					<i class="nav-icon-search">
-						<img src="../public/img/icon_buscar.png" alt="" style="width: 50%;height: 80%;">
+						<img src="img/icon_buscar.png" alt="" style="width: 50%;height: 80%;">
 						<span class="buscar-icono">Buscar</span>
 					</i>
 				</button>
@@ -58,7 +59,7 @@
 			</div>  
 			<div style="width: 30%;width: 30%;display: inline-block;">
 				<nav id="nav-menu-cabecera"> 
-					<label onmouseover="abrirMenu()" id="userswitch" class="nav-header-user-switch" tabindex="4"><span><span class="nav-header-avatar-user" data-js="user-menu:nav-header-avatar-user"><img src="../public/svg/user.svg" srcset="../public/svg/user.svg 2x" class="nav-header-avatar-user-img" height="20" width="20"></span><span class="nav-header-username">{{ auth()->user()->nombre }}</span><span class="nav-header-username-chevron"></span></span></label>
+					<label onmouseover="abrirMenu()" id="userswitch" class="nav-header-user-switch" tabindex="4"><span><span class="nav-header-avatar-user" data-js="user-menu:nav-header-avatar-user"><img src="svg/user.svg" srcset="svg/user.svg 2x" class="nav-header-avatar-user-img" height="20" width="20"></span><span class="nav-header-username">{{ auth()->user()->nombre }}</span><span class="nav-header-username-chevron"></span></span></label>
 					<input type="check" id="nav-header-user-switch">
 					<span id="detonador"><div id="info_user" onmouseleave="cerrarMenu()">
 						<div id="info_perfil">
@@ -77,7 +78,7 @@
 										<form data-js="user-menu:avatar-form" method="POST" action="" enctype="multipart/form-data" class="user-menu__avatar-form">
 											<label class="user-menu__avatar-label">
 											<span class="user-menu__avatar-text">Cambiar foto</span> 
-											<img data-js="user-menu:avatar-picture" src="../public/svg/user.svg" class="user-menu__avatar-picture">
+											<img data-js="user-menu:avatar-picture" src="svg/user.svg" class="user-menu__avatar-picture">
 											<input data-js="user-menu:avatar-control" name="file" type="file" class="user-menu__avatar-control" accept="image/jpeg,.jpg,image/gif,.gif,image/png,.png,.jpeg,image/webp,.webp">
 											</label>
 										</form>

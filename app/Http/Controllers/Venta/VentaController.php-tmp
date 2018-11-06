@@ -6,6 +6,8 @@ use App\Articulos;
 
 use App\Http\Controllers\Controller;
 use App\Urlimagenes;
+use App\User;
+
 use Auth;
 use Illuminate\Http\Request;
 
@@ -24,6 +26,10 @@ class VentaController extends Controller {
 
 	public function showPrecio(Request $request) {
 		return view('vender.precio')->with('objectArticulo', $request);
+	}
+
+	public function showPrecioPROD(Request $request) {
+		return view('vender.precioPROD')->with('objectArticulo', $request);
 	}
 
 	public function showConfirmar(Request $request) {
@@ -69,12 +75,14 @@ class VentaController extends Controller {
 		$Articulos->version              = $request->version;
 		$Articulos->urlPrincipal         = $urlPrincipal->url;
 		$Articulos->estadoPublicacion    = 1;
+		$Articulos->cantidad             = $request->cantidadArticulos;
 		$Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
 		$Articulos->urlPrincipal         = $urlPrincipal->url;
+		$Articulos->garantia             = $request->garantia;
+		$Articulos->metodo_envio         = $request->metodo_envio;
 		$Articulos->save();
 		return Redirect::route('estado', ['idPublicacion' => $request->idPublicacion, 'user' => $user]);
 	}
-
 	public function showEstado(Request $request) {
 		//Cambiar de idImg a idPublicacion
 
@@ -84,13 +92,15 @@ class VentaController extends Controller {
 	}
 
 	public function showPublicacion(Request $request) {
-		$user   = Auth::user();
+
 		$idUser = $request->user;
+
+		$vendedor = User::where(['_id' => $idUser])->first();
 
 		$datos = Articulos::where(['_id' => $request->id, 'idUser' => $idUser])->first();
 		if ($datos != "") {
 			$imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first();
-			return view('vender.verPublicacion')->with('datos', $datos)->with('imagen', $imagen);
+			return view('vender.verPublicacion')->with('datos', $datos)->with('imagen', $imagen)->with('vendedor', $vendedor->nombre." ".$vendedor->apellido);
 		} else {
 			return view('dashboard');
 		}
@@ -132,7 +142,7 @@ class VentaController extends Controller {
 
 			return response()->json([
 					'message'        => 'Image Upload Successfully',
-					'uploaded_image' => '<img src="../public/images/'.$request->idUser.'/'.$request->idPublicacion.'/'.$new_name.'" class="img-thumbnail" width="300" />',
+					'uploaded_image' => '<img src="images/'.$request->idUser.'/'.$request->idPublicacion.'/'.$new_name.'" class="img-thumbnail" width="300" />',
 					'class_name'     => 'alert-success',
 					'url'            => $new_name
 				]);
@@ -183,31 +193,43 @@ class VentaController extends Controller {
 	}
 
 	public function updateVEHI(Request $request) {
-		$datos = Articulos::where('_id', $request->idItem)->update([
-				'titulo'               => $request->titulo,
-				'precio'               => $request->precio,
-				'moneda'               => $request->moneda,
-				'estado'               => $request->estado,
-				'municipio'            => $request->municipio,
-				'colonia'              => $request->colonia,
-				'telefono'             => $request->telefono,
-				'modelo'               => $request->modelo,
-				'marca'                => $request->marca,
-				'anio'                 => $request->anio,
-				'urlvideo'             => $request->urlvideo,
-				'numPuertas'           => $request->numPuertas,
-				'kilometros'           => $request->kilometros,
-				'descripcion'          => $request->descripcion,
-				'horarioContacto'      => $request->horarioContacto,
-				'color'                => $request->color,
-				'tipoCombustible'      => $request->tipoCombustible,
-				'motor'                => $request->motor,
-				'direccionAuto'        => $request->direccionAuto,
-				'transmicion'          => $request->transmicion,
-				'version'              => $request->version,
-				'urlPrincipal'         => $request->urlPrincipal,
-				'arrayCaracteristicas' => $request->arrayCaracteristicas
-			]);
+		if ($request->tipoUpdate == "opcional") {
+			$datos = Articulos::where('_id', $request->idItem)->update([
+					'titulo'     => $request->titulo,
+					'precio'     => $request->precio,
+					'moneda'     => $request->moneda,
+					'kilometros' => $request->kilometros,
+					'telefono'   => $request->telefono,
+					'telefono2'  => $request->telefono2,
+				]);
+		} else {
+			$datos = Articulos::where('_id', $request->idItem)->update([
+					'titulo'               => $request->titulo,
+					'precio'               => $request->precio,
+					'moneda'               => $request->moneda,
+					'estado'               => $request->estado,
+					'municipio'            => $request->municipio,
+					'colonia'              => $request->colonia,
+					'telefono'             => $request->telefono,
+					'modelo'               => $request->modelo,
+					'marca'                => $request->marca,
+					'anio'                 => $request->anio,
+					'urlvideo'             => $request->urlvideo,
+					'numPuertas'           => $request->numPuertas,
+					'kilometros'           => $request->kilometros,
+					'descripcion'          => $request->descripcion,
+					'horarioContacto'      => $request->horarioContacto,
+					'color'                => $request->color,
+					'tipoCombustible'      => $request->tipoCombustible,
+					'motor'                => $request->motor,
+					'direccionAuto'        => $request->direccionAuto,
+					'transmicion'          => $request->transmicion,
+					'version'              => $request->version,
+					'urlPrincipal'         => $request->urlPrincipal,
+					'arrayCaracteristicas' => $request->arrayCaracteristicas
+				]);
+		}
+
 		return Redirect::route('publicaciones');
 	}
 	/**

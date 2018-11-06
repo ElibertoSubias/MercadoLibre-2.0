@@ -31,7 +31,7 @@ Route::post('aggcuentaempresarial', 'CrearCuentaController@crearcuentaEmpresaria
 
 Route::get('nuevaCategoria', 'Admin\AddCategoriaController@index')->name('nuevaCategoria');
 
-Route::post('loadimage', 'Venta\VentaController@store')->name('loadimage'); 
+
 
 Route::get('id={id}&user={user}', 'Venta\VentaController@showPublicacion')->name('verpublicacion');
 Route::post('buscar','BuscarController@buscarPublicaciones')->name('buscar');
@@ -39,6 +39,7 @@ Route::get('resultados','BuscarController@listarResultados')->name('resultados')
 
 //Middleware para solo dejar pasar a estas rutas a usuarios autenticados
 Route::group(['middleware' => 'autenticado'], function () {
+	Route::any('loadImage', 'Venta\VentaController@store')->name('loadImage'); 
     Route::any('vender', 'VenderProductoController@cargarLista')->name('vender');
     Route::get('perfil', 'EditarUsuario\PerfilController@index')->name('perfil');
     Route::post('cargarCategorias', 'Admin\AddCategoriaController@show')->name('cargarCategorias');
@@ -69,6 +70,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::post('agregardocumento', 'EditarUsuario\PerfilController@agregarDocumento')->name('agregardocumento');
 	Route::post('articulo/precio', 'Venta\VentaController@showPrecio')->name('precio');
+	Route::post('articulo/precioproducto', 'Venta\VentaController@showPrecioPROD')->name('precioPROD');
 
 	Route::post('articulo/confirmar', 'Venta\VentaController@showConfirmar')->name('confirmarventa');
 
@@ -78,7 +80,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('modificarVEHI', 'Venta\VentaController@showModificarVEHI')->name('modificarVEHI');
 	Route::any('modificarPublicacion', 'Venta\VentaController@updateVEHI')->name('modificarPublicacion');
-	Route::any('detaleImg', 'Venta\VentaController@delateImagen')->name('detaleImg');
+	Route::any('delateImg', 'Venta\VentaController@delateImagen')->name('delateImg');
 
 	Route::any('publicaciones', 'Usuario\MenuUsuarioController@showAllPublicaciones')->name('publicaciones');
 	Route::any('publicacionesp', 'Usuario\MenuUsuarioController@showAllPublicacionesPausadas')->name('publicacionesp');
@@ -90,10 +92,11 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('agregadocarrito', 'Usuario\CarritoController@agregadoCarrito')->name('agregadocarrito');
 
-	Route::any('agregadocarr', 'Venta\VentaController@agregarCarrito')->name('agregadocarr');
+	Route::any('agregaralCarrito', 'Usuario\CarritoController@agregarAlCarrito')->name('agregaralCarrito');
 
 	Route::post('eliminarcarrito', 'Usuario\CarritoController@eliminarArticulo')->name('eliminarcarrito');
 
+	Route::post('modificarCantidad', 'Usuario\CarritoController@modificarCantidad')->name('modificarCantidad');
 });
 
 

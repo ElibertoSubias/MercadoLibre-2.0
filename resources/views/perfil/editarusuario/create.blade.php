@@ -14,7 +14,7 @@ function cambiarUs(){
 	$('#alertMsjinputaliasYaExiste').css({"visibility":"hidden"}); 
   var id = $("#id").val();
   var alias = $("#alias").val();
-  var route = "/MercadoLibre-2.0/public/cambiarusuario";
+  var route = "cambiarusuario";
   var token = $("#token").val();
   var bandera="0";
     if(alias === "")

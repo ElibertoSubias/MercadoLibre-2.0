@@ -6,6 +6,11 @@
     text-decoration: none !important;
     margin-left: 30px;
 }
+.ui-form-hint {
+    color: #999;
+    font-size: 12px;
+    line-height: 12px;
+}
 option {
     font-size: 13px;
 }
@@ -189,7 +194,7 @@ z-index: 1;
     color: #999;
 }
     .syi-hub__image {
-        background-image: url(img/vender-icono.png); 
+        background-image: url(../img/vender-icono.png); 
         background-repeat: no-repeat;
         background-size: 400%;
         display: block;

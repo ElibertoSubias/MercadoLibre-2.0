@@ -12,7 +12,7 @@ function btncambiarCorreo(){
   var id = $("#id").val();
   var email = $("#email").val();
   var email2 = $("#email2").val();
-  var route = "/MercadoLibre-2.0/public/cambiarcorreo";
+  var route = "cambiarcorreo";
   var token = $("#token").val();
   var bandera="0";
     if(email === "")
@@ -40,7 +40,7 @@ function btncambiarCorreo(){
       $('#alertMsjinputCorreoNoCoicende').css({"visibility":"hidden"}); 
     }
 
-
+ 
     if (bandera==="0") { 
        $.ajax({
          url: route,

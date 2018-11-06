@@ -1,3 +1,64 @@
+#ve_mas form { 
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -57%;
+} 
+.syi-title__field {
+    width: 430px;
+} 
+.syi-title__field {
+    width: 94%;
+} 
+.syi-title__field {
+    display: inline-block;
+    width: 460px;
+}
+.u--arrange-fill {
+    overflow: hidden;
+    _overflow: visible;
+    zoom: 1;
+    border: 1px solid #cdcdcd;
+    border-radius: 3px;
+    padding: 6px;
+    margin: 5px 0;
+}  
+.syi-title-wrapper {
+    margin: 25px auto 0 !important;
+}
+.syi-title-wrapper {
+    cursor: default;
+    text-align: left;
+    color: #333;
+    margin: 25px;
+} 
+.syi-title-text__title {
+    font-size: 15px;
+}
+.syi-title-wrapper {
+    max-width: 841px;
+    margin: 4px auto 20px;
+    padding: 20px;
+    position: relative;
+    box-sizing: border-box;
+}
+.syi-title-wrapper {
+    margin: 0 10px;
+}
+.ui-box, .ui-box-lite {
+    border: 1px solid #dedede;
+}
+[class*=ui-box] {
+    border-radius: 5px;
+    margin: 0 0 10px;
+    padding: 10px;
+}
+.syi-title-wrapper {
+    cursor: default;
+    text-align: left;
+    color: #333;
+    margin: 25px;
+}
 .nav-footer-navigation>a{
         font-size: 12px;
     color: #333;
@@ -27,7 +88,7 @@
 #ve_mas:hover {
     border: 2px solid !important;
 }
-	li {
+.syi-ui-wizard__breadcrumb li {
         border-bottom: 1px solid;
         border-right: 1px solid;
         border-left-color: #ddd;
@@ -43,7 +104,7 @@
     	top: -2px; 
 
 	}
-	li:before {
+.syi-ui-wizard__breadcrumb li:before {
 	      border-width: 23px 11px;
     border-top-width: 23px;
     border-right-width: 11px;
@@ -133,7 +194,7 @@
         width: 180px;
     } 
     .syi-hub__image {
-        background-image: url(/MercadoLibre-2.0/public/img/vender-icono.png); 
+        background-image: url(../img/vender-icono.png); 
         background-repeat: no-repeat;
         background-size: 400%;
         display: block;

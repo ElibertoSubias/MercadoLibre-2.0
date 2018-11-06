@@ -1,7 +1,7 @@
 $(buscar_publicaciones());
 
 function buscar_publicaciones(consulta){
-	var route = "/MercadoLibre-2.0/public/buscar";
+	var route = "buscar";
 	var token = $("#token").val();   
       $.ajax({
         url: route,

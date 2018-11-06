@@ -8,7 +8,13 @@ function mostrarPrimerMenu(){
 		$('#primerMenuUL').removeClass("bandera");  
 	}
 }    
- 
+
+//Aparecer form de Productos
+$('#ve_mas').click(function(){
+	$('#frmProducto').show();
+});
+
+
 function mostrarSegundoMenu(id){ 
 	if (!$('#segundoMenu'+id).hasClass('bandera')) { 
 		$('#segundoMenu'+id).removeClass("ch-hide"); 
@@ -34,7 +40,7 @@ function mostrarSegundoMenu(id){
     }  
 })(jQuery); 
 var urlFiltros = "";
-function seleccionarOpcion(id){   
+function seleccionarOpcion(id){  
 	if (id=="masRe") { 
 		$('.applied-filters').html("<dl><a href='resultados?busqueda="+$.get("busqueda")+"'><dd><h2 class='applied-fliter'><div> Más relevantes </div></h2><div class='close__icon'></div></dd></a></dl>");
 		$('.ui-list__item:nth-child(2)').addClass('ui-list__item--selected');
@@ -103,7 +109,7 @@ function filtrar(){
 	var precio = $('#precio').val();
 	var categoria = $('#categoria_selected').val();
 	var busqueda = $.get('busqueda');
-	var route = "/MercadoLibre-2.0/public/resultados";
+	var route = "resultados";
 	var token = $("#token").val(); 
 	  $.ajax({
 	    url: route,
@@ -129,7 +135,7 @@ function filtrar(){
                                             <ul class="ch-carousel-list" role="list"> \
                                                 <li class="ch-carousel-item" role="listitem" aria-hidden="false" aria-setsize="13" aria-posinset="1" aria-label="page1" style="width: 284px;  margin-right: 0px;"> \
                                                     <a href="verpublicacion?id='+item._id+'&user='+item.idUser+'" class="item-link item__js-link"> \
-                                                        <img width="284" height="284" alt="Bmw Z4 Convertible Mt 2003 Autos Puebla" src="/MercadoLibre-2.0/public/images/'+item.idUser+'/'+item.idPublicacion+'/'+item.urlPrincipal+'" class="lazy-load" srcset="/MercadoLibre-2.0/public/images/'+item.idUser+'/'+item.idPublicacion+'/'+item.urlPrincipal+' 2x"> \
+                                                        <img width="284" height="284" alt="Bmw Z4 Convertible Mt 2003 Autos Puebla" src="images/'+item.idUser+'/'+item.idPublicacion+'/'+item.urlPrincipal+'" class="lazy-load" srcset="images/'+item.idUser+'/'+item.idPublicacion+'/'+item.urlPrincipal+' 2x"> \
                                                     </a> \
                                                 </li> \
                                             </ul>\
@@ -166,3 +172,20 @@ $('#id_category a').click(function(){
 	$('#categoria_selected').val(this.id);
 	filtrar();
 });
+
+function abrirMenuMovil(){
+	if ($('#lblMenuFlotante').hasClass("active")==false) { 
+		document.getElementById('nav-header-menu-mobile').style.display="block";
+		$('#lblMenuFlotante').addClass("active");
+		$('.hamburger-top-bread').css("transform","translate(0,8px) rotate(45deg)");
+		$('.hamburger-patty').css("display","none");
+		$('.hamburger-bottom-bread').css("transform","translate(0,-6px) rotate(-45deg)");
+	}
+	else{ 
+		$('#nav-header-menu-mobile').hide();
+		$('#lblMenuFlotante').removeClass("active");
+		$('.hamburger-top-bread').css("transform","initial");
+		$('.hamburger-patty').css("display","block");
+		$('.hamburger-bottom-bread').css("transform","initial");
+	} 
+} 

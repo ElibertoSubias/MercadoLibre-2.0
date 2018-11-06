@@ -26,7 +26,7 @@
                     </svg>
                 </li>
                 <li>
-                    <a class="breadcrumb " href="https://vehiculos.mercadolibre.com.mx/camiones/" title="">
+                    <a class="breadcrumb " href="#" title="">
                     Camiones
                     </a>
                     <svg width="22" height="22" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" class="ui-icon ui-icon--chevron-right">
@@ -154,7 +154,7 @@
                         <span class="ch-icon ch-icon-search"></span>
 
 
-                    <img src="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="70" height="70">
+                    <img src="images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="70" height="70">
 
                 </label>
 
@@ -163,8 +163,8 @@
 
             <figure class="gallery-image-container thumbgallery_default-0" data-side="right" data-align="top">
 
-                <a href="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" class="gallery-trigger gallery-item--landscape ch-zoom-trigger ch-shownby-pointerenter" data-imgindex="0" data-size="1118x698" style="height: 312px; width: 500px;" data-uid="1" aria-owns="ch-zoom-1" aria-haspopup="true">
-                    <img src="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="500" height="312" data-srcset="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}} 2x" alt="alfa romeo" data-imgindex="0" srcset="/MercadoLibre-2.0/public/images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}">
+                <a href="images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" class="gallery-trigger gallery-item--landscape ch-zoom-trigger ch-shownby-pointerenter" data-imgindex="0" data-size="1118x698" style="height: 312px; width: 500px;" data-uid="1" aria-owns="ch-zoom-1" aria-haspopup="true">
+                    <img src="images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}" width="500" height="312" data-srcset="images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}} 2x" alt="alfa romeo" data-imgindex="0" srcset="images/{{ $datos->idUser }}/{{$datos->idPublicacion}}/{{$imagen->url}}">
                 <div class="ch-zoom-loading ch-hide" style="left: 201px; top: 107px;"><div class="ch-loading-large"></div><p>Cargando zoom...</p></div><div class="ch-zoom-seeker ch-hide" style="width: 186px; height: 169px; left: 0px; top: 45.4063px;"></div></a>
             </figure>
 
@@ -173,7 +173,7 @@
 
 
             <label for="thumbgallery_default-1" class="gallery__thumbnail">
-                <img class="icon-video__img" src="{{$datos->urlvideo}}" data-imgindex="2" data-video-id="DCJCazILkCE" width="70" height="70">
+                <img class="icon-video__img" src="#" data-imgindex="2" data-video-id="DCJCazILkCE" width="70" height="70">
                 <div class="icon-video ui-icon--content ui-icon__video">
                     <svg viewBox="0 0 60 60" id="ui-icon--video" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><g fill="none" fill-rule="evenodd"><rect fill-opacity=".7" fill="#FFF" width="60" height="60" rx="30"></rect><path fill="#3483FA" d="M23 20v20.395l17.709-10.191z"></path></g></svg>
                 </div>
@@ -182,9 +182,6 @@
 
             <input type="radio" id="thumbgallery_default-1" class="thumbgallery_default-1" name="product-gallery-thumbnail_default">
 
-        <figure class="gallery-image-container ">
-            <iframe id="video-player" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media" title="YouTube video player" width="500" height="281" src="https://www.youtube.com/embed/DCJCazILkCE?rel=0&amp;showinfo=0&amp;iv_load_policy=3&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fvehiculo.mercadolibre.com.mx&amp;widgetid=1"></iframe>
-        </figure>
 
 </div>
 
@@ -209,8 +206,8 @@
             Don't modify these 3 pswp__item elements, data is added later on. -->
         <div class="pswp__container" style="transform: translate3d(-1511px, 0px, 0px);">
             <div class="pswp__item" style="display: block; transform: translate3d(3022px, 0px, 0px);"></div>
-            <div class="pswp__item" style="transform: translate3d(0px, 0px, 0px);"><div class="pswp__zoom-wrap" style="transform: translate3d(258px, 44px, 0px) scale(0.744986);"><img class="pswp__img" src="https://http2.mlstatic.com/alfa-romeo-D_NQ_NP_918874-MLM28336465626_102018-F.webp" style="backface-visibility: hidden; opacity: 1; display: block;"></div></div>
-            <div class="pswp__item" style="display: block; transform: translate3d(1511px, 0px, 0px);"><div class="pswp__zoom-wrap" style="transform: translate3d(0px, 0px, 0px) scale(1);"><iframe id="yt-player" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media" title="YouTube video player" width="960" height="540" src="https://www.youtube.com/embed/DCJCazILkCE?rel=0&amp;showinfo=0&amp;iv_load_policy=3&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fvehiculo.mercadolibre.com.mx&amp;widgetid=2"></iframe></div></div>
+            <div class="pswp__item" style="transform: translate3d(0px, 0px, 0px);"><div class="pswp__zoom-wrap" style="transform: translate3d(258px, 44px, 0px) scale(0.744986);"><img class="pswp__img" src="#" style="backface-visibility: hidden; opacity: 1; display: block;"></div></div>
+            <div class="pswp__item" style="display: block; transform: translate3d(1511px, 0px, 0px);"><div class="pswp__zoom-wrap" style="transform: translate3d(0px, 0px, 0px) scale(1);"></div></div>
         </div>
 
         <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
@@ -288,32 +285,36 @@
     <div class="specs-wrapper">
         <section class="specs-container specs-layout-alternate">
             <ul class="specs-list">
-
+                    @if($datos->motor!=null)
                     <li class="specs-item">
                     <strong>Marca del motor</strong>
                     <span>2</span>
                     </li>
-
+                    @endif
+                    @if($datos->kilometros!=null)
                     <li class="specs-item">
                     <strong>Kilómetros</strong>
                     <span>{{$datos->kilometros}} km</span>
                     </li>
-
+                    @endif
+                    @if($datos->marca!=null)
                     <li class="specs-item">
                     <strong>Marca</strong>
                     <span>{{$datos->marca}}</span>
                     </li>
-
+                    @endif
+                    @if($datos->modelo!=null)
                     <li class="specs-item">
                     <strong>Modelo</strong>
                     <span>{{$datos->modelo}}</span>
                     </li>
-
+                    @endif
+                    @if($datos->anio!=null)
                     <li class="specs-item">
                     <strong>Año</strong>
                     <span>{{$datos->anio}}</span>
                     </li>
-
+                    @endif
             </ul>
         </section>
     </div>
@@ -370,18 +371,7 @@
 
     </div>
 
-
-
-
 </section>
-
-
-
-
-
-
-
-
 
 
 
@@ -407,26 +397,7 @@
 
 </div>
 
-
-
         </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                     </div>
@@ -441,9 +412,10 @@
 
             <dt>Año</dt>
             <dd>{{$datos->anio}}</dd>
-
+            @if($datos->kilometros!=null)
             <dt>Kilómetros</dt>
             <dd>{{$datos->kilometros}} km</dd>
+            @endif
 
     </dl>
 </article>
@@ -483,7 +455,7 @@
 
     <p class="card-subtitle name">Nombre</p>
     <p class="card-description card-description--bold">
-        <span>Nombre</span>
+        <span>{{$vendedor}}</span>
     </p>
 
     <div class="card-section">
@@ -505,9 +477,32 @@
     <div class="reputation-info block">
         <p class="card-subtitle reputation-title">Este vendedor <strong>aún no tiene suficientes ventas</strong> para calcular su reputación.</p>
             <div class="feedback-title">
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 
                     Paga el apartado con Mercado Pago. Si cambias de opinión, te devolvemos el 100% de tu dinero.
-
+                    <br>
+                </br>
+                    <div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a   href="#"  style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px">Comprar ahora </a>
+                    </div>
+                    <div class="col-md-6">
+                        <form action="agregaralCarrito" method="post" accept-charset="utf-8">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+                            <input type="hidden" name="titulo" id="titulo" value="{{$datos->titulo}}">
+                            <input type="hidden" name="precio" id="precio" value="{{$datos->precio}}">
+                            <input type="hidden" name="color" id="color" value="{{$datos->color}}">
+                            <input type="hidden" name="idArticulo" id="idArticulo" value="{{$datos->_id}}">
+                            <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{$datos->idPublicacion}}">
+                            <input type="hidden" name="idUser" id="idUser" value="{{$datos->idUser}}">
+                            <input type="hidden" name="cantidad" id="cantidad" value="{{$datos->cantidad}}">
+                            <input type="hidden" name="urlPrincipal" id="urlPrincipal" value="{{$datos->urlPrincipal}}">
+                            <input type="submit"  class="ui-button ui-button--secondary " style="font-size: 15px!important;min-width: 0;    margin-top: -15%;padding: 12px 16px;border: 1px solid #3483fa;    color: #3483fa;background: none;border-radius: 4px;" value="Agregar al carrito">
+                        </form>
+                    </div>
+                </div>
+                </div>
             </div>
     </div>
     <p class="card-subtitle">Ubicación del vehículo</p>
@@ -526,10 +521,6 @@
                             <section class="vip-section-related-services">
     <div id="related-services-container"></div>
 </section>
-<script type="text/javascript">
-    (function(b,d){var a=b.createElement("iframe");(a.frameElement||a).style.cssText="width: 0; height: 0; border: 0; position: absolute";a.src="javascript:false";a.id="relatedServicesIframe";var c=b.getElementsByTagName("script")[0];c.parentNode.insertBefore(a,c);a=a.contentWindow.document;a.open().write("<body onload=\"var js = document.createElement('script');js.src = '"+d+"';document.body.appendChild(js);\">");a.close();})(document,"https://advertising.mercadolibre.com.mx/cotizador/MLM646934777?divId=related-services-container&amp;newLook=true&amp;dfp=false&amp;redesign=true&amp;platform=desktop");
-
-</script>
                             <section class="ui-view-more vip-section-security">
     <h3 class="card-title">
         Consejos de seguridad
@@ -555,18 +546,13 @@
                 <p class="vip-section-display__text">Publicidad</p>
             </div>
         </section>
-        <script type="application/javascript">
-    var gptadslots = [];
-    var googletag = googletag || {};
-    googletag.cmd = googletag.cmd || [];
-</script>
                         </div>
                         <div class="layout-anchor"></div>
                     </div>
                 </div>
 <section class="item-info">
     <p class="item-info__id">Publicación <span class="item-info__id-number">#646934777</span></p>
-    <p class="item-info__denounce"><a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM646934777&amp;element_type=ITM" id="denounce" rel="nofollow">Denunciar</a></p>
+    <p class="item-info__denounce"><a href="#" id="denounce" rel="nofollow">Denunciar</a></p>
 </section>
             </div>
 

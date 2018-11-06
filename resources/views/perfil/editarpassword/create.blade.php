@@ -12,7 +12,7 @@ function cambiarPass(){
   var id = $("#id").val();
   var password = $("#password").val();
    var password2 = $("#password2").val();
-  var route = "/MercadoLibre-2.0/public/cambiarclave";
+  var route = "cambiarclave";
   var token = $("#token").val();
   var bandera="0";
     if(password === "")

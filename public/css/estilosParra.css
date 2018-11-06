@@ -69,7 +69,7 @@
     font-size: 13px !important;
 }
 .ui-dropdown__indicator {
-    background-image: url(/MercadoLibre-2.0/public/svg/desplegar.svg);
+    background-image: url(svg/desplegar.svg);
 }
 /*Carbon*/
 .filters__group dd span.filter-name {

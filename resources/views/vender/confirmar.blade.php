@@ -51,6 +51,11 @@
 <input type="hidden" name="transmicion" id="transmicion" value="{{$objectArticulo->transmicion}}">
 <input type="hidden" name="version" id="version" value="{{$objectArticulo->version}}"> 
 <input type="hidden" name="arrayCaracteristicas" id="arrayCaracteristicas" value="{{$objectArticulo->arrayCaracteristicas}}">
+<input type="hidden" name="cantidadArticulos" id="cantidadArticulos" value="{{$objectArticulo->cantidad}}"> 
+<input type="hidden" name="metodo_evio" id="metodo_evio" value="{{$objectArticulo->metodo_envio}}"> 
+<input type="hidden" name="garantia" id="garantia" value="{{$objectArticulo->garantia}}"> 
+
+
                         <tbody>   
                             <tr class="ch-form-row true true  listingtypes-exposition exposition-gold_premium" data-listid="gold_premium">
                                 <td class="listingtypes-exposition-data gold_premium">

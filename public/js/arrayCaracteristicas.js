@@ -7,4 +7,4 @@ function aggCaracteristica(id){
 }
 $('input[type="checkbox"]').on('change', function(e){
 	aggCaracteristica(this.id);
-});
+}); 

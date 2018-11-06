@@ -1,8 +1,8 @@
 window.onload = catDisponibles;
 
-function catDisponibles() { 
+function catDisponibles() {  
 	var tipoCategoria = $('#tipoVenta').val();
-	var route = "/MercadoLibre-2.0/public/cargarCategorias";
+	var route = "cargarCategorias";
 	var token = $("#token").val();
 	if (tipoCategoria != "") {
 	  $.ajax({
@@ -22,4 +22,4 @@ function catDisponibles() {
 	      }
 	    });
 	}
-} 
+}  

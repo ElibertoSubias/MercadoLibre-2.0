@@ -9,8 +9,10 @@ use Illuminate\Http\Request;
 use Validator;
 use Auth;
 use Redirect;
+use App\User;
 use App\Articulos;
 use App\Carrito;
+use App\Usuarios;
 use App\Urlimagenes;
 
 class VentaController extends Controller
@@ -28,6 +30,11 @@ class VentaController extends Controller
     public function showPrecio(Request $request)
     {
         return view('vender.precio')->with('objectArticulo',$request);
+    }
+
+    public function showPrecioPROD(Request $request)
+    {
+        return view('vender.precioPROD')->with('objectArticulo',$request);
     }
     
     public function showConfirmar(Request $request)
@@ -75,26 +82,14 @@ class VentaController extends Controller
         $Articulos->version = $request->version;
         $Articulos->urlPrincipal = $urlPrincipal->url;
         $Articulos->estadoPublicacion = 1;
-        $Articulos->cantidad=0;
+        $Articulos->cantidad=$request->cantidadArticulos;
         $Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
-        $Articulos->urlPrincipal = $urlPrincipal->url;
+        $Articulos->urlPrincipal = $urlPrincipal->url; 
+        $Articulos->garantia = $request->garantia;
+        $Articulos->metodo_envio = $request->metodo_envio;
         $Articulos->save();
         return Redirect::route('estado',['idPublicacion' => $request->idPublicacion,'user'=>$user]);
-    }
-
-     public function agregarCarrito(Request $request)
-    {   
-
-
-             $Carrito = new carrito;
-             $Carrito->idUser = auth()->user()->id;
-             $Carrito->idPublicacion = $request->post('idPublicacion');
-             $Carrito->cantidad = $request->post('cantidad'); 
-             $Carrito->precio = $request->post('precio');        
-             $Carrito->save(); 
-            
-    }
-
+    } 
     public function showEstado(Request $request)
     {
         //Cambiar de idImg a idPublicacion
@@ -105,14 +100,16 @@ class VentaController extends Controller
     }
 
     public function showPublicacion(Request $request)
-    {
-        $user = Auth::user();
+    { 
+
         $idUser = $request->user; 
+
+        $vendedor = User::where(['_id'=>$idUser])->first();
 
         $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first(); 
         if ($datos!="") {
             $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first(); 
-            return view('vender.verPublicacion')->with('datos',$datos)->with('imagen',$imagen);
+            return view('vender.verPublicacion')->with('datos',$datos)->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido);
         }else{
             return view('dashboard');
         }
@@ -157,7 +154,7 @@ class VentaController extends Controller
 
           return response()->json([
            'message'   => 'Image Upload Successfully',
-           'uploaded_image' => '<img src="../public/images/'.$request->idUser.'/'.$request->idPublicacion.'/'.$new_name.'" class="img-thumbnail" width="300" />',
+           'uploaded_image' => '<img src="images/'.$request->idUser.'/'.$request->idPublicacion.'/'.$new_name.'" class="img-thumbnail" width="300" />',
            'class_name'  => 'alert-success',
            'url' => $new_name
           ]);
@@ -182,9 +179,9 @@ class VentaController extends Controller
     {
         $user = Auth::user(); 
 
-        $datos = Articulos::where(['_id' => $request->itemId,'idUser'=>$user->_id])->first(); 
+        $datos = Articulos::where(['_id' => $request->itemId,'idUser'=>$user->_id])->first();  
         if ($datos!="") {
-            $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->get(); 
+            $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->get();  
             return view('vender.modificarVEHI')->with('datos',$datos)->with('imagen',$imagen); 
 
         }else{
@@ -216,7 +213,17 @@ class VentaController extends Controller
 
     public function updateVEHI(Request $request)
     {
-        $datos = Articulos::where('_id', $request->idItem)->update([
+        if ($request->tipoUpdate=="opcional") {
+            $datos = Articulos::where('_id', $request->idItem)->update([
+                                                                    'titulo' => $request->titulo,
+                                                                    'precio' => $request->precio,
+                                                                    'moneda' => $request->moneda,   
+                                                                    'kilometros' => $request->kilometros,
+                                                                    'telefono' => $request->telefono,
+                                                                    'telefono2' => $request->telefono2, 
+                                                                 ]);
+        }else{
+            $datos = Articulos::where('_id', $request->idItem)->update([
                                                                     'titulo' => $request->titulo,
                                                                     'precio' => $request->precio,
                                                                     'moneda' => $request->moneda,
@@ -241,6 +248,8 @@ class VentaController extends Controller
                                                                     'urlPrincipal' => $request->urlPrincipal,
                                                                     'arrayCaracteristicas' => $request->arrayCaracteristicas
                                                                  ]);
+        }
+        
         return Redirect::route('publicaciones');
     }
     /**
