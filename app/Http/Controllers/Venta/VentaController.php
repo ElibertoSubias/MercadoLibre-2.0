@@ -9,8 +9,10 @@ use Illuminate\Http\Request;
 use Validator;
 use Auth;
 use Redirect;
+use App\User;
 use App\Articulos;
 use App\Carrito;
+use App\Usuarios;
 use App\Urlimagenes;
 
 class VentaController extends Controller
@@ -80,9 +82,11 @@ class VentaController extends Controller
         $Articulos->version = $request->version;
         $Articulos->urlPrincipal = $urlPrincipal->url;
         $Articulos->estadoPublicacion = 1;
-        $Articulos->cantidad=0;
+        $Articulos->cantidad=$request->cantidadArticulos;
         $Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
-        $Articulos->urlPrincipal = $urlPrincipal->url;
+        $Articulos->urlPrincipal = $urlPrincipal->url; 
+        $Articulos->garantia = $request->garantia;
+        $Articulos->metodo_envio = $request->metodo_envio;
         $Articulos->save();
         return Redirect::route('estado',['idPublicacion' => $request->idPublicacion,'user'=>$user]);
     } 
@@ -96,14 +100,16 @@ class VentaController extends Controller
     }
 
     public function showPublicacion(Request $request)
-    {
-        $user = Auth::user();
+    { 
+
         $idUser = $request->user; 
+
+        $vendedor = User::where(['_id'=>$idUser])->first();
 
         $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first(); 
         if ($datos!="") {
             $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first(); 
-            return view('vender.verPublicacion')->with('datos',$datos)->with('imagen',$imagen);
+            return view('vender.verPublicacion')->with('datos',$datos)->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido);
         }else{
             return view('dashboard');
         }

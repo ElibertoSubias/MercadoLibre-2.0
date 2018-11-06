@@ -285,32 +285,36 @@
     <div class="specs-wrapper">
         <section class="specs-container specs-layout-alternate">
             <ul class="specs-list">
-
+                    @if($datos->motor!=null)
                     <li class="specs-item">
                     <strong>Marca del motor</strong>
                     <span>2</span>
                     </li>
-
+                    @endif
+                    @if($datos->kilometros!=null)
                     <li class="specs-item">
                     <strong>Kilómetros</strong>
                     <span>{{$datos->kilometros}} km</span>
                     </li>
-
+                    @endif
+                    @if($datos->marca!=null)
                     <li class="specs-item">
                     <strong>Marca</strong>
                     <span>{{$datos->marca}}</span>
                     </li>
-
+                    @endif
+                    @if($datos->modelo!=null)
                     <li class="specs-item">
                     <strong>Modelo</strong>
                     <span>{{$datos->modelo}}</span>
                     </li>
-
+                    @endif
+                    @if($datos->anio!=null)
                     <li class="specs-item">
                     <strong>Año</strong>
                     <span>{{$datos->anio}}</span>
                     </li>
-
+                    @endif
             </ul>
         </section>
     </div>
@@ -408,9 +412,10 @@
 
             <dt>Año</dt>
             <dd>{{$datos->anio}}</dd>
-
+            @if($datos->kilometros!=null)
             <dt>Kilómetros</dt>
             <dd>{{$datos->kilometros}} km</dd>
+            @endif
 
     </dl>
 </article>
@@ -450,7 +455,7 @@
 
     <p class="card-subtitle name">Nombre</p>
     <p class="card-description card-description--bold">
-        <span>Nombre</span>
+        <span>{{$vendedor}}</span>
     </p>
 
     <div class="card-section">

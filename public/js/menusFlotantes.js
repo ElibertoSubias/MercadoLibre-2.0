@@ -8,7 +8,13 @@ function mostrarPrimerMenu(){
 		$('#primerMenuUL').removeClass("bandera");  
 	}
 }    
- 
+
+//Aparecer form de Productos
+$('#ve_mas').click(function(){
+	$('#frmProducto').show();
+});
+
+
 function mostrarSegundoMenu(id){ 
 	if (!$('#segundoMenu'+id).hasClass('bandera')) { 
 		$('#segundoMenu'+id).removeClass("ch-hide"); 
