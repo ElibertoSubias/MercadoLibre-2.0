@@ -2,7 +2,7 @@
 
 @section('content')
 {!! Html::style('css/listStyle.css') !!}
-<main id="main_venta" class="col-md-12" style="background: #f5f5f5 !important;font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;    font-size: 16px;    font-weight: 300;    line-height: 1.35;
+<main id="main_venta" class="col-md-12" style="float: none;background: #f5f5f5 !important;font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;    font-size: 16px;    font-weight: 300;    line-height: 1.35;
     -webkit-text-size-adjust: 100%;
 -webkit-tap-highlight-color: rgba(0,0,0,.1);
 height: 100%;

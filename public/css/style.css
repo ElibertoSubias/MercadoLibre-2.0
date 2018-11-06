@@ -31,6 +31,13 @@ and (max-device-width : 414px) {
     #cont_main_venta {
         display: none !important;
     }
+    #nombre_user {
+        position: fixed;
+        margin-left: -150px;
+    }
+    .cont_info_user{
+        padding: 24px !important;
+    }
     #main_venta {
         padding: 50% 0%;
     }
@@ -518,13 +525,17 @@ html,body {
     margin: 0px auto;
 }
 #pie_pagina {
+    border-top: .5px solid #ddd;
+    height: 80px;
     position: unset;
     bottom: 0;
     width: 100%;
     margin: 0px;
     background: #fff; 
 } 
-
+#pie_pagina a {
+    margin-left: 0px;
+}
 /*.nav-header-registro {
     width: 100%;
     height: 56px;
@@ -735,10 +746,9 @@ ul {
     text-decoration: none !important;
     margin-left: 30px; 
 }
-.politicas-pie small {
+.politicas-pie small { 
     margin-top: 10px;
-    float: left;  
-    margin-left: 30px;
+    float: left;   
     color: #999;
     vertical-align: initial;
     width: auto;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Regístrate en Mercado Libre</title>
+	<title>Mercado Libre 2.0</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width"/>
 	{!! Html::style('css/style.css') !!}
@@ -18,9 +18,9 @@
 				</a>
 			</div>
 			@if(isset(auth()->user()->nombre))
-				<div class="col-2" style="padding: 15px;width: 20%;">
+				<div class="col-2 cont_info_user" style="padding: 15px;width: 20%;">
 					<div class="col-md-8" style="padding: 0px;    text-align: right;">
-						<label for="nav-header-user-switch" style="font-weight:normal !important;text-transform: uppercase;font-size: 11px;">
+						<label id="nombre_user" for="nav-header-user-switch" style="font-weight:normal !important;text-transform: uppercase;font-size: 11px;">
 							{{auth()->user()->alias}}
 
 						</label>
@@ -45,7 +45,7 @@
 	<footer id="pie_pagina">
 		<div class="politicas-pie" >
 			<div class="col-md-12">
-				<a href="" title="">Trabaja con nosotros</a>
+			<a style="margin-left: 0px;" href="" title="">Trabaja con nosotros</a>
 			<a href="" title="">Términos y condiciones</a>
 			<a href="" title="">Politicas de privacidad</a>
 			<a href="" title="">Ayuda</a>

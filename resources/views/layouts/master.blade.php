@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title> 
+	<title>Mercado Libre 2.0</title> 
+	<link rel="shortcut icon" href="img/favicon.ed1a7e19.ico">
 	{!! Html::style('css/style.css') !!} 
 	{!! Html::style('css/bootstrap.css') !!}   
 	<meta charset="UTF-8"> 
@@ -117,7 +118,7 @@
 						</ul>
 						<ul>
 							<li>
-								<a href="#"><i class="nav-icon-vender-mobile"></i><p>Vender</p>
+								<a href="{{route('vender')}}"><i class="nav-icon-vender-mobile"></i><p>Vender</p>
 								</a>
 							</li>
 							<li>
@@ -221,7 +222,7 @@
 	<footer id="pie_pagina"> 
 		<div class="politicas-pie" >
 			<div class="col-md-12">
-				<a href="" title="">Trabaja con nosotros</a>
+			<a style="margin-left: 0px;" href="" title="">Trabaja con nosotros</a>
 			<a href="" title="">Términos y condiciones</a>
 			<a href="" title="">Politicas de privacidad</a>
 			<a href="" title="">Ayuda</a> 
