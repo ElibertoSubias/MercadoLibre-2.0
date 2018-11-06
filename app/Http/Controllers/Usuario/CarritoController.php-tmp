@@ -110,7 +110,7 @@ class CarritoController extends Controller {
 		//Codigo para incrementar o disminuir la cantidad en la colecccion de carrito
 		if ($request->caracter == "+") {
 			//Codigo de sumar 1
-			if ($aux[0]->cantidad > 1) {
+			if ($aux[0]->cantidad > 0) {
 				//Incrementar
 				//1. HAcer una update al registro con el $request->idRegistro
 				$total   = $request->cantidadArticulos+1;
@@ -118,12 +118,27 @@ class CarritoController extends Controller {
 				//Actualizar $total en el campo cantidad
 				$datos = Carrito::where('_id', $request->idRegistro)->update(['cantidad' => $total, 'precio' => $nprecio]);
 				return response()->json([
-						"cantidadArticulos" => $total,
-						'nuevoprecio'       => $nprecio
+						"cantidadArticulos"            => $total,
+						"cantidadArticulosDisponibles" => $aux[0]->cantidad,
+						'nuevoprecio'                  => $nprecio
 					]);
 			}
 		} else {
 			//Codigo de decrementar
+			//Codigo de sumar 1
+			if ($request->cantidadArticulos > 1) {
+				//Incrementar
+				//1. HAcer una update al registro con el $request->idRegistro
+				$total   = $request->cantidadArticulos-1;
+				$nprecio = ($total*$aux[0]->precio);
+				//Actualizar $total en el campo cantidad
+				$datos = Carrito::where('_id', $request->idRegistro)->update(['cantidad' => $total, 'precio' => $nprecio]);
+				return response()->json([
+						"cantidadArticulos"            => $total,
+						"cantidadArticulosDisponibles" => $aux[0]->cantidad,
+						'nuevoprecio'                  => $nprecio
+					]);
+			}
 		}
 		return "Error ningun caracter...";
 	}

@@ -74,7 +74,7 @@ for ($i = 0; $i < count($articulos); $i++) {
 	                            <div data-quantity="container" class="ui-quantity-selector u-float-left">
 	                                <div class="ui-quantity-selector__container">
 	                                    <form class="u-float-left formularioCantidad" action="#" method="POST">
-	                                        <input data-quantity="pop" type="submit" value="-" class="u-button-reset ui-quantity-selector__button" name="pop" id="pop" disabled="">
+	                                        <input data-quantity="pop" type="submit" value="-" class="u-button-reset ui-quantity-selector__button" name="pop" id="{{$articulos[$i]->_id}}" <?php if ($articulo[$i]->cantidad > 1) {} else {echo "disabled=''";}?>>
 	                                    </form>
 
 	                                    <input autocomplete="off" data-quantity="input" id="idCantidad_{{$articulos[$i]->_id}}" type="tel" value="{{$articulos[$i]->cantidad}}" class="u-button-reset ui-quantity-selector__input" name="quantity" disabled="" style="    width: 50px;">
@@ -85,11 +85,10 @@ for ($i = 0; $i < count($articulos); $i++) {
 	                                    <div class="cart-inline-loading__quantity-selector" data-region="quantity-loading"></div>
 	                                </div>
 	                                <div data-quantity="error" class="ui-quantity-selector__stock">
-
-	                                @if($articulos[$i]->cantidad==1)
+	                                @if($articulo[$i]->cantidad==1)
 	                                    Último disponible
 	                                @else
-	                                    {{$articulo[$i]->cantidad}} dispobibles
+	                                    <span id="cant_disponibles_{{$articulos[$i]->_id}}">{{$articulo[$i]->cantidad-$articulos[$i]->cantidad}}</span> dispobibles
 	                                @endif
 	                                </div>
 	                            </div>
@@ -101,7 +100,7 @@ for ($i = 0; $i < count($articulos); $i++) {
 
 
 	                                        <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-	                                        <span class="price-tag-fraction"> <label class="precioUnitario">{{$articulos[$i]->precio}}</label></span>
+	                                        <span class="price-tag-fraction"> <label class="precioUnitario_{{$articulos[$i]->_id}} precioUnitario">{{$articulos[$i]->precio}}</label></span>
 
 	                                    </span>
 	                            <input id="idPublicacion_{{$articulos[$i]->_id}}" hidden="" value="{{$articulo[$i]->_id}}">

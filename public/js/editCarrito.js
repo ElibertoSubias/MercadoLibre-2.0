@@ -72,16 +72,25 @@ function modificarCantidad(caracter,idRegistro, idPublicacion, cantidadArticulos
 	    }).done(function(data) {    
 	    	//Codigo en Javascript o eb jQuert pora actualizar el campo de cantidad
 	    	$('#idCantidad_'+idRegistro).val(data.cantidadArticulos);
-        location.reload();
+        if (caracter==="-") {
+          $('#cant_disponibles_'+idRegistro).html(parseInt(data.cantidadArticulosDisponibles)-parseInt(data.cantidadArticulos)); 
+        }else{
+          $('#cant_disponibles_'+idRegistro).html(parseInt(data.cantidadArticulosDisponibles)-parseInt(data.cantidadArticulos));
+        } 
+        $('.precioUnitario_'+idRegistro).html(formatearPrecio.new(data.nuevoprecio));
 	    });
 
 }
 
-$('.formularioCantidad input').click(function(){
+$('.formularioCantidad input').click(function(){ 
 	event.preventDefault(); 
 	var cantidadArticulos = $('#idCantidad_'+this.id).val(); 
-	var idPublicacion = $('#idPublicacion_'+this.id).val();
-	modificarCantidad($(this).val(),this.id, idPublicacion, cantidadArticulos);
+	var idPublicacion = $('#idPublicacion_'+this.id).val();  
+  if ($('#cant_disponibles_'+this.id).html() > 0 && $(this).val()==="+") { 
+    modificarCantidad($(this).val(),this.id, idPublicacion, cantidadArticulos);
+  }else if(cantidadArticulos > 1 && $(this).val()==="-"){
+    modificarCantidad($(this).val(),this.id, idPublicacion, cantidadArticulos);
+  }
   
 });
 
