@@ -32,6 +32,23 @@ class CarritoController extends Controller
     
     }
 
+    public function calcularCostos(){
+        $articulos = Carrito::where('idUser' , '=', auth()->user()->id)->get();
+        $subtotal=0;
+    
+        $articulo= array();
+        foreach ($articulos as $id) {
+        $aux = Articulos::where('_id' , '=', $id->idPublicacion)->get();
+        array_push($articulo, $aux[0]);
+           
+           //$totalNeto=$id->precio * $id->cantidad;
+           $subtotal=$id->precio + $subtotal;
+           
+        } 
+        $totalArticulos= count($articulo);
+        return $subtotal;
+    }
+
     public function agregarAlCarrito(Request $request)
     { 
 
@@ -135,10 +152,13 @@ class CarritoController extends Controller
                  $nprecio=($total * $aux[0]->precio); 
                 //Actualizar $total en el campo cantidad
                 $datos = Carrito::where('_id', $request->idRegistro)->update(['cantidad' => $total, 'precio' => $nprecio]);
+                $carritoController = new CarritoController;
+                $subtotal = $carritoController->calcularCostos();
                 return response()->json([
                     "cantidadArticulos" => $total,
                     "cantidadArticulosDisponibles" => $aux[0]->cantidad,
-                    'nuevoprecio' => $nprecio
+                    'nuevoprecio' => $nprecio,
+                    "subtotal" => $subtotal
                 ]);
             }
         }else{
@@ -151,10 +171,13 @@ class CarritoController extends Controller
                 $nprecio=($total * $aux[0]->precio); 
                 //Actualizar $total en el campo cantidad
                 $datos = Carrito::where('_id', $request->idRegistro)->update(['cantidad' => $total, 'precio' => $nprecio]);
+                $carritoController = new CarritoController;
+                $subtotal = $carritoController->calcularCostos();
                 return response()->json([
                     "cantidadArticulos" => $total,
                     "cantidadArticulosDisponibles" => $aux[0]->cantidad,
-                    'nuevoprecio' => $nprecio
+                    'nuevoprecio' => $nprecio,
+                    "subtotal" => $subtotal
                 ]);
             }
         }

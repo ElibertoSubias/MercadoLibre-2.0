@@ -78,6 +78,8 @@ function modificarCantidad(caracter,idRegistro, idPublicacion, cantidadArticulos
           $('#cant_disponibles_'+idRegistro).html(parseInt(data.cantidadArticulosDisponibles)-parseInt(data.cantidadArticulos));
         } 
         $('.precioUnitario_'+idRegistro).html(formatearPrecio.new(data.nuevoprecio));
+        $('#subtotal').html(formatearPrecio.new(data.subtotal));
+        $('#totalneto').html(formatearPrecio.new(data.subtotal));
 	    });
 
 }
