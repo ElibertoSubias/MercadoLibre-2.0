@@ -31,7 +31,10 @@ class MenuUsuarioController extends Controller
         //
     } 
 
-    
+    public function aggDomicilio()
+    {
+      return view('usuario.menu.agregarDomicilio');
+    }
 
     public function showAllPublicaciones() 
     {

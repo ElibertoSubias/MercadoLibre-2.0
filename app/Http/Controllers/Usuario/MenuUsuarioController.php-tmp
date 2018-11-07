@@ -23,14 +23,12 @@ class MenuUsuarioController extends Controller {
 	 */
 	public function create(Request $request) {
 		//
-	}/*
-	<<<<<<< HEAD
-	public function showAllPublicaciones(Request $request)
-	{
-	$User = Auth::user();
-	$articulos = Articulos::where([['idUser' , '=', $User->_id] ,['estadoPublicacion', '=', 1]])->get();
-	return view('usuario.menu.adminPublicaciones',compact('articulos') );
-	=======*/
+	}
+
+	public function aggDomicilio() {
+		return view('usuario.menu.agregarDomicilio');
+	}
+
 	public function showAllPublicaciones() {
 		$articulos = Articulos::where([['idUser', '=', auth()->user()->id], ['estadoPublicacion', '=', 1]])->get();
 
