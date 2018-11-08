@@ -543,6 +543,9 @@ html,body {
     background: #fff; 
     float: left;
 } 
+#pie_pagina a {
+    color: black;
+}
 /*.nav-header-registro {
     width: 100%;
     height: 56px;
