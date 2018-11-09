@@ -517,7 +517,15 @@ a.ml-addresses-link {
 .ui-checkbox.ui-checkbox--label-after.ui-checkbox--embedded .ui-checkbox__label {
     padding-left: 20px;
 }
-
+.ml-addresses-fieldset .ml-addresses-grid--second-column {
+    padding: 0 10px;
+    width: 40%;
+    float: left;
+    display: inline-block;
+}
+.ml-addresses-fieldset .ml-addresses-grid {
+    position: relative;
+}
 
 
 
