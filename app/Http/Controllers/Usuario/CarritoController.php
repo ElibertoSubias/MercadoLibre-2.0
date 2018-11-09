@@ -187,4 +187,9 @@ class CarritoController extends Controller
         }
         return "Error ningun caracter...";    
     }
+
+    public function compTarjeta(Request $request)
+    {
+        return view('confirmarCompra.complementarTarjeta');
+    } 
 }

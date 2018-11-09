@@ -1,0 +1,64 @@
+/*¿Cómo quieres paga?*/
+.cart-main-container {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 auto;
+    max-width: 1220px;
+}
+.cart-main-container {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 auto;
+    max-width: 1220px;
+}
+@media (min-width: 1024px)
+.cart-main-container--aside-present .cart-content {
+    width: calc(100% - 412px);
+}
+.cart-main-container--aside-present .cart-content {
+    width: calc(100% - 250px);
+}
+@media (min-width: 1260px)
+.cart-content {
+    padding: 56px 48px 56px 8px;
+}
+.cart-content {
+    padding: 56px 24px;
+    position: relative;
+}
+.cart-aside, .cart-content {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+@media (min-width: 1260px)
+.cart-content {
+    padding: 56px 48px 56px 8px;
+}
+.cart-content {
+    padding: 56px 24px;
+    position: relative;
+}
+.cart-aside, .cart-content {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.block-title {
+    color: #333;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 24px 0 16px;
+}
+.block-title {
+    color: #999;
+    font-size: 14px;
+    margin: 16px;
+}
