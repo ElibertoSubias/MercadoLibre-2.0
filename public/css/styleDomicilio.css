@@ -7,6 +7,12 @@
     text-align: left;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 .ui-telephone__number.ui-form__row {
     margin: 15px 0 5px;
 }

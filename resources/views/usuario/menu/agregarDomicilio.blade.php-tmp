@@ -37,7 +37,7 @@
         </div>
         <div class="ml-addresses-grid ml-addresses-grid--second-column ml-addresses-grid--half-column">
             <div class="ui-form__row ">
-                <input id="inputNumExt" type="tel" data-required="true" class="ui-form__input " name="inputNumExt" value="" data-valid="true" aria-describedby="numberMessage" maxlength="8" data-min-length="1">
+                <input id="inputNumExt" type="number" data-required="true" class="ui-form__input " name="inputNumExt" value="" data-valid="true" aria-describedby="numberMessage" min="0" data-min-length="1">
                 <label id="lblMsjinputNumExt" for="inputNumExt" class="ui-form__label">Nº Ext.</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputNumExt" role="alert">error_place_holder</div>
@@ -60,7 +60,7 @@ left: -10px;
         </div>
         <div class="ml-addresses-grid ml-addresses-grid--second-column ml-addresses-grid--half-column">
             <div class="ui-form__row ">
-                <input id="inputNumInt" type="text" class="ui-form__input " name="inputNumInt" value="" aria-describedby="commentMessage" data-valid="true" maxlength="150" data-required="false" data-min-length="-1">
+                <input id="inputNumInt" type="number" class="ui-form__input " name="inputNumInt" value="" aria-describedby="commentMessage" data-valid="true" min="0" data-required="false" data-min-length="-1">
 
                 <label id="lblMsjinputNumInt" for="inputNumInt" class="ui-form__label">Nº Int. (opcional)</label>
                 <span class="ui-form__status-bar"></span>
