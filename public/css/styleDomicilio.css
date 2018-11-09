@@ -1,3 +1,73 @@
+#addresses-form label {
+    margin-top: -30px;
+    font-size: 18px;
+}
+
+.ml-addresses-card>p {
+    text-align: left;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.ui-telephone__number.ui-form__row {
+    margin: 15px 0 5px;
+}
+.ui-telephone__number {
+    height: 45px;
+    display: block;
+}
+.ui-form__row {
+    margin: 10px 0;
+    padding: 21px 0 0;
+    position: relative;
+    text-align: left;
+}
+.ui-telephone__number {
+    height: 40px;
+    position: relative;
+    font-size: 0;
+    display: inline-block;
+    border-width: 0 0 1px;
+    border-style: solid;
+    border-color: #ccc;
+}
+.ui-telephone *, .ui-telephone :after, .ui-telephone :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.ui-telephone__input {
+    width: 100%;
+    font-weight: 400;
+    padding: 0;
+    color: #333;
+}
+.ui-telephone__input {
+    letter-spacing: 0;
+    font-size: 18px;
+}
+.ui-telephone__input {
+    color: #666;
+    width: 200px;
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: .5px;
+    border: none!important;
+    padding: 6px 10px 2px;
+    margin: 0!important;
+    vertical-align: text-bottom;
+    outline: none;
+    height: 100%;
+    display: inline-block;
+}
+.ui-telephone *, .ui-telephone :after, .ui-telephone :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 .ml-addresses-section {
     margin: 7vh auto 0;
 }

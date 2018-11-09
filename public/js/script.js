@@ -27,6 +27,23 @@ $( "#btn_ven_mot" ).mouseout(function() {
 	$("#ven_mot").css('border','1px solid #dedede');
 });
 
+$('input').click(function(){
+	inputActivo(this.id);
+});
+$('label').click(function(){
+	inputActivo(this.id);
+});
+
+$('input').blur(function(){
+	desactivarInput(this.id);
+});
+
+function inputActivo(id){
+	$('#input'+id).focus();
+	activarInput(id);
+}
+
+
 $( "#lblMsjinputNombre" ).click(function() {
 	var id = "inputNombre";
 	$('#'+id).focus();

@@ -138,6 +138,10 @@ class CarritoController extends Controller
     //     return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados' ) ); 
     // }
 
+    public function metodoPago(Request $request)
+    {
+        return view('confirmarCompra.metodoPago');
+    }
 
     public function modificarCantidad(Request $request)
     {   
@@ -183,4 +187,9 @@ class CarritoController extends Controller
         }
         return "Error ningun caracter...";    
     }
+
+    public function compTarjeta(Request $request)
+    {
+        return view('confirmarCompra.complementarTarjeta');
+    } 
 }

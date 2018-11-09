@@ -99,6 +99,10 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::post('eliminarcarrito', 'Usuario\CarritoController@eliminarArticulo')->name('eliminarcarrito');
 
 	Route::post('modificarCantidad', 'Usuario\CarritoController@modificarCantidad')->name('modificarCantidad');
+
+	Route::any('pagoPor', 'Usuario\CarritoController@metodoPago')->name('pagoPor');
+
+	Route::any('tarjeta', 'Usuario\CarritoController@compTarjeta')->name('tarjeta');
 });
 
 
