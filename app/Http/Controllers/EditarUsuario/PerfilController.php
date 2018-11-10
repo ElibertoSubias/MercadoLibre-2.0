@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Direciones;
 
 class PerfilController extends Controller
 {
@@ -81,6 +82,27 @@ class PerfilController extends Controller
              ]); 
         }     
     }
+
+ 
+     public function agregarDomicilio(Request $request)
+    {
+       return 'entro';
+        $user = Auth::user(); 
+      
+
+        $Direccion->calle=$request->calle;
+        $Direccion->iduser+$user;
+        $Direccion->numeroEx=$request->numeroEx;
+        $Direccion->numeroInt=$request->numeroInt;
+        $Direccion->entrecalles=$request->entrecalles;
+        $Direccion->referencia=$request->referencia;
+        $Direccion->codigopostal=$request->codigopostal;
+        $Direccion->asentamiento=$request->asentamiento;
+        $Direccion->municipio=$request->municipio;
+        $Direccion->estado=$request->estado;
+        $Direccion->save();
+       
+    } 
     /**
      * Store a newly created resource in storage.
      *

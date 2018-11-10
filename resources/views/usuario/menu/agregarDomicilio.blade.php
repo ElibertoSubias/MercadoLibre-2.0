@@ -2,6 +2,40 @@
 
 @section('content')
 {!! Html::style('css/styleDomicilio.css') !!}   
+<script type="text/javascript">
+    
+  function continuar(){
+    
+     
+          var Asentamiento = $("#inputAcentamiento").val();
+         var Contacto = $("#inputContacto").val();
+         var NumExt=$("#inputNumExt").val();
+          var Referencias=$("#inputReferencias").val();
+          var calle=$("#inputcalle").val();
+          var NumInt=$("#inputNumInt").val();
+          var CodigoPostal=$("#inputCodigoPostal").val();
+          var EntreCalles=$("#inputEntreCalles").val();
+          var Telefono=$("#inputTelefono").val();
+          var Municipio=$("#inputMunicipio").val();
+          var Estado=$("#inputEstado").val();
+          var route = "agregardatosdomicilio";
+          var token = $("#token").val();
+         
+   
+            
+             $.ajax({
+                url: route,
+                headers: {'X-CSRF-TOKEN': token},
+                type: 'POST',
+                dataType: 'json',
+                data: {Asentamiento: Asentamiento, NumExt:NumExt, Referencias: Referencias, calle: calle, NumInt: NumInt, CodigoPostal: CodigoPostal, EntreCalles: EntreCalles, Telefono: Telefono, Municipio: Municipio, Estado: Estado} 
+                }).done(function(data) {  
+                  if (data.res!=1 && data.res!=0){
+                    location.href ="perfil";
+                  }
+                });
+        }
+</script>
                 
         <a href="#" id="modalSeller" style="display:none" aria-label="ch-modal-5"></a>
         <a href="#" id="modalDeleteInfo" style="display:none" aria-label="ch-modal-6"></a>
@@ -21,7 +55,7 @@
     <input type="hidden" name="latitude" id="latitude" value=""><input type="hidden" name="longitude" id="longitude" value=""><input type="hidden" name="locationType" id="locationType" value=""><input type="hidden" name="formId" id="formId" value="ce86e2344591f29a66b866c76d924d3419662143ae6feab741d29f2bd078dd6a"><input type="hidden" name="appName" id="appName" value="generic">
     
     
-    
+     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
         <div class="ml-addresses-card">
             <p>Datos del domicilio</p>
                  <fieldset class="ml-addresses-fieldset">
@@ -29,7 +63,7 @@
     <div class="u-clearfix">
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
             <div class="ui-form__row ">
-                <input id="inputEmail" type="text" data-required="true" class="ui-form__input " name="calle" value="" aria-describedby="streetMessage" data-valid="true" maxlength="70" data-min-length="1">
+                <input id="inputcalle" type="text" data-required="true" class="ui-form__input " name="calle" value="" aria-describedby="streetMessage" data-valid="true" maxlength="70" data-min-length="1">
                 <label id="lblMsjinputEmail" for="street" class="ui-form__label">Calle</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputEmail" role="alert">error_place_holder</div>
@@ -174,8 +208,9 @@
     
  </div>       
     <div class="ml-addresses-actions ml-addresses-actions--align-left" style="text-align: left;margin-bottom: 0px;padding: 0px 0px 40px;">
-    <input id="continueButton" type="submit" class="ui-button ui-button--primary" value="Guardar">
-    <a id="cancelButton" href="https://myaccount.mercadolibre.com.mx/profile/" class="ui-button ui-button--tertiary">Cancelar</a>
+
+    <a href="javascript:continuar()"  name="guardar"  id="continueButton" class="ui-button ui-button--primary">Guardar</a>
+    <a id="cancelButton" href="perfil" class="ui-button ui-button--tertiary">Cancelar</a>
 
 
     

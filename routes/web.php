@@ -63,6 +63,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::post('cambiarcorreo', 'EditarUsuario\EditarCorreoController@actualizarCorreo')->name('cambiarcorreo');
 
 	Route::any('editarusuario', 'EditarUsuario\EditarUsuarioController@index')->name('editarusuario');
+	Route::post('agregardatosdomicilio', 'EditarUsuario\EditarUsuarioController@agregarDomicilio')->name('agregardatosdomicilio');
 	Route::post('cambiarusuario', 'EditarUsuario\EditarUsuarioController@cambiarUsuario')->name('cambiarusuario');
 
 	Route::any('editarpassword', 'EditarUsuario\EditarPasswordController@index')->name('editarpassword');

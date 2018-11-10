@@ -484,7 +484,7 @@
                     @empty(auth()->user()->domicilio)
                         <div class="row col-md-6" style="float:none;border-bottom: 1px dotted rgb(221, 221, 221);margin: 0px 0px 20px;padding: 0px;"> 
                             <div class="row" style="text-align:left;padding-left: 15px;">
-                                    <a href="#">Agregar domicilio</a>
+                                    <a href="agregarDomicilio">Agregar domicilio</a>
                             </div>
                         </div>
                     @endempty
