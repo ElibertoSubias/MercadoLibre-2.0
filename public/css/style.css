@@ -628,65 +628,9 @@ html,body {
     margin: 0px;
     perspective: 1000px;
 }
-
-.carousel {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transform: translateZ(-1347px);
-    transform-style: preserve-3d;
-    transition: transform 1s;
-}
-
-.carousel__cell {
-    position: absolute;
-    width: 100%;
-    height: 338px;  
-    line-height: 116px;
-    font-size: 80px;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    transition: transform 0, opacity 1s;
+.flickity-prev-next-button {
+    display: none;
 } 
-
-.carousel__cell:nth-child(1) { transform: translateZ(258px); }
-.carousel__cell:nth-child(2) { transform: translateZ(258px); }
-.carousel__cell:nth-child(3) { transform: translateZ(258px); }
-.carousel__cell:nth-child(4) { transform: translateZ(258px); }
-.carousel__cell:nth-child(5) { transform: translateZ(258px); }
-.carousel__cell:nth-child(6) { transform: translateZ(258px); }
-.carousel__cell:nth-child(7) { transform: translateZ(258px); }
-.carousel__cell:nth-child(8) { transform: translateZ(258px); }
-.carousel__cell:nth-child(9) { transform: translateZ(258px); }
-
-
-
-.carousel-options {
-    text-align: center;
-    position: relative;
-    z-index: 2;
-    background: hsla(0, 0%, 100%, 0.8);
-}
-.nav-carrucel {
-  	width: 100%; 
-  	margin-top: -200px;
-  	position: absolute;
-}
-.previous-button {
-  	background: white; 
-  	border: none;
-  	border-radius: 0px 5px 5px 0px; 
-  	float: left !important; 
-    width: 40px !important;
-    height: 80px;   
-    outline:none;
-  	color: blue;
-  	cursor: pointer; 
-  	-webkit-box-shadow: 1px 1px 10px -1px rgba(0,0,0,0.75);
-  	-moz-box-shadow: 1px 1px 10px -1px rgba(0,0,0,0.75);
-  	box-shadow: 1px 1px 10px -1px rgba(0,0,0,0.75);
-}
 .next-button { 
     background: white; 
     border: none; 
