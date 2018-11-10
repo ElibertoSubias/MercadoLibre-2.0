@@ -288,6 +288,7 @@
                         <div class="myml-nav__section-list">
                             <a id="myml-nav__menu-item-my_details" class="myml-nav__menu-item myml-nav__menu-item--active" href="{{route('perfil')}}">
                                 <span class="myml-nav__menu-item-text">Mis datos</span>
+                                {{$usuario}}
                             </a>
                         </div>
                         <div class="myml-nav__section-list">
