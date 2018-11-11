@@ -19,6 +19,8 @@
 	line-height: 1.25;
 }
 
+
+
 .mediosSugeridos {        
     font-size: 14px;
     font-weight: 500;
@@ -261,7 +263,7 @@
 /**/
 
 .cart-aside {
-    background-color: #f5f5f5;
+   
     width: 412px;
     max-width: 412px;
     padding: 0;
@@ -275,8 +277,9 @@
 }
 
 .cart-aside__content {
+   margin-top: 58px;
     padding: 48px;
-
+   
     width: 412px;
     transition: padding .5s ease-in-out;
     overflow: hidden;
@@ -284,7 +287,7 @@
 
 .cart-aside--fixed {
     padding-top: 48px;
-
+ background-color:#e6e6e6  !important;
     position: fixed;
     top: 0;
 }

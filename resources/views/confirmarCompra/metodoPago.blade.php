@@ -1,4 +1,4 @@
-@extends('layouts.masterAutenticado')
+@extends('layouts.masterLogin')
 
 @section('content')
 {!! Html::style('css/styleMetPago.css') !!}
@@ -232,9 +232,10 @@
 <!--////////////////////////////////////////////////Botones de Pago///////////////////////////////////////////////////-->
 
 <!--////////////////////////////////////////////////////DATOS///////////////////////////////////////////////////////-->
-<div id="aside-container" class="cart-aside">	
-	<div>
-		<div data-component="aside">
+<div></div>
+<div id="aside-container"  class="cart-aside">	
+	<div class="pintar">
+		<div data-component="aside"  >
 			<aside class="cart-aside__content cart-aside__content--item cart-aside--fixed" data-aside="target">
 				<div class="overview-component__item u-block-center">
 					<span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
