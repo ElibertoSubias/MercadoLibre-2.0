@@ -3,8 +3,9 @@
 @section('content')
 {!! Html::style('css/styleMetPago.css') !!}
 
+<!--////////////////////////////////////////////////Botones de Pago///////////////////////////////////////////////////-->
 <div id="app-container" class="cart-content">
-	<!--///////////////////////////////////////////////Botones de Pago/////////////////////////////////////////////////-->
+	
 	<div>
 		<section data-component="select-type-payment">
 			<div class="badge-type-selection">
@@ -224,10 +225,65 @@
 					</div>
             	</article>
 				<!--//////////////////////////////////////////////Otros Medios///////////////////////////////////////////////-->
-				<br>
 			</div>
 		</section>
-	</div>
-	<!--////////////////////////////////////////////////Botones de Pago////////////////////////////////////////////////-->
+	</div>	
 </div>
+<!--////////////////////////////////////////////////Botones de Pago///////////////////////////////////////////////////-->
+
+<!--////////////////////////////////////////////////////DATOS///////////////////////////////////////////////////////-->
+<div id="aside-container" class="cart-aside">	
+	<div>
+		<div data-component="aside">
+			<aside class="cart-aside__content cart-aside__content--item cart-aside--fixed" data-aside="target">
+				<div class="overview-component__item u-block-center">
+					<span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
+						<img src="">
+					</span>
+					<h3 class="overview-component__item-title">........</h3>
+					<span class="overview-component__item-quantity-text">........</span>
+				</div>
+				<div class="overview__table-container">
+					<div class="overview-component__amounts">
+						<div class="overview-component__table">
+							<div class="overview-component__row">
+								<div data-id="overview-items-quantity" class="overview-component__column">Producto</div>
+								<dir data-id="overview-items-price" class="overview-component__column">
+									<span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+										<meta itemprop="price" content="18999">
+										<span class="price-tag-symbol" itemprop="priceCurrency">$</span>
+										<span class="price-tag-fraction">0</span>
+										<span class="price-tag-decimal-separator"></span>
+										<span class="price-tag-cents">00</span>
+									</span>
+								</dir>
+							</div>
+							<div class="overview-component__row">
+								<div class="overview-component__column">Envío</div>
+								<div data-id="overview-shipping-amount" class="overview-component__column">
+									<span class="price-free u-text--green">Gratis</span>
+								</div>
+							</div>
+						</div>						
+					</div>
+					<div class="overview-component__total">
+						<div class="overview-component__table">
+							<div class="overview-component__column">Total:</div>
+							<div class="overview-component__column">
+								<span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+										<meta itemprop="price" content="18999">
+										<span class="price-tag-symbol price-tag-symbolTotal" itemprop="priceCurrency">$</span>
+										<span class="price-tag-fraction price-tag-symbolTotal1">0</span>
+										<span class="price-tag-decimal-separator"></span>
+										<span class="price-tag-cents1">00</span>
+									</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</aside>
+		</div>
+	</div>	
+</div>
+<!--////////////////////////////////////////////////////DATOS///////////////////////////////////////////////////////-->
 @stop
