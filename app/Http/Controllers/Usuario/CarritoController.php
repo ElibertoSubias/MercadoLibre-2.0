@@ -73,16 +73,7 @@ class CarritoController extends Controller
                 $datos = Carrito::where([['idUser' , '=', auth()->user()->id] ,['idPublicacion', '=',  $request->idArticulo]])->update(['cantidad' => $total, 'precio' => $nprecio]);
                 $urlImagen = $request->idUser."/".$request->idPublicacion; 
                 return view('usuario.carrito.agregadoCarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen]);
-        }
-        // $Carrito = new Carrito;
-        // $Carrito->idUser = auth()->user()->id;
-
-        // $Carrito->idPublicacion = $request->idArticulo;
-        // $Carrito->cantidad = $request->cantidad; 
-        // $Carrito->precio = $request->precio;        
-        // $Carrito->save();
-        // $urlImagen = $request->idUser."/".$request->idPublicacion; 
-        // return view('usuario.carrito.agregadocarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen]);            
+        }           
 
     }
 
@@ -113,35 +104,11 @@ class CarritoController extends Controller
                     "totalArticulos" => $totalArticulos,
                     "subtotal" => $i
                 ]);
-        }
-
-        
-        
+        }    
     }
 
 
-    // public function showAllPublicaciones() 
-    // {
-    //     $articulos = Carrito::where(['idUser' , '=', auth()->user()->id])->get();
-          
-    //       $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 3]])->get();
-    //       $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
-    //        $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 1]])->get();
-          
-
-    //     $totalActivos = count($activos);
-    //     $totalPausados = count($pausados);
-    //     $totalFinalizados = count($Finalizados); 
-        
-        
-
-    //     return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados' ) ); 
-    // }
-
-    public function metodoPago(Request $request)
-    {
-        return view('confirmarCompra.metodoPago');
-    }
+   
 
     public function modificarCantidad(Request $request)
     {   
@@ -187,9 +154,5 @@ class CarritoController extends Controller
         }
         return "Error ningun caracter...";    
     }
-
-    public function compTarjeta(Request $request)
-    {
-        return view('confirmarCompra.complementarTarjeta');
-    } 
+ 
 }
