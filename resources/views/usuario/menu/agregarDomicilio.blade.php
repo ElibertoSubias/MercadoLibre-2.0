@@ -5,14 +5,12 @@
 <script type="text/javascript">
     
   function continuar(){
-    
-     
-          var Asentamiento = $("#inputAcentamiento").val();
+         var Asentamiento = $("#inputAcentamiento").val();
          var Contacto = $("#inputContacto").val();
          var NumExt=$("#inputNumExt").val();
-          var Referencias=$("#inputReferencias").val();
-          var calle=$("#inputcalle").val();
-          var NumInt=$("#inputNumInt").val();
+         var Referencias=$("#inputReferencias").val();
+         var calle=$("#inputcalle").val();
+         var NumInt=$("#inputNumInt").val();
           var CodigoPostal=$("#inputCodigoPostal").val();
           var EntreCalles=$("#inputEntreCalles").val();
           var Telefono=$("#inputTelefono").val();
@@ -20,21 +18,89 @@
           var Estado=$("#inputEstado").val();
           var route = "agregardatosdomicilio";
           var token = $("#token").val();
-         
+         var bandera="0";
+            if(calle === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputEmail').css({"visibility":"visible"});     
+                $('#inputcalle').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputEmail').css({"visibility":"hidden"});  
+            }
+
+            if(CodigoPostal === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputCodigoPostal').css({"visibility":"visible"});     
+                $('#inputCodigoPostal').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputCodigoPostal').css({"visibility":"hidden"});  
+            }
+
+            if(Telefono === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputinputTelefono').css({"visibility":"visible"});     
+                $('#inputTelefono').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputinputTelefono').css({"visibility":"hidden"});  
+            }
+
+            if(Asentamiento === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputAcentamiento').css({"visibility":"visible"});     
+                $('#inputAcentamiento').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputAcentamiento').css({"visibility":"hidden"});  
+            }
+            if(Contacto === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputContacto').css({"visibility":"visible"});     
+                $('#inputContacto').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputContacto').css({"visibility":"hidden"});  
+            }
+             if(Referencias === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputReferencias').css({"visibility":"visible"});     
+                $('#inputReferencias').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputReferencias').css({"visibility":"hidden"});  
+            }
+                 
    
-            
+            if(bandera=="0")
+            {
              $.ajax({
                 url: route,
                 headers: {'X-CSRF-TOKEN': token},
                 type: 'POST',
                 dataType: 'json',
-                data: {Asentamiento: Asentamiento, NumExt:NumExt, Referencias: Referencias, calle: calle, NumInt: NumInt, CodigoPostal: CodigoPostal, EntreCalles: EntreCalles, Telefono: Telefono, Municipio: Municipio, Estado: Estado} 
+                data: {Asentamiento: Asentamiento, NumExt:NumExt, Referencias: Referencias, calle: calle, NumInt: NumInt, CodigoPostal: CodigoPostal, EntreCalles: EntreCalles, Telefono: Telefono, Municipio: Municipio, Estado: Estado,Contacto, Contacto } 
                 }).done(function(data) {  
                   if (data.res!=1 && data.res!=0){
                     location.href ="perfil";
                   }
                 });
+            }
         }
+
+function calcular(codigo){
+  var estado= codigo.substring(0, 2);
+ if(estado==80 ||estado==81 || estado==82 )
+ {  
+    $('#inputEstado').val('Sinaloa');
+    $('#inputMunicipio').val('Culiacan');
+ }
+  if(estado==90 )
+ {  
+    $('#inputEstado').val('Tlaxcala');
+    $('#inputMunicipio').val(' Tlaxcala de Xicohténcatl');
+ }
+}
 </script>
                 
         <a href="#" id="modalSeller" style="display:none" aria-label="ch-modal-5"></a>
@@ -66,7 +132,7 @@
                 <input id="inputcalle" type="text" data-required="true" class="ui-form__input " name="calle" value="" aria-describedby="streetMessage" data-valid="true" maxlength="70" data-min-length="1">
                 <label id="lblMsjinputEmail" for="street" class="ui-form__label">Calle</label>
                 <span class="ui-form__status-bar"></span>
-                <div class="ui-form__message" id="alertMsjinputEmail" role="alert">error_place_holder</div>
+                <div class="ui-form__message" id="alertMsjinputEmail" style="color: red" role="alert">Complete este dato</div>
             </div>
         </div>
         <div class="ml-addresses-grid ml-addresses-grid--second-column ml-addresses-grid--half-column">
@@ -106,7 +172,7 @@
                 <input id="inputEntreCalles" type="text" class="ui-form__input " name="inputEntreCalles" value="" aria-describedby="referencesMessage" data-valid="true" maxlength="150" data-required="false" data-min-length="-1">
                 <label id="lblMsjinputEntreCalles" for="inputEntreCalles" class="ui-form__label">Entre calles (opcional)</label>
                 <span class="ui-form__status-bar"></span>
-                <div class="ui-form__message" id="alertMsjinputEntreCalles" role="alert">error_place_holder</div>
+                <div class="ui-form__message" id="alertMsjinputEntreCalles"  role="alert">Complete este dato</div>
             </div>
         </div>
     </div>
@@ -115,7 +181,7 @@
             <input id="inputReferencias" type="text" class="ui-form__input " name="inputReferencias" value="" aria-describedby="extraReferencesMessage" data-valid="true" data-required="true" maxlength="150" data-min-length="3">
             <label id="lblMsjinputReferencias" for="inputReferencias" class="ui-form__label">Referencias</label>
             <span class="ui-form__status-bar"></span>
-            <div class="ui-form__message" id="alertMsjinputReferencias" role="alert">error_place_holder</div>
+            <div class="ui-form__message" id="alertMsjinputReferencias"  style="color: red" role="alert">omplete este dato</div>
         </div>
     </div>
 </fieldset>
@@ -126,10 +192,10 @@
     <legend class="ml-addresses-hidden">Zipcode</legend>
     <div class="ml-addresses-grid ml-addresses-grid--first-column">
         <div class="ui-form__row ">
-            <input id="inputCodigoPostal" type="tel" data-required="true" class="ui-form__input " name="inputCodigoPostal" value="" aria-describedby="zipcodeMessage" data-valid="true" maxlength="5" data-min-length="5">
+            <input id="inputCodigoPostal" type="tel" data-required="true" onkeypress="calcular(this.value)" class="ui-form__input " name="inputCodigoPostal" value="" aria-describedby="zipcodeMessage" data-valid="true" maxlength="5" data-min-length="5">
             <label id="lblMsjinputCodigoPostal" for="inputCodigoPostal" class="ui-form__label">Código postal</label>
             <span class="ui-form__status-bar"></span>
-            <div class="ui-form__message" id="alertMsjinputCodigoPostal" role="alert">error_place_holder</div>
+            <div class="ui-form__message" id="alertMsjinputCodigoPostal" style="color: red" role="alert">Complete este dato</div>
         </div>
         <div class="ml-addresses-embeded-action">
             
@@ -153,9 +219,9 @@
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
             <div class="ui-form__row ">
                 <input id="inputAcentamiento" name="inputAcentamiento" type="text" data-required="true" class="ui-form__input " autocomplete="off" value="" aria-describedby="neighborhoodMessage" data-valid="true" maxlength="50" data-min-length="3">
-                <label for="inputAcentamiento" id="lblMsjinputAcentamiento" class="ui-form__label">Asentamiento</label>
+                <label for="inputAcentamiento" id="lblMsjinputAcentamiento"  class="ui-form__label">Asentamiento</label>
                 <span class="ui-form__status-bar"></span>
-                <div class="ui-form__message" id="alertMsjinputAcentamiento" role="alert">error_place_holder</div>
+                <div class="ui-form__message" id="alertMsjinputAcentamiento" style="color: red" role="alert">Complete este dato</div>
             </div>
         </div>
     </fieldset>
@@ -190,7 +256,7 @@
                 <input id="inputContacto" type="text" data-required="true" class="ui-form__input " name="inputContacto" value="" aria-describedby="contactMessage" data-valid="true" maxlength="150" data-min-length="3">
                 <label id="lblMsjinputContacto" for="inputContacto" class="ui-form__label">Contacto</label>
                 <span class="ui-form__status-bar"></span>
-                <div class="ui-form__message" id="alertMsjinputContacto" role="alert">error_place_holder</div>
+                <div class="ui-form__message" id="alertMsjinputContacto" style="color: red" role="alert">Complete este dato</div>
             </div>
         </div>
         <div class="ml-addresses-grid ml-addresses-grid--second-column ui-telephone  col-md-5">
@@ -199,9 +265,10 @@
                     <label id="lblMsjinputTelefono" for="inputTelefono" class="ui-form__label">Teléfono</label>
                     <span class="ui-form__status-bar"></span>
                 <span class="ui-telephone__focus-line"></span>
+
             </div>
-            <div id="alertMsjinputinputTelefono" class="ui-telephone__validations" data-js="tel-validations"> 
-        </div>
+            
+         <div class="ui-form__message" id="alertMsjinputinputTelefono" style="color: red" role="alert">Complete este dato</div>
     </div>
     </div>
 

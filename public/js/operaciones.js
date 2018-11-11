@@ -294,3 +294,101 @@ function validarCampos(){
         }
     } 
 }
+
+ function continuar(){
+         var Asentamiento = $("#inputAcentamiento").val();
+         var Contacto = $("#inputContacto").val();
+         var NumExt=$("#inputNumExt").val();
+         var Referencias=$("#inputReferencias").val();
+         var calle=$("#inputcalle").val();
+         var NumInt=$("#inputNumInt").val();
+          var CodigoPostal=$("#inputCodigoPostal").val();
+          var EntreCalles=$("#inputEntreCalles").val();
+          var Telefono=$("#inputTelefono").val();
+          var Municipio=$("#inputMunicipio").val();
+          var Estado=$("#inputEstado").val();
+          var route = "agregardatosdomicilio";
+          var token = $("#token").val();
+         var bandera="0";
+            if(calle === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputEmail').css({"visibility":"visible"});     
+                $('#inputcalle').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputEmail').css({"visibility":"hidden"});  
+            }
+
+            if(CodigoPostal === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputCodigoPostal').css({"visibility":"visible"});     
+                $('#inputCodigoPostal').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputCodigoPostal').css({"visibility":"hidden"});  
+            }
+
+            if(Telefono === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputinputTelefono').css({"visibility":"visible"});     
+                $('#inputTelefono').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputinputTelefono').css({"visibility":"hidden"});  
+            }
+
+            if(Asentamiento === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputAcentamiento').css({"visibility":"visible"});     
+                $('#inputAcentamiento').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputAcentamiento').css({"visibility":"hidden"});  
+            }
+            if(Contacto === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputContacto').css({"visibility":"visible"});     
+                $('#inputContacto').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputContacto').css({"visibility":"hidden"});  
+            }
+             if(Referencias === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputReferencias').css({"visibility":"visible"});     
+                $('#inputReferencias').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputReferencias').css({"visibility":"hidden"});  
+            }
+                 
+   
+            if(bandera=="0")
+            {
+             $.ajax({
+                url: route,
+                headers: {'X-CSRF-TOKEN': token},
+                type: 'POST',
+                dataType: 'json',
+                data: {Asentamiento: Asentamiento, NumExt:NumExt, Referencias: Referencias, calle: calle, NumInt: NumInt, CodigoPostal: CodigoPostal, EntreCalles: EntreCalles, Telefono: Telefono, Municipio: Municipio, Estado: Estado,Contacto, Contacto } 
+                }).done(function(data) {  
+                  if (data.res!=1 && data.res!=0){
+                    location.href ="perfil";
+                  }
+                });
+            }
+        }
+
+function calcular(codigo){
+  var estado= codigo.substring(0, 2);
+ if(estado==80 ||estado==81 || estado==82 )
+ {  
+    $('#inputEstado').val('Sinaloa');
+    $('#inputMunicipio').val('Culiacan');
+ }
+  if(estado==90 )
+ {  
+    $('#inputEstado').val('Tlaxcala');
+    $('#inputMunicipio').val(' Tlaxcala de Xicohténcatl');
+ }
+}

@@ -71,7 +71,7 @@ class EditarUsuarioController extends Controller
         $Direccion->entrecalles=$request->EntreCalles;
         $Direccion->referencia=$request->Referencias;
         $Direccion->codigopostal=$request->CodigoPostal;
-        $Direccion->asentamiento=$request->asentamiento;
+        $Direccion->asentamiento=$request->Asentamiento;
         $Direccion->municipio=$request->Municipio;
         $Direccion->estado=$request->Estado;
         $Direccion->save();

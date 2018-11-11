@@ -83,24 +83,4 @@ class PerfilController extends Controller
         }     
     }
 
- 
-     public function agregarDomicilio(Request $request)
-    {
-       return 'entro';
-        $user = Auth::user(); 
-      
-
-        $Direccion->calle=$request->calle;
-        $Direccion->iduser+$user;
-        $Direccion->numeroEx=$request->numeroEx;
-        $Direccion->numeroInt=$request->numeroInt;
-        $Direccion->entrecalles=$request->entrecalles;
-        $Direccion->referencia=$request->referencia;
-        $Direccion->codigopostal=$request->codigopostal;
-        $Direccion->asentamiento=$request->asentamiento;
-        $Direccion->municipio=$request->municipio;
-        $Direccion->estado=$request->estado;
-        $Direccion->save();
-       
-    } 
 }
