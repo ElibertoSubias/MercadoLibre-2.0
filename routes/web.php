@@ -104,6 +104,8 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::any('pagoPor', 'Compra\CompraController@metodoPago')->name('pagoPor');
 
 	Route::any('tarjeta', 'Compra\CompraController@compTarjeta')->name('tarjeta');
+
+	Route::any('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
 });
 
 

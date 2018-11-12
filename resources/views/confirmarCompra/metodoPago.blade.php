@@ -103,7 +103,7 @@
 								        <div class="badge-type__metadata">
 							                <h2 class="badge-type-selection__list-title">Tarjeta de crédito</h2>
 							                <p class="badge-type-selection__list-text">
-							                	<span class="u-text--green">Hasta 12 mesessin intereses</span>
+							                	<span class="u-text--green">Hasta 12 meses sin intereses</span>
 							                </p>
 								        </div>
 

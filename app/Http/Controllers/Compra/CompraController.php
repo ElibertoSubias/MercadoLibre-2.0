@@ -20,10 +20,14 @@ class CompraController extends Controller
         return view('confirmarCompra.metodoPago');
     }
 
-
-
     public function compTarjeta(Request $request)
     {
         return view('confirmarCompra.complementarTarjeta');
-    } 
+    }
+
+    public function dondeRecibir(Request $request)
+    {
+    	return view('confirmarCompra.dondeRecibir');
+    }
+
 }
