@@ -3,6 +3,9 @@
     background: none;
     cursor: pointer;
     outline: none;
+    font-family: Proxima Nova,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+    padding: 0;
+    width: 100%;
 }
 
 
@@ -20,6 +23,13 @@
     white-space: nowrap;
     font-weight: 400;    
    margin-left: 570px;
+
+   margin-top: -50px;
+    background-color: transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
 }
 
 .u-link {
@@ -32,17 +42,17 @@
 
 .cart-aside {
 	background-color: #f5f5f5;
-    width: 412px;
-    max-width: 412px;
+    width: 800px;
+    max-width: 200px;
     padding: 0;
     position: relative;
     z-index: 8;
     -webkit-box-flex: 1;
     flex: 1;
-    margin-left: 875px;
+    margin-left: 800px;
     padding: 48px 24px;
 
-    margin-top: -287px;
+    margin-top: -537.50px;
 }
 .overview-component__item {
     margin-bottom: 24px;
@@ -173,13 +183,24 @@
 .cart-content {
     width: calc(100% - 412px);
     
-    margin-top: -10px;
+    margin-top: -50px;
     margin-left: 10px;
     padding: 56px 48px 56px 8px;
     position: relative;
     -webkit-box-flex: 1;
     flex: 1;
 }
+
+/*.cart-content1 {
+    width: calc(100% - 412px);
+    
+    margin-top: 200px;
+    margin-left: 10px;
+    padding: 56px 48px 56px 8px;
+    position: relative;
+    -webkit-box-flex: 1;
+    flex: 1;
+}*/
 
 .comoQuieresPagar {
     font-size: 22px;
@@ -221,6 +242,7 @@
     border-radius: 4px;
     border-left: 5px;
     background-color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
 }
 
 .badge-type-selection__list {
@@ -659,3 +681,80 @@
     margin-left: -60px;
 }
 /**/
+
+.u-link {
+    color: #3483fa;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.congrats-download-app__actions, .congrats-download-app__actions-title, .hero {
+    text-align: left;
+}
+.new-card__panel {
+    margin-top: 32px;
+    padding-left: 0;
+    margin-top: 10;
+    margin-left: 50px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    padding-bottom: 0!important;
+}
+.ui-form--multiple-inputs {
+    margin: 0;
+    display: block;
+}
+.ui-form__fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+.ui-panel--raised {
+    padding: 0;
+}
+.ui-row {
+    margin: 0;
+    overflow: visible;
+}
+
+.form-inner__wrapper {
+    display: table;
+    width: -500%;
+    padding: 32px 0 8px 16px;
+    width: 80%;
+    margin-left: 80px;
+
+    margin-top: -100px;
+}
+.form-input__container {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+}
+.step--newCardSecurityCode .form-input__container>div {
+    margin: 0;
+}
+.card__container {
+    background-color: #fff;
+    overflow: hidden;
+}
+.ui-cards-container {
+    position: relative;
+}
+.card-form-container .new-card__container--view {
+    padding-right: 32px;
+}
+.card__container .new-card__container--view {
+    padding: 40px 0 24px;
+}
+.card__container .ui-card, .card__container .ui-document {
+    background-color: transparent;
+    margin: 0 auto;
+}
+.ui-card {
+    perspective: 39.69231em;
+    font-size: 13px;
+    height: 11.92308em;
+    width: 19.84615em;
+    position: relative;
+}
