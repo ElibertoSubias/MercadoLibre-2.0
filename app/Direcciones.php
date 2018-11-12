@@ -20,7 +20,7 @@ class Direcciones extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'calle', 'numeroEx', 's/n' ,'numeroInt', 'entrecalles', 'referencia', 'codigopostal', 'asentamiento', 'municipio', 'estado'
+        'calle', 'numeroEx', 'numeroInt', 'entrecalles', 'referencia', 'codigopostal', 'asentamiento', 'municipio', 'estado','idUser', 'telefono','contacto',
     ];
 
     /**

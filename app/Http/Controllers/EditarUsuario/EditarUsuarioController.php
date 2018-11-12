@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Direcciones;
 
 class EditarUsuarioController extends Controller
 {
@@ -56,7 +57,29 @@ class EditarUsuarioController extends Controller
         }
   
     }
-
+ public function agregarDomicilio(Request $request)
+    {
+    
+       $id = Auth::id();
+        $Direccion = new Direcciones;
+        $Direccion->calle=$request->calle;
+        $Direccion->contacto=$request->Contacto;
+        $Direccion->iduser=$id;
+        $Direccion->telefono=$request->Telefono;
+        $Direccion->numeroEx=$request->NumExt;
+        $Direccion->numeroInt=$request->NumInt;
+        $Direccion->entrecalles=$request->EntreCalles;
+        $Direccion->referencia=$request->Referencias;
+        $Direccion->codigopostal=$request->CodigoPostal;
+        $Direccion->asentamiento=$request->Asentamiento;
+        $Direccion->municipio=$request->Municipio;
+        $Direccion->estado=$request->Estado;
+        $Direccion->save();
+         return response()->json([
+                    "res" => 10
+                ]);
+       
+    } 
     /**
      * Store a newly created resource in storage.
      *

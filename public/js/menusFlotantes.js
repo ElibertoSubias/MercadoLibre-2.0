@@ -189,3 +189,10 @@ function abrirMenuMovil(){
 		$('.hamburger-bottom-bread').css("transform","initial");
 	} 
 } 
+
+$('.gallery').mouseover(function(){
+	$('.flickity-prev-next-button').css('display','block');
+});
+$('.gallery').mouseout(function(){
+	$('.flickity-prev-next-button').css('display','none');
+});

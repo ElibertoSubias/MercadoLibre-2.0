@@ -63,6 +63,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::post('cambiarcorreo', 'EditarUsuario\EditarCorreoController@actualizarCorreo')->name('cambiarcorreo');
 
 	Route::any('editarusuario', 'EditarUsuario\EditarUsuarioController@index')->name('editarusuario');
+	Route::post('agregardatosdomicilio', 'EditarUsuario\EditarUsuarioController@agregarDomicilio')->name('agregardatosdomicilio');
 	Route::post('cambiarusuario', 'EditarUsuario\EditarUsuarioController@cambiarUsuario')->name('cambiarusuario');
 
 	Route::any('editarpassword', 'EditarUsuario\EditarPasswordController@index')->name('editarpassword');
@@ -100,11 +101,13 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::post('modificarCantidad', 'Usuario\CarritoController@modificarCantidad')->name('modificarCantidad');
 
-	Route::any('pagoPor', 'Usuario\CarritoController@metodoPago')->name('pagoPor');
+	Route::any('pagoPor', 'Compra\CompraController@metodoPago')->name('pagoPor');
+	
+	Route::any('nuevatarjetac', 'Compra\CompraController@nuevaTarjetacre')->name('nuevatarjetac');
 
-	Route::any('tarjeta', 'Usuario\CarritoController@compTarjeta')->name('tarjeta');
+	Route::any('tarjeta', 'Compra\CompraController@compTarjeta')->name('tarjeta');
 
-	Route::any('nuevatarjetac', 'Usuario\Compra@nuevaTarjetac')->name('nuevatarjetac');
+	Route::any('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
 });
 
 

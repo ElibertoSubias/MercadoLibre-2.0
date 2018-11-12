@@ -288,6 +288,7 @@
                         <div class="myml-nav__section-list">
                             <a id="myml-nav__menu-item-my_details" class="myml-nav__menu-item myml-nav__menu-item--active" href="{{route('perfil')}}">
                                 <span class="myml-nav__menu-item-text">Mis datos</span>
+                                {{$usuario}}
                             </a>
                         </div>
                         <div class="myml-nav__section-list">
@@ -484,7 +485,7 @@
                     @empty(auth()->user()->domicilio)
                         <div class="row col-md-6" style="float:none;border-bottom: 1px dotted rgb(221, 221, 221);margin: 0px 0px 20px;padding: 0px;"> 
                             <div class="row" style="text-align:left;padding-left: 15px;">
-                                    <a href="#">Agregar domicilio</a>
+                                    <a href="agregarDomicilio">Agregar domicilio</a>
                             </div>
                         </div>
                     @endempty

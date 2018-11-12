@@ -2,282 +2,142 @@
 
 @section('content')  
 {!! Html::style('css/comTarjeta.css') !!} 
-<header role="banner" class="nav-header nav-header-pluslite">
-        <div class="nav-bounds  ">
-        
 
-        
-            
-            
-                
-                
-                    <a class="nav-logo" href="https://www.mercadolibre.com.mx/">
-                        Mercado Libre México - Donde comprar y vender de todo
-                    </a>
-                
-            
-        
-            
-
-        
-            
-            
-                
-                <div class="nav-header-menu-wrapper">
-                    
-                        <nav id="nav-header-menu-mobile" class="nav-header-menu-mobile-logged">
+<!--////////////////////////////////////////////////Botones de Pago///////////////////////////////////////////////////-->
+<div id="app-container" class="cart-content">
     
-        <div id="nav-header-menu-mobile-content">
-    
+    <div>
+        <section data-component="select-type-payment">
+            <div class="badge-type-selection">
+                <div class="step-tile">
+                    <h2 class="comoQuieresPagar">Completa tu codigo de seguridad</h2>
+                </div>                
+                
+                <!--////////////////////////////////////////////VIsa-MasterCard/////////////////////////////////////////////-->
+                <article data-js="stored-cards" class="ui-list ui-panel--raised" role="list">
+                    <div data-js="payments-types" data-stored="true">
+                        <ul class="badge-type-selection__list">
+                            <!--////////////////////////////////////////////////Visa///////////////////////////////////////////////-->
+                            <li class="badge-type-selection__list-item ui-list__item">
+                                <form method="post">
+                                    <input data-js="payment-type" type="hidden" name="paymentMethodId" value="debvisa"> 
+                                    <input data-js="payment-type-card-id" type="hidden" name="cardId" value="248131622">
+                                    
+                                    <button data-js="payment-type" type="submit" name="paymentType" 
+                                    class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
 
-<div id="nav-header-menu-mobile-user-info" class="nav-header-menu-mobile-with-loyalty">
-    <form id="nav-header-mobile-avatar-form" method="POST" action="https://www.mercadolibre.com.mx/menu/user/picture" enctype="multipart/form-data">
-        <label for="nav-header-mobile-avatar-upload">
-            
-                <svg viewBox="0 0 100 100">
-                    <path stroke-linecap="round" stroke-width="3" stroke="#eee" fill="none" d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80"></path>
-                    <path class="nav-header-mobile-loyalty-level-2" stroke-linecap="round" stroke-width="3" stroke-dasharray="25,999" fill="none" d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80"></path>
-                </svg>
-            
+                                        <span class="ui-badge ui-badge--small">
+                                            <span class="ui-badge__icon ui-badge__icon--payment-logo">
+                                                <i class="payment-icon payments-cho_badge _debvisa-cho_badge"></i>
+                                            </span>
+                                        </span>
+                                        <div class="badge-type__metadata">
+                                            <h2 class="badge-type-selection__list-title">Terminada en 5048</h2>
+                                            <p class="badge-type-selection__list-text"></p>
+                                        </div>
+                                        <div class="hero__action" data-js="hero-action">
+                                            <form data-js="change-payment" method="post">
+                                                <button data-js="" data-input-id="nextStepPayments" class=" hero__action-button u-link" type="submit" name="nextStepPayments" value="nextStepPayments">
+                                                    Modificar
+                                                </button>
+                                            </form>
+                                        </div>
 
-            
-            <i id="nav-header-mobile-user-avatar" class="nav-icon-create-account-mobile"></i>
-            
+                                    </button>
 
-            <input id="nav-header-mobile-avatar-upload" name="file" type="file" accept="image/jpeg,.jpg,image/gif,.gif,image/png,.png,.jpeg,image/webp,.webp">
-        </label>
-    </form>
-    <div id="nav-header-user-greetings">¡Hola, Erick !</div>
-    <div id="nav-header-user-mail-or-level">Nivel 2 - Aficionado</div>
-
+                                </form>
+                            </li>                           
+                            <!--////////////////////////////////////////////////Visa///////////////////////////////////////////////-->
+                        </ul>
+                    </div>
+                </article>
+                <!--//////////////////////////////////////////////Otros Medios///////////////////////////////////////////////-->
+            </div>            
+        </section>        
+    </div>  
+    <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <!--
+        aqui meta el otro div donde va el codigo de seguridad e imagen correspondiente pariente.....
+    -->
+    <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 </div>
-
-    
-    
-    
-        <ul>
-            
-                
-                    <li>
-                        <a href="https://myaccount.mercadolibre.com.mx/">
-                            <i class="nav-icon-my-account-mobile"></i>
-                            <p>
-                                Mi cuenta
-                                
-                            </p>
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="https://www.mercadolibre.com.mx/mercadopuntos">
-                            <i class="nav-icon-points-mobile"></i>
-                            <p>
-                                Mercado Puntos
-                                
-                            </p>
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="https://myaccount.mercadolibre.com.mx/purchases/list">
-                            <i class="nav-icon-purchases-mobile"></i>
-                            <p>
-                                Tus compras
-                                
-                            </p>
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="https://www.mercadolibre.com.mx/gz/notifications/center">
-                            <i class="nav-icon-notifications-mobile"></i>
-                            <p>
-                                Notificaciones
-                                
-                                    <span class="nav-header-notifications-badge"></span>
-                                
-                            </p>
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="https://myaccount.mercadolibre.com.mx/bookmarks/list">
-                            <i class="nav-icon-bookmarks-mobile"></i>
-                            <p>
-                                Favoritos
-                                
-                            </p>
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="https://www.mercadolibre.com.mx/gz/home/navigation">
-                            <i class="nav-icon-history-mobile"></i>
-                            <p>
-                                Tu historial
-                                
-                            </p>
-                        </a>
-                    </li>
-                
-            
-        </ul>
-    
-        <ul>
-            
-                
-                    <li>
-                        <a href="https://home.mercadolibre.com.mx/categories">
-                            <i class="nav-icon-categories-mobile"></i>
-                            <p>
-                                Categorías
-                                
-                            </p>
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="https://www.mercadolibre.com.mx/tiendas-oficiales">
-                            <i class="nav-icon-stores-mobile"></i>
-                            <p>
-                                Tiendas oficiales
-                                
-                            </p>
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="https://ofertas.mercadolibre.com.mx/ofertas-de-la-semana">
-                            <i class="nav-icon-deals-mobile"></i>
-                            <p>
-                                Ofertas de la semana
-                                
-                            </p>
-                        </a>
-                    </li>
-                
-            
-        </ul>
-    
-        <ul>
-            
-                
-                    <li>
-                        <a href="https://vender.mercadolibre.com.mx/">
-                            <i class="nav-icon-vender-mobile"></i>
-                            <p>
-                                Vender
-                                
-                            </p>
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="https://www.mercadolibre.com.mx/ayuda">
-                            <i class="nav-icon-help-mobile"></i>
-                            <p>
-                                Ayuda
-                                
-                            </p>
-                        </a>
-                    </li>
-                
-            
-        </ul>
-    
-        <ul>
-            
-                
-                    <li>
-                        <a href="https://www.mercadolibre.com.mx/gz/app">
-                            <i class="nav-icon-download-mobile"></i>
-                            <p>
-                                ¡Compra y vende con la app!
-                                
-                            </p>
-                        </a>
-                    </li>
-                
-            
-        </ul>
-    
-</div>
-    
-    
-</nav>
-
-                    
-                    
-                    <label for="nav-header-menu-switch" aria-controls="nav-header-menu">
-                        <span class="hamburger-top-bread"></span>
-                        <span class="hamburger-patty"></span>
-                        <span class="hamburger-bottom-bread"></span>
-                    </label>
-                    
-                    
-                    
-                    <nav id="nav-header-menu">
-                    
-                        
-                        
-                            
-
-                        
-                        
-
-                        
-                            
-
-                        
-                            
-                                
-                                    <a tabindex="4" class="option-help" href="https://www.mercadolibre.com.mx/ayuda">Ayuda</a>
-                                
-                            
-
-                    
-                            
-
-                        
-                            
-
-                        
-                        
-
-                        
-    
-    
-    
-    
-    
+<!--////////////////////////////////////////////////Botones de Pago///////////////////////////////////////////////////-->
 
 
 
-                    </nav>
 
+<div id="aside-container" class="cart-aside">
+    <div>
+        <div data-component="aside">
+            <aside class="cart-aside__content cart-aside__content--item cart-aside--static" data-aside="target">
+                    <div class="overview-component__item u-block-center">
+                        <span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
+                                <img class="badge__product-icon picture-image" src="./Mercado Libre México - Donde comprar y vender de todo_files/D_NQ_NP_667770-MLM27193457963_042018-Z.jpg" srcset="https://http2.mlstatic.com/D_NQ_NP_667770-MLM27193457963_042018-Z.jpg" alt="Tarjeta Usb Antena Wifi 150mbps 802.11n/g/b Redes + Potente" data-object-fit="cover">
+                        </span>
+                        <h3 class="overview-component__item-title">
+                            Tarjeta Usb Antena Wifi 150mbps 802.11n/g/b Redes + Potente
+                        </h3>
+                              <span class="overview-component__item-quantity-text">Cantidad: 1</span>
+                    </div>
 
-                
-
-
-
+                <div class="overview__table-container">
+                        <div class="overview-component__amounts">
+                            <div class="overview-component__table">
+                                    <div class="overview-component__row">
+                                        <div data-id="overview-items-quantity" class="overview-component__column">
+                                            Producto
+                                        </div>
+                                        <div data-id="overview-items-price" class="overview-component__column">
+                                            <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                                                <meta itemprop="price" content="18999">
+                                                
+                                                
+                                                <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
+                                                <span class="price-tag-fraction">189</span>
+                                                    <span class="price-tag-decimal-separator"></span>
+                                                    
+                                                    <span class="price-tag-cents">99</span>
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="overview-component__row">
+                                        <div class="overview-component__column">
+                                            Envío
+                                        </div>
+                                        <div data-id="overview-shipping-amount" class="overview-component__column">
+                                                <span class="price-free u-text--green">
+                                                            Gratis
+                                                </span>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                            <div class="overview-component__total">
+                                <div class="overview-component__table">
+                                    <div class="overview-component__column">
+                                        Total
+                                    </div>
+                                    <div class="overview-component__column">
+                                                <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                                                    <meta itemprop="price" content="18999">
+                                                    
+                                                    
+                                                    <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
+                                                    <span class="price-tag-fraction">189</span>
+                                                        <span class="price-tag-decimal-separator"></span>
+                                                        
+                                                        <span class="price-tag-cents">99</span>
+                                                    
+                                                </span>
+                                    </div>
+                                </div>
+                            </div>
                 </div>
+            </aside>
         </div>
-    </header>
-  
+    </div>
+</div>
+
+
 @stop
