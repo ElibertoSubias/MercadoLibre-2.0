@@ -191,5 +191,10 @@ class CarritoController extends Controller
     public function compTarjeta(Request $request)
     {
         return view('confirmarCompra.complementarTarjeta');
-    } 
+    }
+    public function nuevaTarjetac(Request $request)
+    {
+        
+        return view('confirmarCompra.nuevaTarjetac');
+    }
 }

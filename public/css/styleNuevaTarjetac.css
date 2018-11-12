@@ -1,0 +1,8 @@
+.cart-main-container--aside-present .cart-content {
+    width: calc(100% - 412px);
+}
+.cart-title--primary {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: left;
+}

@@ -103,6 +103,8 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::any('pagoPor', 'Usuario\CarritoController@metodoPago')->name('pagoPor');
 
 	Route::any('tarjeta', 'Usuario\CarritoController@compTarjeta')->name('tarjeta');
+
+	Route::any('nuevatarjetac', 'Usuario\Compra@nuevaTarjetac')->name('nuevatarjetac');
 });
 
 
