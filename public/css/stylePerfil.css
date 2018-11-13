@@ -221,3 +221,8 @@
 
     .vacio
     {}
+
+.masiveActionOption a:hover {
+    background: #cacaca;
+    border-radius: 4px;
+}

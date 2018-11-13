@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
-use App\Direciones;
+use App\Direcciones;
 
 class PerfilController extends Controller
 {
@@ -23,7 +23,8 @@ class PerfilController extends Controller
     public function index()
     {
       	$usuario=User::find( auth()->user()->id);
-        return view('perfil.create',compact('usuario'));
+        $domicilios=Direcciones::where(['idUser'=>auth()->user()->id])->get();   
+        return view('perfil.create',compact('usuario','domicilios'));
     }
 
     /**

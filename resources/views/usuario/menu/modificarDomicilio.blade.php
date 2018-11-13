@@ -15,13 +15,13 @@
     <section class=" ml-addresses-section">
         
 
-        <h1 class="ml-addresses-main-title">Nuevo domicilio</h1>
+        <h1 class="ml-addresses-main-title">Modificar domicilio</h1>
     <h2 class="ml-addresses-main-subtitle "></h2>
 
 
 
 
-<form style="margin-bottom:0px;" class="ui-form form-with-floating-labels" id="addresses-form" action="" name="addresses-form" method="post">
+<form style="margin-bottom:0px;" class="ui-form form-with-floating-labels" id="form_modificarDomicilio" action="{{route('modificarDireccion')}}" name="addresses-form" method="post">
     <input type="hidden" name="latitude" id="latitude" value=""><input type="hidden" name="longitude" id="longitude" value=""><input type="hidden" name="locationType" id="locationType" value=""><input type="hidden" name="formId" id="formId" value="ce86e2344591f29a66b866c76d924d3419662143ae6feab741d29f2bd078dd6a"><input type="hidden" name="appName" id="appName" value="generic">
     
     
@@ -33,15 +33,16 @@
     <div class="u-clearfix">
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
             <div class="ui-form__row ">
-                <input id="inputCalle" type="text" data-required="true" class="ui-form__input " name="inputCalle" value="" aria-describedby="streetMessage" data-valid="true" maxlength="70" data-min-length="1">
-                <label id="lblMsjinputCalle" for="inputCalle" class="ui-form__label">Calle</label>
+                <input id="inputCalle" type="text" data-required="true" class="ui-form__input " name="inputCalle" value="{{$domicilio[0]->calle}}" aria-describedby="streetMessage" data-valid="true" maxlength="70" data-min-length="1">
+                <label id="lblMsjinputCalle" for="inputCalle" class="ui-form__label" >Calle</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputCalle" style="color: red" role="alert">Complete este dato</div>
             </div>
         </div>
+        <input type="hidden" name="idDomicilio" id="idDomicilio" value="{{$domicilio[0]->_id}}">
         <div class="ml-addresses-grid ml-addresses-grid--second-column ml-addresses-grid--half-column">
             <div class="ui-form__row ">
-                <input id="inputNumExt" type="number" data-required="true" class="ui-form__input " name="inputNumExt" value="" data-valid="true" aria-describedby="numberMessage" min="0" data-min-length="1">
+                <input id="inputNumExt" type="number" data-required="true" class="ui-form__input " name="inputNumExt" value="{{$domicilio[0]->numeroEx}}" data-valid="true" aria-describedby="numberMessage" min="0" data-min-length="1">
                 <label id="lblMsjinputNumExt" for="inputNumExt" class="ui-form__label">Nº Ext.</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputNumExt" role="alert">error_place_holder</div>
@@ -49,7 +50,7 @@
 
             <div class="ml-addresses-embeded-action">
                 <label class="ui-checkbox ui-checkbox--embedded ui-checkbox--label-after" style="    position: relative;
-    top: 35px;left: -10px;
+    top: 15px;left: -10px;
     width: 25px;
     height: 35px;">
                     <span class="ui-checkbox__label" style="left: 5px;
@@ -62,7 +63,7 @@
         </div>
         <div class="ml-addresses-grid ml-addresses-grid--second-column ml-addresses-grid--half-column">
             <div class="ui-form__row ">
-                <input id="inputNumInt" type="number" class="ui-form__input " name="inputNumInt" value="" aria-describedby="commentMessage" data-valid="true" min="0" data-required="false" data-min-length="-1">
+                <input id="inputNumInt" type="number" class="ui-form__input " name="inputNumInt" value="{{$domicilio[0]->numeroInt}}" aria-describedby="commentMessage" data-valid="true" min="0" data-required="false" data-min-length="-1">
 
                 <label id="lblMsjinputNumInt" for="inputNumInt" class="ui-form__label">Nº Int. (opcional)</label>
                 <span class="ui-form__status-bar"></span>
@@ -73,7 +74,7 @@
     <div class="u-clearfix">
         <div class="ml-addresses-grid ml-addresses-grid--second-column">
             <div class="ui-form__row ">
-                <input id="inputEntreCalles" type="text" class="ui-form__input " name="inputEntreCalles" value="" aria-describedby="referencesMessage" data-valid="true" maxlength="150" data-required="false" data-min-length="-1">
+                <input id="inputEntreCalles" type="text" class="ui-form__input " name="inputEntreCalles" value="{{$domicilio[0]->entrecalles}}" aria-describedby="referencesMessage" data-valid="true" maxlength="150" data-required="false" data-min-length="-1">
                 <label id="lblMsjinputEntreCalles" for="inputEntreCalles" class="ui-form__label">Entre calles (opcional)</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputEntreCalles"  role="alert">Complete este dato</div>
@@ -82,7 +83,7 @@
     </div>
     <div class="ml-addresses-grid ml-addresses-grid--full-column">
         <div class="ui-form__row ">
-            <input id="inputReferencias" type="text" class="ui-form__input " name="inputReferencias" value="" aria-describedby="extraReferencesMessage" data-valid="true" data-required="true" maxlength="150" data-min-length="3">
+            <input id="inputReferencias" type="text" class="ui-form__input " name="inputReferencias" value="{{$domicilio[0]->referencia}}" aria-describedby="extraReferencesMessage" data-valid="true" data-required="true" maxlength="150" data-min-length="3">
             <label id="lblMsjinputReferencias" for="inputReferencias" class="ui-form__label">Referencias</label>
             <span class="ui-form__status-bar"></span>
             <div class="ui-form__message" id="alertMsjinputReferencias"  style="color: red" role="alert">omplete este dato</div>
@@ -96,7 +97,7 @@
     <legend class="ml-addresses-hidden">Zipcode</legend>
     <div class="ml-addresses-grid ml-addresses-grid--first-column">
         <div class="ui-form__row ">
-            <input id="inputCodigoPostal" type="tel" data-required="true" onkeypress="calcular(this.value)" class="ui-form__input " name="inputCodigoPostal" value="" aria-describedby="zipcodeMessage" data-valid="true" maxlength="5" data-min-length="5">
+            <input id="inputCodigoPostal" type="tel" data-required="true" onkeypress="calcular(this.value)" class="ui-form__input " name="inputCodigoPostal" value="{{$domicilio[0]->codigopostal}}" aria-describedby="zipcodeMessage" data-valid="true" maxlength="5" data-min-length="5">
             <label id="lblMsjinputCodigoPostal" for="inputCodigoPostal" class="ui-form__label">Código postal</label>
             <span class="ui-form__status-bar"></span>
             <div class="ui-form__message" id="alertMsjinputCodigoPostal" style="color: red" role="alert">Complete este dato</div>
@@ -122,7 +123,7 @@
     <fieldset id="neighborhoodField" class="ml-addresses-fieldset">
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
             <div class="ui-form__row ">
-                <input id="inputAcentamiento" name="inputAcentamiento" type="text" data-required="true" class="ui-form__input " autocomplete="off" value="" aria-describedby="neighborhoodMessage" data-valid="true" maxlength="50" data-min-length="3">
+                <input id="inputAcentamiento" name="inputAcentamiento" type="text" data-required="true" class="ui-form__input " autocomplete="off" value="{{$domicilio[0]->asentamiento}}" aria-describedby="neighborhoodMessage" data-valid="true" maxlength="50" data-min-length="3">
                 <label for="inputAcentamiento" id="lblMsjinputAcentamiento"  class="ui-form__label">Asentamiento</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputAcentamiento" style="color: red" role="alert">Complete este dato</div>
@@ -132,7 +133,7 @@
     <div class="ml-addresses-fieldset__inline-container">
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
             <div class="ui-form__row "> 
-                <input type="text" id="inputMunicipio" name="inputMunicipio" value="" data-required="true" data-valid="true" class="ui-form__input ">
+                <input type="text" id="inputMunicipio" name="inputMunicipio" value="{{$domicilio[0]->municipio}}" data-required="true" data-valid="true" class="ui-form__input ">
                 <label for="inputMunicipio" id="lblMsjinputMunicipio" class="ui-form__label">Municipio</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputMunicipio" role="alert">error_place_holder</div>
@@ -141,7 +142,7 @@
 
         <div class="ml-addresses-grid ml-addresses-grid--second-column">
             <div class="ui-form__row  "> 
-                <input type="text" id="inputEstado" value="" data-required="true" name="inputEstado" data-valid="true" class="ui-form__input ">
+                <input type="text" id="inputEstado" value="{{$domicilio[0]->estado}}" data-required="true" name="inputEstado" data-valid="true" class="ui-form__input ">
                 <label id="lblMsjinputEstado" for="inputEstado" class="ui-form__label">Estado</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputEstado" role="alert">error_place_holder</div>
@@ -157,7 +158,7 @@
         <div class="u-clearfix">
         <div class="ml-addresses-grid ml-addresses-grid--first-column col-md-5">
             <div class="ui-form__row ">
-                <input id="inputContacto" type="text" data-required="true" class="ui-form__input " name="inputContacto" value="" aria-describedby="contactMessage" data-valid="true" maxlength="150" data-min-length="3">
+                <input id="inputContacto" type="text" data-required="true" class="ui-form__input " name="inputContacto" value="{{$domicilio[0]->contacto}}" aria-describedby="contactMessage" data-valid="true" maxlength="150" data-min-length="3">
                 <label id="lblMsjinputContacto" for="inputContacto" class="ui-form__label">Contacto</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputContacto" style="color: red" role="alert">Complete este dato</div>
@@ -165,7 +166,7 @@
         </div>
         <div class="ml-addresses-grid ml-addresses-grid--second-column ui-telephone  col-md-5">
             <div class="ui-telephone__number ui-form__row">
-                    <input id="inputTelefono" class="ui-telephone__input " data-js="telephone" name="inputTelefono" type="tel" value="" maxlength="22" placeholder="">
+                    <input id="inputTelefono" class="ui-telephone__input " data-js="telephone" name="inputTelefono" type="tel" value="{{$domicilio[0]->telefono}}" maxlength="22" placeholder="">
                     <label id="lblMsjinputTelefono" for="inputTelefono" class="ui-form__label">Teléfono</label>
                     <span class="ui-form__status-bar"></span>
                 <span class="ui-telephone__focus-line"></span>
@@ -180,8 +181,8 @@
  </div>       
     <div class="ml-addresses-actions ml-addresses-actions--align-left" style="text-align: left;margin-bottom: 0px;padding: 0px 0px 40px;">
 
-    <a href="javascript:continuar()"  name="guardar"  id="continueButton" class="ui-button ui-button--primary">Guardar</a>
-    <a id="cancelButton" href="perfil" class="ui-button ui-button--tertiary">Cancelar</a>
+    <input type="submit"  name="actualizar"  id="continueButton" class="ui-button ui-button--primary" value="Guardar">
+    <a id="cancelButton" href="{{route('perfil')}}" class="ui-button ui-button--tertiary">Cancelar</a>
 
 
     

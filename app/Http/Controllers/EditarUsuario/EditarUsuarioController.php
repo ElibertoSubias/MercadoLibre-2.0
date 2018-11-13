@@ -57,14 +57,37 @@ class EditarUsuarioController extends Controller
         }
   
     }
- public function agregarDomicilio(Request $request)
+    public function modificarDomicilioView(Request $request)
+    {
+        $domicilio = Direcciones::where(['_id'=>$request->id,'idUser'=>Auth::id()])->get();
+        return view("usuario.menu.modificarDomicilio")->with('domicilio',$domicilio);
+    }
+    public function modificarDomicilio(Request $request)
+    {  
+        $datos = Direcciones::where(['_id'=>$request->idDomicilio,'idUser'=>Auth::id()])->update([ 
+            'calle' => $request->inputCalle,
+            'contacto' => $request->inputContacto,
+            'idUser' => Auth::id(),
+            'telefono' => $request->inputTelefono,
+            'numeroEx' => $request->inputNumExt,
+            'numeroInt' => $request->inputNumInt,
+            'entrecalles' => $request->inputEntreCalles,
+            'referencia' => $request->inputReferencias,
+            'codigopostal' => $request->inputCodigoPostal,
+            'asentamiento' => $request->inputAcentamiento,
+            'municipio' => $request->inputMunicipio,
+            'estado' => $request->inputEstado
+        ]);
+        return redirect("perfil");
+    }
+    public function agregarDomicilio(Request $request)
     {
     
        $id = Auth::id();
         $Direccion = new Direcciones;
-        $Direccion->calle=$request->calle;
+        $Direccion->calle=$request->Calle;
         $Direccion->contacto=$request->Contacto;
-        $Direccion->iduser=$id;
+        $Direccion->idUser=$id;
         $Direccion->telefono=$request->Telefono;
         $Direccion->numeroEx=$request->NumExt;
         $Direccion->numeroInt=$request->NumInt;

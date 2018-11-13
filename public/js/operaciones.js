@@ -300,7 +300,7 @@ function validarCampos(){
          var Contacto = $("#inputContacto").val();
          var NumExt=$("#inputNumExt").val();
          var Referencias=$("#inputReferencias").val();
-         var calle=$("#inputcalle").val();
+         var Calle=$("#inputCalle").val();
          var NumInt=$("#inputNumInt").val();
           var CodigoPostal=$("#inputCodigoPostal").val();
           var EntreCalles=$("#inputEntreCalles").val();
@@ -310,11 +310,11 @@ function validarCampos(){
           var route = "agregardatosdomicilio";
           var token = $("#token").val();
          var bandera="0";
-            if(calle === "")
+            if(Calle === "")
             { 
                 bandera="1";  
                  $('#alertMsjinputEmail').css({"visibility":"visible"});     
-                $('#inputcalle').css({"border-color":"#ff5a5f"}); 
+                 $('#inputcalle').css({"border-color":"#ff5a5f"}); 
             }else{
                 $('#alertMsjinputEmail').css({"visibility":"hidden"});  
             }
@@ -370,7 +370,7 @@ function validarCampos(){
                 headers: {'X-CSRF-TOKEN': token},
                 type: 'POST',
                 dataType: 'json',
-                data: {Asentamiento: Asentamiento, NumExt:NumExt, Referencias: Referencias, calle: calle, NumInt: NumInt, CodigoPostal: CodigoPostal, EntreCalles: EntreCalles, Telefono: Telefono, Municipio: Municipio, Estado: Estado,Contacto, Contacto } 
+                data: {Asentamiento: Asentamiento, NumExt:NumExt, Referencias: Referencias, Calle: Calle, NumInt: NumInt, CodigoPostal: CodigoPostal, EntreCalles: EntreCalles, Telefono: Telefono, Municipio: Municipio, Estado: Estado,Contacto, Contacto } 
                 }).done(function(data) {  
                   if (data.res!=1 && data.res!=0){
                     location.href ="perfil";

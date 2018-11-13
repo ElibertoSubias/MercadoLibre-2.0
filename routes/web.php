@@ -31,8 +31,6 @@ Route::post('aggcuentaempresarial', 'CrearCuentaController@crearcuentaEmpresaria
 
 Route::get('nuevaCategoria', 'Admin\AddCategoriaController@index')->name('nuevaCategoria');
 
-
-
 Route::get('id={id}&user={user}', 'Venta\VentaController@showPublicacion')->name('verpublicacion');
 Route::post('buscar','BuscarController@buscarPublicaciones')->name('buscar');
 Route::get('resultados','BuscarController@listarResultados')->name('resultados');
@@ -94,6 +92,8 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::any('agregadocarrito', 'Usuario\CarritoController@agregadoCarrito')->name('agregadocarrito');
 
 	Route::any('agregarDomicilio', 'Usuario\MenuUsuarioController@aggDomicilio')->name('agregarDomicilio');
+	Route::get('id={id}', 'EditarUsuario\EditarUsuarioController@modificarDomicilioView')->name('irAModificarDireccion');
+	Route::post('modificando', 'EditarUsuario\EditarUsuarioController@modificarDomicilio')->name('modificarDireccion');
 
 	Route::any('agregaralCarrito', 'Usuario\CarritoController@agregarAlCarrito')->name('agregaralCarrito');
 
