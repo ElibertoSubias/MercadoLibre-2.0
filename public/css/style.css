@@ -58,6 +58,7 @@ and (max-device-width : 414px) {
         padding: 50% 0%;
     }
     #pie_pagina {
+        height:115px !important;
         position: unset !important;
     }
     #cont_filtros {
