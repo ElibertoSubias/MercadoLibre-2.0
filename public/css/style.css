@@ -34,6 +34,13 @@ and (max-device-width : 414px) {
     #cont_main_venta {
         display: none !important;
     }
+    .layout-main {
+        width: 100%;
+    }
+    .cont-btn-comprar {
+        width: 200px;
+        margin-bottom: 30px;
+    }
     #nombre_user {
         position: fixed;
         margin-left: -150px;
