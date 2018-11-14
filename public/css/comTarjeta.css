@@ -1,3 +1,19 @@
+@media (min-width: 960px)
+.new-card__section-wrapper .card__container, .new-card__section-wrapper .form-input__container {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+} 
+.card__container {
+    background-color: #fff;
+}
+.card__container {
+    overflow: hidden;
+}
+.card__container {
+    background-color: #ffea78;
+}
+
 .cart-main-container {
     width: 100%;
     height: 100%;
@@ -10,6 +26,11 @@
     padding: 56px 48px 56px 8px;
     position: relative;
     flex: 1;
+}
+.ui-card__brand-bancoppel .ui-card__background:after, .ui-card__brand-bancoppel .ui-card__background:before {
+    background: -webkit-gradient(linear,left top,right top,from(#ffe000),to(#ffe600));
+    background: -webkit-linear-gradient(left,#ffe000,#ffe600);
+    background: linear-gradient(90deg,#ffe000,#ffe600);
 }
 .step-title {
     margin: 48px 0 32px;
@@ -263,6 +284,7 @@ button {
     font-size: 13px;
     height: 11.92308em;
     width: 19.84615em;
+    margin-left: -100px;
     position: relative;
     box-sizing: border-box;
 }
@@ -423,8 +445,81 @@ button {
     vertical-align: middle;
     float: right;
 }
+.ui-card *, .ui-card :after, .ui-card :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.ui-card__signature>span:first-child:before {
+    background-image: -webkit-linear-gradient(356deg,#fff,#d3d3d3);
+    background-image: linear-gradient(94deg,#fff,#d3d3d3);
+}
+.ui-card__signature>span:after, .ui-card__signature>span:before {
+    content: '';
+    display: block;
+    height: .15385em;
+    width: 100%;
+}
+.ui-card__signature>span:nth-child(2):before {
+    background-image: -webkit-linear-gradient(355deg,#fff,#d3d3d3);
+    background-image: linear-gradient(95deg,#fff,#d3d3d3);
+}
+.ui-card__signature>span:after, .ui-card__signature>span:before {
+    content: '';
+    display: block;
+    height: .15385em;
+    width: 100%;
+}
+.ui-card__signature>span:nth-child(3):before {
+    background-image: -webkit-linear-gradient(357deg,#fff,#d3d3d3);
+    background-image: linear-gradient(93deg,#fff,#d3d3d3);
+}
+.ui-card__signature>span:after, .ui-card__signature>span:before {
+    content: '';
+    display: block;
+    height: .15385em;
+    width: 100%;
+}
+.ui-card__signature>span:nth-child(4):before {
+    background-image: -webkit-linear-gradient(356deg,#fff,#d3d3d3);
+    background-image: linear-gradient(94deg,#fff,#d3d3d3);
+}
+.ui-card__signature>span:after, .ui-card__signature>span:before {
+    content: '';
+    display: block;
+    height: .15385em;
+    width: 100%;
+}
+.ui-card__signature>span:nth-child(5):before {
+    background-image: -webkit-linear-gradient(357deg,#fff,#d3d3d3);
+    background-image: linear-gradient(93deg,#fff,#d3d3d3);
+}
+.ui-card__signature>span:after, .ui-card__signature>span:before {
+    content: '';
+    display: block;
+    height: .15385em;
+    width: 100%;
+}
+.ui-card__signature>span:nth-child(6):before {
+    background-image: -webkit-linear-gradient(358deg,#fff,#d3d3d3);
+    background-image: linear-gradient(92deg,#fff,#d3d3d3);
+}
+.ui-card__signature>span:after, .ui-card__signature>span:before {
+    content: '';
+    display: block;
+    height: .15385em;
+    width: 100%;
+}
+.ui-card *, .ui-card :after, .ui-card :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
 .ui-card__col-3 {
     width: 75%;
+    float: left;
 }
 .ui-card__name{
 	color: #666;
@@ -443,6 +538,7 @@ button {
 }
 .ui-card__col-1 {
     width: 25%;
+    float: right;
 }
 .ui-card__expiration{
 	color: #666;
@@ -538,12 +634,30 @@ button {
     display: block;
     height: .15385em;
     width: 100%;
+} 
+.ui-card__signature>span:first-child:after {
+    background-image: -webkit-linear-gradient(168deg,#fff,#d3d3d3);
+    background-image: linear-gradient(282deg,#fff,#d3d3d3);
 }
-.ui-card__signature>span:after{
-	content: '';
-    display: block;
-    height: .15385em;
-    width: 100%;
+.ui-card__signature>span:nth-child(2):after {
+    background-image: -webkit-linear-gradient(163deg,#fff,#f7f7f7 19%,#d3d3d3);
+    background-image: linear-gradient(287deg,#fff,#f7f7f7 19%,#d3d3d3);
+}
+.ui-card__signature>span:nth-child(3):after {
+    background-image: -webkit-linear-gradient(163deg,#fff,#f9f9f9 15%,#d3d3d3);
+    background-image: linear-gradient(287deg,#fff,#f9f9f9 15%,#d3d3d3);
+}
+.ui-card__signature>span:nth-child(4):after {
+    background-image: -webkit-linear-gradient(160deg,#fff,#d3d3d3);
+    background-image: linear-gradient(290deg,#fff,#d3d3d3);
+}
+.ui-card__signature>span:nth-child(5):after {
+    background-image: -webkit-linear-gradient(170deg,#fff,#f6f6f6 22%,#f6f6f6 0,#f6f6f6 0,#d3d3d3);
+    background-image: linear-gradient(280deg,#fff,#f6f6f6 22%,#f6f6f6 0,#f6f6f6 0,#d3d3d3);
+}
+.ui-card__signature>span:nth-child(6):after {
+    background-image: -webkit-linear-gradient(168deg,#fff,#fbfbfb 10%,#d3d3d3);
+    background-image: linear-gradient(282deg,#fff,#fbfbfb 10%,#d3d3d3);
 }
 .ui-card__security {
     background: linear-gradient(234deg,#f2f2f2,#fff);
@@ -559,7 +673,7 @@ button {
     border-radius: 50%;
     display: block;
     position: absolute;
-    left: .23077em;
+    left: .9077em;
     top: -.61538em;
     height: 3.07692em;
     width: 3.07692em;

@@ -485,7 +485,7 @@
                     <div>
                 <div class="row" >
                     <div class="col-md-6 cont-btn-comprar">
-                        <form action="recibirPor" method="post" accept-charset="utf-8"> 
+                        <form action="{{route('recibirPor')}}" method="post" accept-charset="utf-8"> 
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
                             <input type="hidden" name="titulo" id="titulo" value="{{$datos->titulo}}">
                             <input type="hidden" name="precio" id="precio" value="{{$datos->precio}}">

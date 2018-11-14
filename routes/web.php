@@ -110,7 +110,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('nuevatarjetac', 'Compra\CompraController@nuevaTarjetacre')->name('nuevatarjetac');
 
-	Route::any('tarjeta', 'Compra\CompraController@compTarjeta')->name('tarjeta');
+	Route::any('complTarjeta', 'Compra\CompraController@compTarjeta')->name('complTarjeta');
 
 	Route::post('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
 

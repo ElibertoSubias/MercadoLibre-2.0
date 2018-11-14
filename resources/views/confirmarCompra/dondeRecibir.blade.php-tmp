@@ -36,10 +36,10 @@
 															<div class="hero__info" data-js="hero-info">
 																<h3 data-id="hero-shipping-title" class="hero__info-title">C.P. {{$domicilio[0]->codigopostal}} </h3>
 																<span data-id="hero-shipping-subtitle" class="hero__info-subtitle">
-																	{{$domicilio[0]->calle}} #{{$domicilio[0]->numeroEx}} {{$domicilio[0]->asentamiento}} -{{$domicilio[0]->referencia}} 
+																	{{$domicilio[0]->calle}} #{{$domicilio[0]->numeroEx}} {{$domicilio[0]->asentamiento}} -{{$domicilio[0]->referencia}}
 																</span>
 															</div>
-															<div class="hero__action" data-js="hero-action"> 
+															<div class="hero__action" data-js="hero-action">
 																	<button data-js="next-step" data-input-id="nextStepAddressChange" class=" hero__action-button u-link" type="button" name="nextStepAddressChange" value="nextStepAddressChange">
 																		Eviar a otra dirección
 																	</button>
@@ -65,12 +65,12 @@
 							<!--/////////////////////////////////////////Estandar Domicilio////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
 								<form method="post">
-									<input data-js="payment-type" type="hidden" name="paymentMethodId" value="debvisa">	
+									<input data-js="payment-type" type="hidden" name="paymentMethodId" value="debvisa">
 									<input data-js="payment-type-card-id" type="hidden" name="cardId" value="248131622">
-									
-									<button data-js="payment-type" type="submit" name="paymentType" 
+
+									<button data-js="payment-type" type="submit" name="paymentType"
 									class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
-																		        
+
 								        <div class="badge-type__metadata">
 							                <h2 class="badge-type-selection__list-title">Estandar a domicilio</h2>
 							                <p class="badge-type-selection__list-text">Llega entre el .. y .. de ......</p>
@@ -78,44 +78,44 @@
 										<span class="cart-package__shipping-price">
 						                    <span data-id="shipping-option-price-free" class="price-free   u-link">
 						                    	Gratis
-						                    </span>						                    
+						                    </span>
 								        </span>
 
 							    	</button>
 
 								</form>
-							</li>							
+							</li>
 							<!--/////////////////////////////////////////Estandar Domicilio////////////////////////////////////////-->
-							<!--////////////////////////////////////////Express Domicilio//////////////////////////////////////////-->	
+							<!--////////////////////////////////////////Express Domicilio//////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="form">									
-									<input data-js="payment-type-id" type="hidden" name="paymentMethodId" value="master">	
+								<form method="form">
+									<input data-js="payment-type-id" type="hidden" name="paymentMethodId" value="master">
 									<input data-js="payment-type-card-id" type="hidden" name="cardId" value="242584257">
-									<button data-js="payment-type" type="submit" name="paymentType" 
-									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">										
+									<button data-js="payment-type" type="submit" name="paymentType"
+									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
 										<div class="badge-type__metadata">
 											<h2 class="badge-type-selection__list-title">Express a domicilio</h2>
-											<p class="badge-type-selection__list-text">Llega entre el .. y .. de ......</p>											
+											<p class="badge-type-selection__list-text">Llega entre el .. y .. de ......</p>
 										</div>
 										<span class="cart-package__shipping-price">
 						                    <span data-id="shipping-option-price-free" class="price-free   u-link">
 						                    	<p><font color="black">$110</font></p>
-						                    </span>						                    
+						                    </span>
 								        </span>
 									</button>
 								</form>
-								
+
 							</li>
-							<!--////////////////////////////////////////Express Domicilio//////////////////////////////////////////-->	
+							<!--////////////////////////////////////////Express Domicilio//////////////////////////////////////////-->
 							<!--//////////////////////////////////////////Retiro Sucursal//////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
 								<form method="post">
-									<input data-js="payment-type" type="hidden" name="paymentMethodId" value="debvisa">	
+									<input data-js="payment-type" type="hidden" name="paymentMethodId" value="debvisa">
 									<input data-js="payment-type-card-id" type="hidden" name="cardId" value="248131622">
-									
-									<button data-js="payment-type" type="submit" name="paymentType" 
+
+									<button data-js="payment-type" type="submit" name="paymentType"
 									class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
-																		        
+
 								        <div class="badge-type__metadata">
 							                <h2 class="badge-type-selection__list-title">Retiro en una sucursal</h2>
 							                <p class="badge-type-selection__list-text">Llega mañana</p>
@@ -123,13 +123,13 @@
 										<span class="cart-package__shipping-price">
 						                    <span data-id="shipping-option-price-free" class="price-free   u-link">
 						                    	Gratis
-						                    </span>						                    
+						                    </span>
 								        </span>
 
 							    	</button>
 
 								</form>
-							</li>							
+							</li>
 							<!--//////////////////////////////////////////Retiro Sucursal//////////////////////////////////////////-->
 						</ul>
 					</div>
@@ -139,16 +139,16 @@
 					</div>
 				</div>
 			</div>
-		</div> 
+		</div>
 
 		<!--////////////////////////////////////////////////////DATOS///////////////////////////////////////////////////////-->
-<div id="aside-container"  class="cart-aside">	
+<div id="aside-container"  class="cart-aside">
 	<div class="pintar">
 		<div data-component="aside"  >
 			<aside class="cart-aside__content cart-aside__content--item cart-aside--fixed" data-aside="target">
 				<div class="overview-component__item u-block-center">
 					<span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
-						<img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" > 
+						<img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" >
 
 					</span>
 					<h3 class="overview-component__item-title">{{$titulo}}</h3>
@@ -175,7 +175,7 @@
 									<span class="price-free1 u-text--green">Gratis</span>
 								</div>
 							</div>
-						</div>						
+						</div>
 					</div>
 					<div class="overview-component__total">
 						<div class="overview-component__table">
@@ -194,7 +194,7 @@
 				</div>
 			</aside>
 		</div>
-	</div>	
+	</div>
 </div>
 <!-- Modal -->
   <div class="modal fade in" id="modalDirecciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -202,7 +202,7 @@
       <div class="modal-content" style="margin: 30% auto;">
         <div class="modal-header" style="border-bottom: 0px;padding-bottom:0px;">
           <div class="col-md-6">
-          	<h1 style="font-size: 25px;padding: 20px;text-align: left;" class="modal-title"><b>Mis direcciones</b></h1>	
+          	<h1 style="font-size: 25px;padding: 20px;text-align: left;" class="modal-title"><b>Mis direcciones</b></h1>
           </div>
           <div class="col-md-6" style="padding: 5%;">
           	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -213,7 +213,7 @@
             	<section class="ui-list ui-list--modal addresses-selection" data-component="address-selection">
 					<div data-component="address-list">
 						<ul class="ui-list__content">
-							<li class="ui-list__item ui-list__item--action">	
+							<li class="ui-list__item ui-list__item--action">
 								<form data-id="address-169359984" data-state="selected" data-js="address-form" class="address-box" method="post">
 					    			<button value="169359984" data-input-id="addressId" name="addressId" type="submit" role="option" class="ui-list__item-option"><!-- ui-list__item--selected -->
 					        		<div class="address-box__address">
@@ -241,12 +241,12 @@
 			    </form>
 			</div>
 			</div>
-      	</div> 
+      	</div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 <!--////////////////////////////////////////////////////DATOS///////////////////////////////////////////////////////-->
- 
+
 	</div>
 	<!--/////////////////////////////////////////////PANTALLA COMPLETA/////////////////////////////////////////////-->
 </main>

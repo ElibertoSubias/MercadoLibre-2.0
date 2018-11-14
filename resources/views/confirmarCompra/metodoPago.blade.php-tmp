@@ -5,7 +5,7 @@
 
 <!--////////////////////////////////////////////////Botones de Pago///////////////////////////////////////////////////-->
 <div id="app-container" class="cart-content">
-	
+
 	<div>
 		<section data-component="select-type-payment">
 			<div class="badge-type-selection">
@@ -13,20 +13,20 @@
 					<h2 class="comoQuieresPagar">¿Cómo quieres pagar?</h2>
 				</div>
 				<h3 class="mediosSugeridos">Medios sugeridos</h3>
-				
+
 				<!--////////////////////////////////////////////VIsa-MasterCard/////////////////////////////////////////////-->
 				<article data-js="stored-cards" class="ui-list ui-panel--raised" role="list">
 					<div data-js="payments-types" data-stored="true">
 						<ul class="badge-type-selection__list">
-							<!--////////////////////////////////////////////////Visa///////////////////////////////////////////////--> 
-							@foreach($tarjetas as $tarjeta) 
+							<!--////////////////////////////////////////////////Visa///////////////////////////////////////////////-->
+							@foreach($tarjetas as $tarjeta)
 								<li class="badge-type-selection__list-item ui-list__item">
 									<form action="{{route('complTarjeta')}}" method="post">
-										<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
-										<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
+										<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+										<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">
 										<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
-										
-										<button data-js="payment-type" type="submit" name="paymentType" 
+
+										<button data-js="payment-type" type="submit" name="paymentType"
 										class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
 
 									        <span class="ui-badge ui-badge--small">
@@ -36,24 +36,24 @@
 							                    	@elseif($tarjeta->brand=="mastercard")
 							                    		<i class="payment-icon payments-cho_badge _master-cho_badge"></i>
 							                    	@endif
-							                       
+
 							                    </span>
 									        </span>
 									        <div class="badge-type__metadata">
-								                <h2 class="badge-type-selection__list-title">Terminada en 
-								                	<?php 
-								                		$cadena=$tarjeta->card_number;
-								                		echo mb_substr($cadena,-4);  
-								                	?>
-								                		
+								                <h2 class="badge-type-selection__list-title">Terminada en
+<?php
+$cadena = $tarjeta->card_number;
+echo mb_substr($cadena, -4);
+?>
+
 								                </h2>
 								                <p class="badge-type-selection__list-text"></p>
 									        </div>
 
-								    	</button> 
+								    	</button>
 									</form>
 								</li>
-							@endforeach		
+							@endforeach
 						</ul>
 					</div>
             	</article>
@@ -61,16 +61,16 @@
 				<br>
 
 				<h3 class="otrosMedios">Otros medios</h3>
-				
+
 				<!--//////////////////////////////////////////////Otros Medios///////////////////////////////////////////////-->
 				<article data-js="stored-cards" class="ui-list ui-panel--raised" role="list">
 					<div data-js="payments-types" data-stored="true">
 						<ul class="badge-type-selection__list">
 							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">									
-									
-									<button data-js="payment-type" type="submit" name="paymentType" 
+								<form method="post">
+
+									<button data-js="payment-type" type="submit" name="paymentType"
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
 
 								        <span class="ui-badge ui-badge--small">
@@ -103,9 +103,9 @@
 							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
 							<!--////////////////////////////////////////////////Debito///////////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">									
-									
-									<button data-js="payment-type" type="submit" name="paymentType" 
+								<form method="post">
+
+									<button data-js="payment-type" type="submit" name="paymentType"
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
 
 								        <span class="ui-badge ui-badge--small">
@@ -122,7 +122,7 @@
 						                    </svg>
 								        </span>
 								        <div class="badge-type__metadata">
-							                <h2 class="badge-type-selection__list-title">Tarjeta de débito</h2>							                
+							                <h2 class="badge-type-selection__list-title">Tarjeta de débito</h2>
 								        </div>
 
 							    	</button>
@@ -132,8 +132,8 @@
 							<!--////////////////////////////////////////////////Debito///////////////////////////////////////////////-->
 							<!--////////////////////////////////////////////Mercado Pago///////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">									
-									
+								<form method="post">
+
 									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="PREPAID_CARD">
 
 								        <span class="ui-badge ui-badge--small">
@@ -142,7 +142,7 @@
 						                    </span>
 								        </span>
 								        <div class="badge-type__metadata">
-							                <h2 class="badge-type-selection__list-title">Tarjeta Mercado Pago</h2>							                
+							                <h2 class="badge-type-selection__list-title">Tarjeta Mercado Pago</h2>
 								        </div>
 
 							    	</button>
@@ -152,8 +152,8 @@
 							<!--////////////////////////////////////////////Mercado Pago///////////////////////////////////////////-->
 							<!--///////////////////////////////////////////Puntos de Pago///////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">									
-									
+								<form method="post">
+
 									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="TICKET">
 
 								        <span class="ui-badge ui-badge--small">
@@ -184,8 +184,8 @@
 							<!--///////////////////////////////////////////Puntos de Pago///////////////////////////////////////////-->
 							<!--///////////////////////////////////////Transferencia Electrónica/////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">									
-									
+								<form method="post">
+
 									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="BANK_TRANSFER">
 
 								        <span class="ui-badge ui-badge--small">
@@ -216,12 +216,12 @@
 				<!--//////////////////////////////////////////////Otros Medios///////////////////////////////////////////////-->
 			</div>
 		</section>
-	</div>	
+	</div>
 </div>
 <!--////////////////////////////////////////////////Botones de Pago///////////////////////////////////////////////////-->
 
 <!--////////////////////////////////////////////////////DATOS///////////////////////////////////////////////////////-->
-<div id="aside-container"  class="cart-aside">	
+<div id="aside-container"  class="cart-aside">
 	<div class="pintar">
 		<div data-component="aside"  >
 			<aside class="cart-aside__content cart-aside__content--item cart-aside--fixed" data-aside="target">
@@ -253,7 +253,7 @@
 									<span class="price-free u-text--green">Gratis</span>
 								</div>
 							</div>
-						</div>						
+						</div>
 					</div>
 					<div class="overview-component__total">
 						<div class="overview-component__table">
@@ -272,7 +272,7 @@
 				</div>
 			</aside>
 		</div>
-	</div>	
+	</div>
 </div>//
 <!--////////////////////////////////////////////////////DATOS///////////////////////////////////////////////////////-->
 @stop

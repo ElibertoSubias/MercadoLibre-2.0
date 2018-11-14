@@ -54,7 +54,7 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                 <input type="hidden" name="token_id" id="token_id">
                 <input type="hidden" name="device_session_id" id="device_session_id">
-                <input type="hidden" name="amount" id="amount" value="5.00">
+                <input type="hidden" name="amount" id="amount" value="">
                 <input type="hidden" name="description" id="description" value="Pago Servicio Familia Segura">
                 <div class="pymnt-itm card active">
                     <h2>Tarjeta de crédito o débito</h2>
