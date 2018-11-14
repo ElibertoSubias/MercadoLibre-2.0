@@ -9,7 +9,7 @@
 		<div class="item cart-congrats__item clearfix cart-congrats__item--one">
 			
 				<figure class="cart-congrats__item-image">
-					<img src="images/{{$urlImagen}}/principal.jpg" alt="" title="" >
+					<img src="images/{{$urlImagen}}/principal.jpg" alt="" title="" > 
 					
 						<span class="cart-congrats__item-icon">
 							<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ui-icon-check">
