@@ -103,6 +103,11 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('pagoPor', 'Compra\CompraController@metodoPago')->name('pagoPor');
 	
+	///////////////////////////////
+	Route::any('agregarTarjPrueba', 'Compra\CompraController@aggTarjPrueba')->name('agregarTarjPrueba');
+	Route::post('save_customer_card', 'Compra\CompraController@guardarCard_custumer')->name('save_customer_card');
+	///////////////////////////////
+
 	Route::any('nuevatarjetac', 'Compra\CompraController@nuevaTarjetacre')->name('nuevatarjetac');
 
 	Route::any('tarjeta', 'Compra\CompraController@compTarjeta')->name('tarjeta');
