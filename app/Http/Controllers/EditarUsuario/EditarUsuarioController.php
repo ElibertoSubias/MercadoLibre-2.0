@@ -77,6 +77,7 @@ class EditarUsuarioController extends Controller
             'asentamiento' => $request->inputAcentamiento,
             'municipio' => $request->inputMunicipio,
             'estado' => $request->inputEstado
+
         ]);
         return redirect("perfil");
     }
@@ -97,6 +98,8 @@ class EditarUsuarioController extends Controller
         $Direccion->asentamiento=$request->Asentamiento;
         $Direccion->municipio=$request->Municipio;
         $Direccion->estado=$request->Estado;
+        $Direccion->envio='1';
+
         $Direccion->save();
          return response()->json([
                     "res" => 10

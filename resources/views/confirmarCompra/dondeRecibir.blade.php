@@ -34,13 +34,13 @@
 													<div class="hero__main-content" data-js="hero-main-content">
 														<div class="hero__main-content-wrapper">
 															<div class="hero__info" data-js="hero-info">
-																<h3 data-id="hero-shipping-title" class="hero__info-title">C.P. </h3>
+																<h3 data-id="hero-shipping-title" class="hero__info-title">C.P. {{$domicilio[0]->codigopostal}} </h3>
 																<span data-id="hero-shipping-subtitle" class="hero__info-subtitle">
-																	.............. .. ........... ............... #0000 ..... .. .................
+																	{{$domicilio[0]->calle}} #{{$domicilio[0]->numeroEx}} {{$domicilio[0]->asentamiento}} -{{$domicilio[0]->referencia}} 
 																</span>
 															</div>
 															<div class="hero__action" data-js="hero-action">
-																<form data-js="show-addresses" method="post">
+																<form data-js="show-addresses" method="post" action="agregarDomicilio">
 																	<button data-js="next-step" data-input-id="nextStepAddressChange" class=" hero__action-button u-link" type="submit" name="nextStepAddressChange" value="nextStepAddressChange">
 																		Eviar a otra dirección
 																	</button>
@@ -151,10 +151,11 @@
 			<aside class="cart-aside__content cart-aside__content--item cart-aside--fixed" data-aside="target">
 				<div class="overview-component__item u-block-center">
 					<span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
-						<img src="">
+						<img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" > 
+
 					</span>
-					<h3 class="overview-component__item-title">........</h3>
-					<span class="overview-component__item-quantity-text">........</span>
+					<h3 class="overview-component__item-title">{{$titulo}}</h3>
+					<span class="overview-component__item-quantity-text" style="color:  blue">Cantidad: 1 </span>
 				</div>
 				<div class="overview__table-container">
 					<div class="overview-component__amounts">
@@ -165,7 +166,7 @@
 									<span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
 										<meta itemprop="price" content="18999">
 										<span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-										<span class="price-tag-fraction">0</span>
+										<span class="price-tag-fraction">{{$precio}}</span>
 										<span class="price-tag-decimal-separator"></span>
 										<span class="price-tag-cents">00</span>
 									</span>
@@ -186,9 +187,9 @@
 								<span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
 										<meta itemprop="price" content="18999">
 										<span class="price-tag-symbol price-tag-symbolTotal" itemprop="priceCurrency">$</span>
-										<span class="price-tag-fraction price-tag-symbolTotal1">0</span>
+										<span class="price-tag-fraction price-tag-symbolTotal1">{{$precio}}</span>
 										<span class="price-tag-decimal-separator"></span>
-										<span class="price-tag-cents1">00</span>
+										<span class="price-tag-cents1"></span>
 									</span>
 							</div>
 						</div>

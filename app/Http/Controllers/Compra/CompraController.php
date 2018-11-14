@@ -9,6 +9,7 @@ use Auth;
 use Redirect;
 use App\Articulos;
 use App\Carrito;
+use App\Direcciones;
 
 
 class CompraController extends Controller
@@ -34,7 +35,16 @@ class CompraController extends Controller
 
     public function dondeRecibir(Request $request)
     {
-    	return view('confirmarCompra.dondeRecibir');
+        if(Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', 1 ]])->exists())
+        {
+          $domicilio = Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', 1 ]])->get();
+
+
+    	 $urlImagen = $request->idUser."/".$request->idPublicacion; 
+         return view('confirmarCompra.dondeRecibir')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'domicilio'=>$domicilio,'urlImagen'=>$urlImagen]);
+         }else{
+            return view ('confirmarCompra.elegirFormaRecivir');
+         } 
     }
 
 }
