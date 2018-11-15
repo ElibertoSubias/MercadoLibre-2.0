@@ -74,8 +74,9 @@ echo mb_substr($cadena, -4);
 						<ul class="badge-type-selection__list">
 							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">
-
+								<form method="post" action="{{route('agregarTarjPrueba')}}">
+									<input type="hidden" name="tipoTarjeta" value="credito">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 									<button data-js="payment-type" type="submit" name="paymentType"
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
 
@@ -109,8 +110,9 @@ echo mb_substr($cadena, -4);
 							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
 							<!--////////////////////////////////////////////////Debito///////////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">
-
+								<form method="post" action="{{route('agregarTarjPrueba')}}">
+									<input type="hidden" name="tipoTarjeta" value="debito">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 									<button data-js="payment-type" type="submit" name="paymentType"
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
 
@@ -135,9 +137,7 @@ echo mb_substr($cadena, -4);
 
 								</form>
 							</li>
-							<!--////////////////////////////////////////////////Debito///////////////////////////////////////////////-->
-							<!--////////////////////////////////////////////Mercado Pago///////////////////////////////////////////-->
-							<li class="badge-type-selection__list-item ui-list__item">
+							<!-- <li class="badge-type-selection__list-item ui-list__item">
 								<form method="post">
 
 									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="PREPAID_CARD">
@@ -155,8 +155,6 @@ echo mb_substr($cadena, -4);
 
 								</form>
 							</li>
-							<!--////////////////////////////////////////////Mercado Pago///////////////////////////////////////////-->
-							<!--///////////////////////////////////////////Puntos de Pago///////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
 								<form method="post">
 
@@ -187,8 +185,6 @@ echo mb_substr($cadena, -4);
 
 								</form>
 							</li>
-							<!--///////////////////////////////////////////Puntos de Pago///////////////////////////////////////////-->
-							<!--///////////////////////////////////////Transferencia Electrónica/////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
 								<form method="post">
 
@@ -214,7 +210,7 @@ echo mb_substr($cadena, -4);
 							    	</button>
 
 								</form>
-							</li>
+							</li> -->
 							<!--///////////////////////////////////////Transferencia Electrónica/////////////////////////////////////-->
 						</ul>
 					</div>

@@ -25,7 +25,7 @@
 										<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
 										<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
 										<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
-										 
+
 										<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
 										<input type="hidden" name="precioEnvio" value="0">
 										<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
@@ -74,8 +74,9 @@
 						<ul class="badge-type-selection__list">
 							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">									
-									
+								<form method="post" action="{{route('agregarTarjPrueba')}}">										
+									<input type="hidden" name="tipoTarjeta" value="credito">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
 									<button data-js="payment-type" type="submit" name="paymentType" 
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
 
@@ -109,8 +110,9 @@
 							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
 							<!--////////////////////////////////////////////////Debito///////////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">									
-									
+								<form method="post" action="{{route('agregarTarjPrueba')}}">									
+									<input type="hidden" name="tipoTarjeta" value="debito">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
 									<button data-js="payment-type" type="submit" name="paymentType" 
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
 
@@ -134,10 +136,8 @@
 							    	</button>
 
 								</form>
-							</li>
-							<!--////////////////////////////////////////////////Debito///////////////////////////////////////////////-->
-							<!--////////////////////////////////////////////Mercado Pago///////////////////////////////////////////-->
-							<li class="badge-type-selection__list-item ui-list__item">
+							</li> 
+							<!-- <li class="badge-type-selection__list-item ui-list__item">
 								<form method="post">									
 									
 									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="PREPAID_CARD">
@@ -154,9 +154,7 @@
 							    	</button>
 
 								</form>
-							</li>
-							<!--////////////////////////////////////////////Mercado Pago///////////////////////////////////////////-->
-							<!--///////////////////////////////////////////Puntos de Pago///////////////////////////////////////////-->
+							</li> 
 							<li class="badge-type-selection__list-item ui-list__item">
 								<form method="post">									
 									
@@ -186,9 +184,7 @@
 							    	</button>
 
 								</form>
-							</li>
-							<!--///////////////////////////////////////////Puntos de Pago///////////////////////////////////////////-->
-							<!--///////////////////////////////////////Transferencia Electrónica/////////////////////////////////////-->
+							</li> 
 							<li class="badge-type-selection__list-item ui-list__item">
 								<form method="post">									
 									
@@ -214,7 +210,7 @@
 							    	</button>
 
 								</form>
-							</li>
+							</li> -->
 							<!--///////////////////////////////////////Transferencia Electrónica/////////////////////////////////////-->
 						</ul>
 					</div>

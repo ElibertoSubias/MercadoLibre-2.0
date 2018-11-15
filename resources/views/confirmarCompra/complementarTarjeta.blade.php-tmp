@@ -19,7 +19,11 @@
                 <div class="hero__icon" data-js="hero-icon">
                     <span class="ui-badge ui-badge--small ">
                             <span class="ui-badge__icon ui-badge__icon--payment-logo">
-                                <i class="payment-icon payments-cho_badge _debvisa-cho_badge"></i>
+                                @if($card->brand=="visa")
+                                    <i class="payment-icon payments-cho_badge _debvisa-cho_badge"></i>
+                                @elseif($card->brand=="mastercard")
+                                    <i class="payment-icon payments-cho_badge _master-cho_badge"></i>
+                                @endif
                             </span>
                     </span>
                 </div>
@@ -229,6 +233,7 @@ echo mb_substr($cadena, -4);
 </fieldset></div></div>
             <div class="ui-form__actions">
                 <button data-js="submit-btn" class="ui-button ui-button--primary" type="submit">Continuar</button>
+                <input type="hidden" name="idCard" value="{{$card->id}}">
             </div>
 </form></div></section>
         </div>
@@ -240,10 +245,10 @@ echo mb_substr($cadena, -4);
     <aside class="cart-aside__content cart-aside__content--item cart-aside--static" data-aside="target">
             <div class="overview-component__item u-block-center">
                 <span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
-                        <img class="badge__product-icon picture-image" src="./Mercado Libre México - Donde comprar y vender de todo_files/D_NQ_NP_667770-MLM27193457963_042018-Z.jpg" srcset="https://http2.mlstatic.com/D_NQ_NP_667770-MLM27193457963_042018-Z.jpg" alt="Tarjeta Usb Antena Wifi 150mbps 802.11n/g/b Redes + Potente" data-object-fit="cover">
+                        <img class="badge__product-icon picture-image" src="images/{{$urlImagen}}/principal.jpg" alt="Tarjeta Usb Antena Wifi 150mbps 802.11n/g/b Redes + Potente" data-object-fit="cover">
                 </span>
                 <h3 class="overview-component__item-title">
-                    Tarjeta Usb Antena Wifi 150mbps 802.11n/g/b Redes + Potente
+                    {{$titulo}}
                 </h3>
                       <span class="overview-component__item-quantity-text">Cantidad: 1</span>
             </div>
@@ -258,13 +263,10 @@ echo mb_substr($cadena, -4);
                                 <div data-id="overview-items-price" class="overview-component__column">
                                     <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                                         <meta itemprop="price" content="18999">
-
-
                                         <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                                        <span class="price-tag-fraction">189</span>
+                                        <span class="price-tag-fraction">{{$precio}}</span>
                                             <span class="price-tag-decimal-separator"></span>
-
-                                            <span class="price-tag-cents">99</span>
+                                            <span class="price-tag-cents">00</span>
 
                                     </span>
                                 </div>
@@ -292,10 +294,10 @@ echo mb_substr($cadena, -4);
 
 
                                             <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                                            <span class="price-tag-fraction">189</span>
+                                            <span class="price-tag-fraction">{{$precio}}</span>
                                                 <span class="price-tag-decimal-separator"></span>
 
-                                                <span class="price-tag-cents">99</span>
+                                                <span class="price-tag-cents">00</span>
 
                                         </span>
                             </div>

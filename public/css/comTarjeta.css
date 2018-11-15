@@ -102,7 +102,7 @@
 ._debvisa-cho_badge {
     width: 34px;
     height: 34px;
-    background-position: left -105px;
+    background-position: left -105px !important;
 }
 .payments-cho_badge {
     background: url(https://http2.mlstatic.com/secure/payment-logos/payment-logos-mlm-cho_badge_v_9da8978920.png) no-repeat;
