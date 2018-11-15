@@ -64,7 +64,7 @@ class CompraController extends Controller
 
     public function dondeRecibir(Request $request)
     {
-        if(Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', 1 ]])->exists())
+        if(Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', '1' ]])->exists())
         {
           $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get(); 
     	 $urlImagen = $request->idUser."/".$request->idPublicacion; 
@@ -73,6 +73,9 @@ class CompraController extends Controller
             return view ('confirmarCompra.elegirFormaRecivir');
          } 
     }
+
+
+
 
     public function aggTarjPrueba(Request $request)
     {

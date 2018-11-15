@@ -86,11 +86,53 @@ class EditarUsuarioController extends Controller
         ]);
         return redirect("perfil");
     }
+
+    public function cambiarDireccion(Request $request)
+    {  
+        $viejo =Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', '1' ]])->update([ 
+           
+            'envio' => '0'
+
+            ]);
+         $datos = Direcciones::where(['_id'=>$request->id,'idUser'=>Auth::id()])->update([ 
+           
+            'envio' => '1'
+
+            ]);
+                $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get();
+
+          return view('confirmarCompra.dondeRecibir')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'domicilios'=>$domicilios,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPublicacion]);
+    }
+
+
+
+
     public function agregarDomicilio(Request $request)
     {
     
        $id = Auth::id();
+        if(Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', '1' ]])->exists()){
         $Direccion = new Direcciones;
+        $Direccion->calle=$request->Calle;
+        $Direccion->contacto=$request->Contacto;
+        $Direccion->idUser=$id;
+        $Direccion->telefono=$request->Telefono;
+        $Direccion->numeroEx=$request->NumExt;
+        $Direccion->numeroInt=$request->NumInt;
+        $Direccion->entrecalles=$request->EntreCalles;
+        $Direccion->referencia=$request->Referencias;
+        $Direccion->codigopostal=$request->CodigoPostal;
+        $Direccion->asentamiento=$request->Asentamiento;
+        $Direccion->municipio=$request->Municipio;
+        $Direccion->estado=$request->Estado;
+        $Direccion->envio='0';
+
+        $Direccion->save();
+         return response()->json([
+                    "res" => 10
+                ]);
+       }else{
+         $Direccion = new Direcciones;
         $Direccion->calle=$request->Calle;
         $Direccion->contacto=$request->Contacto;
         $Direccion->idUser=$id;
@@ -109,6 +151,6 @@ class EditarUsuarioController extends Controller
          return response()->json([
                     "res" => 10
                 ]);
-       
+       }
     }  
 }
