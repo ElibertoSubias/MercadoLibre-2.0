@@ -30,4 +30,8 @@ class CompraController extends Controller
     	return view('confirmarCompra.dondeRecibir');
     }
 
+    public function confiCompra(Request $request)
+    {
+    	return view('confirmarCompra.confiCompra');
+    }   
 }
