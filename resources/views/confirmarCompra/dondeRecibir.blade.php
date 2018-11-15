@@ -228,8 +228,14 @@
 						<ul class="ui-list__content">
 							@foreach($domicilios as $domicilio)
 								<li class="ui-list__item ui-list__item--action">	
-									<form data-id="address-169359984" data-state="selected" data-js="address-form" class="address-box" method="post">
-						    			<button value="169359984" data-input-id="addressId" name="addressId" type="submit" role="option" class="ui-list__item-option <?php if($domicilio->envio==1){echo "ui-list__item--selected";} ?> ">
+									<form data-id="address-169359984" action="{{route('cambiardireccion')}}" data-state="selected" data-js="address-form" class="address-box" method="post">
+										<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                            			<input type="hidden" name="id" id="id" value="{{$domicilio->_id}}">
+                            		    <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+									    <input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+										<input type="hidden" name="precio" value="{{$precio}}">
+										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+						    			<button value="169359984"  data-input-id="addressId" name="addressId" type="submit" role="option" class="ui-list__item-option <?php if($domicilio->envio==1){echo "ui-list__item--selected";} ?> ">
 						        		<div class="address-box__address">
 								            <span class="address-box__address__zip-code">
 								                {{$domicilio->codigopostal}}

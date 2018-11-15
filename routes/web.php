@@ -93,6 +93,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('agregarDomicilio', 'Usuario\MenuUsuarioController@aggDomicilio')->name('agregarDomicilio');
 	Route::get('id={id}', 'EditarUsuario\EditarUsuarioController@modificarDomicilioView')->name('irAModificarDireccion');
+		Route::post('cambiardireccion', 'EditarUsuario\EditarUsuarioController@cambiarDireccion')->name('cambiardireccion');
 	Route::get('idElemneto={idElemneto}', 'EditarUsuario\EditarUsuarioController@eliminarDomicilio')->name('eliminarDomicilio');
 	Route::post('modificando', 'EditarUsuario\EditarUsuarioController@modificarDomicilio')->name('modificarDireccion');
 
@@ -114,6 +115,8 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::any('complTarjeta', 'Compra\CompraController@compTarjeta')->name('complTarjeta');
 
 	Route::post('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
+
+
 
 
 	Route::any('sindomicilio', 'Compra\CompraController@dondeRecibir')->name('sindomicilio');
