@@ -28,6 +28,12 @@ $(document.getElementById('contenedor_articulos')).ready(function() {
       $('#subtotal').text(subtotal);
       $('#totalneto').text(totalneto);
 });
+
+$('#app-container').ready(function(){
+	$(".price-tag-fraction").each(function(){
+		$(this).html(formatearPrecio.new($(this).html()));
+	}); 
+});
 /*$(document.getElementById('searchResults')).ready(function() { 
 	var precioUnitario = formatearPrecio.new($('.precioUnitario').text()):
 	$('.precioUnitario').text(precioUnitario);

@@ -93,8 +93,8 @@
 }
 
 .ui-list__item:hover {
-    background-color: #e6e6e6;
-    border-left: 5px solid #9696f9;
+    background-color: #f5f5f5;
+    border-left: 5px solid #3483fa;
     overflow: hidden;
     position: relative;
 }
@@ -290,7 +290,7 @@
 
 .cart-aside--fixed {
     padding-top: 48px;
-    background-color:#e6e6e6  !important;    
+    background-color:#f5f5f5  !important;    
     position: fixed;
     top: 0;
 }

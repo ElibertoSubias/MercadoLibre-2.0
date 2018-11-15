@@ -33,18 +33,22 @@
 													</div>
 													<div class="hero__main-content" data-js="hero-main-content">
 														<div class="hero__main-content-wrapper">
-															<div class="hero__info" data-js="hero-info">
-																<h3 data-id="hero-shipping-title" class="hero__info-title">C.P. {{$domicilio[0]->codigopostal}} </h3>
-																<span data-id="hero-shipping-subtitle" class="hero__info-subtitle">
-																	{{$domicilio[0]->calle}} #{{$domicilio[0]->numeroEx}} {{$domicilio[0]->asentamiento}} -{{$domicilio[0]->referencia}} 
-																</span>
-															</div>
-															<div class="hero__action" data-js="hero-action"> 
-																	<button data-js="next-step" data-input-id="nextStepAddressChange" class=" hero__action-button u-link" type="button" name="nextStepAddressChange" value="nextStepAddressChange">
-																		Eviar a otra dirección
-																	</button>
-																</form>
-															</div>
+															@foreach($domicilios as $domicilio)
+																@if($domicilio->envio==1)
+																	<div class="hero__info" data-js="hero-info">
+																		<h3 data-id="hero-shipping-title" class="hero__info-title">C.P. {{$domicilio->codigopostal}} </h3>
+																		<span data-id="hero-shipping-subtitle" class="hero__info-subtitle">
+																			{{$domicilio->calle}} #{{$domicilio->numeroEx}} {{$domicilio->asentamiento}} -{{$domicilio->referencia}} 
+																		</span>
+																	</div>
+																	<div class="hero__action" data-js="hero-action"> 
+																			<button data-js="next-step" data-input-id="nextStepAddressChange" class=" hero__action-button u-link" type="button" name="nextStepAddressChange" value="nextStepAddressChange">
+																				Eviar a otra dirección
+																			</button>
+																		</form>
+																	</div>
+																@endif
+															@endforeach 
 														</div>
 													</div>
 												</div>
@@ -64,10 +68,14 @@
 						<ul class="badge-type-selection__list">
 							<!--/////////////////////////////////////////Estandar Domicilio////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">
-									<input data-js="payment-type" type="hidden" name="paymentMethodId" value="debvisa">	
-									<input data-js="payment-type-card-id" type="hidden" name="cardId" value="248131622">
-									
+								<form method="post" action="{{route('pagoPor')}}">  
+									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+									<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+									<input type="hidden" name="precioEnvio" value="0">
+									<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+									<input type="hidden" name="precio" value="{{$precio}}">
+									<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+
 									<button data-js="payment-type" type="submit" name="paymentType" 
 									class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
 																		        
@@ -79,18 +87,21 @@
 						                    <span data-id="shipping-option-price-free" class="price-free   u-link">
 						                    	Gratis
 						                    </span>						                    
-								        </span>
-
-							    	</button>
-
+								        </span> 
+							    	</button> 
 								</form>
 							</li>							
 							<!--/////////////////////////////////////////Estandar Domicilio////////////////////////////////////////-->
 							<!--////////////////////////////////////////Express Domicilio//////////////////////////////////////////-->	
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="form">									
-									<input data-js="payment-type-id" type="hidden" name="paymentMethodId" value="master">	
-									<input data-js="payment-type-card-id" type="hidden" name="cardId" value="242584257">
+								<form method="post" action="{{route('pagoPor')}}"> 	
+								<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+									<input type="hidden" name="idPaquete" value="{{$idPaquete}}"> 
+									<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+									<input type="hidden" name="precio" value="{{$precio}}">
+									<input type="hidden" name="urlImagen" value="{{$urlImagen}}">	 
+									<input type="hidden" name="precioEnvio" value="110"> 
+
 									<button data-js="payment-type" type="submit" name="paymentType" 
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">										
 										<div class="badge-type__metadata">
@@ -102,17 +113,20 @@
 						                    	<p><font color="black">$110</font></p>
 						                    </span>						                    
 								        </span>
-									</button>
+									</button> 
 								</form>
 								
 							</li>
 							<!--////////////////////////////////////////Express Domicilio//////////////////////////////////////////-->	
 							<!--//////////////////////////////////////////Retiro Sucursal//////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">
-									<input data-js="payment-type" type="hidden" name="paymentMethodId" value="debvisa">	
-									<input data-js="payment-type-card-id" type="hidden" name="cardId" value="248131622">
-									
+								<form method="post" action="{{route('pagoPor')}}"> 
+									<input type="hidden" name="idPaquete" value="{{$idPaquete}}"> 
+									<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+									<input type="hidden" name="precio" value="{{$precio}}">
+									<input type="hidden" name="urlImagen" value="{{$urlImagen}}">	 
+									<input type="hidden" name="precioEnvio" value="0"> 
+
 									<button data-js="payment-type" type="submit" name="paymentType" 
 									class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
 																		        
@@ -126,8 +140,7 @@
 						                    </span>						                    
 								        </span>
 
-							    	</button>
-
+							    	</button> 
 								</form>
 							</li>							
 							<!--//////////////////////////////////////////Retiro Sucursal//////////////////////////////////////////-->
@@ -158,8 +171,10 @@
 					<div class="overview-component__amounts">
 						<div class="overview-component__table">
 							<div class="overview-component__row">
-								<div data-id="overview-items-quantity" class="overview-component__column">Producto</div>
-								<dir data-id="overview-items-price" class="overview-component__column">
+								<div data-id="overview-items-quantity" style="text-align: left;" class="overview-component__column">
+									Producto
+								</div>
+								<div data-id="overview-items-price" class="overview-component__column" style="text-align: right;">
 									<span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
 										<meta itemprop="price" content="18999">
 										<span class="price-tag-symbol" itemprop="priceCurrency">$</span>
@@ -167,30 +182,28 @@
 										<span class="price-tag-decimal-separator"></span>
 										<span class="price-tag-cents">00</span>
 									</span>
-								</dir>
-							</div>
-							<div class="overview-component__row">
-								<div class="overview-component__column">Envío</div>
-								<div data-id="overview-shipping-amount" class="overview-component__column">
-									<span class="price-free1 u-text--green">Gratis</span>
 								</div>
 							</div>
-						</div>						
-					</div>
-					<div class="overview-component__total">
-						<div class="overview-component__table">
-							<div class="overview-component__column">Total:</div>
-							<div class="overview-component__column">
-								<span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-										<meta itemprop="price" content="18999">
-										<span class="price-tag-symbol price-tag-symbolTotal" itemprop="priceCurrency">$</span>
-										<span class="price-tag-fraction price-tag-symbolTotal1">{{$precio}}</span>
-										<span class="price-tag-decimal-separator"></span>
-										<span class="price-tag-cents1"></span>
-									</span>
+							<div class="overview-component__row">
+								<div class="overview-component__column" style="    text-align: left;">Envío</div>
+								<div data-id="overview-shipping-amount" class="overview-component__column">
+									<span class="price-free1 u-text--green" style="margin-right:0px;">Gratis</span>
+								</div>
 							</div>
-						</div>
-					</div>
+						</div>	
+						<div class="overview-component__total">
+							<div class="overview-component__table">
+								<div class="overview-component__column" style="    text-align: left;width: 30%;">Total:</div>
+								<div class="overview-component__column">
+									<span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+											<meta itemprop="price" content="18999"> 
+											<span class="price-tag-fraction ">${{$precio}}</span> 
+											<span class="price-tag-cents">00</span>
+										</span>
+								</div>
+							</div>
+						</div>					
+					</div> 
 				</div>
 			</aside>
 		</div>
@@ -199,7 +212,7 @@
 <!-- Modal -->
   <div class="modal fade in" id="modalDirecciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="width: 46%;height: auto;">
-      <div class="modal-content" style="margin: 30% auto;">
+      <div class="modal-content" style="margin: auto;">
         <div class="modal-header" style="border-bottom: 0px;padding-bottom:0px;">
           <div class="col-md-6">
           	<h1 style="font-size: 25px;padding: 20px;text-align: left;" class="modal-title"><b>Mis direcciones</b></h1>	
@@ -213,20 +226,22 @@
             	<section class="ui-list ui-list--modal addresses-selection" data-component="address-selection">
 					<div data-component="address-list">
 						<ul class="ui-list__content">
-							<li class="ui-list__item ui-list__item--action">	
-								<form data-id="address-169359984" data-state="selected" data-js="address-form" class="address-box" method="post">
-					    			<button value="169359984" data-input-id="addressId" name="addressId" type="submit" role="option" class="ui-list__item-option"><!-- ui-list__item--selected -->
-					        		<div class="address-box__address">
-							            <span class="address-box__address__zip-code">
-							                C.P. 80014
-							            </span>
-						                <p class="address-box__address-info">
-						                    Venice 3562 SN - Venice Y Blvrd California - Es Un Abarrote Cremeria Los Ángeles Esta En La Esquina
-						                </p>
-						        	</div>
-						    		</button>
-								</form>
-							</li>
+							@foreach($domicilios as $domicilio)
+								<li class="ui-list__item ui-list__item--action">	
+									<form data-id="address-169359984" data-state="selected" data-js="address-form" class="address-box" method="post">
+						    			<button value="169359984" data-input-id="addressId" name="addressId" type="submit" role="option" class="ui-list__item-option <?php if($domicilio->envio==1){echo "ui-list__item--selected";} ?> ">
+						        		<div class="address-box__address">
+								            <span class="address-box__address__zip-code">
+								                {{$domicilio->codigopostal}}
+								            </span>
+							                <p class="address-box__address-info">
+							                    {{$domicilio->calle}} {{$domicilio->numEx}} {{$domicilio->numInt}} - {{$domicilio->entrecalles}} - {{$domicilio->referencia}}
+							                </p>
+							        	</div>
+							    		</button>
+									</form>
+								</li>
+							@endforeach 
 						</ul>
 					</div>
 				</section>
@@ -234,11 +249,7 @@
         </div>
         <div class="modal-footer" style="text-align: left;    padding: 30px;">
       		<div><div class="modal-footer-action addresses-actions" data-component="addresses-actions">
-			    <form class="address-box" method="post">
-			        <button style="color: #3483fa;font-size:18px;    margin-left: 15px;font-weight: 400;" class="u-button-reset addresses-actions__link  u-link ui-modal-link" data-js="new-address" type="submit" role="option" value="addressForm" name="nextStep">
-			            Agregar nueva dirección
-			        </button>
-			    </form>
+      			<a style="color: #3483fa;font-size:18px;    margin-left: 15px;font-weight: 400;" href="{{route('agregarDomicilio')}}" title="">Agregar nueva dirección</a> 
 			</div>
 			</div>
       	</div> 

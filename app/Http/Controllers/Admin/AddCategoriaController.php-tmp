@@ -227,7 +227,7 @@ class AddCategoriaController extends Controller {
 		session_start();
 		if (!isset($_SESSION['idPublicacion'])) {
 			$now                       = new \DateTime();
-			$_SESSION["idPublicacion"] = $now->format('d-m-Y-H-i-s');
+			$_SESSION["idPublicacion"] = $now->format('dmYHis');
 		}
 		switch ($request->tipoVenta) {
 			case 'VEHI':

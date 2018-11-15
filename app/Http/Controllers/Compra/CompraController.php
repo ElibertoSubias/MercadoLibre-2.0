@@ -38,12 +38,12 @@ class CompraController extends Controller
     public function metodoPago(Request $request)
     {
         $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678'); 
-        $customer = $openpay->customers->get(auth()->user()->idCard);
+        $customer = $openpay->customers->get(auth()->user()->idCard); 
         $findDataRequest = array( 
             'offset' => 0,
             'limit' => 5);
         $cardList = $customer->cards->getList($findDataRequest);
-        return view('confirmarCompra.metodoPago')->with(['tarjetas'=>$cardList]);
+        return view('confirmarCompra.metodoPago')->with(['tarjetas'=>$cardList,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete]);
     }
 
     public function compTarjeta(Request $request)
@@ -52,7 +52,7 @@ class CompraController extends Controller
         $customer = $openpay->customers->get(auth()->user()->idCard); 
 
         $card = $customer->cards->get($request->cardId);
-        return view('confirmarCompra.complementarTarjeta')->with(['card'=>$card]);
+        return view('confirmarCompra.complementarTarjeta')->with(['card'=>$card,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete]);
     }
 
 
@@ -68,7 +68,7 @@ class CompraController extends Controller
         {
           $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get(); 
     	 $urlImagen = $request->idUser."/".$request->idPublicacion; 
-         return view('confirmarCompra.dondeRecibir')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'domicilios'=>$domicilio,'urlImagen'=>$urlImagen]);
+         return view('confirmarCompra.dondeRecibir')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'domicilios'=>$domicilios,'urlImagen'=>$urlImagen,'idPaquete'=>$request->idPublicacion]);
          }else{
             return view ('confirmarCompra.elegirFormaRecivir');
          } 

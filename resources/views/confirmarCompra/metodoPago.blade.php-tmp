@@ -2,7 +2,7 @@
 
 @section('content')
 {!! Html::style('css/styleMetPago.css') !!}
-
+<main role="main" style="background: #eee;">
 <!--////////////////////////////////////////////////Botones de Pago///////////////////////////////////////////////////-->
 <div id="app-container" class="cart-content">
 
@@ -25,6 +25,12 @@
 										<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 										<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">
 										<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
+
+										<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+										<input type="hidden" name="precioEnvio" value="0">
+										<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo">
+										<input type="hidden" name="precio" value="{{$precio}}">
+										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
 
 										<button data-js="payment-type" type="submit" name="paymentType"
 										class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
@@ -227,45 +233,46 @@ echo mb_substr($cadena, -4);
 			<aside class="cart-aside__content cart-aside__content--item cart-aside--fixed" data-aside="target">
 				<div class="overview-component__item u-block-center">
 					<span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
-						<img src="">
+						<img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" >
+
 					</span>
-					<h3 class="overview-component__item-title">........</h3>
-					<span class="overview-component__item-quantity-text">........</span>
+					<h3 class="overview-component__item-title">{{$titulo}}</h3>
+					<span class="overview-component__item-quantity-text" style="color:  blue">Cantidad: 1 </span>
 				</div>
 				<div class="overview__table-container">
 					<div class="overview-component__amounts">
 						<div class="overview-component__table">
 							<div class="overview-component__row">
-								<div data-id="overview-items-quantity" class="overview-component__column">Producto</div>
-								<dir data-id="overview-items-price" class="overview-component__column">
+								<div data-id="overview-items-quantity" style="text-align: left;" class="overview-component__column">
+									Producto
+								</div>
+								<div data-id="overview-items-price" class="overview-component__column" style="text-align: right;">
 									<span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
 										<meta itemprop="price" content="18999">
 										<span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-										<span class="price-tag-fraction">0</span>
+										<span class="price-tag-fraction">{{$precio}}</span>
 										<span class="price-tag-decimal-separator"></span>
 										<span class="price-tag-cents">00</span>
 									</span>
-								</dir>
+								</div>
 							</div>
 							<div class="overview-component__row">
-								<div class="overview-component__column">Envío</div>
+								<div class="overview-component__column" style="    text-align: left;">Envío</div>
 								<div data-id="overview-shipping-amount" class="overview-component__column">
-									<span class="price-free u-text--green">Gratis</span>
+									<span class="price-free1 u-text--green" style="margin-right:0px;">Gratis</span>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="overview-component__total">
-						<div class="overview-component__table">
-							<div class="overview-component__column">Total:</div>
-							<div class="overview-component__column">
-								<span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-										<meta itemprop="price" content="18999">
-										<span class="price-tag-symbol price-tag-symbolTotal" itemprop="priceCurrency">$</span>
-										<span class="price-tag-fraction price-tag-symbolTotal1">0</span>
-										<span class="price-tag-decimal-separator"></span>
-										<span class="price-tag-cents1">00</span>
-									</span>
+						<div class="overview-component__total">
+							<div class="overview-component__table">
+								<div class="overview-component__column" style="    text-align: left;width: 30%;">Total:</div>
+								<div class="overview-component__column">
+									<span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+											<meta itemprop="price" content="18999">
+											<span class="price-tag-fraction ">${{$precio}}</span>
+											<span class="price-tag-cents">00</span>
+										</span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -273,6 +280,7 @@ echo mb_substr($cadena, -4);
 			</aside>
 		</div>
 	</div>
-</div>//
+</div>
 <!--////////////////////////////////////////////////////DATOS///////////////////////////////////////////////////////-->
+</main>
 @stop

@@ -881,8 +881,7 @@ li {
     margin-top: 16px;
     border-top: 1px solid #e6e6e6;
 
-    font-size: 18px;
-    margin-left: -190px;
+    font-size: 18px; 
 }
 
 .overview-component__column {

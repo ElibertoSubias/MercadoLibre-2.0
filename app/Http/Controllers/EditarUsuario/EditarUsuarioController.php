@@ -62,6 +62,11 @@ class EditarUsuarioController extends Controller
         $domicilio = Direcciones::where(['_id'=>$request->id,'idUser'=>Auth::id()])->get();
         return view("usuario.menu.modificarDomicilio")->with('domicilio',$domicilio);
     }
+    public function eliminarDomicilio(Request $request)
+    { 
+        $domicilio = Direcciones::where(['_id'=>$request->idElemneto])->delete();
+        return redirect("perfil");
+    }
     public function modificarDomicilio(Request $request)
     {  
         $datos = Direcciones::where(['_id'=>$request->idDomicilio,'idUser'=>Auth::id()])->update([ 

@@ -40,7 +40,12 @@
                             </h3>
                     </div>
                             <div class="hero__action" data-js="hero-action">
-                                <form data-js="change-payment" method="post">
+                                <form data-js="change-payment" method="post" action="{{route('pagoPor')}}">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                                    <input type="hidden" name="precio" value="{{$precio}}">
+                                    <input type="hidden" name="titulo" value="{{$titulo}}">
+                                    <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+                                    <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
                                     <button data-js="" data-input-id="nextStepPayments" class=" hero__action-button u-link" type="submit" name="nextStepPayments" value="nextStepPayments">
                                         Modificar
                                     </button>

@@ -453,7 +453,9 @@ margin:0px;
 padding-bottom: 5px;
 ">Modificar</p></a>
                                                     </li>
-                                                    <li class="masiveActionOption cannot finalize" style="margin-bottom:10px;    padding: 3px;">    <a href="" style="padding:0px;margin:0px;"><p style="color: black;padding-bottom: 5px;">Usar para compras</p></a>
+                                                    <li class="masiveActionOption cannot finalize" style="padding: 3px;">    <a href="" style="padding:0px;margin:0px;"><p style="color: black;padding-bottom: 5px;">Usar para compras</p></a>
+                                                    </li>
+                                                    <li class="masiveActionOption cannot finalize" style="margin-bottom:10px;    padding: 3px;">    <a href="{{route('eliminarDomicilio', ['idElemneto' => $domicilio->_id])}}" style="padding:0px;margin:0px;"><p style="color: black;padding-bottom: 5px;">Eliminar</p></a>
                                                     </li>
                                                 </ul>
                                             </div>
