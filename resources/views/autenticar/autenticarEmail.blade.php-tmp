@@ -20,7 +20,7 @@
 			<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 				<div id="cont-form1" style="margin-top: -18px;">
 					<div class="col-md-6" style="height: 30px;width: 100%;">
-						{!!Form::text('email',null,['class'=>'form-control','id'=>'inputEmail','autocomplete'=>'new-mail'])!!}
+						{!!Form::text('login',null,['class'=>'form-control','id'=>'inputEmail','autocomplete'=>'new-mail'])!!}
 						{!!Form::label('E-mail o usuario', null, array('id' => 'lblMsjinputEmail'))!!}
 						<div id="alertMsjinputEmail" class="ch-validation-message ui-form__message" style="float: left;color: #f04449;font-weight:600;font-size: 14px;line-height: 1em;">Completa este dato.</div>
 					</div>
