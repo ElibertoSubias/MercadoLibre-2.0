@@ -55,6 +55,10 @@ class EditarUsuarioController extends Controller {
 		$domicilio = Direcciones::where(['_id' => $request->id, 'idUser' => Auth::id()])->get();
 		return view("usuario.menu.modificarDomicilio")->with('domicilio', $domicilio);
 	}
+	public function eliminarDomicilio(Request $request) {
+		$domicilio = Direcciones::where(['_id' => $request->idElemneto])->delete();
+		return redirect("perfil");
+	}
 	public function modificarDomicilio(Request $request) {
 		$datos = Direcciones::where(['_id' => $request->idDomicilio, 'idUser' => Auth::id()])->update([
 				'calle'                          => $request->inputCalle,
@@ -69,6 +73,7 @@ class EditarUsuarioController extends Controller {
 				'asentamiento'                   => $request->inputAcentamiento,
 				'municipio'                      => $request->inputMunicipio,
 				'estado'                         => $request->inputEstado
+
 			]);
 		return redirect("perfil");
 	}
@@ -88,60 +93,12 @@ class EditarUsuarioController extends Controller {
 		$Direccion->asentamiento = $request->Asentamiento;
 		$Direccion->municipio    = $request->Municipio;
 		$Direccion->estado       = $request->Estado;
+		$Direccion->envio        = '1';
+
 		$Direccion->save();
 		return response()->json([
 				"res" => 10
 			]);
 
-	}
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request) {
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id) {
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id) {
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, $id) {
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy($id) {
-		//
 	}
 }

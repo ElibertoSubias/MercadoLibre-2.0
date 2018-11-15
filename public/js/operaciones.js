@@ -381,8 +381,10 @@ function validarCampos(){
 
 function calcular(codigo){
   var estado= codigo.substring(0, 2);
+   inputActivo('inputEstado');
+     inputActivo('inputMunicipio');
  if(estado==80 ||estado==81 || estado==82 )
- {  
+ {
     $('#inputEstado').val('Sinaloa');
     $('#inputMunicipio').val('Culiacan');
  }

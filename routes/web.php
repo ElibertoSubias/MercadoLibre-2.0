@@ -93,6 +93,8 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('agregarDomicilio', 'Usuario\MenuUsuarioController@aggDomicilio')->name('agregarDomicilio');
 	Route::get('id={id}', 'EditarUsuario\EditarUsuarioController@modificarDomicilioView')->name('irAModificarDireccion');
+		Route::post('cambiardireccion', 'EditarUsuario\EditarUsuarioController@cambiarDireccion')->name('cambiardireccion');
+	Route::get('idElemneto={idElemneto}', 'EditarUsuario\EditarUsuarioController@eliminarDomicilio')->name('eliminarDomicilio');
 	Route::post('modificando', 'EditarUsuario\EditarUsuarioController@modificarDomicilio')->name('modificarDireccion');
 
 	Route::any('agregaralCarrito', 'Usuario\CarritoController@agregarAlCarrito')->name('agregaralCarrito');
@@ -103,11 +105,21 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('pagoPor', 'Compra\CompraController@metodoPago')->name('pagoPor');
 	
+	///////////////////////////////
+	Route::any('agregarTarjPrueba', 'Compra\CompraController@aggTarjPrueba')->name('agregarTarjPrueba');
+	Route::post('save_customer_card', 'Compra\CompraController@guardarCard_custumer')->name('save_customer_card');
+	///////////////////////////////
+
 	Route::any('nuevatarjetac', 'Compra\CompraController@nuevaTarjetacre')->name('nuevatarjetac');
 
-	Route::any('tarjeta', 'Compra\CompraController@compTarjeta')->name('tarjeta');
+	Route::any('complTarjeta', 'Compra\CompraController@compTarjeta')->name('complTarjeta');
 
-	Route::any('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
+	Route::post('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
+
+
+
+
+	Route::any('sindomicilio', 'Compra\CompraController@dondeRecibir')->name('sindomicilio');
 });
 
 

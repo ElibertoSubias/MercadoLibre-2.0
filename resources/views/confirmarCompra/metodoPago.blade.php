@@ -2,7 +2,7 @@
 
 @section('content')
 {!! Html::style('css/styleMetPago.css') !!}
-
+<main role="main" style="background: #eee;">
 <!--////////////////////////////////////////////////Botones de Pago///////////////////////////////////////////////////-->
 <div id="app-container" class="cart-content">
 	
@@ -18,53 +18,48 @@
 				<article data-js="stored-cards" class="ui-list ui-panel--raised" role="list">
 					<div data-js="payments-types" data-stored="true">
 						<ul class="badge-type-selection__list">
-							<!--////////////////////////////////////////////////Visa///////////////////////////////////////////////-->
-							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">
-									<input data-js="payment-type" type="hidden" name="paymentMethodId" value="debvisa">	
-									<input data-js="payment-type-card-id" type="hidden" name="cardId" value="248131622">
-									
-									<button data-js="payment-type" type="submit" name="paymentType" 
-									class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
+							<!--////////////////////////////////////////////////Visa///////////////////////////////////////////////--> 
+							@foreach($tarjetas as $tarjeta) 
+								<li class="badge-type-selection__list-item ui-list__item">
+									<form action="{{route('complTarjeta')}}" method="post">
+										<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+										<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
+										<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
 
-								        <span class="ui-badge ui-badge--small">
-						                    <span class="ui-badge__icon ui-badge__icon--payment-logo">
-						                        <i class="payment-icon payments-cho_badge _debvisa-cho_badge"></i>
-						                    </span>
-								        </span>
-								        <div class="badge-type__metadata">
-							                <h2 class="badge-type-selection__list-title">Terminada en 5048</h2>
-							                <p class="badge-type-selection__list-text"></p>
-								        </div>
+										<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+										<input type="hidden" name="precioEnvio" value="0">
+										<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+										<input type="hidden" name="precio" value="{{$precio}}">
+										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
 
-							    	</button>
+										<button data-js="payment-type" type="submit" name="paymentType" 
+										class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
 
-								</form>
-							</li>							
-							<!--////////////////////////////////////////////////Visa///////////////////////////////////////////////-->
-							<!--////////////////////////////////////////////MasterCard////////////////////////////////////////////-->	
-							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="form">									
-									<input data-js="payment-type-id" type="hidden" name="paymentMethodId" value="master">	
-									<input data-js="payment-type-card-id" type="hidden" name="cardId" value="242584257">
-									<button data-js="payment-type" type="submit" name="paymentType" 
-									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
-										<span class="ui-badge ui-badge--small">
-											<span class="ui-badge__icon ui-badge__icon--payment-logo">
-												<i class="payment-icon payments-cho_badge _master-cho_badge"></i>
-											</span>
-										</span>
-										<div class="badge-type__metadata">
-											<h2 class="badge-type-selection__list-title">Terminada en 2289</h2>
-											<p class="badge-type-selection__list-text">
-												<span class="u-text--green">Hasta 18 meses sin intereses</span>
-											</p>
-										</div>
-									</button>
-								</form>
-								
-							</li>
-							<!--////////////////////////////////////////////MasterCard////////////////////////////////////////////-->
+									        <span class="ui-badge ui-badge--small">
+							                    <span class="ui-badge__icon ui-badge__icon--payment-logo">
+							                    	@if($tarjeta->brand=="visa")
+							                    	 	<i class="payment-icon payments-cho_badge _debvisa-cho_badge"></i>
+							                    	@elseif($tarjeta->brand=="mastercard")
+							                    		<i class="payment-icon payments-cho_badge _master-cho_badge"></i>
+							                    	@endif
+							                       
+							                    </span>
+									        </span>
+									        <div class="badge-type__metadata">
+								                <h2 class="badge-type-selection__list-title">Terminada en 
+								                	<?php 
+								                		$cadena=$tarjeta->card_number;
+								                		echo mb_substr($cadena,-4);  
+								                	?>
+								                		
+								                </h2>
+								                <p class="badge-type-selection__list-text"></p>
+									        </div>
+
+								    	</button> 
+									</form>
+								</li>
+							@endforeach		
 						</ul>
 					</div>
             	</article>
@@ -79,8 +74,9 @@
 						<ul class="badge-type-selection__list">
 							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">									
-									
+								<form method="post" action="{{route('agregarTarjPrueba')}}">										
+									<input type="hidden" name="tipoTarjeta" value="credito">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
 									<button data-js="payment-type" type="submit" name="paymentType" 
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
 
@@ -114,8 +110,9 @@
 							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
 							<!--////////////////////////////////////////////////Debito///////////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">									
-									
+								<form method="post" action="{{route('agregarTarjPrueba')}}">									
+									<input type="hidden" name="tipoTarjeta" value="debito">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
 									<button data-js="payment-type" type="submit" name="paymentType" 
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
 
@@ -139,10 +136,8 @@
 							    	</button>
 
 								</form>
-							</li>
-							<!--////////////////////////////////////////////////Debito///////////////////////////////////////////////-->
-							<!--////////////////////////////////////////////Mercado Pago///////////////////////////////////////////-->
-							<li class="badge-type-selection__list-item ui-list__item">
+							</li> 
+							<!-- <li class="badge-type-selection__list-item ui-list__item">
 								<form method="post">									
 									
 									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="PREPAID_CARD">
@@ -159,9 +154,7 @@
 							    	</button>
 
 								</form>
-							</li>
-							<!--////////////////////////////////////////////Mercado Pago///////////////////////////////////////////-->
-							<!--///////////////////////////////////////////Puntos de Pago///////////////////////////////////////////-->
+							</li> 
 							<li class="badge-type-selection__list-item ui-list__item">
 								<form method="post">									
 									
@@ -191,9 +184,7 @@
 							    	</button>
 
 								</form>
-							</li>
-							<!--///////////////////////////////////////////Puntos de Pago///////////////////////////////////////////-->
-							<!--///////////////////////////////////////Transferencia Electrónica/////////////////////////////////////-->
+							</li> 
 							<li class="badge-type-selection__list-item ui-list__item">
 								<form method="post">									
 									
@@ -219,7 +210,7 @@
 							    	</button>
 
 								</form>
-							</li>
+							</li> -->
 							<!--///////////////////////////////////////Transferencia Electrónica/////////////////////////////////////-->
 						</ul>
 					</div>
@@ -238,52 +229,54 @@
 			<aside class="cart-aside__content cart-aside__content--item cart-aside--fixed" data-aside="target">
 				<div class="overview-component__item u-block-center">
 					<span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
-						<img src="">
+						<img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" > 
+
 					</span>
-					<h3 class="overview-component__item-title">........</h3>
-					<span class="overview-component__item-quantity-text">........</span>
+					<h3 class="overview-component__item-title">{{$titulo}}</h3>
+					<span class="overview-component__item-quantity-text" style="color:  blue">Cantidad: 1 </span>
 				</div>
 				<div class="overview__table-container">
 					<div class="overview-component__amounts">
 						<div class="overview-component__table">
 							<div class="overview-component__row">
-								<div data-id="overview-items-quantity" class="overview-component__column">Producto</div>
-								<dir data-id="overview-items-price" class="overview-component__column">
+								<div data-id="overview-items-quantity" style="text-align: left;" class="overview-component__column">
+									Producto
+								</div>
+								<div data-id="overview-items-price" class="overview-component__column" style="text-align: right;">
 									<span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
 										<meta itemprop="price" content="18999">
 										<span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-										<span class="price-tag-fraction">0</span>
+										<span class="price-tag-fraction">{{$precio}}</span>
 										<span class="price-tag-decimal-separator"></span>
 										<span class="price-tag-cents">00</span>
 									</span>
-								</dir>
-							</div>
-							<div class="overview-component__row">
-								<div class="overview-component__column">Envío</div>
-								<div data-id="overview-shipping-amount" class="overview-component__column">
-									<span class="price-free u-text--green">Gratis</span>
 								</div>
 							</div>
-						</div>						
-					</div>
-					<div class="overview-component__total">
-						<div class="overview-component__table">
-							<div class="overview-component__column">Total:</div>
-							<div class="overview-component__column">
-								<span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-										<meta itemprop="price" content="18999">
-										<span class="price-tag-symbol price-tag-symbolTotal" itemprop="priceCurrency">$</span>
-										<span class="price-tag-fraction price-tag-symbolTotal1">0</span>
-										<span class="price-tag-decimal-separator"></span>
-										<span class="price-tag-cents1">00</span>
-									</span>
+							<div class="overview-component__row">
+								<div class="overview-component__column" style="    text-align: left;">Envío</div>
+								<div data-id="overview-shipping-amount" class="overview-component__column">
+									<span class="price-free1 u-text--green" style="margin-right:0px;">Gratis</span>
+								</div>
 							</div>
-						</div>
-					</div>
+						</div>	
+						<div class="overview-component__total">
+							<div class="overview-component__table">
+								<div class="overview-component__column" style="    text-align: left;width: 30%;">Total:</div>
+								<div class="overview-component__column">
+									<span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+											<meta itemprop="price" content="18999"> 
+											<span class="price-tag-fraction ">${{$precio}}</span> 
+											<span class="price-tag-cents">00</span>
+										</span>
+								</div>
+							</div>
+						</div>					
+					</div> 
 				</div>
 			</aside>
 		</div>
 	</div>	
-</div>//
+</div>
 <!--////////////////////////////////////////////////////DATOS///////////////////////////////////////////////////////-->
+</main>
 @stop

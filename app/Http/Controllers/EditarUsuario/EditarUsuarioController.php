@@ -62,6 +62,11 @@ class EditarUsuarioController extends Controller
         $domicilio = Direcciones::where(['_id'=>$request->id,'idUser'=>Auth::id()])->get();
         return view("usuario.menu.modificarDomicilio")->with('domicilio',$domicilio);
     }
+    public function eliminarDomicilio(Request $request)
+    { 
+        $domicilio = Direcciones::where(['_id'=>$request->idElemneto])->delete();
+        return redirect("perfil");
+    }
     public function modificarDomicilio(Request $request)
     {  
         $datos = Direcciones::where(['_id'=>$request->idDomicilio,'idUser'=>Auth::id()])->update([ 
@@ -77,13 +82,36 @@ class EditarUsuarioController extends Controller
             'asentamiento' => $request->inputAcentamiento,
             'municipio' => $request->inputMunicipio,
             'estado' => $request->inputEstado
+
         ]);
         return redirect("perfil");
     }
+
+    public function cambiarDireccion(Request $request)
+    {  
+        $viejo =Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', '1' ]])->update([ 
+           
+            'envio' => '0'
+
+            ]);
+         $datos = Direcciones::where(['_id'=>$request->id,'idUser'=>Auth::id()])->update([ 
+           
+            'envio' => '1'
+
+            ]);
+                $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get();
+
+          return view('confirmarCompra.dondeRecibir')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'domicilios'=>$domicilios,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPublicacion]);
+    }
+
+
+
+
     public function agregarDomicilio(Request $request)
     {
     
        $id = Auth::id();
+        if(Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', '1' ]])->exists()){
         $Direccion = new Direcciones;
         $Direccion->calle=$request->Calle;
         $Direccion->contacto=$request->Contacto;
@@ -97,65 +125,32 @@ class EditarUsuarioController extends Controller
         $Direccion->asentamiento=$request->Asentamiento;
         $Direccion->municipio=$request->Municipio;
         $Direccion->estado=$request->Estado;
+        $Direccion->envio='0';
+
         $Direccion->save();
          return response()->json([
                     "res" => 10
                 ]);
-       
-    } 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+       }else{
+         $Direccion = new Direcciones;
+        $Direccion->calle=$request->Calle;
+        $Direccion->contacto=$request->Contacto;
+        $Direccion->idUser=$id;
+        $Direccion->telefono=$request->Telefono;
+        $Direccion->numeroEx=$request->NumExt;
+        $Direccion->numeroInt=$request->NumInt;
+        $Direccion->entrecalles=$request->EntreCalles;
+        $Direccion->referencia=$request->Referencias;
+        $Direccion->codigopostal=$request->CodigoPostal;
+        $Direccion->asentamiento=$request->Asentamiento;
+        $Direccion->municipio=$request->Municipio;
+        $Direccion->estado=$request->Estado;
+        $Direccion->envio='1';
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+        $Direccion->save();
+         return response()->json([
+                    "res" => 10
+                ]);
+       }
+    }  
 }

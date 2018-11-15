@@ -196,3 +196,8 @@ $('.gallery').mouseover(function(){
 $('.gallery').mouseout(function(){
 	$('.flickity-prev-next-button').css('display','none');
 });
+
+
+$('[data-input-id="nextStepAddressChange"]').click(function(){
+	$('#modalDirecciones').modal('show');
+});

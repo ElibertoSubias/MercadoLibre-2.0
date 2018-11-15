@@ -1,0 +1,282 @@
+@extends('layouts.masterLogin')
+
+@section('content')
+{!! Html::style('css/styleMetPago.css') !!}
+<main role="main" style="background: #eee;">
+<!--////////////////////////////////////////////////Botones de Pago///////////////////////////////////////////////////-->
+<div id="app-container" class="cart-content">
+
+	<div>
+		<section data-component="select-type-payment">
+			<div class="badge-type-selection">
+				<div class="step-tile">
+					<h2 class="comoQuieresPagar">¿Cómo quieres pagar?</h2>
+				</div>
+				<h3 class="mediosSugeridos">Medios sugeridos</h3>
+
+				<!--////////////////////////////////////////////VIsa-MasterCard/////////////////////////////////////////////-->
+				<article data-js="stored-cards" class="ui-list ui-panel--raised" role="list">
+					<div data-js="payments-types" data-stored="true">
+						<ul class="badge-type-selection__list">
+							<!--////////////////////////////////////////////////Visa///////////////////////////////////////////////-->
+							@foreach($tarjetas as $tarjeta)
+								<li class="badge-type-selection__list-item ui-list__item">
+									<form action="{{route('complTarjeta')}}" method="post">
+										<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+										<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">
+										<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
+
+										<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+										<input type="hidden" name="precioEnvio" value="0">
+										<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo">
+										<input type="hidden" name="precio" value="{{$precio}}">
+										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+
+										<button data-js="payment-type" type="submit" name="paymentType"
+										class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
+
+									        <span class="ui-badge ui-badge--small">
+							                    <span class="ui-badge__icon ui-badge__icon--payment-logo">
+							                    	@if($tarjeta->brand=="visa")
+							                    	 	<i class="payment-icon payments-cho_badge _debvisa-cho_badge"></i>
+							                    	@elseif($tarjeta->brand=="mastercard")
+							                    		<i class="payment-icon payments-cho_badge _master-cho_badge"></i>
+							                    	@endif
+
+							                    </span>
+									        </span>
+									        <div class="badge-type__metadata">
+								                <h2 class="badge-type-selection__list-title">Terminada en
+<?php
+$cadena = $tarjeta->card_number;
+echo mb_substr($cadena, -4);
+?>
+
+								                </h2>
+								                <p class="badge-type-selection__list-text"></p>
+									        </div>
+
+								    	</button>
+									</form>
+								</li>
+							@endforeach
+						</ul>
+					</div>
+            	</article>
+				<!--////////////////////////////////////////////VIsa-MasterCard/////////////////////////////////////////////-->
+				<br>
+
+				<h3 class="otrosMedios">Otros medios</h3>
+
+				<!--//////////////////////////////////////////////Otros Medios///////////////////////////////////////////////-->
+				<article data-js="stored-cards" class="ui-list ui-panel--raised" role="list">
+					<div data-js="payments-types" data-stored="true">
+						<ul class="badge-type-selection__list">
+							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
+							<li class="badge-type-selection__list-item ui-list__item">
+								<form method="post" action="{{route('agregarTarjPrueba')}}">
+									<input type="hidden" name="tipoTarjeta" value="credito">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+									<button data-js="payment-type" type="submit" name="paymentType"
+									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
+
+								        <span class="ui-badge ui-badge--small">
+						                    <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-badge__icon ui-badge__icon--medium">
+						                    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--credit_card">
+						                    		<svg id="ui-icon--credit_card" viewBox="0 0 92 64" width="100%" height="100%">
+						                    			<g fill="none" fill-rule="evenodd">
+															<path opacity=".3" d="M0-14h92v92H0z"></path>
+															<path d="M0 5.992A5.992 5.992 0 0 1 6 0h80a6 6 0 0 1 6 5.992v52.016A5.992 5.992 0 0 1 86 64H6a6 6 0 0 1-6-5.992V5.992z" fill="#5697FA"></path>
+															<path fill="#0763EE" d="M0 10h92v12H0z"></path>
+															<path fill="#FFF" d="M6 26h80v10H6z"></path>
+															<rect fill="#0763EE" x="6" y="52" width="40" height="4" rx="2"></rect>
+															<rect fill="#0763EE" x="6" y="42" width="56" height="4" rx="2"></rect>
+						                    			</g>
+						                    		</svg>
+						                    	</use>
+						                    </svg>
+								        </span>
+								        <div class="badge-type__metadata">
+							                <h2 class="badge-type-selection__list-title">Tarjeta de crédito</h2>
+							                <p class="badge-type-selection__list-text">
+							                	<span class="u-text--green">Hasta 12 meses sin intereses</span>
+							                </p>
+								        </div>
+
+							    	</button>
+
+								</form>
+							</li>
+							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
+							<!--////////////////////////////////////////////////Debito///////////////////////////////////////////////-->
+							<li class="badge-type-selection__list-item ui-list__item">
+								<form method="post" action="{{route('agregarTarjPrueba')}}">
+									<input type="hidden" name="tipoTarjeta" value="debito">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+									<button data-js="payment-type" type="submit" name="paymentType"
+									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
+
+								        <span class="ui-badge ui-badge--small">
+						                    <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-badge__icon ui-badge__icon--medium">
+						                    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--debit_card">
+						                    		<svg svg id="ui-icon--debit_card" viewBox="0 0 92 63" width="100%" height="100%">
+						                    			<g fill="none" fill-rule="evenodd">
+															<path d="M0 6c0-3.362 2.68-6 6-6h80c3.314 0 6 2.646 6 6v51c0 3.359-2.679 6-6 6H6c-3.312 0-6-2.647-6-6V6z" fill="#5697FA"></path>
+															<path fill="#0764EE" d="M6 22h16V10H6zm0 32c0-1.105.893-2 2-2h36c1.106 0 2 .887 2 2 0 1.104-.89 2-2 2H8c-1.106 0-2-.888-2-2m0-10c0-1.106.893-2 2-2h25c1.106 0 2 .886 2 2a2 2 0 0 1-2 2H8c-1.106 0-2-.89-2-2"></path>
+															<path d="M6 32c0-1.105.9-2 2-2h12c1.107 0 2 .887 2 2 0 1.104-.902 2-2 2H8c-1.107 0-2-.888-2-2m21 0c0-1.105.9-2 2-2h12c1.106 0 2 .887 2 2 0 1.104-.902 2-2 2H29c-1.107 0-2-.888-2-2m21 0c0-1.105.902-2 2-2h12c1.106 0 2 .887 2 2 0 1.104-.902 2-2 2H50c-1.107 0-2-.888-2-2m21 0c0-1.105.902-2 2-2h12c1.107 0 2 .887 2 2 0 1.104-.902 2-2 2H71c-1.107 0-2-.888-2-2" fill="#FFF"></path>
+						                    			</g>
+						                    		</svg>
+						                    	</use>
+						                    </svg>
+								        </span>
+								        <div class="badge-type__metadata">
+							                <h2 class="badge-type-selection__list-title">Tarjeta de débito</h2>
+								        </div>
+
+							    	</button>
+
+								</form>
+							</li>
+							<!-- <li class="badge-type-selection__list-item ui-list__item">
+								<form method="post">
+
+									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="PREPAID_CARD">
+
+								        <span class="ui-badge ui-badge--small">
+						                    <span class="ui-badge__icon ui-badge__icon--payment-logo">
+						                        <i class="payment-icon payments-cho_badge _mercadopagocard-cho_badge"></i>
+						                    </span>
+								        </span>
+								        <div class="badge-type__metadata">
+							                <h2 class="badge-type-selection__list-title">Tarjeta Mercado Pago</h2>
+								        </div>
+
+							    	</button>
+
+								</form>
+							</li>
+							<li class="badge-type-selection__list-item ui-list__item">
+								<form method="post">
+
+									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="TICKET">
+
+								        <span class="ui-badge ui-badge--small">
+						                    <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-icon--ticket ui-badge__icon ui-badge__icon--medium">
+						                    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--ticket">
+						                    		<svg id="ui-icon--ticket" viewBox="0 0 92 84" width="100%" height="100%">
+						                    			<g fill="none" fill-rule="evenodd">
+						                    				<path opacity=".3" d="M0-4h92v92H0z"></path>
+						                    				<path fill="#5697FA" d="M32 0l52 52-32 32L0 32z"></path>
+						                    				<path d="M13.124 26.876l13.752-13.752A5.996 5.996 0 0 0 32 16c2.17 0 4.07-1.151 5.124-2.876l33.752 33.752A5.996 5.996 0 0 0 68 52c0 2.17 1.151 4.07 2.876 5.124L57.124 70.876A5.996 5.996 0 0 0 52 68a5.996 5.996 0 0 0-5.124 2.876L13.124 37.124A5.996 5.996 0 0 0 16 32c0-2.17-1.151-4.07-2.876-5.124z" fill="#FFF"></path>
+						                    				<circle fill="#3483FA" cx="42" cy="42" r="14"></circle>
+						                    				<path d="M35.636 46.964l-.896.895c-.733.734-.3 2.092 1.16 2.077a.228.228 0 0 0 .154-.066l1.211-1.21c2.349 1.87 4.984 1.944 6.753.175 1.768-1.768 1.754-3.919-.155-7.097l-.94-1.614c-.836-1.644-.674-2.276-.08-2.87.595-.595 1.68-.624 2.694.205.123.102.24.21.352.323.295.306.549.65.756 1.02.412.74.728 1.53.94 2.35.058.275.193.53.388.733.571.56 1.485.56 2.056 0 .39-.381.521-.955.337-1.468a8.558 8.558 0 0 0-1.563-3.361l1.13-1.13A.228.228 0 0 0 50 35.77c0-1.468-1.38-1.864-2.077-1.16l-.734.735c-2.29-1.872-4.88-1.953-6.605-.191-1.725 1.761-1.776 3.846.102 7.053l.97 1.585c.873 1.666.733 2.342.095 2.936-.734.734-1.718.653-2.79-.205 0 0-.139-.125-.337-.323a7.868 7.868 0 0 1-.851-.999 9.116 9.116 0 0 1-1.285-3.412 1.468 1.468 0 1 0-2.84.557c.264 1.682.948 3.27 1.989 4.617z" fill="#FFF"><circle fill="#3483FA" cx="42" cy="42" r="14"></circle></path>
+						                    				<path d="M64.996 17.345L54.828 7.173a3.997 3.997 0 0 0-5.651-.006L32 24.344l.933.933c3.903 3.903 10.234 3.9 13.067 1.067l6-6 26.686 27.093H92V17.345H64.996zM28.268 36.269a6.002 6.002 0 0 1 0 8.491l-7.508 7.51a6 6 0 0 1-8.492-.001l.492.492a6.002 6.002 0 0 1 0-8.492l7.508-7.509a6 6 0 0 1 8.492 0l-.492-.491zm8 8a6.002 6.002 0 0 1 0 8.491l-7.508 7.51a6 6 0 0 1-8.492-.001l.492.492a6.002 6.002 0 0 1 0-8.492l7.508-7.509a6 6 0 0 1 8.492 0l-.492-.491zm8 8a6.002 6.002 0 0 1 0 8.491l-7.508 7.51a6 6 0 0 1-8.492-.001l.492.492a6.002 6.002 0 0 1 0-8.492l7.508-7.509a6 6 0 0 1 8.492 0l-.492-.491zm8 8a6.002 6.002 0 0 1 0 8.491l-7.508 7.51a6 6 0 0 1-8.492-.001l.492.492a6.002 6.002 0 0 1 0-8.492l7.508-7.509a6 6 0 0 1 8.492 0l-.492-.491z" fill="#0763EE"></path>
+						                    			</g>
+						                    		</svg>
+						                    	</use>
+						                    </svg>
+								        </span>
+								        <div class="badge-type__metadata">
+							                <h2 class="badge-type-selection__list-title">Efectivo en puntos de pago</h2>
+							                <p><font color="#999">7-Eleven, BBVA Bancomer, Citibanamex y Otros</font></p>
+								        </div>
+
+							    	</button>
+
+								</form>
+							</li>
+							<li class="badge-type-selection__list-item ui-list__item">
+								<form method="post">
+
+									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="BANK_TRANSFER">
+
+								        <span class="ui-badge ui-badge--small">
+						                    <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-icon--bank_transfer ui-badge__icon ui-badge__icon--medium">
+						                    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--bank_transfer">
+						                    		<svg id="ui-icon--bank_transfer" viewBox="0 0 54 54" width="100%" height="100%">
+						                    			<g fill="none" fill-rule="evenodd">
+						                    				<path fill="#0864EE" d="M9.98 40.846h5.996v-20.94H9.98zm9.493 0h5.995v-20.94h-5.995zm9.492 0h5.995v-20.94h-5.995zm9.492 0h5.995v-20.94h-5.995z"></path>
+						                    				<path fill="#5697FA" d="M5.984 45.831H48.45v-4.985H5.984zM48.449 18.41L27.966 1.459a4.826 4.826 0 0 0-1.499 0L5.984 18.409c-.459.441-.586.9-.5 1.497.21.226.6.498 1 .498h41.465c.4 0 .792-.272 1-.498.086-.597-.041-1.056-.5-1.496"></path>
+						                    				<path fill="#0864EE" d="M17.974 15.419l9.492-7.479 8.993 7.479"></path>
+						                    			</g>
+						                    		</svg>
+						                    	</use>
+						                    </svg>
+								        </span>
+								        <div class="badge-type__metadata">
+							                <h2 class="badge-type-selection__list-title">Transferencia electrónica</h2>
+								        </div>
+
+							    	</button>
+
+								</form>
+							</li> -->
+							<!--///////////////////////////////////////Transferencia Electrónica/////////////////////////////////////-->
+						</ul>
+					</div>
+            	</article>
+				<!--//////////////////////////////////////////////Otros Medios///////////////////////////////////////////////-->
+			</div>
+		</section>
+	</div>
+</div>
+<!--////////////////////////////////////////////////Botones de Pago///////////////////////////////////////////////////-->
+
+<!--////////////////////////////////////////////////////DATOS///////////////////////////////////////////////////////-->
+<div id="aside-container"  class="cart-aside">
+	<div class="pintar">
+		<div data-component="aside"  >
+			<aside class="cart-aside__content cart-aside__content--item cart-aside--fixed" data-aside="target">
+				<div class="overview-component__item u-block-center">
+					<span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
+						<img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" >
+
+					</span>
+					<h3 class="overview-component__item-title">{{$titulo}}</h3>
+					<span class="overview-component__item-quantity-text" style="color:  blue">Cantidad: 1 </span>
+				</div>
+				<div class="overview__table-container">
+					<div class="overview-component__amounts">
+						<div class="overview-component__table">
+							<div class="overview-component__row">
+								<div data-id="overview-items-quantity" style="text-align: left;" class="overview-component__column">
+									Producto
+								</div>
+								<div data-id="overview-items-price" class="overview-component__column" style="text-align: right;">
+									<span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+										<meta itemprop="price" content="18999">
+										<span class="price-tag-symbol" itemprop="priceCurrency">$</span>
+										<span class="price-tag-fraction">{{$precio}}</span>
+										<span class="price-tag-decimal-separator"></span>
+										<span class="price-tag-cents">00</span>
+									</span>
+								</div>
+							</div>
+							<div class="overview-component__row">
+								<div class="overview-component__column" style="    text-align: left;">Envío</div>
+								<div data-id="overview-shipping-amount" class="overview-component__column">
+									<span class="price-free1 u-text--green" style="margin-right:0px;">Gratis</span>
+								</div>
+							</div>
+						</div>
+						<div class="overview-component__total">
+							<div class="overview-component__table">
+								<div class="overview-component__column" style="    text-align: left;width: 30%;">Total:</div>
+								<div class="overview-component__column">
+									<span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+											<meta itemprop="price" content="18999">
+											<span class="price-tag-fraction ">${{$precio}}</span>
+											<span class="price-tag-cents">00</span>
+										</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</aside>
+		</div>
+	</div>
+</div>
+<!--////////////////////////////////////////////////////DATOS///////////////////////////////////////////////////////-->
+</main>
+@stop
