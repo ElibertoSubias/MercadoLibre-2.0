@@ -57,7 +57,80 @@ class CompraController extends Controller
 
     public function confirmCompraView(Request $request)
     {
-        return view('confirmarCompra.confirmCompraView')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'cardId'=>$request->cardId,'security_code'=>$request->security_code]);
+        $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678');
+        $customer = $openpay->customers->get(auth()->user()->idCard);
+        $card = $customer->cards->get($request->cardId);
+
+        return view('confirmarCompra.confirmCompraView')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'card'=>$card,'security_code'=>$request->security_code,'customer'=>$customer]);
+    }
+
+    public function confirmCompra(Request $request)
+    {  
+        try{
+            $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678');
+            /*$customer = array(
+             'name' => $_POST["name"],
+             'last_name' => $_POST["last_name"],
+             'phone_number' => $_POST["phone_number"],
+             'email' => $_POST["email"],);
+
+            $chargeData = array(
+                'method' => 'card',
+                'source_id' => "kiqjsl1qsjfogbw5bdap",
+                'amount' => (float)$_POST["amount"],
+                'description' => $_POST["description"],
+                
+                'device_session_id' => $_POST["deviceIdHiddenFieldName"],
+                'customer' => $customer ); 
+        $charge = $openpay->charges->create($chargeData);*/
+                
+
+        $customerId=auth()->user()->idCard; 
+
+        $customer = $openpay->customers->get($customerId);
+
+        $chargeData = array(
+                'method' => 'card',
+                'source_id' => $request->cardId,
+                'amount' => (float)$_POST["amount"],
+                'description' => $_POST["description"],
+                
+                'device_session_id' => $_POST["deviceIdHiddenFieldName"]);  
+        echo "Cargo solicitado";
+
+
+        if($customer->charges->create($chargeData)){
+            echo("Success");
+        }
+
+        } catch (OpenpayApiTransactionError $e) {
+            error_log('ERROR on the transaction: ' . $e->getMessage() . 
+                  ' [error code: ' . $e->getErrorCode() . 
+                  ', error category: ' . $e->getCategory() . 
+                  ', HTTP code: '. $e->getHttpCode() . 
+                  ', request ID: ' . $e->getRequestId() . ']', 0);
+            echo "ERROR A | ".$e->getMessage() ;
+
+        } catch (OpenpayApiRequestError $e) {
+            error_log('ERROR on the request: ' . $e->getMessage(), 0);
+            echo "ERROR B";
+            echo $e;
+
+        } catch (OpenpayApiConnectionError $e) {
+            error_log('ERROR while connecting to the API: ' . $e->getMessage(), 0);
+            echo "ERROR C | ".$e->getMessage();
+
+        } catch (OpenpayApiAuthError $e) {
+            error_log('ERROR on the authentication: ' . $e->getMessage(), 0);
+            echo "ERROR D 'authentication'";
+        } catch (OpenpayApiError $e) {
+            error_log('ERROR on the API: ' . $e->getMessage(), 0);
+            echo "ERROR E";
+            
+        } catch (Exception $e) {
+            error_log('Error on the script: ' . $e->getMessage(), 0);
+            echo "ERROR F";
+        }
     }
 
     public function nuevaTarjetacre(Request $request)
