@@ -145,7 +145,7 @@ class EditarUsuarioController extends Controller
         $Direccion->asentamiento=$request->Asentamiento;
         $Direccion->municipio=$request->Municipio;
         $Direccion->estado=$request->Estado;
-        $Direccion->envio='1';
+        $Direccion->envio=1;
 
         $Direccion->save();
          return response()->json([

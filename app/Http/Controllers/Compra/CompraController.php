@@ -148,15 +148,49 @@ class CompraController extends Controller
     {
         if(Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', 1 ]])->exists())
         {
-          $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get(); 
+         $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get(); 
     	 $urlImagen = $request->idUser."/".$request->idPublicacion; 
          return view('confirmarCompra.dondeRecibir')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'domicilios'=>$domicilios,'urlImagen'=>$urlImagen,'idPaquete'=>$request->idPublicacion]);
          }else{
-            return view ('confirmarCompra.elegirFormaRecivir');
+            
+            $urlImagen = $request->idUser."/".$request->idPublicacion; 
+            return view ('confirmarCompra.elegirFormaRecivir')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen,'idPaquete'=>$request->idPublicacion ]);
          } 
     }
 
+    public function nuevoDomicilio(Request $request)
+    {
+           
+            return view ('confirmarCompra.nuevoDomicilio')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPublicacion, 'idUser'=>$request->idUser ]);
+         
+    }
 
+     public function agregarDomicilio(Request $request)
+    {
+    
+       $id = Auth::id();
+     
+        $Direccion = new Direcciones;
+        $Direccion->calle=$request->Calle;
+    
+        $Direccion->idUser=$id;
+      
+        $Direccion->numeroEx=$request->NumExt;
+        $Direccion->numeroInt=$request->NumInt;
+        $Direccion->entrecalles=$request->EntreCalles;
+        $Direccion->referencia=$request->Referencias;
+        $Direccion->codigopostal=$request->CodigoPostal;
+        $Direccion->asentamiento=$request->Asentamiento;
+        $Direccion->municipio=$request->Municipio;
+        $Direccion->estado=$request->Estado;
+        $Direccion->envio=1;
+
+        $Direccion->save();
+         return response()->json([
+                    "res" => 10
+                ]);
+       
+    }
 
 
     public function aggTarjPrueba(Request $request)
