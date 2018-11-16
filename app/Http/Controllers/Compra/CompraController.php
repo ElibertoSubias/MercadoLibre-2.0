@@ -37,13 +37,18 @@ class CompraController extends Controller
     
     public function metodoPago(Request $request)
     {
-        $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678'); 
-        $customer = $openpay->customers->get(auth()->user()->idCard); 
-        $findDataRequest = array( 
-            'offset' => 0,
-            'limit' => 5);
-        $cardList = $customer->cards->getList($findDataRequest);
-        return view('confirmarCompra.metodoPago')->with(['tarjetas'=>$cardList,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio]);
+        if (auth()->user()->idCard!="") {
+            $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678'); 
+            $customer = $openpay->customers->get(auth()->user()->idCard); 
+            $findDataRequest = array( 
+                'offset' => 0,
+                'limit' => 5);
+            $cardList = $customer->cards->getList($findDataRequest);
+            return view('confirmarCompra.metodoPago')->with(['tarjetas'=>$cardList,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio]);    
+        }else{
+            return view('confirmarCompra.metodoPago')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio]); 
+        }
+        
     }
 
     public function compTarjeta(Request $request)

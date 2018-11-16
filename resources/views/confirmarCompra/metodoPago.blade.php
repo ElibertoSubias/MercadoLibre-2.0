@@ -12,6 +12,7 @@
 				<div class="step-tile">
 					<h2 class="comoQuieresPagar">¿Cómo quieres pagar?</h2>
 				</div>
+				@isset($tarjetas)
 				<h3 class="mediosSugeridos">Medios sugeridos</h3>
 				
 				<!--////////////////////////////////////////////VIsa-MasterCard/////////////////////////////////////////////-->
@@ -19,49 +20,55 @@
 					<div data-js="payments-types" data-stored="true">
 						<ul class="badge-type-selection__list">
 							<!--////////////////////////////////////////////////Visa///////////////////////////////////////////////--> 
-							@foreach($tarjetas as $tarjeta) 
-								<li class="badge-type-selection__list-item ui-list__item">
-									<form action="{{route('complTarjeta')}}" method="post">
-										<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
-										<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
-										<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
+							
+							    @foreach($tarjetas as $tarjeta) 
+									<li class="badge-type-selection__list-item ui-list__item">
+										<form action="{{route('complTarjeta')}}" method="post">
+											<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+											<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
+											<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
 
-										<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
-										<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
-										<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
-										<input type="hidden" name="precio" value="{{$precio}}">
-										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+											<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+											<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+											<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+											<input type="hidden" name="precio" value="{{$precio}}">
+											<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
 
-										<button data-js="payment-type" type="submit" name="paymentType" 
-										class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
+											<button data-js="payment-type" type="submit" name="paymentType" 
+											class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
 
-									        <span class="ui-badge ui-badge--small">
-							                    <span class="ui-badge__icon ui-badge__icon--payment-logo">
-							                    	@if($tarjeta->brand=="visa")
-							                    	 	<i class="payment-icon payments-cho_badge _debvisa-cho_badge"></i>
-							                    	@elseif($tarjeta->brand=="mastercard")
-							                    		<i class="payment-icon payments-cho_badge _master-cho_badge"></i>
-							                    	@endif
-							                       
-							                    </span>
-									        </span>
-									        <div class="badge-type__metadata">
-								                <h2 class="badge-type-selection__list-title">Terminada en 
-								                	<?php 
-								                		$cadena=$tarjeta->card_number;
-								                		echo mb_substr($cadena,-4);  
-								                	?>
-								                		
-								                </h2>
-								                <p class="badge-type-selection__list-text"></p>
-									        </div>
+										        <span class="ui-badge ui-badge--small">
+								                    <span class="ui-badge__icon ui-badge__icon--payment-logo">
+								                    	@if($tarjeta->brand=="visa")
+								                    	 	<i class="payment-icon payments-cho_badge _debvisa-cho_badge"></i>
+								                    	@elseif($tarjeta->brand=="mastercard")
+								                    		<i class="payment-icon payments-cho_badge _master-cho_badge"></i>
+								                    	@endif
+								                       
+								                    </span>
+										        </span>
+										        <div class="badge-type__metadata">
+									                <h2 class="badge-type-selection__list-title">Terminada en 
+									                	<?php 
+									                		$cadena=$tarjeta->card_number;
+									                		echo mb_substr($cadena,-4);  
+									                	?>
+									                		
+									                </h2>
+									                <p class="badge-type-selection__list-text"></p>
+										        </div>
 
-								    	</button> 
-									</form>
-								</li>
-							@endforeach		
+									    	</button> 
+										</form>
+									</li>
+								@endforeach		
 						</ul>
 					</div>
+					@endisset
+
+							@empty($tarjetas)
+							    
+							@endempty
             	</article>
 				<!--////////////////////////////////////////////VIsa-MasterCard/////////////////////////////////////////////-->
 				<br>
@@ -137,7 +144,7 @@
 
 								</form>
 							</li> 
-							<!-- <li class="badge-type-selection__list-item ui-list__item">
+							<li class="badge-type-selection__list-item ui-list__item">
 								<form method="post">									
 									
 									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="PREPAID_CARD">
@@ -210,7 +217,7 @@
 							    	</button>
 
 								</form>
-							</li> -->
+							</li>
 							<!--///////////////////////////////////////Transferencia Electrónica/////////////////////////////////////-->
 						</ul>
 					</div>

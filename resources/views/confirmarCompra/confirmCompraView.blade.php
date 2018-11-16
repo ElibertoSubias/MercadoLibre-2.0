@@ -49,7 +49,7 @@
                 </div>
 		method = card <br>
 		Source_id = {{$card->id}}<br>
-		amount = {{($precio+$costoEnvio)-14999}}<br>
+		amount = {{($precio+$costoEnvio)-$precio+1}}<br>
 		cvv2 = {{$security_code}}<br>
 		currency = MXN<br>
 		mes = {{$card->expiration_month}}
