@@ -34,7 +34,7 @@ p {
 
 <div class="cols" >
 <div  class="col1">                
-       
+       aaa
 </div>
     <div class="col2" style="width: 30%">
          <div id="aside-container" class="cart-aside"><div><div data-component="aside">

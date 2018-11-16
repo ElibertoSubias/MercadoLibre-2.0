@@ -175,14 +175,14 @@ class CompraController extends Controller
     
         $Direccion->idUser=$id;
       
-        $Direccion->numeroEx=$request->NumExt;
-        $Direccion->numeroInt=$request->NumInt;
-        $Direccion->entrecalles=$request->EntreCalles;
-        $Direccion->referencia=$request->Referencias;
-        $Direccion->codigopostal=$request->CodigoPostal;
-        $Direccion->asentamiento=$request->Asentamiento;
-        $Direccion->municipio=$request->Municipio;
-        $Direccion->estado=$request->Estado;
+        $Direccion->numeroEx=$request->inputNumExt;
+        $Direccion->numeroInt=$request->inputNumInt;
+        $Direccion->entrecalles=$request->inputEntreCalles;
+        $Direccion->referencia=$request->inputReferencias;
+        $Direccion->codigopostal=$request->inputCodigoPostal;
+        $Direccion->asentamiento=$request->inputAcentamiento;
+        $Direccion->municipio=$request->inputMunicipio;
+        $Direccion->estado=$request->inputEstado;
         $Direccion->envio=1;
 
         $Direccion->save();

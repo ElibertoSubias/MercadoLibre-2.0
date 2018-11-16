@@ -59,7 +59,7 @@ p {
     <legend class="ml-addresses-hidden">Zipcode</legend>
     <div class="ml-addresses-grid ml-addresses-grid--first-column">
         <div class="ui-form__row ">
-            <input id="inputCodigoPostal" type="tel" data-required="true" onkeypress="calcular(this.value)" class="ui-form__input " name="inputCodigoPostal" value="" aria-describedby="zipcodeMessage" data-valid="true" maxlength="5" data-min-length="5">
+            <input id="inputCodigoPostal" type="tel" data-required="true" onkeypress="calcular(this.value)" class="ui-form__input " name="inputCodigoPostal"  aria-describedby="zipcodeMessage" data-valid="true" maxlength="5" data-min-length="5">
             <label id="lblMsjinputCodigoPostal" for="inputCodigoPostal" class="ui-form__label">Código postal</label>
             <span class="ui-form__status-bar"></span>
             <div class="ui-form__message" id="alertMsjinputCodigoPostal" style="color: red" role="alert">Complete este dato</div>
@@ -83,7 +83,7 @@ p {
     <div class="ml-addresses-fieldset__inline-container">
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
             <div class="ui-form__row "> 
-                <input type="text" id="inputMunicipio" name="inputMunicipio" value="" data-required="true" data-valid="true" class="ui-form__input ">
+                <input type="text" id="inputMunicipio" name="inputMunicipio" data-required="true" data-valid="true" class="ui-form__input ">
                 <label for="inputMunicipio" id="lblMsjinputMunicipio" class="ui-form__label">Municipio</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputMunicipio" role="alert">error_place_holder</div>
@@ -92,7 +92,7 @@ p {
 
         <div class="ml-addresses-grid ml-addresses-grid--second-column">
             <div class="ui-form__row  "> 
-                <input type="text" id="inputEstado" value="" data-required="true" name="inputEstado" data-valid="true" class="ui-form__input ">
+                <input type="text" id="inputEstado"  data-required="true" name="inputEstado" data-valid="true" class="ui-form__input ">
                 <label id="lblMsjinputEstado" for="inputEstado" class="ui-form__label">Estado</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputEstado" role="alert">error_place_holder</div>
@@ -104,7 +104,7 @@ p {
     <div class="u-clearfix">
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
             <div class="ui-form__row ">
-                <input id="inputCalle1" type="text" data-required="true" class="ui-form__input " name="inputCalle1" value="" aria-describedby="streetMessage" data-valid="true" maxlength="70" data-min-length="1">
+                <input id="inputCalle1" type="text" data-required="true" class="ui-form__input " name="inputCalle1"  aria-describedby="streetMessage" data-valid="true" maxlength="70" data-min-length="1">
                 <label id="lblMsjinputCalle1" for="inputCalle1" class="ui-form__label">Calle</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputCalle" style="color: red" role="alert">Complete este dato</div>
@@ -112,7 +112,7 @@ p {
         </div>
         <div class="ml-addresses-grid ml-addresses-grid--second-column ml-addresses-grid--half-column">
             <div class="ui-form__row " >
-                <input id="inputNumExt" type="number" data-required="true" class="ui-form__input " style="width: 250%;" name="inputNumExt" value="" data-valid="true" aria-describedby="numberMessage" min="0" data-min-length="1">
+                <input id="inputNumExt" type="number" data-required="true" class="ui-form__input " style="width: 250%;" name="inputNumExt"  data-valid="true" aria-describedby="numberMessage" min="0" data-min-length="1">
                 <label id="lblMsjinputNumExt" for="inputNumExt" class="ui-form__label" style="width: 200px">Numero Externo.</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputNumExt" role="alert">error_place_holder</div>
@@ -135,7 +135,7 @@ p {
     </div>
      <div class="ml-addresses-grid ml-addresses-grid--second-column ml-addresses-grid--half-column">
             <div class="ui-form__row ">
-                <input id="inputNumInt" type="number" class="ui-form__input " name="inputNumInt"  value="" aria-describedby="commentMessage" data-valid="true" min="0" data-required="false" data-min-length="-1">
+                <input id="inputNumInt" type="number" class="ui-form__input " name="inputNumInt"  aria-describedby="commentMessage" data-valid="true" min="0" data-required="false" data-min-length="-1">
                 <label id="lblMsjinputNumInt" for="inputNumInt" class="ui-form__label">Numero interno. (opcional)</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputNumInt" role="alert">error_place_holder</div>
@@ -164,7 +164,7 @@ p {
     <fieldset id="neighborhoodField" class="ml-addresses-fieldset">
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
             <div class="ui-form__row ">
-                <input id="inputAcentamiento" name="inputAcentamiento" type="text" data-required="true" class="ui-form__input " autocomplete="off" value="" aria-describedby="neighborhoodMessage" data-valid="true" maxlength="50" data-min-length="3">
+                <input id="inputAcentamiento" name="inputAcentamiento" type="text" data-required="true" class="ui-form__input " autocomplete="off" aria-describedby="neighborhoodMessage" data-valid="true" maxlength="50" data-min-length="3">
                 <label for="inputAcentamiento" id="lblMsjinputAcentamiento"  class="ui-form__label">Colonia </label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputAcentamiento" style="color: red" role="alert">Complete este dato</div>
