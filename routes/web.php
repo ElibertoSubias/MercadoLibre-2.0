@@ -114,6 +114,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('complTarjeta', 'Compra\CompraController@compTarjeta')->name('complTarjeta');
 	Route::any('form_confirmarCompra', 'Compra\CompraController@confirmCompraView')->name('form_confirmarCompra');
+	Route::any('confirmarCompraPrueba', 'Compra\CompraController@confirmCompra')->name('confirmarCompraPrueba');
 	
 	Route::post('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
 
@@ -121,12 +122,9 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::post('agregarDomicilio2', 'Compra\CompraController@agregarDomicilio')->name('agregarDomicilio2');
 
 
-	Route::any('sindomicilio', 'Compra\CompraController@dondeRecibir')->name('sindomicilio');
+	Route::any('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
+	Route::any('sindomicilio', 'Compra\CompraController@dondeRecibir')->name('sindomicilio'); 
 
 
+	Route::any('confirmarComp', 'Compra\CompraController@confiCompra')->name('confirmarComp');
 });
-
-
-	
-	
-

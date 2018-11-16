@@ -49,10 +49,14 @@
     padding: 16px 32px;
     background-color: #f5f5f5;
     border-radius: 4px;
+<<<<<<< HEAD
+    text-align: left;
+    width: 90%;
+=======
     width: 100%;
     text-align: left; 
+>>>>>>> 23fc6092abf94537e0009147c1fcc0a86d58e31e
     margin-left: -10px;
-
 }
 
 .hero__wrapper {
