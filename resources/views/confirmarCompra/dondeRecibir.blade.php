@@ -71,7 +71,7 @@
 								<form method="post" action="{{route('pagoPor')}}">  
 									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
 									<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
-									<input type="hidden" name="precioEnvio" value="0">
+									<input type="hidden" name="costoEnvio" value="0">
 									<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
 									<input type="hidden" name="precio" value="{{$precio}}">
 									<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
@@ -100,7 +100,7 @@
 									<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
 									<input type="hidden" name="precio" value="{{$precio}}">
 									<input type="hidden" name="urlImagen" value="{{$urlImagen}}">	 
-									<input type="hidden" name="precioEnvio" value="110"> 
+									<input type="hidden" name="costoEnvio" value="110"> 
 
 									<button data-js="payment-type" type="submit" name="paymentType" 
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">										
@@ -125,7 +125,7 @@
 									<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
 									<input type="hidden" name="precio" value="{{$precio}}">
 									<input type="hidden" name="urlImagen" value="{{$urlImagen}}">	 
-									<input type="hidden" name="precioEnvio" value="0"> 
+									<input type="hidden" name="costoEnvio" value="0"> 
 
 									<button data-js="payment-type" type="submit" name="paymentType" 
 									class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">

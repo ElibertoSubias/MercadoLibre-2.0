@@ -12,7 +12,7 @@
 			<h2 style="line-height: 1.5;letter-spacing: 2px;color: #333;font-size:2rem;font-weight: 300;">Ahora, tu clave</h2>
 		</div> 
 		<div class="cont_form_login row col-md-12" style="position:relative;z-index: 0;background-color: #fff;margin-top: -85px;width: 546px;max-width: 456px;     padding: 40px 65px 54px;    -webkit-border-radius: 4px;    border-radius: 4px;-webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);"> 
-			<h2 class="auth-title" style="line-height: 1.5;letter-spacing: 2px;color: #333;font-size:2rem;font-weight: 300;">¡Hola, {{ $email }}! Para seguir, ingresa tu clave</h2> 
+			<h2 class="auth-title" style="line-height: 1.5;letter-spacing: 2px;color: #333;font-size:2rem;font-weight: 300;">¡Hola, {{ $login }}! Para seguir, ingresa tu clave</h2> 
 			<form action="{{ route('login')}}" method="post" accept-charset="utf-8">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
 				<div id="cont-form1" style="margin-top: -18px;"> 
@@ -20,7 +20,7 @@
 						{!!Form::password('password',['class'=>'form-control','id'=>'inputClave'])!!} 
 						{!!Form::label('Clave', null, array('id' => 'lblMsjinputClave'));!!} 
 
-						{!!Form::text('login',$email,['id'=>'login', 'style'=>'display:none;'])!!} 
+						{!!Form::text('login',$login,['id'=>'login', 'style'=>'display:none;'])!!} 
 
 						<div id="alertMsjinputEmail" class="ch-validation-message ui-form__message">Completa este dato.</div>
 					</div> 
@@ -35,7 +35,7 @@
 			</form>	
 
 		</div>
-		<a href="{{route('autenticar')}}" class="btn btn-default" style="margin-top:20px;background:none;border:none;text-decoration: none;color: #3483fa;">No soy {{ $email }}</a> 
+		<a href="{{route('autenticar')}}" class="btn btn-default" style="margin-top:20px;background:none;border:none;text-decoration: none;color: #3483fa;">No soy {{ $login }}</a> 
 	</div>	 
 </main>
 @stop

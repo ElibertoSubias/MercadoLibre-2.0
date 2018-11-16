@@ -44,9 +44,10 @@
                             </h3>
                     </div>
                             <div class="hero__action" data-js="hero-action">
-                                <form data-js="change-payment" method="post" action="{{route('pagoPor')}}">
+                                <form data-js="change-payment" method="post" action="{{route('form_confirmarCompra')}}">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
                                     <input type="hidden" name="precio" value="{{$precio}}">
+                                    <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
                                     <input type="hidden" name="titulo" value="{{$titulo}}">
                                     <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
                                     <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
@@ -73,7 +74,17 @@
     <div class="new-card__panel" data-spinner="scope">
         <div class="new-card__section-wrapper">
 
-            <section class="card-form-container" data-js="card-form-container"><div><form class="ui-form ui-form--multiple-inputs" data-js="form-container" novalidate="">
+            <section class="card-form-container" data-js="card-form-container"><div>
+
+
+                <form class="ui-form ui-form--multiple-inputs" data-js="form-container" novalidate="" action="{{route('form_confirmarCompra')}}" method="post" id="frmComplemento">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                    <input type="hidden" name="precio" value="{{$precio}}">
+                    <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+                    <input type="hidden" name="titulo" value="{{$titulo}}">
+                    <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+                    <input type="hidden" name="idPaquete" value="{{$idPaquete}}"> 
+
     <div data-js="form-sections-container"><div id="uniqueSection" class="ui-form__section"><fieldset class="ui-form__fieldset">
             <div class="ui-row ui-panel--raised">
                 <div class="form-inner__wrapper">
@@ -89,7 +100,8 @@
             
             " data-js="form-input" data-input-id="expiration_month" required="true" maxlength="2" minlength="2" pattern="^[0-9]+$" autocomplete="cc-exp-month" spellcheck="false"></div><div class=""><input type="hidden" id="expiration_year" name="expiration_year" class="
             
-            " data-js="form-input" data-input-id="expiration_year" required="true" maxlength="4" minlength="4" pattern="^[0-9]+$" autocomplete="cc-exp-year" spellcheck="false"></div><div class=""><div class="ui-form__row ui-form__row--tel  ui-form__single-row  ui-form__row-container--security_code " data-js="form-row">
+            " data-js="form-input" data-input-id="expiration_year" required="true" maxlength="4" minlength="4" pattern="^[0-9]+$" autocomplete="cc-exp-year" spellcheck="false"></div><div class="">
+                <div class="ui-form__row ui-form__row--tel  ui-form__single-row  ui-form__row-container--security_code " data-js="form-row">
                 <input id="securityCode" name="security_code" type="tel" class="ui-form__input                                      ui-form__input--dirty" data-js="form-input" data-input-id="securityCode" required="true" pattern="^[0-9]+$" minlength="3" maxlength="3" autocomplete="off" spellcheck="false" data-hj-masked="data-hj-masked">
                 
                     <label class="ui-form__label ui-form__label--securityCode" for="securityCode">
@@ -225,18 +237,25 @@
                         </div>
                     </div>
                 </div>
-            </div></div></div>
+            </div>
+        </div>
+    </div>
     <div data-js="ui-document-card-component"></div>
 </div>
-</div></div>
-                </div>
-            </div>
-</fieldset></div></div>
-            <div class="ui-form__actions">
-                <button data-js="submit-btn" class="ui-button ui-button--primary" type="submit">Continuar</button>
-                <input type="hidden" name="idCard" value="{{$card->id}}">
-            </div>
-</form></div></section>
+</div>
+</div>
+</div>
+</div>
+</fieldset>
+</div>
+</div>
+<div class="ui-form__actions">
+    <button data-js="submit-btn" class="ui-button ui-button--primary" type="submit">Continuar</button>
+        <input type="hidden" name="cardId" value="{{$card->id}}">
+</div>
+</form>
+</div>
+</section>
         </div>
     </div>
 </div>
@@ -258,7 +277,7 @@
                 <div class="overview-component__amounts">
                     <div class="overview-component__table">
                             <div class="overview-component__row">
-                                <div data-id="overview-items-quantity" class="overview-component__column">
+                                <div data-id="overview-items-quantity" class="overview-component__column" style="text-align: left;">
                                     Producto
                                 </div>
                                 <div data-id="overview-items-price" class="overview-component__column">
@@ -272,21 +291,25 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="overview-component__row">
+                            <div class="overview-component__row"  style="text-align: left;">
                                 <div class="overview-component__column">
                                     Envío
                                 </div>
                                 <div data-id="overview-shipping-amount" class="overview-component__column">
-                                        <span class="price-free u-text--green">
-                                                    Gratis
-                                        </span>
+                                        @if($costoEnvio=="0")
+                                        <span class="price-free1 u-text--green" style="margin-right:0px;">Gratis</span>
+                                    @else 
+                                        <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
+                                        <span class="price-tag-fraction">{{$costoEnvio}}</span>
+                                        <span class="price-tag-decimal-separator"></span> 
+                                    @endif
                                 </div>
                             </div>
                     </div>
                 </div>
                     <div class="overview-component__total">
                         <div class="overview-component__table">
-                            <div class="overview-component__column">
+                            <div class="overview-component__column" style="text-align: left;">
                                 Total
                             </div>
                             <div class="overview-component__column">

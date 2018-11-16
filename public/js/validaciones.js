@@ -197,9 +197,9 @@ $('#continuar').click(function(){
         headers: {'X-CSRF-TOKEN': token},
         type: 'POST',
         dataType: 'json',
-        data: {email: email} 
+        data: {login: email} 
         }).done(function(data) {  
-          if (data.res==200){
+          if (data.res==200){ 
             $( "#frmValidar" ).submit();
           }else if(data.res==1){   
             $("#alertMsjinputEmail").empty();
@@ -448,3 +448,4 @@ $('#car-modelo').change(function(){
         });
   }
 }); 
+ 

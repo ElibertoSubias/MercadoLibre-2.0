@@ -89,14 +89,14 @@ class EditarUsuarioController extends Controller
 
     public function cambiarDireccion(Request $request)
     {  
-        $viejo =Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', '1' ]])->update([ 
+        $viejo =Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', 1 ]])->update([ 
            
-            'envio' => '0'
+            'envio' => 0
 
             ]);
          $datos = Direcciones::where(['_id'=>$request->id,'idUser'=>Auth::id()])->update([ 
            
-            'envio' => '1'
+            'envio' => 1
 
             ]);
                 $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get();
@@ -111,7 +111,7 @@ class EditarUsuarioController extends Controller
     {
     
        $id = Auth::id();
-        if(Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', '1' ]])->exists()){
+        if(Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', 1 ]])->exists()){
         $Direccion = new Direcciones;
         $Direccion->calle=$request->Calle;
         $Direccion->contacto=$request->Contacto;
@@ -125,7 +125,7 @@ class EditarUsuarioController extends Controller
         $Direccion->asentamiento=$request->Asentamiento;
         $Direccion->municipio=$request->Municipio;
         $Direccion->estado=$request->Estado;
-        $Direccion->envio='0';
+        $Direccion->envio=0;
 
         $Direccion->save();
          return response()->json([

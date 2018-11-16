@@ -25,10 +25,10 @@ class LoginController extends Controller
 
     public function showLoginForm(Request $request)
     {
-        if(!User::where('email', '=', $request->email)->exists()){
-            return back();
+        if(User::where('email', '=', $request->login)->exists() || User::where('alias', '=', $request->login)->exists()){
+            return view('auth.validarPassword')->with('login', $request->login);
         }else{
-            return view('auth.validarPassword')->with('email', $request->input('email'));
+            return back();
         }
     }
 
@@ -41,18 +41,18 @@ class LoginController extends Controller
             ]);
             
 
-            $login_type = filter_var($request->input('login'), FILTER_VALIDATE_EMAIL)?'email':'alias';
+            $login_type = filter_var($request->login, FILTER_VALIDATE_EMAIL)?'email':'alias';
 
-            $request->merge([$login_type => $request->input('login')]);
+            $request->merge([$login_type => $request->login]);
 
 
             if(Auth::attempt($request->only($login_type, 'password')))
             {
                 return redirect()->route('dashboard');
             } 
-            return view('auth.validarPassword')->with('email', $request->login);
+            return view('auth.validarPassword')->with('login', $request->login);
         }
-        return view('auth.validarPassword')->with('email', $request->login);
+        return view('auth.validarPassword')->with('login', $request->login);
 
     }
 

@@ -394,3 +394,10 @@ function calcular(codigo){
     $('#inputMunicipio').val(' Tlaxcala de Xicohténcatl');
  }
 }
+
+$("#frmComplemento").on('submit', function(evt){  
+    if ($('#securityCode').val()==="" || $('#securityCode').val().length < 3) {
+        $('#frmComplemento input').focus();
+        evt.preventDefault();   
+    }
+ });

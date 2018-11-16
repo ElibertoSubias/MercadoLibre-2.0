@@ -20,6 +20,12 @@
     .cont_padre_login {
         margin-top: 20% !important;
     }
+    .nav-icon-cart-quantity {
+        position: absolute;
+        top: -5px;
+        left: 99%;
+        color: black;
+    }
 }
 @media only screen 
 and (min-device-width : 320px) 
