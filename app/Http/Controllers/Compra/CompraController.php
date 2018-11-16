@@ -43,7 +43,7 @@ class CompraController extends Controller
             'offset' => 0,
             'limit' => 5);
         $cardList = $customer->cards->getList($findDataRequest);
-        return view('confirmarCompra.metodoPago')->with(['tarjetas'=>$cardList,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete]);
+        return view('confirmarCompra.metodoPago')->with(['tarjetas'=>$cardList,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio]);
     }
 
     public function compTarjeta(Request $request)
@@ -52,9 +52,13 @@ class CompraController extends Controller
         $customer = $openpay->customers->get(auth()->user()->idCard); 
 
         $card = $customer->cards->get($request->cardId);
-        return view('confirmarCompra.complementarTarjeta')->with(['card'=>$card,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete]);
+        return view('confirmarCompra.complementarTarjeta')->with(['card'=>$card,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio]);
     }
 
+    public function confirmCompraView(Request $request)
+    {
+        return view('confirmarCompra.confirmCompraView')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'cardId'=>$request->cardId,'security_code'=>$request->security_code]);
+    }
 
     public function nuevaTarjetacre(Request $request)
     {
@@ -64,7 +68,7 @@ class CompraController extends Controller
 
     public function dondeRecibir(Request $request)
     {
-        if(Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', '1' ]])->exists())
+        if(Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', 1 ]])->exists())
         {
           $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get(); 
     	 $urlImagen = $request->idUser."/".$request->idPublicacion; 

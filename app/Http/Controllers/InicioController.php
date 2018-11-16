@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 use Session;
 use Redirect;
+use App\Carrito; 
 use App\User;
 
 class InicioController extends Controller
 {
     public function index() {
-		return view('dashboard');
+    	return view('dashboard');
 	}
 
 	public function autenticarEmail()

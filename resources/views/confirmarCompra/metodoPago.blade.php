@@ -27,7 +27,7 @@
 										<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
 
 										<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
-										<input type="hidden" name="precioEnvio" value="0">
+										<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
 										<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
 										<input type="hidden" name="precio" value="{{$precio}}">
 										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
@@ -255,7 +255,14 @@
 							<div class="overview-component__row">
 								<div class="overview-component__column" style="    text-align: left;">Envío</div>
 								<div data-id="overview-shipping-amount" class="overview-component__column">
-									<span class="price-free1 u-text--green" style="margin-right:0px;">Gratis</span>
+									@if($costoEnvio=="0")
+										<span class="price-free1 u-text--green" style="margin-right:0px;">Gratis</span>
+									@else 
+										<span class="price-tag-symbol" itemprop="priceCurrency">$</span>
+										<span class="price-tag-fraction">{{$costoEnvio}}</span>
+										<span class="price-tag-decimal-separator"></span> 
+									@endif
+									
 								</div>
 							</div>
 						</div>	
@@ -265,7 +272,7 @@
 								<div class="overview-component__column">
 									<span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
 											<meta itemprop="price" content="18999"> 
-											<span class="price-tag-fraction ">${{$precio}}</span> 
+											<span class="price-tag-fraction ">${{$precio+$costoEnvio}}</span> 
 											<span class="price-tag-cents">00</span>
 										</span>
 								</div>

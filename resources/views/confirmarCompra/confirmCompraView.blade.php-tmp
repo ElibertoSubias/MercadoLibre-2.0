@@ -1,0 +1,2 @@
+{{$cardId}}
+{{$security_code}}
