@@ -149,6 +149,7 @@ return [
         Jenssegers\Mongodb\MongodbServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         'Jenssegers\Mongodb\Auth\PasswordResetServiceProvider',
+        Intagono\Openpay\OpenpayServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -213,6 +214,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'IntagonoOpenpay' => Intagono\Openpay\OpenpayFacade::class,
 
     ],
 

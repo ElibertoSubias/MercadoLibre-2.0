@@ -72,7 +72,7 @@ class CarritoController extends Controller
                 $nprecio=($total * $aux[0]->precio); 
                 $datos = Carrito::where([['idUser' , '=', auth()->user()->id] ,['idPublicacion', '=',  $request->idArticulo]])->update(['cantidad' => $total, 'precio' => $nprecio]);
                 $urlImagen = $request->idUser."/".$request->idPublicacion; 
-                return view('usuario.carrito.agregadoCarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen]);
+                return view('usuario.carrito.agregadoCarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen]); 
         }           
 
     }
@@ -154,5 +154,4 @@ class CarritoController extends Controller
         }
         return "Error ningun caracter...";    
     }
- 
 }

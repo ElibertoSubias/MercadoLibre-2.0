@@ -33,10 +33,10 @@
     <div class="u-clearfix">
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
             <div class="ui-form__row ">
-                <input id="inputcalle" type="text" data-required="true" class="ui-form__input " name="calle" value="" aria-describedby="streetMessage" data-valid="true" maxlength="70" data-min-length="1">
-                <label id="lblMsjinputEmail" for="street" class="ui-form__label">Calle</label>
+                <input id="inputCalle" type="text" data-required="true" class="ui-form__input " name="inputCalle" value="" aria-describedby="streetMessage" data-valid="true" maxlength="70" data-min-length="1">
+                <label id="lblMsjinputCalle" for="inputCalle" class="ui-form__label">Calle</label>
                 <span class="ui-form__status-bar"></span>
-                <div class="ui-form__message" id="alertMsjinputEmail" style="color: red" role="alert">Complete este dato</div>
+                <div class="ui-form__message" id="alertMsjinputCalle" style="color: red" role="alert">Complete este dato</div>
             </div>
         </div>
         <div class="ml-addresses-grid ml-addresses-grid--second-column ml-addresses-grid--half-column">

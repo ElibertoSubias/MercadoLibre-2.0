@@ -123,5 +123,6 @@
 	{!! Html::script('js/validaciones.js') !!}
 	{!! Html::script('js/script.js') !!}
 	{!! Html::script('js/menusFlotantes.js') !!}
+	{!! Html::script('js/formatearPrecio.js') !!}
 </body>
 </html>

@@ -1,0 +1,119 @@
+shipping-accord, .shipping-split {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    max-width: 750px;
+    width: 100%;
+}
+.ui-panel--raised {
+    padding: 32px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+}
+.u-block-center {
+    text-align: center;
+}
+@media (min-width: 768px)
+.ui-panel--raised {
+    padding: 32px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+}
+.ui-panel--raised {
+    padding: 32px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+}
+.u-block-center {
+    text-align: center;
+}
+a, abbr, address, article, aside, audio, b, big, blockquote, body, canvas, caption, cite, code, datalist, dd, del, details, dialog, div, dl, dt, em, fieldset, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, iframe, img, ins, label, legend, li, mark, menu, meter, nav, object, ol, output, p, pre, progress, q, s, section, small, span, strong, sub, sup, table, tbody, td, tfoot, th, thead, time, tr, u, ul, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+}
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+body, main[role=main] {
+    -webkit-font-smoothing: antialiased;
+}
+main[role=main] {
+    font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.35;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+}
+body, main[role=main] {
+    -webkit-font-smoothing: antialiased;
+}
+body {
+    -webkit-font-smoothing: antialiased;
+}
+body, main[role=main] {
+    -webkit-font-smoothing: antialiased;
+}
+body, main[role=main] {
+    -webkit-font-smoothing: antialiased;
+}
+@media (min-width: 1024px)
+body {
+    font-family: Arial,Helvetica,sans-serif;
+}
+@media (min-width: 1024px)
+body, html {
+    font-size: 13px;
+    background-color: #fff;
+}
+.nav-footer, .nav-footer-access, .nav-header, body {
+    font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+}
+body {
+    border-collapse: collapse;
+    display: table;
+    background-color: #fff;
+    font-size: 14px;
+    table-layout: fixed;
+}
+@media (min-width: 1024px)
+body, html {
+    font-size: 13px;
+    background-color: #fff;
+}
+html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+::selection {
+    background: #e6e6e6;
+}

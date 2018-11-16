@@ -288,7 +288,6 @@
                         <div class="myml-nav__section-list">
                             <a id="myml-nav__menu-item-my_details" class="myml-nav__menu-item myml-nav__menu-item--active" href="{{route('perfil')}}">
                                 <span class="myml-nav__menu-item-text">Mis datos</span>
-                                {{$usuario}}
                             </a>
                         </div>
                         <div class="myml-nav__section-list">
@@ -414,78 +413,82 @@
                         <p class="H3_1" style="float: left;">Domicilios</p>
                         <a href="#" title="Necesito ayuda" >Necesito ayuda</a>
                     </div>
-                    @isset(auth()->user()->domicilio)
-                       <div class="row col-md-6" style="float:none;border-bottom: 1px dotted rgb(221, 221, 221);margin: 0px 0px 20px;padding: 0px;">
-                            <ul class="ml-addresses__list">
-                                <li class="ml-addresses__list-item">
-                                    <div class="ml-addresses-data">
-                                        <dl>
-                                            <dt>Direccion:</dt>
-                                            <dd class="ml-addresses-data__item ml-addresses-data__item--strong">Venice 3562 SN</dd>
-                                            <dt>Datos Adicionales:</dt>
-                                            <dd class="ml-addresses-data__item">Venice Y Blvrd California </dd>
+                    @isset($domicilios)
+                        @foreach($domicilios as $domicilio)
+                            <div class="row col-md-6" style="float:none;border-bottom: 1px dotted rgb(221, 221, 221);margin: 0px 0px 20px;padding: 0px;">
+                                <ul class="ml-addresses__list">
+                                    <li class="ml-addresses__list-item">
+                                        <div class="ml-addresses-data">
+                                            <dl>
+                                                <dt>Direccion:</dt>
+                                                <dd class="ml-addresses-data__item ml-addresses-data__item--strong">
+                                                    {{$domicilio->calle}} {{$domicilio->numeroEx}}
+                                                    @if($domicilio->numeroInt!=null)
+                                                        {{$domicilio->numeroInt}}
+                                                    @else
+                                                        SN
+                                                    @endif
+                                                </dd>
+                                                <dt>Datos Adicionales:</dt>
+                                                <dd class="ml-addresses-data__item">{{$domicilio->entrecalles}}  </dd>
 
-                                            <dt>Referencias:</dt>
-                                            <dd class="ml-addresses-data__item">Es un abarrote cremeria los Angeles esta en la esquina</dd>
+                                                <dt>Referencias:</dt>
+                                                <dd class="ml-addresses-data__item">{{$domicilio->referencia}}</dd>
 
-                                            <dt>Localidad:</dt>
-                                            <dd class="ml-addresses-data__item">Sinaloa(80014), Culiacán</dd>
-                                        </dl>
-                                    </div>
-                                    <div class="ml-addresses-tags">
-                                    </div>
-                                    <div class="ml-addresses-actions visible">
-                                        <div class="mymlDropdownMassiveActions massive secondary ch-dropdown" id="primerMenu" onclick="mostrarPrimerMenu()">
-                            <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select" style="height: 25px;margin:5px;">
-                                <span class="ico itemsSecondaryActionsIcn"><i style="width: 20px;margin-top: -3px;padding-top: 0px;height: 20px;margin-left: -5px;" class="ch-icon-cog"></i></span>
-                            </p>
-                            <ul id="primerMenuUL" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="position: absolute;left: -180%;top: 85.9%;z-index: 1;overflow: hidden;border-radius: 5px 5px 5px 5px;    -webkit-box-shadow: 2px 2px 2px hsla(0,0%,39%,.2);
-        box-shadow: 2px 2px 2px hsla(0,0%,39%,.2);
-border: 1px solid #dedede;
-    text-align: left;
-color: black">
-                                <a role="menuitem"></a>
-                                    <li class="masiveActionOption cannot reactivate" style="margin-bottom:10px;    padding: 3px;">
-                                        <a href="" style="padding:0px;margin:0px;"><p style="color: black;padding-bottom: 5px;">Modificar</p></a>
-                                    </li>
-                                    <li class="masiveActionOption cannot finalize" style="margin-bottom:10px;    padding: 3px;">
-                                        <a href="" style="padding:0px;margin:0px;"><p style="color: black;padding-bottom: 5px;">Usar para compras</p></a>
-                                    </li>
-                            </ul>
-                        </div>
-                                        <div class="ch-popover ch-dropdown ch-box-lite ch-hide" role="checkbox" style="width: auto; height: auto; position: absolute; z-index: 1012; right: 0;">
-                                            <div class="ch-popover-content">
-                                                <menu label="Links" class="">
-                                                    <li>
-                                                        <a href="#" target="_parent">Modificar</a></li>
-                                                    <li>
-                                                        <a href="#" target="_parent">Usar para compras</a>
+                                                <dt>Localidad:</dt>
+                                                <dd class="ml-addresses-data__item">{{$domicilio->estado}} ({{$domicilio->codigopostal}}), {{$domicilio->municipio}}</dd>
+                                            </dl>
+                                        </div>
+                                        <div class="ml-addresses-tags">
+                                        </div>
+                                        <div class="ml-addresses-actions visible">
+                                            <div class="mymlDropdownMassiveActions massive secondary ch-dropdown" id="primerMenu" onclick="mostrarPrimerMenu(this)">
+                                                <p class="itemsSecondaryActionsContainer ch-dropdown-trigger ch-dropdown-ico ch-btn-skin ch-btn-small ch-points-ltlb ch-user-no-select" style="height: 25px;margin:5px;">
+                                                <span class="ico itemsSecondaryActionsIcn"><i style="width: 20px;margin-top: -3px;padding-top: 0px;height: 20px;margin-left: -5px;" class="ch-icon-cog"></i></span></p>
+                                                <ul id="primerMenuUL" class="ch-dropdown-content ch-hide ch-points-ltlb" role="menu" aria-hidden="true" style="position: absolute;left: -180%;top: 85.9%;z-index: 1;overflow: hidden;border-radius: 5px 5px 5px 5px;    -webkit-box-shadow: 2px 2px 2px hsla(0,0%,39%,.2);box-shadow: 2px 2px 2px hsla(0,0%,39%,.2);border: 1px solid #dedede;    text-align: left;color: black">
+                                                    <a role="menuitem"></a>
+                                                    <li class="masiveActionOption cannot reactivate" style="padding: 3px;">    <a href="{{route('irAModificarDireccion', ['id' => $domicilio->_id])}}"" style="padding:0px;
+margin:0px;
+"><p style="color: black;
+padding-bottom: 5px;
+">Modificar</p></a>
                                                     </li>
-                                                </menu>
+                                                    <li class="masiveActionOption cannot finalize" style="padding: 3px;">    <a href="" style="padding:0px;margin:0px;"><p style="color: black;padding-bottom: 5px;">Usar para compras</p></a>
+                                                    </li>
+                                                    <li class="masiveActionOption cannot finalize" style="margin-bottom:10px;    padding: 3px;">    <a href="{{route('eliminarDomicilio', ['idElemneto' => $domicilio->_id])}}" style="padding:0px;margin:0px;"><p style="color: black;padding-bottom: 5px;">Eliminar</p></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="ch-popover ch-dropdown ch-box-lite ch-hide" role="checkbox" style="width: auto; height: auto; position: absolute; z-index: 1012; right: 0;">
+                                                <div class="ch-popover-content">
+                                                    <menu label="Links" class="">
+                                                        <li>
+                                                            <a href="#" target="_parent">Modificar</a></li>
+                                                        <li>
+                                                            <a href="#" target="_parent">Usar para compras</a>
+                                                        </li>
+                                                    </menu>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="ml-addresses-subaction" id="subaction_container">
-                                    <input class="ml-addresses-subaction__checkbox" type="checkbox" id="toggleVisibleCheckbox" value="false">
-                                    <label class="ml-addresses-subaction__checkbox-label" for="toggleVisibleCheckbox">
-                                    Quiero que mis compradores reciban mi domicilio junto con mis datos de contacto.
-                                    </label>
-                                    <span class="ch-loading-small ch-hidden"></span>
+                                        <div class="ml-addresses-subaction" id="subaction_container">
+                                            <input class="ml-addresses-subaction__checkbox" type="checkbox" id="toggleVisibleCheckbox" value="false">
+                                            <label class="ml-addresses-subaction__checkbox-label" for="toggleVisibleCheckbox">
+                                                Quiero que mis compradores reciban mi domicilio junto con mis datos de contacto.
+                                            </label>
+                                            <span class="ch-loading-small ch-hidden"></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        @endforeach
 
-                                    <noscript>
-                                    <input type="checkbox" id="toggleVisibleCheckbox" value="false" disabled >
-                                    <a href="toggleVisible" rel="nofollow"> Quiero que mis compradores reciban mi domicilio junto con mis datos de contacto. </a>
-                                    </noscript>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
                         <div class="row" style="text-align:left;padding-left: 15px;">
-                                <a href="#">Agregar domicilio</a>
+                                <a href="{{route('agregarDomicilio')}}">Agregar domicilio</a>
                         </div>
                     @endisset
-                    @empty(auth()->user()->domicilio)
+                    @empty($domicilios)
                         <div class="row col-md-6" style="float:none;border-bottom: 1px dotted rgb(221, 221, 221);margin: 0px 0px 20px;padding: 0px;">
                             <div class="row" style="text-align:left;padding-left: 15px;">
                                     <a href="agregarDomicilio">Agregar domicilio</a>

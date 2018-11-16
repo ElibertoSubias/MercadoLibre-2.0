@@ -238,10 +238,10 @@ class AddCategoriaController extends Controller
     }
     public function showDescrip(Request $request)
     {
-        session_start();   
+        session_start();    
         if (!isset($_SESSION['idPublicacion'])){ 
             $now = new \DateTime(); 
-            $_SESSION["idPublicacion"]=$now->format('d-m-Y-H-i-s'); 
+            $_SESSION["idPublicacion"]=$now->format('dmYHis'); 
         }
         switch ($request->tipoVenta) {
             case 'VEHI':

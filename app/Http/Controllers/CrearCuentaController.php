@@ -31,8 +31,9 @@ class CrearCuentaController extends Controller
                 $usuario->telefono = "_";
                 $usuario->telefono2 = "_";
                 $usuario->documento = "_";
-                $usuario->alias = "01".$request->nombre;
+                $usuario->alias = "01".$request->nombre; 
                 $usuario->password = Hash::make($request->clave);
+                $usuario->idCard = null;
                 $usuario->save(); 
                 $idUsuario = $usuario->getKey();
                 //return redirect()->action('FrontController@index');
@@ -67,6 +68,7 @@ class CrearCuentaController extends Controller
                     $Empresa->documento = "_";
                     $Empresa->alias = "01".$request->rfc;
                     $Empresa->password = Hash::make($request->clave);
+                    $usuario->idCard = null;
                     $Empresa->save(); 
                     $idUsuario = $Empresa->getKey(); 
                     return response()->json([

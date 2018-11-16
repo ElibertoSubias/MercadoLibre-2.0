@@ -61,7 +61,7 @@
     -webkit-box-direction: normal;    
     flex-direction: column;
     max-width: none;
-
+    padding-left: 0px;
     display: flex;
     flex-wrap: wrap;
     margin: 32px auto 0;
@@ -94,6 +94,7 @@
 
 .ui-list__item:hover {
     background-color: #f5f5f5;
+    border-left: 5px solid #3483fa;
     overflow: hidden;
     position: relative;
 }
@@ -183,12 +184,14 @@
     width: 34px;
     height: 34px;
     background-position: left -105px;
+    margin:-4px;
 }
 
 ._master-cho_badge {
     width: 34px;
     height: 34px;
     background-position: left -179px;
+    margin:-4px;
 }
 
 .badge-type__metadata {
@@ -287,7 +290,7 @@
 
 .cart-aside--fixed {
     padding-top: 48px;
-    background-color:#e6e6e6  !important;    
+    background-color:#f5f5f5  !important;    
     position: fixed;
     top: 0;
 }

@@ -15,7 +15,6 @@ $( "#inputNombre" ).blur(function() {
 	desactivarInput(id);
 });
 
-
 $("#btn_ven_mot").click(function(){
 	$("#ven_mot").submit();
 });
@@ -33,9 +32,21 @@ $('input').click(function(){
 $('label').click(function(){
 	inputActivo(this.id);
 });
+ 
+$( "#form_modificarDomicilio input" ).each(function(i, item) { 
+	if ($(this).val()!="") {
+		inputActivo(this.id);
+	}else{
+		desactivarInput(this.id);
+	}
+}); 
 
 $('input').blur(function(){
 	desactivarInput(this.id);
+});
+
+$('input').focus(function(){
+	inputActivo(this.id);
 });
 
 function inputActivo(id){
@@ -208,7 +219,7 @@ $('#select_file').change(function(){
 	    $('#message').css('display', 'block');
 	    $('#message').html(data.message);
 	    $('#'+idLIFoto).addClass('on');
-	    $('#'+idLIFoto).html(data.uploaded_image);
+	    $('#'+idLIFoto).html(data.uploaded_image+"<div class='picture-uploader-controls'><p role='button' class='ch-close' id='"+data.urlCompleta+"' onclick=delateImg(this.id,'"+data.idImagen+"','"+data.tipoImg+"')><span>x</span></p></div>");
 	    $('#select_file').val("");
 	    if (idLIFoto == "principal") {
 	    	$('#urlPrincipal').val(data.url);
@@ -219,9 +230,9 @@ $('#select_file').change(function(){
 	  })
 });
 
-function delateImg(id,idImg,tipo){
+function delateImg(id,idImg,tipo){ 
 	var token = $('#token').val();
-	var route = "delateImg";
+	var route = "delateImg"; 
 	$.ajax({
 	url: route, 
 	headers: {'X-CSRF-TOKEN': token},
@@ -229,7 +240,6 @@ function delateImg(id,idImg,tipo){
 	dataType: 'json',
 	data: {link: id,idImg:idImg,tipo:tipo} 
 	}).done(function(data) {   
-		//location.reload();
 		 $('#'+tipo).html(data.contenido);
     });
 }

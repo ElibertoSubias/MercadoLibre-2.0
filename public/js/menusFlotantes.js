@@ -1,11 +1,11 @@
 window.onload = seleccionarOpcion;
-function mostrarPrimerMenu(){
-	if (!$('#primerMenuUL').hasClass('bandera')) {
-		$('#primerMenuUL').removeClass("ch-hide"); 
-		$('#primerMenuUL').addClass( "bandera" ); 
+function mostrarPrimerMenu(elemento){  
+	if (!$(elemento).find("ul").hasClass('bandera')) {
+		$(elemento).find("ul").removeClass("ch-hide"); 
+		$(elemento).find("ul").addClass( "bandera" ); 
 	}else{
-		$('#primerMenuUL').addClass( "ch-hide" ); 
-		$('#primerMenuUL').removeClass("bandera");  
+		$(elemento).find("ul").addClass( "ch-hide" ); 
+		$(elemento).find("ul").removeClass("bandera");  
 	}
 }    
 
@@ -195,4 +195,9 @@ $('.gallery').mouseover(function(){
 });
 $('.gallery').mouseout(function(){
 	$('.flickity-prev-next-button').css('display','none');
+});
+
+
+$('[data-input-id="nextStepAddressChange"]').click(function(){
+	$('#modalDirecciones').modal('show');
 });

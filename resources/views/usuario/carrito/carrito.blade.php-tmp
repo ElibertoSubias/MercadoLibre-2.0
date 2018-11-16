@@ -87,6 +87,8 @@ for ($i = 0; $i < count($articulos); $i++) {
 	                                <div data-quantity="error" class="ui-quantity-selector__stock">
 	                                @if($articulo[$i]->cantidad==1)
 	                                    Último disponible
+	                                @elseif($articulo[$i]->cantidad==0)
+	                                    Agotado
 	                                @else
 	                                    <span id="cant_disponibles_{{$articulos[$i]->_id}}">{{$articulo[$i]->cantidad-$articulos[$i]->cantidad}}</span> dispobibles
 	                                @endif

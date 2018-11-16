@@ -32,7 +32,7 @@
 				<div id="resultados" style="z-index: 122222;display: none;border-top: 1px solid #e6e6e6;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;">
 						<ul id="cont-resultado"></ul>
 				</div> 
-				<a href="" class="exhibitor__picture"><img src="img/mlm-menu-desktop-notification-picture.png" title="Tutoriales"></a>
+				<a tabindex="-1" href="" class="exhibitor__picture"><img src="img/mlm-menu-desktop-notification-picture.png" title="Tutoriales"></a>
 			</div>
 			<div class="nav-header-menu-wrapper">
 				<label onclick="abrirMenuMovil()" id="lblMenuFlotante" for="nav-header-menu-switch" aria-controls="nav-header-menu" tabindex="3">
@@ -40,7 +40,7 @@
 					<span class="hamburger-patty"></span>
 					<span class="hamburger-bottom-bread"></span>
 				</label>
-				<a href="{{route('carrito')}}" title="Carrito" class="nav-cart nav-cart-full" id="nav-cart"><img src="img/icon_car.png" alt="" width="19">
+				<a tabindex="-1" href="{{route('carrito')}}" title="Carrito" class="nav-cart nav-cart-full" id="nav-cart"><img src="img/icon_car.png" alt="" width="19">
 					<span class="nav-icon-cart-quantity">1</span>
 				</a>
 				<nav id="nav-header-menu-mobile" class="nav-header-menu-mobile-guest">
@@ -48,7 +48,7 @@
 						@if(Auth::check()) 
 						<ul>
 							<li>
-								<a href="{{route('publicaciones')}}"><i class="nav-icon-logout-mobile"></i>
+								<a tabindex="-1" href="{{route('publicaciones')}}"><i class="nav-icon-logout-mobile"></i>
 									<p>Ventas</p>
 								</a>
 							</li>
@@ -228,9 +228,11 @@
 			<a href="" title="">Ayuda</a> 
 			</div>
 			<div class="col-md-12">
-				<small class="nav-footer-copyright"> 
-					Copyright © 1999-2018 DeRemate.com de México S. de R.L. de C.V. 
-			</small>  
+				<small class="nav-footer-copyright" style="text-align: left;color: black;"> 
+					<strong>Sitio no oficial de Mercado Libre.</strong> <br>
+					Proyecto estudiantil el cual busca emular las características del sitio de Mercado Libre, solo con <b>fines educativos</b>.
+					Para ir al sitio oficial de Mercado Libre de click <p style="display: inline-block;"><a style="float: none;    margin-left: 0px;" href="http://www.mercadolibre.com.mx"><b>aquí</b></a></p>.
+				</small>  
 			</div>
 			 	{!! Html::script('js/jquery-3.3.1.min.js') !!}  
 				{!! Html::script('js/bootstrap.min.js') !!}  
