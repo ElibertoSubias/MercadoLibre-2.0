@@ -105,10 +105,10 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('pagoPor', 'Compra\CompraController@metodoPago')->name('pagoPor');
 	
-	///////////////////////////////
+
 	Route::any('agregarTarjPrueba', 'Compra\CompraController@aggTarjPrueba')->name('agregarTarjPrueba');
 	Route::post('save_customer_card', 'Compra\CompraController@guardarCard_custumer')->name('save_customer_card');
-	///////////////////////////////
+
 
 	Route::any('nuevatarjetac', 'Compra\CompraController@nuevaTarjetacre')->name('nuevatarjetac');
 
@@ -117,10 +117,13 @@ Route::group(['middleware' => 'autenticado'], function () {
 	
 	Route::post('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
 
-
+	Route::any('nuevodomicilio', 'Compra\CompraController@nuevoDomicilio')->name('nuevodomicilio');
+	Route::post('agregarDomicilio2', 'Compra\CompraController@agregarDomicilio')->name('agregarDomicilio2');
 
 
 	Route::any('sindomicilio', 'Compra\CompraController@dondeRecibir')->name('sindomicilio');
+
+
 });
 
 
