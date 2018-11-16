@@ -121,10 +121,10 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 
 
-	Route::any('sindomicilio', 'Compra\CompraController@dondeRecibir')->name('sindomicilio');
+
+	Route::any('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
+	Route::any('sindomicilio', 'Compra\CompraController@dondeRecibir')->name('sindomicilio'); 
+
+
+	Route::any('confirmarComp', 'Compra\CompraController@confiCompra')->name('confirmarComp');
 });
-
-
-	
-	
-
