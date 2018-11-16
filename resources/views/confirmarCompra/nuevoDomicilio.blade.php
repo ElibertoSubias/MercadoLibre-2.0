@@ -1,4 +1,4 @@
-@extends('layouts.masterLogin')
+@extends('layouts.masterRegistro')
 
 @section('content')  
 
@@ -22,8 +22,9 @@
 .col2 {
     float:left;
     width: 27%;
-  background: #e6e6e6;
-  margin-right: 2px;
+    margin-top: 2px;
+    background: #e6e6e6;
+    margin-right: 2px;
 }
 
 p {
@@ -47,7 +48,7 @@ p {
 
 
 
-<form style="margin-bottom:0px; " class="ui-form form-with-floating-labels" id="addresses-form" action="" name="addresses-form" method="post">
+<form style="margin-bottom:0px; " class="ui-form form-with-floating-labels" id="addresses-form" action="{{route('agregarDomicilio2')}}" name="addresses-form" method="post">
     <input type="hidden" name="latitude" id="latitude" value=""><input type="hidden" name="longitude" id="longitude" value=""><input type="hidden" name="locationType" id="locationType" value=""><input type="hidden" name="formId" id="formId" value="ce86e2344591f29a66b866c76d924d3419662143ae6feab741d29f2bd078dd6a"><input type="hidden" name="appName" id="appName" value="generic">
     
     
@@ -103,23 +104,23 @@ p {
     <div class="u-clearfix">
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
             <div class="ui-form__row ">
-                <input id="inputCalle1" type="text" data-required="true" class="ui-form__input " name="inputCalle" value="" aria-describedby="streetMessage" data-valid="true" maxlength="70" data-min-length="1">
-                <label id="lblMsjinputCalle" for="inputCalle" class="ui-form__label">Calle</label>
+                <input id="inputCalle1" type="text" data-required="true" class="ui-form__input " name="inputCalle1" value="" aria-describedby="streetMessage" data-valid="true" maxlength="70" data-min-length="1">
+                <label id="lblMsjinputCalle1" for="inputCalle1" class="ui-form__label">Calle</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputCalle" style="color: red" role="alert">Complete este dato</div>
             </div>
         </div>
         <div class="ml-addresses-grid ml-addresses-grid--second-column ml-addresses-grid--half-column">
-            <div class="ui-form__row ">
-                <input id="inputNumExt" type="number" data-required="true" class="ui-form__input " name="inputNumExt" value="" data-valid="true" aria-describedby="numberMessage" min="0" data-min-length="1">
-                <label id="lblMsjinputNumExt" for="inputNumExt" class="ui-form__label" style="width: 100%">Numero Externo.</label>
+            <div class="ui-form__row " >
+                <input id="inputNumExt" type="number" data-required="true" class="ui-form__input " style="width: 250%;" name="inputNumExt" value="" data-valid="true" aria-describedby="numberMessage" min="0" data-min-length="1">
+                <label id="lblMsjinputNumExt" for="inputNumExt" class="ui-form__label" style="width: 200px">Numero Externo.</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputNumExt" role="alert">error_place_holder</div>
             </div>
 
             <div class="ml-addresses-embeded-action">
                 <label class="ui-checkbox ui-checkbox--embedded ui-checkbox--label-after" style="    position: relative;
-    top: 35px;left: -10px;
+    top: 35px;left: 68px;
     width: 25px;
     height: 35px;">
                     <span class="ui-checkbox__label" style="left: 5px;
@@ -134,8 +135,7 @@ p {
     </div>
      <div class="ml-addresses-grid ml-addresses-grid--second-column ml-addresses-grid--half-column">
             <div class="ui-form__row ">
-                <input id="inputNumInt" type="number" class="ui-form__input " name="inputNumInt" value="" aria-describedby="commentMessage" data-valid="true" min="0" data-required="false" data-min-length="-1">
-
+                <input id="inputNumInt" type="number" class="ui-form__input " name="inputNumInt"  value="" aria-describedby="commentMessage" data-valid="true" min="0" data-required="false" data-min-length="-1">
                 <label id="lblMsjinputNumInt" for="inputNumInt" class="ui-form__label">Numero interno. (opcional)</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputNumInt" role="alert">error_place_holder</div>

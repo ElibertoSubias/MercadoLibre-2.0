@@ -186,9 +186,7 @@ class CompraController extends Controller
         $Direccion->envio=1;
 
         $Direccion->save();
-         return response()->json([
-                    "res" => 10
-                ]);
+       return view ('confirmarCompra.agregarcontactos')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPublicacion, 'idUser'=>$request->idUser ]);
        
     }
 
@@ -196,6 +194,10 @@ class CompraController extends Controller
     public function aggTarjPrueba(Request $request)
     {
         return view('confirmarCompra.aggTarjPrueba');
+    }
+    public function agregarContacto(Request $request)
+    {
+        return view('confirmarCompra.agregarcontactos');
     }
 
     public function guardarCard_custumer(Request $request)

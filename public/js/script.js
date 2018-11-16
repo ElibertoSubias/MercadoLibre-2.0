@@ -41,6 +41,8 @@ $( "#form_modificarDomicilio input" ).each(function(i, item) {
 	}
 }); 
 
+
+
 $('input').blur(function(){
 	desactivarInput(this.id);
 });
@@ -106,6 +108,21 @@ $( "#inputClave" ).focus(function(){
 	var id = "inputClave";
 	activarInput(id);
 });
+
+$( "#inputCalle1" ).blur(function() {
+	var id = "inputCalle1";
+	desactivarInput(id);
+});
+$( "#lblMsjinputCalle1" ).click(function() {
+	var id = "inputCalle1";
+	$('#'+id).focus();
+	activarInput(id);
+});
+$( "#inputCalle1" ).focus(function(){
+	var id = "inputCalle1";
+	activarInput(id);
+});
+
 ///////////////////////////////////
 
 function activarInput(id){
