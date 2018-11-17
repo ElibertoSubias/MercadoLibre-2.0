@@ -129,4 +129,5 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::any('confirmarComp', 'Compra\CompraController@confiCompra')->name('confirmarComp');
 
 	Route::any('rechazada', 'Compra\CompraController@rechazar')->name('rechazada');
+	Route::any('compraExitosa', 'Compra\CompraController@compraExitosa')->name('compraExitosa');
 });

@@ -126,14 +126,28 @@
                                                 <div class="hero__icon" data-js="hero-icon">
                                                      <span class="ui-badge ui-badge--small ">
                                                         <span class="ui-badge__icon ui-badge__icon--payment-logo">
-                                                            <i class="payment-icon payments-cho_badge _debvisa-cho_badge"></i>
+                                                            @if($card->brand=="visa")
+                                                                <i class="payment-icon payments-cho_badge _debvisa-cho_badge"></i>
+                                                            @elseif($card->brand=="mastercard")
+                                                                <i class="payment-icon payments-cho_badge _master-cho_badge"></i>
+                                                            @endif
                                                         </span>
                                                      </span>
                                                 </div>
                                                 <div class="hero__main-content" data-js="hero-main-content">
                                                     <div class="hero__main-content-wrapper">
                                                         <div class="hero__info" data-js="hero-info">
-                                                            <h3 data-id="hero-payments-title" class="hero__info-title">Visa Débito terminada en  5048</h3>
+                                                            <h3 data-id="hero-payments-title" class="hero__info-title">
+                                                            <?php  
+                                                                if ($card->type=="debit") {
+                                                                    echo "Visa Débito terminada en ";
+                                                                }else if($card->type=="credit") {
+                                                                    echo "Visa Credito terminada en ";
+                                                                }
+                                                                $cadena=$card->card_number;
+                                                                echo mb_substr($cadena,-4);  
+                                                            ?> 
+                                                            </h3>
                                                             <span data-id="hero-payments-subtitle" class="hero__info-subtitle ">
                                                                 Pagas 1x
 
@@ -147,8 +161,14 @@
                                                             </span>
                                                         </div>
                                                         <div class="hero__action" data-js="hero-action">
-                                                            <form data-js="change-payment" data-payment="fa7c4548-b3e8-4dff-b2be-de432ed79763" method="post">
-                                                                <button data-js="" data-input-id="" class=" hero__action-button1 u-link" type="submit" name="nextStepPayments" value="nextStepPayments">
+                                                            <form data-js="change-payment" method="post" action="{{route('pagoPor')}}">
+                                                                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                                                                <input type="hidden" name="precio" value="{{$precio}}">
+                                                                <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+                                                                <input type="hidden" name="titulo" value="{{$titulo}}">
+                                                                <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+                                                                <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+                                                                <button data-js="" data-input-id="nextStepPayments" class=" hero__action-button u-link" type="submit" name="nextStepPayments" value="nextStepPayments">
                                                                     Modificar
                                                                 </button>
                                                             </form>
@@ -243,7 +263,7 @@
                             <input type="hidden" name="device_session_id" id="device_session_id">
                             <input type="hidden" name="cardId" value="{{$card->id}}">
                             <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
-                            <input type="hidden" name="amount" id="amount" value="{{($precio+$costoEnvio)-14999}}">
+                            <input type="hidden" name="amount" id="amount" value="{{($precio+$costoEnvio)-$precio+1}}">
                             <input type="hidden" name="description" id="description" value="{{$titulo}}">
                             <button id="pay-button" class="overview-component__action-button ui-button ui-button--primary" data-id="overview-action" data-js="" type="submit">
                                 <span class="aside-button__progress-bar"></span>

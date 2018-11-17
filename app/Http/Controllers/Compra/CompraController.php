@@ -10,6 +10,7 @@ use Redirect;
 use \App\User;
 use App\Articulos;
 use App\Carrito; 
+use App\Compras; 
 use Intagono\Openpay\Openpay; 
 use App\Direcciones; 
 
@@ -35,14 +36,19 @@ class CompraController extends Controller
  
     
     public function metodoPago(Request $request)
-    {  
+    {   
         if (auth()->user()->idCustomer!=null) {
+            
             $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678'); 
-            $customer = $openpay->customers->get(auth()->user()->idCustomer); 
+
+            $customer = $openpay->customers->get(auth()->user()->idCustomer);   
+
             $findDataRequest = array( 
                 'offset' => 0,
                 'limit' => 5);
+
             $cardList = $customer->cards->getList($findDataRequest);
+
             return view('confirmarCompra.metodoPago')->with(['tarjetas'=>$cardList,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio]);    
         }else{
             return view('confirmarCompra.metodoPago')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio]); 
@@ -70,12 +76,11 @@ class CompraController extends Controller
 
     public function confirmCompra(Request $request)
     {  
-        return 0;
         try{ 
             $idPublicacion = Articulos::where(['idPublicacion'=>$request->idPaquete])->get();
-            $vendedor = User::where(['_id'=>$idPublicacion[0]->idUser])->get();
-
+            $vendedor = User::where(['_id'=>$idPublicacion[0]->idUser])->get(); 
             $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678');
+
             $customerId=auth()->user()->idCustomer; 
 
             $customer = $openpay->customers->get($customerId);
@@ -86,9 +91,7 @@ class CompraController extends Controller
                     'amount' => (float)$_POST["amount"],
                     'description' => $_POST["description"],
                     
-                    'device_session_id' => $_POST["deviceIdHiddenFieldName"]);  
-
-            echo "Cargo solicitado"; 
+                    'device_session_id' => $_POST["deviceIdHiddenFieldName"]);   
             //Validación de cargo a tarjeta de credito
             if($customer->charges->create($chargeData)){
                 //Transferencua a cuenta del vendedor
@@ -97,10 +100,15 @@ class CompraController extends Controller
                     'amount' => 1.00,
                     'description' => 'Cobro de Comisión');
      
-                $transfer = $customer->transfers->create($transferDataRequest);
-                echo("Exitoso");
-            }else{
-                echo "Ops!, error.";
+                $transfer = $customer->transfers->create($transferDataRequest); 
+
+                $compras = new Compras;
+                $compras->idUser = auth()->user()->_id;
+                $compras->idPublicacion = $request->idPaquete;
+                $compras->cantidad = 0;
+                $compras->precio = $request->amount;
+                $compras->save();
+                return view('confirmarCompra.correcto');
             }
 
         } catch (\OpenpayApiTransactionError $e) {
@@ -109,13 +117,18 @@ class CompraController extends Controller
                   ', error category: ' . $e->getCategory() . 
                   ', HTTP code: '. $e->getHttpCode() . 
                   ', request ID: ' . $e->getRequestId() . ']', 0);
-            echo "ERROR A | ".$e->getMessage() ;
+            
+            if ($e->getErrorCode()==3003) {
+                return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio]);
+            }else{
+                echo "ERROR A | ".$e->getMessage() ;
+                echo $e->getErrorCode();
+            }
 
         } catch (\OpenpayApiRequestError $e) {
             error_log('ERROR on the request: ' . $e->getMessage(), 0);
             echo "ERROR B | ".$e->getMessage();
-            echo $e->getErrorCode();
-            echo $e;
+            echo $e->getErrorCode(); 
 
         } catch (\OpenpayApiConnectionError $e) {
             error_log('ERROR while connecting to the API: ' . $e->getMessage(), 0);
@@ -125,14 +138,22 @@ class CompraController extends Controller
         } catch (\OpenpayApiAuthError $e) {
             error_log('ERROR on the authentication: ' . $e->getMessage(), 0);
             echo "ERROR D 'authentication'";
+
         } catch (OpenpayApiError $e) {
             error_log('ERROR on the API: ' . $e->getMessage(), 0);
             echo "ERROR E | ".$e->getMessage();
+            echo $e->getErrorCode();
             
         } catch (\Exception $e) {
             error_log('Error on the script: ' . $e->getMessage(), 0);
             echo "ERROR F | ".$e->getMessage(); 
+            echo $e->getErrorCode();
         }
+    }
+
+    public function compraExitosa(Request $request)
+    {
+        return view('confirmarCompra.correcto');
     }
 
     public function nuevaTarjetacre(Request $request)
@@ -171,7 +192,7 @@ class CompraController extends Controller
         $Direccion->calle=$request->inputCalle1;
         $Direccion->contacto=null; 
         $Direccion->telefono=null;
-       $Direccion->idUser=$id;
+        $Direccion->idUser=$id;
         $Direccion->numeroEx=$request->inputNumExt;
         $Direccion->numeroInt=$request->inputNumInt;
         $Direccion->entrecalles=$request->inputEntreCalles;
@@ -191,9 +212,7 @@ class CompraController extends Controller
     public function aggTarjPrueba(Request $request)
     {
         return view('confirmarCompra.aggTarjPrueba');
-    }
- 
-    
+    }  
 
     public function agregarContacto(Request $request)
     {
@@ -214,10 +233,11 @@ public function rechazar(Request $request)
 
 }
 
-    public function guardarCard_custumer(Request $request)
-    {  
-        $openpayCore = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678'); 
-        if(auth()->user()->idCard==null){ 
+    public function guardarCard_Customer(Request $request)
+    {    
+        try {
+            $openpayCore = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678'); 
+        if(auth()->user()->idCustomer==null){ 
             $customerData = array(
             'external_id' => null,
             'name' => $_POST['name'],
