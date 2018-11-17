@@ -171,10 +171,10 @@ class CompraController extends Controller
        $id = Auth::id();
      
         $Direccion = new Direcciones;
-        $Direccion->calle=$request->Calle;
-    
-        $Direccion->idUser=$id;
-      
+        $Direccion->calle=$request->inputCalle1;
+        $Direccion->contacto=null; 
+        $Direccion->telefono=null;
+       $Direccion->idUser=$id;
         $Direccion->numeroEx=$request->inputNumExt;
         $Direccion->numeroInt=$request->inputNumInt;
         $Direccion->entrecalles=$request->inputEntreCalles;
@@ -195,10 +195,23 @@ class CompraController extends Controller
     {
         return view('confirmarCompra.aggTarjPrueba');
     }
+
+    
+
     public function agregarContacto(Request $request)
     {
-        return view('confirmarCompra.agregarcontactos');
+            $datos = Direcciones::where(['envio' => 1, 'idUser' => Auth::id()])->update([
+    
+                'contacto'  => $request->inputContacto,
+                'telefono'  => $request->inputTelefono 
+
+            ]);
+            $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get(); 
+             return view('confirmarCompra.dondeRecibir')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'domicilios'=>$domicilios,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPublicacion]);
+  
     }
+
+
 
     public function guardarCard_custumer(Request $request)
     {  

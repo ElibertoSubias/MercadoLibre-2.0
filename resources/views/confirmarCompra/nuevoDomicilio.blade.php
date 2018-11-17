@@ -174,8 +174,11 @@ p {
 
             
                 
-
-
+                 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                  <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+                  <input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+                  <input type="hidden" name="precio" value="{{$precio}}">
+                  <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
             
    
 
@@ -198,7 +201,7 @@ p {
 </div>
     <div class="col2" style="width: 30%">
          <div id="aside-container" class="cart-aside"><div><div data-component="aside">
-    <aside class="cart-aside__content cart-aside__content--item cart-aside--static" data-aside="target">
+    <aside class="cart-aside__content cart-aside__content--item cart-aside--static" data-aside="target" style="height: 500px !important ">
             <div class="overview-component__item u-block-center">
                 <span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
                       <img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" > 
@@ -224,6 +227,23 @@ p {
                                             <span class="price-tag-decimal-separator"></span> 
                                             <span class="price-tag-cents">00</span>
                                         
+                                    </span>
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+                 <div class="overview-component__amounts">
+                    <div class="overview-component__table">
+                            <div class="overview-component__row">
+                                <div data-id="overview-items-quantity" class="overview-component__column" style="text-align: left;">
+                                    Envio
+                                </div>
+                                <div data-id="overview-items-price" class="overview-component__column">
+                                    <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                                        <meta itemprop="price" content="18999"> 
+                                        <span class="price-tag-fraction">-</span>
+    
                                     </span>
                                 </div>
                             </div>
