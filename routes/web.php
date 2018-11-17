@@ -124,7 +124,9 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
 	Route::any('sindomicilio', 'Compra\CompraController@dondeRecibir')->name('sindomicilio'); 
-
+	Route::any('agregarcontacto', 'Compra\CompraController@agregarContacto')->name('agregarcontacto');
 
 	Route::any('confirmarComp', 'Compra\CompraController@confiCompra')->name('confirmarComp');
+
+	Route::any('rechazada', 'Compra\CompraController@rechazar')->name('rechazada');
 });

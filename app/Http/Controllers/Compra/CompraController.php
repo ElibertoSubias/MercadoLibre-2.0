@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Compra;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 use App\Http\Controllers\Controller; 
-use Illuminate\Http\Request;  
-//use App\Openpay;
+use Illuminate\Http\Request;   
 use Validator;
 use Auth;
 use Redirect;
@@ -169,24 +168,22 @@ class CompraController extends Controller
        $id = Auth::id();
      
         $Direccion = new Direcciones;
-        $Direccion->calle=$request->Calle;
-    
-        $Direccion->idUser=$id;
-      
-        $Direccion->numeroEx=$request->NumExt;
-        $Direccion->numeroInt=$request->NumInt;
-        $Direccion->entrecalles=$request->EntreCalles;
-        $Direccion->referencia=$request->Referencias;
-        $Direccion->codigopostal=$request->CodigoPostal;
-        $Direccion->asentamiento=$request->Asentamiento;
-        $Direccion->municipio=$request->Municipio;
-        $Direccion->estado=$request->Estado;
+        $Direccion->calle=$request->inputCalle1;
+        $Direccion->contacto=null; 
+        $Direccion->telefono=null;
+       $Direccion->idUser=$id;
+        $Direccion->numeroEx=$request->inputNumExt;
+        $Direccion->numeroInt=$request->inputNumInt;
+        $Direccion->entrecalles=$request->inputEntreCalles;
+        $Direccion->referencia=$request->inputReferencias;
+        $Direccion->codigopostal=$request->inputCodigoPostal;
+        $Direccion->asentamiento=$request->inputAcentamiento;
+        $Direccion->municipio=$request->inputMunicipio;
+        $Direccion->estado=$request->inputEstado;
         $Direccion->envio=1;
 
         $Direccion->save();
-         return response()->json([
-                    "res" => 10
-                ]);
+       return view ('confirmarCompra.agregarcontactos')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPublicacion, 'idUser'=>$request->idUser ]);
        
     }
 
@@ -195,12 +192,32 @@ class CompraController extends Controller
     {
         return view('confirmarCompra.aggTarjPrueba');
     }
+ 
+    
 
-    public function guardarCard_Customer(Request $request)
-    {    
-        try {
-            $openpayCore = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678'); 
-        if(auth()->user()->idCustomer==null){
+    public function agregarContacto(Request $request)
+    {
+            $datos = Direcciones::where(['envio' => 1, 'idUser' => Auth::id()])->update([
+    
+                'contacto'  => $request->inputContacto,
+                'telefono'  => $request->inputTelefono 
+
+            ]);
+            $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get(); 
+             return view('confirmarCompra.dondeRecibir')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'domicilios'=>$domicilios,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPublicacion]);
+  
+    }
+
+public function rechazar(Request $request)
+{
+    return view('confirmarCompra.compraRechazada');
+
+}
+
+    public function guardarCard_custumer(Request $request)
+    {  
+        $openpayCore = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678'); 
+        if(auth()->user()->idCard==null){ 
             $customerData = array(
             'external_id' => null,
             'name' => $_POST['name'],

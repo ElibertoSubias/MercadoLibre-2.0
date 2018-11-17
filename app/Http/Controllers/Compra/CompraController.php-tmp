@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Compra;
 use App\Articulos;
 
 use App\Direcciones;
-//use App\Openpay;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
@@ -154,25 +153,23 @@ class CompraController extends Controller {
 
 		$id = Auth::id();
 
-		$Direccion        = new Direcciones;
-		$Direccion->calle = $request->Calle;
-
-		$Direccion->idUser = $id;
-
-		$Direccion->numeroEx     = $request->NumExt;
-		$Direccion->numeroInt    = $request->NumInt;
-		$Direccion->entrecalles  = $request->EntreCalles;
-		$Direccion->referencia   = $request->Referencias;
-		$Direccion->codigopostal = $request->CodigoPostal;
-		$Direccion->asentamiento = $request->Asentamiento;
-		$Direccion->municipio    = $request->Municipio;
-		$Direccion->estado       = $request->Estado;
+		$Direccion               = new Direcciones;
+		$Direccion->calle        = $request->inputCalle1;
+		$Direccion->contacto     = null;
+		$Direccion->telefono     = null;
+		$Direccion->idUser       = $id;
+		$Direccion->numeroEx     = $request->inputNumExt;
+		$Direccion->numeroInt    = $request->inputNumInt;
+		$Direccion->entrecalles  = $request->inputEntreCalles;
+		$Direccion->referencia   = $request->inputReferencias;
+		$Direccion->codigopostal = $request->inputCodigoPostal;
+		$Direccion->asentamiento = $request->inputAcentamiento;
+		$Direccion->municipio    = $request->inputMunicipio;
+		$Direccion->estado       = $request->inputEstado;
 		$Direccion->envio        = 1;
 
 		$Direccion->save();
-		return response()->json([
-				"res" => 10
-			]);
+		return view('confirmarCompra.agregarcontactos')->with(['precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPublicacion, 'idUser' => $request->idUser]);
 
 	}
 
@@ -180,83 +177,99 @@ class CompraController extends Controller {
 		return view('confirmarCompra.aggTarjPrueba');
 	}
 
-	public function guardarCard_Customer(Request $request) {
-		try {
-			$openpayCore = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp', 'sk_971f3acd3cd0456299caaf254a316678');
-			if (auth()->user()->idCustomer == null) {
-				$customerData = array(
-					'external_id'      => null,
-					'name'             => $_POST['name'],
-					'last_name'        => $_POST['last_name'],
-					'email'            => $_POST['email'],
-					'phone_number'     => $_POST['phone_number'],
-					'requires_account' => true);
+	public function agregarContacto(Request $request) {
+		$datos = Direcciones::where(['envio' => 1, 'idUser' => Auth::id()])->update([
 
-				$customer   = $openpayCore->customers->add($customerData);
-				$idCustomer = $customer->id;
-				User::where('_id', auth()->user()->id)->update(['idCustomer'       => $idCustomer], ['upsert'       => true]);
-				User::where('_id', auth()->user()->id)->push('tarjetas', ['idCard' => $customer->id, 'card_number' => $_POST['card_number']], true);
+				'contacto' => $request->inputContacto,
+				'telefono' => $request->inputTelefono
 
-				$customer = $openpayCore->customers->get($idCustomer);
+			]);
+		$domicilios = Direcciones::where(['idUser'                  => auth()->user()->id])->get();
+		return view('confirmarCompra.dondeRecibir')->with(['precio' => $request->precio, 'titulo' => $request->titulo, 'domicilios' => $domicilios, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPublicacion]);
 
-				$cardDataRequest = array(
-					'holder_name'       => $_POST['holder_name'],
-					'card_number'       => $_POST['card_number'],
-					'cvv2'              => $_POST['cvv2'],
-					'expiration_month'  => $_POST['expiration_month'],
-					'expiration_year'   => $_POST['expiration_year'],
-					'device_session_id' => $_POST['device_session_id']
-				);
+	}
 
-				$card = $customer->cards->add($cardDataRequest);
+	public function rechazar(Request $request) {
+		return view('confirmarCompra.compraRechazada');
 
-				return "Se agrego el Cliente y su tarjeta->".$card->id;
-			} else {
-				//Agregar Tarjetas
-				$customer = $openpayCore->customers->get(auth()->user()->idCustomer);
+	}
 
-				$cardDataRequest = array(
-					'holder_name'       => $_POST['holder_name'],
-					'card_number'       => $_POST['card_number'],
-					'cvv2'              => $_POST['cvv2'],
-					'expiration_month'  => $_POST['expiration_month'],
-					'expiration_year'   => $_POST['expiration_year'],
-					'device_session_id' => $_POST['device_session_id']
-				);
+	public function guardarCard_custumer(Request $request) {
+		$openpayCore = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp', 'sk_971f3acd3cd0456299caaf254a316678');
+		if (auth()->user()->idCard == null) {
+			$customerData = array(
+				'external_id'      => null,
+				'name'             => $_POST['name'],
+				'last_name'        => $_POST['last_name'],
+				'email'            => $_POST['email'],
+				'phone_number'     => $_POST['phone_number'],
+				'requires_account' => true);
 
-				$card = $customer->cards->add($cardDataRequest);
-				User::where('_id', auth()->user()->id)->push('tarjetas', ['idCard' => $customer->id, 'card_number' => $_POST['card_number']], true);
+			$customer   = $openpayCore->customers->add($customerData);
+			$idCustomer = $customer->id;
+			User::where('_id', auth()->user()->id)->update(['idCustomer'       => $idCustomer], ['upsert'       => true]);
+			User::where('_id', auth()->user()->id)->push('tarjetas', ['idCard' => $customer->id, 'card_number' => $_POST['card_number']], true);
 
-				return "Se agrego la tarjeta".$card->id;
-			}
-		} catch (\OpenpayApiTransactionError $e) {
-			error_log('ERROR on the transaction: '.$e->getMessage().
-				' [error code: '.$e->getErrorCode().
-				', error category: '.$e->getCategory().
-				', HTTP code: '.$e->getHttpCode().
-				', request ID: '.$e->getRequestId().']', 0);
-			return $e->getMessage();
+			$customer = $openpayCore->customers->get($idCustomer);
 
-		} catch (\OpenpayApiRequestError $e) {
-			error_log('ERROR on the request: '.$e->getMessage(), 0);
-			//Cliente no existe
-			return $e->getMessage();
-		} catch (\OpenpayApiConnectionError $e) {
-			error_log('ERROR while connecting to the API: '.$e->getMessage(), 0);
-			return $e->getMessage();
-		} catch (\OpenpayApiAuthError $e) {
-			error_log('ERROR on the authentication: '.$e->getMessage(), 0);
-			return $e->getMessage();
-		} catch (\OpenpayApiError $e) {
-			error_log('ERROR on the API: '.$e->getMessage(), 0);
-			return $e->getMessage();
-		} catch (\Exception $e) {
-			error_log('Error on the script: '.$e->getMessage(), 0);
-			return $e->getMessage();
+			$cardDataRequest = array(
+				'holder_name'       => $_POST['holder_name'],
+				'card_number'       => $_POST['card_number'],
+				'cvv2'              => $_POST['cvv2'],
+				'expiration_month'  => $_POST['expiration_month'],
+				'expiration_year'   => $_POST['expiration_year'],
+				'device_session_id' => $_POST['device_session_id']
+			);
+
+			$card = $customer->cards->add($cardDataRequest);
+
+			return "Se agrego el Cliente y su tarjeta->".$card->id;
+		} else {
+			//Agregar Tarjetas
+			$customer = $openpayCore->customers->get(auth()->user()->idCustomer);
+
+			$cardDataRequest = array(
+				'holder_name'       => $_POST['holder_name'],
+				'card_number'       => $_POST['card_number'],
+				'cvv2'              => $_POST['cvv2'],
+				'expiration_month'  => $_POST['expiration_month'],
+				'expiration_year'   => $_POST['expiration_year'],
+				'device_session_id' => $_POST['device_session_id']
+			);
+
+			$card = $customer->cards->add($cardDataRequest);
+			User::where('_id', auth()->user()->id)->push('tarjetas', ['idCard' => $customer->id, 'card_number' => $_POST['card_number']], true);
+
+			return "Se agrego la tarjeta".$card->id;
 		}
-	}
+	} catch (\OpenpayApiTransactionError $e) {
+		error_log('ERROR on the transaction: '.$e->getMessage().
+			' [error code: '.$e->getErrorCode().
+			', error category: '.$e->getCategory().
+			', HTTP code: '.$e->getHttpCode().
+			', request ID: '.$e->getRequestId().']', 0);
+		return $e->getMessage();
 
-	public function confiCompra(Request $request) {
-		return view('confirmarCompra.confiCompra');
+	} catch (\OpenpayApiRequestError $e) {
+		error_log('ERROR on the request: '.$e->getMessage(), 0);
+		//Cliente no existe
+		return $e->getMessage();
+	} catch (\OpenpayApiConnectionError $e) {
+		error_log('ERROR while connecting to the API: '.$e->getMessage(), 0);
+		return $e->getMessage();
+	} catch (\OpenpayApiAuthError $e) {
+		error_log('ERROR on the authentication: '.$e->getMessage(), 0);
+		return $e->getMessage();
+	} catch (\OpenpayApiError $e) {
+		error_log('ERROR on the API: '.$e->getMessage(), 0);
+		return $e->getMessage();
+	} catch (\Exception $e) {
+		error_log('Error on the script: '.$e->getMessage(), 0);
+		return $e->getMessage();
 	}
+}
+
+public function confiCompra(Request $request) {
+	return view('confirmarCompra.confiCompra');
+}
 }

@@ -1,4 +1,4 @@
-@extends('layouts.masterLogin')
+@extends('layouts.masterRegistro')
 
 @section('content')  
 
@@ -22,8 +22,9 @@
 .col2 {
     float:left;
     width: 27%;
-  background: #e6e6e6;
-  margin-right: 2px;
+    margin-top: 2px;
+    background: #e6e6e6;
+    margin-right: 2px;
 }
 
 p {
@@ -47,7 +48,7 @@ p {
 
 
 
-<form style="margin-bottom:0px; " class="ui-form form-with-floating-labels" id="addresses-form" action="" name="addresses-form" method="post">
+<form style="margin-bottom:0px; " class="ui-form form-with-floating-labels" id="addresses-form" action="{{route('agregarDomicilio2')}}" name="addresses-form" method="post">
     <input type="hidden" name="latitude" id="latitude" value=""><input type="hidden" name="longitude" id="longitude" value=""><input type="hidden" name="locationType" id="locationType" value=""><input type="hidden" name="formId" id="formId" value="ce86e2344591f29a66b866c76d924d3419662143ae6feab741d29f2bd078dd6a"><input type="hidden" name="appName" id="appName" value="generic">
     
     
@@ -58,7 +59,7 @@ p {
     <legend class="ml-addresses-hidden">Zipcode</legend>
     <div class="ml-addresses-grid ml-addresses-grid--first-column">
         <div class="ui-form__row ">
-            <input id="inputCodigoPostal" type="tel" data-required="true" onkeypress="calcular(this.value)" class="ui-form__input " name="inputCodigoPostal" value="" aria-describedby="zipcodeMessage" data-valid="true" maxlength="5" data-min-length="5">
+            <input id="inputCodigoPostal" type="tel" data-required="true" onkeypress="calcular(this.value)" class="ui-form__input " name="inputCodigoPostal"  aria-describedby="zipcodeMessage" data-valid="true" maxlength="5" data-min-length="5">
             <label id="lblMsjinputCodigoPostal" for="inputCodigoPostal" class="ui-form__label">Código postal</label>
             <span class="ui-form__status-bar"></span>
             <div class="ui-form__message" id="alertMsjinputCodigoPostal" style="color: red" role="alert">Complete este dato</div>
@@ -82,7 +83,7 @@ p {
     <div class="ml-addresses-fieldset__inline-container">
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
             <div class="ui-form__row "> 
-                <input type="text" id="inputMunicipio" name="inputMunicipio" value="" data-required="true" data-valid="true" class="ui-form__input ">
+                <input type="text" id="inputMunicipio" name="inputMunicipio" data-required="true" data-valid="true" class="ui-form__input ">
                 <label for="inputMunicipio" id="lblMsjinputMunicipio" class="ui-form__label">Municipio</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputMunicipio" role="alert">error_place_holder</div>
@@ -91,7 +92,7 @@ p {
 
         <div class="ml-addresses-grid ml-addresses-grid--second-column">
             <div class="ui-form__row  "> 
-                <input type="text" id="inputEstado" value="" data-required="true" name="inputEstado" data-valid="true" class="ui-form__input ">
+                <input type="text" id="inputEstado"  data-required="true" name="inputEstado" data-valid="true" class="ui-form__input ">
                 <label id="lblMsjinputEstado" for="inputEstado" class="ui-form__label">Estado</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputEstado" role="alert">error_place_holder</div>
@@ -103,23 +104,23 @@ p {
     <div class="u-clearfix">
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
             <div class="ui-form__row ">
-                <input id="inputCalle1" type="text" data-required="true" class="ui-form__input " name="inputCalle" value="" aria-describedby="streetMessage" data-valid="true" maxlength="70" data-min-length="1">
-                <label id="lblMsjinputCalle" for="inputCalle" class="ui-form__label">Calle</label>
+                <input id="inputCalle1" type="text" data-required="true" class="ui-form__input " name="inputCalle1"  aria-describedby="streetMessage" data-valid="true" maxlength="70" data-min-length="1">
+                <label id="lblMsjinputCalle1" for="inputCalle1" class="ui-form__label">Calle</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputCalle" style="color: red" role="alert">Complete este dato</div>
             </div>
         </div>
         <div class="ml-addresses-grid ml-addresses-grid--second-column ml-addresses-grid--half-column">
-            <div class="ui-form__row ">
-                <input id="inputNumExt" type="number" data-required="true" class="ui-form__input " name="inputNumExt" value="" data-valid="true" aria-describedby="numberMessage" min="0" data-min-length="1">
-                <label id="lblMsjinputNumExt" for="inputNumExt" class="ui-form__label" style="width: 100%">Numero Externo.</label>
+            <div class="ui-form__row " >
+                <input id="inputNumExt" type="number" data-required="true" class="ui-form__input " style="width: 250%;" name="inputNumExt"  data-valid="true" aria-describedby="numberMessage" min="0" data-min-length="1">
+                <label id="lblMsjinputNumExt" for="inputNumExt" class="ui-form__label" style="width: 200px">Numero Externo.</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputNumExt" role="alert">error_place_holder</div>
             </div>
 
             <div class="ml-addresses-embeded-action">
                 <label class="ui-checkbox ui-checkbox--embedded ui-checkbox--label-after" style="    position: relative;
-    top: 35px;left: -10px;
+    top: 35px;left: 68px;
     width: 25px;
     height: 35px;">
                     <span class="ui-checkbox__label" style="left: 5px;
@@ -134,8 +135,7 @@ p {
     </div>
      <div class="ml-addresses-grid ml-addresses-grid--second-column ml-addresses-grid--half-column">
             <div class="ui-form__row ">
-                <input id="inputNumInt" type="number" class="ui-form__input " name="inputNumInt" value="" aria-describedby="commentMessage" data-valid="true" min="0" data-required="false" data-min-length="-1">
-
+                <input id="inputNumInt" type="number" class="ui-form__input " name="inputNumInt"  aria-describedby="commentMessage" data-valid="true" min="0" data-required="false" data-min-length="-1">
                 <label id="lblMsjinputNumInt" for="inputNumInt" class="ui-form__label">Numero interno. (opcional)</label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputNumInt" role="alert">error_place_holder</div>
@@ -164,7 +164,7 @@ p {
     <fieldset id="neighborhoodField" class="ml-addresses-fieldset">
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
             <div class="ui-form__row ">
-                <input id="inputAcentamiento" name="inputAcentamiento" type="text" data-required="true" class="ui-form__input " autocomplete="off" value="" aria-describedby="neighborhoodMessage" data-valid="true" maxlength="50" data-min-length="3">
+                <input id="inputAcentamiento" name="inputAcentamiento" type="text" data-required="true" class="ui-form__input " autocomplete="off" aria-describedby="neighborhoodMessage" data-valid="true" maxlength="50" data-min-length="3">
                 <label for="inputAcentamiento" id="lblMsjinputAcentamiento"  class="ui-form__label">Colonia </label>
                 <span class="ui-form__status-bar"></span>
                 <div class="ui-form__message" id="alertMsjinputAcentamiento" style="color: red" role="alert">Complete este dato</div>
@@ -174,8 +174,11 @@ p {
 
             
                 
-
-
+                 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                  <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+                  <input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+                  <input type="hidden" name="precio" value="{{$precio}}">
+                  <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
             
    
 
@@ -198,7 +201,7 @@ p {
 </div>
     <div class="col2" style="width: 30%">
          <div id="aside-container" class="cart-aside"><div><div data-component="aside">
-    <aside class="cart-aside__content cart-aside__content--item cart-aside--static" data-aside="target">
+    <aside class="cart-aside__content cart-aside__content--item cart-aside--static" data-aside="target" style="height: 500px !important ">
             <div class="overview-component__item u-block-center">
                 <span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
                       <img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" > 
@@ -224,6 +227,23 @@ p {
                                             <span class="price-tag-decimal-separator"></span> 
                                             <span class="price-tag-cents">00</span>
                                         
+                                    </span>
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+                 <div class="overview-component__amounts">
+                    <div class="overview-component__table">
+                            <div class="overview-component__row">
+                                <div data-id="overview-items-quantity" class="overview-component__column" style="text-align: left;">
+                                    Envio
+                                </div>
+                                <div data-id="overview-items-price" class="overview-component__column">
+                                    <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                                        <meta itemprop="price" content="18999"> 
+                                        <span class="price-tag-fraction">-</span>
+    
                                     </span>
                                 </div>
                             </div>
