@@ -211,7 +211,11 @@ class CompraController extends Controller
   
     }
 
+public function rechazar(Request $request)
+{
+    return view('confirmarCompra.compraRechazada');
 
+}
 
     public function guardarCard_custumer(Request $request)
     {  
