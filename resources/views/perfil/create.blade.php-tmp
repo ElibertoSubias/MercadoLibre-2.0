@@ -409,7 +409,7 @@
                     </div>
                 </div>
                 <div class="row" style="text-align: right;padding: 0px;    margin-left: 1%;">
-                    <div class="row col-md-6" style="border-bottom: 1px dotted rgb(221, 221, 221);margin: 0px 0px 20px;padding: 0px;">
+                    <div class="row col-md-6" style="float: none;border-bottom: 1px dotted rgb(221, 221, 221);margin: 0px 0px 20px;padding: 0px;">
                         <p class="H3_1" style="float: left;">Domicilios</p>
                         <a href="#" title="Necesito ayuda" >Necesito ayuda</a>
                     </div>
