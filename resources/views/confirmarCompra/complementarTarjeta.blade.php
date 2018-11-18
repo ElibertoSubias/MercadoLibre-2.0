@@ -102,7 +102,7 @@
             
             " data-js="form-input" data-input-id="expiration_year" required="true" maxlength="4" minlength="4" pattern="^[0-9]+$" autocomplete="cc-exp-year" spellcheck="false"></div><div class="">
                 <div class="ui-form__row ui-form__row--tel  ui-form__single-row  ui-form__row-container--security_code " data-js="form-row">
-                <input id="securityCode" name="security_code" type="tel" class="ui-form__input                                      ui-form__input--dirty" data-js="form-input" data-input-id="securityCode" required="true" pattern="^[0-9]+$" minlength="3" maxlength="3" autocomplete="off" spellcheck="false" data-hj-masked="data-hj-masked">
+                <input id="securityCode" name="security_code" type="tel" class="ui-form__input                                      ui-form__input--dirty" data-js="form-input" data-input-id="securityCode" required="true" pattern="^[0-9]+$" minlength="4" maxlength="4" autocomplete="off" spellcheck="false" data-hj-masked="data-hj-masked">
                 
                     <label class="ui-form__label ui-form__label--securityCode" for="securityCode">
                       Código de seguridad<span class="ui-form__optional">

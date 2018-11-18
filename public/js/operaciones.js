@@ -469,7 +469,7 @@ function calcular(codigo){
 }
 
 $("#frmComplemento").on('submit', function(evt){  
-    if ($('#securityCode').val()==="" || $('#securityCode').val().length < 3) {
+    if ($('#securityCode').val()==="") {
         $('#frmComplemento input').focus();
         evt.preventDefault();   
     }

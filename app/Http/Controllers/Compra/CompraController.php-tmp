@@ -112,28 +112,24 @@ class CompraController extends Controller {
 			if ($e                                         ->getErrorCode() == 3003) {
 				return view('confirmarCompra.compraRechazada')->with(['precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio]);
 			} else {
-				echo "ERROR A | ".$e->getMessage();
-				echo $e->getErrorCode();
+				return view('confirmarCompra.compraRechazada')->with(['precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio, 'msjError' => $e->getMessage(), 'codigoError' => $e->getErrorCode()]);
 			}
 
 		} catch (\OpenpayApiRequestError $e) {
 			error_log('ERROR on the request: '.$e->getMessage(), 0);
-			echo "ERROR B | ".$e->getMessage();
-			echo $e->getErrorCode();
+			return view('confirmarCompra.compraRechazada')->with(['precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio, 'msjError' => $e->getMessage(), 'codigoError' => $e->getErrorCode()]);
 
 		} catch (\OpenpayApiConnectionError $e) {
 			error_log('ERROR while connecting to the API: '.$e->getMessage(), 0);
-			echo "ERROR C | ".$e->getMessage();
-			echo $e->getErrorCode();
+			return view('confirmarCompra.compraRechazada')->with(['precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio, 'msjError' => $e->getMessage(), 'codigoError' => $e->getErrorCode()]);
 
 		} catch (\OpenpayApiAuthError $e) {
 			error_log('ERROR on the authentication: '.$e->getMessage(), 0);
-			echo "ERROR D 'authentication'";
+			return view('confirmarCompra.compraRechazada')->with(['precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio, 'msjError' => $e->getMessage(), 'codigoError' => $e->getErrorCode()]);
 
 		} catch (OpenpayApiError $e) {
 			error_log('ERROR on the API: '.$e->getMessage(), 0);
-			echo "ERROR E | ".$e->getMessage();
-			echo $e->getErrorCode();
+			return view('confirmarCompra.compraRechazada')->with(['precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio, 'msjError' => $e->getMessage(), 'codigoError' => $e->getErrorCode()]);
 
 		} catch (\Exception $e) {
 			error_log('Error on the script: '.$e->getMessage(), 0);
