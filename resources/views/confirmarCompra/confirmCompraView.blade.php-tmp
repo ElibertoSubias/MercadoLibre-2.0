@@ -262,6 +262,8 @@ echo mb_substr($cadena, -4);
                             <input type="hidden" name="token_id" id="token_id">
                             <input type="hidden" name="device_session_id" id="device_session_id">
                             <input type="hidden" name="cardId" value="{{$card->id}}">
+                            <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+                            <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
                             <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
                             <input type="hidden" name="amount" id="amount" value="{{($precio+$costoEnvio)-$precio+1}}">
                             <input type="hidden" name="description" id="description" value="{{$titulo}}">

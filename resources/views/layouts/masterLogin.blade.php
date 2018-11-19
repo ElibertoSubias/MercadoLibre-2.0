@@ -124,5 +124,6 @@
 	{!! Html::script('js/script.js') !!}
 	{!! Html::script('js/menusFlotantes.js') !!}
 	{!! Html::script('js/formatearPrecio.js') !!}
+	{!! Html::script('js/jquery.redirect.js') !!}
 </body>
 </html>

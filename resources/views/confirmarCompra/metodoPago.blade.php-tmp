@@ -81,11 +81,15 @@ echo mb_substr($cadena, -4);
 						<ul class="badge-type-selection__list">
 							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post" action="{{route('agregarTarjPrueba')}}">
+								<form method="post" action="{{route('nuevatarjetac')}}">
 									<input type="hidden" name="tipoTarjeta" value="credito">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-									<button data-js="payment-type" type="submit" name="paymentType"
-									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
+									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
+									<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+									<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+									<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo">
+									<input type="hidden" name="precio" value="{{$precio}}">
+									<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
 
 								        <span class="ui-badge ui-badge--small">
 						                    <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-badge__icon ui-badge__icon--medium">
@@ -117,11 +121,16 @@ echo mb_substr($cadena, -4);
 							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
 							<!--////////////////////////////////////////////////Debito///////////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post" action="{{route('agregarTarjPrueba')}}">
+								<form method="post" action="{{route('nuevatarjetac')}}">
 									<input type="hidden" name="tipoTarjeta" value="debito">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 									<button data-js="payment-type" type="submit" name="paymentType"
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
+									<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+									<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+									<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo">
+									<input type="hidden" name="precio" value="{{$precio}}">
+									<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
 
 								        <span class="ui-badge ui-badge--small">
 						                    <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-badge__icon ui-badge__icon--medium">
