@@ -325,5 +325,5 @@ class CompraController extends Controller
     public function confiCompra(Request $request)
     {
     	return view('confirmarCompra.confiCompra');
-    }   
+    }
 }
