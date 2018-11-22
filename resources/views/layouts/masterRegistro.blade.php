@@ -69,6 +69,7 @@
 				{!! Html::script('js/venderJS.js') !!} 
 				{!! Html::script('js/validaciones.js') !!}
 				{!! Html::script('js/formatearPrecio.js') !!}
+				{!! Html::script('js/jquery.redirect.js') !!}
 		</div> 
 	</footer> 
 </body>

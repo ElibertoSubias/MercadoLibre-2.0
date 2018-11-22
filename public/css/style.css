@@ -4,10 +4,7 @@
   and (-webkit-min-device-pixel-ratio: 1) { 
     .nav-header-menu-wrapper {
         display: none !important; 
-    } 
-    .payment-data{
-        display: none !important;
-    }
+    }  
     #lblMenuFlotante_login {
         display: none !important;
     }
@@ -46,6 +43,37 @@ and (max-device-width : 414px) {
     .cont-btn-comprar {
         width: 200px;
         margin-bottom: 30px;
+    }
+    .cont_titulos {
+        float: left; 
+    }
+    .cont_datos {
+        float: left;
+        padding: 0px !important;
+    }
+    .cont_principal_perfil {
+        margin-left: 0px !important;
+        margin:0px !important;
+        padding: 0px 10px !important;
+        width: 100% !important;
+    }
+    .modal-dialog {
+        width: 95% !important; 
+    }
+    .cont_principal_perfil .row {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .cont_sub_cont {
+        margin:0px;
+        padding: 0px !important;
+    }
+    .textIzquierda {
+        margin:0px !important;
+        padding: 0px !important;
+        width: 100% !important;
     }
     #nombre_user {
         position: fixed;
@@ -256,6 +284,10 @@ and (max-device-width : 414px) {
     .payment-data {
         min-height: 0;
         margin-bottom: -30px;
+        margin:30px 20px;
+    }
+    .payment-data-group-trailing {
+        display: none !important;
     }
     .payment-data .container {
         margin: 0;
@@ -1060,11 +1092,8 @@ ul {
     text-align: left;
     padding-left: 0px;
 }
-#resultados ul li {
-    padding-left: 0px;
-    width: 100%;
-    padding-top: 15px;
-    padding-bottom: 15px;
+#resultados ul li { 
+    width: 100%; 
 }
 #resultados a {
     padding-top: 10px;

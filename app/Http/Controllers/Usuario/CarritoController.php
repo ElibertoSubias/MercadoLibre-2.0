@@ -103,7 +103,7 @@ class CarritoController extends Controller
                     "articulo" => $articulo,
                     "totalArticulos" => $totalArticulos,
                     "subtotal" => $i
-                ]);
+                ]); 
         }    
     }
 

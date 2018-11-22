@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use Intagono\Openpay\Openpay; 
 use App\Direcciones;
 
 class PerfilController extends Controller
@@ -22,9 +23,26 @@ class PerfilController extends Controller
      */
     public function index()
     {
+        $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678'); 
+
+        $customer = $openpay->customers->get(auth()->user()->idCustomer);
+        $findDataRequest = array( 
+                'offset' => 0,
+                'limit' => 5);
+        $cardList = $customer->cards->getList($findDataRequest);
+
       	$usuario=User::find( auth()->user()->id);
         $domicilios=Direcciones::where(['idUser'=>auth()->user()->id])->get();   
-        return view('perfil.create',compact('usuario','domicilios'));
+        return view('perfil.create',compact('usuario','domicilios','cardList'));
+    }
+
+    public function dalateCard(Request $request)
+    {
+        $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678'); 
+        $customer = $openpay->customers->get(auth()->user()->idCustomer);
+        $card = $customer->cards->get($request->idCard);
+        $card->delete();
+        return redirect('perfil');
     }
 
     /**
@@ -34,7 +52,7 @@ class PerfilController extends Controller
      */
     public function create()
     {
-        return view('perfil.create');
+        return redirect('perfil.create');
     }
     
      public function cambiarNombreAp(Request $request)

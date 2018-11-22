@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use \App\User;
 use \App\Empresas;
+use Intagono\Openpay\Openpay; 
 use \Crypt;
 
 class CrearCuentaController extends Controller
@@ -24,6 +25,7 @@ class CrearCuentaController extends Controller
     	if ($request->ajax()) { 
 
             if(!User::where('email', '=', $request->email)->exists()){ 
+
                 $usuario = new User;
                 $usuario->nombre = $request->nombre;
                 $usuario->apellido = $request->apellido;
@@ -34,15 +36,31 @@ class CrearCuentaController extends Controller
                 $usuario->alias = "01".$request->nombre; 
                 $usuario->password = Hash::make($request->clave);
                 $usuario->idCard = null;
-                $usuario->save(); 
-                $idUsuario = $usuario->getKey();
-                //return redirect()->action('FrontController@index');
-                return response()->json([
-                    "res" => $idUsuario,
-                    "nombre" => $request->nombre,
-                    "apellido" => $request->apellido,
-                    "email" => $request->email
-                ]); 
+                 
+                //Crear cuenta al usuario en Openpay
+                $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678');
+                $customerData = array(
+                    'external_id' => null,
+                    'name' => $request->nombre,
+                    'last_name' => $request->apellido, 
+                    'email' => $request->email, 
+                    'requires_account' => true);  
+                    
+                $customer = $openpay->customers->add($customerData);
+
+                if ($customer) {
+                    $usuario->save();
+                    $idCustomer=$customer->id;
+                    $idUsuario = $usuario->getKey();
+                    User::where('_id', $idUsuario)->update(['idCustomer'=>$idCustomer], ['upsert' => true]); 
+                    return response()->json([
+                        "res" => $idUsuario,
+                        "nombre" => $request->nombre,
+                        "apellido" => $request->apellido,
+                        "email" => $request->email
+                    ]); 
+                } 
+                
             }else{
                 return response()->json([
                     "res" => 1,
@@ -71,6 +89,19 @@ class CrearCuentaController extends Controller
                     $usuario->idCard = null;
                     $Empresa->save(); 
                     $idUsuario = $Empresa->getKey(); 
+                    //Crear cuenta al usuario en Openpay
+                    $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678');
+                    $customerData = array(
+                        'external_id' => null,
+                        'name' => $request->nombre,
+                        'last_name' => $request->apellido, 
+                        'email' => $request->email, 
+                        'requires_account' => true);  
+                        
+                    $customer = $openpay->customers->add($customerData);
+                    $idCustomer=$customer->id;
+                    User::where('_id', auth()->user()->id)->update(['idCustomer'=>$idCustomer], ['upsert' => true]);
+
                     return response()->json([
                         "res" => $idUsuario,
                         "rfc" => $request->rfc,

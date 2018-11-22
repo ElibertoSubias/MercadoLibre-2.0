@@ -295,13 +295,13 @@ function validarCampos(){
     } 
 }
 
- function continuar(){
+ function continuar(){ 
          var Asentamiento = $("#inputAcentamiento").val();
          var Contacto = $("#inputContacto").val();
          var NumExt=$("#inputNumExt").val();
          var Referencias=$("#inputReferencias").val();
          var Calle=$("#inputCalle").val();
-         var NumInt=$("#inputNumInt").val();
+         var NumInt=$("#inputNumInt").val(); 
           var CodigoPostal=$("#inputCodigoPostal").val();
           var EntreCalles=$("#inputEntreCalles").val();
           var Telefono=$("#inputTelefono").val();
@@ -310,13 +310,13 @@ function validarCampos(){
           var route = "agregardatosdomicilio";
           var token = $("#token").val();
          var bandera="0";
-            if(Calle === "")
+            if(Calle === "") 
             { 
-                bandera="1";  
-                 $('#alertMsjinputEmail').css({"visibility":"visible"});     
-                 $('#inputcalle').css({"border-color":"#ff5a5f"}); 
+                
+                 $('#alertMsjinputCalle').css({"visibility":"visible"});     
+                 $('#inputCalle').css({"border-color":"#ff5a5f"}); 
             }else{
-                $('#alertMsjinputEmail').css({"visibility":"hidden"});  
+                $('#alertMsjinputCalle').css({"visibility":"hidden"});  
             }
 
             if(CodigoPostal === "")
@@ -377,11 +377,84 @@ function validarCampos(){
                   }
                 });
             }
-        }
+  }
+
+   function continuarDomicilio(){
+         var Asentamiento = $("#inputAcentamiento").val();
+         var NumExt=$("#inputNumExt").val();
+         var Referencias=$("#inputReferencias").val();
+         var Calle=$("#inputCalle1").val();
+         var NumInt=$("#inputNumInt").val();
+          var CodigoPostal=$("#inputCodigoPostal").val();
+          var EntreCalles=$("#inputEntreCalles").val();
+          var Municipio=$("#inputMunicipio").val();
+          var Estado=$("#inputEstado").val();
+          var route = "agregardatosdomicilio";
+          var token = $("#token").val();
+         var bandera="0";
+
+
+            if(Calle === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputCalle').css({"visibility":"visible"});     
+                 $('#inputcalle').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputCalle').css({"visibility":"hidden"});  
+            }
+
+            if(CodigoPostal === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputCodigoPostal').css({"visibility":"visible"});     
+                $('#inputCodigoPostal').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputCodigoPostal').css({"visibility":"hidden"});  
+            }
+
+           
+
+            if(Asentamiento === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputAcentamiento').css({"visibility":"visible"});     
+                $('#inputAcentamiento').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputAcentamiento').css({"visibility":"hidden"});  
+            }
+           
+             if(Referencias === "")
+            { 
+                bandera="1";  
+                 $('#alertMsjinputReferencias').css({"visibility":"visible"});     
+                $('#inputReferencias').css({"border-color":"#ff5a5f"}); 
+            }else{
+                $('#alertMsjinputReferencias').css({"visibility":"hidden"});  
+            }
+                 
+   
+            if(bandera=="0")
+            {
+              $('#addresses-form').submit();
+             /*$.ajax({
+                url: route,
+                headers: {'X-CSRF-TOKEN': token},
+                type: 'POST',
+                dataType: 'json',
+                data: {Asentamiento: Asentamiento, NumExt:NumExt, Referencias: Referencias, Calle: Calle, NumInt: NumInt, CodigoPostal: CodigoPostal, EntreCalles: EntreCalles,  Municipio: Municipio, Estado: Estado } 
+                }).done(function(data) {  
+                  if (data.res!=1 && data.res!=0){
+                    location.href ="agregarcontacto";
+
+                  }
+                });*/
+            }
+  }
 
 function calcular(codigo){
+
   var estado= codigo.substring(0, 2);
-   inputActivo('inputEstado');
+     inputActivo('inputEstado');
      inputActivo('inputMunicipio');
  if(estado==80 ||estado==81 || estado==82 )
  {
@@ -396,7 +469,7 @@ function calcular(codigo){
 }
 
 $("#frmComplemento").on('submit', function(evt){  
-    if ($('#securityCode').val()==="" || $('#securityCode').val().length < 3) {
+    if ($('#securityCode').val()==="") {
         $('#frmComplemento input').focus();
         evt.preventDefault();   
     }

@@ -1,10 +1,10 @@
-@extends('layouts.masterLogin')
+@extends('layouts.masterRegistro')
 
 @section('content')
 {!! Html::style('css/elegirRecivir.css') !!}
 
-
-<div class="shipping-split ui-panel--raised u-block-center">
+<center>
+<div style="margin: 150px;  background: white; width: 40%; padding: 7px">
     <div class="shipping-split-actions">
           <div class="step-title  step-title--full-screen-step ">
               <h2 class="cart-title--primary ">
@@ -13,12 +13,19 @@
       
       
           </div>
-        <div class="split-buttons">
-               
-                    <a href="agregarDomicilio" type="submit" class="ui-button " data-input-id="nextStepSendToMyAddress" value="nextStepSendToMyAddress" name="nextStepSendToMyAddress" data-js="shipping-method-option" style="background-color: rgba(52,131,250,.8);color: #fff;    min-width: 300px; display: inline-block; width: 18%;font-weight: 400;font-size: 18px; border-radius: 5px; height: 40px; margin: 5%; padding-top: 4px">
-                        Enviar a mi domicilio
-                    </a>
+        <div style="margin-top: 10px; margin-bottom: 15px">
+                <form method="post" action="nuevodomicilio">
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                  <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+                  <input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+                  <input type="hidden" name="precio" value="{{$precio}}">
+                  <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+                 
+                  <input  type="submit" name="enviar" class="ui-button "  data-input-id="nextStepSendToMyAddress" value="Enviar a mi domicilio"   style="background-color: rgba(52,131,250,.8);color: #fff; min-width: 300px; display: inline-block; width: 18%;font-weight: 400;font-size: 18px; border-radius: 5px; height: 40px; margin: 2%; padding-top: 4px" >
+                </form>
+                   
           <br>
+         
                 <a href="#" style="font-size: 16px">Retiro en una sucursal</a>
               
         </div>
@@ -33,6 +40,6 @@
     </div>
   </div>
 
-
+</center>
 
 @stop

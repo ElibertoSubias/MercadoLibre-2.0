@@ -105,17 +105,31 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 		Route::any('pagoPor', 'Compra\CompraController@metodoPago')->name('pagoPor');
 
-		///////////////////////////////
 		Route::any('agregarTarjPrueba', 'Compra\CompraController@aggTarjPrueba')->name('agregarTarjPrueba');
-		Route::post('save_customer_card', 'Compra\CompraController@guardarCard_custumer')->name('save_customer_card');
-		///////////////////////////////
+		Route::post('save_customer_card', 'Compra\CompraController@guardarCard_customer')->name('save_customer_card');
 
 		Route::any('nuevatarjetac', 'Compra\CompraController@nuevaTarjetacre')->name('nuevatarjetac');
 
 		Route::any('complTarjeta', 'Compra\CompraController@compTarjeta')->name('complTarjeta');
 		Route::any('form_confirmarCompra', 'Compra\CompraController@confirmCompraView')->name('form_confirmarCompra');
+		Route::any('confirmarCompraPrueba', 'Compra\CompraController@confirmCompra')->name('confirmarCompraPrueba');
 
 		Route::post('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
 
+		Route::any('nuevodomicilio', 'Compra\CompraController@nuevoDomicilio')->name('nuevodomicilio');
+		Route::post('agregarDomicilio2', 'Compra\CompraController@agregarDomicilio')->name('agregarDomicilio2');
+
+		Route::any('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
 		Route::any('sindomicilio', 'Compra\CompraController@dondeRecibir')->name('sindomicilio');
+		Route::any('agregarcontacto', 'Compra\CompraController@agregarContacto')->name('agregarcontacto');
+
+		Route::any('confirmarComp', 'Compra\CompraController@confiCompra')->name('confirmarComp');
+
+		Route::any('rechazada', 'Compra\CompraController@rechazar')->name('rechazada');
+		Route::any('compraExitosa', 'Compra\CompraController@compraExitosa')->name('compraExitosa');
+
+		Route::any('detalleCompra', 'Usuario\MenuUsuarioController@detalleCompra')->name('detalleCompra');
+
+		Route::post('dalateCard', 'EditarUsuario\PerfilController@dalateCard')->name('dalateCard');
+
 	});

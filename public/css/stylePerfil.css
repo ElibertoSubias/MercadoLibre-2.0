@@ -17,6 +17,43 @@
     font-size:12px;
     color: blue;
 }
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}
+.divisorCajas {
+    border-bottom: 1px dotted rgb(221, 221, 221);margin: 0px 0px 20px;padding: 0px;margin-left: 20px;
+}
+.ch-btn {
+    color: white;
+    background-color: #292f66;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#292f66),color-stop(100%,#202388));
+    background-image: -webkit-linear-gradient(#292f66,#202388);
+    background-image: -moz-linear-gradient(#292f66,#202388);
+    background-image: -o-linear-gradient(#292f66,#202388);
+    background-image: linear-gradient(#292f66,#202388);
+    -webkit-box-shadow: inset 0 1px 6px #141452;
+    box-shadow: inset 0 1px 6px #141452;
+    border-color: #181e39;
+}
+.ch-btn:hover {
+    background-color: #4355d2;
+    background-image: -webkit-linear-gradient(#4355d2,#2f33ae);
+    background-image: -moz-linear-gradient(#4355d2,#2f33ae);
+    background-image: -o-linear-gradient(#4355d2,#2f33ae);
+    background-image: linear-gradient(#4355d2,#2f33ae);
+    -webkit-box-shadow: inset 0 1px #7a89e8;
+    box-shadow: inset 0 1px #7a89e8;
+}
+.cardsDetails {
+    color: #999;
+    line-height: 16px;
+    margin: 0;
+    clear: both;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom:10px;
+} 
 	.divperfil{
      background-color: white;
      margin: -1px 0px 15px;
@@ -82,7 +119,7 @@
 }
 .ml-addresses-actions.visible {
     opacity: 1;
-        margin-top: 10%;
+    margin-top: -1%;
 }
 
 .ml-addresses-actions {

@@ -495,7 +495,7 @@
                             <input type="hidden" name="idUser" id="idUser" value="{{$datos->idUser}}"> 
                             <input type="hidden" name="cantidad" id="cantidad" value="{{$datos->cantidad}}">
                             <input type="hidden" name="urlPrincipal" id="urlPrincipal" value="{{$datos->urlPrincipal}}">
-                            <input type="submit"  class="ui-button ui-button--secondary " style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px" value="      Comprar      ">
+                            <input type="submit"  class="ui-button ui-button--secondary " style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px" value="      Comprar  ahora   ">
                         </form> 
 
                     </div>

@@ -49,8 +49,9 @@ class LoginController extends Controller
             if(Auth::attempt($request->only($login_type, 'password')))
             {
                 return redirect()->route('dashboard');
-            } 
-            return view('auth.validarPassword')->with('login', $request->login);
+            }else{
+                return view('auth.validarPassword')->with('login', $request->login);
+            }
         }
         return view('auth.validarPassword')->with('login', $request->login);
 
