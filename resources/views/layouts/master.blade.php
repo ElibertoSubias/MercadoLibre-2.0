@@ -41,7 +41,7 @@
 					<span class="hamburger-bottom-bread"></span>
 				</label>
 				<a tabindex="-1" href="{{route('carrito')}}" title="Carrito" class="nav-cart nav-cart-full" id="nav-cart"><img src="img/icon_car.png" alt="" width="19">
-					<span class="nav-icon-cart-quantity">1</span>
+					<span class="nav-icon-cart-quantity">@if($cant_carrito==0) @else{{$cant_carrito}}@endif</span>
 				</a>
 				<nav id="nav-header-menu-mobile" class="nav-header-menu-mobile-guest">
 					<div id="nav-header-menu-mobile-content">
