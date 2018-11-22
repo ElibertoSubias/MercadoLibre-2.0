@@ -151,5 +151,11 @@ class CompraController extends Controller
     public function confiCompra(Request $request)
     {
     	return view('confirmarCompra.confiCompra');
-    }   
+    }
+
+    public function histoCompra(Request $request)
+    {
+    	return view('confirmarCompra.histoCompra');
+    }
+
 }

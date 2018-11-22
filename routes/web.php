@@ -117,13 +117,11 @@ Route::group(['middleware' => 'autenticado'], function () {
 	
 	Route::post('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
 
-
-
-
-
 	Route::any('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
+
 	Route::any('sindomicilio', 'Compra\CompraController@dondeRecibir')->name('sindomicilio'); 
 
-
 	Route::any('confirmarComp', 'Compra\CompraController@confiCompra')->name('confirmarComp');
+
+	Route::any('historialComp', 'Compra\CompraController@histoCompra')->name('historialComp');
 });
