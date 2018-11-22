@@ -1,8 +1,3 @@
- function cambioAutomatico(){ 
-  	$( ".flickity-prev-next-button" ).click(); 
- }
-setInterval(cambioAutomatico, 3000);
-
 function abrirMenu(){ 
 	document.getElementById('info_user').style.display = "block";
 }
