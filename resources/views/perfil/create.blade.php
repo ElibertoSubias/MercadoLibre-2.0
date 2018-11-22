@@ -321,11 +321,11 @@
         {!! Html::script('js/menuJS.js') !!}  -->
     </div>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10 cont_sub_cont">
         <div class="col-md-12 textIzquierda" style="    margin-left: 10px;background-color:white;width: 99%;">
             <h2 class="typo">Mis Datos</h2>
         </div>
-        <div class="col-md-12" style="background: white;    margin-left: 10px;padding-bottom: 100px;width: 99%;    padding-left: 4.2%;">  
+        <div class="col-md-12 cont_principal_perfil" style="background: white;    margin-left: 10px;padding-bottom: 100px;width: 99%;    padding-left: 4.2%;">  
 
                 <div class="row" style="text-align: right;padding: 0px;    margin-left: 1%;">
                     <div class="col-md-6" style="border-bottom: 1px dotted rgb(221, 221, 221);margin: 0px 0px 20px;padding: 0px;"> 
@@ -334,7 +334,7 @@
                     </div>
                 </div> 
                 <div class="row cont_descrip_info">
-                    <div class="col-md-2">
+                    <div class="col-md-2 cont_titulos">
                         <div class="row descrip_info">
                             Usuario
                         </div>
@@ -345,7 +345,7 @@
                             Clave
                         </div>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10 cont_datos">
                         <div class="row descrip_info_content">
                             {{ auth()->user()->alias }}<a href="editarusuario"> Modificar</a>
                         </div>
@@ -364,7 +364,7 @@
                     </div>
                 </div> 
                 <div class="row cont_descrip_info">
-                    <div class="col-md-2">
+                    <div class="col-md-2 cont_titulos">
                         <div class="row descrip_info">
                             Nombre y apellido
                         </div>
@@ -375,7 +375,7 @@
                             Teléfono
                         </div>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10 cont_datos">
                         <div class="row descrip_info_content">
                             {{ auth()->user()->nombre }} {{$usuario->apellido}}<a href="javascript:openventana()"> Modificar</a>
                         </div>
