@@ -201,3 +201,7 @@ $('.gallery').mouseout(function(){
 $('[data-input-id="nextStepAddressChange"]').click(function(){
 	$('#modalDirecciones').modal('show');
 });
+
+$('#cont_card a').click(function(){ 
+	$('#modalBorrarTarj_'+this.id).modal('show');
+});

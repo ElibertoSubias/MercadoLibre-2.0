@@ -326,7 +326,7 @@
             <h2 class="typo">Mis Datos</h2>
         </div>
         <div class="col-md-12" style="background: white;    margin-left: 10px;padding-bottom: 100px;width: 99%;    padding-left: 4.2%;">  
-            <form> 
+
                 <div class="row" style="text-align: right;padding: 0px;    margin-left: 1%;">
                     <div class="col-md-6" style="border-bottom: 1px dotted rgb(221, 221, 221);margin: 0px 0px 20px;padding: 0px;"> 
                         <p class="H3_1" style="float: left;">Datos de la cuenta</p>
@@ -396,17 +396,62 @@
                     </div>
                 </div> 
                 <div class="row cont_descrip_info">  
-                    <div class="col-md-12">
-                        <div class="row descrip_info_content">
-                            Terminada en 
-                        </div>
-                        <div class="row descrip_info_content">
-                            Banco
-                        </div>
-                        <div class="row descrip_info_content"> 
-                            Vencimineto
-                        </div>
+                    @isset($cardList) 
+                        @foreach($cardList as $card) 
+                            <div class="col-md-6 divisorCajas">
+                                <div id="cont_card" class="row descrip_info_content" style="margin-left: 3px;margin-bottom:0px">
+                                    Terminada en <?php echo mb_substr($card->card_number,-4); ?> <a id="{{$card->id}}" title="Eliminar" style="float: right;cursor: pointer;">Eliminar</a>
+                                </div>
+                                <div class="row descrip_info_content cardsDetails">
+                                    {{$card->bank_name}}
+                                </div>
+                                <div class="row descrip_info_content cardsDetails"> 
+                                    Vencimineto: {{$card->expiration_month}}/{{$card->expiration_year}}
+                                </div> 
+                            </div>
+                            <!-- Modal -->
+  <div class="modal fade in" id="modalBorrarTarj_{{$card->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 40%;height: auto;top: 25%;">
+      <div class="modal-content" style="margin: auto;">
+        <div class="modal-header" style="border-bottom: 0px;padding-bottom:0px;">
+          <div class="col-md-12">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          </div>
+          <div class="col-md-12">
+            <div class="ui-icon--content" style="width: 50px;margin: 0 auto;">
+                <svg viewBox="0 0 16 16" id="ui-icon--question-blocked" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><g fill="none" fill-rule="evenodd"><circle fill="#F57819" transform="rotate(-180 8 8)" cx="8" cy="8" r="8"></circle><path fill="#FFF" d="M7 3h1.882l-.235 5.176H7.235z"></path><ellipse fill="#FFF" cx="7.941" cy="10.941" rx=".941" ry=".941"></ellipse></g></svg>
+            </div>
+          </div> 
+        </div>
+        <div class="modal-body" style="border-bottom: 0px;padding: 0px 50px 30px;padding: 0px;">
+            <div>
+                <section class="ui-list ui-list--modal addresses-selection" data-component="address-selection">
+                    <div data-component="address-list">
+                        <h2 style="font-size: 20px;">¿Quieres eliminar la tarjeta terminada en <?php echo mb_substr($card->card_number,-4); ?> ?</h2>
                     </div>
+                </section>
+            </div>
+        </div>
+        <div class="modal-footer" style="text-align: left;padding: 30px;border-top: 0px;padding-top: 10px;">
+            <div><div class="modal-footer-action addresses-actions" data-component="addresses-actions"  style="text-align: center;">
+                <form action="{{route('dalateCard')}}" method="post" id="frmDalete_{{$card->id}}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                    <input type="hidden" name="idCard" value="{{$card->id}}">
+                    <input type="hidden" name="card_number" value="{{$card->card_number}}">
+                    <input type="submit" id="btnDeleteCard" class="ch-btn deleteCardBtn" value="Eliminar">
+                    <a id="close_modal" href="#" data-dismiss="modal">Cancelar</a>
+                </form>
+                
+            </div>
+            </div>
+        </div> 
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+                        @endforeach
+                    @endisset 
+                    @empty($cardList)
+                    @endempty
                 </div>  
                 <div class="row" style="text-align: right;padding: 0px;    margin-left: 1%;">
                     <div class="row col-md-6" style="float: none;border-bottom: 1px dotted rgb(221, 221, 221);margin: 0px 0px 20px;padding: 0px;"> 
@@ -492,8 +537,7 @@
                         </div>
                     @endempty
                     
-                </div>     
-        </form>
+                </div>    
         </div>
     <div> 
 </div> 
