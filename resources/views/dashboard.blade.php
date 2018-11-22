@@ -11,22 +11,52 @@
 		<div class="gallery-cell padre"><img src="img/mlm_muebles.jpg" alt=""></div>
 		<div class="gallery-cell padre"><img src="img/mlm_movil.jpg" alt=""></div>
 		<div class="gallery-cell padre"><img src="img/mlm_brujas.jpg" alt=""></div>
-	</div>
+	</div> 
 	<section class="payment-data MLM" type="payment-data MLM">
-		<div>
-			<a href="/gz/home/payments/methods" class="payment-data-container">
+		<div class="container">
+			<div class="payment-data-container">
 				<div class="payment-data-group payment-data-group-normal">
 					<div class="payment-data-section payment-data-section-normal">
-						<div class="payment-data-icon">
-							<img style="margin-left: 50px;" alt="" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/credit-card.svg">
-						</div>
+						<a class="payment-data-icon" href="#" data-title="Medios de pago">
+							<img alt="" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/credit-card.svg">
+						</a>
 						<div class="payment-data-title">Paga en hasta 12 MSI</div>
 						<div class="payment-data-subtitle">
-							<div class="ui-link">Ver más</div>
+							<a href="#" id="view-more" modal_title="Medios de pago" data-title="Medios de pago">Ver más</a>
+						</div>
+					</div>
+					<div class="payment-data-section payment-data-section-normal">
+						<a class="payment-data-icon" href="#" data-title="Medios de pago">
+							<img alt="" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/debit-card.svg">
+						</a>
+						<div class="payment-data-title">Tarjeta de débito</div>
+						<div class="payment-data-subtitle">
+							<a href="#" id="view-more" modal_title="Medios de pago" data-title="Medios de pago">Ver más</a>
+						</div>
+					</div>
+					<div class="payment-data-section payment-data-section-normal">
+						<a class="payment-data-icon" href="#" data-title="Medios de pago">
+							<img alt="" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/payment-agreement.svg">
+						</a>
+						<div class="payment-data-title">Efectivo, depósito y transferencia</div>
+						<div class="payment-data-subtitle">
+							<a href="#" id="view-more" modal_title="Medios de pago" data-title="Medios de pago">Ver más
+							</a>
 						</div>
 					</div>
 				</div>
-			</a>
+				<div class="payment-data-group payment-data-group-trailing">
+					<div class="payment-data-section payment-data-section-trailing">
+						<a class="payment-data-icon" href="#" data-title="Medios de pago">
+							<img alt="" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/view-more.svg">
+						</a>
+						<div class="payment-data-title">Más medios de pago</div>
+						<div class="payment-data-subtitle">
+							<a href="#" id="view-more" modal_title="Medios de pago" data-title="Medios de pago">Ver todos</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 	<section style="height: 500px;">

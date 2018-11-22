@@ -4,10 +4,7 @@
   and (-webkit-min-device-pixel-ratio: 1) { 
     .nav-header-menu-wrapper {
         display: none !important; 
-    } 
-    .payment-data{
-        display: none !important;
-    }
+    }  
     #lblMenuFlotante_login {
         display: none !important;
     }
@@ -256,6 +253,10 @@ and (max-device-width : 414px) {
     .payment-data {
         min-height: 0;
         margin-bottom: -30px;
+        margin:30px 20px;
+    }
+    .payment-data-group-trailing {
+        display: none !important;
     }
     .payment-data .container {
         margin: 0;
