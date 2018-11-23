@@ -21,12 +21,29 @@
         color: black;
     } 
 } 
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 375px) {
+    .nav-icon-search img { 
+        margin-left: -95% !important;
+    } 
+}
+@media only screen 
+and (min-device-width : 360px) 
+and (max-device-width : 360px) {
+    .nav-icon-search img {
+        margin-left: -65% !important;
+    } 
+}
 
 @media only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 320px) { 
     .hamburger-bottom-bread, .hamburger-patty, .hamburger-top-bread{
         left: -10% !important;
+    }
+    .nav-icon-search img {
+        margin-left: -95% !important;
     } 
 }
 @media only screen 
@@ -120,10 +137,7 @@ and (max-device-width : 414px) {
         width: 10%;
         height: 50px;
         margin-top: -30px;
-    }
-    .nav-icon-search img {
-        margin-left: -55% !important;
-    }
+    } 
     .carousel__cell {
         width: 100% !important;
     }
