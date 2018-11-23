@@ -19,9 +19,8 @@
         top: -5px;
         left: 99%;
         color: black;
-    }
-}
- 
+    } 
+} 
 
 @media only screen 
 and (min-device-width : 320px) 
@@ -152,7 +151,7 @@ and (max-device-width : 414px) {
     .nav-search-btn {
         outline: 0px;
         background: transparent !important;
-        margin-left: -220px !important; 
+        margin-left: -193px !important; 
         border-left: 0 !important; 
     }  
     .exhibitor__picture {
@@ -514,7 +513,7 @@ html,body {
 } 
 .nav-menu {
     width: 90%;
-    height: 40px;
+    height: auto;
     margin: 0px auto;
     position: relative;
 }
@@ -556,7 +555,7 @@ html,body {
     line-height: 22px;
 } 
 .nav-menu-elementos {
-    padding-right: 22px;
+    padding-right: 1.5rem;
     display: inline-block;
     float: left;
     font-size: 15px;
