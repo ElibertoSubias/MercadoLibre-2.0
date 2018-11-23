@@ -26,6 +26,7 @@ and (min-device-width : 375px)
 and (max-device-width : 375px) {
     .nav-icon-search img { 
         margin-left: -95% !important;
+        z-index: 2000;
     } 
 }
 @media only screen 
