@@ -108,7 +108,7 @@ and (max-device-width : 414px) {
     }
     #resultados{
         width: 100.1% !important;
-        margin-left: -10px !important;
+        margin-left: -8px !important;
         margin-top: 17px !important;
     }
     #nav-header-menu-mobile-content {
@@ -468,7 +468,7 @@ html,body {
     width: 51%;
     height: 39px;
     float: left;
-    margin-left: 15px;
+    margin-left: 18px;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
     padding: 7px 60px 9px 15px;
     border-radius: 2px;
@@ -1080,7 +1080,7 @@ ul {
     height:auto; 
     position: absolute;
     display: flex;
-    margin-left: 150px;
+    margin-left: 153px;
     margin-top: 26px;
     z-index: 1;
 }
