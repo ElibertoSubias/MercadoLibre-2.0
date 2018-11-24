@@ -17,7 +17,11 @@
 					<div id="DIV_6">
 						<header id="HEADER_7">
 							<div id="DIV_8">
-								<span id="SPAN_9"></span>
+								<span id="SPAN_9">
+									<span class="ui-badge1 ui-badge--small1 ui-badge--picture item__image--circular">
+		                                <img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%;border-radius: 50%;" alt="" title="" > 
+		                            </span>
+								</span>
 								<svg id="svg_10">
 									<use id="use_11">
 									</use>
@@ -28,7 +32,7 @@
 								</svg>
 								<div id="DIV_15">
 									<p id="P_16">
-										Algo salió mal...
+										Algo salió mal...[{{$msjError}}]
 									</p>
 									<div id="DIV_17">
 										<h2 id="H2_18">

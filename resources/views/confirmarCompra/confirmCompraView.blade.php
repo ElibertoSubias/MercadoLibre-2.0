@@ -61,19 +61,22 @@
                                         </div>
                                         <div class="hero__main-content" data-js="hero-main-content">
                                             <div class="hero__main-content-wrapper">
-                                                <div class="hero__info" data-js="hero-info">
-                                                    <h3 data-id="hero-address-title" class="hero__info-title">C.P. 00000</h3>
-                                                    <span data-id="hero-address-subtitle" class="hero__info-subtitle ">
-                                                        ........... ..... .. ........... ........... ........ ......................
-                                                    </span>
-                                                </div>
-                                                <div class="hero__action" data-js="hero-action">
-                                                    <form data-js="change-address" method="post">
-                                                        <button data-js="next-step" data-input-id="nextStepAddressChange" class=" hero__action-button u-link" type="submit" name="nextStepAddressChange" value="nextStepAddressChange">
-                                                            Enviar a otra dirección
-                                                        </button>
-                                                    </form>
-                                                </div>
+                                                @foreach($domicilios as $domicilio)
+                                                    @if($domicilio->envio==1)
+                                                        <div class="hero__info" data-js="hero-info">
+                                                            <h3 data-id="hero-shipping-title" class="hero__info-title">C.P. {{$domicilio->codigopostal}} </h3>
+                                                            <span data-id="hero-shipping-subtitle" class="hero__info-subtitle">
+                                                                {{$domicilio->calle}} #{{$domicilio->numeroEx}} {{$domicilio->asentamiento}} -{{$domicilio->referencia}} 
+                                                            </span>
+                                                        </div>
+                                                        <div class="hero__action" data-js="hero-action"> 
+                                                                <button data-js="next-step" data-input-id="nextStepAddressChange" class=" hero__action-button u-link" type="button" name="nextStepAddressChange" value="nextStepAddressChange">
+                                                                    Eviar a otra dirección
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    @endif
+                                                @endforeach 
                                             </div>
                                         </div>
                                     </div>
@@ -124,15 +127,16 @@
                                         <div class="hero__wrapper">
                                             <div class="hero__table-row">
                                                 <div class="hero__icon" data-js="hero-icon">
-                                                     <span class="ui-badge ui-badge--small ">
-                                                        <span class="ui-badge__icon ui-badge__icon--payment-logo">
-                                                            @if($card->brand=="visa")
-                                                                <i class="payment-icon payments-cho_badge _debvisa-cho_badge"></i>
-                                                            @elseif($card->brand=="mastercard")
-                                                                <i class="payment-icon payments-cho_badge _master-cho_badge"></i>
-                                                            @endif
-                                                        </span>
-                                                     </span>
+                                                     <span class="ui-badge ui-badge--small">
+                                                    <span class="ui-badge__icon ui-badge__icon--payment-logo">
+                                                        @if($card->brand=="visa")
+                                                            <i class="payment-icon payments-cho_badge _debvisa-cho_badge"></i>
+                                                        @elseif($card->brand=="mastercard")
+                                                            <i class="payment-icon payments-cho_badge _master-cho_badge"></i>
+                                                        @endif
+                                                       
+                                                    </span>
+                                                </span>
                                                 </div>
                                                 <div class="hero__main-content" data-js="hero-main-content">
                                                     <div class="hero__main-content-wrapper">
@@ -265,7 +269,7 @@
                             <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
                             <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
                             <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
-                            <input type="hidden" name="amount" id="amount" value="{{($precio+$costoEnvio)-$precio+1}}">
+                            <input type="hidden" name="precio" id="precio" value="{{($precio+$costoEnvio)-$precio+1}}">
                             <input type="hidden" name="description" id="description" value="{{$titulo}}">
                             <button id="pay-button" class="overview-component__action-button ui-button ui-button--primary" data-id="overview-action" data-js="" type="submit">
                                 <span class="aside-button__progress-bar"></span>
