@@ -29,14 +29,13 @@ Route::post('aggcuentapersonal', 'CrearCuentaController@crearcuentaPersonal')->n
 Route::get('crearcuenta-empresarial', 'CrearCuentaController@showEmpresarial')->name('crearcuentaempresarial');
 Route::post('aggcuentaempresarial', 'CrearCuentaController@crearcuentaEmpresarial')->name('aggcuentaempresarial');
 
-Route::get('nuevaCategoria', 'Admin\AddCategoriaController@index')->name('nuevaCategoria');
-
 Route::get('id={id}&user={user}', 'Venta\VentaController@showPublicacion')->name('verpublicacion');
 Route::post('buscar','BuscarController@buscarPublicaciones')->name('buscar');
 Route::get('resultados','BuscarController@listarResultados')->name('resultados');
 
 //Middleware para solo dejar pasar a estas rutas a usuarios autenticados
 Route::group(['middleware' => 'autenticado'], function () {
+	Route::get('nuevaCategoria', 'Admin\AddCategoriaController@index')->name('nuevaCategoria');
 	Route::any('loadImage', 'Venta\VentaController@store')->name('loadImage'); 
     Route::any('vender', 'VenderProductoController@cargarLista')->name('vender');
     Route::get('perfil', 'EditarUsuario\PerfilController@index')->name('perfil');
