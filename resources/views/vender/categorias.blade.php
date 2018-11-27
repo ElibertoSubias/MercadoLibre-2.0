@@ -143,6 +143,7 @@
                 <form id="frmCategoria" name="frmCategoria" action="{{route('descripcion')}}" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                     <input type="hidden" name="tipoVenta" id="tipoVenta" value="PROD">
+                    <input type="hidden" name="titulo" value="{{$titulo}}">
                     <div class="wrapper">
                         <div class="scrooller">
                             <div id="cont-categorias" class="category-column">

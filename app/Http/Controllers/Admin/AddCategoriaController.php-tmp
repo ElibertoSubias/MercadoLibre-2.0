@@ -202,7 +202,7 @@ class AddCategoriaController extends Controller {
 	}
 
 	public function showCategorias(Request $request) {
-		return view('vender.categorias')->with('tipoCategoria', $request->tipoCategoria);
+		return view('vender.categorias')->with(['tipoCategoria' => $request->tipoCategoria, 'titulo' => $request->titulo]);
 		/*if ($request->ajax()) {
 	if ($request->tipoVenta==0)
 	$tipoVenta = 'vehiculos';
@@ -242,7 +242,7 @@ class AddCategoriaController extends Controller {
 				return view('vender.descripcionSERV')->with(['idPublicacion' => $_SESSION["idPublicacion"], 'categoria' => $request->categoria, 'tipo' => $request->tipo, 'marca' => $request->input('car-marca')]);
 				break;
 			case 'PROD':
-				return view('vender.descripcionPROD')->with(['idPublicacion' => $_SESSION["idPublicacion"], 'categoria' => $request->categoria, 'tipo' => $request->tipo, 'marca' => $request->input('car-marca')]);
+				return view('vender.descripcionPROD')->with(['titulo' => $request->titulo, 'idPublicacion' => $_SESSION["idPublicacion"], 'categoria' => $request->categoria, 'tipo' => $request->tipo, 'marca' => $request->input('car-marca')]);
 				break;
 			default:
 				return back()->withInput();

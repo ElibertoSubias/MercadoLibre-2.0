@@ -20,7 +20,11 @@
     z-index: 0;
     position: relative;
 }
-
+._debvisa-cho_badge {
+    width: 34px;
+    height: 34px;
+    background-position: left -105px !important;
+}
 .cart-header {
     padding: 0;
     text-align: center;
