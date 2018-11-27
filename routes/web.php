@@ -117,7 +117,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::any('confirmarCompraPrueba', 'Compra\CompraController@confirmCompra')->name('confirmarCompraPrueba');
 	
 	Route::post('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
-Route::any('historialComp', 'Compra\CompraController@histoCompra')->name('historialComp');
+	Route::any('historialComp', 'Compra\CompraController@histoCompra')->name('historialComp');
 
 	Route::any('nuevodomicilio', 'Compra\CompraController@nuevoDomicilio')->name('nuevodomicilio');
 	Route::post('agregarDomicilio2', 'Compra\CompraController@agregarDomicilio')->name('agregarDomicilio2');

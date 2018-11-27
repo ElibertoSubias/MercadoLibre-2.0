@@ -281,4 +281,14 @@
 
 .myml-nav a {
     pointer-events: auto;
+    text-decoration: none;
+    color: #666;
+}
+
+.myml-nav a>* {
+    pointer-events: auto;
+}
+
+.myml-nav label {
+    cursor: pointer;
 }
