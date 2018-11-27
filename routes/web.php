@@ -135,4 +135,6 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::post('dalateCard', 'EditarUsuario\PerfilController@dalateCard')->name('dalateCard');
 
+	Route::any('vistaCuenta', 'Compra\CompraController@vistaEstadoDeCuenta')->name('vistaCuenta');
+
 });
