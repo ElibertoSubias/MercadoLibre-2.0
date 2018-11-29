@@ -82,6 +82,8 @@ class CarritoController extends Controller
     	return view('usuario.carrito.agregadoCarrito');
     }
 
+    
+
     public function eliminarArticulo(Request $request)
     {
          if ($request->ajax()) {  

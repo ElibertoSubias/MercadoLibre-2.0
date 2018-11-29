@@ -31,7 +31,7 @@ class MenuUsuarioController extends Controller
         //
     } 
 
-    public function detaCompra(Request $request)
+    public function detalleCompra(Request $request)
     {
       return view('usuario.menu.detaCompra');
     }

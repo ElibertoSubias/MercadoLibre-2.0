@@ -412,5 +412,10 @@ class CompraController extends Controller
     {
     	return view('confirmarCompra.histoCompra');
     }
+
+    public function vistaEstadoDeCuenta(Request $request)
+    {
+        return view('confirmarCompra.vistaEstadoDeCuenta');
+    }
  
 }
