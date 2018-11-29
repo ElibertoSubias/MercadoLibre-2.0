@@ -167,11 +167,18 @@ echo mb_substr($cadena, -4);
                                                         <div class="hero__action" data-js="hero-action">
                                                             <form data-js="change-payment" method="post" action="{{route('pagoPor')}}">
                                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                                                                <input type="hidden" name="precio" value="{{$precio}}">
-                                                                <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
-                                                                <input type="hidden" name="titulo" value="{{$titulo}}">
-                                                                <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
-                                                                <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+                                                                @isset($idReferencia)
+                                                                    <input type="hidden" name="precio" value="{{$precio}}">
+                                                                    <input type="hidden" name="idReferencia" value="{{$idReferencia}}">
+                                                                    <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+                                                                @endisset
+                                                                @empty($idReferencia)
+                                                                    <input type="hidden" name="precio" value="{{$precio}}">
+                                                                    <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+                                                                    <input type="hidden" name="titulo" value="{{$titulo}}">
+                                                                    <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+                                                                    <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+                                                                @endisset
                                                                 <button data-js="" data-input-id="nextStepPayments" class=" hero__action-button u-link" type="submit" name="nextStepPayments" value="nextStepPayments">
                                                                     Modificar
                                                                 </button>
@@ -199,17 +206,22 @@ echo mb_substr($cadena, -4);
                 <div data-component="aside"  >
                     <aside class="cart-aside__content cart-aside__content--item cart-aside--fixed" data-aside="target">
                         <div class="overview-component__item u-block-center">
-                            <span class="ui-badge1 ui-badge--small1 ui-badge--picture item__image--circular">
-                                <img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" >
-                            </span>
-                            <h3 class="overview-component__item-title">{{$titulo}}</h3>
-                            <span class="overview-component__item-quantity-text">Cantidad: 1</span>
+                            @empty($idReferencia)
+                                <span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
+
+                                        <img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" >
+                                </span>
+                                <h3 class="overview-component__item-title">{{$titulo}}</h3>
+                                <span class="overview-component__item-quantity-text" style="color:  blue">Cantidad: 1 </span>
+                            @endempty
                         </div>
                         <div class="overview__table-container">
                             <div class="overview-component__amounts">
                                 <div class="overview-component__table">
                                     <div class="overview-component__row">
-                                        <div data-id="overview-items-quantity" class="overview-component__column">Producto</div>
+                                        <div data-id="overview-items-quantity" class="overview-component__column">Producto<?php if (isset($idReferencia)) {echo "s(2)";
+}
+?> </div>
                                         <div data-id="overview-items-price" class="overview-component__column" style="text-align: right;">
                                             <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                                                 <meta itemprop="price" content="18999">
@@ -250,27 +262,23 @@ echo mb_substr($cadena, -4);
                             </div>
                         </div>
                         <form action="{{route('confirmarCompraPrueba')}}" method="POST" id="payment-form">
-                            <!-- method = card <br>
-                            Source_id = {{$card->id}}<br>
-                            amount = {{($precio+$costoEnvio)-$precio+1}}<br>
-                            cvv2 = {{$security_code}}<br>
-                            currency = MXN<br>
-                            mes = {{$card->expiration_month}}
-                            año = {{$card->expiration_year}}
-                            description = {{$titulo}}<br>
-                            order_id =<br>
-                            idPaquete={{$idPaquete}}<br>
-                            device_session_id = <br>
-                            customer = {{$customer->name}}<br>  -->
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                            <input type="hidden" name="token_id" id="token_id">
-                            <input type="hidden" name="device_session_id" id="device_session_id">
-                            <input type="hidden" name="cardId" value="{{$card->id}}">
-                            <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
-                            <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
-                            <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
-                            <input type="hidden" name="precio" id="precio" value="{{($precio+$costoEnvio)-$precio+1}}">
-                            <input type="hidden" name="description" id="description" value="{{$titulo}}">
+                            @isset($idReferencia)
+                                <input type="hidden" name="precio" value="{{$precio}}">
+                                <input type="hidden" name="idReferencia" value="{{$idReferencia}}">
+                                <input type="hidden" name="cardId" value="{{$card->id}}">
+                                <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+                            @endisset
+                            @empty($idReferencia)
+                                <input type="hidden" name="token_id" id="token_id">
+                                <input type="hidden" name="device_session_id" id="device_session_id">
+                                <input type="hidden" name="cardId" value="{{$card->id}}">
+                                <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+                                <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+                                <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+                                <input type="hidden" name="precio" id="precio" value="{{($precio+$costoEnvio)-$precio+1}}">
+                                <input type="hidden" name="description" id="description" value="{{$titulo}}">
+                            @endempty
                             <button id="pay-button" class="overview-component__action-button ui-button ui-button--primary" data-id="overview-action" data-js="" type="submit">
                                 <span class="aside-button__progress-bar"></span>
                                 <span class="aside-button__text">Confirmar compra</span>

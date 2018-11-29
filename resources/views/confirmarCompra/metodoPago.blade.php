@@ -25,14 +25,23 @@
 									<li class="badge-type-selection__list-item ui-list__item">
 										<form action="{{route('complTarjeta')}}" method="post">
 											<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
-											<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
-											<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
-
-											<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
-											<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
-											<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
-											<input type="hidden" name="precio" value="{{$precio}}">
-											<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+											@isset($idReferencia)
+												<input type="hidden" name="precio" value="{{$precio}}">
+												<input type="hidden" name="idReferencia" value="{{$idReferencia}}">
+												<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
+												<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
+												<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}"> 
+											@endisset
+											@empty($idReferencia) 
+												<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
+												<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
+												<input type="hidden" name="tipoTarjeta" value="credito"> 
+												<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+												<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+												<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+												<input type="hidden" name="precio" value="{{$precio}}">
+												<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+											@endempty	
 
 											<button data-js="payment-type" type="submit" name="paymentType" 
 											class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
@@ -81,57 +90,71 @@
 						<ul class="badge-type-selection__list">
 							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post" action="{{route('nuevatarjetac')}}">										
-									<input type="hidden" name="tipoTarjeta" value="credito">
+								<form method="post" action="{{route('nuevatarjetac')}}">		 
 									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
-									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
-									<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
-									<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
-									<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
-									<input type="hidden" name="precio" value="{{$precio}}">
-									<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
-
-								        <span class="ui-badge ui-badge--small">
-						                    <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-badge__icon ui-badge__icon--medium">
-						                    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--credit_card">
-						                    		<svg id="ui-icon--credit_card" viewBox="0 0 92 64" width="100%" height="100%">
-						                    			<g fill="none" fill-rule="evenodd">
-															<path opacity=".3" d="M0-14h92v92H0z"></path>
-															<path d="M0 5.992A5.992 5.992 0 0 1 6 0h80a6 6 0 0 1 6 5.992v52.016A5.992 5.992 0 0 1 86 64H6a6 6 0 0 1-6-5.992V5.992z" fill="#5697FA"></path>
-															<path fill="#0763EE" d="M0 10h92v12H0z"></path>
-															<path fill="#FFF" d="M6 26h80v10H6z"></path>
-															<rect fill="#0763EE" x="6" y="52" width="40" height="4" rx="2"></rect>
-															<rect fill="#0763EE" x="6" y="42" width="56" height="4" rx="2"></rect>
-						                    			</g>
-						                    		</svg>
-						                    	</use>
-						                    </svg>
-								        </span>
-								        <div class="badge-type__metadata">
-							                <h2 class="badge-type-selection__list-title">Tarjeta de crédito</h2>
-							                <p class="badge-type-selection__list-text">
-							                	<span class="u-text--green">Hasta 12 meses sin intereses</span>
-							                </p>
-								        </div>
-
-							    	</button>
-
+									@isset($idReferencia)
+										<input type="hidden" name="precio" value="{{$precio}}">
+										<input type="hidden" name="idReferencia" value="{{$idReferencia}}"> 
+										<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
+										<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
+										<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+									@endisset
+									@empty($idReferencia) 
+										<input type="hidden" name="tipoTarjeta" value="credito"> 
+										<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+										<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+										<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+										<input type="hidden" name="precio" value="{{$precio}}">
+										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+									@endempty	
+										<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
+									        <span class="ui-badge ui-badge--small">
+							                    <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-badge__icon ui-badge__icon--medium">
+							                    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--credit_card">
+							                    		<svg id="ui-icon--credit_card" viewBox="0 0 92 64" width="100%" height="100%">
+							                    			<g fill="none" fill-rule="evenodd">
+																<path opacity=".3" d="M0-14h92v92H0z"></path>
+																<path d="M0 5.992A5.992 5.992 0 0 1 6 0h80a6 6 0 0 1 6 5.992v52.016A5.992 5.992 0 0 1 86 64H6a6 6 0 0 1-6-5.992V5.992z" fill="#5697FA"></path>
+																<path fill="#0763EE" d="M0 10h92v12H0z"></path>
+																<path fill="#FFF" d="M6 26h80v10H6z"></path>
+																<rect fill="#0763EE" x="6" y="52" width="40" height="4" rx="2"></rect>
+																<rect fill="#0763EE" x="6" y="42" width="56" height="4" rx="2"></rect>
+							                    			</g>
+							                    		</svg>
+							                    	</use>
+							                    </svg>
+									        </span>
+									        <div class="badge-type__metadata">
+								                <h2 class="badge-type-selection__list-title">Tarjeta de crédito</h2>
+								                <p class="badge-type-selection__list-text">
+								                	<span class="u-text--green">Hasta 12 meses sin intereses</span>
+								                </p>
+									        </div>
+								        </button> 
 								</form>
 							</li>
 							<!--///////////////////////////////////////////////Credito////////////////////////////////////////////////-->
 							<!--////////////////////////////////////////////////Debito///////////////////////////////////////////////-->
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post" action="{{route('nuevatarjetac')}}">									
-									<input type="hidden" name="tipoTarjeta" value="debito">
+								<form method="post" action="{{route('nuevatarjetac')}}">					 
 									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
-									<button data-js="payment-type" type="submit" name="paymentType" 
+									@isset($idReferencia)
+										<input type="hidden" name="precio" value="{{$precio}}">
+										<input type="hidden" name="idReferencia" value="{{$idReferencia}}">
+										<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
+										<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
+										<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}"> 
+									@endisset
+									@empty($idReferencia)  
+										<input type="hidden" name="tipoTarjeta" value="debito">
+										<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+										<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+										<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+										<input type="hidden" name="precio" value="{{$precio}}"> 
+										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+									@endisset
+										<button data-js="payment-type" type="submit" name="paymentType" 
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
-									<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
-									<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
-									<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
-									<input type="hidden" name="precio" value="{{$precio}}"> 
-									<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
-
 								        <span class="ui-badge ui-badge--small">
 						                    <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-badge__icon ui-badge__icon--medium">
 						                    	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--debit_card">
@@ -148,14 +171,29 @@
 								        <div class="badge-type__metadata">
 							                <h2 class="badge-type-selection__list-title">Tarjeta de débito</h2>							                
 								        </div>
-
+								    
 							    	</button>
 
 								</form>
 							</li> 
 							<li class="badge-type-selection__list-item ui-list__item">
 								<form method="post">									
-									
+									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+									@isset($idReferencia)
+										<input type="hidden" name="precio" value="{{$precio}}">
+										<input type="hidden" name="idReferencia" value="{{$idReferencia}}">
+										<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
+										<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
+										<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}"> 
+									@endisset
+									@empty($idReferencia)  
+										<input type="hidden" name="tipoTarjeta" value="debito">
+										<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+										<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+										<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+										<input type="hidden" name="precio" value="{{$precio}}"> 
+										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+									@endisset
 									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="PREPAID_CARD">
 
 								        <span class="ui-badge ui-badge--small">
@@ -244,19 +282,22 @@
 		<div data-component="aside"  >
 			<aside class="cart-aside__content cart-aside__content--item cart-aside--fixed" data-aside="target">
 				<div class="overview-component__item u-block-center">
-					<span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
-						<img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" > 
-
-					</span>
-					<h3 class="overview-component__item-title">{{$titulo}}</h3>
-					<span class="overview-component__item-quantity-text" style="color:  blue">Cantidad: 1 </span>
+					@empty($idReferencia) 
+						<span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
+							
+								<img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" >  
+						</span> 
+						<h3 class="overview-component__item-title">{{$titulo}}</h3>
+						<span class="overview-component__item-quantity-text" style="color:  blue">Cantidad: 1 </span>
+					@endempty
+					
 				</div>
 				<div class="overview__table-container">
 					<div class="overview-component__amounts">
 						<div class="overview-component__table">
 							<div class="overview-component__row">
 								<div data-id="overview-items-quantity" style="text-align: left;" class="overview-component__column">
-									Producto
+									Producto<?php if(isset($idReferencia))echo "s(2)"; ?> 
 								</div>
 								<div data-id="overview-items-price" class="overview-component__column" style="text-align: right;">
 									<span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
@@ -271,14 +312,7 @@
 							<div class="overview-component__row">
 								<div class="overview-component__column" style="    text-align: left;">Envío</div>
 								<div data-id="overview-shipping-amount" class="overview-component__column">
-									@if($costoEnvio=="0")
-										<span class="price-free1 u-text--green" style="margin-right:0px;">Gratis</span>
-									@else 
-										<span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-										<span class="price-tag-fraction">{{$costoEnvio}}</span>
-										<span class="price-tag-decimal-separator"></span> 
-									@endif
-									
+									<span class="price-free1 u-text--green" style="margin-right:0px;">Gratis</span>
 								</div>
 							</div>
 						</div>	
@@ -288,7 +322,7 @@
 								<div class="overview-component__column">
 									<span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
 											<meta itemprop="price" content="18999"> 
-											<span class="price-tag-fraction ">${{$precio+$costoEnvio}}</span> 
+											<span class="price-tag-fraction ">${{$precio}}</span> 
 											<span class="price-tag-cents">00</span>
 										</span>
 								</div>
