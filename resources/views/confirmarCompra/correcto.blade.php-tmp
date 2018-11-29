@@ -331,7 +331,9 @@
         ">
                 <div class="congrats-header__wrapper">
                     <span class="ui-badge ui-badge--large u-bg-color--white" data-html2canvas-ignore="">
+                              @isset($urlImagen)
                                 <img class="badge__product-icon" src="images/{{$urlImagen}}/principal.jpg">
+                              @endisset
                         <span class="ui-badge__complementary">
                                     <svg viewBox="0 0 100 100" role="presentation" class="ui-icon ui-icon--success ui-badge__icon">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ui-icon--success"></use>
