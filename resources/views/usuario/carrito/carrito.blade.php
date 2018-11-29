@@ -36,7 +36,7 @@
                         <div class="u-float-left item__description">
                         <h2 class="item__title" itemprop="name">
 
-                            <a class="item__title--link" href="https://articulo.mercadolibre.com.mx/MLM-572083257-playera-polo-club-america-nike-utileria-original-mediana-_JM?variation=22751685920" itemprop="url"> {{$articulo[$i]->titulo}}<label id="titulo"></label></a>
+                            <a class="item__title--link" href="{{route('verpublicacion', ['id' => $articulo[$i]->_id,'user'=>$articulo[$i]->idUser])}}" itemprop="url"> {{$articulo[$i]->titulo}}<label id="titulo"></label></a>
 
                         </h2>
                        
@@ -173,7 +173,12 @@
             </span>
         </div>
         <div class="summary__actions">
-            <a href="/gz/checkout/cart/buy?items=MLM572083257-Q1-VAR22751685920&amp;destination_type=address_id&amp;destination_value=902260096&amp;unchecked=false&amp;context=cart&amp;siteId=MLM" data-summary="buy-action" class="ui-button ui-button--primary">Comprar todo</a>
+            <form action="{{route('recibirPor')}}" method="post" accept-charset="utf-8"> 
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                <input type="hidden" name="idReferencia" value="cardBuy">
+                <input type="hidden" name="precio" value="{{$subtotal}}">
+                <input type="submit"  class="ui-button ui-button--secondary " style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px" value="Comprar  todo">
+            </form> 
         </div>
     </footer>
 </div></div> 

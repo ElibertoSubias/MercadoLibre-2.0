@@ -40,16 +40,24 @@ if ($card->type == "debit") {
 }
 $cadena = $card->card_number;
 echo mb_substr($cadena, -4);
-?></h3>
+?>
+                            </h3>
                     </div>
                             <div class="hero__action" data-js="hero-action">
                                 <form data-js="change-payment" method="post" action="{{route('form_confirmarCompra')}}">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                                    <input type="hidden" name="precio" value="{{$precio}}">
-                                    <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
-                                    <input type="hidden" name="titulo" value="{{$titulo}}">
-                                    <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
-                                    <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+                                    @isset($idReferencia)
+                                        <input type="hidden" name="precio" value="{{$precio}}">
+                                        <input type="hidden" name="idReferencia" value="{{$idReferencia}}">
+                                        <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+                                    @endisset
+                                    @empty($idReferencia)
+                                        <input type="hidden" name="precio" value="{{$precio}}">
+                                        <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+                                        <input type="hidden" name="titulo" value="{{$titulo}}">
+                                        <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+                                        <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+                                    @endempty
                                     <button data-js="" data-input-id="nextStepPayments" class=" hero__action-button u-link" type="submit" name="nextStepPayments" value="nextStepPayments">
                                         Modificar
                                     </button>
@@ -78,12 +86,20 @@ echo mb_substr($cadena, -4);
 
                 <form class="ui-form ui-form--multiple-inputs" data-js="form-container" novalidate="" action="{{route('form_confirmarCompra')}}" method="post" id="frmComplemento">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                    <input type="hidden" name="precio" value="{{$precio}}">
-                    <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
-                    <input type="hidden" name="titulo" value="{{$titulo}}">
-                    <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
-                    <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
-
+                    @isset($idReferencia)
+                        <input type="hidden" name="precio" value="{{$precio}}">
+                        <input type="hidden" name="idReferencia" value="{{$idReferencia}}">
+                        <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+                        <input type="hidden" name="cardId" value="{{$card->id}}">
+                    @endisset
+                    @empty($idReferencia)
+                        <input type="hidden" name="precio" value="{{$precio}}">
+                        <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+                        <input type="hidden" name="titulo" value="{{$titulo}}">
+                        <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+                        <input type="hidden" name="cardId" value="{{$card->id}}">
+                        <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+                    @endempty
     <div data-js="form-sections-container"><div id="uniqueSection" class="ui-form__section"><fieldset class="ui-form__fieldset">
             <div class="ui-row ui-panel--raised">
                 <div class="form-inner__wrapper">
@@ -250,7 +266,6 @@ echo mb_substr($cadena, -4);
 </div>
 <div class="ui-form__actions">
     <button data-js="submit-btn" class="ui-button ui-button--primary" type="submit">Continuar</button>
-        <input type="hidden" name="cardId" value="{{$card->id}}">
 </div>
 </form>
 </div>
@@ -261,77 +276,58 @@ echo mb_substr($cadena, -4);
 </div></div>
 
                     <div id="aside-container" class="cart-aside"><div><div data-component="aside">
-    <aside class="cart-aside__content cart-aside__content--item cart-aside--static" data-aside="target">
-            <div class="overview-component__item u-block-center">
-                <span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
-                        <img class="badge__product-icon picture-image" src="images/{{$urlImagen}}/principal.jpg" alt="Tarjeta Usb Antena Wifi 150mbps 802.11n/g/b Redes + Potente" data-object-fit="cover">
-                </span>
-                <h3 class="overview-component__item-title">
-                    {{$titulo}}
-                </h3>
-                      <span class="overview-component__item-quantity-text">Cantidad: 1</span>
-            </div>
+    <aside class="cart-aside__content cart-aside__content--item cart-aside--fixed" data-aside="target">
+                <div class="overview-component__item u-block-center">
+                    @empty($idReferencia)
+                        <span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
 
-        <div class="overview__table-container">
-                <div class="overview-component__amounts">
-                    <div class="overview-component__table">
+                                <img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" >
+                        </span>
+                        <h3 class="overview-component__item-title">{{$titulo}}</h3>
+                        <span class="overview-component__item-quantity-text" style="color:  blue">Cantidad: 1 </span>
+                    @endempty
+
+                </div>
+                <div class="overview__table-container">
+                    <div class="overview-component__amounts">
+                        <div class="overview-component__table">
                             <div class="overview-component__row">
-                                <div data-id="overview-items-quantity" class="overview-component__column" style="text-align: left;">
-                                    Producto
-                                </div>
-                                <div data-id="overview-items-price" class="overview-component__column">
+                                <div data-id="overview-items-quantity" style="text-align: left;" class="overview-component__column">
+                                    Producto<?php if (isset($idReferencia)) {echo "s(2)";
+}
+?></div>
+                                <div data-id="overview-items-price" class="overview-component__column" style="text-align: right;">
                                     <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                                         <meta itemprop="price" content="18999">
                                         <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
                                         <span class="price-tag-fraction">{{$precio}}</span>
-                                            <span class="price-tag-decimal-separator"></span>
-                                            <span class="price-tag-cents">00</span>
-
+                                        <span class="price-tag-decimal-separator"></span>
+                                        <span class="price-tag-cents">00</span>
                                     </span>
                                 </div>
                             </div>
-                            <div class="overview-component__row"  style="text-align: left;">
-                                <div class="overview-component__column">
-                                    Envío
-                                </div>
+                            <div class="overview-component__row">
+                                <div class="overview-component__column" style="    text-align: left;">Envío</div>
                                 <div data-id="overview-shipping-amount" class="overview-component__column">
-                                        @if($costoEnvio=="0")
-                                        <span class="price-free1 u-text--green" style="margin-right:0px;">Gratis</span>
-                                    @else
-                                        <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                                        <span class="price-tag-fraction">{{$costoEnvio}}</span>
-                                        <span class="price-tag-decimal-separator"></span>
-                                    @endif
+                                    <span class="price-free1 u-text--green" style="margin-right:0px;">Gratis</span>
                                 </div>
                             </div>
-                    </div>
-                </div>
-                    <div class="overview-component__total">
-                        <div class="overview-component__table">
-                            <div class="overview-component__column" style="text-align: left;">
-                                Total
-                            </div>
-                            <div class="overview-component__column">
-                                        <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                        </div>
+                        <div class="overview-component__total">
+                            <div class="overview-component__table">
+                                <div class="overview-component__column" style="    text-align: left;width: 30%;">Total:</div>
+                                <div class="overview-component__column">
+                                    <span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                                             <meta itemprop="price" content="18999">
-
-
-                                            <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                                            <span class="price-tag-fraction">{{$precio}}</span>
-                                                <span class="price-tag-decimal-separator"></span>
-
-                                                <span class="price-tag-cents">00</span>
-
+                                            <span class="price-tag-fraction ">${{$precio}}</span>
+                                            <span class="price-tag-cents">00</span>
                                         </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-        </div>
-
-
-
-
-    </aside>
+                </div>
+            </aside>
 </div>
 </div></div>
 
