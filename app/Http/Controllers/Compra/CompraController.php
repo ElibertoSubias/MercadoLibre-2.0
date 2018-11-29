@@ -67,48 +67,61 @@ class CompraController extends Controller
 
     public function confirmCompraView(Request $request)
     {
+        $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get(); 
         $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678');
         $customer = $openpay->customers->get(auth()->user()->idCustomer);
         $card = $customer->cards->get($request->cardId);
 
-        return view('confirmarCompra.confirmCompraView')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'card'=>$card,'security_code'=>$request->security_code,'customer'=>$customer]);
+        return view('confirmarCompra.confirmCompraView')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'card'=>$card,'security_code'=>$request->security_code,'customer'=>$customer,'domicilios'=>$domicilios]);
     }
 
     public function confirmCompra(Request $request)
-    {  
+    {   
         try{ 
-            $idPublicacion = Articulos::where(['idPublicacion'=>$request->idPaquete])->get();
-            $vendedor = User::where(['_id'=>$idPublicacion[0]->idUser])->get(); 
+            $publicacion = Articulos::where(['idPublicacion'=>$request->idPaquete])->get();
+            $vendedor = User::where(['_id'=>$publicacion[0]->idUser])->get(); 
             $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678');
 
             $customerId=auth()->user()->idCustomer; 
 
-            $customer = $openpay->customers->get($customerId);
+            $customer = $openpay->customers->get($customerId); 
 
             $chargeData = array(
                     'method' => 'card',
                     'source_id' => $request->cardId,
-                    'amount' => (float)$_POST["amount"],
+                    'amount' => (float)$_POST["precio"],
                     'description' => $_POST["description"],
                     
-                    'device_session_id' => $_POST["deviceIdHiddenFieldName"]);   
+                    'device_session_id' => $_POST["deviceIdHiddenFieldName"]);
+
             //Validación de cargo a tarjeta de credito
             if($customer->charges->create($chargeData)){
                 //Transferencua a cuenta del vendedor
                 $transferDataRequest = array(
                     'customer_id' => $vendedor[0]->idCustomer,
-                    'amount' => 1.00,
+                    'amount' => (float)$_POST["precio"],
                     'description' => 'Cobro de Comisión');
      
                 $transfer = $customer->transfers->create($transferDataRequest); 
 
+                $direccionEnvio = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
+
                 $compras = new Compras;
                 $compras->idUser = auth()->user()->_id;
                 $compras->idPublicacion = $request->idPaquete;
+                $compras->idVendedor = $publicacion[0]->idUser;
                 $compras->cantidad = 0;
-                $compras->precio = $request->amount;
-                $compras->save();
+                $compras->precio = $request->precio;
+                $compras->idDireccionEnvio = $direccionEnvio[0]->_id;
+                $compras->save(); 
+
+                Articulos::where(['idPublicacion' => $request->idPaquete])->decrement('cantidad');
+
+
                 return view('confirmarCompra.correcto')->with(['urlImagen'=>$request->urlImagen]);
+
+            }else{
+                return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);
             }
 
         } catch (\OpenpayApiTransactionError $e) {
@@ -119,31 +132,30 @@ class CompraController extends Controller
                   ', request ID: ' . $e->getRequestId() . ']', 0);
             
             if ($e->getErrorCode()==3003) {
-                return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio]);
+                return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);
             }else{
-                return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage(),'codigoError'=>$e->getErrorCode()]);
+                return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);
             }
 
         } catch (\OpenpayApiRequestError $e) {
             error_log('ERROR on the request: ' . $e->getMessage(), 0);
-            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage(),'codigoError'=>$e->getErrorCode()]);
+            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);
 
         } catch (\OpenpayApiConnectionError $e) {
             error_log('ERROR while connecting to the API: ' . $e->getMessage(), 0);
-            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage(),'codigoError'=>$e->getErrorCode()]);
+            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);
 
         } catch (\OpenpayApiAuthError $e) {
             error_log('ERROR on the authentication: ' . $e->getMessage(), 0);
-            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage(),'codigoError'=>$e->getErrorCode()]);
+            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);
             
         } catch (OpenpayApiError $e) {
             error_log('ERROR on the API: ' . $e->getMessage(), 0);
-            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage(),'codigoError'=>$e->getErrorCode()]);
+            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);
             
         } catch (\Exception $e) {
-            error_log('Error on the script: ' . $e->getMessage(), 0);
-            echo "ERROR F | ".$e->getMessage(); 
-            echo $e->getErrorCode();
+            error_log('ERROR on the API: ' . $e->getMessage(), 0);
+            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);
         }
     }
 
@@ -301,29 +313,40 @@ class CompraController extends Controller
                   ', error category: ' . $e->getCategory() . 
                   ', HTTP code: '. $e->getHttpCode() . 
                   ', request ID: ' . $e->getRequestId() . ']', 0);
-            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage(),'codigoError'=>$e->getErrorCode()]);
+            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);
 
         } catch (\OpenpayApiRequestError $e) {
             error_log('ERROR on the request: ' . $e->getMessage(), 0);
             //Cliente no existe
-            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage(),'codigoError'=>$e->getErrorCode()]);  
+            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);  
         } catch (\OpenpayApiConnectionError $e) {
             error_log('ERROR while connecting to the API: ' . $e->getMessage(), 0);
-            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage(),'codigoError'=>$e->getErrorCode()]);
+            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);
         } catch (\OpenpayApiAuthError $e) {
             error_log('ERROR on the authentication: ' . $e->getMessage(), 0);
-            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage(),'codigoError'=>$e->getErrorCode()]);
+            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);
         } catch (\OpenpayApiError $e) {
             error_log('ERROR on the API: ' . $e->getMessage(), 0);
-            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage(),'codigoError'=>$e->getErrorCode()]);
+            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);
         } catch (\Exception $e) {
             error_log('Error on the script: ' . $e->getMessage(), 0);
-            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage(),'codigoError'=>$e->getErrorCode()]);
+            return view('confirmarCompra.compraRechazada')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'msjError'=>$e->getMessage()]);
         } 
     }
 
     public function confiCompra(Request $request)
     {
     	return view('confirmarCompra.confiCompra');
+    } 
+
+    public function histoCompra(Request $request)
+    {
+    	return view('confirmarCompra.histoCompra');
     }
+
+    public function vistaEstadoDeCuenta(Request $request)
+    {
+        return view('confirmarCompra.vistaEstadoDeCuenta');
+    }
+ 
 }

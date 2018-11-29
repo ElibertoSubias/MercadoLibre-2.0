@@ -1,7 +1,4 @@
-@media screen 
-  and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 1) { 
+@media (min-width: 1024px) { 
     .nav-header-menu-wrapper {
         display: none !important; 
     }  
@@ -22,13 +19,32 @@
         top: -5px;
         left: 99%;
         color: black;
-    }
+    } 
+} 
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 375px) {
+    .nav-icon-search img { 
+        margin-left: -95% !important;
+        z-index: 2000;
+    } 
 }
+@media only screen 
+and (min-device-width : 360px) 
+and (max-device-width : 360px) {
+    .nav-icon-search img {
+        margin-left: -65% !important;
+    } 
+}
+
 @media only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 320px) { 
     .hamburger-bottom-bread, .hamburger-patty, .hamburger-top-bread{
         left: -10% !important;
+    }
+    .nav-icon-search img {
+        margin-left: -95% !important;
     } 
 }
 @media only screen 
@@ -110,7 +126,7 @@ and (max-device-width : 414px) {
     }
     #resultados{
         width: 100.1% !important;
-        margin-left: -10px !important;
+        margin-left: -8px !important;
         margin-top: 17px !important;
     }
     #nav-header-menu-mobile-content {
@@ -122,10 +138,7 @@ and (max-device-width : 414px) {
         width: 10%;
         height: 50px;
         margin-top: -30px;
-    }
-    .nav-icon-search img {
-        margin-left: 35% !important;
-    }
+    } 
     .carousel__cell {
         width: 100% !important;
     }
@@ -153,7 +166,7 @@ and (max-device-width : 414px) {
     .nav-search-btn {
         outline: 0px;
         background: transparent !important;
-        margin-left: -220px !important; 
+        margin-left: -193px !important; 
         border-left: 0 !important; 
     }  
     .exhibitor__picture {
@@ -470,7 +483,7 @@ html,body {
     width: 51%;
     height: 39px;
     float: left;
-    margin-left: 15px;
+    margin-left: 18px;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
     padding: 7px 60px 9px 15px;
     border-radius: 2px;
@@ -515,7 +528,7 @@ html,body {
 } 
 .nav-menu {
     width: 90%;
-    height: 40px;
+    height: auto;
     margin: 0px auto;
     position: relative;
 }
@@ -557,7 +570,7 @@ html,body {
     line-height: 22px;
 } 
 .nav-menu-elementos {
-    padding-right: 22px;
+    padding-right: 1.5rem;
     display: inline-block;
     float: left;
     font-size: 15px;
@@ -1082,7 +1095,7 @@ ul {
     height:auto; 
     position: absolute;
     display: flex;
-    margin-left: 150px;
+    margin-left: 153px;
     margin-top: 26px;
     z-index: 1;
 }

@@ -60,7 +60,7 @@
                                 <div class="syi-input-countdown">
                                     <span>
                                         <label class="syi-title__label u--arrange-fit ">Título:</label>
-                                        <input type="text" data-hj-whitelist="true" maxlength="60" label="Título:" placeholder="Ejemplo: camisa Lacoste hombre manga larga" class="syi-title__field syi-title__icon-tooltip u--arrange-fill" id="nombreProducto" name="nombreProducto">
+                                        <input type="text" data-hj-whitelist="true" maxlength="60" label="Título:" placeholder="Ejemplo: camisa Lacoste hombre manga larga" class="syi-title__field syi-title__icon-tooltip u--arrange-fill" id="nombreProducto" name="titulo">
                                     </span>
                                     <p class="ui-countdown" style="font-size: 11px;margin-left: 9%;">Restan 60 caracteres.</p>
                                 </div>

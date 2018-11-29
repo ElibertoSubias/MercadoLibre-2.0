@@ -82,7 +82,7 @@ class VentaController extends Controller
         $Articulos->version = $request->version;
         $Articulos->urlPrincipal = $urlPrincipal->url;
         $Articulos->estadoPublicacion = 1;
-        $Articulos->cantidad=$request->cantidadArticulos;
+        $Articulos->cantidad=(int)$request->cantidadArticulos;
         $Articulos->arrayCaracteristicas = $request->arrayCaracteristicas;
         $Articulos->urlPrincipal = $urlPrincipal->url; 
         $Articulos->garantia = $request->garantia;

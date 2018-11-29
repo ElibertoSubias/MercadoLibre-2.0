@@ -29,14 +29,13 @@ Route::post('aggcuentapersonal', 'CrearCuentaController@crearcuentaPersonal')->n
 Route::get('crearcuenta-empresarial', 'CrearCuentaController@showEmpresarial')->name('crearcuentaempresarial');
 Route::post('aggcuentaempresarial', 'CrearCuentaController@crearcuentaEmpresarial')->name('aggcuentaempresarial');
 
-Route::get('nuevaCategoria', 'Admin\AddCategoriaController@index')->name('nuevaCategoria');
-
 Route::get('id={id}&user={user}', 'Venta\VentaController@showPublicacion')->name('verpublicacion');
 Route::post('buscar','BuscarController@buscarPublicaciones')->name('buscar');
 Route::get('resultados','BuscarController@listarResultados')->name('resultados');
 
 //Middleware para solo dejar pasar a estas rutas a usuarios autenticados
 Route::group(['middleware' => 'autenticado'], function () {
+	Route::get('nuevaCategoria', 'Admin\AddCategoriaController@index')->name('nuevaCategoria');
 	Route::any('loadImage', 'Venta\VentaController@store')->name('loadImage'); 
     Route::any('vender', 'VenderProductoController@cargarLista')->name('vender');
     Route::get('perfil', 'EditarUsuario\PerfilController@index')->name('perfil');
@@ -93,7 +92,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('agregarDomicilio', 'Usuario\MenuUsuarioController@aggDomicilio')->name('agregarDomicilio');
 	Route::get('id={id}', 'EditarUsuario\EditarUsuarioController@modificarDomicilioView')->name('irAModificarDireccion');
-		Route::post('cambiardireccion', 'EditarUsuario\EditarUsuarioController@cambiarDireccion')->name('cambiardireccion');
+	Route::post('cambiardireccion', 'EditarUsuario\EditarUsuarioController@cambiarDireccion')->name('cambiardireccion');
 	Route::get('idElemneto={idElemneto}', 'EditarUsuario\EditarUsuarioController@eliminarDomicilio')->name('eliminarDomicilio');
 	Route::post('modificando', 'EditarUsuario\EditarUsuarioController@modificarDomicilio')->name('modificarDireccion');
 
@@ -117,6 +116,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::any('confirmarCompraPrueba', 'Compra\CompraController@confirmCompra')->name('confirmarCompraPrueba');
 	
 	Route::post('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
+	Route::any('historialComp', 'Compra\CompraController@histoCompra')->name('historialComp');
 
 	Route::any('nuevodomicilio', 'Compra\CompraController@nuevoDomicilio')->name('nuevodomicilio');
 	Route::post('agregarDomicilio2', 'Compra\CompraController@agregarDomicilio')->name('agregarDomicilio2');
@@ -134,5 +134,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::any('detalleCompra', 'Usuario\MenuUsuarioController@detalleCompra')->name('detalleCompra');
 
 	Route::post('dalateCard', 'EditarUsuario\PerfilController@dalateCard')->name('dalateCard');
+
+	Route::any('vistaCuenta', 'Compra\CompraController@vistaEstadoDeCuenta')->name('vistaCuenta');
 
 });
