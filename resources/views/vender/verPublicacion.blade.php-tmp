@@ -90,6 +90,10 @@
                 </div>
             </div>
         </section>
+        @if($errors->any())
+            <div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Ups!</strong>{{$errors->first()}}</div>
+        @endif
+
         @if($datos->estadoPublicacion===2)
         <section class="item-status bg-alt">
             <div class="item-status-notification">

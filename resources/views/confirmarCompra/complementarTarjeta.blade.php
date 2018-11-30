@@ -44,7 +44,7 @@
                             </h3>
                     </div>
                             <div class="hero__action" data-js="hero-action">
-                                <form data-js="change-payment" method="post" action="{{route('form_confirmarCompra')}}">
+                                <form data-js="change-payment" method="post" action="{{route('pagoPor')}}">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
                                     @isset($idReferencia)
                                         <input type="hidden" name="precio" value="{{$precio}}">
@@ -308,7 +308,11 @@
                             <div class="overview-component__row">
                                 <div class="overview-component__column" style="    text-align: left;">Envío</div>
                                 <div data-id="overview-shipping-amount" class="overview-component__column">
-                                    <span class="price-free1 u-text--green" style="margin-right:0px;">Gratis</span>
+                                    @if($costoEnvio>0) 
+                                        ${{$costoEnvio}} 
+                                    @else
+                                        <span class="price-free1 u-text--green" style="margin-right:0px;"> Gratis </span>
+                                    @endif
                                 </div>
                             </div>
                         </div>  
@@ -318,7 +322,7 @@
                                 <div class="overview-component__column">
                                     <span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                                             <meta itemprop="price" content="18999"> 
-                                            <span class="price-tag-fraction ">${{$precio}}</span> 
+                                            <span class="price-tag-fraction ">${{$precio+$costoEnvio}}</span> 
                                             <span class="price-tag-cents">00</span>
                                         </span>
                                 </div>

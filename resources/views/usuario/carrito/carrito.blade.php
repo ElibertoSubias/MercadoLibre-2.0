@@ -55,16 +55,16 @@
                             </div>
                             <ul class="item__action-menu">
                                     <li>
-                                        <a data-action="buy-item" class=" item__action-menu-link " href="/gz/checkout/cart/buy?items=MLM572083257-Q1-VAR22751685920&amp;destination_type=address_id&amp;destination_value=902260096&amp;unchecked=false&amp;context=cart_item&amp;siteId=MLM">Comprar ahora</a>
+                                        <a data-action="buy-item" class=" item__action-menu-link " href="#">Comprar ahora</a>
                                     </li>
                                     <li>
-                                        <form data-action="save-for-later" action="/gz/cart/saved/item" method="POST">
+                                        <form data-action="save-for-later" action="#" method="POST">
                                             <input type="hidden" name="id" value="MLM572083257_22751685920">
                                             <input type="submit" class="u-button-reset  u-link item__action-menu-link " value="Guardar para después">
                                         </form>
                                     </li>
                                     <li>
-                                        <form data-action="remove-from-cart" action="/gz/cart/item/delete" method="POST">
+                                        <form data-action="remove-from-cart" action="#" method="POST">
                                             <input type="hidden" name="id" value="MLM572083257_22751685920">
                                             <a href="javascript:eliminar('{{$articulo[$i]->_id}}')">Eliminar</a>
                                         </form>

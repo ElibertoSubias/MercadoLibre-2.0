@@ -61,11 +61,18 @@
 										<div id="DIV_28">
 											<form data-js="change-payment" method="post" action="{{route('pagoPor')}}">
 												<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
-                                                <input type="hidden" name="precio" value="{{$precio}}">
-                                                <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
-                                                <input type="hidden" name="titulo" value="{{$titulo}}">
-                                                <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
-                                                <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+												@isset($idReferencia)
+													<input type="hidden" name="idReferencia" value="{{$idReferencia}}">
+													<input type="hidden" name="precio" value="{{$precio}}">
+	                                                <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+												@endisset
+												@empty($idReferencia)
+	                                                <input type="hidden" name="precio" value="{{$precio}}">
+	                                                <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+	                                                <input type="hidden" name="titulo" value="{{$titulo}}">
+	                                                <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+	                                                <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+                                                @endempty
 												<button type="submit" value="nextStepPayments" name="nextStepPayments" style="width: 300px" id="BUTTON_30">
 													Pagar con otro medio
 												</button>

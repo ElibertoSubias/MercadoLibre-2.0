@@ -330,7 +330,7 @@
             <header class="congrats-header     u-bg-color--green
         ">
                 <div class="congrats-header__wrapper">
-                    <span class="ui-badge ui-badge--large u-bg-color--white" data-html2canvas-ignore="">
+                    <span class="ui-badge ui-badge--large u-bg-color--white" data-html2canvas-ignore=""> 
                               @isset($urlImagen)
                                 <img class="badge__product-icon" src="images/{{$urlImagen}}/principal.jpg">
                               @endisset
@@ -379,9 +379,14 @@
                                 <div class="congrats-actions" data-html2canvas-ignore="">
                                     <div data-component="actions">
                                                 <div class="action__item" data-component="action">
-                                                        <a href="#" class="ui-button  ui-button--primary   user-action user-action--get" data-js="action__anchor" data-input-id="go_to_order">
+                                                  <form action="{{route('detalleCompra')}}" method="get" accept-charset="utf-8">
+                                                    @isset($idCompra)
+                                                    <input type="hidden" name="idCompra" value="{{$idCompra}}">
+                                                    @endisset
+                                                      <button type="submit" class="ui-button  ui-button--primary   user-action user-action--get" data-js="action__anchor" data-input-id="go_to_order">
                                                             Ver detalle de la compra
-                                                        </a>
+                                                        </button>
+                                                  </form> 
                                                 </div>
                                                 <div class="action__item" data-component="action">
                                                         <a href="{{route('dashboard')}}" class="ui-button  ui-button--tertiary   user-action user-action--get" data-js="action__anchor" data-input-id="go_to_home">
