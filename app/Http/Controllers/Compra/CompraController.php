@@ -35,6 +35,11 @@ class CompraController extends Controller
 {
     public function dondeRecibir(Request $request)
     {
+        //Se asigna un codigo de compra 
+        session_start();    
+        if (!isset($_SESSION['codigoCompra'])){  
+            $_SESSION["codigoCompra"]=mb_substr(auth()->user()->_id,-4).date("YmdHis"); 
+        } 
         if(Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', 1 ]])->exists())
         {
             $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get(); 
@@ -118,13 +123,13 @@ class CompraController extends Controller
                     //echo '--comprador-'.$customerId.'--vendedor'.$vendedor[0]->idCustomer.'--Precio-'.$item->precio.'--cardId-'.$cardId.'</br>';
 
                     $customer = $openpay->customers->get($customerId); 
-
+                    session_start();
                     $chargeData = array(
                             'method'            => 'card',
                             'source_id'         => $cardId,
                             'amount'            => (float)($item->precio-$item->precio)+5,
                             'description'       => $description, 
-                            'order_id' => $codigoCompra,
+                            'order_id' => $_SESSION["codigoCompra"],
                             'device_session_id' => $device_session_id);
 
                     //Validación de cargo a tarjeta de credito
@@ -141,7 +146,7 @@ class CompraController extends Controller
                     $compras->idVendedor = $publicacion[0]->idUser;
                     $compras->cardId = $cardId;
                     $compras->cantidad = 0;
-                    $compras->codigoCompra = $codigoCompra;
+                    $compras->codigoCompra = $_SESSION["codigoCompra"];
                     $compras->precio = $item->precio;
                     $compras->idDireccionEnvio = $idDireccionEnvio;
                     $compras->save(); 
@@ -158,11 +163,14 @@ class CompraController extends Controller
 
     public function confirmCompra(Request $request)
     {   
-        try{ 
-            $codigoCompra = $request->_token; 
+        try{
+            session_start();
+            //Optener direcciones disponibles del comprador
             $direccionEnvio = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
+            //Verificar si es compra de articulo o compra de carrito
             if (isset($request->idReferencia)) {
-
+                ////////////////COMPRA CARRITO//////////////////
+                //Optener los elementos en el carrido
                 $carItems = Carrito::where(['idUser'=>auth()->user()->_id])->get();
                 if(CompraController::efectuarCompra($carItems,auth()->user()->idCustomer,$request->cardId,'Compra carrito',$_POST["deviceIdHiddenFieldName"],$direccionEnvio[0]->_id,1,$codigoCompra)){
                     Carrito::where(['idUser'=>auth()->user()->_id])->delete();
@@ -172,6 +180,7 @@ class CompraController extends Controller
                 }
 
             }else{
+                ////////////////COMPRA ARTICULO//////////////////
                 $publicacion = Articulos::where(['idPublicacion'=>$request->idPaquete])->get();
                 $vendedor = User::where(['_id'=>$publicacion[0]->idUser])->get(); 
                 $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678');
@@ -185,7 +194,7 @@ class CompraController extends Controller
                         'source_id' => $request->cardId,
                         'amount' => (float)$_POST["precio"],
                         'description' => $_POST["description"],
-                        'order_id' => $codigoCompra,
+                        'order_id' => $_SESSION["codigoCompra"],
                         'device_session_id' => $_POST["deviceIdHiddenFieldName"]);
 
                 //Validación de cargo a tarjeta de credito
@@ -204,16 +213,14 @@ class CompraController extends Controller
                     $compras->idVendedor = $publicacion[0]->idUser;
                     $compras->cardId = $request->cardId;
                     $compras->cantidad = 0;
-                    $compras->codigoCompra = $codigoCompra;
+                    $compras->codigoCompra = $_SESSION["codigoCompra"];
                     $compras->precio = floatval($request->precio);
                     $compras->idDireccionEnvio = $direccionEnvio[0]->_id;
                     $compras->save(); 
                     $idCompra = $compras->getKey(); 
 
                     Articulos::where(['idPublicacion' => $request->idPaquete])->decrement('cantidad');
-
-
-                    //return redirect('compraExitosa')->with(['urlImagen'=>$request->urlImagen,'idCompra'=>$idCompra]);
+ 
                     return redirect()->route('compraExitosa', ['urlImagen' => $request->urlImagen,'idCompra'=>$idCompra]);
 
                 }else{

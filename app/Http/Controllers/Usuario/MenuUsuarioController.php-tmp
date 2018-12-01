@@ -25,6 +25,10 @@ class MenuUsuarioController extends Controller {
 		//
 	}
 
+	public function detalleCompra(Request $request) {
+		return view('usuario.menu.detaCompra');
+	}
+
 	public function aggDomicilio() {
 		return view('usuario.menu.agregarDomicilio');
 	}
