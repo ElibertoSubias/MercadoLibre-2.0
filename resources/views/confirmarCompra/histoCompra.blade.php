@@ -178,10 +178,8 @@
     </div>
     <div class="col-md-10 cont_sub_cont">
         <div class="col-md-12 textIzquierda" style="    margin-left: 10px;background-color:white;width: 99%;">
-            <h2 class="typo">Mis Datos</h2>
-			
-
-        </div>
+           
+        </div><!--///////////////////////////////////////====aqui termina contenido====//////////////////////////////////////-->
         </div>
     <div> 
 </div> 
