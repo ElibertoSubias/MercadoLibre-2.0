@@ -3,7 +3,14 @@
 @section('content')
 {!! Html::style('css/styleHistoCompra.css') !!}
 {!! Html::style('css/menuStyle.css') !!} 
+{!! Html::style('css/historialpublicaciones.css') !!} 
 
+<style type="text/css">
+   
+
+
+
+</style>
 <!--///////////////////////////////////////====PANTALLA COMPLETA====//////////////////////////////////////-->
 <main role="main">
 	<div class="app-wrapper app-wrapper--menu-expanded app-wrapper--menu-expanded-static">
@@ -78,7 +85,7 @@
 	                            </a>
 	                        </div>
 	                        <div class="myml-nav__section-list">
-	                            <a id="myml-nav__menu-item-purchases" class="myml-nav__menu-item " href="#">
+	                            <a id="myml-nav__menu-item-purchases" class="myml-nav__menu-item " href="{{route('historialComp')}}">
 	                                <span class="myml-nav__menu-item-text">Compras</span>
 	                            </a>
 	                        </div>
@@ -181,128 +188,89 @@
 	    <div class="col-md-10 cont_sub_cont">
 	        <div class="col-md-12 textIzquierda" style="margin-left: 10px;background-color:white;width: 99%;">	            
 				<!--////////////////////////////////////////====LADO DERECHO====///////////////////////////////////////-->
-				<div class="page-wrapper">
-					<div class="page-wrapper__content">
-						<div class="purchases-list-container">
-							<h1 class="purchases-title" style="margin-left: -800px;">Compras</h1>
-							<div data-js="list-items-container">
-								<div class="purchases-filters-navbar__container">
-									<div class="purchases-filters-navbar" data-component="purchases-filter">
-										<p data-js="purchases-filter__label" class="ch-dropdown-trigger ch-dropdown-trigger-skin ch-shownby-pointertap ch-user-no-select" data-title="undefined" title="" aria-owns="ch-dropdown-4" aria-haspopup="true">Todas</p>
-										<menu label="Links" class="ch-hide purchases-dropdown-filters" style="background:white" data-js="purchases-filter__dropdown">
-											<li class="purchases-dropdown-filters__filter">
-												<a href="https://myaccount.mercadolibre.com.mx/purchases/list?q=purchase.filter=mediation_closed" data-js="purchases-filter__link" data-value="Reclamos cerrados">Reclamos cerrados</a>
-											</li>
-											<li class="purchases-dropdown-filters__filter">
-												<a href="https://myaccount.mercadolibre.com.mx/purchases/list?q=purchase.filter=mediations_opened" data-js="purchases-filter__link" data-value="Reclamos abiertos">Reclamos abiertos</a>
-											</li>
-											<li class="purchases-dropdown-filters__filter">
-												<a href="https://myaccount.mercadolibre.com.mx/purchases/list" data-js="purchases-filter__link" data-value="Todas">Todas</a>
-											</li>
-										</menu>
-									</div>
-								</div>
-								<script type="text/javascript">
-									(function(a,b){a.GoogleAnalyticsObject=b;a['MeliAnalyticsData'] = {'dimensions':''};a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)};a[b].l=1*new Date})(window,"meli_ga");
-									meli_ga("set", "title", "app-purchases-frontend-0.12.44");
-									meli_ga("set", "page", "/MYML/PURCHASES/LIST/");
-									meli_ga("set", "contentGroup1", "/NONE/MYML/PURCHASES/LIST/");
-									meli_ga("set", "contentGroup2", "/NONE/MYML/PURCHASES/LIST/");
-									meli_ga("set", "contentGroup3", "/NONE/MYML/PURCHASES/LIST/");
-									meli_ga("set", "dimension1", "desktop");
-									meli_ga("set", "dimension7", "NONE");
-									meli_ga("set", "dimension8", "NONE");
-									meli_ga('send', 'pageview');
-									(function(b,d){var a=b.createElement("iframe");(a.frameElement||a).style.cssText="width: 0; height: 0; border: 0; position: absolute";a.src="javascript:false";a.id="GoogleAnalyticsIframe";var c=b.getElementsByTagName("script")[0];c.parentNode.insertBefore(a,c);a=a.contentWindow.document;a.open().write("<body onload=\"var js = document.createElement('script');js.src = '"+d+"';document.body.appendChild(js);\">");a.close()})(document,"https://analytics.mlstatic.com/ga/mlm-ml-analytics.min.gz.js");
-								</script>
-								<script type="text/javascript">
-									        (function(w, r) {
-									            w[r] = w[r] || function() {
-									                (w[r].q = w[r].q || []).push(arguments)
-									            }
-									        })(window,'melidata');
+			<div id="DIV_1">
+    <h1 id="H1_2" style="margin-top: 28px !important; margin-bottom: 40px !important">
+        Compras
+    </h1>
+    <div id="DIV_3">
+        <div id="DIV_4">
+    
+        </div>
+        <!-- TRACK MELIDATA -->
 
-									        (function(d,u) {
-									            if (! document.getElementById("MelidataIframe")) {
-									                var i = d.createElement('iframe');
-									                (i.frameElement || i).style.cssText = "width: 0; height: 0; border: 0; position: absolute";
-									                i.src = "javascript:false";
-									                i.id = "MelidataIframe";
-									                var t = d.getElementsByTagName('script')[0];
-									                t.parentNode.insertBefore(i, t);
-									                var doc = i.contentWindow.document;
-									                doc.open().write('<body onload="' +
-									                'window.inDapIF = true;' +
-									                'var js = document.createElement(\'script\');' +
-									                'js.src = \'' + u + '\';' +
-									                'document.body.appendChild(js);">');
-									                doc.close();
-									            }
-									            else {
-									                /* This page is charged async via AJAX and inserted into another one who has
-									                already download melidata js lib => Just clean the track */
-									                melidata("clean");
-									            }
-								        	})(document,'https://http2.mlstatic.com/storage/melidata-web-sdk/js/3/0.0.74/melidata.min.js');
-
-									        melidata("configure", "melidata_api_url", "//data.mercadolibre.com/tracks");
-
-									        melidata("add", "id", "9518636f-8fa3-414a-ad63-7fce15ab9206");
-									        melidata("add", "server_id", "9518636f-8fa3-414a-ad63-7fce15ab9206" );
-									        melidata("add", "application", {"version":"5.22.0","server_hostname":"i-0adc300d6c99433be-10","server_poolname":"purchases-frontend-mlm","business":"mercadolibre","site_id":"MLM"});
-									        melidata("add", "user", {"uid":"bec56b47-ccba-410b-b562-d346840d912f","user_nick":"ELIBERTOSUBIAS","user_id":"138963338"});
-									        melidata("add", "device", {"platform":"/web/desktop","user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"});
-									        melidata("add", "platform", {"http":{"cookies":{"LAST_SEARCH":"as","orgpms":"305851","orguseridp":"138963338","pmsctx":"******IMLM558487371%7C%7CIMLM542876793%7C%7C%7CIMLM570085635%7C%7C**","pmsword":"ITEM","zipcode":"80014"},"headers":{"host":"myaccount.mercadolibre.com.mx","x-device-js":"true","x-nginx-host":"i-0fac2a603fec3e876-10.53.187.211","x-platform":"ml"},"http_url":"http://myaccount.mercadolibre.com.mx/purchases/purchasesSearch/","http_referer":"https://myaccount.mercadolibre.com.mx/purchases/list/"}});
-									                
-									        /* Custom tracks */
-									        var trackObj;
-									        
-									    melidata("add", "event_data", {});
-
-									    melidata("send", "view", {
-									        path:"/myml/purchases/list",
-									        data: {}
-									    });						            
-						    	</script>
-						    	<div class="purchases-container">
-						    		<div class="purchases-notification">
-        							</div>
-        							<div class="myml-loading u-hide" data-js="myml-loading">
-        								<p class="ch-message ch-load">
-        									"Cargando"
-        									<span class="ch-loading-small"></span>
-        								</p>
-        							</div>
-        							<div id="flowAlert"></div>
-        							<div data-js="list-items-container">
-        								<div class="myml-ui-item-container ui-box ui-box--lite" style="margin-left: 40px;">
-        									<div class="myml-ui-item-container__header" style="margin-left: -740px;">
-        										<h2 class="myml-ui-list-item-container__title info" style="margin-left: -55px;">Entregado</h2>
-        										<p class="myml-ui-list-item-container__subtitle">Llegó el 29 de agosto.</p>
-        									</div>
-        									<div class="myml-ui-item-row u-myml-clearfix  ">
-        										<div class="myml-ui-dropdown-actions">
-        											<span data-component="myml-ui-dropdown-actions" class="myml-ui-dropdown-actions__trigger ui-icon-menu ch-shownby-pointertap ch-dropdown-trigger ch-user-no-select ch-dropdown-trigger-skin" data-title="undefined" title="" aria-owns="ch-dropdown-1" aria-haspopup="true">
-        												<span class="myml-ui-dropdown-actions__icon" >
-        													<svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
-        														<title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title>
-        														<g fill="#333" fill-rule="evenodd">
-        															<path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z"></path>
-        															<ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse>
-        															<ellipse cx="4" cy="30.998" rx="4" ry="3.919"></ellipse>
-        														</g>
-        													</svg>
-        												</span>
-        											</span>
-        										</div>
-        									</div>
-        								</div>        								
-        							</div>
-						    	</div>
-							</div>
-						</div>
-					</div>
-				</div>
+ 
+  
+        <div id="DIV_16">
+                    <div id="DIV_17">
+                    </div>
+                    <div id="DIV_18">
+                        <p id="P_19">
+                            Cargando<span id="SPAN_20"></span>
+                        </p>
+                    </div>
+                    <div id="DIV_21">
+                    </div>
+                    <div id="DIV_22">
+                   
+                     <?php
+                for($i=0; $i<count($articulos); $i++){ 
+                    ?>
+                        <div id="DIV_155" style="margin-top: 15px !important; width: 85% !important">
+                            <div id="DIV_156">
+                                <h2 id="H2_157">
+                                    Enviado
+                                </h2>
+                              
+                            </div>
+                            <div id="DIV_159">
+                                <div id="DIV_160">
+                                     <span id="SPAN_161"><span id="SPAN_162"></span></span>
+                              
+                                    <ul id="UL_169">
+                                        <li id="LI_170">
+                                             <a href="/purchases/1291834911/shipments/25954795122/detail" id="A_171">Detalle del envío</a>
+                                        </li>
+                                        <li id="LI_172">
+                                             <a href="http://ayuda.mercadolibre.com.mx/ayuda/purchases/options?order=1291834911" id="A_173">Tengo un problema</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="DIV_174">
+                                    <div id="DIV_175">
+                                        <img src="images/{{ $articulos[$i]->idUser}}/{{$articulos[$i]->idPublicacion}}/{{$articulos[$i]->urlPrincipal}}" width="80"  style="margin-bottom: -25px">
+                                    </div>
+                                    <div id="DIV_178">
+                                         <a href="https://articulo.mercadolibre.com.mx/MLM-561641887-lentes-computadora-antifatiga-antiradiacion-ojo-seco-fashion-_JM" id="A_179">{{$articulos[$i]->titulo}}</a>
+                                        <div id="DIV_180">
+                                            <p id="P_181">
+                                                <span id="SPAN_182"></span>
+                                                <meta content="219.00" id="META_183" /> <span id="SPAN_184">$</span> <span id="SPAN_185">{{$compras[$i]->precio}}</span> <span id="SPAN_186">.</span> <span id="SPAN_187">00</span> x 1 unidad
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="DIV_188">
+                                    <ul id="UL_189">
+                                        <li id="LI_190">
+                                           {{$vendedor[$i]->nombre}}
+                                        </li>
+                                        <li id="LI_191">
+                                           
+                                        </li>
+                                        <li id="LI_192">
+                                             <a href="/messaging/orders/1291834911" id="A_193"> <span id="SPAN_194">Ver mensaje</span></a>
+                                        </li>
+                                    </ul>
+                                </div> <span id="SPAN_195"> <a href="/purchases/1291834911/detail" id="A_196">Ver detalle</a></span>
+                            </div>
+                        </div>
+                 <?php
+                        } 
+                    ?> 
+                    </div>
+                </div>
+    </div>
+</div>
 				<!--////////////////////////////////////////====LADO DERECHO====///////////////////////////////////////-->
 	        </div>
 	        </div>

@@ -275,7 +275,7 @@
             </thead>
             <tbody>
               
-              @foreach($articulos as $venta)
+              @foreach($articulos as $venta) 
             
               <tr>
                     <td  rowspan="2" style="padding-top: 25px"><input type="checkbox" name="" class="settings"></td>
@@ -425,7 +425,7 @@
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
               </div><!-- /.modal -->  
-              @endforeach
+      @endforeach 
             </tbody>
         </table> 
     </div>

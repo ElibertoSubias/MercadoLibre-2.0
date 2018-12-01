@@ -50,7 +50,7 @@
 					</li>
 					<li class="nav-menu-elementos"><a href="https://www.mercadolibre.com.mx/gz/home/navigation/" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Tu historial</a></li>
 					<li class="nav-menu-elementos">
-						<a href="#" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Tus compras</a>
+						<a href="{{route('historialComp')}}" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Tus compras</a>
 					</li>
 					<li class="nav-menu-elementos">
 						<a href="{{route('autenticar')}}" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Vender</a>

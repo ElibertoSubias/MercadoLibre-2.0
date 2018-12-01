@@ -67,7 +67,7 @@
 						@endif
 						<ul>
 							<li>
-								<a href="#"><i class="nav-icon-purchases-mobile"></i>
+								<a href="{{route('historialComp')}}"><i class="nav-icon-purchases-mobile"></i>
 									<p>Tus compras</p>
 								</a>
 							</li>

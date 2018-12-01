@@ -223,7 +223,7 @@
                             </a>
                         </div>
                         <div class="myml-nav__section-list">
-                            <a id="myml-nav__menu-item-purchases" class="myml-nav__menu-item " href="#">
+                            <a id="myml-nav__menu-item-purchases" class="myml-nav__menu-item " href="{{route('historialComp')}}">
                                 <span class="myml-nav__menu-item-text">Compras</span>
                             </a>
                         </div>

@@ -431,7 +431,27 @@ class CompraController extends Controller
 
     public function histoCompra(Request $request)
     {
-    	return view('confirmarCompra.histoCompra');
+
+
+        $compras = Compras::where('idUser' , '=', auth()->user()->id)->get();
+      
+    
+        $articulos= array();
+        $direccionEnvio= array();
+        $vendedor= array();
+        foreach ($compras as $id) {
+        
+        $aux = Articulos::where('_id' , '=', $id->idPublicacion)->get();
+        array_push($articulos, $aux[0]);
+        
+        $auxDirecion = Direcciones::where('_id' , '=', $id->idDireccionEnvio)->get();   
+        array_push($direccionEnvio, $auxDirecion[0]);
+
+        $auxVendedor = User::where('_id' , '=', $id->idVendedor)->get(); 
+         array_push($vendedor, $auxVendedor[0]);  
+        } 
+    
+    	return view('confirmarCompra.histoCompra', compact('compras', 'articulos', 'direccionEnvio', 'vendedor'));
     }
 
     public function vistaEstadoDeCuenta(Request $request)

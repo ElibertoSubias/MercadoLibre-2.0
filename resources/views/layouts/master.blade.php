@@ -84,7 +84,7 @@
 						@endif
 						<ul>
 							<li>
-								<a href="#"><i class="nav-icon-purchases-mobile"></i>
+								<a href="{{route('historialComp')}}"><i class="nav-icon-purchases-mobile"></i>
 									<p>Tus compras</p>
 								</a>
 							</li>
@@ -145,7 +145,7 @@
 					</li>
 					<li class="nav-menu-elementos"><a href="#" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Tu historial</a></li>
 					<li class="nav-menu-elementos">
-						<a href="#" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Tus compras</a>
+						<a href="{{route('historialComp')}}" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Tus compras</a>
 					</li>
 					<li class="nav-menu-elementos">
 						<a href="{{route('vender')}}" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Vender</a>
@@ -188,7 +188,7 @@
 							</div>
 							<div id="info_menu" style="float: right;margin-right: 100px;">       
 								<a href="" data-id="points" rel="nofollow">Mercado Puntos</a>
-								<a href="" data-id="purchases" rel="nofollow">Compras</a>
+								<a href="{{route('historialComp')}}" data-id="purchases" rel="nofollow">Compras</a>
 								<a href="{{route('publicaciones')}}" data-id="sales" rel="nofollow">Ventas</a>
 								<a href="{{ route('perfil') }}" data-id="personal-info" rel="nofollow">Mis datos</a>
 								<a href="" data-id="security" rel="nofollow">Seguridad</a> 
