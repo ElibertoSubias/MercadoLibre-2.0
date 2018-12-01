@@ -452,16 +452,16 @@ class CompraController extends Controller
         $vendedor= array();
         foreach ($compras as $id) {
         
-        $aux = Articulos::where('_id' , '=', $id->idPublicacion)->get();
+        $aux = Articulos::where('idPublicacion' , '=', $id->idPublicacion)->get();
         array_push($articulos, $aux[0]);
-        
+        //echo $aux;
         $auxDirecion = Direcciones::where('_id' , '=', $id->idDireccionEnvio)->get();   
         array_push($direccionEnvio, $auxDirecion[0]);
 
         $auxVendedor = User::where('_id' , '=', $id->idVendedor)->get(); 
          array_push($vendedor, $auxVendedor[0]);  
         } 
-    
+          //  return $articulos;
     	return view('confirmarCompra.histoCompra', compact('compras', 'articulos', 'direccionEnvio', 'vendedor'));
     }
 

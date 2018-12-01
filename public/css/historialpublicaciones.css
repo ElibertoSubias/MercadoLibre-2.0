@@ -1,3 +1,4 @@
+
  #DIV_1 {
     border-collapse: collapse;
     bottom: 0px;
@@ -20,29 +21,7 @@
     outline: rgb(51, 51, 51) none 0px;
 }/*#DIV_1*/
 
-#DIV_1:after {
-    border-collapse: collapse;
-    color: rgb(51, 51, 51);
-    text-decoration: none solid rgb(51, 51, 51);
-    text-size-adjust: 100%;
-    column-rule-color: rgb(51, 51, 51);
-    caret-color: rgb(51, 51, 51);
-    border: 0px none rgb(51, 51, 51);
-    font: normal normal 400 normal 13px / 20px Arial, Helvetica, "Nimbus Sans L", sans-serif;
-    outline: rgb(51, 51, 51) none 0px;
-}/*#DIV_1:after*/
 
-#DIV_1:before {
-    border-collapse: collapse;
-    color: rgb(51, 51, 51);
-    text-decoration: none solid rgb(51, 51, 51);
-    text-size-adjust: 100%;
-    column-rule-color: rgb(51, 51, 51);
-    caret-color: rgb(51, 51, 51);
-    border: 0px none rgb(51, 51, 51);
-    font: normal normal 400 normal 13px / 20px Arial, Helvetica, "Nimbus Sans L", sans-serif;
-    outline: rgb(51, 51, 51) none 0px;
-}/*#DIV_1:before*/
 
 #H1_2 {
     border-collapse: collapse;
@@ -930,7 +909,7 @@
     outline: rgb(51, 51, 51) none 0px;
 }/*#DIV_52:before, #DIV_94:before, #DIV_136:before, #DIV_178:before*/
 
-#A_53, #A_95, #A_137, #A_179 {
+.A_179 {
     border-collapse: collapse;
     color: rgb(12, 58, 183);
     text-decoration: none solid rgb(12, 58, 183);
@@ -939,186 +918,17 @@
     perspective-origin: 0px 0px;
     transform-origin: 0px 0px;
     caret-color: rgb(12, 58, 183);
+    margin-left: -110px !important;
     border: 0px none rgb(12, 58, 183);
     font: normal normal 400 normal 14px / 20px Arial, Helvetica, "Nimbus Sans L", sans-serif;
     outline: rgb(12, 58, 183) none 0px;
 }/*#A_53, #A_95, #A_137, #A_179*/
 
-#A_53:after, #A_95:after, #A_137:after, #A_179:after {
-    border-collapse: collapse;
-    color: rgb(12, 58, 183);
-    text-decoration: none solid rgb(12, 58, 183);
-    text-size-adjust: 100%;
-    column-rule-color: rgb(12, 58, 183);
-    caret-color: rgb(12, 58, 183);
-    border: 0px none rgb(12, 58, 183);
-    font: normal normal 400 normal 14px / 20px Arial, Helvetica, "Nimbus Sans L", sans-serif;
-    outline: rgb(12, 58, 183) none 0px;
-}/*#A_53:after, #A_95:after, #A_137:after, #A_179:after*/
 
+.p-181{
+    margin-left: -150px !important;
+}
 
-
-#P_55:after, #P_97:after, #P_139:after, #P_181:after {
-    border-collapse: collapse;
-    color: rgb(102, 102, 102);
-    text-decoration: none solid rgb(102, 102, 102);
-    text-size-adjust: 100%;
-    column-rule-color: rgb(102, 102, 102);
-    caret-color: rgb(102, 102, 102);
-    border: 0px none rgb(102, 102, 102);
-    font: normal normal 400 normal 14px / 20px Arial, Helvetica, "Nimbus Sans L", sans-serif;
-    outline: rgb(102, 102, 102) none 0px;
-}/*#P_55:after, #P_97:after, #P_139:after, #P_181:after*/
-
-#P_55:before, #P_97:before, #P_139:before, #P_181:before {
-    border-collapse: collapse;
-    color: rgb(102, 102, 102);
-    text-decoration: none solid rgb(102, 102, 102);
-    text-size-adjust: 100%;
-    column-rule-color: rgb(102, 102, 102);
-    caret-color: rgb(102, 102, 102);
-    border: 0px none rgb(102, 102, 102);
-    font: normal normal 400 normal 14px / 20px Arial, Helvetica, "Nimbus Sans L", sans-serif;
-    outline: rgb(102, 102, 102) none 0px;
-}/*#P_55:before, #P_97:before, #P_139:before, #P_181:before*/
-
-#SPAN_56, #SPAN_98, #SPAN_140, #SPAN_182 {
-    border-collapse: collapse;
-    color: rgb(102, 102, 102);
-    display: inline-block;
-    height: 15px;
-    text-decoration: none solid rgb(102, 102, 102);
-    text-size-adjust: 100%;
-    vertical-align: text-bottom;
-    width: 45.3906px;
-    column-rule-color: rgb(102, 102, 102);
-    perspective-origin: 22.6953px 7.5px;
-    transform-origin: 22.6953px 7.5px;
-    caret-color: rgb(102, 102, 102);
-    border: 0px none rgb(102, 102, 102);
-    font: normal normal 400 normal 14px / 16px Arial, Helvetica, "Nimbus Sans L", sans-serif;
-    outline: rgb(102, 102, 102) none 0px;
-}/*#SPAN_56, #SPAN_98, #SPAN_140, #SPAN_182*/
-
-
-#META_57, #META_99, #META_141, #META_183 {
-    border-collapse: collapse;
-    color: rgb(102, 102, 102);
-    float: left;
-    text-decoration: none solid rgb(102, 102, 102);
-    text-size-adjust: 100%;
-    column-rule-color: rgb(102, 102, 102);
-    caret-color: rgb(102, 102, 102);
-    border: 0px none rgb(102, 102, 102);
-    font: normal normal 400 normal 14px / 16px Arial, Helvetica, "Nimbus Sans L", sans-serif;
-    outline: rgb(102, 102, 102) none 0px;
-}/*#META_57, #META_99, #META_141, #META_183*/
-
-#META_57:after, #META_99:after, #META_141:after, #META_183:after {
-    border-collapse: collapse;
-    color: rgb(102, 102, 102);
-    text-decoration: none solid rgb(102, 102, 102);
-    text-size-adjust: 100%;
-    column-rule-color: rgb(102, 102, 102);
-    caret-color: rgb(102, 102, 102);
-    border: 0px none rgb(102, 102, 102);
-    font: normal normal 400 normal 14px / 16px Arial, Helvetica, "Nimbus Sans L", sans-serif;
-    outline: rgb(102, 102, 102) none 0px;
-}/*#META_57:after, #META_99:after, #META_141:after, #META_183:after*/
-
-#META_57:before, #META_99:before, #META_141:before, #META_183:before {
-    border-collapse: collapse;
-    color: rgb(102, 102, 102);
-    text-decoration: none solid rgb(102, 102, 102);
-    text-size-adjust: 100%;
-    column-rule-color: rgb(102, 102, 102);
-    caret-color: rgb(102, 102, 102);
-    border: 0px none rgb(102, 102, 102);
-    font: normal normal 400 normal 14px / 16px Arial, Helvetica, "Nimbus Sans L", sans-serif;
-    outline: rgb(102, 102, 102) none 0px;
-}/*#META_57:before, #META_99:before, #META_141:before, #META_183:before*/
-
-#SPAN_58, #SPAN_100, #SPAN_142, #SPAN_184 {
-    border-collapse: collapse;
-    color: rgb(102, 102, 102);
-    display: block;
-    float: left;
-    height: 15px;
-    text-decoration: none solid rgb(102, 102, 102);
-    text-size-adjust: 100%;
-    width: 7.79297px;
-    column-rule-color: rgb(102, 102, 102);
-    perspective-origin: 3.88672px 7.5px;
-    transform-origin: 3.88672px 7.5px;
-    caret-color: rgb(102, 102, 102);
-    border: 0px none rgb(102, 102, 102);
-    font: normal normal 400 normal 14px / 16px Arial, Helvetica, "Nimbus Sans L", sans-serif;
-    margin: 0px 2.8px 0px 0px;
-    outline: rgb(102, 102, 102) none 0px;
-}/*#SPAN_58, #SPAN_100, #SPAN_142, #SPAN_184*/
-
-
-#SPAN_59, #SPAN_101, #SPAN_143, #SPAN_185 {
-    border-collapse: collapse;
-    color: rgb(102, 102, 102);
-    display: block;
-    float: left;
-    height: 15px;
-    text-decoration: none solid rgb(102, 102, 102);
-    text-size-adjust: 100%;
-    width: 23.3594px;
-    column-rule-color: rgb(102, 102, 102);
-    perspective-origin: 11.6797px 7.5px;
-    transform-origin: 11.6797px 7.5px;
-    caret-color: rgb(102, 102, 102);
-    border: 0px none rgb(102, 102, 102);
-    font: normal normal 400 normal 14px / 16px Arial, Helvetica, "Nimbus Sans L", sans-serif;
-    outline: rgb(102, 102, 102) none 0px;
-}/*#SPAN_59, #SPAN_101, #SPAN_143, #SPAN_185*/
-
-
-#SPAN_60, #SPAN_102, #SPAN_144, #SPAN_186 {
-    border-collapse: collapse;
-    bottom: 17.5px;
-    color: rgb(102, 102, 102);
-    display: block;
-    height: 15px;
-    left: 123.945px;
-    position: absolute;
-    right: 326.055px;
-    text-decoration: none solid rgb(102, 102, 102);
-    text-size-adjust: 100%;
-    top: 42.5px;
-    width: 0px;
-    column-rule-color: rgb(102, 102, 102);
-    perspective-origin: 0px 7.5px;
-    transform-origin: 0px 7.5px;
-    caret-color: rgb(102, 102, 102);
-    border: 0px none rgb(102, 102, 102);
-    font: normal normal 400 normal 0px / 16px Arial, Helvetica, "Nimbus Sans L", sans-serif;
-    outline: rgb(102, 102, 102) none 0px;
-}/*#SPAN_60, #SPAN_102, #SPAN_144, #SPAN_186*/
-
-
-#SPAN_61, #SPAN_103, #SPAN_145, #SPAN_187 {
-    border-collapse: collapse;
-    color: rgb(102, 102, 102);
-    display: block;
-    float: left;
-    height: 8.75px;
-    text-decoration: none solid rgb(102, 102, 102);
-    text-size-adjust: 100%;
-    vertical-align: text-bottom;
-    width: 10.918px;
-    column-rule-color: rgb(102, 102, 102);
-    perspective-origin: 5.44922px 4.375px;
-    transform-origin: 5.44922px 4.375px;
-    caret-color: rgb(102, 102, 102);
-    border: 0px none rgb(102, 102, 102);
-    font: normal normal 400 normal 9.8px / 9.8px Arial, Helvetica, "Nimbus Sans L", sans-serif;
-    margin: 0px 0px 0px 0.49px;
-    outline: rgb(102, 102, 102) none 0px;
-}/*#SPAN_61, #SPAN_103, #SPAN_145, #SPAN_187*/
 
 
 

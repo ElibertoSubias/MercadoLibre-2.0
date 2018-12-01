@@ -240,11 +240,11 @@
                                         <img src="images/{{ $articulos[$i]->idUser}}/{{$articulos[$i]->idPublicacion}}/{{$articulos[$i]->urlPrincipal}}" width="80"  style="margin-bottom: -25px">
                                     </div>
                                     <div id="DIV_178">
-                                         <a href="https://articulo.mercadolibre.com.mx/MLM-561641887-lentes-computadora-antifatiga-antiradiacion-ojo-seco-fashion-_JM" id="A_179">{{$articulos[$i]->titulo}}</a>
+                                         <a href="https://articulo.mercadolibre.com.mx/MLM-561641887-lentes-computadora-antifatiga-antiradiacion-ojo-seco-fashion-_JM" class="A_179">{{$articulos[$i]->titulo}}</a>
                                         <div id="DIV_180">
-                                            <p id="P_181">
+                                            <p id="P_181" class="p-181">
                                                 <span id="SPAN_182"></span>
-                                                <meta content="219.00" id="META_183" /> <span id="SPAN_184">$</span> <span id="SPAN_185">{{$compras[$i]->precio}}</span> <span id="SPAN_186">.</span> <span id="SPAN_187">00</span> x 1 unidad
+                                                <meta content="219.00" id="META_183" /> <span id="SPAN_184">$</span> <span id="SPAN_185">{{$compras[$i]->precio}}</span>  x {{$compras[$i]->cantidad}} unidad
                                             </p>
                                         </div>
                                     </div>
@@ -261,7 +261,16 @@
                                              <a href="/messaging/orders/1291834911" id="A_193"> <span id="SPAN_194">Ver mensaje</span></a>
                                         </li>
                                     </ul>
-                                </div> <span id="SPAN_195"> <a href="/purchases/1291834911/detail" id="A_196">Ver detalle</a></span>
+                                </div> 
+                                <form action="{{route('detalleCompra')}}" method="post" accept-charset="utf-8">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                                                    
+                                                    <input type="hidden" name="codigoCompra" value="{{$compras[$i]->codigoCompra}}">
+                                                    
+                                                      <button type="submit" class="ui-button  ui-button--primary   user-action user-action--get" data-js="action__anchor" data-input-id="go_to_order">
+                                                            Ver detalle de la compra
+                                                        </button>
+                                       </form> 
                             </div>
                         </div>
                  <?php
