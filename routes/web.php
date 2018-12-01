@@ -137,4 +137,6 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('vistaCuenta', 'Compra\CompraController@vistaEstadoDeCuenta')->name('vistaCuenta');
 
+	
+
 });
