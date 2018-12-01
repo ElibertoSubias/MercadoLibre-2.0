@@ -22,6 +22,7 @@
 
             $('#pay-button').on('click', function(event) {
                 event.preventDefault();
+                $("#pay-button").prop('disabled', true);
                 $('#device_session_id').val(deviceSessionId);
                 $('#payment-form').submit();
             });
@@ -276,7 +277,7 @@ echo mb_substr($cadena, -4);
                                 <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
                                 <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
                                 <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
-                                <input type="hidden" name="precio" id="precio" value="{{($precio+$costoEnvio)-$precio+1}}">
+                                <input type="hidden" name="precio" id="precio" value="{{$precio}}">
                                 <input type="hidden" name="description" id="description" value="{{$titulo}}">
                             @endempty
                             <button id="pay-button" class="overview-component__action-button ui-button ui-button--primary" data-id="overview-action" data-js="" type="submit">

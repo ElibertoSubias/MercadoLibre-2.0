@@ -9,6 +9,9 @@ use Auth;
 use Redirect;
 use App\Articulos;
 use App\Carrito;
+use App\Direcciones;
+use Intagono\Openpay\Openpay; 
+use App\Compras;
 use App\Urlimagenes;
 class MenuUsuarioController extends Controller
 {
@@ -31,9 +34,16 @@ class MenuUsuarioController extends Controller
         //
     } 
 
-    public function detalleCompra(Request $request)
+    public function detaCompra(Request $request)
     {
-      return view('usuario.menu.detaCompra');
+      $item = Compras::where(['codigoCompra'=>$request->codigoCompra])->get();
+
+      $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678');
+      $customer = $openpay->customers->get(auth()->user()->idCustomer); 
+      $charge = $customer->charges->get($item[0]->cargoId);
+      
+      $direccion = Direcciones::where(['_id'=>$item[0]->idDireccionEnvio])->get();
+      return view('usuario.menu.detaCompra')->with(['codigoCompra'=>$request->codigoCompra,'item'=>$item,'direccion'=>$direccion[0],'charge'=>$charge]);
     }
 
     public function aggDomicilio()
