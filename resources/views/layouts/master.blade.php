@@ -82,12 +82,7 @@
 							</li>
 						</ul>
 						@endif
-						<ul>
-							<li>
-								<a href="#"><i class="nav-icon-purchases-mobile"></i>
-									<p>Tus compras</p>
-								</a>
-							</li>
+						<ul> 
 							<li>
 								<a href="#"><i class="nav-icon-history-mobile"></i>
 									<p>Tu historial</p>
@@ -143,12 +138,12 @@
 					<li class="nav-menu-elementos">
 						<a href="#" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Descuentos Mercado Puntos</a>
 					</li>
-					<li class="nav-menu-elementos"><a href="#" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Tu historial</a></li>
-					<li class="nav-menu-elementos">
-						<a href="#" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Tus compras</a>
-					</li>
+					<li class="nav-menu-elementos"><a href="#" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Tu historial</a></li> 
 					<li class="nav-menu-elementos">
 						<a href="{{route('vender')}}" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Vender</a>
+					</li>
+					<li class="nav-menu-elementos">
+						<a href="#" class="nav-menu-item-link" rel="nofollow" data-js="nav-menu-item-trigger">Ayuda</a>
 					</li>
 				</ul> 
 			</div>  
@@ -198,8 +193,9 @@
 								</form>	
 							</div>
 							<span class="user-menu__chevron" style="right: 202px;"></span>
-						</div></span>
-						<a href="#" class="option-help" rel="nofollow">Ayuda</a>
+						</div></span> 
+								<a href="#">Compras</a> 
+						<a href="#" class="option-help" rel="nofollow">Favoritos</a>
 						<a style="padding-right: 0px" href="{{route('carrito')}}" title="Carrito de compras" class="nav-cart nav-cart-empty" id="nav-cart"><img style="vertical-align: baseline;" src="img/icon_car.png" alt="" width="19"></a><span class="nav-icon-cart-quantity">@if($cant_carrito==0) @else{{$cant_carrito}}@endif</span>
 					</nav>		
 				</div>
