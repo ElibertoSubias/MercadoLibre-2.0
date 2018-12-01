@@ -379,9 +379,10 @@
                                 <div class="congrats-actions" data-html2canvas-ignore="">
                                     <div data-component="actions">
                                                 <div class="action__item" data-component="action">
-                                                  <form action="{{route('detalleCompra')}}" method="get" accept-charset="utf-8">
-                                                    @isset($idCompra)
-                                                    <input type="hidden" name="idCompra" value="{{$idCompra}}">
+                                                  <form action="{{route('detalleCompra')}}" method="post" accept-charset="utf-8">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+                                                    @isset($codigoCompra)
+                                                    <input type="hidden" name="codigoCompra" value="{{$codigoCompra}}">
                                                     @endisset
                                                       <button type="submit" class="ui-button  ui-button--primary   user-action user-action--get" data-js="action__anchor" data-input-id="go_to_order">
                                                             Ver detalle de la compra
