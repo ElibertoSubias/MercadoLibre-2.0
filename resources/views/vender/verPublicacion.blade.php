@@ -89,7 +89,11 @@
                     <p class="item-status-notification__title"></p>
                 </div>
             </div>
-        </section>
+        </section> 
+        @if($errors->any()) 
+            <div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Ups!</strong>{{$errors->first()}}</div>
+        @endif
+
         @if($datos->estadoPublicacion===2)
         <section class="item-status bg-alt">
             <div class="item-status-notification">
@@ -483,37 +487,39 @@
                     <br>
         
                     <div>
-                <div class="row" >
-                    <div class="col-md-6 cont-btn-comprar">
-                        <form action="{{route('recibirPor')}}" method="post" accept-charset="utf-8"> 
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
-                            <input type="hidden" name="titulo" id="titulo" value="{{$datos->titulo}}">
-                            <input type="hidden" name="precio" id="precio" value="{{$datos->precio}}">
-                            <input type="hidden" name="color" id="color" value="{{$datos->color}}">
-                            <input type="hidden" name="idArticulo" id="idArticulo" value="{{$datos->_id}}">
-                            <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{$datos->idPublicacion}}">
-                            <input type="hidden" name="idUser" id="idUser" value="{{$datos->idUser}}"> 
-                            <input type="hidden" name="cantidad" id="cantidad" value="{{$datos->cantidad}}">
-                            <input type="hidden" name="urlPrincipal" id="urlPrincipal" value="{{$datos->urlPrincipal}}">
-                            <input type="submit"  class="ui-button ui-button--secondary " style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px" value="      Comprar  ahora   ">
-                        </form> 
+                @if($idVendedor!=auth()->user()->_id) 
+                    <div class="row" >
+                        <div class="col-md-6 cont-btn-comprar">
+                            <form action="{{route('recibirPor')}}" method="post" accept-charset="utf-8"> 
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                                <input type="hidden" name="titulo" id="titulo" value="{{$datos->titulo}}">
+                                <input type="hidden" name="precio" id="precio" value="{{$datos->precio}}">
+                                <input type="hidden" name="color" id="color" value="{{$datos->color}}">
+                                <input type="hidden" name="idArticulo" id="idArticulo" value="{{$datos->_id}}">
+                                <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{$datos->idPublicacion}}">
+                                <input type="hidden" name="idUser" id="idUser" value="{{$datos->idUser}}"> 
+                                <input type="hidden" name="cantidad" id="cantidad" value="{{$datos->cantidad}}">
+                                <input type="hidden" name="urlPrincipal" id="urlPrincipal" value="{{$datos->urlPrincipal}}">
+                                <input type="submit"  class="ui-button ui-button--secondary " style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px" value="      Comprar  ahora   ">
+                            </form> 
 
-                    </div>
-                    <div class="col-md-6 cont-btn-agregar">
-                        <form action="agregaralCarrito" method="post" accept-charset="utf-8">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
-                            <input type="hidden" name="titulo" id="titulo" value="{{$datos->titulo}}">
-                            <input type="hidden" name="precio" id="precio" value="{{$datos->precio}}">
-                            <input type="hidden" name="color" id="color" value="{{$datos->color}}">
-                            <input type="hidden" name="idArticulo" id="idArticulo" value="{{$datos->_id}}">
-                            <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{$datos->idPublicacion}}">
-                            <input type="hidden" name="idUser" id="idUser" value="{{$datos->idUser}}"> 
-                            <input type="hidden" name="cantidad" id="cantidad" value="{{$datos->cantidad}}">
-                            <input type="hidden" name="urlPrincipal" id="urlPrincipal" value="{{$datos->urlPrincipal}}">
-                            <input type="submit"  class="ui-button ui-button--secondary " style="font-size: 15px!important;min-width: 0;    margin-top: 40px;padding: 12px 16px;border: 1px solid #3483fa;    color: #3483fa;background: none;border-radius: 4px;" value="Agregar al carrito">
-                        </form> 
-                    </div>
-                </div> 
+                        </div>
+                        <div class="col-md-6 cont-btn-agregar">
+                            <form action="agregaralCarrito" method="post" accept-charset="utf-8">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                                <input type="hidden" name="titulo" id="titulo" value="{{$datos->titulo}}">
+                                <input type="hidden" name="precio" id="precio" value="{{$datos->precio}}">
+                                <input type="hidden" name="color" id="color" value="{{$datos->color}}">
+                                <input type="hidden" name="idArticulo" id="idArticulo" value="{{$datos->_id}}">
+                                <input type="hidden" name="idPublicacion" id="idPublicacion" value="{{$datos->idPublicacion}}">
+                                <input type="hidden" name="idUser" id="idUser" value="{{$datos->idUser}}"> 
+                                <input type="hidden" name="cantidad" id="cantidad" value="{{$datos->cantidad}}">
+                                <input type="hidden" name="urlPrincipal" id="urlPrincipal" value="{{$datos->urlPrincipal}}">
+                                <input type="submit"  class="ui-button ui-button--secondary " style="font-size: 15px!important;min-width: 0;    margin-top: 40px;padding: 12px 16px;border: 1px solid #3483fa;    color: #3483fa;background: none;border-radius: 4px;" value="Agregar al carrito">
+                            </form> 
+                        </div>
+                    </div> 
+                @endif
                 </div>
             </div> 
     </div> 

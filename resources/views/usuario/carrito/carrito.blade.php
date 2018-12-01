@@ -36,7 +36,7 @@
                         <div class="u-float-left item__description">
                         <h2 class="item__title" itemprop="name">
 
-                            <a class="item__title--link" href="https://articulo.mercadolibre.com.mx/MLM-572083257-playera-polo-club-america-nike-utileria-original-mediana-_JM?variation=22751685920" itemprop="url"> {{$articulo[$i]->titulo}}<label id="titulo"></label></a>
+                            <a class="item__title--link" href="{{route('verpublicacion', ['id' => $articulo[$i]->_id,'user'=>$articulo[$i]->idUser])}}" itemprop="url"> {{$articulo[$i]->titulo}}<label id="titulo"></label></a>
 
                         </h2>
                        
@@ -55,16 +55,16 @@
                             </div>
                             <ul class="item__action-menu">
                                     <li>
-                                        <a data-action="buy-item" class=" item__action-menu-link " href="/gz/checkout/cart/buy?items=MLM572083257-Q1-VAR22751685920&amp;destination_type=address_id&amp;destination_value=902260096&amp;unchecked=false&amp;context=cart_item&amp;siteId=MLM">Comprar ahora</a>
+                                        <a data-action="buy-item" class=" item__action-menu-link " href="#">Comprar ahora</a>
                                     </li>
                                     <li>
-                                        <form data-action="save-for-later" action="/gz/cart/saved/item" method="POST">
+                                        <form data-action="save-for-later" action="#" method="POST">
                                             <input type="hidden" name="id" value="MLM572083257_22751685920">
                                             <input type="submit" class="u-button-reset  u-link item__action-menu-link " value="Guardar para después">
                                         </form>
                                     </li>
                                     <li>
-                                        <form data-action="remove-from-cart" action="/gz/cart/item/delete" method="POST">
+                                        <form data-action="remove-from-cart" action="#" method="POST">
                                             <input type="hidden" name="id" value="MLM572083257_22751685920">
                                             <a href="javascript:eliminar('{{$articulo[$i]->_id}}')">Eliminar</a>
                                         </form>
@@ -173,7 +173,12 @@
             </span>
         </div>
         <div class="summary__actions">
-            <a href="/gz/checkout/cart/buy?items=MLM572083257-Q1-VAR22751685920&amp;destination_type=address_id&amp;destination_value=902260096&amp;unchecked=false&amp;context=cart&amp;siteId=MLM" data-summary="buy-action" class="ui-button ui-button--primary">Comprar todo</a>
+            <form action="{{route('recibirPor')}}" method="post" accept-charset="utf-8"> 
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                <input type="hidden" name="idReferencia" value="cardBuy">
+                <input type="hidden" name="precio" value="{{$subtotal}}">
+                <input type="submit"  class="ui-button ui-button--secondary " style="font-size: 15px!important;min-width: 0;padding: 15px 16px;border: 1px solid #3483fa; color: white ;background: #3483fa;border-radius: 4px; margin-top: 40px; margin-right: 5px" value="Comprar  todo">
+            </form> 
         </div>
     </footer>
 </div></div> 
