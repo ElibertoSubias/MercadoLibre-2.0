@@ -194,7 +194,7 @@
 							</div>
 							<span class="user-menu__chevron" style="right: 202px;"></span>
 						</div></span> 
-								<a href="#">Compras</a> 
+								<a href="{{route('historialComp')}}">Compras</a> 
 						<a href="#" class="option-help" rel="nofollow">Favoritos</a>
 						<a style="padding-right: 0px" href="{{route('carrito')}}" title="Carrito de compras" class="nav-cart nav-cart-empty" id="nav-cart"><img style="vertical-align: baseline;" src="img/icon_car.png" alt="" width="19"></a><span class="nav-icon-cart-quantity">@if($cant_carrito==0) @else{{$cant_carrito}}@endif</span>
 					</nav>		

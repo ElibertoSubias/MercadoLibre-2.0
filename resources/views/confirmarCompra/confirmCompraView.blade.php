@@ -106,7 +106,7 @@
                                                     <span data-id="hero-shipping-subtitle" class="hero__info-subtitle ">Estándar a domicilio</span>
                                                 </div>
                                                 <div class="hero__action" data-js="hero-action">
-                                                    <form data-js="change-shipping" method="post">
+                                                    <form data-js="change-shipping" method="post" action="#">
                                                         <button data-js="next-step-shipping-options" data-input-id="nextStepAddressChange" class=" hero__action-button u-link" type="submit" name="nextStepAddressChange" value="nextStepAddressChange">
                                                             Modificar
                                                         </button>
@@ -172,13 +172,15 @@
                                                                     <input type="hidden" name="precio" value="{{$precio}}">
                                                                     <input type="hidden" name="idReferencia" value="{{$idReferencia}}">
                                                                     <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+                                                                    <input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
                                                                 @endisset  
                                                                 @empty($idReferencia) 
                                                                     <input type="hidden" name="precio" value="{{$precio}}">
                                                                     <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
                                                                     <input type="hidden" name="titulo" value="{{$titulo}}">
                                                                     <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
-                                                                    <input type="hidden" name="idPaquete" value="{{$idPaquete}}"> 
+                                                                    <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
+                                                                    <input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}"> 
                                                                 @endisset 
                                                                 <button data-js="" data-input-id="nextStepPayments" class=" hero__action-button u-link" type="submit" name="nextStepPayments" value="nextStepPayments">
                                                                     Modificar
@@ -220,7 +222,7 @@
                             <div class="overview-component__amounts">
                                 <div class="overview-component__table">
                                     <div class="overview-component__row">
-                                        <div data-id="overview-items-quantity" class="overview-component__column">Producto<?php if(isset($idReferencia))echo "s(2)"; ?> </div>
+                                        <div data-id="overview-items-quantity" class="overview-component__column">Producto<?php if(isset($idReferencia))echo "s($cantidadArticulos)"; ?> </div>
                                         <div data-id="overview-items-price" class="overview-component__column" style="text-align: right;">
                                             <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                                                 <meta itemprop="price" content="18999">
@@ -267,6 +269,7 @@
                                 <input type="hidden" name="idReferencia" value="{{$idReferencia}}">  
                                 <input type="hidden" name="cardId" value="{{$card->id}}">  
                                 <input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+                                <input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
                             @endisset
                             @empty($idReferencia) 
                                 <input type="hidden" name="token_id" id="token_id">
@@ -277,6 +280,7 @@
                                 <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
                                 <input type="hidden" name="precio" id="precio" value="{{$precio}}">
                                 <input type="hidden" name="description" id="description" value="{{$titulo}}">
+                                <input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
                             @endempty   
                             <button id="pay-button" class="overview-component__action-button ui-button ui-button--primary" data-id="overview-action" data-js="" type="submit">
                                 <span class="aside-button__progress-bar"></span>

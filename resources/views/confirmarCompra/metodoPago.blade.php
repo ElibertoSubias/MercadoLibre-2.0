@@ -31,6 +31,7 @@
 												<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
 												<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
 												<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}"> 
+												<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 											@endisset
 											@empty($idReferencia) 
 												<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
@@ -41,6 +42,7 @@
 												<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
 												<input type="hidden" name="precio" value="{{$precio}}">
 												<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+												<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 											@endempty	
 
 											<button data-js="payment-type" type="submit" name="paymentType" 
@@ -98,6 +100,7 @@
 										<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
 										<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
 										<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+										<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 									@endisset
 									@empty($idReferencia) 
 										<input type="hidden" name="tipoTarjeta" value="credito"> 
@@ -106,6 +109,7 @@
 										<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
 										<input type="hidden" name="precio" value="{{$precio}}">
 										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+										<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 									@endempty	
 										<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
 									        <span class="ui-badge ui-badge--small">
@@ -143,7 +147,8 @@
 										<input type="hidden" name="idReferencia" value="{{$idReferencia}}">
 										<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
 										<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
-										<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}"> 
+										<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}">
+										<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}"> 
 									@endisset
 									@empty($idReferencia)  
 										<input type="hidden" name="tipoTarjeta" value="debito">
@@ -152,6 +157,7 @@
 										<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
 										<input type="hidden" name="precio" value="{{$precio}}"> 
 										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+										<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 									@endisset
 										<button data-js="payment-type" type="submit" name="paymentType" 
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">
@@ -185,6 +191,7 @@
 										<input data-js="payment-type" type="hidden" name="paymentMethodId" value="{{$tarjeta->type}}">	
 										<input data-js="payment-type-card-id" type="hidden" name="cardId" value="{{$tarjeta->id}}">
 										<input type="hidden" name="costoEnvio" value="{{$costoEnvio}}"> 
+										<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 									@endisset
 									@empty($idReferencia)  
 										<input type="hidden" name="tipoTarjeta" value="debito">
@@ -193,6 +200,7 @@
 										<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
 										<input type="hidden" name="precio" value="{{$precio}}"> 
 										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+										<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 									@endisset
 									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="PREPAID_CARD">
 
@@ -297,7 +305,7 @@
 						<div class="overview-component__table">
 							<div class="overview-component__row">
 								<div data-id="overview-items-quantity" style="text-align: left;" class="overview-component__column">
-									Producto<?php if(isset($idReferencia))echo "s(2)"; ?> 
+									Producto<?php if(isset($idReferencia))echo "s($cantidadArticulos)"; ?> 
 								</div>
 								<div data-id="overview-items-price" class="overview-component__column" style="text-align: right;">
 									<span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">

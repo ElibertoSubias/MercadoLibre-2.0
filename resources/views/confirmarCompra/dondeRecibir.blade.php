@@ -73,6 +73,7 @@
 									@isset($idReferencia)
 										<input type="hidden" name="precio" value="{{$precio}}">
 										<input type="hidden" name="idReferencia" value="{{$idReferencia}}">
+										<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 									@endisset
 									@empty($idReferencia) 
 										<input type="hidden" name="idPaquete" value="{{$idPaquete}}">
@@ -80,6 +81,7 @@
 										<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
 										<input type="hidden" name="precio" value="{{$precio}}">
 										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+										<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 									@endempty
 									
 
@@ -106,6 +108,8 @@
 									@isset($idReferencia)
 										<input type="hidden" name="precio" value="{{$precio}}">
 										<input type="hidden" name="idReferencia" value="{{$idReferencia}}">
+										<input type="hidden" name="costoEnvio" value="110"> 
+										<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 									@endisset
 									@empty($idReferencia) 
 										<input type="hidden" name="idPaquete" value="{{$idPaquete}}"> 
@@ -113,6 +117,7 @@
 										<input type="hidden" name="precio" value="{{$precio}}">
 										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">	 
 										<input type="hidden" name="costoEnvio" value="110"> 
+										<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 									@endempty	
 									<button data-js="payment-type" type="submit" name="paymentType" 
 									class="badge-type__button u-button-reset" role="option" value="CREDIT_CARD">										
@@ -137,6 +142,7 @@
 									@isset($idReferencia)
 										<input type="hidden" name="precio" value="{{$precio}}">
 										<input type="hidden" name="idReferencia" value="{{$idReferencia}}">
+										<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 									@endisset
 									@empty($idReferencia) 
 										<input type="hidden" name="idPaquete" value="{{$idPaquete}}"> 
@@ -144,6 +150,7 @@
 										<input type="hidden" name="precio" value="{{$precio}}">
 										<input type="hidden" name="urlImagen" value="{{$urlImagen}}">	 
 										<input type="hidden" name="costoEnvio" value="0"> 
+										<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 									@endempty	
 									<button data-js="payment-type" type="submit" name="paymentType" 
 									class="badge-type__button u-button-reset" role="option" value="DEBIT_CARD">
@@ -184,7 +191,7 @@
 								<img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" >  
 						</span> 
 						<h3 class="overview-component__item-title">{{$titulo}}</h3>
-						<span class="overview-component__item-quantity-text" style="color:  blue">Cantidad: 1 </span>
+						<span class="overview-component__item-quantity-text" style="color:  blue">Cantidad: {{$cantidadArticulos}} </span>
 					@endempty
 					
 				</div>
@@ -193,7 +200,7 @@
 						<div class="overview-component__table">
 							<div class="overview-component__row">
 								<div data-id="overview-items-quantity" style="text-align: left;" class="overview-component__column">
-									Producto<?php if(isset($idReferencia))echo "s(2)"; ?> 
+									Producto<?php if(isset($idReferencia))echo "s($cantidadArticulos)"; ?> 
 								</div>
 								<div data-id="overview-items-price" class="overview-component__column" style="text-align: right;">
 									<span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
@@ -218,7 +225,12 @@
 								<div class="overview-component__column">
 									<span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
 											<meta itemprop="price" content="18999"> 
-											<span class="price-tag-fraction ">${{$precio}}</span> 
+											@isset($idReferencia)
+												<span class="price-tag-fraction ">${{$precio}}</span> 
+											@endisset
+											@empty($idReferencia) 
+												<span class="price-tag-fraction ">${{$precio*$cantidadArticulos}}</span> 
+											@endempty
 											<span class="price-tag-cents">00</span>
 										</span>
 								</div>
@@ -255,6 +267,7 @@
 											<input type="hidden" name="precio" value="{{$precio}}">
 											<input type="hidden" name="idReferencia" value="{{$idReferencia}}">
 											<input type="hidden" name="id" id="id" value="{{$domicilio->_id}}">
+											<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 										@endisset
 										@empty($idReferencia) 
 	                            			<input type="hidden" name="id" id="id" value="{{$domicilio->_id}}">
@@ -262,6 +275,7 @@
 										    <input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
 											<input type="hidden" name="precio" value="{{$precio}}">
 											<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+											<input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 										@endempty
 						    			<button value="169359984"  data-input-id="addressId" name="addressId" type="submit" role="option" class="ui-list__item-option <?php if($domicilio->envio==1){echo "ui-list__item--selected";} ?> ">
 						        		<div class="address-box__address">

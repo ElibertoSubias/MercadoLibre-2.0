@@ -36,7 +36,7 @@ class MenuUsuarioController extends Controller
 
     public function detaCompra(Request $request)
     {
-      $item = Compras::where(['codigoCompra'=>$request->codigoCompra])->get();
+      $item = Compras::where(['codigoCompra'=>$request->codigoCompra])->get(); 
 
       $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678');
       $customer = $openpay->customers->get(auth()->user()->idCustomer); 

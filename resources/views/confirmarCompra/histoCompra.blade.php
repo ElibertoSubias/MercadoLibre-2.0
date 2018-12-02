@@ -211,10 +211,10 @@
                     <div id="DIV_21">
                     </div>
                     <div id="DIV_22">
-                   
+                   	
                      <?php
-                for($i=0; $i<count($articulos); $i++){ 
-                    ?>
+                for($i=0; $i<count($compras); $i++){ 
+                    ?> 
                         <div id="DIV_155" style="margin-top: 15px !important; width: 85% !important">
                             <div id="DIV_156">
                                 <h2 id="H2_157">
@@ -237,10 +237,10 @@
                                 </div>
                                 <div id="DIV_174">
                                     <div id="DIV_175">
-                                        <img src="images/{{ $articulos[$i]->idUser}}/{{$articulos[$i]->idPublicacion}}/{{$articulos[$i]->urlPrincipal}}" width="80"  style="margin-bottom: -25px">
+                                        <img src="images/{{ $articulos[$i][0]->idUser}}/{{$articulos[$i][0]->idPublicacion}}/{{$articulos[$i][0]->urlPrincipal}}" width="80"  style="margin-bottom: -25px">
                                     </div>
                                     <div id="DIV_178">
-                                         <a href="https://articulo.mercadolibre.com.mx/MLM-561641887-lentes-computadora-antifatiga-antiradiacion-ojo-seco-fashion-_JM" class="A_179">{{$articulos[$i]->titulo}}</a>
+                                         <a href="https://articulo.mercadolibre.com.mx/MLM-561641887-lentes-computadora-antifatiga-antiradiacion-ojo-seco-fashion-_JM" class="A_179">{{$articulos[$i][0]->titulo}}</a>
                                         <div id="DIV_180">
                                             <p id="P_181" class="p-181">
                                                 <span id="SPAN_182"></span>

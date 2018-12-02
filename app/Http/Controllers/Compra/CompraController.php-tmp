@@ -32,28 +32,48 @@ class Foo {
 
 class CompraController extends Controller {
 	public function dondeRecibir(Request $request) {
-		$item = Articulos::where(['idPublicacion' => $request->idPublicacion])->get();
-		if ($item[0]->cantidad > 0) {
+		if ($request->idReferencia == "cardBuy") {
 			//Se asigna un codigo de compra
+			$articulos = Carrito::where(['idUser' => auth()->user()->_id])->get();
+			$subTotal  = 0;
+			foreach ($articulos as $articulo) {
+				$subTotal = $subTotal+$articulo->precio;
+			}
 			session_start();
 			unset($_SESSION['codigoCompra']);
-			$_SESSION["codigoCompra"] = mb_substr(auth()->user()->_id, -4).date("YmdHis");
+			$_SESSION["codigoCompra"] = date("YmdHis");
 
 			if (Direcciones::where([['idUser', '=', auth()->user()->id], ['envio', '=', 1]])->exists()) {
-				$domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get();
-				if (isset($request                          ->idReferencia)) {
-					return view('confirmarCompra.dondeRecibir')->with(['precio' => $request->precio, 'domicilios' => $domicilios, 'idReferencia' => 'cardBuy']);
-				} else {
-					$urlImagen = $request->idUser."/".$request->idPublicacion;
-					return view('confirmarCompra.dondeRecibir')->with(['precio' => $request->precio, 'titulo' => $request->titulo, 'domicilios' => $domicilios, 'urlImagen' => $urlImagen, 'idPaquete' => $request->idPublicacion]);
-				}
+				$domicilios = Direcciones::where(['idUser'                             => auth()->user()->id])->get();
+				return view('confirmarCompra.dondeRecibir')->with(['cantidadArticulos' => count($articulos), 'precio' => $subTotal, 'domicilios' => $domicilios, 'idReferencia' => 'cardBuy']);
+
 			} else {
 
 				$urlImagen = $request->idUser."/".$request->idPublicacion;
-				return view('confirmarCompra.elegirFormaRecivir')->with(['precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $urlImagen, 'idPaquete' => $request->idPublicacion]);
+				return view('confirmarCompra.elegirFormaRecivir')->with(['precio' => $subTotal, 'titulo' => $request->titulo, 'urlImagen' => $urlImagen, 'idPaquete' => $request->idPublicacion]);
 			}
 		} else {
-			return Redirect::back()->withErrors(['Articulo agotado']);
+			$item = Articulos::where(['idPublicacion' => $request->idPublicacion])->get();
+			if ($item[0]->cantidad > 0) {
+				//Se asigna un codigo de compra
+				session_start();
+				unset($_SESSION['codigoCompra']);
+				$_SESSION["codigoCompra"] = mb_substr(auth()->user()->_id, -4).date("YmdHis");
+
+				if (Direcciones::where([['idUser', '=', auth()->user()->id], ['envio', '=', 1]])->exists()) {
+
+					$domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get();
+					$urlImagen  = $request->idUser."/".$request->idPublicacion;
+
+					return view('confirmarCompra.dondeRecibir')->with(['cantidadArticulos' => $request->cantidadArticulos, 'precio' => $request->precio, 'titulo' => $request->titulo, 'domicilios' => $domicilios, 'urlImagen' => $urlImagen, 'idPaquete' => $request->idPublicacion]);
+				} else {
+
+					$urlImagen = $request->idUser."/".$request->idPublicacion;
+					return view('confirmarCompra.elegirFormaRecivir')->with(['cantidadArticulos' => $request->cantidad, 'precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $urlImagen, 'idPaquete' => $request->idPublicacion]);
+				}
+			} else {
+				return Redirect::back()->withErrors(['Articulo agotado']);
+			}
 		}
 	}
 
@@ -70,15 +90,15 @@ class CompraController extends Controller {
 
 			$cardList = $customer->cards->getList($findDataRequest);
 			if (isset($request                        ->idReferencia)) {
-				return view('confirmarCompra.metodoPago')->with(['tarjetas' => $cardList, 'precio' => $request->precio, 'idReferencia' => 'cardBuy', 'costoEnvio' => $request->costoEnvio]);
+				return view('confirmarCompra.metodoPago')->with(['cantidadArticulos' => $request->cantidadArticulos, 'tarjetas' => $cardList, 'precio' => $request->precio, 'idReferencia' => 'cardBuy', 'costoEnvio' => $request->costoEnvio]);
 			} else {
-				return view('confirmarCompra.metodoPago')->with(['tarjetas' => $cardList, 'precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio]);
+				return view('confirmarCompra.metodoPago')->with(['cantidadArticulos' => $request->cantidadArticulos, 'tarjetas' => $cardList, 'precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio]);
 			}
 		} else {
 			if (isset($request                        ->idReferencia)) {
-				return view('confirmarCompra.metodoPago')->with(['tarjetas' => $cardList, 'precio' => $request->precio, 'idReferencia' => 'cardBuy', 'costoEnvio' => $request->costoEnvio]);
+				return view('confirmarCompra.metodoPago')->with(['cantidadArticulos' => $request->cantidadArticulos, 'tarjetas' => $cardList, 'precio' => $request->precio, 'idReferencia' => 'cardBuy', 'costoEnvio' => $request->costoEnvio]);
 			} else {
-				return view('confirmarCompra.metodoPago')->with(['precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio]);
+				return view('confirmarCompra.metodoPago')->with(['cantidadArticulos' => $request->cantidadArticulos, 'precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio]);
 			}
 		}
 
@@ -90,9 +110,9 @@ class CompraController extends Controller {
 
 		$card = $customer->cards->get($request->cardId);
 		if (isset($request                                 ->idReferencia)) {
-			return view('confirmarCompra.complementarTarjeta')->with(['idReferencia' => $request->idReferencia, 'card' => $card, 'precio' => $request->precio, 'costoEnvio' => $request->costoEnvio]);
+			return view('confirmarCompra.complementarTarjeta')->with(['cantidadArticulos' => $request->cantidadArticulos, 'idReferencia' => $request->idReferencia, 'card' => $card, 'precio' => $request->precio, 'costoEnvio' => $request->costoEnvio]);
 		} else {
-			return view('confirmarCompra.complementarTarjeta')->with(['card' => $card, 'precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio]);
+			return view('confirmarCompra.complementarTarjeta')->with(['cantidadArticulos' => $request->cantidadArticulos, 'card' => $card, 'precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio]);
 		}
 	}
 
@@ -103,15 +123,16 @@ class CompraController extends Controller {
 		$card       = $customer->cards->get($request->cardId);
 
 		if (isset($request                               ->idReferencia)) {
-			return view('confirmarCompra.confirmCompraView')->with(['idReferencia' => $request->idReferencia, 'card' => $card, 'precio' => $request->precio, 'costoEnvio' => $request->costoEnvio, 'security_code' => $request->security_code, 'customer' => $customer, 'domicilios' => $domicilios]);
+			return view('confirmarCompra.confirmCompraView')->with(['cantidadArticulos' => $request->cantidadArticulos, 'idReferencia' => $request->idReferencia, 'card' => $card, 'precio' => $request->precio, 'costoEnvio' => $request->costoEnvio, 'security_code' => $request->security_code, 'customer' => $customer, 'domicilios' => $domicilios]);
 		} else {
-			return view('confirmarCompra.confirmCompraView')->with(['precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio, 'card' => $card, 'security_code' => $request->security_code, 'customer' => $customer, 'domicilios' => $domicilios]);
+			return view('confirmarCompra.confirmCompraView')->with(['cantidadArticulos' => $request->cantidadArticulos, 'precio' => $request->precio, 'titulo' => $request->titulo, 'urlImagen' => $request->urlImagen, 'idPaquete' => $request->idPaquete, 'costoEnvio' => $request->costoEnvio, 'card' => $card, 'security_code' => $request->security_code, 'customer' => $customer, 'domicilios' => $domicilios]);
 		}
 	}
 
 	private static function efectuarCompra($carItems, $customerId, $cardId, $description, $device_session_id, $idDireccionEnvio, $cantidad, $codigoCompra) {
 
-		$openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp', 'sk_971f3acd3cd0456299caaf254a316678');
+		$openpay  = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp', 'sk_971f3acd3cd0456299caaf254a316678');
+		$contador = 0;
 		foreach ($carItems as $item) {
 			$publicacion = Articulos::where(['_id' => $item->idPublicacion])->get();
 			if ($publicacion[0]->cantidad > 0) {
@@ -120,13 +141,13 @@ class CompraController extends Controller {
 				//echo '--comprador-'.$customerId.'--vendedor'.$vendedor[0]->idCustomer.'--Precio-'.$item->precio.'--cardId-'.$cardId.'</br>';
 
 				$customer = $openpay->customers->get($customerId);
-				session_start();
+
 				$chargeData = array(
 					'method'            => 'card',
 					'source_id'         => $cardId,
 					'amount'            => (float) ($item->precio-$item->precio)+5,
 					'description'       => $description,
-					'order_id'          => $_SESSION["codigoCompra"],
+					'order_id'          => $codigoCompra+$contador,
 					'device_session_id' => $device_session_id);
 
 				//Validación de cargo a tarjeta de credito
@@ -139,12 +160,12 @@ class CompraController extends Controller {
 
 					$compras                   = new Compras;
 					$compras->idUser           = auth()->user()->_id;
-					$compras->idPublicacion    = $item->idPublicacion;
+					$compras->idPublicacion    = $publicacion[0]->_id;
 					$compras->idVendedor       = $publicacion[0]->idUser;
 					$compras->cardId           = $cardId;
 					$compras->cargoId          = $cargo->id;
-					$compras->cantidad         = 1;
-					$compras->codigoCompra     = $_SESSION["codigoCompra"];
+					$compras->cantidad         = $item->cantidad;
+					$compras->codigoCompra     = (string) ($codigoCompra+$contador);
 					$compras->precio           = floatval($item->precio);
 					$compras->idDireccionEnvio = $idDireccionEnvio;
 					$compras->save();
@@ -152,6 +173,7 @@ class CompraController extends Controller {
 					Articulos::where(['idPublicacion' => $item->idPaquete])->decrement('cantidad');
 
 					$transfer = $customer->transfers->create($transferDataRequest);
+					$contador++;
 				} else {
 					return false;
 				}
@@ -172,11 +194,11 @@ class CompraController extends Controller {
 				////////////////COMPRA CARRITO//////////////////
 				//Optener los elementos en el carrido
 				$carItems = Carrito::where(['idUser' => auth()->user()->_id])->get();
-				if (CompraController::efectuarCompra($carItems, auth()->user()->idCustomer, $request->cardId, 'Compra carrito', $_POST["deviceIdHiddenFieldName"], $direccionEnvio[0]->_id, 1, $codigoCompra)) {
+				if (CompraController::efectuarCompra($carItems, auth()->user()->idCustomer, $request->cardId, 'Compra carrito', $_POST["deviceIdHiddenFieldName"], $direccionEnvio[0]->_id, 1, $_SESSION["codigoCompra"])) {
 					Carrito::where(['idUser'                                  => auth()->user()->_id])->delete();
 					return redirect()->route('compraExitosa', ['idReferencia' => $request->idReferencia, 'codigoCompra' => $_SESSION["codigoCompra"]]);
 				} else {
-					return redirect()->route('rechazada', ['precio' => $request->precio, 'idReferencia' => $request->idReferencia, 'costoEnvio' => $request->costoEnvio, 'msjError' => $e->getMessage()]);
+					return redirect()->route('rechazada', ['precio' => $request->precio, 'idReferencia' => $request->idReferencia, 'costoEnvio' => $request->costoEnvio, 'msjError' => 'Agotado']);
 				}
 
 			} else {
@@ -209,13 +231,13 @@ class CompraController extends Controller {
 
 					$compras                   = new Compras;
 					$compras->idUser           = auth()->user()->_id;
-					$compras->idPublicacion    = $request->idPaquete;
+					$compras->idPublicacion    = $publicacion[0]->_id;
 					$compras->idVendedor       = $publicacion[0]->idUser;
 					$compras->cardId           = $request->cardId;
 					$compras->cargoId          = $cargo->id;
 					$compras->titulo           = $_POST["description"];
-					$compras->cantidad         = 1;
-					$compras->codigoCompra     = $_SESSION["codigoCompra"];
+					$compras->cantidad         = $request->cantidadArticulos;
+					$compras->codigoCompra     = (string) $_SESSION["codigoCompra"];
 					$compras->precio           = floatval($request->precio);
 					$compras->idDireccionEnvio = $direccionEnvio[0]->_id;
 					$compras->save();
@@ -429,8 +451,10 @@ class CompraController extends Controller {
 		$vendedor       = array();
 		foreach ($compras as $id) {
 
-			$aux = Articulos::where('idPublicacion', '=', $id->idPublicacion)->get();
-			array_push($articulos, $aux[0]);
+			$aux = Articulos::where('_id', '=', $id->idPublicacion)->get();
+
+			array_push($articulos, $aux);
+
 			//echo $aux;
 			$auxDirecion = Direcciones::where('_id', '=', $id->idDireccionEnvio)->get();
 			array_push($direccionEnvio, $auxDirecion[0]);
