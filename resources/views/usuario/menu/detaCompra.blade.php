@@ -194,7 +194,7 @@
     
         <li class="myml-ui-breadcrumb__element">
             
-                <a href="#">Compras</a>
+                <a href="{{route('historialComp')}}">Compras</a>
             
         </li>
     
@@ -609,7 +609,7 @@
         transform: scaleX(-1);
         margin-left: 2px;
     }
-            
+    </style>
         </div>
     <div> 
 </div> 
