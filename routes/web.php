@@ -15,7 +15,7 @@ Route::get('/', 'InicioController@index')->name('inicio');
 //Agregar middleware para validar si usuario esta autenticado
 Route::post('userlogin', 'Auth\LoginController@showLoginForm');
 Route::post('login', 'Auth\LoginController@login')->name('login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::any('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 Route::any('autenticar', 'InicioController@autenticarEmail')->name('autenticar');
 Route::any('validar', 'Auth\LoginController@showLoginForm')->name('validar');
@@ -137,6 +137,6 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('vistaCuenta', 'Compra\CompraController@vistaEstadoDeCuenta')->name('vistaCuenta');
 
-	
+	Route::any('estado', 'Usuario\MenuUsuarioController@Resumen')->name('estado');	
 
 });

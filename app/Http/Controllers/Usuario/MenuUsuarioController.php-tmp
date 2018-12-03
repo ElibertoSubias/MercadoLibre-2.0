@@ -17,15 +17,21 @@ class MenuUsuarioController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		//
+		//Maximum execution time of 30 seconds exceeded
 	}
 	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function create(Request $request) {
-		//
+	public function Resumen(Request $request) {
+		$openpay         = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp', 'sk_971f3acd3cd0456299caaf254a316678');
+		$direccion       = Direcciones::where(['idUser' => auth()->user()->_id, 'envio' => 1])->get();
+		$findDataRequest = array(
+			'offset' => 0);
+
+		$customer = $openpay->customers->get(auth()->user()->idCustomer);
+		return view('perfil.estado')->with(['total' => $customer->balance, 'direccion' => $direccion]);
 	}
 
 	public function detaCompra(Request $request) {

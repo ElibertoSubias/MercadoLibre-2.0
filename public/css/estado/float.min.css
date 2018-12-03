@@ -1,0 +1,432 @@
+/* Fonts sizes
+---------------------------------------------------------------*/
+.clearfix {
+  clear: both; }
+
+.invisible {
+  visibility: hidden; }
+
+@font-face {
+  font-family: 'proxima-nova';
+  src: url("//resources.mlstatic.com/search-fonts/proximanova-light-webfont.eot");
+  src: url("//resources.mlstatic.com/search-fonts/proximanova-light-webfont.eot?#iefix") format("embedded-opentype"), url("//resources.mlstatic.com/search-fonts/proximanova-light-webfont.woff") format("woff"), url("//resources.mlstatic.com/search-fonts/proximanova-light-webfont.ttf") format("truetype"), url("//resources.mlstatic.com/search-fonts/proximanova-light-webfont.svg#proxima_novalight") format("svg");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'proxima-nova';
+  src: url("//resources.mlstatic.com/search-fonts/proximanova-regular-webfont.eot");
+  src: url("//resources.mlstatic.com/search-fonts/proximanova-regular-webfont.eot?#iefix") format("embedded-opentype"), url("//resources.mlstatic.com/search-fonts/proximanova-regular-webfont.woff") format("woff"), url("//resources.mlstatic.com/search-fonts/proximanova-regular-webfont.ttf") format("truetype"), url("//resources.mlstatic.com/search-fonts/proximanova-regular-webfont.svg#proxima_novaregular") format("svg");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'proxima-nova';
+  src: url("//resources.mlstatic.com/search-fonts/proximanova-medium-webfont.eot");
+  src: url("//resources.mlstatic.com/search-fonts/proximanova-medium-webfont.eot?#iefix") format("embedded-opentype"), url("//resources.mlstatic.com/search-fonts/proximanova-medium-webfont.woff") format("woff"), url("//resources.mlstatic.com/search-fonts/proximanova-medium-webfont.ttf") format("truetype"), url("//resources.mlstatic.com/search-fonts/proximanova-medium-webfont.svg#proxima_novamedium") format("svg");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'loyalty-fonts';
+  src: url("../fonts/loyalty-fonts.eot");
+  src: url("../fonts/loyalty-fonts.eot?#iefix") format("embedded-opentype"), url("../fonts/loyalty-fonts.woff") format("woff"), url("../fonts/loyalty-fonts.ttf") format("truetype"), url("../fonts/loyalty-fonts.svg?#icons") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+.float-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(80px);
+      -ms-transform: translateY(80px);
+          transform: translateY(80px);
+  -webkit-transition: all 0.5s cubic-bezier(0, 0, 0, 1);
+  transition: all 0.5s cubic-bezier(0, 0, 0, 1);
+  z-index: 1100;
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
+  height: 64px;
+  -webkit-box-shadow: 0 -1px 9px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 -1px 9px 0 rgba(0, 0, 0, 0.25); }
+  .float-container.visible {
+    -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+            transform: translateY(0); }
+
+.float-container-list {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 64px;
+  margin-bottom: 0;
+  margin-top: 0;
+  background: #fff;
+  -webkit-border-radius: 4px;
+          border-radius: 4px; }
+  .float-container-list > *,
+  .float-container-list * {
+    -webkit-box-sizing: inherit;
+            box-sizing: inherit; }
+  .float-container-list .floating-notification-container {
+    list-style: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    -webkit-transition: all 0.05s linear;
+    transition: all 0.05s linear; }
+    .float-container-list .floating-notification-container.hidden-notification {
+      visibility: hidden;
+      opacity: 0;
+      -webkit-transition: all 0.2s linear;
+      transition: all 0.2s linear; }
+    .float-container-list .floating-notification-container .floating-notification {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      padding: 12px 16px;
+      height: 100%;
+      width: 100%;
+      text-decoration: none; }
+      .float-container-list .floating-notification-container .floating-notification:hover {
+        text-decoration: none; }
+      .float-container-list .floating-notification-container .floating-notification .milestone-icon-svg-container,
+      .float-container-list .floating-notification-container .floating-notification .icon {
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin-right: 16px;
+        -webkit-border-radius: 50%;
+                border-radius: 50%;
+        position: relative; }
+        .float-container-list .floating-notification-container .floating-notification .milestone-icon-svg-container .milestone-icon-svg,
+        .float-container-list .floating-notification-container .floating-notification .milestone-icon-svg-container .referralprogram-icon-svg,
+        .float-container-list .floating-notification-container .floating-notification .icon .milestone-icon-svg,
+        .float-container-list .floating-notification-container .floating-notification .icon .referralprogram-icon-svg {
+          width: 40px;
+          height: 40px; }
+      .float-container-list .floating-notification-container .floating-notification .user-avatar {
+        height: 40px;
+        width: 40px;
+        position: relative;
+        top: 0;
+        margin: 0;
+        margin-right: 17px;
+        text-align: center; }
+        .float-container-list .floating-notification-container .floating-notification .user-avatar .user-percent,
+        .float-container-list .floating-notification-container .floating-notification .user-avatar .user-level {
+          position: absolute;
+          top: 1px;
+          left: 0;
+          right: initial;
+          width: 40px;
+          font-size: 16px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 40px; }
+          .float-container-list .floating-notification-container .floating-notification .user-avatar .user-percent span,
+          .float-container-list .floating-notification-container .floating-notification .user-avatar .user-level span {
+            font-size: 8px; }
+        .float-container-list .floating-notification-container .floating-notification .user-avatar .user-percent {
+          top: 1px;
+          left: 1px;
+          font-size: 12px;
+          font-weight: 400; }
+        .float-container-list .floating-notification-container .floating-notification .user-avatar .user-level {
+          color: #fff;
+          font-size: 21px; }
+        .float-container-list .floating-notification-container .floating-notification .user-avatar .progress-bar {
+          width: 40px; }
+        .float-container-list .floating-notification-container .floating-notification .user-avatar .user-max-level {
+          left: -4px; }
+          .float-container-list .floating-notification-container .floating-notification .user-avatar .user-max-level:after {
+            content: '\e908';
+            height: 49px;
+            font-family: 'loyalty-fonts';
+            font-weight: normal;
+            font-size: 49px;
+            position: relative;
+            top: 0px;
+            right: 1px;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -moz-font-feature-settings: "liga", "kern"; }
+      .float-container-list .floating-notification-container .floating-notification .details-container {
+        width: 100%;
+        overflow: hidden; }
+        .float-container-list .floating-notification-container .floating-notification .details-container > * {
+          margin: 0;
+          padding: 0;
+          font-weight: bold; }
+        .float-container-list .floating-notification-container .floating-notification .details-container .text-container {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+              -ms-flex-direction: row;
+                  flex-direction: row;
+          -webkit-box-pack: justify;
+              -ms-flex-pack: justify;
+                  justify-content: space-between;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center; }
+        .float-container-list .floating-notification-container .floating-notification .details-container .type-message {
+          font-size: 12px;
+          line-height: 14px;
+          font-weight: 400;
+          color: #666;
+          white-space: nowrap;
+          overflow-x: hidden;
+          text-overflow: ellipsis; }
+        .float-container-list .floating-notification-container .floating-notification .details-container .title {
+          font-size: 16px;
+          line-height: 19px;
+          color: #333;
+          margin: 0;
+          font-weight: 600;
+          -webkit-box-flex: 1;
+              -ms-flex: 1;
+                  flex: 1;
+          overflow-y: hidden;
+          white-space: nowrap;
+          overflow-x: hidden;
+          text-overflow: ellipsis; }
+        .float-container-list .floating-notification-container .floating-notification .details-container .points {
+          font-size: 16px;
+          line-height: 19px;
+          text-align: right;
+          font-weight: 600;
+          margin: 0; }
+    .float-container-list .floating-notification-container.change-level .floating-notification .details-container > .type-message,
+    .float-container-list .floating-notification-container.change-level .floating-notification .details-container .text-container .title,
+    .float-container-list .floating-notification-container.change-level .floating-notification .details-container .points {
+      color: #fff; }
+
+.float-container .floating-notification-container.id_welcome_to_program .icon:after {
+  content: '\e913'; }
+
+.float-container .floating-notification-container.id_pay_credit_card .icon:after {
+  content: '\e933'; }
+
+.float-container .floating-notification-container.id_pay_credit_card .icon:after {
+  content: '\e933'; }
+
+.float-container .floating-notification-container.id_first_purchase .icon:after,
+.float-container .floating-notification-container.id_five_purchases .icon:after,
+.float-container .floating-notification-container.id_ten_purchases .icon:after {
+  content: '\e931'; }
+
+.float-container .floating-notification-container.id_buy_with_me .icon:after {
+  content: '\e90d'; }
+
+.float-container .floating-notification-container.id_buy_from_large_seller .icon:after {
+  content: '\e939'; }
+
+.float-container .floating-notification-container.id_buy_from_official_store .icon:after {
+  content: '\e90f'; }
+
+.float-container .floating-notification-container.id_first_bookmark .icon:after {
+  content: '\e935'; }
+
+.float-container .floating-notification-container.id_first_sale .icon:after {
+  content: '\e90b'; }
+
+.float-container .floating-notification-container.id_use_native_app .icon:after {
+  content: '\e937'; }
+
+.float-container .floating-notification-container.id_validate_phone .icon:after {
+  content: '\e911'; }
+
+.float-container .user-avatar {
+  height: auto;
+  width: auto;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  top: 12px; }
+  .float-container .user-avatar .user-percent {
+    position: absolute;
+    left: 5px;
+    right: 0;
+    top: 46px;
+    font-size: 42px;
+    text-align: center;
+    font-weight: 300; }
+    .float-container .user-avatar .user-percent span {
+      font-size: 28px; }
+
+.float-container .progress-avatar {
+  width: 140px; }
+  .float-container .progress-avatar path.base {
+    stroke: #eee;
+    opacity: .5; }
+  .float-container .progress-avatar path.progress,
+  .float-container .progress-avatar circle {
+    stroke: #fff; }
+  .float-container .progress-avatar circle {
+    fill: #fff; }
+
+.float-container .progress-bar-container path.progress,
+.float-container .progress-bar-container circle,
+.float-container .progress-avatar path.progress,
+.float-container .progress-avatar circle {
+  visibility: hidden; }
+
+.float-container .change-level .progress-avatar path.base {
+  stroke: #fff;
+  opacity: 1; }
+
+@media (min-width: 768px) {
+  .float-container {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+            transform: translateY(0);
+    height: 0; }
+    .float-container.visible .float-container-list {
+      opacity: 1;
+      height: 110px;
+      overflow: hidden; }
+    .float-container .float-centered-container {
+      position: relative;
+      width: 100%;
+      margin: 0 auto; }
+  .float-container-list {
+    position: absolute;
+    left: initial;
+    top: 24px;
+    right: 188px;
+    width: 370px;
+    height: 0;
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+    background: none;
+    margin-right: -33px;
+    margin-top: 5px; }
+    .float-container-list .floating-notification-container {
+      right: inherit;
+      bottom: inherit;
+      width: 100%;
+      text-align: right;
+      background: transparent;
+      padding: 0; }
+      .float-container-list .floating-notification-container .notification-tooltip {
+        position: relative;
+        bottom: 6px;
+        right: 26px;
+        border: 6px transparent solid;
+        border-bottom-width: 9px;
+        border-bottom-color: #fff; }
+      .float-container-list .floating-notification-container.change-level.level-1 .notification-tooltip {
+        border-bottom-color: #20c261; }
+      .float-container-list .floating-notification-container.change-level.level-2 .notification-tooltip {
+        border-bottom-color: #1ac2b0; }
+      .float-container-list .floating-notification-container.change-level.level-3 .notification-tooltip {
+        border-bottom-color: #00a4d5; }
+      .float-container-list .floating-notification-container.change-level.level-4 .notification-tooltip {
+        border-bottom-color: #4063ea; }
+      .float-container-list .floating-notification-container.change-level.level-5 .notification-tooltip {
+        border-bottom-color: #8700ff; }
+      .float-container-list .floating-notification-container.change-level.level-6 .notification-tooltip {
+        border-bottom-color: #a90f90; }
+      .float-container-list .floating-notification-container .floating-notification {
+        width: 360px;
+        height: 81px;
+        padding: 18px;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                    -ms-grid-row-align: center;
+                align-items: center;
+        cursor: pointer;
+        text-align: left;
+        -webkit-border-radius: 4px;
+                border-radius: 4px;
+        background: #fff;
+        -webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25);
+                box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25); }
+        .float-container-list .floating-notification-container .floating-notification .milestone-icon-svg-container,
+        .float-container-list .floating-notification-container .floating-notification .icon {
+          width: 45px;
+          height: 45px; }
+          .float-container-list .floating-notification-container .floating-notification .milestone-icon-svg-container .milestone-icon-svg,
+          .float-container-list .floating-notification-container .floating-notification .milestone-icon-svg-container .referralprogram-icon-svg,
+          .float-container-list .floating-notification-container .floating-notification .icon .milestone-icon-svg,
+          .float-container-list .floating-notification-container .floating-notification .icon .referralprogram-icon-svg {
+            width: 45px;
+            height: 45px; }
+        .float-container-list .floating-notification-container .floating-notification .user-avatar {
+          height: 45px;
+          width: 45px;
+          margin-right: 18px; }
+          .float-container-list .floating-notification-container .floating-notification .user-avatar .user-percent {
+            font-size: 14px; }
+          .float-container-list .floating-notification-container .floating-notification .user-avatar .user-percent,
+          .float-container-list .floating-notification-container .floating-notification .user-avatar .user-level {
+            width: 45px;
+            line-height: 45px; }
+            .float-container-list .floating-notification-container .floating-notification .user-avatar .user-percent span,
+            .float-container-list .floating-notification-container .floating-notification .user-avatar .user-level span {
+              font-size: 10px; }
+          .float-container-list .floating-notification-container .floating-notification .user-avatar .progress-bar {
+            width: 45px; }
+          .float-container-list .floating-notification-container .floating-notification .user-avatar .user-max-level {
+            left: 0; }
+        .float-container-list .floating-notification-container .floating-notification .details-container {
+          overflow: visible;
+          height: 36px;
+          width: 100%; }
+          .float-container-list .floating-notification-container .floating-notification .details-container .text-container {
+            display: block;
+            height: 18px; }
+          .float-container-list .floating-notification-container .floating-notification .details-container .type-message {
+            color: #999;
+            margin-bottom: 4px; }
+          .float-container-list .floating-notification-container .floating-notification .details-container .title {
+            font-size: 16px;
+            line-height: 18px;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 16px;
+            width: 155px;
+            display: inline-block;
+            vertical-align: top; }
+          .float-container-list .floating-notification-container .floating-notification .details-container .points {
+            display: inline-block;
+            font-size: 16px;
+            line-height: 18px;
+            vertical-align: top;
+            float: right; }
+  .float-container .user-avatar {
+    margin: 0;
+    float: left;
+    margin-top: 46px;
+    margin-left: 26px;
+    top: 40px; } }
