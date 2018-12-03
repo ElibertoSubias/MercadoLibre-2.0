@@ -207,7 +207,7 @@
 </div>
 
             <header class="purchases-header">
-                <h1 class="purchases-title">Compra #{{$charge->order_id}} - {{mb_substr($charge->creation_date,8,2)}} del {{mb_substr($charge->creation_date,5,2)}}</h1> 
+                <h1 class="purchases-title" style="margin-left: -700px !important; margin-top: 40px">Compra #{{$charge->order_id}} - {{mb_substr($charge->creation_date,8,2)}} del {{mb_substr($charge->creation_date,5,2)}}</h1> 
             </header>
             
             <div class="purchases-notification">
@@ -219,13 +219,13 @@
                 <div class="myml-main-content">
                     <div class="ui-panel myml-ui-relevant-box">
                         <div class="ui-panel__content purchases-payment">
-    <h2 class="purchases-payment__subtitle">Resumen de compra</h2>
+    <h3 style="margin-left: -340px !important">Resumen de compra</h3>
     <div class="purchases-payment__container">
         <table class="purchases-payment__table" cellpadding="0" cellspacing="0" border="0">
             
                 
                 <tbody><tr class="purchases-payment__summary ">
-                    <td class="u-truncate ">Producto</td>
+                    <td style="margin-left: -420px !important; margin-top: 10px">Producto</td>
                     <td class="">
                         
                             <span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
@@ -242,12 +242,12 @@
             
                 
                 <tr class="purchases-payment__summary purchases-payment__subtotal">
-                    <td class="u-truncate purchases-payment__highlight">Envío</td>
+                    <td class="u-truncate purchases-payment__highlight" style="margin-left: -440px !important;">Envío</td>
                     <td class="purchases-payment__highlight">
                         
                             <span class="price-tag" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
     <meta itemprop="price" content="0.null">
-    <span class="price-tag-symbol" itemprop="priceCurrency" content="ARS">$</span>
+    <span class="price-tag-symbol" itemprop="priceCurrency" content="ARS" style="margin-top: -30px">$</span>
     <span class="price-tag-fraction">{{$item[0]->costoEnvio}}</span>
     <span class="price-tag-decimal-separator">.</span>
     <span class="price-tag-cents"></span>
