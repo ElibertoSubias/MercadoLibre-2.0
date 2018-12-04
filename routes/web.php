@@ -19,7 +19,14 @@ Route::any('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 Route::any('autenticar', 'InicioController@autenticarEmail')->name('autenticar');
 Route::any('validar', 'Auth\LoginController@showLoginForm')->name('validar');
+////////Admin////////////
+Route::any('validarAdmin', 'Auth\LoginController@showLoginFormAdmin')->name('validarAdmin');
+Route::post('loginAdmin', 'Auth\LoginController@loginAdmin')->name('loginAdmin');
+Route::any('dashboardAdmin', 'Auth\LoginController@adminDashboard')->name('dashboardAdmin');
+/////////////////////////
 Route::post('checkemail', 'InicioController@checkEmail')->name('checkemail');
+
+Route::any('admin', 'Auth\LoginController@adminLogin')->name('admin');
 
 //Route::get('crearcuentapersonal', 'InicioController@crearcuentaPersonal')->name('crearcuentapersonal');
 //Route::get('crearcuentaempresarial', 'InicioController@crearcuentaEmpresarial')->name('crearcuentaempresarial');
@@ -34,8 +41,11 @@ Route::post('buscar','BuscarController@buscarPublicaciones')->name('buscar');
 Route::get('resultados','BuscarController@listarResultados')->name('resultados');
 
 //Middleware para solo dejar pasar a estas rutas a usuarios autenticados
-Route::group(['middleware' => 'autenticado'], function () {
+Route::group(['middleware' => 'autenticadoAdmin'], function () {
 	Route::get('nuevaCategoria', 'Admin\AddCategoriaController@index')->name('nuevaCategoria');
+});
+Route::group(['middleware' => 'autenticado'], function () {
+	
 	Route::any('loadImage', 'Venta\VentaController@store')->name('loadImage'); 
     Route::any('vender', 'VenderProductoController@cargarLista')->name('vender');
     Route::get('perfil', 'EditarUsuario\PerfilController@index')->name('perfil');

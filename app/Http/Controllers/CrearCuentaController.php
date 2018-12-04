@@ -33,6 +33,7 @@ class CrearCuentaController extends Controller
                 $usuario->telefono = "_";
                 $usuario->telefono2 = "_";
                 $usuario->documento = "_";
+                $usuario->userType = 1;
                 $usuario->alias = "01".$request->nombre; 
                 $usuario->password = Hash::make($request->clave);
                 $usuario->idCard = null;
@@ -84,6 +85,7 @@ class CrearCuentaController extends Controller
                     $Empresa->telefono = "_";
                     $Empresa->telefono2 = "_";
                     $Empresa->documento = "_";
+                    $usuario->userType = 2;
                     $Empresa->alias = "01".$request->rfc;
                     $Empresa->password = Hash::make($request->clave);
                     $usuario->idCard = null;

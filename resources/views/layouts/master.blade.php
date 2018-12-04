@@ -225,7 +225,7 @@
 			</div>
 			<div class="col-md-12">
 				<small class="nav-footer-copyright" style="text-align: left;color: black;"> 
-					<strong>Sitio no oficial de Mercado Libre.</strong> <br>
+					<h4><strong>Sitio no oficial de Mercado Libre.</strong></h4> <br>
 					Proyecto estudiantil el cual busca emular las características del sitio de Mercado Libre, solo con <b>fines educativos</b>.
 					Para ir al sitio oficial de Mercado Libre de click <p style="display: inline-block;"><a style="float: none;    margin-left: 0px;" href="http://www.mercadolibre.com.mx"><b>aquí</b></a></p>.
 				</small>  

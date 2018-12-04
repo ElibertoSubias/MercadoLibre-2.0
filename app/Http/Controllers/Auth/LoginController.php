@@ -25,11 +25,29 @@ class LoginController extends Controller
 
     public function showLoginForm(Request $request)
     {
-        if(User::where('email', '=', $request->login)->exists() || User::where('alias', '=', $request->login)->exists()){
+        $login_type = filter_var($request->login, FILTER_VALIDATE_EMAIL)?'email':'alias';
+
+        $request->merge([$login_type => $request->login]);
+
+        if(User::where([$login_type => $request->login])->where('userType', '!=', 0)->exists()){ 
             return view('auth.validarPassword')->with('login', $request->login);
         }else{
             return back();
         }
+    }
+
+    public function showLoginFormAdmin(Request $request)
+    {
+        if(User::where(['email' => $request->login,'userType'=>0])->exists() || User::where(['alias' => $request->login,'userType'=>0])->exists()){
+            return view('auth.validarPassword')->with(['login'=>$request->login, 'loginType'=>'admin']);
+        }else{
+            return back();
+        }
+    }
+
+    public function adminLogin(Request $request)
+    {
+        return view('autenticar.autenticarEmail')->with(['loginType'=>'admin']);
     }
 
     public function login(Request $request)
@@ -48,13 +66,20 @@ class LoginController extends Controller
 
             if(Auth::attempt($request->only($login_type, 'password')))
             {
+                if (auth()->user()->userType==0) {
+                    return redirect()->route('dashboardAdmin');
+                }
                 return redirect()->route('dashboard');
             }else{
                 return view('auth.validarPassword')->with('login', $request->login);
             }
         }
         return view('auth.validarPassword')->with('login', $request->login);
+    } 
 
+    public function adminDashboard(Request $request)
+    {
+        return view('admin.dashboard');
     }
 
     public function logout() 

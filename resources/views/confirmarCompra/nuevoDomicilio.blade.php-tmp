@@ -1,10 +1,10 @@
 @extends('layouts.masterRegistro')
 
-@section('content')  
+@section('content')
 
-{!! Html::style('css/styleDomicilio.css') !!} 
+{!! Html::style('css/styleDomicilio.css') !!}
 {!! Html::style('css/styleDondeRecibir.css') !!}
- 
+
 <style type="text/css">
 
 .cols {
@@ -33,14 +33,14 @@ p {
 </style>
 
 <div class="cols" >
-<div  class="col1">                
+<div  class="col1">
         <a href="#" id="modalSeller" style="display:none" aria-label="ch-modal-5"></a>
         <a href="#" id="modalDeleteInfo" style="display:none" aria-label="ch-modal-6"></a>
 
      <main role="main">
 
     <section class=" ml-addresses-section">
-        
+
 
         <h1 class="ml-addresses-main-title">¿Dónde quieres recibirlo?</h1>
     <h2 class="ml-addresses-main-subtitle "></h2>
@@ -50,11 +50,11 @@ p {
 
 <form style="margin-bottom:0px; " class="ui-form form-with-floating-labels" id="addresses-form" action="{{route('agregarDomicilio2')}}" name="addresses-form" method="post">
     <input type="hidden" name="latitude" id="latitude" value=""><input type="hidden" name="longitude" id="longitude" value=""><input type="hidden" name="locationType" id="locationType" value=""><input type="hidden" name="formId" id="formId" value="ce86e2344591f29a66b866c76d924d3419662143ae6feab741d29f2bd078dd6a"><input type="hidden" name="appName" id="appName" value="generic">
-    
-    
-     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+
+
+     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
         <div class="ml-addresses-card">
-            
+
 <fieldset class="ml-addresses-fieldset"><fieldset class="ml-addresses-fieldset">
     <legend class="ml-addresses-hidden">Zipcode</legend>
     <div class="ml-addresses-grid ml-addresses-grid--first-column">
@@ -65,9 +65,9 @@ p {
             <div class="ui-form__message" id="alertMsjinputCodigoPostal" style="color: red" role="alert">Complete este dato</div>
         </div>
         <div class="ml-addresses-embeded-action">
-            
+
                 <a href="http://www.sepomex.gob.mx/ServiciosLinea/Paginas/ccpostales.aspx" id="searchCP" class="ml-addresses-link" target="_blank">No sé mi código</a>
-            
+
             <div id="searchZipcodeLoading" class="ui-loading ml-addresses-hidden">
                 <div class="ui-loading__container">
                     <svg class="ui-loading__spinner ui-loading__spinner--small" viewBox="25 25 50 50">
@@ -79,10 +79,10 @@ p {
     </div>
 </fieldset>
  <fieldset id="locationField" class="ml-addresses-fieldset">
-   
+
     <div class="ml-addresses-fieldset__inline-container">
         <div class="ml-addresses-grid ml-addresses-grid--first-column">
-            <div class="ui-form__row "> 
+            <div class="ui-form__row ">
                 <input type="text" id="inputMunicipio" name="inputMunicipio" data-required="true" data-valid="true" class="ui-form__input ">
                 <label for="inputMunicipio" id="lblMsjinputMunicipio" class="ui-form__label">Municipio</label>
                 <span class="ui-form__status-bar"></span>
@@ -91,7 +91,7 @@ p {
         </div>
 
         <div class="ml-addresses-grid ml-addresses-grid--second-column">
-            <div class="ui-form__row  "> 
+            <div class="ui-form__row  ">
                 <input type="text" id="inputEstado"  data-required="true" name="inputEstado" data-valid="true" class="ui-form__input ">
                 <label id="lblMsjinputEstado" for="inputEstado" class="ui-form__label">Estado</label>
                 <span class="ui-form__status-bar"></span>
@@ -120,7 +120,9 @@ p {
 
             <div class="ml-addresses-embeded-action">
                 <label class="ui-checkbox ui-checkbox--embedded ui-checkbox--label-after" style="    position: relative;
-    top: 35px;left: 68px;
+    top: 35px;
+left: 68px;
+
     width: 25px;
     height: 35px;">
                     <span class="ui-checkbox__label" style="left: 5px;
@@ -131,7 +133,7 @@ p {
                 </label>
             </div>
         </div>
-       
+
     </div>
      <div class="ml-addresses-grid ml-addresses-grid--second-column ml-addresses-grid--half-column">
             <div class="ui-form__row ">
@@ -172,31 +174,31 @@ p {
         </div>
     </fieldset>
 
-            
-                
-                 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+
+
+                 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                   <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
-                  <input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+                  <input type="hidden" name="titulo" value="{{$titulo}}" id="titulo">
                   <input type="hidden" name="precio" value="{{$precio}}">
                   <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
-            
-   
 
-            
+
+
+
 </div>
     <div class="ml-addresses-actions ml-addresses-actions--align-left" style="text-align: left;margin-bottom: 0px;padding: 0px 0px 40px;">
 
     <a href="javascript:continuarDomicilio()"  name="guardar"  id="continueButton" class="ui-button ui-button--primary">Guardar</a>
-</form> 
+</form>
 
 
 
 
     </section>
-    
-        
+
+
     </main>
-    
+
 </form>
 </div>
     <div class="col2" style="width: 30%">
@@ -204,7 +206,7 @@ p {
     <aside class="cart-aside__content cart-aside__content--item cart-aside--static" data-aside="target" style="height: 500px !important ">
             <div class="overview-component__item u-block-center">
                 <span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
-                      <img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" > 
+                      <img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" >
                 </span>
                 <h3 class="overview-component__item-title">
                 {{$titulo}}
@@ -221,16 +223,16 @@ p {
                                 </div>
                                 <div data-id="overview-items-price" class="overview-component__column">
                                     <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-                                        <meta itemprop="price" content="18999"> 
+                                        <meta itemprop="price" content="18999">
                                         <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
                                         <span class="price-tag-fraction">{{$precio}}</span>
-                                            <span class="price-tag-decimal-separator"></span> 
+                                            <span class="price-tag-decimal-separator"></span>
                                             <span class="price-tag-cents">00</span>
-                                        
+
                                     </span>
                                 </div>
                             </div>
-                        
+
                     </div>
                 </div>
                  <div class="overview-component__amounts">
@@ -241,13 +243,13 @@ p {
                                 </div>
                                 <div data-id="overview-items-price" class="overview-component__column">
                                     <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-                                        <meta itemprop="price" content="18999"> 
+                                        <meta itemprop="price" content="18999">
                                         <span class="price-tag-fraction">-</span>
-    
+
                                     </span>
                                 </div>
                             </div>
-                        
+
                     </div>
                 </div>
                     <div class="overview-component__total">
@@ -258,14 +260,14 @@ p {
                             <div class="overview-component__column">
                                         <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                                             <meta itemprop="price" content="18999">
-                                            
-                                            
+
+
                                             <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
                                             <span class="price-tag-fraction">{{$precio}}</span>
                                                 <span class="price-tag-decimal-separator"></span>
-                                                
+
                                                 <span class="price-tag-cents">00</span>
-                                            
+
                                         </span>
                             </div>
                         </div>
@@ -276,6 +278,6 @@ p {
 </div>
 
     </div>
-</div>                
+</div>
 
 @stop

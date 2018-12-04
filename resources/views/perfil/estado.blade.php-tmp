@@ -948,7 +948,7 @@ meli_ga('send', 'pageview');
                 </p>
             </li>
 
-            <li><a class="summary-navigation-link" href="{{route('publicacionesp')}}"><div class="summary-navigation-number ">1</div>
+            <li><a class="summary-navigation-link" href="{{route('publicacionesp')}}"><div class="summary-navigation-number "></div>
                 <p>Inactivas</p>
             </a></li>
 

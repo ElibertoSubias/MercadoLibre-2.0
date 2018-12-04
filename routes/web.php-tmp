@@ -19,7 +19,13 @@ Route::any('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 Route::any('autenticar', 'InicioController@autenticarEmail')->name('autenticar');
 Route::any('validar', 'Auth\LoginController@showLoginForm')->name('validar');
+////////Admin////////////
+Route::any('validarAdmin', 'Auth\LoginController@showLoginFormAdmin')->name('validarAdmin');
+Route::post('loginAdmin', 'Auth\LoginController@loginAdmin')->name('loginAdmin');
+/////////////////////////
 Route::post('checkemail', 'InicioController@checkEmail')->name('checkemail');
+
+Route::any('admin', 'Auth\LoginController@adminLogin')->name('admin');
 
 //Route::get('crearcuentapersonal', 'InicioController@crearcuentaPersonal')->name('crearcuentapersonal');
 //Route::get('crearcuentaempresarial', 'InicioController@crearcuentaEmpresarial')->name('crearcuentaempresarial');

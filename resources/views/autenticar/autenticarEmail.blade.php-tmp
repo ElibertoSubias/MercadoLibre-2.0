@@ -16,7 +16,12 @@
 			<h2 style="line-height: 1.5;letter-spacing: 2px;color: #333;font-size:2rem;font-weight: 300;">¡Hola! Para seguir, ingresa tu e-mail
 			o usuario</h2>
 		</div>
-			{!! Form::open(array('url'=>'validar', 'id'=>'frmValidar')) !!}
+			@isset($loginType)
+				{!! Form::open(array('url'=>'validarAdmin', 'id'=>'frmValidar')) !!}
+			@endisset
+			@empty($loginType)
+				{!! Form::open(array('url'=>'validar', 'id'=>'frmValidar')) !!}
+			@endempty
 			<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 				<div id="cont-form1" style="margin-top: -18px;">
 					<div class="col-md-6" style="height: 30px;width: 100%;">
@@ -29,9 +34,11 @@
 
 						{!!link_to('#', $title='Continuar', $attributes = ['id'=>'continuar','class'=>'col-md-12 btn btn-primary btn-lg','name'=>'continuar','style'=>'outline: 0px;background: #3483fa;border-color: #3483fa;'], $secure = null)!!}
 				</div>
+				@empty($loginType)
 				<div class="col-md-12" style="margin-top: 20px;width: 100%;">
 						<a href="{{route('crearcuentapersonal')}}" class="btn btn-default" style="background:none;border:none;text-decoration: none;color: #3483fa;">Crear Cuenta</a>
 				</div>
+				@endempty
 			{!! Form::close() !!}
 		</div>
 	</div>
