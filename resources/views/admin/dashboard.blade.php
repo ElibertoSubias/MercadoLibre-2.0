@@ -13,6 +13,9 @@
 </div>
 <div class="row col-md-10 col-md-offset-1 cont-addCategoria" style="height: 100%">  
 	<h4>Edición de Categorias</h4>
+	<div id="cargando">
+		
+	</div>
 	<div class="col-md-3">   
 		<div class="form-group">
 		<label for="venta">Tipo de Venta:</label> 

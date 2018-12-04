@@ -228,6 +228,7 @@ function cargarCategorias(){
   var tipoCategoria = $('#tipoVenta').val();
   var route = "cargarCategorias";
   var token = $("#token").val();
+  $('#cargando').html("<img src='img/icon_loading.gif' style='position: absolute;z-index: 1;display: -webkit-box;'>");
   if (tipoCategoria != "") {
     $.ajax({
       url: route,
@@ -235,7 +236,8 @@ function cargarCategorias(){
       type: 'POST',
       dataType: 'json',
       data: {tipoVenta: tipoCategoria} 
-      }).done(function(data) {   
+      }).done(function(data) {  
+        $('#cargando').html(""); 
         if (data.res==1) {
           $('#categoria').html("");
         }else{
@@ -267,6 +269,7 @@ function agregarCategoria(){
   var nombreCategoria = $("#nombreCategoria").val(); 
   var route = "guardarCategoria";
   var token = $("#token").val();
+  $('#cargando').html("<img src='img/icon_loading.gif' style='position: absolute;z-index: 1;display: -webkit-box;'>");
   if (nombreCategoria != "") {
     if (tipoVenta != "") {
       $.ajax({
@@ -276,7 +279,7 @@ function agregarCategoria(){
         dataType: 'json',
         data: {nombreCategoria: nombreCategoria, tipoVenta: tipoVenta} 
         }).done(function(data) {  
-          
+          $('#cargando').html("");
           if (data.res==1){
             cargarCategorias();
               $('#nombreCategoria').val("");
@@ -314,6 +317,7 @@ $('#btnAgregarMarca').click(function(){
   var categoria = $('#categoria').val(); 
   var route = "guardarMarca";
   var token = $("#token").val();
+  $('#cargando').html("<img src='img/icon_loading.gif' style='position: absolute;z-index: 1;display: -webkit-box;'>");
   if (categoria != "" && nombreMarca != "") {
       $.ajax({
         url: route,
@@ -322,7 +326,7 @@ $('#btnAgregarMarca').click(function(){
         dataType: 'json',
         data: {nombreMarca: nombreMarca, categoria: categoria} 
         }).done(function(data) {  
-          
+          $('#cargando').html("");
           if (data.res==1){
               $('#msjAlert').html(
             '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>¡Listo!</strong> Categoria agregada con exito.</div>'
@@ -343,6 +347,7 @@ $('#categoria').change(function(){
   var route = "cargarMarcas";
   var tipoVenta = $("#tipoVenta").val();
   var token = $("#token").val();
+  $('#cargando').html("<img src='img/icon_loading.gif' style='position: absolute;z-index: 1;display: -webkit-box;'>");
   $('#car-marca').html("");
   $('#2').hide(); 
   if (categoria != "") {
@@ -352,7 +357,8 @@ $('#categoria').change(function(){
         type: 'POST',
         dataType: 'json',
         data: {tipoVenta: tipoVenta, categoria: categoria} 
-        }).done(function(data) {   
+        }).done(function(data) {  
+          $('#cargando').html(""); 
           if (data.res!=1 || data.res == "") { 
               $('#car-marca').html(""); 
               $('.menu-marcas').hide();
@@ -391,6 +397,7 @@ $('#car-marca').change(function(){
   var route = "cargarModelos";
   var marca = $("#car-marca").val();
   var token = $("#token").val();
+  $('#cargando').html("<img src='img/icon_loading.gif' style='position: absolute;z-index: 1;display: -webkit-box;'>");
   if (categoria != "") {
       $.ajax({
         url: route,
@@ -399,6 +406,7 @@ $('#car-marca').change(function(){
         dataType: 'json',
         data: {marca: marca, categoria: categoria} 
         }).done(function(data) {  
+          $('#cargando').html("");
           try {     
 
             if (data.res==1 || data.res == "") {
@@ -425,6 +433,7 @@ $('#car-modelo').change(function(){
   var marca = $("#car-marca").val();
   var modelo = $('#car-modelo').val();
   var token = $("#token").val();
+  $('#cargando').html("<img src='img/icon_loading.gif' style='position: absolute;z-index: 1;display: -webkit-box;'>");
   if (categoria != "") {
       $.ajax({
         url: route,
@@ -432,7 +441,8 @@ $('#car-modelo').change(function(){
         type: 'POST',
         dataType: 'json',
         data: {marca: marca, modelo: modelo} 
-        }).done(function(data) {   
+        }).done(function(data) { 
+        $('#cargando').html("");  
           try {     
             if(data.res == 1 || data.res == ""){
               $('#car-anio').html(""); 
