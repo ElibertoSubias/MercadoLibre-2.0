@@ -155,6 +155,7 @@
 						</div>
 						@endisset
 				        <ul>
+				        	@isset(auth()->user()->_id)
 		                    <li>
 		                        <a href="{{route('perfil')}}">
 		                            <i class="nav-icon-my-account-mobile"></i>
@@ -254,6 +255,25 @@
 		                            </p>
 		                        </a>
 		                    </li>
+		                    @endisset
+		                    @empty(auth()->user()->_id)
+		                    <li>
+			                        <a href="{{route('crearcuentapersonal')}}">
+			                            <i class="nav-icon-create-account-mobile"></i>
+			                            <p>
+			                                Crear cuenta
+			                            </p>
+			                        </a>
+			                    </li>
+		                    	<li>
+			                        <a href="{{route('autenticar')}}">
+			                            <i class="nav-icon-logout-mobile"></i>
+			                            <p>
+			                                Ingresar
+			                            </p>
+			                        </a>
+			                    </li>
+		                    @endempty
 				        </ul>
 				        <ul>
 		                    <li>
