@@ -109,8 +109,13 @@ class BuscarController extends Controller
             }
             
             $totalResul = count($datos);
-            $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
-            return view('listarResultados')->with(['datos'=>$datos,'direccion'=>$direccion])->with(['total'=>$totalResul,'busqueda'=>$request->busqueda]);
+            if (isset(auth()->user()->_id)) {
+                $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
+                return view('listarResultados')->with(['datos'=>$datos,'direccion'=>$direccion])->with(['total'=>$totalResul,'busqueda'=>$request->busqueda]);
+            }else{ 
+                return view('listarResultados')->with(['datos'=>$datos])->with(['total'=>$totalResul,'busqueda'=>$request->busqueda]);
+            }
+            
  
         } catch (Exception $e) {
             return "Error en la consulta de productos";

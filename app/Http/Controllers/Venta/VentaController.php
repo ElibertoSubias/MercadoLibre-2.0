@@ -106,16 +106,30 @@ class VentaController extends Controller
     { 
 
         $idUser = $request->user; 
-        $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
-        $vendedor = User::where(['_id'=>$idUser])->first();
-        $ventas = Compras::where(['idPublicacion'=>$request->id])->get(); 
-        $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first();  
-        if ($datos!="") {
-            $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first(); 
-            return view('vender.verPublicacion')->with(['datos'=>$datos,'direccion'=>$direccion])->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido)->with(['idVendedor'=>$vendedor->_id,'totalVentas'=>count($ventas)]);
+        if (isset(auth()->user()->_id)) {
+            $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
+            $vendedor = User::where(['_id'=>$idUser])->first();
+            $ventas = Compras::where(['idPublicacion'=>$request->id])->get(); 
+            $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first();  
+            if ($datos!="") {
+                $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first(); 
+                return view('vender.verPublicacion')->with(['datos'=>$datos,'direccion'=>$direccion])->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido)->with(['idVendedor'=>$vendedor->_id,'totalVentas'=>count($ventas)]);
+            }else{
+                return view('dashboard');
+            }
         }else{
-            return view('dashboard');
+            $vendedor = User::where(['_id'=>$idUser])->first();
+            $ventas = Compras::where(['idPublicacion'=>$request->id])->get(); 
+            $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first();  
+            if ($datos!="") {
+                $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first(); 
+                return view('vender.verPublicacion')->with(['datos'=>$datos])->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido)->with(['idVendedor'=>$vendedor->_id,'totalVentas'=>count($ventas)]);
+            }else{
+                return view('dashboard');
+            }
         }
+        
+        
         
     }
 
