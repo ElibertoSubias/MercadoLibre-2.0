@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Direcciones;
 use App\Empresas;
 use \Crypt;
 
@@ -65,13 +66,15 @@ class LoginController extends Controller
 
 
             if(Auth::attempt($request->only($login_type, 'password')))
-            {
+            { 
                 if (auth()->user()->userType==0) {
                     return redirect()->route('dashboardAdmin');
-                }
-                return redirect()->route('dashboard');
+                }else{
+                    $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
+                    return redirect('dashboard')->with(['direccion'=>$direccion]); 
+                } 
             }else{
-                return view('auth.validarPassword')->with('login', $request->login);
+                return redirect('auth.validarPassword')->with('login', $request->login);
             }
         }
         return view('auth.validarPassword')->with('login', $request->login);
@@ -79,13 +82,23 @@ class LoginController extends Controller
 
     public function adminDashboard(Request $request)
     {
-        return view('admin.dashboard');
+        if (isset(auth()->user()->userType)) {
+            if (auth()->user()->userType!=0) {
+                $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
+                return redirect('dashboard')->with(['direccion'=>$direccion]); 
+            }else{
+                return redirect('admin.dashboard');
+            }
+        }else{
+            return redirect('admin.dashboard');
+        } 
     }
 
     public function logout() 
     {
+        $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
         Auth::logout();
-        return redirect('/');
+        return redirect('/')->with(['direccion'=>$direccion]);
     }
 
     public function username()

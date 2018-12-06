@@ -217,18 +217,7 @@
     font: normal normal 400 normal 13px / normal Arial, Helvetica, "Nimbus Sans L", sans-serif;
     margin: 0px 0px;
     padding: 6px;
-    }
-
-   
-    .container{
-        width: 50%;
-        height: 50%;
-        background-color: black;
-        border: 2px solid red;
-        margin: auto;
-        font-family: arial;
-        padding:20px;
-    }
+    } 
 
     .ventana{
         width: 100%;

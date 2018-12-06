@@ -12,6 +12,8 @@ use Redirect;
 use App\User;
 use App\Articulos;
 use App\Carrito;
+use App\Direcciones;
+use App\Compras;
 use App\Usuarios;
 use App\Urlimagenes;
 
@@ -56,6 +58,7 @@ class VentaController extends Controller
         $urlPrincipal = Urlimagenes::where('idPublicacion', '=', $request->idPublicacion)->first();  
         $Articulos = new Articulos;
         $Articulos->idUser = $id; 
+        $Articulos->tipoVenta = $request->tipo;
         $Articulos->titulo = $request->titulo;
         $Articulos->precio = floatval($request->precio);
         $Articulos->moneda = $request->moneda;
@@ -88,7 +91,7 @@ class VentaController extends Controller
         $Articulos->garantia = $request->garantia;
         $Articulos->metodo_envio = $request->metodo_envio;
         $Articulos->save();
-        return Redirect::route('estado',['idPublicacion' => $request->idPublicacion,'user'=>$user]);
+        return Redirect::route('estadoPublicacion',['idPublicacion' => $request->idPublicacion,'user'=>$user]);
     } 
     public function showEstado(Request $request)
     {
@@ -103,13 +106,13 @@ class VentaController extends Controller
     { 
 
         $idUser = $request->user; 
-
+        $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
         $vendedor = User::where(['_id'=>$idUser])->first();
-
-        $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first(); 
+        $ventas = Compras::where(['idPublicacion'=>$request->id])->get(); 
+        $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first();  
         if ($datos!="") {
             $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first(); 
-            return view('vender.verPublicacion')->with('datos',$datos)->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido)->with('idVendedor',$vendedor->_id);
+            return view('vender.verPublicacion')->with(['datos'=>$datos,'direccion'=>$direccion])->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido)->with(['idVendedor'=>$vendedor->_id,'totalVentas'=>count($ventas)]);
         }else{
             return view('dashboard');
         }

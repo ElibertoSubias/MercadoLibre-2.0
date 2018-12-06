@@ -1,9 +1,10 @@
-function abrirMenu(){ 
-	document.getElementById('info_user').style.display = "block";
+function abrirMenu(){  
+	$('.user-menu').css('display','block');
+	$('.user-menu__main2').css('display','block');
 }
 
 function cerrarMenu(){ 
-	document.getElementById('info_user').style.display = "none";
+	$('.user-menu').css('display','none');
 }
 
  
@@ -178,37 +179,41 @@ function clickbtn(id){
 	document.getElementById('select_file').click();
 }  
 $("#upload_form").on("submit", function(){ 
-	if ($('#estado').val()==="") {
-		$('#estado').focus();
-		return false;
-	}else if($('#municipio').val()===""){
-		$('#municipio').focus();
-		return false;
-	}else if($('#colonia').val()===""){
-		$('#colonia').focus();
-		return false;
-	}else if($('#telefono').val()===""){
-		$('#telefono').focus();
-		return false;
-	}else if($('#modelo').val()===""){
-		$('#modelo').focus();
-		return false;
-	}else if($('#anio').val()===""){
-		$('#anio').focus();
-		return false;
-	}else if($('#numPuertas').val()===""){
-		$('#numPuertas').focus();
-		return false;
-	}else if($('#kilometros').val()===""){
-		$('#kilometros').focus();
-		return false;
-	}else if($('#titulo').val()===""){
-		$('#titulo').focus();
+	if ($("#principal").attr("data-picture-status")==="off") { 
+		alert("Agregar una imagen principal!"); 
 		return false;
 	}else{
-		return true;
-	}
-	
+		if ($('#estado').val()==="Selecciona tu estado") {
+			$('#estado').focus();
+			return false;
+		}else if($('#municipio').val()==="Selecciona tu municipio"){
+			$('#municipio').focus();
+			return false;
+		}else if($('#colonia').val()==="Selecciona tu colonia"){
+			$('#colonia').focus();
+			return false;
+		}else if($('#telefono').val()===""){
+			$('#telefono').focus();
+			return false;
+		}else if($('#modelo').val()===""){
+			$('#modelo').focus();
+			return false;
+		}else if($('#anio').val()===""){
+			$('#anio').focus();
+			return false;
+		}else if($('#numPuertas').val()===""){
+			$('#numPuertas').focus();
+			return false;
+		}else if($('#kilometros').val()===""){
+			$('#kilometros').focus();
+			return false;
+		}else if($('#titulo').val()===""){
+			$('#titulo').focus();
+			return false;
+		}else{
+			return true;
+		}
+	} 	
  })
 $('#select_file').change(function(){
     	var token = $("#token").val();
@@ -238,6 +243,7 @@ $('#select_file').change(function(){
 	    $('#'+idLIFoto).addClass('on');
 	    $('#'+idLIFoto).html(data.uploaded_image+"<div class='picture-uploader-controls'><p role='button' class='ch-close' id='"+data.urlCompleta+"' onclick=delateImg(this.id,'"+data.idImagen+"','"+data.tipoImg+"')><span>x</span></p></div>");
 	    $('#select_file').val("");
+	    $('#'+idLIFoto).attr('data-picture-status', 'on');
 	    if (idLIFoto == "principal") {
 	    	$('#urlPrincipal').val(data.url);
 	    }
@@ -258,6 +264,8 @@ function delateImg(id,idImg,tipo){
 	data: {link: id,idImg:idImg,tipo:tipo} 
 	}).done(function(data) {   
 		 $('#'+tipo).html(data.contenido);
+		 $('#'+tipo).removeClass("on");
+		 $('#'+tipo).attr('data-picture-status', 'off');
     });
 }
 

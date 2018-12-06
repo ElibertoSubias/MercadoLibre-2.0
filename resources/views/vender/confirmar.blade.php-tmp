@@ -36,6 +36,7 @@
 <input type="hidden" name="telefono" id="telefono" value="{{$objectArticulo->telefono}}">
 <input type="hidden" name="modelo" id="modelo" value="{{$objectArticulo->modelo}}">
 <input type="hidden" name="anio" id="anio" value="{{$objectArticulo->anio}}">
+<input type="hidden" name="tipo" id="tipo" value="{{$objectArticulo->tipo}}">
 <input type="hidden" name="numPuertas" id="numPuertas" value="{{$objectArticulo->numPuertas}}">
 <input type="hidden" name="kilometros" id="kilometros" value="{{$objectArticulo->kilometros}}">
 <input type="hidden" name="titulo" id="titulo" value="{{$objectArticulo->titulo}}">

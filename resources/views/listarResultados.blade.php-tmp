@@ -356,7 +356,10 @@ echo $contador;
                                     <!-- <span class="price-old" itemprop="price-old"> <del> $&nbsp;145,000 </del> </span>  -->
 
                                     <!-- <div class="item__discount ">5% OFF</div> -->
-                                    <div class="item__attrs"> 2003 | 90000 km</div>
+                                    @if($articulo->tipoVenta=='VEHI')
+                                    <div class="item__attrs"> {{$articulo->anio}} | {{$articulo->kilometros
+}} km</div>
+                                    @endif
                                     <h2 class="item__title list-view-item-title"> <span class="main-title">{{$articulo->titulo}} {{$articulo->marca}} {{$articulo->modelo}} {{$articulo->transmicion}}  {{$articulo->anio}}  </span></h2>
                                     <div class="item__location">
                                         {{$articulo->estado}}

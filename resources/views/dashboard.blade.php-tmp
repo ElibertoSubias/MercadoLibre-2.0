@@ -6,11 +6,11 @@
 	{!! Html::style('css/carrucel.css') !!}
 
 	<div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'>
-		<div class="gallery-cell padre"><img src="img/mlm_ropa.jpg" alt=""></div>
-		<div class="gallery-cell padre"><img src="img/mlm_navidad.jpg" alt=""></div>
-		<div class="gallery-cell padre"><img src="img/mlm_muebles.jpg" alt=""></div>
-		<div class="gallery-cell padre"><img src="img/mlm_movil.jpg" alt=""></div>
-		<div class="gallery-cell padre"><img src="img/mlm_brujas.jpg" alt=""></div>
+		<div class="gallery-cell padre"><img style="width: 100%;height: 100%;" src="img/mlm_ropa.jpg" alt=""></div>
+		<div class="gallery-cell padre"><img style="width: 100%;height: 100%;" src="img/mlm_navidad.jpg" alt=""></div>
+		<div class="gallery-cell padre"><img style="width: 100%;height: 100%;" src="img/mlm_muebles.jpg" alt=""></div>
+		<div class="gallery-cell padre"><img style="width: 100%;height: 100%;" src="img/mlm_movil.jpg" alt=""></div>
+		<div class="gallery-cell padre"><img style="width: 100%;height: 100%;" src="img/mlm_brujas.jpg" alt=""></div>
 	</div>
 	<section class="payment-data MLM" type="payment-data MLM">
 		<div class="container">
@@ -18,7 +18,7 @@
 				<div class="payment-data-group payment-data-group-normal">
 					<div class="payment-data-section payment-data-section-normal">
 						<a class="payment-data-icon" href="#" data-title="Medios de pago">
-							<img alt="" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/credit-card.svg">
+							<img  alt="" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/credit-card.svg">
 						</a>
 						<div class="payment-data-title">Paga en hasta 12 MSI</div>
 						<div class="payment-data-subtitle">
@@ -27,7 +27,7 @@
 					</div>
 					<div class="payment-data-section payment-data-section-normal">
 						<a class="payment-data-icon" href="#" data-title="Medios de pago">
-							<img alt="" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/debit-card.svg">
+							<img  alt="" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/debit-card.svg">
 						</a>
 						<div class="payment-data-title">Tarjeta de débito</div>
 						<div class="payment-data-subtitle">
@@ -36,7 +36,7 @@
 					</div>
 					<div class="payment-data-section payment-data-section-normal">
 						<a class="payment-data-icon" href="#" data-title="Medios de pago">
-							<img alt="" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/payment-agreement.svg">
+							<img  alt="" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/payment-agreement.svg">
 						</a>
 						<div class="payment-data-title">Efectivo, depósito y transferencia</div>
 						<div class="payment-data-subtitle">
@@ -48,7 +48,7 @@
 				<div class="payment-data-group payment-data-group-trailing">
 					<div class="payment-data-section payment-data-section-trailing">
 						<a class="payment-data-icon" href="#" data-title="Medios de pago">
-							<img alt="" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/view-more.svg">
+							<img  alt="" src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/view-more.svg">
 						</a>
 						<div class="payment-data-title">Más medios de pago</div>
 						<div class="payment-data-subtitle">

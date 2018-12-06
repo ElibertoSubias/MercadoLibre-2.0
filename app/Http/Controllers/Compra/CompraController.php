@@ -38,24 +38,30 @@ class CompraController extends Controller
         if ($request->idReferencia=="cardBuy") {
             //Se asigna un codigo de compra 
                 $articulos = Carrito::where(['idUser'=>auth()->user()->_id])->get();
-                $subTotal = 0;
-                foreach ($articulos as $articulo) {
-                    $subTotal = $subTotal+$articulo->precio;
-                }
-                session_start();  
-                unset($_SESSION['codigoCompra']);  
-                $_SESSION["codigoCompra"]=date("YmdHis");  
+                $totalArticulosEnCarrito = count($articulos);
+                if ($totalArticulosEnCarrito>0) {
+                    $subTotal = 0;
+                    foreach ($articulos as $articulo) {
+                        $subTotal = $subTotal+$articulo->precio;
+                    }
+                    session_start();  
+                    unset($_SESSION['codigoCompra']);  
+                    $_SESSION["codigoCompra"]=date("YmdHis");  
 
-                if(Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', 1 ]])->exists())
-                {
-                    $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get();  
-                    return view('confirmarCompra.dondeRecibir')->with(['cantidadArticulos'=>count($articulos),'precio'=>$subTotal,'domicilios'=>$domicilios,'idReferencia'=>'cardBuy']);     
-                    
+                    if(Direcciones::where([['idUser' , '=', auth()->user()->id], ['envio', '=', 1 ]])->exists())
+                    {
+                        $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get();  
+                        return view('confirmarCompra.dondeRecibir')->with(['cantidadArticulos'=>count($articulos),'precio'=>$subTotal,'domicilios'=>$domicilios,'idReferencia'=>'cardBuy']);     
+                        
+                    }else{
+                        
+                        $urlImagen = $request->idUser."/".$request->idPublicacion; 
+                        return view ('confirmarCompra.elegirFormaRecivir')->with(['precio'=>$subTotal,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen,'idPaquete'=>$request->idPublicacion ]);
+                    } 
                 }else{
-                    
-                    $urlImagen = $request->idUser."/".$request->idPublicacion; 
-                    return view ('confirmarCompra.elegirFormaRecivir')->with(['precio'=>$subTotal,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen,'idPaquete'=>$request->idPublicacion ]);
-                } 
+                    return Redirect::back()->withErrors(['No tienes articulos en el carrito']);
+                }
+                
         }else{
             $item = Articulos::where(['idPublicacion' => $request->idPublicacion])->get();
             if ($item[0]->cantidad > 0) {
@@ -112,14 +118,15 @@ class CompraController extends Controller
 
     public function compTarjeta(Request $request)
     {
+        $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get(); 
         $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678'); 
         $customer = $openpay->customers->get(auth()->user()->idCustomer); 
 
         $card = $customer->cards->get($request->cardId);
         if (isset($request->idReferencia)) {
-            return view('confirmarCompra.complementarTarjeta')->with(['cantidadArticulos'=>$request->cantidadArticulos,'idReferencia'=>$request->idReferencia,'card'=>$card,'precio'=>$request->precio,'costoEnvio'=>$request->costoEnvio]);
+            return view('confirmarCompra.complementarTarjeta')->with(['cantidadArticulos'=>$request->cantidadArticulos,'idReferencia'=>$request->idReferencia,'card'=>$card,'precio'=>$request->precio,'costoEnvio'=>$request->costoEnvio,'direccion'=>$direccion]);
         }else{
-            return view('confirmarCompra.complementarTarjeta')->with(['cantidadArticulos'=>$request->cantidadArticulos,'card'=>$card,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio]);
+            return view('confirmarCompra.complementarTarjeta')->with(['cantidadArticulos'=>$request->cantidadArticulos,'card'=>$card,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'direccion'=>$direccion]);
         }
     }
 
@@ -466,7 +473,7 @@ class CompraController extends Controller
     public function histoCompra(Request $request)
     {
 
-
+        $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
         $compras = Compras::where('idUser' , '=', auth()->user()->id)->get();
        
         $articulos= array();
@@ -486,7 +493,7 @@ class CompraController extends Controller
          array_push($vendedor, $auxVendedor[0]);  
         }   
           //  return $articulos;
-    	return view('confirmarCompra.histoCompra', compact('compras', 'articulos', 'direccionEnvio', 'vendedor'));
+    	return view('confirmarCompra.histoCompra', compact('direccion','compras', 'articulos', 'direccionEnvio', 'vendedor'));
     }
 
     public function vistaEstadoDeCuenta(Request $request)

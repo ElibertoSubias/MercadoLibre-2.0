@@ -2,12 +2,12 @@
 
 @section('content')
 {!! Html::style('css/styleCarrito.css') !!}
-<script type="text/javascript">
-
-</script>
-<div style="margin: 30px auto 20px;max-width: 1220px;background-color: #fff;border: 1px solid #e2e2e2;border-radius: 5px;height:auto;display: inline-block;width: 100%;">
+<div style="margin: 30px auto 20px;max-width: 1220px;background-color: #fff;border: 1px solid #e2e2e2;border-radius: 5px;height:auto;width: 100%;">
 
     <div style="position: relative;">
+        @if($errors->any())
+            <div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Ups!</strong>{{$errors->first()}}</div>
+        @endif
     <div style="width: 99%;height: 100%;text-align: left;margin:20px;">
 
     <div data-region="tabs" class="cart__tabs"><div id="Total"><ul class="ui-tabs" role="tablist" data-tabs=""  style="width: 96.5%;">

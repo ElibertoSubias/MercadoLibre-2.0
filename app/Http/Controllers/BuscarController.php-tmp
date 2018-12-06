@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Articulos;
+use App\Direcciones;
 use Illuminate\Http\Request;
 
 class BuscarController extends Controller {
@@ -105,7 +106,8 @@ class BuscarController extends Controller {
 			}
 
 			$totalResul = count($datos);
-			return view('listarResultados')->with('datos', $datos)->with(['total' => $totalResul, 'busqueda' => $request->busqueda]);
+			$direccion  = Direcciones::where(['idUser'     => auth()->user()->_id, 'envio'     => 1])->get();
+			return view('listarResultados')->with(['datos' => $datos, 'direccion' => $direccion])->with(['total' => $totalResul, 'busqueda' => $request->busqueda]);
 
 		} catch (Exception $e) {
 			return "Error en la consulta de productos";

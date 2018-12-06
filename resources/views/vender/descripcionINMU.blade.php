@@ -59,7 +59,7 @@ ul li:first-of-type, li:first-of-type.sortable-dragg li:first-of-type.sortable-p
                                             
                                                 {{ csrf_field() }}
                                                         <input type="file" name="select_file" id="select_file" class="btn-car" /> 
-                                                <li data-picture-status="on" class="off" id="principal" onclick="clickbtn(id)" style="margin-bottom: 40px;"> 
+                                                <li data-picture-status="off" class="off" id="principal" onclick="clickbtn(id)" style="margin-bottom: 40px;"> 
                                                     <p class="picture-uploader-add">Agregar</p>
                                                     <div class="picture-uploader-controls">
                                                         <a role="button" class="ch-close ch-hide" href="#"><span class="ch-hide">x</span></a>

@@ -231,18 +231,18 @@ class AddCategoriaController extends Controller {
 		}
 		switch ($request->tipoVenta) {
 			case 'VEHI':
-				return view('vender.descripcionVEHI')->with(['idPublicacion' => $_SESSION["idPublicacion"], 'categoria' => $request->categoria, 'tipo' => $request->tipo, 'marca' => $request->input('car-marca')]);
+				return view('vender.descripcionVEHI')->with(['idPublicacion' => $_SESSION["idPublicacion"], 'categoria' => $request->categoria, 'tipo' => $request->tipoVenta, 'marca' => $request->input('car-marca')]);
 				break;
 
 			case 'INMU':
-				return view('vender.descripcionINMU')->with(['idPublicacion' => $_SESSION["idPublicacion"], 'categoria' => $request->categoria, 'tipo' => $request->tipo, 'marca' => $request->input('car-marca')]);
+				return view('vender.descripcionINMU')->with(['idPublicacion' => $_SESSION["idPublicacion"], 'categoria' => $request->categoria, 'tipo' => $request->tipoVenta, 'marca' => $request->input('car-marca')]);
 				break;
 
 			case 'SERV':
-				return view('vender.descripcionSERV')->with(['idPublicacion' => $_SESSION["idPublicacion"], 'categoria' => $request->categoria, 'tipo' => $request->tipo, 'marca' => $request->input('car-marca')]);
+				return view('vender.descripcionSERV')->with(['idPublicacion' => $_SESSION["idPublicacion"], 'categoria' => $request->categoria, 'tipo' => $request->tipoVenta, 'marca' => $request->input('car-marca')]);
 				break;
 			case 'PROD':
-				return view('vender.descripcionPROD')->with(['titulo' => $request->titulo, 'idPublicacion' => $_SESSION["idPublicacion"], 'categoria' => $request->categoria, 'tipo' => $request->tipo, 'marca' => $request->input('car-marca')]);
+				return view('vender.descripcionPROD')->with(['titulo' => $request->titulo, 'idPublicacion' => $_SESSION["idPublicacion"], 'categoria' => $request->categoria, 'tipo' => $request->tipoVenta, 'marca' => $request->input('car-marca')]);
 				break;
 			default:
 				return back()->withInput();

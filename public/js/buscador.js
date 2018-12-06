@@ -1,4 +1,4 @@
-$(buscar_publicaciones());
+//$(buscar_publicaciones());
 
 function buscar_publicaciones(consulta){
 	var route = "buscar";

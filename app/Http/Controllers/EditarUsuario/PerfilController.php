@@ -23,6 +23,7 @@ class PerfilController extends Controller
      */
     public function index()
     {
+        $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
         $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678'); 
 
         $customer = $openpay->customers->get(auth()->user()->idCustomer);
@@ -33,7 +34,7 @@ class PerfilController extends Controller
 
       	$usuario=User::find( auth()->user()->id);
         $domicilios=Direcciones::where(['idUser'=>auth()->user()->id])->get();   
-        return view('perfil.create',compact('usuario','domicilios','cardList'));
+        return view('perfil.create',compact('direccion','usuario','domicilios','cardList'));
     }
 
     public function dalateCard(Request $request)

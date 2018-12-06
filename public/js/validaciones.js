@@ -247,6 +247,8 @@ function cargarCategorias(){
           $('#categoria').removeAttr("disabled");
         }
       });
+  }else{
+    $('#cargando').html(""); 
   }
 }
  

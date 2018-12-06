@@ -48,17 +48,20 @@ class MenuUsuarioController extends Controller
       $customer = $openpay->customers->get(auth()->user()->idCustomer); 
       $charge = $customer->charges->get($item[0]->cargoId);
       
-      $direccion = Direcciones::where(['_id'=>$item[0]->idDireccionEnvio])->get();
-      return view('usuario.menu.detaCompra')->with(['codigoCompra'=>$request->codigoCompra,'item'=>$item,'direccion'=>$direccion[0],'charge'=>$charge]);
+      $domicilioEnvio = Direcciones::where(['_id'=>$item[0]->idDireccionEnvio])->get();
+      $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
+      return view('usuario.menu.detaCompra')->with(['codigoCompra'=>$request->codigoCompra,'item'=>$item,'direccion'=>$direccion,'domicilioEnvio'=>$domicilioEnvio,'charge'=>$charge]);
     }
 
     public function aggDomicilio()
     {
-      return view('usuario.menu.agregarDomicilio');
+      $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
+      return view('usuario.menu.agregarDomicilio')->with('direccion');
     }
 
     public function showAllPublicaciones() 
     {
+      $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
         $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 1]])->get();
           
           $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 3]])->get();
@@ -72,13 +75,14 @@ class MenuUsuarioController extends Controller
         
         
 
-        return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados' ) ); 
+        return view('usuario.menu.adminPublicaciones',compact('direccion','articulos', 'totalActivos','totalFinalizados', 'totalPausados' ) ); 
     }
 
    
 
     public function showAllPublicacionesPausadas() 
     {
+      $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
         $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
            $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 3]])->get();
           $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
@@ -88,12 +92,13 @@ class MenuUsuarioController extends Controller
         $totalActivos = count($activos);
         $totalPausados = count($pausados);
         $totalFinalizados = count($Finalizados);
-        return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados') );
+        return view('usuario.menu.adminPublicaciones',compact('direccion','articulos', 'totalActivos','totalFinalizados', 'totalPausados') );
     
     }
 
     public function showAllPublicacionesFinalizadas() 
     {
+      $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
         $articulos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 3]])->get();
            $Finalizados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 3]])->get();
           $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
@@ -103,15 +108,12 @@ class MenuUsuarioController extends Controller
         $totalActivos = count($activos);
         $totalPausados = count($pausados);
         $totalFinalizados = count($Finalizados);
-        return view('usuario.menu.adminPublicaciones',compact('articulos', 'totalActivos','totalFinalizados', 'totalPausados') );
+        return view('usuario.menu.adminPublicaciones',compact('direccion','articulos', 'totalActivos','totalFinalizados', 'totalPausados') );
     
     }
    
    public function editar(Request $request)
-    {
-
-             
-
+    { 
               if ($request->ajax()) {
 
                 if($request->estado=="1")

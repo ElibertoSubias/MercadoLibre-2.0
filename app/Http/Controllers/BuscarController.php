@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 use Illuminate\Http\Request;
+use App\Direcciones;
 use App\Articulos;
 
 class BuscarController extends Controller
@@ -17,7 +18,7 @@ class BuscarController extends Controller
     			$aux = $aux."<li><a href='resultados?busqueda=".$request->consulta."&categoria=".$value->categoria."'>".$value->titulo."</a></li>"; 
     		}
     		return $aux;
-    	} 
+    	}
     }
     public function listarResultados(Request $request){
 
@@ -108,7 +109,8 @@ class BuscarController extends Controller
             }
             
             $totalResul = count($datos);
-            return view('listarResultados')->with('datos',$datos)->with(['total'=>$totalResul,'busqueda'=>$request->busqueda]);
+            $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
+            return view('listarResultados')->with(['datos'=>$datos,'direccion'=>$direccion])->with(['total'=>$totalResul,'busqueda'=>$request->busqueda]);
  
         } catch (Exception $e) {
             return "Error en la consulta de productos";

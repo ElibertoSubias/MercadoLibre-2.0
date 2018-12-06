@@ -52,8 +52,9 @@ class EditarUsuarioController extends Controller {
 
 	}
 	public function modificarDomicilioView(Request $request) {
-		$domicilio = Direcciones::where(['_id' => $request->id, 'idUser' => Auth::id()])->get();
-		return view("usuario.menu.modificarDomicilio")->with('domicilio', $domicilio);
+		$domicilio = Direcciones::where(['_id'                            => $request->id, 'idUser'                            => Auth::id()])->get();
+		$direccion = Direcciones::where(['idUser'                         => auth()->user()->_id, 'envio'                         => 1])->get();
+		return view("usuario.menu.modificarDomicilio")->with(['domicilio' => $domicilio, 'direccion' => $direccion]);
 	}
 	public function eliminarDomicilio(Request $request) {
 		$domicilio = Direcciones::where(['_id' => $request->idElemneto])->delete();
@@ -131,7 +132,7 @@ class EditarUsuarioController extends Controller {
 			$Direccion->asentamiento = $request->Asentamiento;
 			$Direccion->municipio    = $request->Municipio;
 			$Direccion->estado       = $request->Estado;
-			$Direccion->envio        = '1';
+			$Direccion->envio        = 1;
 
 			$Direccion->save();
 			return response()->json([

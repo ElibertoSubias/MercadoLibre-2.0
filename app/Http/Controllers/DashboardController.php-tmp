@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Direcciones;
+
 class DashboardController extends Controller {
 	//Solo dejar pasar a los usuarios Autenticados
 	public function __construct() {
 		$this->middleware('auth');
 	}
 	public function index() {
-		return view('dashboard');
+		$direccion = Direcciones::where(['idUser'   => auth()->user()->_id, 'envio'   => 1])->get();
+		return view('dashboard')->with(['direccion' => $direccion]);
 	}
 }

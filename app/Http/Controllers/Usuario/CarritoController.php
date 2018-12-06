@@ -8,6 +8,7 @@ use Validator;
 use Auth;
 use Redirect;
 use App\Articulos;
+use App\Direcciones;
 use App\Carrito;
 use App\Urlimagenes;
 
@@ -15,6 +16,7 @@ class CarritoController extends Controller
 {
     public function index()
     {	
+        $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
     	$articulos = Carrito::where('idUser' , '=', auth()->user()->id)->get();
     	$subtotal=0;
     
@@ -28,7 +30,7 @@ class CarritoController extends Controller
            
     	} 
         $totalArticulos= count($articulo);
-    return view('usuario.carrito.carrito',compact('articulo', 'totalArticulos', 'subtotal','articulos') );
+    return view('usuario.carrito.carrito',compact('direccion','articulo', 'totalArticulos', 'subtotal','articulos') );
     
     }
 
@@ -52,6 +54,7 @@ class CarritoController extends Controller
     public function agregarAlCarrito(Request $request)
     { 
         $item = Articulos::where(['idPublicacion' => $request->idPublicacion])->get();
+        $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
         if ($item[0]->cantidad > 0) {
             
             if(!Carrito::where([['idUser' , '=', auth()->user()->id] ,['idPublicacion', '=',  $request->idArticulo]])->exists()){ 
@@ -63,7 +66,7 @@ class CarritoController extends Controller
                 $Carrito->precio = $request->precio;        
                 $Carrito->save();
                 $urlImagen = $request->idUser."/".$request->idPublicacion; 
-                return view('usuario.carrito.agregadoCarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen]); 
+                return view('usuario.carrito.agregadoCarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen,'direccion'=>$direccion]); 
             }
             else{
                 $aux=Carrito::where([['idUser' , '=', auth()->user()->id] ,['idPublicacion', '=',  $request->idArticulo]])->get();
@@ -72,7 +75,7 @@ class CarritoController extends Controller
                 $nprecio=($total * $aux[0]->precio); 
                 $datos = Carrito::where([['idUser' , '=', auth()->user()->id] ,['idPublicacion', '=',  $request->idArticulo]])->update(['cantidad' => $total, 'precio' => $nprecio]);
                 $urlImagen = $request->idUser."/".$request->idPublicacion; 
-                return view('usuario.carrito.agregadoCarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen]); 
+                return view('usuario.carrito.agregadoCarrito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen,'direccion'=>$direccion]); 
             }    
         }else{
             return Redirect::back()->withErrors(['Articulo agotado']);

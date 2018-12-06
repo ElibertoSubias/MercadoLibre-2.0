@@ -84,7 +84,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::post('articulo/agregarventa', 'Venta\VentaController@create')->name('agregar');
 
-	Route::any('estado', 'Venta\VentaController@showEstado')->name('estado');
+	Route::any('estadoPublicacion', 'Venta\VentaController@showEstado')->name('estadoPublicacion');
 
 	Route::any('modificarVEHI', 'Venta\VentaController@showModificarVEHI')->name('modificarVEHI');
 	Route::any('modificarPublicacion', 'Venta\VentaController@updateVEHI')->name('modificarPublicacion');

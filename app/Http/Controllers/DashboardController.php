@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Direcciones;
 
 class DashboardController extends Controller
 {
@@ -13,6 +14,7 @@ class DashboardController extends Controller
 	}
     public function index()
     {
-    	return view('dashboard');
+    	$direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get(); 
+    	return view('dashboard')->with(['direccion'=>$direccion]); 
     }
 }

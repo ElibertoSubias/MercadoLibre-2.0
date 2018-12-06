@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="vip-navigation-solt">
-                <a style="padding-left: 10px;" id="soltLink" rel="nofollow" href="https://vender.mercadolibre.com.mx?flowType=listEqual&amp;itemId=MLM646934777">Vender uno igual</a>
+                <a style="padding-left: 10px;" id="soltLink" rel="nofollow" href="#">Vender uno igual</a>
             </div>
         </div>
     </nav>
@@ -295,11 +295,13 @@
                     <span>2</span>
                     </li>
                     @endif
-                    @if($datos->kilometros!=null)
-                    <li class="specs-item">
-                    <strong>Kilómetros</strong>
-                    <span>{{$datos->kilometros}} km</span>
-                    </li>
+                    @if($datos->tipoVenta=='VEHI')
+                        @if($datos->kilometros!=null)
+                        <li class="specs-item">
+                        <strong>Kilómetros</strong>
+                        <span>{{$datos->kilometros}} km</span>
+                        </li>
+                        @endif
                     @endif
                     @if($datos->marca!=null)
                     <li class="specs-item">
@@ -413,14 +415,18 @@
 
         <article class="vip-classified-info">
     <dl>
-        
+            
+            @if($datos->tipoVenta=='VEHI')
+            <dd>Dispobles: <b>{{$datos->cantidad}}</b></dd> <b>|</b> <dd>Vendidos: <b>{{$totalVentas}}</b></dd><br>
             <dt>Año</dt>
             <dd>{{$datos->anio}}</dd>
-            @if($datos->kilometros!=null)
-            <dt>Kilómetros</dt>
-            <dd>{{$datos->kilometros}} km</dd>
+                @if($datos->kilometros!=null)
+                <dt>Kilómetros</dt>
+                <dd>{{$datos->kilometros}} km</dd> 
+                @endif
+            @else  
+                <dd>Dispobles: <b>{{$datos->cantidad}}</b></dd> <b>|</b> <dd>Vendidos: <b>{{$totalVentas}}</b></dd> 
             @endif
-        
     </dl>
 </article>
         <header class="item-title" data-js-item-title="">
