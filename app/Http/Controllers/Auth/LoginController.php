@@ -82,7 +82,8 @@ class LoginController extends Controller
 
     public function adminDashboard(Request $request)
     {
-        if (isset(auth()->user()->userType)) {
+        return view('admin.dashboard');
+        /*if (isset(auth()->user()->userType)) {
             if (auth()->user()->userType!=0) {
                 $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
                 return redirect('dashboard')->with(['direccion'=>$direccion]); 
@@ -91,7 +92,7 @@ class LoginController extends Controller
             }
         }else{
             return redirect('admin.dashboard');
-        } 
+        } */
     }
 
     public function logout() 

@@ -6,13 +6,23 @@ use Illuminate\Http\Request;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 use Session;
 use Redirect;
+use App\Direcciones;
 use App\Carrito; 
 use App\User;
 
 class InicioController extends Controller
 {
     public function index() {
-    	return view('dashboard');
+        if (auth()->check()) {
+            if (auth()->user()->userType == 0) { 
+                return view('admin.dashboard');
+            }else{
+                $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
+                return view('dashboard')->with(['direccion'=>$direccion]);
+            }
+        }else{
+            return view('dashboard');
+        }
 	}
 
 	public function autenticarEmail()
