@@ -14,7 +14,16 @@ class DashboardController extends Controller
 	}
     public function index()
     {
-    	$direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get(); 
-    	return view('dashboard')->with(['direccion'=>$direccion]); 
+    	if (auth()->check()) {
+    		if (auth()->user()->userType==0) { 
+    			return redirect()->route('dashboardAdmin');
+    		}else{
+    			$direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get(); 
+    			return view('dashboard')->with(['direccion'=>$direccion]);
+    		}
+    	}else{
+    		$direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get(); 
+    		return view('dashboard')->with(['direccion'=>$direccion]);
+	    }
     }
 }

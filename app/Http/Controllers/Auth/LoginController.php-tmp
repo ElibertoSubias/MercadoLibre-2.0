@@ -68,7 +68,18 @@ class LoginController extends Controller {
 	}
 
 	public function adminDashboard(Request $request) {
-		return view('admin.dashboard');
+		if (auth()->check()) {
+			if (auth()->user()->userType == 0) {
+				return view('admin.dashboard');
+			} else {
+				$direccion = Direcciones::where(['idUser' => auth()->user()->_id, 'envio' => 1])->get();
+
+				return redirect()->route('dashboard')->with(['direccion' => $direccion]);
+			}
+		} else {
+			return redirect()->route('admin');
+		}
+
 		/*if (isset(auth()->user()->userType)) {
 	if (auth()->user()->userType!=0) {
 	$direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();

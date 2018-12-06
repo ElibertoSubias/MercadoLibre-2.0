@@ -14,8 +14,8 @@ class InicioController extends Controller
 {
     public function index() {
         if (auth()->check()) {
-            if (auth()->user()->userType == 0) { 
-                return view('admin.dashboard');
+            if (auth()->user()->userType == 0) {  
+                return redirect()->route('adminDashboard');
             }else{
                 $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
                 return view('dashboard')->with(['direccion'=>$direccion]);
