@@ -294,6 +294,13 @@
 		                            </p>
 		                        </a>
 		                    </li> 
+		                    <li> 
+		                        <a href="{{route('logout')}}" data-id="logout" rel="nofollow">
+		                        	<i class="nav-icon-help-mobile"></i>
+							     	<p>Salir</p>
+							    </a>
+		                    </li> 
+		                    
 				        </ul> 
 				        <ul> 
 		                    <li>
