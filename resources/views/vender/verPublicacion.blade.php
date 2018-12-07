@@ -1,7 +1,12 @@
 @extends('layouts.master')
 
 @section('content')  
-{!! Html::style('css/verStyle.css') !!} 
+{!! Html::style('css/verStyle.css') !!}
+{!! Html::style('css/estiloVerAutogenerado.css') !!}
+<style type="text/css">
+  
+
+</style> 
 <div style="margin-top: -5px;max-width: 1220px;height:auto;display: inline-block;width: 100%;"> 
     <nav class="nav-deep-links">
         <div class="container" style="margin-left: 0px;padding-left: 0px;"> 
@@ -400,9 +405,137 @@
 
 
 
-    
+  <!--   aqui empiezan los comentarios -->
 </div>
-
+<section id="SECTION_1">
+    <h2 id="H2_2">
+        Preguntas y respuestas
+    </h2>
+    <p id="P_3">
+        ¿Qué quieres saber?
+    </p>
+    <div id="DIV_4">
+         <a rel="nofollow" href="#" id="A_5">Medios de pago </a> <a rel="nofollow" href="#" id="A_6">Garantía</a>
+        <div id="DIV_7">
+            <div id="DIV_8">
+                <p id="P_9">
+                    ¿Tienes dudas?
+                </p>
+                <p id="P_10">
+                    Estos atajos te ayudarán a encontrar lo que buscas.
+                </p>
+            </div><span id="SPAN_11"></span>
+        </div>
+    </div>
+    <p id="P_12">
+        O pregúntale al vendedor
+    </p>
+    <form action="/noindex/questions/make?noIndex=true" method="POST" id="FORM_13">
+        <div id="DIV_14">
+            <div id="DIV_15">
+                <div id="DIV_16">
+                    <textarea id="TEXTAREA_17" name="question" placeholder="Escribe una pregunta...">
+                    </textarea>
+                </div>
+                <div id="DIV_18">
+                    <p id="P_19">
+                        Tiempo aproximado de respuesta <strong id="STRONG_20">7 minutos</strong>
+                    </p>
+                </div>
+            </div>
+            <div id="DIV_21">
+                <input id="INPUT_22" type="submit" value="Preguntar" />
+            </div>
+        </div>
+        <input type="hidden" name="itemId" value="MLM609549218" id="INPUT_23" />
+        <input type="hidden" name="categoryId" value="MLM145823" id="INPUT_24" />
+        <input type="hidden" name="token" value="76e25a63da2e248fb1dc1dd6496312ab7f15d3efb5ae71a17ad269b424c1e1f903291c10d09e83b43c8b214a36aa61e0f6d58c42638b323304ca48fdd44ced70" id="INPUT_25" />
+        <input type="hidden" name="itemPermalink" value="https://articulo.mercadolibre.com.mx/MLM-609549218-hublot-king-power-unico-world-time-18k-oro-rosa-_JM" id="INPUT_26" />
+        <input type="hidden" name="searchReferer" id="INPUT_27" />
+        <input type="checkbox" id="INPUT_28" />
+    </form>
+    
+    <script id="SCRIPT_30">document.addEventListener("DOMContentLoaded", function() {new BTSDK({ type:'desktop',keyboardForm:'form#questions-form',paramsConstants:{department:'aff0060dd11496b0fea4ad7a364df3bd',form_name:'meli_contact_seller',user_id:236377324,site_id:'MLM'}})});
+        </script>
+    <div id="DIV_31">
+                <p id="P_32">
+                </p>
+                <ul id="UL_33">
+                </ul>
+            </div>
+    <div id="DIV_34">
+                <p id="P_35">
+                    Últimas preguntas
+                </p>
+                <ul id="UL_36">
+                    <li id="LI_37">
+                        <article id="ARTICLE_38">
+                            <div id="DIV_39">
+                                <svg id="svg_40">
+                                    <use id="use_41">
+                                    </use>
+                                </svg>
+                            </div>
+                            <div id="DIV_42">
+                                <p id="P_43">
+                                    Hola me interesa el reloj cual es su último precio?
+                                </p> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5429286981&amp;element_type=QUES" id="A_44">Denunciar</a>
+                            </div>
+                        </article>
+                        <article id="ARTICLE_45">
+                            <div id="DIV_46">
+                                <svg id="svg_47">
+                                    <use id="use_48">
+                                    </use>
+                                </svg>
+                            </div>
+                            <div id="DIV_49">
+                                <p id="P_50">
+                                    Que tal buen dia se lo podria dejar en 550,000 pesos completamente nuevo de fabrica empacado con todos sus plasticos de fabrica, caja y papeles donde se encuentra usted?
+                                </p>
+                                <time id="TIME_51">
+                                    31/3/2018 09:20
+                                </time> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5429286981&amp;element_type=ANSW" id="A_52">Denunciar</a>
+                            </div>
+                        </article>
+                    </li>
+                    <li id="LI_53">
+                        <article id="ARTICLE_54">
+                            <div id="DIV_55">
+                                <svg id="svg_56">
+                                    <use id="use_57">
+                                    </use>
+                                </svg>
+                            </div>
+                            <div id="DIV_58">
+                                <p id="P_59">
+                                    Amigo no me aparecen fotos de tu publicación
+                                </p> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5326177046&amp;element_type=QUES" id="A_60">Denunciar</a>
+                            </div>
+                        </article>
+                        <article id="ARTICLE_61">
+                            <div id="DIV_62">
+                                <svg id="svg_63">
+                                    <use id="use_64">
+                                    </use>
+                                </svg>
+                            </div>
+                            <div id="DIV_65">
+                                <p id="P_66">
+                                    Una disculpa en la mañana subo muchas para que vea como viene el reloj viene sellado de hublot jamas se a usado 100% nuevo!!
+                                </p>
+                                <time id="TIME_67">
+                                    14/2/2018 00:19
+                                </time> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5326177046&amp;element_type=ANSW" id="A_68">Denunciar</a>
+                            </div>
+                        </article>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+</section>
+<!-- aqui terminan los comentarios  -->
         </section>
 
                         
