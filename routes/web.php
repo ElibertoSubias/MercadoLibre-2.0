@@ -149,4 +149,6 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::any('estado', 'Usuario\MenuUsuarioController@Resumen')->name('estado');	
 
+	Route::post('addComentario', 'Venta\VentaController@addComent')->name('addComentario');
+
 });

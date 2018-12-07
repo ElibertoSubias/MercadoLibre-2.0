@@ -430,29 +430,25 @@
     <p id="P_12">
         O pregúntale al vendedor
     </p>
-    <form action="/noindex/questions/make?noIndex=true" method="POST" id="FORM_13">
+    <form action="{{route('addComentario')}}" method="POST" id="FORM_13">
         <div id="DIV_14">
             <div id="DIV_15">
                 <div id="DIV_16">
-                    <textarea id="TEXTAREA_17" name="question" placeholder="Escribe una pregunta...">
-                    </textarea>
+                    <textarea id="TEXTAREA_17" name="question" maxlength="2000" placeholder="Escribe una pregunta..." required></textarea>
                 </div>
                 <div id="DIV_18">
                     <p id="P_19">
                         Tiempo aproximado de respuesta <strong id="STRONG_20">7 minutos</strong>
                     </p>
                 </div>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+                <input type="hidden" name="itemId" value="{{$datos->_id}}" />
+
             </div>
             <div id="DIV_21">
                 <input id="INPUT_22" type="submit" value="Preguntar" />
             </div>
-        </div>
-        <input type="hidden" name="itemId" value="MLM609549218" id="INPUT_23" />
-        <input type="hidden" name="categoryId" value="MLM145823" id="INPUT_24" />
-        <input type="hidden" name="token" value="76e25a63da2e248fb1dc1dd6496312ab7f15d3efb5ae71a17ad269b424c1e1f903291c10d09e83b43c8b214a36aa61e0f6d58c42638b323304ca48fdd44ced70" id="INPUT_25" />
-        <input type="hidden" name="itemPermalink" value="https://articulo.mercadolibre.com.mx/MLM-609549218-hublot-king-power-unico-world-time-18k-oro-rosa-_JM" id="INPUT_26" />
-        <input type="hidden" name="searchReferer" id="INPUT_27" />
-        <input type="checkbox" id="INPUT_28" />
+        </div> 
     </form>
     
     <script id="SCRIPT_30">document.addEventListener("DOMContentLoaded", function() {new BTSDK({ type:'desktop',keyboardForm:'form#questions-form',paramsConstants:{department:'aff0060dd11496b0fea4ad7a364df3bd',form_name:'meli_contact_seller',user_id:236377324,site_id:'MLM'}})});

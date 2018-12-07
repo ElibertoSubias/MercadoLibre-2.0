@@ -282,9 +282,15 @@ class VentaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function addComent(Request $request)
     {
-        //
+        $dateNow = new \MongoDB\BSON\UTCDateTime(); 
+        if ($request->question!="") { 
+            Articulos::where('_id', $request->itemId)->push('comentarios', ['pregunta'=>$request->question,'nomEmisor'=>auth()->user()->nombre,'idEmisor'=>auth()->user()->_id,'fechaRegistro'=>$dateNow], true);
+            return 1;
+        }else{
+            return Redirect::back()->withErrors(['Campo de comentario requerido']);
+        } 
     }
 
     /**
