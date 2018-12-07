@@ -412,12 +412,17 @@
 @endempty
 				</nav>
 					<!-- Cuando el carrito esta vacio debe tener la clase "nav-cart-empty", cuando esta lleno "nav-cart-full" -->
-				<a href="{{route('carrito')}}" title="Carrito de compras" class="nav-cart nav-cart-empty" id="nav-cart"><i class="nav-icon-cart"></i><span class="nav-icon-cart-quantity"><b>null</b></span></a>
+				<a href="{{route('carrito')}}" title="Carrito de compras" class="nav-cart nav-cart-empty" id="nav-cart">
+					<i class="nav-icon-cart"></i>
+					<span style="font-size: 16px;position: absolute;top: -25%;right: 18%;"><b>@if($cant_carrito==0) @else{{$cant_carrito}}@endif</b></span>
+					<span class="nav-icon-cart-quantity"><b>null</b></span></a>
 				</div>
 				@isset(auth()->user()->_id)
+				@isset($direccion[0]->_id)
 				<a href="#" class="nav-header-cp-anchor">
 						Enviar a {{$direccion[0]->contacto}} CP {{$direccion[0]->codigopostal}}
 				</a>
+				@endisset
 				@endisset
 				<form class="nav-search" action="{{route('resultados')}}" method="GET" role="search" id="buscador-articulos">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
@@ -439,13 +444,15 @@
 			            <ul class="nav-menu-list">
 			                <li class="nav-menu-item">
 			                	@isset(auth()->user()->_id)
-			                    <a class="nav-menu-cp nav-menu-cp-logged" href="#">
-			                            <span class="nav-menu-cp-send">Enviar a {{$direccion[0]->contacto}}</span>
-			                        <span class="nav-menu-link-cp">
-			                                CP {{$direccion[0]->codigopostal}}
+				                	@isset($direccion[0]->_id)
+				                    <a class="nav-menu-cp nav-menu-cp-logged" href="#">
+				                            <span class="nav-menu-cp-send">Enviar a {{$direccion[0]->contacto}}</span>
+				                        <span class="nav-menu-link-cp">
+				                                CP {{$direccion[0]->codigopostal}}
 
-			                        </span>
-			                    </a>
+				                        </span>
+				                    </a>
+				                    @endisset
 								@endisset
 			                </li>
 			                <li class="nav-menu-categories">
@@ -475,9 +482,8 @@
 				</a>
 			</div>
 		</header>
-		<main role="main">
+
 			@yield('content')
-		</main>
 <input type="checkbox" id="nav-footer-access-switch" checked="">
 
 <div class="nav-footer-access">

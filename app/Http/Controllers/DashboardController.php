@@ -17,13 +17,16 @@ class DashboardController extends Controller
     	if (auth()->check()) {
     		if (auth()->user()->userType==0) { 
     			return redirect()->route('dashboardAdmin');
-    		}else{
+    		}else{ 
     			$direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get(); 
-    			return view('dashboard')->with(['direccion'=>$direccion]);
+                if ($direccion!="[]") {
+                    return view('dashboard')->with(['direccion'=>$direccion]);
+                }else{
+                    return view('dashboard');
+                } 
     		}
-    	}else{
-    		$direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get(); 
-    		return view('dashboard')->with(['direccion'=>$direccion]);
+    	}else{ 
+    		return view('dashboard');
 	    }
     }
 }

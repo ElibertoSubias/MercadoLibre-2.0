@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Carrito;
+use App\Direcciones;
 use Auth;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,9 +15,9 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot() {
 		view()->composer('*', function ($view) {
-				$carrito = Carrito::where(['idUser' => Auth::id()])->get();
-				$view->with('cant_carrito', count($carrito));
-
+				$carrito = Carrito::where(['idUser'       => Auth::id()])->get();
+				$direccion = Direcciones::where(['idUser' => Auth::id(), 'envio' => 1])->get();
+				$view->with(['cant_carrito'               => count($carrito), 'direccion'               => $direccion]);
 			});
 	}
 

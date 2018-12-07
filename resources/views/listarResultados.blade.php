@@ -6,8 +6,9 @@
 {!! Html::style('css/listaResulStyle.css') !!} 
 {!! Html::style('css/publiStyle.css') !!} 
 {!! Html::style('css/estilosParra.css') !!} 
+<main role="main" style="background: #eee;"> 
 <!-- Div para mostrar banner de publicidad -->	
-	<div class="row" style="    margin: 0px;">
+	<div class="row" style="margin: 0px;">
 		<div class="banner-container">	<a rel="nofollow" href="#" class="top-banner">	</a>	</div>
 	</div>
 <div style="width: 90%;margin: 0 auto;">
@@ -383,4 +384,5 @@
     </div>
     </div>	
 </div>
+</main>
 @stop

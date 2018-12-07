@@ -74,7 +74,7 @@ class LoginController extends Controller
                     return redirect('dashboard')->with(['direccion'=>$direccion]); 
                 } 
             }else{
-                return redirect('auth.validarPassword')->with('login', $request->login);
+                return view('auth.validarPassword')->with('login', $request->login);
             }
         }
         return view('auth.validarPassword')->with('login', $request->login);
