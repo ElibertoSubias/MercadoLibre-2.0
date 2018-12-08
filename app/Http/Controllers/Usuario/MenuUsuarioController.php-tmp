@@ -31,15 +31,20 @@ class MenuUsuarioController extends Controller {
 		$totalPublicacionesActivas   = count($publicacionesActivas);
 		$totalPublicacionesInactivas = count($publicacionesInactivas);
 		//Consulta que regresa todos los mensajes de las publicaciones que ha realizado el usuario que se encuentren en estado (0=sin respuesta,1=respondido)
-		$mensajes             = Articulos::where(['idUser' => auth()->user()->_id, 'comentarios.estadoMsj' => 0])->get(['comentarios']);
-		$totalMsjSinResponder = count($mensajes[0]);
-		$openpay              = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp', 'sk_971f3acd3cd0456299caaf254a316678');
-		$direccion            = Direcciones::where(['idUser' => auth()->user()->_id, 'envio' => 1])->get();
-		$findDataRequest      = array(
+		$mensajes = Articulos::where(['idUser' => auth()->user()->_id, 'comentarios.estadoMsj' => 0])->get(['comentarios']);
+
+		if ($mensajes != "[]") {
+			$totalMsjSinResponder = count($mensajes[0]);
+		} else {
+			$totalMsjSinResponder = 0;
+		}
+		$openpay         = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp', 'sk_971f3acd3cd0456299caaf254a316678');
+		$direccion       = Direcciones::where(['idUser' => auth()->user()->_id, 'envio' => 1])->get();
+		$findDataRequest = array(
 			'offset' => 0);
 
 		$customer = $openpay->customers->get(auth()->user()->idCustomer);
-		return view('perfil.estado')->with(['total' => $customer->balance, 'direccion' => $direccion, 'mensajes' => $mensajes[0], 'totalMsjSinResponder' => $totalMsjSinResponder, 'totalPublicacionesActivas' => $totalPublicacionesActivas, 'totalPublicacionesInactivas' => $totalPublicacionesInactivas]);
+		return view('perfil.estado')->with(['total' => $customer->balance, 'direccion' => $direccion, 'mensajes' => $mensajes, 'totalMsjSinResponder' => $totalMsjSinResponder, 'totalPublicacionesActivas' => $totalPublicacionesActivas, 'totalPublicacionesInactivas' => $totalPublicacionesInactivas]);
 	}
 
 	public function detaCompra(Request $request) {

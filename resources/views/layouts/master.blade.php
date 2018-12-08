@@ -145,7 +145,7 @@
 						                    <path class="nav-header-mobile-loyalty-level-1" stroke-linecap="round" stroke-width="3" stroke-dasharray="223,999" fill="none" d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80"></path>
 						                </svg> 
 
-									<img id="nav-header-mobile-user-avatar" class="" src="svg/user.svg" srcset="https://mla-s2-p.mlstatic.com/754093-MLA28045465991_082018-G.jpg 2x" width="20" height="20">
+									<img id="nav-header-mobile-user-avatar" class="" src="svg/user.svg" width="20" height="20">
 
 						            <input id="nav-header-mobile-avatar-upload" name="file" type="file" accept="image/jpeg,.jpg,image/gif,.gif,image/png,.png,.jpeg,image/webp,.webp">
 						        </label>
@@ -631,20 +631,14 @@
 
 
 		<div class="nav-bounds  ">
-		
-		
-			
 				<p class="nav-footer-user logged">
-					@isset(auth()->user()->_id)
-						<a href="https://myaccount.mercadolibre.com.mx/">
-							<img id="" class="nav-footer-avatar-user-img" src="svg/user.svg" srcset="https://mla-s2-p.mlstatic.com/754093-MLA28045465991_082018-G.jpg 2x" width="20" height="20">
+					@if(Auth::check())
+						<a href="#">
+							<img id="" class="nav-footer-avatar-user-img" src="svg/user.svg" width="20" height="20">
 							<strong>{{auth()->user()->nombre}}</strong>
 						</a>
-					@endisset
+					@endif
 				</p>
-			
-		
-
 			<div class="nav-footer-info-wrapper">
 				<div class="nav-footer-primaryinfo" style="height: 100px;">
 				
