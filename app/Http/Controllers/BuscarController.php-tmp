@@ -12,7 +12,7 @@ class BuscarController extends Controller {
 			$datos = Articulos::where([['titulo', 'like', '%'.$request->consulta.'%'], 'estadoPublicacion' => 1])->get();
 			$aux   = "";
 			foreach ($datos as $key => $value) {
-				$aux = $aux."<li><a href='resultados?busqueda=".$request->consulta."&categoria=".$value->categoria."'>".$value->titulo."</a></li>";
+				$aux = $aux."<li><a href='resultados?busqueda=".$value->titulo."&categoria=".$value->categoria."'>".$value->titulo."</a></li>";
 			}
 			return $aux;
 		}
@@ -106,8 +106,12 @@ class BuscarController extends Controller {
 			}
 
 			$totalResul = count($datos);
-			$direccion  = Direcciones::where(['idUser'     => auth()->user()->_id, 'envio'     => 1])->get();
-			return view('listarResultados')->with(['datos' => $datos, 'direccion' => $direccion])->with(['total' => $totalResul, 'busqueda' => $request->busqueda]);
+			if (isset(auth()->user()->_id)) {
+				$direccion = Direcciones::where(['idUser'      => auth()->user()->_id, 'envio'      => 1])->get();
+				return view('listarResultados')->with(['datos' => $datos, 'direccion' => $direccion])->with(['total' => $totalResul, 'busqueda' => $request->busqueda]);
+			} else {
+				return view('listarResultados')->with(['datos' => $datos])->with(['total' => $totalResul, 'busqueda' => $request->busqueda]);
+			}
 
 		} catch (Exception $e) {
 			return "Error en la consulta de productos";

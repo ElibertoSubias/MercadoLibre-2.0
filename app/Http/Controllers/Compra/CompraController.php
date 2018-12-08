@@ -311,7 +311,7 @@ class CompraController extends Controller
     public function nuevaTarjetacre(Request $request)
     {
         
-        return view('confirmarCompra.nuevaTarjetaCredito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio]);
+        return view('confirmarCompra.nuevaTarjetaCredito')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'cantidadArticulos'=>$request->cantidadArticulos]);
     } 
 
     public function nuevoDomicilio(Request $request)
@@ -376,6 +376,7 @@ class CompraController extends Controller
         $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get();
         try {
             $openpayCore = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678'); 
+        //Valdiar el agregar una tarjeta
         if(auth()->user()->idCustomer==null){ 
             $customerData = array(
             'external_id' => null,
@@ -404,7 +405,7 @@ class CompraController extends Controller
 
             $card = $customer->cards->add($cardDataRequest);
 
-            return "Se agrego el Cliente y su tarjeta->".$card->id;
+            //return "Se agrego el Cliente y su tarjeta->".$card->id;
             if (auth()->user()->idCustomer!=null) { 
 
                 $customer = $openpayCore->customers->get(auth()->user()->idCustomer);   
@@ -435,7 +436,7 @@ class CompraController extends Controller
             $card = $customer->cards->add($cardDataRequest);
             User::where('_id', auth()->user()->id)->push('tarjetas', ['idCard'=>$customer->id,'card_number'=>$_POST['card_number']], true);
  
-            return view('confirmarCompra.confirmCompraView')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'card'=>$card,'security_code'=>$request->security_code,'customer'=>$customer,'domicilios'=>$domicilios]);
+            return view('confirmarCompra.confirmCompraView')->with(['cantidadArticulos'=>$request->cantidadArticulos,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPaquete,'costoEnvio'=>$request->costoEnvio,'card'=>$card,'security_code'=>$request->security_code,'customer'=>$customer,'domicilios'=>$domicilios]);
 
         }
         } catch (\OpenpayApiTransactionError $e) {
@@ -474,7 +475,7 @@ class CompraController extends Controller
     {
 
         $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
-        $compras = Compras::where('idUser' , '=', auth()->user()->id)->get();
+        $compras = Compras::where('idUser' , '=', auth()->user()->id)->orderBy('created_at', 'desc')->get();
        
         $articulos= array();
         $direccionEnvio= array();

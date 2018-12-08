@@ -399,7 +399,7 @@ a,abbr,address,article,aside,audio,b,big,blockquote,body,canvas,caption,cite,cod
 									<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
 									<input type="hidden" name="precio" value="{{$precio}}">
 									<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
-
+                                    <input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
                                     <button data-js="" data-input-id="nextStepPayments" class=" hero__action-button u-link" type="submit" name="nextStepPayments" value="nextStepPayments">
                                         Modificar
                                     </button>
@@ -439,12 +439,11 @@ a,abbr,address,article,aside,audio,b,big,blockquote,body,canvas,caption,cite,cod
                 					<div class="form-inner__wrapper">
                         				<div class="form-input__container" data-js="form-input-container">
                         					<div class="">
-                        						<div class="ui-form__row ui-form__row--tel    ui-form__row-container--card_number " data-js="form-row">
-
-                									<!-- <input id="cardNumber" name="card_number" type="tel" class="ui-form__input" data-js="form-input" data-input-id="cardNumber" required="true" maxlength="19" minlength="12" pattern="^([0-9 ]+)+$" autocomplete="cc-number" spellcheck="false" data-hj-masked="data-hj-masked"> -->
+                        						<div class="ui-form__row ui-form__row--tel    ui-form__row-container--card_number " data-js="form-row"> 
 
                 									<input id="cardNumber" class="ui-form__input" type="text" autocomplete="off" name="card_number" data-openpay-card="card_number">
-                
+                                                    <input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
+                                                    <input type="hidden" name="cardNew" value="1">
 								                    <label class="ui-form__label ui-form__label--cardNumber" for="cardNumber">
 								                      Número de tarjeta<span class="ui-form__optional">
 								                      
@@ -483,15 +482,9 @@ a,abbr,address,article,aside,audio,b,big,blockquote,body,canvas,caption,cite,cod
         							<div class="">
 
         								<div class="ui-form__row ui-form__row--tel    ui-form__row-container--expiration_date " data-js="form-row">
-        									 <label class="ui-form__label">Fecha de expiración</label>
-        								<!-- 
-                							<input id="expirationMont" name="expiration_date" type="tel" class="ui-form__input" data-js="form-input" data-input-id="expirationDate" required="true" maxlength="9" minlength="5" pattern="^(0[1-9]|1[0-2])( )?\/( )?([2][0]\d{2}|\d{2})$" pastdate="" validdate="" autocomplete="cc-exp" spellcheck="false"> -->
-                							<input id="expiration_date" type="text" placeholder="Mes" class="ui-form__input" name="expiration_month" data-openpay-card="expiration_month">
-
-                							<!-- <input id="expirationYear" name="expiration_date" type="tel" class="ui-form__input" data-js="form-input" data-input-id="expirationDate" required="true" maxlength="9" minlength="5" pattern="^(0[1-9]|1[0-2])( )?\/( )?([2][0]\d{2}|\d{2})$" pastdate="" validdate="" autocomplete="cc-exp" spellcheck="false"> -->
-
-                							<input id="expiration_date" type="text" placeholder="Año" class="ui-form__input" name="expiration_year" data-openpay-card="expiration_year">
-                 
+        									 <label class="ui-form__label">Fecha de expiración</label> 
+                							<input id="expiration_date" type="text" placeholder="Mes" class="ui-form__input" name="expiration_month" data-openpay-card="expiration_month"> 
+                							<input id="expiration_date" type="text" placeholder="Año" class="ui-form__input" name="expiration_year" data-openpay-card="expiration_year"> 
                 
                 <span class="ui-form__status-bar"></span>
 
@@ -514,15 +507,12 @@ a,abbr,address,article,aside,audio,b,big,blockquote,body,canvas,caption,cite,cod
 				<input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
 				<input type="hidden" name="precio" value="{{$precio}}"> 
 				<input type="hidden" name="urlImagen" value="{{$urlImagen}}">
+                <input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
         </div>
         <div class="">
             <input type="hidden" id="" name="" class="
             
-            " data-js="form-input" data-input-id="expiration_year" required="true" maxlength="4" minlength="4" pattern="^[0-9]+$" autocomplete="cc-exp-year" spellcheck="false"></div><div class=""><div class="ui-form__row ui-form__row--tel    ui-form__row-container--security_code " data-js="form-row">
-                <!-- <input id="securityCode" name="security_code" type="tel" class="        ui-form__input
-                
-                
-                " data-js="form-input" data-input-id="securityCode" required="true" maxlength="4" minlength="3" pattern="^[0-9]+$" autocomplete="off" spellcheck="false" data-hj-masked="data-hj-masked"> -->
+            " data-js="form-input" data-input-id="expiration_year" required="true" maxlength="4" minlength="4" pattern="^[0-9]+$" autocomplete="cc-exp-year" spellcheck="false"></div><div class=""><div class="ui-form__row ui-form__row--tel    ui-form__row-container--security_code " data-js="form-row"> 
                 <input id="securityCode" type="text" placeholder="3 dígitos" autocomplete="off" data-openpay-card="cvv2" name="cvv2" class="        ui-form__input" data-js="form-input" maxlength="4" minlength="3" pattern="^[0-9]+$" autocomplete="off">
 
                     <label class="ui-form__label ui-form__label--securityCode" for="securityCode">

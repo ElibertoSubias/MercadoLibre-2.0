@@ -15,7 +15,7 @@ class BuscarController extends Controller
     		$datos = Articulos::where([['titulo', 'like', '%'.$request->consulta.'%'],'estadoPublicacion'=>1])->get(); 
     		$aux="";
     		foreach ($datos as $key => $value) {
-    			$aux = $aux."<li><a href='resultados?busqueda=".$request->consulta."&categoria=".$value->categoria."'>".$value->titulo."</a></li>"; 
+    			$aux = $aux."<li><a href='resultados?busqueda=".$value->titulo."&categoria=".$value->categoria."'>".$value->titulo."</a></li>"; 
     		}
     		return $aux;
     	}

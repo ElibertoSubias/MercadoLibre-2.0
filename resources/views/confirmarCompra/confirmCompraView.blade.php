@@ -159,7 +159,7 @@
                                                                 <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                                                                     <meta itemprop="price" content="18999">
                                                                     <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
-                                                                    <span class="price-tag-fraction">0</span>
+                                                                    <span class="price-tag-fraction">{{$precio}}</span>
                                                                     <span class="price-tag-decimal-separator"></span>
                                                                     <span class="price-tag-cents">00</span>
                                                                 </span>
