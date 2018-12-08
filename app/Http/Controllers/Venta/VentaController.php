@@ -290,7 +290,7 @@ class VentaController extends Controller
                 'pregunta'=>$request->question,
                 'nomEmisor'=>auth()->user()->nombre,
                 'idEmisor'=>auth()->user()->_id,
-                'estadoMsj'=>0;
+                'estadoMsj'=>0,
                 'fechaRegistro'=>$dateNow], 
                 true
             );
