@@ -31,13 +31,21 @@ class MenuUsuarioController extends Controller
      */
     public function Resumen(Request $request)
     {
+      $publicacionesActivas = Articulos::where(['idUser'=>auth()->user()->_id,'estadoPublicacion'=>1])->get();
+      $totalPublicacionesActivas = count($publicacionesActivas);
+      $publicacionesInactivas = Articulos::where(['idUser'=>auth()->user()->_id,'estadoPublicacion'=>2,'estadoPublicacion'=>3])->get();
+      $totalPublicacionesActivas = count($publicacionesActivas);
+      $totalPublicacionesInactivas = count($publicacionesInactivas);
+      //Consulta que regresa todos los mensajes de las publicaciones que ha realizado el usuario que se encuentren en estado (0=sin respuesta,1=respondido)
+      $mensajes = Articulos::where(['idUser'=>auth()->user()->_id,'comentarios.estadoMsj'=>0])->get(['comentarios']);
+      $totalMsjSinResponder = count($mensajes[0]);
       $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678');
       $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
       $findDataRequest = array( 
           'offset' => 0);
 
       $customer = $openpay->customers->get(auth()->user()->idCustomer);
-        return view('perfil.estado')->with(['total'=>$customer->balance,'direccion'=>$direccion]);
+        return view('perfil.estado')->with(['total'=>$customer->balance,'direccion'=>$direccion,'mensajes'=>$mensajes[0],'totalMsjSinResponder'=>$totalMsjSinResponder,'totalPublicacionesActivas'=>$totalPublicacionesActivas,'totalPublicacionesInactivas'=>$totalPublicacionesInactivas]);
     } 
 
     public function detaCompra(Request $request)
@@ -68,14 +76,14 @@ class MenuUsuarioController extends Controller
           $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
            $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 1]])->get();
           
-
+        $active=1;
         $totalActivos = count($activos);
         $totalPausados = count($pausados);
         $totalFinalizados = count($Finalizados); 
         
         
 
-        return view('usuario.menu.adminPublicaciones',compact('direccion','articulos', 'totalActivos','totalFinalizados', 'totalPausados' ) ); 
+        return view('usuario.menu.adminPublicaciones',compact('active','direccion','articulos', 'totalActivos','totalFinalizados', 'totalPausados' ) ); 
     }
 
    
@@ -88,11 +96,11 @@ class MenuUsuarioController extends Controller
           $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
            $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 1]])->get();
           
-
+        $active=2;
         $totalActivos = count($activos);
         $totalPausados = count($pausados);
         $totalFinalizados = count($Finalizados);
-        return view('usuario.menu.adminPublicaciones',compact('direccion','articulos', 'totalActivos','totalFinalizados', 'totalPausados') );
+        return view('usuario.menu.adminPublicaciones',compact('active','direccion','articulos', 'totalActivos','totalFinalizados', 'totalPausados') );
     
     }
 
@@ -104,11 +112,11 @@ class MenuUsuarioController extends Controller
           $pausados = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 2]])->get();
            $activos = Articulos::where([['idUser' , '=', auth()->user()->id] ,['estadoPublicacion', '=', 1]])->get();
           
-
+        $active="3";
         $totalActivos = count($activos);
         $totalPausados = count($pausados);
         $totalFinalizados = count($Finalizados);
-        return view('usuario.menu.adminPublicaciones',compact('direccion','articulos', 'totalActivos','totalFinalizados', 'totalPausados') );
+        return view('usuario.menu.adminPublicaciones',compact('active','direccion','articulos', 'totalActivos','totalFinalizados', 'totalPausados') );
     
     }
    

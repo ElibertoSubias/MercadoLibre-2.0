@@ -209,9 +209,16 @@
         <div class="col-md-12 cont_publicaciones_info" style="padding-left: 0px;">
             <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation"  id="activas" class="active"><a style="background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#eee),color-stop(100%,#fff));background-image: -webkit-linear-gradient(#eee,#fff 25px);background-image: -moz-linear-gradient(#eee,#fff 25px);background-image: -o-linear-gradient(#eee,#fff 25px);background-image: linear-gradient(#eee,#fff 25px);" href="{{action('Usuario\MenuUsuarioController@showAllPublicaciones')}}" >Activas ( {{$totalActivos}} )</a></li>
-    <li role="presentation"  id="pausadas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesPausadas')}}">Pausadas ({{$totalPausados}})</a></li>
-    <li role="presentation" id="finalizadas"><a href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesFinalizadas')}}" >Finalizadas ({{$totalFinalizados}})</a></li>
+
+
+    <li role="presentation"  id="activas" @if($active==1)class="active"@endif><a @if($active==1)
+    style="background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#eee),color-stop(100%,#fff));background-image: -webkit-linear-gradient(#eee,#fff 25px);background-image: -moz-linear-gradient(#eee,#fff 25px);background-image: -o-linear-gradient(#eee,#fff 25px);background-image: linear-gradient(#eee,#fff 25px);"
+    @endif href="{{action('Usuario\MenuUsuarioController@showAllPublicaciones')}}" >Activas ( {{$totalActivos}} )</a></li>
+    <li role="presentation"  id="pausadas" @if($active==2)class="active"@endif><a @if($active==2)style="background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#eee),color-stop(100%,#fff));background-image: -webkit-linear-gradient(#eee,#fff 25px);background-image: -moz-linear-gradient(#eee,#fff 25px);background-image: -o-linear-gradient(#eee,#fff 25px);background-image: linear-gradient(#eee,#fff 25px);"
+    @endif href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesPausadas')}}">Pausadas ({{$totalPausados}})</a></li>
+    <li role="presentation" id="finalizadas" @if($active==3)class="active"@endif><a @if($active==3)
+    style="background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#eee),color-stop(100%,#fff));background-image: -webkit-linear-gradient(#eee,#fff 25px);background-image: -moz-linear-gradient(#eee,#fff 25px);background-image: -o-linear-gradient(#eee,#fff 25px);background-image: linear-gradient(#eee,#fff 25px);"
+    @endif href="{{action('Usuario\MenuUsuarioController@showAllPublicacionesFinalizadas')}}" >Finalizadas ({{$totalFinalizados}})</a></li>
   </ul>
   <div class="tab-content" id="activas" style="">
     <div role="tabpanel" class="tab-pane active" id="home">

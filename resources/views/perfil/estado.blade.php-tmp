@@ -171,7 +171,16 @@
             </h2>
 
             <ul class="summary-navigation-list">
-                    <li><div class="summary-navigation-number summary-navigation-number-gray">0</div><p>Que aún no respondiste</p></li>
+                    <li>
+                        <div class="summary-navigation-number summary-navigation-number-gray">{{$totalMsjSinResponder}}</div>
+                        @if($totalMsjSinResponder>0)
+                        <a href="#" title="" style="display: contents;">
+                        @endif
+                            <p>Que aún no respondiste</p>
+                        @if($totalMsjSinResponder>0)
+                        </a>
+                        @endif
+                    </li>
             </ul>
         </div>
 
@@ -189,14 +198,14 @@
         </div>
 
         <ul class="summary-navigation-list summary-navigation-list-sc">
-            <li><div class="summary-navigation-number summary-navigation-number-gray">0</div>
+            <li><div class="summary-navigation-number summary-navigation-number-gray">{{$totalPublicacionesActivas}}</div>
                 <p>
                     Activas
                 	<a href="{{route('vender')}}">¡Vende gratis tus productos usados!</a>
                 </p>
             </li>
 
-            <li><a class="summary-navigation-link" href="{{route('publicacionesp')}}"><div class="summary-navigation-number "></div>
+            <li><a class="summary-navigation-link" href="{{route('publicacionesp')}}"><div class="summary-navigation-number ">{{$totalPublicacionesInactivas}}</div>
                 <p>Inactivas</p>
             </a></li>
 
@@ -213,7 +222,7 @@
 
             <ul class="summary-navigation-list">
 				<li>
-					<div class="summary-navigation-number summary-navigation-number-gray">0</div>
+					<div class="summary-navigation-number summary-navigation-number-gray"></div>
 					<p>Etiquetas de envío para imprimir</p>
 				</li>
 				<li><div class="summary-navigation-number summary-navigation-number-gray">0</div>

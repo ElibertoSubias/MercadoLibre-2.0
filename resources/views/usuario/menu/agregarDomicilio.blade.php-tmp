@@ -100,7 +100,7 @@ left: -10px;
     <legend class="ml-addresses-hidden">Zipcode</legend>
     <div class="ml-addresses-grid ml-addresses-grid--first-column">
         <div class="ui-form__row ">
-            <input id="inputCodigoPostal" type="tel" data-required="true" onkeypress="calcular(this.value)" class="ui-form__input " name="inputCodigoPostal" value="" aria-describedby="zipcodeMessage" data-valid="true" maxlength="5" data-min-length="5">
+            <input id="inputCodigoPostal" type="number" data-required="true" onkeypress="calcular(this.value)" class="ui-form__input " name="inputCodigoPostal" value="" aria-describedby="zipcodeMessage" data-valid="true" maxlength="5" data-min-length="5">
             <label id="lblMsjinputCodigoPostal" for="inputCodigoPostal" class="ui-form__label">Código postal</label>
             <span class="ui-form__status-bar"></span>
             <div class="ui-form__message" id="alertMsjinputCodigoPostal" style="color: red" role="alert">Complete este dato</div>
@@ -169,7 +169,7 @@ left: -10px;
         </div>
         <div class="ml-addresses-grid ml-addresses-grid--second-column ui-telephone  col-md-5">
             <div class="ui-telephone__number ui-form__row">
-                    <input id="inputTelefono" class="ui-telephone__input " data-js="telephone" name="inputTelefono" type="tel" value="" maxlength="22" placeholder="">
+                    <input id="inputTelefono" class="ui-telephone__input " data-js="telephone" name="inputTelefono" type="number" value="" maxlength="22" placeholder="">
                     <label id="lblMsjinputTelefono" for="inputTelefono" class="ui-form__label">Teléfono</label>
                     <span class="ui-form__status-bar"></span>
                 <span class="ui-telephone__focus-line"></span>
