@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('titulo')
+	<title>Inicio - MercadoLibre</title>	
+@stop
 @section('content') 
 	{!! Html::script('js/flickity.pkgd.js') !!} 
 	{!! Html::style('css/flickity.css') !!} 

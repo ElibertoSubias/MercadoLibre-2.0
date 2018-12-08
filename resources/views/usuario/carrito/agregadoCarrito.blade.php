@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('titulo')
+	<title>Carrito - MercadoLibre</title>	
+@stop
 @section('content')
 {!! Html::style('css/styleAgregado.css') !!}
 

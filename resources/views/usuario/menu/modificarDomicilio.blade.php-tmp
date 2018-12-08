@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('titulo')
+    <title>Modificar domicilio - MercadoLibre</title>
+@stop
 @section('content')
 {!! Html::style('css/styleDomicilio.css') !!}
 <script type="text/javascript">

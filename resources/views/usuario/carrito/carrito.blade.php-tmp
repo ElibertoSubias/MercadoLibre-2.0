@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('titulo')
+    <title>Carrito - MercadoLibre</title>
+@stop
 @section('content')
 {!! Html::style('css/styleCarrito.css') !!}
 <div style="margin: 30px auto 20px;max-width: 1220px;background-color: #fff;border: 1px solid #e2e2e2;border-radius: 5px;height:auto;width: 100%;">

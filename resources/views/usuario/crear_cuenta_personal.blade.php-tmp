@@ -1,5 +1,7 @@
 @extends('layouts.masterLogin')
-
+@section('titulo')
+	<title>Crear cuenta personal - MercadoLibre</title>
+@stop
 @section('content')
 <main class="main_aut_email col-md-12" style="margin: 0px;padding: 0px;font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;    font-size: 16px;    font-weight: 300;    line-height: 1.35;
     -webkit-text-size-adjust: 100%;

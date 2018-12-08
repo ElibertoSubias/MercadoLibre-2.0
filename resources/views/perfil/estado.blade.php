@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('titulo')
+    <title>Resumen - MercadoLibre</title>    
+@stop
 @section('content')
 
         

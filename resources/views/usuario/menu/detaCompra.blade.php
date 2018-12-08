@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('titulo')
+    <title>Detalle compra - MercadoLibre</title>    
+@stop
 @section('content')
 {!! Html::style('css/styleDetaCompra.css') !!} 
 {!! Html::style('css/verStyle.css') !!} 
