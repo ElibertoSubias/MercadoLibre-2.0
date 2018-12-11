@@ -24,9 +24,35 @@ class VentaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function verMensajes(Request $request)
     {
-        //
+        $datosCompra = Compras::where(['_id'=>$request->idCompra,'idUser'=>auth()->user()->_id])->get();
+        $datosArticulo = Articulos::where(['_id'=>$datosCompra[0]->idPublicacion])->get();
+        $vendedor = User::where(['_id'=>$datosCompra[0]->idVendedor])->get();
+
+        return view('vender.mensajes.create')->with(['datosArticulo'=>$datosArticulo[0],'datosCompra'=>$datosCompra[0],'datosVendedor'=>$vendedor[0],'msjs'=>$datosCompra[0]->mensajes]);
+    }
+
+    public function addMensaje(Request $request)
+    {
+        $datosCompra = Compras::where(['_id'=>$request->idCompra,'idUser'=>auth()->user()->_id])->get(); 
+
+        $vendedor = User::where(['_id'=>$datosCompra[0]->idVendedor])->get(); 
+
+        $dateNow = new \MongoDB\BSON\UTCDateTime(); 
+        if ($request->msjCuerpo!="") { 
+            Compras::where('_id', $request->idCompra)->push('mensajes', [ 
+                'nomVendedor'=>$vendedor[0]->nombre,
+                'idEmisor'=>auth()->user()->_id,
+                'cuerpoMsj'=>$request->msjCuerpo,
+                'estadoMsj'=>0,
+                'fechaRegistro'=>$dateNow],
+                true
+            );
+            return 1;
+        }else{
+            return Redirect::back()->withErrors(['Campo de comentario requerido']);
+        } 
     }
 
     public function showPrecio(Request $request)
@@ -275,13 +301,8 @@ class VentaController extends Controller
         }
         
         return Redirect::route('publicaciones');
-    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    } 
+
     public function addComent(Request $request)
     {
         $dateNow = new \MongoDB\BSON\UTCDateTime(); 
@@ -298,28 +319,5 @@ class VentaController extends Controller
         }else{
             return Redirect::back()->withErrors(['Campo de comentario requerido']);
         } 
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    }  
 }

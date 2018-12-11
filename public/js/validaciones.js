@@ -1,3 +1,10 @@
+//Validar campo de mensajes vacio
+function validarCampoMsj(id){
+  if (id.length>0) { 
+    $('.andes-button').removeAttr('disabled');
+  }
+}
+
 function probarConsecutivos(cadena) {
   if (cadena.length == 1)
     return true;

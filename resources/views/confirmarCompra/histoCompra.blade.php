@@ -267,7 +267,7 @@
                                         <img src="images/{{ $articulos[$i][0]->idUser}}/{{$articulos[$i][0]->idPublicacion}}/{{$articulos[$i][0]->urlPrincipal}}" width="80"  style="margin-bottom: -25px">
                                     </div>
                                     <div id="DIV_178" style="display: contents;">
-                                         <a style="display: contents;" href="https://articulo.mercadolibre.com.mx/MLM-561641887-lentes-computadora-antifatiga-antiradiacion-ojo-seco-fashion-_JM" class="A_179">{{$articulos[$i][0]->titulo}}</a>
+                                         <a style="display: contents;" href="#" class="A_179">{{$articulos[$i][0]->titulo}}</a>
                                         <div id="DIV_180">
                                             <p id="P_181" class="p-181">
                                                 <span id="SPAN_182"></span>
@@ -287,7 +287,11 @@
                                         </li>
                                         @endif
                                         <li id="LI_192">
-                                             <a href="/messaging/orders/1291834911" id="A_193"> <span id="SPAN_194">Ver mensaje</span></a>
+                                             <form action="verMensajes" method="post"> 
+                                             	<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                                             	<input type="hidden" name="idCompra" value="{{$compras[$i]->_id}}">
+                                             	<input type="submit" value="Ver mensajes" style="outline: none;background: none;border: 0px;box-shadow: none;color: blue;">
+                                             </form>
                                         </li>
                                     </ul>
                                 </div> 
