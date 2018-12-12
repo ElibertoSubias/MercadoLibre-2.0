@@ -358,6 +358,7 @@ class VentaController extends Controller
                $pregunta->estadoMsj=0;
                $pregunta->publicacion=$request->itemId;
                $pregunta->fechaRegistro=$dateNow;
+               $pregunta->vendedor=$request->vendedor;
                $pregunta->respuesta="";
                $pregunta->save(); 
              $res = Comentarios::where(['publicacion'=>$request->itemId])->get();

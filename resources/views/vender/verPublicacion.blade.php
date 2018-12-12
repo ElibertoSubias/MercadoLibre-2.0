@@ -13,6 +13,8 @@
  
           var question = $("#TEXTAREA_17").val();
           var itemId = $("#itemId").val();
+          var vendedor = $("#vendedor").val();
+
           var route = "addComentario";
           var token = $("#_token").val();
           
@@ -22,7 +24,7 @@
                 headers: {'X-CSRF-TOKEN': token},
                 type: 'POST',
                 dataType: 'json',
-                data: { question: question, itemId: itemId} 
+                data: { question: question, itemId: itemId, vendedor:vendedor} 
                 }).done(function(data) {  
                   if (data.res!=1 && data.res!=0){
         
@@ -468,7 +470,9 @@
                     </p>
                 </div>
                 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" id="token">
-                <input type="hidden" name="itemId" id="itemId" value="{{$datos->_id}}" />
+                <input type="hidden" name="itemId" id="itemId" value="{{$datos->_id}}">
+                <input type="hidden" name="vendedor" id="vendedor" value="{{$datos->idUser}}">
+
 
             </div>
             <div id="DIV_21">
