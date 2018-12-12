@@ -9,8 +9,28 @@
 </style> 
 <script type="text/javascript">
     
- $("#INPUT_22").click(function(){
-         alert('ss');
+ function pp(){
+ 
+          var question = $("#TEXTAREA_17").val();
+          var itemId = $("#itemId").val();
+          var route = "addComentario";
+          var token = $("#_token").val();
+          
+         
+         $.ajax({
+                url: route,
+                headers: {'X-CSRF-TOKEN': token},
+                type: 'POST',
+                dataType: 'json',
+                data: { question: question, itemId: itemId} 
+                }).done(function(data) {  
+                  if (data.res!=1 && data.res!=0){
+                 alert('m');
+                  }else if(data.res==1){  
+                   alert('a');
+                  }
+                });
+         
         }
 </script>
 <div style="margin-top: -5px;max-width: 1220px;height:auto;display: inline-block;width: 100%;"> 
@@ -436,23 +456,23 @@
     <p id="P_12">
         O pregúntale al vendedor
     </p>
-    <form action="{{route('addComentario')}}" method="POST" id="FORM_13">
+    <form  id="FORM_13">
         <div id="DIV_14">
             <div id="DIV_15">
                 <div id="DIV_16">
-                    <textarea id="TEXTAREA_17" name="question" maxlength="2000" placeholder="Escribe una pregunta..." required></textarea>
+                    <textarea id="TEXTAREA_17" id="TEXTAREA_17" name="question" maxlength="2000" placeholder="Escribe una pregunta..." required></textarea>
                 </div>
                 <div id="DIV_18">
                     <p id="P_19">
                         Tiempo aproximado de respuesta <strong id="STRONG_20">7 minutos</strong>
                     </p>
                 </div>
-                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                <input type="hidden" name="itemId" value="{{$datos->_id}}" />
+                <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" id="token">
+                <input type="hidden" name="itemId" id="itemId" value="{{$datos->_id}}" />
 
             </div>
             <div id="DIV_21">
-                <input id="INPUT_22" type="submit" value="Preguntar" />
+                <input id="INPUT_22" type="submit" value="Preguntar" onclick="javascript:pp()" />
             </div>
         </div> 
     </form>
@@ -500,7 +520,7 @@
                                 </p>
                                 <time id="TIME_51">
                                     
-                                </time> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5429286981&amp;element_type=ANSW" id="A_52">Denunciar</a>
+                                </time> <a href="#" id="A_52">Denunciar</a>
                             </div>
                         </article>
                     </li>  

@@ -348,9 +348,10 @@ class VentaController extends Controller
     {
         $dateNow = new \MongoDB\BSON\UTCDateTime(); 
         if ($request->question!="") { 
-             $pregunta = new Comentarios;
+                             
              
-              
+         if ($request->ajax()) {
+              $pregunta = new Comentarios;
                $pregunta->pregunta=$request->question;
                $pregunta->nomEmisor=auth()->user()->nombre;
                $pregunta->idEmisor=auth()->user()->_id;
@@ -358,11 +359,14 @@ class VentaController extends Controller
                $pregunta->publicacion=$request->itemId;
                $pregunta->fechaRegistro=$dateNow;
                $pregunta->respuesta="";
-               $pregunta->save();  
-
-             $res = Articulos::where(['_id'=>$request->itemId])->get(['comentarios']);
-             
-             return 1;
+               $pregunta->save(); 
+             $res = Comentarios::where(['publicacion'=>$request->itemId])->get();
+                
+                return response()->json([
+                    "res" => $res 
+              
+             ]); 
+            }   
             
         
             
