@@ -463,6 +463,8 @@
                 <p id="P_35">
                     Últimas preguntas
                 </p>
+             
+                @foreach ($res as $comentario)
                 <ul id="UL_36">
                     <li id="LI_37">
                         <article id="ARTICLE_38">
@@ -474,8 +476,9 @@
                             </div>
                             <div id="DIV_42">
                                 <p id="P_43">
-                                    Hola me interesa el reloj cual es su último precio?
-                                </p> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5429286981&amp;element_type=QUES" id="A_44">Denunciar</a>
+                                    <div class="text"> {{$res[0][0]}}</div>
+                                  
+                                </p> <a href="" id="A_44">Denunciar</a>
                             </div>
                         </article>
                         <article id="ARTICLE_45">
@@ -494,41 +497,10 @@
                                 </time> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5429286981&amp;element_type=ANSW" id="A_52">Denunciar</a>
                             </div>
                         </article>
-                    </li>
-                    <li id="LI_53">
-                        <article id="ARTICLE_54">
-                            <div id="DIV_55">
-                                <svg id="svg_56">
-                                    <use id="use_57">
-                                    </use>
-                                </svg>
-                            </div>
-                            <div id="DIV_58">
-                                <p id="P_59">
-                                    Amigo no me aparecen fotos de tu publicación
-                                </p> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5326177046&amp;element_type=QUES" id="A_60">Denunciar</a>
-                            </div>
-                        </article>
-                        <article id="ARTICLE_61">
-                            <div id="DIV_62">
-                                <svg id="svg_63">
-                                    <use id="use_64">
-                                    </use>
-                                </svg>
-                            </div>
-                            <div id="DIV_65">
-                                <p id="P_66">
-                                    Una disculpa en la mañana subo muchas para que vea como viene el reloj viene sellado de hublot jamas se a usado 100% nuevo!!
-                                </p>
-                                <time id="TIME_67">
-                                    14/2/2018 00:19
-                                </time> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5326177046&amp;element_type=ANSW" id="A_68">Denunciar</a>
-                            </div>
-                        </article>
-                    </li>
-                    
+                    </li>  
                     
                 </ul>
+                @endforeach
             </div>
 </section>
 <!-- aqui terminan los comentarios  -->

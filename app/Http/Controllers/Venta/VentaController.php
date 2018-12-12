@@ -137,9 +137,11 @@ class VentaController extends Controller
             $vendedor = User::where(['_id'=>$idUser])->first();
             $ventas = Compras::where(['idPublicacion'=>$request->id])->get(); 
             $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first();  
+            $res = Articulos::where(['_id'=>$request->id])->get(['comentarios']);
+           
             if ($datos!="") {
                 $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first(); 
-                return view('vender.verPublicacion')->with(['datos'=>$datos,'direccion'=>$direccion])->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido)->with(['idVendedor'=>$vendedor->_id,'totalVentas'=>count($ventas)]);
+                return view('vender.verPublicacion', compact('res') )->with(['datos'=>$datos,'coment'=>$res, 'direccion'=>$direccion])->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido)->with(['idVendedor'=>$vendedor->_id,'totalVentas'=>count($ventas)]);
             }else{
                 return view('dashboard');
             }
@@ -315,7 +317,10 @@ class VentaController extends Controller
                 'fechaRegistro'=>$dateNow], 
                 true
             );
-            return 1;
+             $res = Articulos::where(['_id'=>$request->itemId])->get(['comentarios']);
+             
+             return 1;
+            
         }else{
             return Redirect::back()->withErrors(['Campo de comentario requerido']);
         } 
