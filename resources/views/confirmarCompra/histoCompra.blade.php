@@ -300,7 +300,7 @@
                                                     
                                                     <input type="hidden" name="codigoCompra" value="{{$compras[$i]->codigoCompra}}">
                                                     
-                                                      <button type="submit" style="background: none;border: none;color: blue;" data-input-id="go_to_order">
+                                                      <button type="submit" style="float: right;background: none;border: none;color: blue;" data-input-id="go_to_order">
                                                             Ver detalle
                                                         </button>
                                        </form> 
