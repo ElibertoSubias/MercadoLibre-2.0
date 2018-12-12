@@ -25,9 +25,9 @@
                 data: { question: question, itemId: itemId} 
                 }).done(function(data) {  
                   if (data.res!=1 && data.res!=0){
-                 alert('m');
+        
                   }else if(data.res==1){  
-                   alert('a');
+              
                   }
                 });
          
