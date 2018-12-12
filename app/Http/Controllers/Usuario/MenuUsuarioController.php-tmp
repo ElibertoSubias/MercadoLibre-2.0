@@ -6,6 +6,7 @@ use App\Compras;
 use App\Direcciones;
 use App\Http\Controllers\Controller;
 
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 use Intagono\Openpay\Openpay;
@@ -50,9 +51,10 @@ class MenuUsuarioController extends Controller {
 	public function detaCompra(Request $request) {
 		$item = Compras::where(['codigoCompra' => $request->codigoCompra])->get();
 
-		$openpay  = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp', 'sk_971f3acd3cd0456299caaf254a316678');
-		$customer = $openpay->customers->get(auth()->user()->idCustomer);
-		$charge   = $customer->charges->get($item[0]->cargoId);
+		$openpay   = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp', 'sk_971f3acd3cd0456299caaf254a316678');
+		$comprador = User::where(['_id' => $item[0]->idUser])->get();
+		$customer  = $openpay->customers->get($comprador[0]->idCustomer);
+		$charge    = $customer->charges->get($item[0]->cargoId);
 
 		$domicilioEnvio = Direcciones::where(['_id'                  => $item[0]->idDireccionEnvio])->get();
 		$direccion      = Direcciones::where(['idUser'               => auth()->user()->_id, 'envio'               => 1])->get();

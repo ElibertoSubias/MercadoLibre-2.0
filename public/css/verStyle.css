@@ -113,8 +113,7 @@ section .ui-icon--chevron-right g {
     fill: #3483fa;
 }
 a, a:link, a:visited {
-    text-decoration: none;
-    color: #3483fa;
+    text-decoration: none; 
 }
 .vip-section-navigation .secondary-actions {
     float: right;

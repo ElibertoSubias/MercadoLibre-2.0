@@ -384,7 +384,7 @@
       Compras
     </a>
 
-    <a href="{{route('publicaciones')}}" rel="nofollow">
+    <a href="{{route('historialVentas')}}" rel="nofollow">
       Ventas
     </a>
 

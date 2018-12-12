@@ -1,30 +1,30 @@
 @extends('layouts.master')
 @section('titulo')
-	<title>Compras - MercadoLibre</title>	
+	<title>Ventas - MercadoLibre</title>
 @stop
 @section('content')
-{!! Html::style('css/styleHistoCompra.css') !!} 
-{!! Html::style('css/historialpublicaciones.css') !!}  
+{!! Html::style('css/styleHistoCompra.css') !!}
+{!! Html::style('css/historialpublicaciones.css') !!}
 <style>
             @media (max-width:770px){
             	#resultados {
             		width: 100% !important;
             		margin-left: 0px !important;
             	}
-            	#resultados a:hover { 
-	    
+            	#resultados a:hover {
+
 				    display: block;
 				    background: rgb(52, 131, 250);
-				    
+
 				    color: white;
 				    font-weight: 700;
 				}
             }
-            #resultados a:hover { 
-    
+            #resultados a:hover {
+
 			    display: block;
 			    background: rgb(52, 131, 250);
-			    
+
 			    color: white;
 			    font-weight: 700;
 			}
@@ -59,7 +59,7 @@
 			}
             .nav-header{display:block;z-index:110;position:relative}.menu-myml-ads{z-index:101;position:relative}.menu-myml-ads__hide{display:none}.menu-myml-ads__container{-webkit-box-shadow:0 1px 6px 0 rgba(0,0,0,.15);box-shadow:0 1px 6px 0 rgba(0,0,0,.15);background-color:#fff;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex}.menu-myml-ads__container__center{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative}.menu-myml-ads__container__center__block{display:-webkit-box!important;display:-ms-flexbox!important;display:flex!important;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.menu-myml-ads__container__center__block--border{border:1px solid #E0E0E0;-webkit-box-sizing:border-box;box-sizing:border-box}.menu-myml-ads__container--mobile{display:-webkit-box;display:-ms-flexbox;display:flex}.menu-myml-ads__container--desktop,.menu-myml-ads__container__center__text{display:none}.menu-myml-ads__container--mobile .menu-myml-ads__container__center__block{width:320px;height:50px}.menu-myml-ads__container--desktop .menu-myml-ads__container__center__block{width:728px;height:90px}@media (min-width:640px){.menu-myml-ads__container--mobile{display:none}}@media (min-width:800px){.menu-myml-ads__container--desktop{display:-webkit-box;display:-ms-flexbox;display:flex}.menu-myml-ads__container__center__block{margin-bottom:10px;margin-top:10px}.menu-myml-ads__container__center__text{-webkit-transform:translate(-100%,-50%) rotate(180deg);-ms-transform:translate(-100%,-50%) rotate(180deg);transform:translate(-100%,-50%) rotate(180deg);-webkit-writing-mode:vertical-lr;-ms-writing-mode:tb-lr;writing-mode:vertical-lr;position:absolute;padding-left:3px;font-size:10px;display:block;color:grey;top:50%;left:0}}
             .app-wrapper,body{display:-webkit-box;display:-ms-flexbox}.myml-nav__section--toggle .myml-nav__section-title,body{-webkit-box-orient:vertical;-webkit-box-direction:normal}.myml-nav a>*,.myml-nav__overlay{pointer-events:none}.andes-widther{width:256px}.andes-width--25{width:25%;max-width:initial}.andes-width--50{width:50%;max-width:initial}.andes-width--75{width:75%;max-width:initial}.andes-width--100{width:100%;max-width:initial}.andes-width--150{width:150%;max-width:initial}.andes-width--200{width:200%;max-width:initial}body{display:flex;-ms-flex-direction:column;flex-direction:column}[role=main],body{height:auto;min-height:100%}.nav-footer,.nav-header,[role=main]{display:block}.nav-footer,.nav-footer-access,.nav-header{z-index:110;position:relative}.nav-footer-access-content{margin-top:0}.nav-categs-overlay{z-index:109}.app-wrapper{display:flex}.menu-wrapper{width:58px;min-width:58px}.page-wrapper{-webkit-box-flex:1;-ms-flex:1;flex:1;padding-left:20px;padding-right:20px;min-width:0;margin:30px auto 60px;-webkit-box-sizing:content-box;box-sizing:content-box}.page-wrapper__content{max-width:1200px;margin:0 auto}.myml-nav,.myml-nav *,.myml-nav :after,.myml-nav :before{-webkit-box-sizing:border-box;box-sizing:border-box}.myml-nav,.myml-nav__container{width:58px;-webkit-transition:width .25s cubic-bezier(.25,.1,.25,1);-o-transition:width .25s cubic-bezier(.25,.1,.25,1);transition:width .25s cubic-bezier(.25,.1,.25,1)}.myml-nav{background-color:#f5f5f5;height:100vh;min-height:100%;z-index:100;position:relative}.myml-nav__container{font-family:"Proxima Nova",-apple-system,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;font-size:13px;font-weight:400;-webkit-font-smoothing:antialiased;-webkit-overflow-scrolling:touch;height:100vh;padding-top:30px;overflow-x:hidden;overflow-y:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;overscroll-behavior:auto contain}.myml-nav__container--active{position:fixed;padding-top:0;top:46px}.myml-nav__menu{padding:1em 0 14em}.myml-nav__section{width:250px}.myml-nav__section--toggle{margin-left:4px}.myml-nav__section--toggle .myml-nav__user-permalink{font-size:16px;font-weight:600;line-height:1.35}.myml-nav__section--toggle .myml-nav__section-heading,.myml-nav__section--toggle .myml-nav__section-icon{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.myml-nav__section-heading,.myml-nav__section-icon,.myml-nav__section-title{display:-webkit-box;display:-ms-flexbox;display:flex}.myml-nav__section-title{opacity:0}.myml-nav__section-heading{-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative}.myml-nav__section-heading--has-items:after,.myml-nav__section-heading--has-items:before{content:'';display:block;width:10px;height:2px;background:#999;position:absolute;cursor:pointer;-webkit-transition:-webkit-transform .2s ease-out;-o-transition:transform .2s ease-out;transition:transform .2s ease-out;transition:transform .2s ease-out,-webkit-transform .2s ease-out;pointer-events:none}.myml-nav__section-heading--has-items:before{-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);top:50%;right:32px;margin-top:-1px}.myml-nav__section-heading--has-items:after{-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);top:50%;right:26px;margin-top:-1px}:checked+.myml-nav__section-heading--has-items:before{-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg)}:checked+.myml-nav__section-heading--has-items:after{-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}.myml-nav__section-icon{width:54px;height:51px;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.myml-nav__section-icon>svg{width:20px;height:auto}.myml-nav__toggle{position:relative;left:1px;width:20px;height:20px;-webkit-transition:-webkit-transform .2s ease-out;-o-transition:transform .2s ease-out;transition:transform .2s ease-out;transition:transform .2s ease-out,-webkit-transform .2s ease-out}[class^=myml-nav__ham]{width:20px;height:2px;background-color:#3483fa;position:absolute;left:0;top:9px;opacity:1;-webkit-transition:opacity .2s ease-out;-o-transition:opacity .2s ease-out;transition:opacity .2s ease-out}.myml-nav__ham--top{top:4px}.myml-nav__ham--bottom{top:14px}.myml-nav__ham--cross{-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);opacity:0}.myml-nav__section-list{display:none}:checked~.myml-nav__section-list{display:block}:checked+.myml-nav{width:250px;-webkit-box-shadow:0 0 8px 0 rgba(0,0,0,.5);box-shadow:0 0 8px 0 rgba(0,0,0,.5)}:checked+.myml-nav .myml-nav__container{width:250px;overflow-y:auto}:checked+.myml-nav .myml-nav__toggle{-webkit-transform:rotate(135deg);-ms-transform:rotate(135deg);transform:rotate(135deg)}:checked+.myml-nav .myml-nav__ham--bottom,:checked+.myml-nav .myml-nav__ham--top{opacity:0}:checked+.myml-nav .myml-nav__ham--cross,:checked+.myml-nav .myml-nav__section-title{opacity:1}:not(:checked)+.myml-nav .myml-nav__section-list{display:none}.myml-nav__section-title{-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-flex:1;-ms-flex:1;flex:1;color:#666;cursor:pointer;margin:0}.myml-nav__section--toggle .myml-nav__section-title{-ms-flex-direction:column;flex-direction:column;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;cursor:auto}.myml-nav__section-subtitle{display:block;color:#8c8c8c;line-height:20px;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:90%}.myml-nav__section--active .myml-nav__section-title{font-weight:600}.myml-nav__section--active .myml-nav__section-icon path,.myml-nav__section--has-active-item .myml-nav__section-icon path{fill:#3483fa}.myml-nav__menu .myml-nav__section-heading{border-left:4px solid transparent;-webkit-transition:border-color .2s ease-out;-o-transition:border-color .2s ease-out;transition:border-color .2s ease-out;font-size:13px}.myml-nav__menu .myml-nav__section-heading:hover{border-left-color:#3483fa}.myml-nav__menu-item{display:block;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-left:58px;line-height:30px;-webkit-transition:color 180ms ease-out;-o-transition:color 180ms ease-out;transition:color 180ms ease-out;color:#666}.app-wrapper--menu-expanded :checked+.myml-nav+.myml-nav__overlay,.myml-nav__section-toggle-trigger,[id=myml-menu-toggle]{display:none}.myml-nav .myml-nav__menu-item--active{font-weight:600;color:#333}.myml-nav__menu-item-text{font-size:13px}.myml-nav a{text-decoration:none;color:#666}.myml-nav__overlay{visibility:hidden;opacity:0;z-index:-1;background-color:rgba(0,0,0,.5);position:fixed;top:0;right:0;bottom:0;left:0;-webkit-transition:opacity .3s ease-out;-o-transition:opacity .3s ease-out;transition:opacity .3s ease-out}:checked+.myml-nav+.myml-nav__overlay{visibility:visible;opacity:1;z-index:99;pointer-events:auto}.app-wrapper--menu-expanded .myml-nav{width:250px;-webkit-box-shadow:none;box-shadow:none;z-index:0}.app-wrapper--menu-expanded .page-wrapper{padding-left:0}.app-wrapper--menu-expanded .page-wrapper__content{margin-left:240px}.app-wrapper--menu-expanded :checked+.myml-nav .myml-nav__toggle{-webkit-transform:none;-ms-transform:none;transform:none;cursor:default}.app-wrapper--menu-expanded :checked+.myml-nav .myml-nav__ham--bottom,.app-wrapper--menu-expanded :checked+.myml-nav .myml-nav__ham--top{opacity:1}.app-wrapper--menu-expanded :checked+.myml-nav .myml-nav__ham--cross{opacity:0}.app-wrapper--menu-expanded-static .myml-nav,.app-wrapper--menu-expanded-static .myml-nav__container{height:100%;min-height:100vh;overscroll-behavior:auto}.app-wrapper--menu-expanded .myml-nav__container,.app-wrapper--menu-expanded-static .myml-nav__container{overflow-y:auto}.app-wrapper--menu-expanded.app-wrapper--menu-expanded-static [class^=myml-nav__ham]{background-color:#8c8c8c}@media (min-width:768px){.page-wrapper{padding-left:48px;padding-right:48px;margin:46px auto 60px}.myml-nav__container{padding-top:46px}.myml-nav__container--active{position:fixed;padding-top:0;top:46px}.myml-nav a>*{pointer-events:auto}.myml-nav label{cursor:pointer}.myml-nav__menu-item:focus,.myml-nav__menu-item:hover{color:#3483fa}.myml-nav__menu-tooltip{pointer-events:none;display:inline-block;position:absolute;color:#fff;font-family:"Proxima Nova",-apple-system,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;font-size:12px;line-height:1;background-color:#333;-webkit-border-radius:2px;border-radius:2px;padding:8px 16px;z-index:101;opacity:0;-webkit-transform:translateX(-54px);-ms-transform:translateX(-54px);transform:translateX(-54px);-webkit-transition:opacity .2s ease-out,-webkit-transform .2s ease-out;-o-transition:transform .2s ease-out,opacity .2s ease-out;transition:transform .2s ease-out,opacity .2s ease-out;transition:transform .2s ease-out,opacity .2s ease-out,-webkit-transform .2s ease-out}.myml-nav__menu-tooltip--open{opacity:1;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}:checked~.myml-nav__menu-tooltip{display:none}}@media (min-width:1400px){.page-wrapper{padding-left:0}}@media (min-width:1750px){.app-wrapper--menu-expanded .page-wrapper__content{margin:0 auto}}
-        </style> 
+        </style>
 
         <div class="menu-myml-ads menu-myml-ads__hide">
             <div class="menu-myml-ads__container menu-myml-ads__container--desktop">
@@ -68,7 +68,7 @@
                     <div id="menu-myml-ads__container__center__block" class="menu-myml-ads__container__center__block menu-myml-ads__container__center__block--border" style="display: none;"><div id="google_ads_iframe_/105773011/MLM_MIML_Mi_cuenta/MLM_MIML_Resumen_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/105773011/MLM_MIML_Mi_cuenta/MLM_MIML_Resumen_0" title="3rd party ad content" name="google_ads_iframe_/105773011/MLM_MIML_Mi_cuenta/MLM_MIML_Resumen_0" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" src="css/estado/saved_resource(3).html"></iframe></div></div>
                 </div>
             </div>
-        </div>  
+        </div>
         <div class="app-wrapper app-wrapper--menu-expanded app-wrapper--menu-expanded-static"><div class="menu-wrapper"><input type="checkbox" id="myml-menu-toggle" checked="true" disabled=""><nav class="myml-nav" role="complementary"><div class="myml-nav__container"><section class="myml-nav__section myml-nav__section--toggle"><div class="myml-nav__section-heading"><span class="myml-nav__section-icon"><label class="myml-nav__toggle" for="myml-menu-toggle"><span class="myml-nav__ham--top"></span><span class="myml-nav__ham--middle"></span><span class="myml-nav__ham--bottom"></span><span class="myml-nav__ham--cross"></span></label></span><p class="myml-nav__section-title"><span class="myml-nav__user-permalink">Mi cuenta</span><span class="myml-nav__section-subtitle">¡Hola {{auth()->user()->nombre}}!</span></p></div></section><div class="myml-nav__menu"><section class="myml-nav__section  myml-nav__section--active"><a href="https://myaccount.mercadolibre.com.mx/summary" class="myml-nav__section-heading"><span class="myml-nav__section-icon myml-nav__section-icon--myml_summary" data-tooltip="Resumen"><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
     <path d="M1 1v12h12V1H1zm0-1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1zm2.5 3.5a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1zm2.477 0h4a.5.5 0 1 1 0 1h-4a.5.5 0 0 1 0-1zM3.5 6.5a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1zm2.477 0h4a.5.5 0 1 1 0 1h-4a.5.5 0 0 1 0-1zM3.5 9.5a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1zm2.477 0h4a.5.5 0 1 1 0 1h-4a.5.5 0 0 1 0-1z" fill="#999"></path>
   </svg></span><p class="myml-nav__section-title">Resumen</p></a></section><section class="myml-nav__section "><a href="{{route('estado')}}" class="myml-nav__section-heading"><span class="myml-nav__section-icon myml-nav__section-icon--billing" data-tooltip="Facturación"><svg viewBox="0 0 15 17" xmlns="http://www.w3.org/2000/svg">
@@ -85,6 +85,7 @@
             <script>
                 // https://www.npmjs.com/package/decouple
                 (function(e){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=e()}else if(typeof define==="function"&&define.amd){define([],e)}else{var n;if(typeof window!=="undefined"){n=window}else if(typeof global!=="undefined"){n=global}else if(typeof self!=="undefined"){n=self}else{n=this}n.decouple=e()}})(function(){var e,n,t;return function i(e,n,t){function r(f,u){if(!n[f]){if(!e[f]){var d=typeof require=="function"&&require;if(!u&&d)return d(f,!0);if(o)return o(f,!0);var a=new Error("Cannot find module '"+f+"'");throw a.code="MODULE_NOT_FOUND",a}var s=n[f]={exports:{}};e[f][0].call(s.exports,function(n){var t=e[f][1][n];return r(t?t:n)},s,s.exports,i,e,n,t)}return n[f].exports}var o=typeof require=="function"&&require;for(var f=0;f<t.length;f++)r(t[f]);return r}({1:[function(e,n,t){"use strict";var i=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||function(e){window.setTimeout(e,1e3/60)}}().bind(window);function r(e,n,t){var r,o=false;function f(e){r=e;u()}function u(){if(!o){i(d);o=true}}function d(){t.call(e,r);o=false}e.addEventListener(n,f,false);return f}n.exports=r},{}]},{},[1])(1)});
+
 
                 (function() {
                     var sectionToggles = document.querySelectorAll('.myml-nav__menu .myml-nav__section-icon');
@@ -110,7 +111,7 @@
                         var d = document, r = d.documentElement, b = d.body;
                         scrollY = r.scrollTop || b.scrollTop || 0;
                     }
-                    
+
                     if (scrollY < wrapperTop) {
                         navContainer.classList.remove('myml-nav__container--active');
                     } else {
@@ -147,7 +148,7 @@
                     toggle.addEventListener('click', function(e) {
                         var htmlFore = toggle.nextElementSibling.getAttribute('for');
                         var chk = document.querySelector('#' + htmlFore);
-                        
+
                         if (chk) {
                             if (!menuToggleChk.checked) {
                                 chk.checked = true;
@@ -206,27 +207,27 @@
             </script>
         </div>
         <div class="page-wrapper">
-        	<div class="page-wrapper__content"> 
+        	<div class="page-wrapper__content">
 
-				<script type="text/javascript"> 
+				<script type="text/javascript">
 				    var jsGlobalModel = {
 				        bannerPositionAB: 'LEFT'
 				    };
-				</script> 
-		        <section id="listContainer" class="container" data-js="data-container"> 
-		                <h1 class="myml-title">Compras</h1> 
+				</script>
+		        <section id="listContainer" class="container" data-js="data-container">
+		                <h1 class="myml-title">Ventas</h1>
 		        		<div class="col-md-10 cont_sub_cont">
-	        <div class="col-md-12 textIzquierda" style="background-color:white;width: 99%;">	            
+	        <div class="col-md-12 textIzquierda" style="background-color:white;width: 99%;">
 				<!--////////////////////////////////////////====LADO DERECHO====///////////////////////////////////////-->
-			<div id="DIV_1"> 
+			<div id="DIV_1">
     <div id="DIV_3">
         <div id="DIV_4">
-    
+
         </div>
         <!-- TRACK MELIDATA -->
 
- 
-  
+
+
         <div id="DIV_16">
                     <div id="DIV_17">
                     </div>
@@ -238,90 +239,84 @@
                     <div id="DIV_21">
                     </div>
                     <div id="DIV_22">
-                   	
-                     <?php
-                for($i=0; $i<count($compras); $i++){ 
-                    ?> 
-                        <div id="DIV_155" style="margin-top: 15px !important; width: 100% !important">
-                            <div id="DIV_156">
-                                <h2 id="H2_157" style="    margin: 0px !important;">
-                                    Enviado
-                                </h2>
-                              
-                            </div>
-                            <div id="DIV_159">
-                                <div id="DIV_160">
-                                     <span id="SPAN_161"><span id="SPAN_162"></span></span>
-                              
-                                    <ul id="UL_169">
-                                        <li id="LI_170">
-                                             <a href="/purchases/1291834911/shipments/25954795122/detail" id="A_171">Detalle del envío</a>
-                                        </li>
-                                        <li id="LI_172">
-                                             <a href="http://ayuda.mercadolibre.com.mx/ayuda/purchases/options?order=1291834911" id="A_173">Tengo un problema</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div id="DIV_174">
-                                    <div id="DIV_175">
-                                        <img src="images/{{ $articulos[$i][0]->idUser}}/{{$articulos[$i][0]->idPublicacion}}/{{$articulos[$i][0]->urlPrincipal}}" width="80"  style="margin-bottom: -25px">
-                                    </div>
-                                    <div id="DIV_178" style="display: contents;">
-                                         <a style="display: contents;" href="#" class="A_179">{{$articulos[$i][0]->titulo}}</a>
-                                        <div id="DIV_180">
-                                            <p id="P_181" class="p-181">
-                                                <span id="SPAN_182"></span>
-                                                <meta content="219.00" id="META_183" /> <span id="SPAN_184">$</span> <span id="SPAN_185">{{$compras[$i]->precio}}</span>  x {{$compras[$i]->cantidad}} unidad
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="DIV_188">
-                                    <ul id="UL_189">
-                                        <li id="LI_190">
-                                           {{$vendedor[$i]->nombre}} 
-                                        </li>
-                                        @if($vendedor[$i]->telefono != "_")
-                                        <li id="LI_191">
-                                           {{$vendedor[$i]->telefono}}
-                                        </li>
-                                        @endif
-                                        <li id="LI_192">
-                                             <form action="verMensajes" method="post"> 
-                                             	<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
-                                             	<input type="hidden" name="idCompra" value="{{$compras[$i]->_id}}">
-                                             	<input type="submit" value="Ver mensajes" style="outline: none;background: none;border: 0px;box-shadow: none;color: blue;">
-                                             </form>
-                                        </li>
-                                    </ul>
-                                </div> 
-                                <form action="{{route('detalleCompra')}}" method="post" accept-charset="utf-8">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
-                                                    
-                                                    <input type="hidden" name="codigoCompra" value="{{$compras[$i]->codigoCompra}}">
-                                                    
-                                                      <button type="submit" style="float: right;background: none;border: none;color: blue;" data-input-id="go_to_order">
-                                                            Ver detalle
-                                                        </button>
-                                       </form> 
-                            </div>
-                        </div>
-                 <?php
-                        } 
-                    ?> 
+
+<?php
+for ($i = 0; $i < count($compras); $i++) {
+	?><div id="DIV_155" style="margin-top: 15px !important; ">
+	                            <div id="DIV_156">
+	                                <h2 id="H2_157" style="    margin: 0px !important;">
+	                                    Enviado
+	                                </h2>
+
+	                            </div>
+	                            <div id="DIV_159">
+	                                <div id="DIV_160">
+	                                     <span id="SPAN_161"><span id="SPAN_162"></span></span>
+
+	                                    <ul id="UL_169">
+	                                        <li id="LI_170">
+	                                             <a href="/purchases/1291834911/shipments/25954795122/detail" id="A_171">Detalle del envío</a>
+	                                        </li>
+	                                        <li id="LI_172">
+	                                             <a href="http://ayuda.mercadolibre.com.mx/ayuda/purchases/options?order=1291834911" id="A_173">Tengo un problema</a>
+	                                        </li>
+	                                    </ul>
+	                                </div>
+	                                <div id="DIV_174">
+	                                    <div id="DIV_175">
+	                                        <img src="images/{{ $articulos[$i][0]->idUser}}/{{$articulos[$i][0]->idPublicacion}}/{{$articulos[$i][0]->urlPrincipal}}" width="80"  style="margin-bottom: -25px">
+	                                    </div>
+	                                    <div id="DIV_178" style="display: contents;">
+	                                         <a style="display: contents;" href="#" class="A_179">{{$articulos[$i][0]->titulo}}</a>
+	                                        <div id="DIV_180">
+	                                            <p id="P_181" class="p-181">
+	                                                <span id="SPAN_182"></span>
+	                                                <meta content="219.00" id="META_183" /> <span id="SPAN_184">$</span> <span id="SPAN_185">{{$compras[$i]->precio}}</span>  x {{$compras[$i]->cantidad}} unidad
+	                                            </p>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <div id="DIV_188">
+	                                    <ul id="UL_189">
+	                                        <li id="LI_190">
+	                                           {{$nombresCompradores[$i]}}
+	                                        </li>
+	                                        <li id="LI_192">
+	                                             <form action="verMensajes" method="post">
+	                                             	<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+	                                             	<input type="hidden" name="idCompra" value="{{$compras[$i]->_id}}">
+	                                             	<input type="submit" value="Ver mensajes" style="outline: none;background: none;border: 0px;box-shadow: none;color: blue;">
+	                                             </form>
+	                                        </li>
+	                                    </ul>
+	                                </div>
+	                                <form action="{{route('detalleCompra')}}" method="post" accept-charset="utf-8">
+	                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+
+	                                                    <input type="hidden" name="codigoCompra" value="{{$compras[$i]->codigoCompra}}">
+
+	                                                      <button type="submit" style="float: right;background: none;border: none;color: blue;" data-input-id="go_to_order">
+	                                                            Ver detalle
+	                                                        </button>
+	                                       </form>
+	                            </div>
+	                        </div>
+	<?php
+}
+?>
                     </div>
                 </div>
     </div>
 </div>
 
 				</section>
-		                        
-	                    
+
+
 	        </div>
-	            
-	    </section> 
-    
+
+	    </section>
+
 	</div></div></div>
 
-	
+
 @stop

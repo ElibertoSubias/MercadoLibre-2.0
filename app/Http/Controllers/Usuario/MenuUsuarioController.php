@@ -12,6 +12,7 @@ use App\Carrito;
 use App\Direcciones;
 use Intagono\Openpay\Openpay; 
 use App\Compras;
+use App\User;
 use App\Urlimagenes;
 class MenuUsuarioController extends Controller
 {
@@ -58,7 +59,8 @@ class MenuUsuarioController extends Controller
       $item = Compras::where(['codigoCompra'=>$request->codigoCompra])->get(); 
 
       $openpay = \Openpay::getInstance('mfsrs5u9jmuxn3se2rpp','sk_971f3acd3cd0456299caaf254a316678');
-      $customer = $openpay->customers->get(auth()->user()->idCustomer); 
+      $comprador = User::where(['_id'=>$item[0]->idUser])->get();
+      $customer = $openpay->customers->get($comprador[0]->idCustomer); 
       $charge = $customer->charges->get($item[0]->cargoId);
       
       $domicilioEnvio = Direcciones::where(['_id'=>$item[0]->idDireccionEnvio])->get();

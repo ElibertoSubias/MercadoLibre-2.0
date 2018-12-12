@@ -60,9 +60,30 @@
 						</div>
 					<div>
 					<div class="sc-messaging-messages"><div class="sc-messages">
+						<?php 
+							setlocale(LC_ALL,"es_ES"); 
+						?>
+					@isset($msjs)
 						@foreach ($msjs as $msj)
-						<div>   
-							<div class="message-date">25 de agosto</div>
+						@if($msj['idEmisor']==auth()->user()->_id)
+						<div>      
+							<?php   
+								//Incrementando 2 dias
+								$mod_date = strtotime($msj['created_at']); 
+								$dia = date("d",$mod_date);	
+								$mes = strftime("%B");
+								$tiempo = date("H:i",strtotime($msj['created_at']));  
+							 ?>
+							 @isset($anterior)
+							 	@if($newDate==$anterior)
+							 	@else
+							 		<div class="message-date">{{$dia}} de {{$mes}}</div>
+							 	@endif
+							 @endisset
+							 @empty($anterior)
+							 	<div class="message-date">{{$dia}} de {{$mes}}</div>
+							 @endempty
+							<?php $anterior = $newDate; ?>
 							<div class="message-line"><div class="message-line__message">
 								<div class="message-line__message-box message-line__message--sender">
 									<strong class="title"></strong>
@@ -76,28 +97,51 @@
 												</g>
 											</svg>
 											</span>
-											<span class="time__timestamp">17:51</span>
+											<span class="time__timestamp">{{$tiempo}}</span>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						@endforeach
+						@else
 						<div>
-							<div class="message-date">26 de agosto</div>
+							<?php   
+								//Incrementando 2 dias
+								$mod_date = strtotime($msj['created_at']); 
+								$dia = date("d",$mod_date);	
+								$mes = strftime("%B");
+								$tiempo = date("H:i",strtotime($msj['created_at']));  
+							 ?>
+							 @isset($anterior)
+							 	@if($newDate==$anterior)
+							 	@else
+							 		<div class="message-date">{{$dia}} de {{$mes}}</div>
+							 	@endif
+							 @endisset
+							 @empty($anterior)
+							 	<div class="message-date">{{$dia}} de {{$mes}}</div>
+							 @endempty
+							<?php $anterior = $newDate; ?> 
 							<div class="message-line">
 								<div class="message-line__message">
 									<div class="message-line__message-box message-line__message--receiver message-line__message--orders">
-										<strong class="name">Felipe</strong>
+										@if($datosVendedor->_id==auth()->user()->_id)
+											<strong class="name">{{$nomComprador}}</strong>
+										@else
+											<strong class="name">{{$msj['nomVendedor']}}</strong>
+										@endif 
 										<strong class="title"></strong>
-										<div class="text">Claro , tomo nota.</div>
+										<div class="text">{{$msj['cuerpoMsj']}}</div>
 										<div class="time">
-											<span class="time__timestamp">08:28</span>
+											<span class="time__timestamp">{{$tiempo}}</span>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						@endif
+						@endforeach 
+					@endif
 					</div>
 				</div>
 				<div></div>
@@ -170,7 +214,13 @@
 	<div class="messaging-sidebar__main">
 		<div class="messaging-user">
 			<ul class="messaging-user__items">
-				<li class="messaging-user__items-item">{{$datosVendedor->nombre}} {{$datosVendedor->apellido}}</li>
+				<li class="messaging-user__items-item">
+					@if($datosVendedor->_id==auth()->user()->_id)
+						{{$nomComprador}}
+					@else
+						{{$datosVendedor->nombre}} {{$datosVendedor->apellido}}
+					@endif
+				</li>
 				<li class="messaging-user__items-item">
 					<a class="link" href="#">VENTASIG (1525 puntos)</a>
 				</li>
@@ -180,17 +230,21 @@
 		<div class="messaging-item-order">
 			<div class="messaging-order">
 				<div class="messaging-order-title title">
-					<h3 class="title-msg">Compraste</h3>
+					@if($datosVendedor->_id==auth()->user()->_id)
+						<h3 class="title-msg">Vendiste</h3>
+					@else
+						<h3 class="title-msg">Compraste</h3>
+					@endif
 				</div>
 				<?php
-					setlocale(LC_ALL,"es_ES");
+					
 					$fechaCompra = $datosCompra->created_at;
 					$newDate = date("d-m-Y", strtotime($fechaCompra)); 
 					//Incrementando 2 dias
 					$mod_date = strtotime($newDate."+ 2 days");
 
-					$dia = date("d",$mod_date);
-					$mes = date("F",$mod_date);
+					$dia = date("d",$mod_date);	
+					$mes = strftime("%B");
 				?>
 				<h2 class="messaging-order__status messaging-order__status--info">Entregado</h2>
 				<p class="messaging-order__subtitle">Llegó el {{$dia}} de {{$mes}}.</p>
