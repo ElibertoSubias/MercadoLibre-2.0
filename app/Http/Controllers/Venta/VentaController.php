@@ -26,33 +26,71 @@ class VentaController extends Controller
      */
     public function verMensajes(Request $request)
     {
-        $datosCompra = Compras::where(['_id'=>$request->idCompra,'idUser'=>auth()->user()->_id])->get();
+        $datosCompra = Compras::where(['_id'=>$request->idCompra])->where( function ( $query )
+        {
+            $query->where( 'idVendedor', '=', auth()->user()->_id )
+                ->orWhere( 'idUser', '=', auth()->user()->_id );
+        })->get();
+        $datosComprador = User::where(['_id'=>$datosCompra[0]->idUser])->get(); 
         $datosArticulo = Articulos::where(['_id'=>$datosCompra[0]->idPublicacion])->get();
-        $vendedor = User::where(['_id'=>$datosCompra[0]->idVendedor])->get();
-
-        return view('vender.mensajes.create')->with(['datosArticulo'=>$datosArticulo[0],'datosCompra'=>$datosCompra[0],'datosVendedor'=>$vendedor[0],'msjs'=>$datosCompra[0]->mensajes]);
+        $vendedor = User::where(['_id'=>$datosCompra[0]->idVendedor])->get(); 
+        return view('vender.mensajes.create')->with(['nomComprador'=>$datosComprador[0]->nombre.' '.$datosComprador[0]->apellido,'datosArticulo'=>$datosArticulo[0],'datosCompra'=>$datosCompra[0],'datosVendedor'=>$vendedor[0],'msjs'=>$datosCompra[0]->mensajes]);
     }
 
     public function addMensaje(Request $request)
     {
-        $datosCompra = Compras::where(['_id'=>$request->idCompra,'idUser'=>auth()->user()->_id])->get(); 
+        $datosCompra = Compras::where(['_id'=>$request->idCompra])->where( function ( $query )
+        {
+            $query->where( 'idVendedor', '=', auth()->user()->_id )
+                ->orWhere( 'idUser', '=', auth()->user()->_id );
+        })->get();
 
         $vendedor = User::where(['_id'=>$datosCompra[0]->idVendedor])->get(); 
 
-        $dateNow = new \MongoDB\BSON\UTCDateTime(); 
+        $dateNow = date("Y-m-d\TH:i:s\Z");  
+        //$date = new \MongoDB\BSON\UTCDateTime(new DateTime("2017-03-31"); 
         if ($request->msjCuerpo!="") { 
             Compras::where('_id', $request->idCompra)->push('mensajes', [ 
                 'nomVendedor'=>$vendedor[0]->nombre,
                 'idEmisor'=>auth()->user()->_id,
                 'cuerpoMsj'=>$request->msjCuerpo,
                 'estadoMsj'=>0,
-                'fechaRegistro'=>$dateNow],
+                'created_at'=>$dateNow],
                 true
             );
-            return 1;
+            return Redirect::route('verMensajes',['idCompra' => $request->idCompra]);
         }else{
             return Redirect::back()->withErrors(['Campo de comentario requerido']);
         } 
+    }
+
+    public function historialVentas(Request $request)
+    {
+        $direccion = Direcciones::where(['idUser'=>auth()->user()->_id,'envio'=>1])->get();
+        $compras = Compras::where('idVendedor' , '=', auth()->user()->id)->orderBy('created_at', 'desc')->get();
+        $nombresCompradores = array();
+        foreach ($compras as $key) {
+            $comprador = User::where(['_id'=>$key->idUser])->get(); 
+            array_push($nombresCompradores,$comprador[0]->nombre);
+        } 
+        $articulos= array();
+        $direccionEnvio= array();
+        $vendedor= array(); 
+        foreach ($compras as $id) {
+        
+        $aux = Articulos::where('_id' , '=', $id->idPublicacion)->get(); 
+
+        array_push($articulos, $aux);
+        
+        //echo $aux;
+        $auxDirecion = Direcciones::where('_id' , '=', $id->idDireccionEnvio)->get();   
+        array_push($direccionEnvio, $auxDirecion[0]);
+
+        $auxVendedor = User::where('_id' , '=', $id->idVendedor)->get(); 
+         array_push($vendedor, $auxVendedor[0]);  
+        }   
+          //  return $articulos;
+        return view('ventas.create', compact('direccion','compras', 'articulos', 'direccionEnvio', 'vendedor','nombresCompradores'));
     }
 
     public function showPrecio(Request $request)

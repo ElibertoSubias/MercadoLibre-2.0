@@ -125,6 +125,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 		Route::post('recibirPor', 'Compra\CompraController@dondeRecibir')->name('recibirPor');
 		Route::any('historialComp', 'Compra\CompraController@histoCompra')->name('historialComp');
+		Route::any('historialVentas', 'Venta\VentaController@historialVentas')->name('historialVentas');
 
 		Route::any('nuevodomicilio', 'Compra\CompraController@nuevoDomicilio')->name('nuevodomicilio');
 		Route::post('agregarDomicilio2', 'Compra\CompraController@agregarDomicilio')->name('agregarDomicilio2');

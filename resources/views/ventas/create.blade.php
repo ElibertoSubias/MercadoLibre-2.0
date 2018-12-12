@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('titulo')
-	<title>Compras - MercadoLibre</title>	
+	<title>Ventas - MercadoLibre</title>	
 @stop
 @section('content')
 {!! Html::style('css/styleHistoCompra.css') !!} 
@@ -214,7 +214,7 @@
 				    };
 				</script> 
 		        <section id="listContainer" class="container" data-js="data-container"> 
-		                <h1 class="myml-title">Compras</h1> 
+		                <h1 class="myml-title">Ventas</h1> 
 		        		<div class="col-md-10 cont_sub_cont">
 	        <div class="col-md-12 textIzquierda" style="background-color:white;width: 99%;">	            
 				<!--////////////////////////////////////////====LADO DERECHO====///////////////////////////////////////-->
@@ -242,7 +242,7 @@
                      <?php
                 for($i=0; $i<count($compras); $i++){ 
                     ?> 
-                        <div id="DIV_155" style="margin-top: 15px !important; width: 100% !important">
+                        <div id="DIV_155" style="margin-top: 15px !important; ">
                             <div id="DIV_156">
                                 <h2 id="H2_157" style="    margin: 0px !important;">
                                     Enviado
@@ -279,13 +279,8 @@
                                 <div id="DIV_188">
                                     <ul id="UL_189">
                                         <li id="LI_190">
-                                           {{$vendedor[$i]->nombre}} 
-                                        </li>
-                                        @if($vendedor[$i]->telefono != "_")
-                                        <li id="LI_191">
-                                           {{$vendedor[$i]->telefono}}
-                                        </li>
-                                        @endif
+                                           {{$nombresCompradores[$i]}} 
+                                        </li> 
                                         <li id="LI_192">
                                              <form action="verMensajes" method="post"> 
                                              	<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 

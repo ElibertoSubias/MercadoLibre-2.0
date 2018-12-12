@@ -11,7 +11,7 @@
     text-size-adjust: 100%;
     top: 0px;
     touch-action: manipulation;
-    width: 1200px;
+    width: 100%;
     column-rule-color: rgb(51, 51, 51);
     perspective-origin: 600px 436.895px;
     transform-origin: 600px 436.895px;
@@ -52,7 +52,7 @@
     height: auto;
     text-decoration: none solid rgb(51, 51, 51);
     text-size-adjust: 100%;
-    width: 1200px;
+    width: 100%;
     column-rule-color: rgb(51, 51, 51);
     perspective-origin: 600px 407.52px;
     transform-origin: 600px 407.52px;
@@ -359,7 +359,23 @@
     outline: rgb(51, 51, 51) none 0px;
 }/*#H2_26:before, #H2_73:before, #H2_115:before, #H2_157:before*/
 
-
+#listContainer h1{
+    margin-right: 0px;
+    padding-right: 0px;
+    display: inline-block;
+    width: 50% !important;
+}
+#listContainer {
+    width: auto !important;
+}
+.cont_sub_cont {
+    padding: 0px;
+    width: 100%;
+}
+.textIzquierda {
+    margin-left: 0px;
+    padding-left: 0px;
+}
 #DIV_29, #DIV_75, #DIV_117, #DIV_159 {
     border-collapse: collapse;
     bottom: 0px;
@@ -371,7 +387,7 @@
     text-decoration: none solid rgb(51, 51, 51);
     text-size-adjust: 100%;
     top: 0px;
-    width: 1134.02px;
+    width: 100%;
     column-rule-color: rgb(51, 51, 51);
     perspective-origin: 599.004px 61.4844px;
     transform-origin: 599.004px 61.4844px;
@@ -960,7 +976,7 @@
     height: 20px;
     text-decoration: none solid rgb(51, 51, 51);
     text-size-adjust: 100%;
-    width: 66.1719px;
+    width: 100%;
     column-rule-color: rgb(51, 51, 51);
     perspective-origin: 53.0859px 10px;
     transform-origin: 53.0859px 10px;
@@ -980,7 +996,7 @@
     height: 42.7344px;
     text-decoration: none solid rgb(51, 51, 51);
     text-size-adjust: 100%;
-    width: 1134.02px;
+    width: 100%;
     column-rule-color: rgb(51, 51, 51);
     perspective-origin: 599.004px 33.3594px;
     transform-origin: 599.004px 33.3594px;
@@ -998,7 +1014,7 @@
     height: 18.75px;
     text-decoration: none solid rgb(102, 102, 102);
     text-size-adjust: 100%;
-    width: 1134.02px;
+    width: 100%;
     column-rule-color: rgb(102, 102, 102);
     perspective-origin: 567.012px 9.375px;
     transform-origin: 567.012px 9.375px;
@@ -1021,7 +1037,7 @@
     text-decoration: none solid rgb(51, 51, 51);
     text-size-adjust: 100%;
     top: 0px;
-    width: 1198.01px;
+    width: 100%;
     column-rule-color: rgb(51, 51, 51);
     perspective-origin: 600px 95.8398px;
     transform-origin: 600px 95.8398px;

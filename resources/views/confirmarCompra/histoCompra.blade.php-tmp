@@ -217,7 +217,7 @@
 		        <section id="listContainer" class="container" data-js="data-container">
 		                <h1 class="myml-title">Compras</h1>
 		        		<div class="col-md-10 cont_sub_cont">
-	        <div class="col-md-12 textIzquierda" style="margin-left: 10px;background-color:white;width: 99%;">
+	        <div class="col-md-12 textIzquierda" style="background-color:white;width: 99%;">
 				<!--////////////////////////////////////////====LADO DERECHO====///////////////////////////////////////-->
 			<div id="DIV_1">
     <div id="DIV_3">
@@ -242,7 +242,7 @@
 
 <?php
 for ($i = 0; $i < count($compras); $i++) {
-	?><div id="DIV_155" style="margin-top: 15px !important; width: 85% !important">
+	?><div id="DIV_155" style="margin-top: 15px !important; width: 100% !important">
 	                            <div id="DIV_156">
 	                                <h2 id="H2_157" style="    margin: 0px !important;">
 	                                    Enviado
