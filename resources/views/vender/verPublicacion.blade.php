@@ -7,6 +7,12 @@
   
 
 </style> 
+<script type="text/javascript">
+    
+ $("#INPUT_22").click(function(){
+         alert('ss');
+        }
+</script>
 <div style="margin-top: -5px;max-width: 1220px;height:auto;display: inline-block;width: 100%;"> 
     <nav class="nav-deep-links">
         <div class="container" style="margin-left: 0px;padding-left: 0px;"> 
@@ -464,7 +470,7 @@
                     Últimas preguntas
                 </p>
              
-                @foreach ($res as $comentario)
+                @foreach ($comentarios as $comentario)
                 <ul id="UL_36">
                     <li id="LI_37">
                         <article id="ARTICLE_38">
@@ -476,7 +482,7 @@
                             </div>
                             <div id="DIV_42">
                                 <p id="P_43">
-                                    <div class="text"> {{$res[0][0]}}</div>
+                                    <div class="text">{{$comentario->pregunta}} </div>
                                   
                                 </p> <a href="" id="A_44">Denunciar</a>
                             </div>
@@ -490,10 +496,10 @@
                             </div>
                             <div id="DIV_49">
                                 <p id="P_50">
-                                    Que tal buen dia se lo podria dejar en 550,000 pesos completamente nuevo de fabrica empacado con todos sus plasticos de fabrica, caja y papeles donde se encuentra usted?
+                                 {{$comentario->respuesta}}
                                 </p>
                                 <time id="TIME_51">
-                                    31/3/2018 09:20
+                                    
                                 </time> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5429286981&amp;element_type=ANSW" id="A_52">Denunciar</a>
                             </div>
                         </article>

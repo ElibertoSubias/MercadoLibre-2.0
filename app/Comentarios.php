@@ -20,7 +20,7 @@ class Comentarios extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'idUser','idPublicacion', 'comentario','respuesta', 'tipo',
+        'pregunta', 'nomEmisor',  'idEmisor',  'estadoMsj', 'fechaRegistro', 'publicacion', 'respuesta',
     ];
 
     /**
