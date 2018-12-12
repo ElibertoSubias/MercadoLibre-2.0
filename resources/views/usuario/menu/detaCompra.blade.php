@@ -498,15 +498,11 @@
     <div class="myml-ui-package-actions">
         
     <div class="myml-ui-package-actions__action">
-        <a href="https://myaccount.mercadolibre.com.mx/messaging/orders/1716345322" class="myml-ui-package-actions__text ">Ver mensaje
-            
-            <span class="myml-ui-package-actions__chevron-right">
-                <svg width="9px" height="14px" viewBox="0 0 9 14" xmlns="http://www.w3.org/2000/svg">
-  <path d="M8.12 6.96a.48.48 0 0 0-.14-.32L1.48.14A.48.48 0 0 0 1.157 0a.48.48 0 0 0-.32.14L.14.837a.48.48 0 0 0-.14.32.48.48 0 0 0 .14.322l5.482 5.48L.14 12.444a.48.48 0 0 0-.14.32c0 .127.056.238.14.32l.697.7a.48.48 0 0 0 .32.14.48.48 0 0 0 .322-.14l6.5-6.5a.48.48 0 0 0 .14-.323z" fill="#B4B4B4" fill-rule="evenodd"></path>
-</svg>
-
-            </span>
-        </a>
+        <form action="verMensajes" method="post"> 
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+            <input type="hidden" name="idCompra" value="{{$item[0]->_id}}">
+            <input type="submit" value="Ver mensajes" class="myml-ui-package-actions__text " style="outline: none;background: none;border: 0px;box-shadow: none;">
+         </form> 
     </div>
 
 
