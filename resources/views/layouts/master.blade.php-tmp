@@ -769,10 +769,10 @@
       h.appendChild(t);
     }
   }
-  var scripts = ["https://http2.mlstatic.com/storage/tag-manager/kenshoo-ktag-mlm.js",function(){
+  var scripts = ["js/kenshoo-ktag-mlm.js",function(){
       !function(n,e){n.mitt=e()}(this,function(){function n(n){return n=n||Object.create(null),{on:function(e,t){(n[e]||(n[e]=[])).push(t)},off:function(e,t){n[e]&&n[e].splice(n[e].indexOf(t)>>>0,1)},emit:function(e,t){(n[e]||[]).map(function(n){n(t)}),(n["*"]||[]).map(function(n){n(e,t)})}}}return n});
       window.freya = mitt();
-    },"https://http2.mlstatic.com/resources/frontend/statics/ml-widgets/snackbar/v1.0.0/snackbar.js",function(){(function (bus) {
+    },"js/snackbar.js",function(){(function (bus) {
   var pictureUploadInput = document.querySelector('#nav-header-mobile-avatar-upload');
   if (!pictureUploadInput) return;
   var endpoint = document.querySelector('#nav-header-mobile-avatar-form').getAttribute('action');
@@ -814,37 +814,7 @@
       postPicture();
     }
   });
-})(window.freya || window.meli);},function(){
-
-          (function appDownload() {
-            function trackEventAppDownloadAnalytics(os, app) {
-               if (typeof meli_ga !== 'undefined' && (os ==='android' || os === 'ios')) {
-                var osTrack = os.toUpperCase();
-                if (app) {
-                  app = app.toUpperCase();
-                  meli_ga('send', 'event', 'MOBILE-APP-' + osTrack, 'DOWNLOAD-MENU', app);
-                } else {
-                  meli_ga('send', 'event', 'MOBILE-APP-' + osTrack, 'DOWNLOAD-MENU');
-                }
-              }
-            }
-            function handleAppDownload(event) {
-               var os = this.getAttribute('data-os'),
-                app = this.getAttribute('data-app');
-              // track event in analytics
-              trackEventAppDownloadAnalytics(os,app);
-            }
-          }());
-        },"js/user-menu.js",function(){
-          (function(win, freya) {
-            if (win.UserMenuWidget && freya) {
-              new UserMenuWidget({
-                mainDomain: 'mercadolibre.com.mx',
-                bus: freya,
-              });
-            }
-          })(window, window.freya);
-      },"https://http2.mlstatic.com/ui/navigation/modeless-box/3.1.0/modeless-box.js",function(){
+})(window.freya || window.meli);},"js/user-menu.js","js/modeless-box.js",function(){
       (function WidgetManager() {
         if (freya) {
           var notificationsLink = document.getElementById('notiLink');
@@ -900,9 +870,9 @@ freya.on('bookmarks:show:before', function(ev) {
             });
         }
       })();
-    },"https://http2.mlstatic.com/resources/frontend/statics/ml-widgets/nav-cart/v1.1.5/CartWidget.js",function(){
+    },"js/CartWidget.js",function(){
 
-        },"https://http2.mlstatic.com/ui/searchbox/2.2.0/index.js","https://http2.mlstatic.com/resources/frontend/statics/ml-widgets/modal/v1.0.2/modal.js",function(){
+        },"js/modal.js",function(){
     (function () {
       var linkCP = document.querySelector('.nav-menu-cp');
       if (linkCP) {
@@ -910,44 +880,7 @@ freya.on('bookmarks:show:before', function(ev) {
         });
       }
     }());
-  },"https://http2.mlstatic.com/resources/frontend/statics/ml-widgets/categories/v1.0.9/categories.js",function(){
-              (function(win, freya) {
-                if (win.CategoriesWidget && freya) {
-                  new CategoriesWidget({
-                    bus: freya,
-                    endpoint: '//www.mercadolibre.com.mx/menu/departments',
-                  });
-                }
-              })(window, window.freya);
-            },function(){
-      (function () {
-        var linkCP = document.querySelector('.nav-header-cp-anchor');
-        if (linkCP) {
-          linkCP.addEventListener('click', function () {
-            if (meli_ga) {
-              meli_ga('send', 'event', 'CURRENT_LOCATION', 'NAVIGATION', 'PICK');
-            }
-
-            if (melidata) {
-            }
-          });
-        }
-      }());
-    },function(){
-      (function () {
-        var pixels = ["//dejavu.mercadolibre.com/load.gif?","//dejavu.mercadopago.com/load.gif?","//dejavu.mercadoclics.com/load.gif?","//dejavu.mlapps.com/load.gif?", "//dejavu.mercadolibre.com.mx/load.gif?"];
-        var regex = /(^|; ?)_d2id=([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})-n($|;)/;
-
-        var matches = document.cookie.match(regex);
-        if (matches) {
-          var d2id = matches[2];
-          for(var img in pixels) {
-            var i = new Image();
-            i.src = pixels[img]+"_d2id="+d2id
-          }
-        }
-      })();
-    },function(){
+  },function(){
         (function (win) {
   'use strict';
 

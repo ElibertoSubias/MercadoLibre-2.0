@@ -297,6 +297,7 @@
 </div>
 </main>
 {!! Html::script('js/jquery-3.3.1.min.js') !!}  
-{!! Html::script('js/bootstrap.min.js') !!} 
+{!! Html::script('js/bootstrap.min.js') !!}
+{!! Html::script('js/cargaMensajes.js') !!} 
 {!! Html::script('js/validaciones.js') !!} 
 @stop
