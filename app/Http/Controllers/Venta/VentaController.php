@@ -16,6 +16,7 @@ use App\Direcciones;
 use App\Compras;
 use App\Usuarios;
 use App\Urlimagenes;
+use App\Comentarios;
 
 class VentaController extends Controller
 {
@@ -275,9 +276,11 @@ class VentaController extends Controller
             $vendedor = User::where(['_id'=>$idUser])->first();
             $ventas = Compras::where(['idPublicacion'=>$request->id])->get(); 
             $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first();  
+            $res = Comentarios::where(['publicacion'=>$request->id])->get();
+           
             if ($datos!="") {
                 $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first(); 
-                return view('vender.verPublicacion')->with(['datos'=>$datos,'direccion'=>$direccion])->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido)->with(['idVendedor'=>$vendedor->_id,'totalVentas'=>count($ventas)]);
+                return view('vender.verPublicacion' )->with(['datos'=>$datos,'comentarios'=>$res, 'direccion'=>$direccion])->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido)->with(['idVendedor'=>$vendedor->_id,'totalVentas'=>count($ventas)]);
             }else{
                 return view('dashboard');
             }
@@ -445,15 +448,29 @@ class VentaController extends Controller
     {
         $dateNow = new \MongoDB\BSON\UTCDateTime(); 
         if ($request->question!="") { 
-            Articulos::where('_id', $request->itemId)->push('comentarios', [
-                'pregunta'=>$request->question,
-                'nomEmisor'=>auth()->user()->nombre,
-                'idEmisor'=>auth()->user()->_id,
-                'estadoMsj'=>0,
-                'fechaRegistro'=>$dateNow], 
-                true
-            );
-            return 1;
+                             
+             
+         if ($request->ajax()) {
+              $pregunta = new Comentarios;
+               $pregunta->pregunta=$request->question;
+               $pregunta->nomEmisor=auth()->user()->nombre;
+               $pregunta->idEmisor=auth()->user()->_id;
+               $pregunta->estadoMsj=0;
+               $pregunta->publicacion=$request->itemId;
+               $pregunta->fechaRegistro=$dateNow;
+               $pregunta->vendedor=$request->vendedor;
+               $pregunta->respuesta="";
+               $pregunta->save(); 
+             $res = Comentarios::where(['publicacion'=>$request->itemId])->get();
+                
+                return response()->json([
+                    "res" => $res 
+              
+             ]); 
+            }   
+            
+        
+            
         }else{
             return Redirect::back()->withErrors(['Campo de comentario requerido']);
         } 

@@ -7,6 +7,34 @@
   
 
 </style> 
+<script type="text/javascript">
+    
+ function pp(){
+ 
+          var question = $("#TEXTAREA_17").val();
+          var itemId = $("#itemId").val();
+          var vendedor = $("#vendedor").val();
+
+          var route = "addComentario";
+          var token = $("#_token").val();
+          
+         
+         $.ajax({
+                url: route,
+                headers: {'X-CSRF-TOKEN': token},
+                type: 'POST',
+                dataType: 'json',
+                data: { question: question, itemId: itemId, vendedor:vendedor} 
+                }).done(function(data) {  
+                  if (data.res!=1 && data.res!=0){
+        
+                  }else if(data.res==1){  
+              
+                  }
+                });
+         
+        }
+</script>
 <div style="margin-top: -5px;max-width: 1220px;height:auto;display: inline-block;width: 100%;"> 
     <nav class="nav-deep-links">
         <div class="container" style="margin-left: 0px;padding-left: 0px;"> 
@@ -430,23 +458,25 @@
     <p id="P_12">
         O pregúntale al vendedor
     </p>
-    <form action="{{route('addComentario')}}" method="POST" id="FORM_13">
+    <form  id="FORM_13">
         <div id="DIV_14">
             <div id="DIV_15">
                 <div id="DIV_16">
-                    <textarea id="TEXTAREA_17" name="question" maxlength="2000" placeholder="Escribe una pregunta..." required></textarea>
+                    <textarea id="TEXTAREA_17" id="TEXTAREA_17" name="question" maxlength="2000" placeholder="Escribe una pregunta..." required></textarea>
                 </div>
                 <div id="DIV_18">
                     <p id="P_19">
                         Tiempo aproximado de respuesta <strong id="STRONG_20">7 minutos</strong>
                     </p>
                 </div>
-                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                <input type="hidden" name="itemId" value="{{$datos->_id}}" />
+                <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" id="token">
+                <input type="hidden" name="itemId" id="itemId" value="{{$datos->_id}}">
+                <input type="hidden" name="vendedor" id="vendedor" value="{{$datos->idUser}}">
+
 
             </div>
             <div id="DIV_21">
-                <input id="INPUT_22" type="submit" value="Preguntar" />
+                <input id="INPUT_22" type="submit" value="Preguntar" onclick="javascript:pp()" />
             </div>
         </div> 
     </form>
@@ -463,6 +493,8 @@
                 <p id="P_35">
                     Últimas preguntas
                 </p>
+             
+                @foreach ($comentarios as $comentario)
                 <ul id="UL_36">
                     <li id="LI_37">
                         <article id="ARTICLE_38">
@@ -474,8 +506,9 @@
                             </div>
                             <div id="DIV_42">
                                 <p id="P_43">
-                                    Hola me interesa el reloj cual es su último precio?
-                                </p> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5429286981&amp;element_type=QUES" id="A_44">Denunciar</a>
+                                    <div class="text">{{$comentario->pregunta}} </div>
+                                  
+                                </p> <a href="" id="A_44">Denunciar</a>
                             </div>
                         </article>
                         <article id="ARTICLE_45">
@@ -487,48 +520,17 @@
                             </div>
                             <div id="DIV_49">
                                 <p id="P_50">
-                                    Que tal buen dia se lo podria dejar en 550,000 pesos completamente nuevo de fabrica empacado con todos sus plasticos de fabrica, caja y papeles donde se encuentra usted?
+                                 {{$comentario->respuesta}}
                                 </p>
                                 <time id="TIME_51">
-                                    31/3/2018 09:20
-                                </time> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5429286981&amp;element_type=ANSW" id="A_52">Denunciar</a>
+                                    
+                                </time> <a href="#" id="A_52">Denunciar</a>
                             </div>
                         </article>
-                    </li>
-                    <li id="LI_53">
-                        <article id="ARTICLE_54">
-                            <div id="DIV_55">
-                                <svg id="svg_56">
-                                    <use id="use_57">
-                                    </use>
-                                </svg>
-                            </div>
-                            <div id="DIV_58">
-                                <p id="P_59">
-                                    Amigo no me aparecen fotos de tu publicación
-                                </p> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5326177046&amp;element_type=QUES" id="A_60">Denunciar</a>
-                            </div>
-                        </article>
-                        <article id="ARTICLE_61">
-                            <div id="DIV_62">
-                                <svg id="svg_63">
-                                    <use id="use_64">
-                                    </use>
-                                </svg>
-                            </div>
-                            <div id="DIV_65">
-                                <p id="P_66">
-                                    Una disculpa en la mañana subo muchas para que vea como viene el reloj viene sellado de hublot jamas se a usado 100% nuevo!!
-                                </p>
-                                <time id="TIME_67">
-                                    14/2/2018 00:19
-                                </time> <a href="//www.mercadolibre.com.mx/noindex/denounce/?item_id=MLM609549218&amp;element_id=5326177046&amp;element_type=ANSW" id="A_68">Denunciar</a>
-                            </div>
-                        </article>
-                    </li>
-                    
+                    </li>  
                     
                 </ul>
+                @endforeach
             </div>
 </section>
 <!-- aqui terminan los comentarios  -->
