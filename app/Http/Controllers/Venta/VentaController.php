@@ -300,9 +300,9 @@ class VentaController extends Controller
         
     }
 
-    public function actualizarCorreo(Request $request)
+    public function verPreguntas(Request $request)
     {
-        //
+        return view('usuario.menu.preguntas');
     } 
     /**
      * Store a newly created resource in storage.
