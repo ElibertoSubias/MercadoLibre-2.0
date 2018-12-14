@@ -161,7 +161,8 @@
 
             <h1 class="main-title title title--primary" data-js="main-title">
                 Preguntas
-                        (<span class="questions-total" data-js="questions-total">1</span>)
+                <?php $pp=count($articulos);?>
+                        (<span class="questions-total" data-js="questions-total"> <?php echo count($articulos);?> </span>)
             </h1>
 
                             <div class="open-all">
@@ -178,23 +179,25 @@
 <section data-js="ml-card" class="card"><!-- questions.ItemsGroup.hbs -->
 <div data-js="item"><div id="83333"><!-- questions.item.hbs -->
 
-
+<?php
+                for($i=0; $i<count($articulos); $i++){ 
+                    ?>
 <article class="item item-header" data-id="item-MLM656797491" data-js="item">
     <a href="https://servicio.mercadolibre.com.mx/MLM-656797491-cartel-usado-_JM" class="u--arrange-fit item__image">
-        <img src="https://mlm-s2-p.mlstatic.com/984021-MLM28958746911_122018-I.jpg" alt="Imágen producto" width="90" height="90">
+        <img src="images/{{ $articulos[$i]->idUser}}/{{$articulos[$i]->idPublicacion}}/{{$articulos[$i]->urlPrincipal}}" alt="Imágen producto" width="90" height="90">
     </a>
     <div class="u--arrange-fill item__content">
         <h2 class="item__title">
-            <a href="https://servicio.mercadolibre.com.mx/MLM-656797491-cartel-usado-_JM" class="u--no-visited">Cartel Usado</a>
+            <a href="#" class="u--no-visited">{{$articulos[$i]->titulo}}</a>
         </h2>
 
         <div class="item__price">
             <strong class="ch-price">
-                <i class="ch-price-symbol">$</i> 5,000<sup>00</sup>
+                <i class="ch-price-symbol">$</i> {{$articulos[$i]->precio}}<sup>00</sup>
             </strong>
 
                 <p class="item__data item__data--quantity">
-                        <span class="u--text-light quantity">x 1 disponible</span>
+                        <span class="u--text-light quantity">x {{$articulos[$i]->cantidad}} disponible</span>
                 </p>
         </div>
 
@@ -227,7 +230,7 @@
         </div>
         <div class="u--arrange-fill">
                     <p class="question__text" data-js="question-row-text">
-                        Es el orginal o es la copia?
+                            {{$preguntas[$i]->pregunta}}
                     </p>
 
             <p class="question__date" data-js="question-row-date">
@@ -236,7 +239,7 @@
 
                 <div class="question__info u--clearfix">
                     <a href="http://www.mercadolibre.com.mx/jm/profile?id=236377324&amp;oper=S" data-js="reputation-link" class="u--float-left u--no-visited" target="_blank">
-                            Erick Labrada Sanchez (1)
+                            {{$comprador[$i]->nombre}} {{$comprador[$i]->apellido}} (1)
                     </a>
 
                 </div>
@@ -274,14 +277,14 @@
                         <!-- <a href="#/deleteQuestion/5985364100" class="question-btn-delete mobile-hidden u--no-visited"><span class="ch-icon-trash"></span> Eliminar pregunta</a> -->
                         <ul class="question-actions__options css-dropdown-options">
                                 <li class="question-actions__mail">
-                                    <a href="mailto:erick6672@gmail.com">
+                                    <a href="#">
                                         <span class="ch-icon-envelope-alt"></span>
                                         <span class="mobile-visible">Enviar mail</span>
-                                        <span class="mobile-hidden">erick6672@gmail.com</span>
+                                        <span class="mobile-hidden">{{$comprador[$i]->email}}</span>
                                     </a>
                                 </li>
                                 <li class="question-actions__telephone">
-                                        <span class="ch-icon-phone"></span>6677568894
+                                        <span class="ch-icon-phone"></span>{{$comprador[$i]->telefono}}
                                 </li>
                             <li class="question-actions__delete">
                                 <!-- link -->
@@ -300,7 +303,9 @@
 </article></div>
 <!-- / questions.questionsGroup.hbs -->
 </div></div>
-
+  <?php
+                } 
+            ?> 
 <!-- / questions.ItemsGroup.hbs -->
 </section></div>
 

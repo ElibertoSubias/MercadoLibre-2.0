@@ -304,7 +304,24 @@ class VentaController extends Controller
 
     public function verPreguntas(Request $request)
     {
-        return view('usuario.menu.preguntas');
+         $preguntas = Comentarios::where(['vendedor'=>auth()->user()->_id])->get();
+            
+
+
+        $articulos= array();
+        $compradores=array();
+        foreach ($preguntas as $id) {
+        $datos = Articulos::where(['_id' => $id->publicacion])->get();
+        $comprador = User::where(['_id'=>$id->idEmisor])->get(); 
+        
+        array_push($articulos, $datos[0]);
+           
+        array_push($compradores, $comprador[0]);
+           
+        } 
+
+        
+        return view('usuario.menu.preguntas')->with(['articulos'=>$articulos, 'preguntas'=>$preguntas, 'comprador'=>$compradores]);
     } 
     /**
      * Store a newly created resource in storage.
