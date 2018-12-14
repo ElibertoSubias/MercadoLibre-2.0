@@ -304,7 +304,7 @@ class VentaController extends Controller
 
     public function verPreguntas(Request $request)
     {
-         $preguntas = Comentarios::where(['vendedor'=>auth()->user()->_id])->get();
+         $preguntas = Comentarios::where(['vendedor'=>auth()->user()->_id,  'respuesta'=>''])->get();
             
 
 
@@ -321,7 +321,7 @@ class VentaController extends Controller
         } 
 
         
-        return view('usuario.menu.preguntas')->with(['articulos'=>$articulos, 'preguntas'=>$preguntas, 'comprador'=>$compradores]);
+        return view('usuario.menu.preguntas')->with(['articulos'=>$articulos, 'preguntas'=>$preguntas, 'comprador'=>$compradores]); 
     } 
     /**
      * Store a newly created resource in storage.

@@ -457,6 +457,8 @@
     <p id="P_12">
         O pregúntale al vendedor
     </p>
+    @isset(auth()->user()->_id)
+                @if($idVendedor!=auth()->user()->_id) 
     <form  id="FORM_13">
         <div id="DIV_14">
             <div id="DIV_15">
@@ -479,7 +481,8 @@
             </div>
         </div> 
     </form>
-    
+      @endif
+     @endisset
     <script id="SCRIPT_30">document.addEventListener("DOMContentLoaded", function() {new BTSDK({ type:'desktop',keyboardForm:'form#questions-form',paramsConstants:{department:'aff0060dd11496b0fea4ad7a364df3bd',form_name:'meli_contact_seller',user_id:236377324,site_id:'MLM'}})});
         </script>
     <div id="DIV_31">
