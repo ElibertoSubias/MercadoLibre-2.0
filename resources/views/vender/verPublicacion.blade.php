@@ -14,7 +14,6 @@
           var question = $("#TEXTAREA_17").val();
           var itemId = $("#itemId").val();
           var vendedor = $("#vendedor").val();
-
           var route = "addComentario";
           var token = $("#_token").val();
           

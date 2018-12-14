@@ -187,10 +187,12 @@ class VentaController extends Controller
         }else{
             $vendedor = User::where(['_id'=>$idUser])->first();
             $ventas = Compras::where(['idPublicacion'=>$request->id])->get(); 
-            $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first();  
+            $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first(); 
+            $res = Comentarios::where(['publicacion'=>$request->id])->get();
+            
             if ($datos!="") {
                 $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first(); 
-                return view('vender.verPublicacion')->with(['datos'=>$datos])->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido)->with(['idVendedor'=>$vendedor->_id,'totalVentas'=>count($ventas)]);
+                return view('vender.verPublicacion')->with(['datos'=>$datos, 'comentarios'=>$res])->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido)->with(['idVendedor'=>$vendedor->_id,'totalVentas'=>count($ventas)]);
             }else{
                 return view('dashboard');
             }

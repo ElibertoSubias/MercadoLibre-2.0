@@ -20,7 +20,7 @@
                   <input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
                   <input type="hidden" name="precio" value="{{$precio}}">
                   <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
-                 
+                 <input type="hiddesn" name="cantidadArticulos" value="{{$cantidadArticulos}}">
                   <input  type="submit" name="enviar" class="ui-button "  data-input-id="nextStepSendToMyAddress" value="Enviar a mi domicilio"   style="background-color: rgba(52,131,250,.8);color: #fff; min-width: 300px; display: inline-block; width: 18%;font-weight: 400;font-size: 18px; border-radius: 5px; height: 40px; margin: 2%; padding-top: 4px" >
                 </form>
                    
