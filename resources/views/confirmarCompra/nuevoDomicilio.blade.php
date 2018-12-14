@@ -171,18 +171,12 @@ p {
             </div>
         </div>
     </fieldset>
-
-            
-                
                  <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
                   <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
                   <input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
                   <input type="hidden" name="precio" value="{{$precio}}">
                   <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
-            
-   
-
-            
+                  <input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
 </div>
     <div class="ml-addresses-actions ml-addresses-actions--align-left" style="text-align: left;margin-bottom: 0px;padding: 0px 0px 40px;">
 

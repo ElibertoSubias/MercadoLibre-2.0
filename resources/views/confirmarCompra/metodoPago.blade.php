@@ -182,8 +182,7 @@
 
 								</form>
 							</li> 
-							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">									
+							<li class="badge-type-selection__list-item ui-list__item">						
 									<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
 									@isset($idReferencia)
 										<input type="hidden" name="precio" value="{{$precio}}">
@@ -214,11 +213,8 @@
 								        </div>
 
 							    	</button>
-
-								</form>
 							</li> 
-							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">									
+							<li class="badge-type-selection__list-item ui-list__item">				
 									
 									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="TICKET">
 
@@ -244,11 +240,10 @@
 								        </div>
 
 							    	</button>
-
-								</form>
+ 
 							</li> 
 							<li class="badge-type-selection__list-item ui-list__item">
-								<form method="post">									
+										
 									
 									<button data-js="payment-type" type="submit" name="paymentType" class="badge-type__button u-button-reset" role="option" value="BANK_TRANSFER">
 
@@ -271,7 +266,7 @@
 
 							    	</button>
 
-								</form>
+								
 							</li>
 							<!--///////////////////////////////////////Transferencia Electrónica/////////////////////////////////////-->
 						</ul>

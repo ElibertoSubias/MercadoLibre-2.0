@@ -56,7 +56,7 @@ class CompraController extends Controller
                     }else{
                         
                         $urlImagen = $request->idUser."/".$request->idPublicacion; 
-                        return view ('confirmarCompra.elegirFormaRecivir')->with(['precio'=>$subTotal,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen,'idPaquete'=>$request->idPublicacion ]);
+                        return view ('confirmarCompra.elegirFormaRecivir')->with(['precio'=>$subTotal,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen,'idPaquete'=>$request->idPublicacion,'cantidadArticulos'=>$request->cantidadArticulos]);
                     } 
                 }else{
                     return Redirect::back()->withErrors(['No tienes articulos en el carrito']);
@@ -80,7 +80,7 @@ class CompraController extends Controller
                 }else{
                     
                     $urlImagen = $request->idUser."/".$request->idPublicacion; 
-                    return view ('confirmarCompra.elegirFormaRecivir')->with(['cantidadArticulos'=>$request->cantidad,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen,'idPaquete'=>$request->idPublicacion ]);
+                    return view ('confirmarCompra.elegirFormaRecivir')->with(['cantidadArticulos'=>$request->cantidadArticulos,'precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$urlImagen,'idPaquete'=>$request->idPublicacion]);
                 } 
             }else{
                 return Redirect::back()->withErrors(['Articulo agotado']);
@@ -317,13 +317,15 @@ class CompraController extends Controller
     public function nuevoDomicilio(Request $request)
     {
            
-            return view ('confirmarCompra.nuevoDomicilio')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPublicacion, 'idUser'=>$request->idUser ]);
+            return view ('confirmarCompra.nuevoDomicilio')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPublicacion, 'idUser'=>$request->idUser,'cantidadArticulos'=>$request->cantidadArticulos]);
          
     }
 
      public function agregarDomicilio(Request $request)
     {
-    
+        Direcciones::where(['envio' => 1, 'idUser' => Auth::id()])->update([
+                'envio'  => 0,
+            ]);
        $id = Auth::id();
      
         $Direccion = new Direcciones;
@@ -342,7 +344,7 @@ class CompraController extends Controller
         $Direccion->envio=1;
 
         $Direccion->save();
-       return view ('confirmarCompra.agregarcontactos')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPublicacion, 'idUser'=>$request->idUser ]);
+       return view ('confirmarCompra.agregarcontactos')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPublicacion, 'idUser'=>$request->idUser,'cantidadArticulos'=>$request->cantidadArticulos]);
        
     }
 
@@ -361,7 +363,7 @@ class CompraController extends Controller
 
             ]);
             $domicilios = Direcciones::where(['idUser' => auth()->user()->id])->get(); 
-             return view('confirmarCompra.dondeRecibir')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'domicilios'=>$domicilios,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPublicacion]);
+             return view('confirmarCompra.dondeRecibir')->with(['precio'=>$request->precio,'titulo'=>$request->titulo,'domicilios'=>$domicilios,'urlImagen'=>$request->urlImagen,'idPaquete'=>$request->idPublicacion,'cantidadArticulos'=>$request->cantidadArticulos]);
   
     }
 

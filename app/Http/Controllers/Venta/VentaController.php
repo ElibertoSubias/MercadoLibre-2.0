@@ -27,15 +27,115 @@ class VentaController extends Controller
      */
     public function verMensajes(Request $request)
     {
-        $datosCompra = Compras::where(['_id'=>$request->idCompra])->where( function ( $query )
-        {
-            $query->where( 'idVendedor', '=', auth()->user()->_id )
-                ->orWhere( 'idUser', '=', auth()->user()->_id );
-        })->get();
-        $datosComprador = User::where(['_id'=>$datosCompra[0]->idUser])->get(); 
-        $datosArticulo = Articulos::where(['_id'=>$datosCompra[0]->idPublicacion])->get();
-        $vendedor = User::where(['_id'=>$datosCompra[0]->idVendedor])->get(); 
-        return view('vender.mensajes.create')->with(['nomComprador'=>$datosComprador[0]->nombre.' '.$datosComprador[0]->apellido,'datosArticulo'=>$datosArticulo[0],'datosCompra'=>$datosCompra[0],'datosVendedor'=>$vendedor[0],'msjs'=>$datosCompra[0]->mensajes]);
+        if ($request->ajax()) { 
+            $datosCompra = Compras::where(['_id'=>$request->idCompra])->where( function ( $query )
+            {
+                $query->where( 'idVendedor', '=', auth()->user()->_id )
+                    ->orWhere( 'idUser', '=', auth()->user()->_id );
+            })->get(); 
+            $datosComprador = User::where(['_id'=>$datosCompra[0]->idUser])->get(); 
+            $datosArticulo = Articulos::where(['_id'=>$datosCompra[0]->idPublicacion])->get();
+            $vendedor = User::where(['_id'=>$datosCompra[0]->idVendedor])->get();  
+            
+                setlocale(LC_ALL,"es_ES");  
+                $fechaCompra = $datosCompra[0]->created_at;
+                $newDate = date("d-m-Y", strtotime($fechaCompra));  
+
+                if(isset($datosCompra[0]->mensajes)){
+                    $aux="";
+                    $arrayMensajes = array();
+                    foreach ($datosCompra[0]->mensajes as $msj) { 
+                        
+                        if($msj['idEmisor']==auth()->user()->_id){
+                            $aux= "<div>";
+                                    //Incrementando 2 dias
+                                    $mod_date = strtotime($msj['created_at']); 
+                                    $dia = date("d",$mod_date); 
+                                    $mes = strftime("%B");
+                                    $tiempo = date("H:i",strtotime($msj['created_at']));   
+
+                                 if(isset($anterior)){
+                                    if($newDate==$anterior){}
+                                    else{
+                                        $aux = $aux . "<div class='message-date'>".$dia." de ".$mes."</div>";
+                                    }
+                                 }else{
+                                    $aux = $aux . "<div class='message-date'>".$dia." de ".$mes."</div>";
+                                 } 
+
+                                $anterior = $newDate;
+
+                            $aux = $aux . '<div class="message-line"><div class="message-line__message">
+                                    <div class="message-line__message-box message-line__message--sender">
+                                        <strong class="title"></strong>
+                                        <div class="text">'.$msj['cuerpoMsj'].'</div>
+                                        <div class="time">
+                                            <span class="time__tick time__tick--read">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="11" viewBox="0 0 24 14">
+                                                    <g fill="none" fill-rule="evenodd">
+                                                        <path fill="#3483FA" fill-rule="nonzero" d="M18.188 1.453L11.625 7.97l-1.453-1.453L16.734 0l1.453 1.453h.001zM22.547 0L24 1.453 11.625 13.781 5.906 8.016l1.407-1.454 4.312 4.266L22.547 0zM0 8.016l1.5-1.454 5.719 5.766-1.453 1.453L0 8.016z" opacity=".805"></path>
+                                                        <path d="M0-6h24v24H0z"></path>
+                                                    </g>
+                                                </svg>
+                                                </span>
+                                                <span class="time__timestamp">'.$tiempo.'</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>';
+                            $aux = $aux .  "</div>";
+                        }else{
+                            $aux="";
+                            $aux = $aux . "<div>";
+                                //Incrementando 2 dias
+                                $mod_date = strtotime($msj['created_at']); 
+                                $dia = date("d",$mod_date); 
+                                $mes = strftime("%B");
+                                $tiempo = date("H:i",strtotime($msj['created_at']));   
+                                if(isset($anterior)){
+                                    if($newDate==$anterior){}
+                                    else{
+                                        $aux = $aux .  "<div class='message-date'>".$dia." de ".$mes."</div>";
+                                    }
+                                }else{
+                                    $aux = $aux .  "<div class='message-date'>".$dia." de ".$mes."</div>";
+                                } 
+                                $anterior = $newDate;
+                            $aux = $aux . '<div class="message-line">
+                                    <div class="message-line__message">
+                                        <div class="message-line__message-box message-line__message--receiver message-line__message--orders">';
+                                            if($vendedor[0]->_id==auth()->user()->_id){
+                                                $aux = $aux .  '<strong class="name">'.$msj['nomVendedor'].'</strong>';
+                                            }
+                                            else{
+                                                $aux = $aux .  '<strong class="name">'.$msj['nomVendedor'].'</strong>';
+                                            }
+                                             
+                                        $aux = $aux .  '<strong class="title"></strong>
+                                            <div class="text">'.$msj['cuerpoMsj'].'</div>
+                                            <div class="time">
+                                                <span class="time__timestamp">'.$tiempo.'</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>';
+                        }  
+                        array_push($arrayMensajes,$aux);
+                    }  
+                    return $arrayMensajes;
+                }  
+        }else{
+            $datosCompra = Compras::where(['_id'=>$request->idCompra])->where( function ( $query )
+            {
+                $query->where( 'idVendedor', '=', auth()->user()->_id )
+                    ->orWhere( 'idUser', '=', auth()->user()->_id );
+            })->get();
+            $datosComprador = User::where(['_id'=>$datosCompra[0]->idUser])->get(); 
+            $datosArticulo = Articulos::where(['_id'=>$datosCompra[0]->idPublicacion])->get();
+            $vendedor = User::where(['_id'=>$datosCompra[0]->idVendedor])->get(); 
+            return view('vender.mensajes.create')->with(['nomComprador'=>$datosComprador[0]->nombre.' '.$datosComprador[0]->apellido,'datosArticulo'=>$datosArticulo[0],'datosCompra'=>$datosCompra[0],'datosVendedor'=>$vendedor[0],'msjs'=>$datosCompra[0]->mensajes]);
+        }
     }
 
     public function addMensaje(Request $request)
@@ -202,9 +302,9 @@ class VentaController extends Controller
         
     }
 
-    public function actualizarCorreo(Request $request)
+    public function verPreguntas(Request $request)
     {
-        //
+        return view('usuario.menu.preguntas');
     } 
     /**
      * Store a newly created resource in storage.

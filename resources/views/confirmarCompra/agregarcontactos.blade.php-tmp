@@ -1,10 +1,10 @@
 @extends('layouts.masterRegistro')
 
-@section('content')  
+@section('content')
 
-{!! Html::style('css/styleDomicilio.css') !!} 
+{!! Html::style('css/styleDomicilio.css') !!}
 {!! Html::style('css/styleDondeRecibir.css') !!}
- 
+
 <style type="text/css">
 
 .cols {
@@ -33,14 +33,14 @@ p {
 </style>
 
 <div class="cols" >
-<div  class="col1">                
+<div  class="col1">
        <a href="#" id="modalSeller" style="display:none" aria-label="ch-modal-5"></a>
         <a href="#" id="modalDeleteInfo" style="display:none" aria-label="ch-modal-6"></a>
 
      <main role="main">
 
     <section class=" ml-addresses-section">
-        
+
 
         <h1 class="ml-addresses-main-title">Modificar domicilio</h1>
     <h2 class="ml-addresses-main-subtitle "></h2>
@@ -51,11 +51,11 @@ p {
 <form style="margin-bottom:0px;" class="ui-form form-with-floating-labels" id="form_modificarDomicilio" action="{{route('agregarcontacto')}}" name="addresses-form" method="post">
     <input type="hidden" name="latitude" id="latitude" value=""><input type="hidden" name="longitude" id="longitude" value=""><input type="hidden" name="locationType" id="locationType" value=""><input type="hidden" name="formId" id="formId" value="ce86e2344591f29a66b866c76d924d3419662143ae6feab741d29f2bd078dd6a">
     <input type="hidden" name="appName" id="appName" value="generic">
-    
-    
-  
-            
-    
+
+
+
+
+
     <div class="ml-addresses-card">
         <p>Datos de contacto</p>
         <div class="u-clearfix">
@@ -74,32 +74,32 @@ p {
                     <span class="ui-form__status-bar"></span>
                 <span class="ui-telephone__focus-line"></span>
             </div>
-            
+
          <div class="ui-form__message" id="alertMsjinputinputTelefono" style="color: red" role="alert">Complete este dato</div>
     </div>
     </div>
-                  <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token"> 
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                   <input type="hidden" name="idPaquete" value="{{$idPaquete}}">
-                  <input type="hidden" name="titulo" value="{{$titulo}}" id="titulo"> 
+                  <input type="hidden" name="titulo" value="{{$titulo}}" id="titulo">
                   <input type="hidden" name="precio" value="{{$precio}}">
                   <input type="hidden" name="urlImagen" value="{{$urlImagen}}">
                   <input type="hidden" name="cantidadArticulos" value="{{$cantidadArticulos}}">
-            
-    
- </div>       
+
+
+ </div>
     <div class="ml-addresses-actions ml-addresses-actions--align-left" style="text-align: left;margin-bottom: 0px;padding: 0px 0px 40px;">
 
     <input type="submit"  name="actualizar"  id="continueButton" class="ui-button ui-button--primary" value="Guardar">
-</form> 
+</form>
 
 
 
 
     </section>
-    
-        
+
+
     </main>
-    
+
 </form>
 
 </div>
@@ -108,7 +108,7 @@ p {
     <aside class="cart-aside__content cart-aside__content--item cart-aside--static" data-aside="target" style="height: 500px !important ">
             <div class="overview-component__item u-block-center">
                 <span class="ui-badge ui-badge--small ui-badge--picture item__image--circular">
-                      <img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" > 
+                      <img src="images/{{$urlImagen}}/principal.jpg" style="width: 100%; margin-top: 6px" alt="" title="" >
                 </span>
                 <h3 class="overview-component__item-title">
                 {{$titulo}}
@@ -125,16 +125,16 @@ p {
                                 </div>
                                 <div data-id="overview-items-price" class="overview-component__column">
                                     <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-                                        <meta itemprop="price" content="18999"> 
+                                        <meta itemprop="price" content="18999">
                                         <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
                                         <span class="price-tag-fraction">{{$precio}}</span>
-                                            <span class="price-tag-decimal-separator"></span> 
+                                            <span class="price-tag-decimal-separator"></span>
                                             <span class="price-tag-cents">00</span>
-                                        
+
                                     </span>
                                 </div>
                             </div>
-                        
+
                     </div>
                 </div>
                  <div class="overview-component__amounts">
@@ -145,13 +145,13 @@ p {
                                 </div>
                                 <div data-id="overview-items-price" class="overview-component__column">
                                     <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-                                        <meta itemprop="price" content="18999"> 
+                                        <meta itemprop="price" content="18999">
                                         <span class="price-tag-fraction">-</span>
-    
+
                                     </span>
                                 </div>
                             </div>
-                        
+
                     </div>
                 </div>
                     <div class="overview-component__total">
@@ -162,14 +162,14 @@ p {
                             <div class="overview-component__column">
                                         <span class="price-tag " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                                             <meta itemprop="price" content="18999">
-                                            
-                                            
+
+
                                             <span class="price-tag-symbol" itemprop="priceCurrency">$</span>
                                             <span class="price-tag-fraction">{{$precio}}</span>
                                                 <span class="price-tag-decimal-separator"></span>
-                                                
+
                                                 <span class="price-tag-cents">00</span>
-                                            
+
                                         </span>
                             </div>
                         </div>
@@ -180,6 +180,6 @@ p {
 </div>
 
     </div>
-</div>                
+</div>
 
 @stop

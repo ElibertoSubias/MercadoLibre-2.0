@@ -59,7 +59,7 @@
 							</div>
 						</div>
 					<div>
-					<div class="sc-messaging-messages"><div class="sc-messages">
+					<div class="sc-messaging-messages" id="cont_scroll"><div class="sc-messages">
 						<?php 
 							setlocale(LC_ALL,"es_ES"); 
 						?>
@@ -144,7 +144,7 @@
 					@endif
 					</div>
 				</div>
-				<div></div>
+				<div id="base_pie"></div>
 				<div class="sc-messaging-controls">
 					<form action="{{route('enviarMjs')}}" method="post" accept-charset="utf-8"> 
 						<div class="controls">
@@ -297,6 +297,7 @@
 </div>
 </main>
 {!! Html::script('js/jquery-3.3.1.min.js') !!}  
-{!! Html::script('js/bootstrap.min.js') !!} 
+{!! Html::script('js/bootstrap.min.js') !!}
+{!! Html::script('js/cargaMensajes.js') !!} 
 {!! Html::script('js/validaciones.js') !!} 
 @stop
