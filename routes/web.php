@@ -157,5 +157,7 @@ Route::group(['middleware' => 'autenticado'], function () {
 	Route::post('enviarMjs', 'Venta\VentaController@addMensaje')->name('enviarMjs');
 
 	Route::any('preguntas', 'Venta\VentaController@verPreguntas')->name('preguntas');
+	
+	Route::any('cargarComentarios', 'Venta\VentaController@cargarComentarios')->name('cargarComentarios');
 
 });

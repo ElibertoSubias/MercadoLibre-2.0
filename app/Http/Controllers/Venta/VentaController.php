@@ -444,32 +444,50 @@ class VentaController extends Controller
         return Redirect::route('publicaciones');
     } 
 
+    public function cargarComentarios(Request $request){
+        if ($request->ajax()) {
+            $res = Comentarios::where(['vendedor'=>auth()->user()->_id])->get();
+            return response()->json([
+                        "numComentarios" => count($res),
+                        "res" => $res 
+                    ]); 
+        }else{
+            return response()->json([
+                        "res" => 0
+
+                    ]); 
+        }
+    }
+
     public function addComent(Request $request)
     {
         $dateNow = new \MongoDB\BSON\UTCDateTime(); 
-        if ($request->question!="") { 
-                             
-             
-         if ($request->ajax()) {
-              $pregunta = new Comentarios;
-               $pregunta->pregunta=$request->question;
-               $pregunta->nomEmisor=auth()->user()->nombre;
-               $pregunta->idEmisor=auth()->user()->_id;
-               $pregunta->estadoMsj=0;
-               $pregunta->publicacion=$request->itemId;
-               $pregunta->fechaRegistro=$dateNow;
-               $pregunta->vendedor=$request->vendedor;
-               $pregunta->respuesta="";
-               $pregunta->save(); 
-             $res = Comentarios::where(['publicacion'=>$request->itemId])->get();
-                
+        if ($request->question!="") {   
+            if ($request->vendedor!=auth()->user()->_id) {
+                if ($request->ajax()) {
+                    $pregunta = new Comentarios;
+                    $pregunta->pregunta=$request->question;
+                    $pregunta->nomEmisor=auth()->user()->nombre;
+                    $pregunta->idEmisor=auth()->user()->_id;
+                    $pregunta->estadoMsj=0;
+                    $pregunta->publicacion=$request->itemId;
+                    $pregunta->fechaRegistro=$dateNow;
+                    $pregunta->vendedor=$request->vendedor;
+                    $pregunta->respuesta="";
+                    $pregunta->save(); 
+                    $res = Comentarios::where(['publicacion'=>$request->itemId])->get();
+
+                    return response()->json([
+                        "res" => $res 
+
+                    ]); 
+                }   
+            }else{
                 return response()->json([
-                    "res" => $res 
-              
-             ]); 
-            }   
-            
-        
+                        "res" => "No puedes comentar sobre tus propias publicaciones"
+
+                    ]);
+            }
             
         }else{
             return Redirect::back()->withErrors(['Campo de comentario requerido']);

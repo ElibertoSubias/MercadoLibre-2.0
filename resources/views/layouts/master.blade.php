@@ -192,7 +192,7 @@
 		                                    <span class="nav-header-notifications-badge"></span>
 		                                
 		                            </p>
-		                        </a>
+		                        </a> 
 		                    </li> 
 		                    <li>
 		                        <a href="#">
@@ -409,7 +409,24 @@
   </nav></div>
   <a href="{{route('historialComp')}}" class="option-purchases">Compras</a> 
   <a tabindex="5" href="#" class="option-bookmarks bookmarks-widget modeless-box-trigger" rel="nofollow" aria-owns="modeless-44" aria-haspopup="true" popup-hidden="true"><span class="bookmarks-text">Favoritos</span></a> 
-					<a tabindex="4" href="#" id="notiLink" class="option-notifications notifications-widget modeless-box-trigger" rel="nofollow" aria-owns="modeless-94" aria-haspopup="true" popup-hidden="true"><i class="nav-icon-notifications"><span>Notificaciones</span></i><span class="ml-count" style="display: none">0</span></a> 
+					<a tabindex="4" href="#" id="notiLink" class="option-notifications notifications-widget modeless-box-trigger" rel="nofollow" aria-owns="modeless-94" aria-haspopup="true" popup-hidden="true"><i class="nav-icon-notifications"><span>Notificaciones</span></i><span class="ml-count" style="display: none">0</span>
+					</a> 
+					<div id="cont_notificaciones" style="font-size: 12px;background: white;border-radius: 5px;"> 
+		                     <div class="col-md-12"  style="background: white;border-radius: 5px;text-align: left;">
+		                     	<a href="#" title="" style="display: block;">
+			                     	<div class="col-md-4" style="height: 50px;">
+			                     		<img src="" alt="">
+			                     	</div>
+			                     	<div class="col-md-8">
+			                     		<b>Titulo</b>
+			                     	</div>
+			                     	<div class="col-md-12">
+			                     		Pregunta
+			                     	</div>
+			                    </a>
+		                     </div>
+		                </div>
+		                
 					<a tabindex="6" href="#" rel="nofollow" class="option-sell nav-header-btn-pub">Vender</a> 
   @endisset
   @empty(auth()->user()->_id)
@@ -731,6 +748,7 @@
 				{!! Html::script('js/modificarPublicacion.js') !!}
 				{!! Html::script('js/editCarrito.js') !!}
 				{!! Html::script('js/formatearPrecio.js') !!}
+				{!! Html::script('js/cargaMensajes.js') !!} 
 				<script> 
 
 

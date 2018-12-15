@@ -1,5 +1,4 @@
-$(document).ready(function() {
-    scrollToBottom();
+$(document).ready(function() { 
     function loadMsjs() { 
         var token = $("#token").val();
         var codigoCompra = $('input[name=idCompra]').val();
@@ -15,9 +14,31 @@ $(document).ready(function() {
             scrollToBottom();
         });
     }
-    setInterval(loadMsjs, 3000);
+    function loadComentarios() { 
+        var token = $("#token").val(); 
+        var route = "cargarComentarios";
+        $.ajax({
+            url: route,
+            headers: {'X-CSRF-TOKEN': token},
+            type: 'POST',
+            data: {} 
+        }).done(function(data){ 
+            if (data.numComentarios>0) { 
+                $('.ml-count').show();
+                $('.ml-count').html(data.numComentarios);
+            }else{
+                $('.ml-count').hide();
+            }
+        });
+    }
+    if ($(".sc-messages").length) {
+        scrollToBottom();
+        setInterval(loadMsjs, 3000);
+        scrollingElement = document.getElementById('cont_scroll');
+        function scrollToBottom () {
+           scrollingElement.scrollTop = scrollingElement.scrollHeight;
+        }
+    }
+    
+    setInterval(loadComentarios, 3000);
 });
-scrollingElement = document.getElementById('cont_scroll');
-function scrollToBottom () {
-   scrollingElement.scrollTop = scrollingElement.scrollHeight;
-}
