@@ -287,10 +287,12 @@ class VentaController extends Controller
         }else{
             $vendedor = User::where(['_id'=>$idUser])->first();
             $ventas = Compras::where(['idPublicacion'=>$request->id])->get(); 
-            $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first();  
+            $datos = Articulos::where(['_id' => $request->id,'idUser'=>$idUser])->first(); 
+            $res = Comentarios::where(['publicacion'=>$request->id])->get();
+            
             if ($datos!="") {
                 $imagen = Urlimagenes::where('idPublicacion', '=', $datos->idPublicacion)->first(); 
-                return view('vender.verPublicacion')->with(['datos'=>$datos])->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido)->with(['idVendedor'=>$vendedor->_id,'totalVentas'=>count($ventas)]);
+                return view('vender.verPublicacion')->with(['datos'=>$datos, 'comentarios'=>$res])->with('imagen',$imagen)->with('vendedor',$vendedor->nombre." ".$vendedor->apellido)->with(['idVendedor'=>$vendedor->_id,'totalVentas'=>count($ventas)]);
             }else{
                 return view('dashboard');
             }
@@ -302,7 +304,24 @@ class VentaController extends Controller
 
     public function verPreguntas(Request $request)
     {
-        return view('usuario.menu.preguntas');
+        $preguntas = Comentarios::where(['vendedor'=>auth()->user()->_id,  'respuesta'=>''])->get();
+            
+
+
+        $articulos= array();
+        $compradores=array();
+        foreach ($preguntas as $id) {
+        $datos = Articulos::where(['_id' => $id->publicacion])->get();
+        $comprador = User::where(['_id'=>$id->idEmisor])->get(); 
+        
+        array_push($articulos, $datos[0]);
+           
+        array_push($compradores, $comprador[0]);
+           
+        } 
+
+        
+        return view('usuario.menu.preguntas')->with(['articulos'=>$articulos, 'preguntas'=>$preguntas, 'comprador'=>$compradores]); 
     } 
     /**
      * Store a newly created resource in storage.
@@ -493,4 +512,30 @@ class VentaController extends Controller
             return Redirect::back()->withErrors(['Campo de comentario requerido']);
         } 
     }  
+
+
+
+ public function responder(Request $request)
+    {
+        $datos = Comentarios::where('_id', $request->itemId)->update([ 'respuesta' => $request->resp, 'estadoMsj'=>1 ]);
+
+
+        $preguntas = Comentarios::where(['vendedor'=>auth()->user()->_id,  'respuesta'=>''])->get();
+            
+        $articulos= array();
+        $compradores=array();
+        foreach ($preguntas as $id) {
+        $datos = Articulos::where(['_id' => $id->publicacion])->get();
+        $comprador = User::where(['_id'=>$id->idEmisor])->get(); 
+        
+        array_push($articulos, $datos[0]);
+           
+        array_push($compradores, $comprador[0]);
+           
+        } 
+        
+        return view('usuario.menu.preguntas')->with(['articulos'=>$articulos, 'preguntas'=>$preguntas, 'comprador'=>$compradores]); 
+    }
+
+
 }

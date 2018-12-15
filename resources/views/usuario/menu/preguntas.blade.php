@@ -5,7 +5,8 @@
 @section('content')  
 {!! Html::style('css/verStyle.css') !!} 
 {!! Html::style('css/menuStyle.css') !!} 
-{!! Html::style('css/publiStyle.css') !!} 
+{!! Html::style('css/publiStyle.css') !!}
+
 <link rel="stylesheet" href="css/main-70caf8ebbf.css">
 <div class="app-wrapper app-wrapper--menu-expanded app-wrapper--menu-expanded-static"><div class="menu-wrapper"><input type="checkbox" id="myml-menu-toggle" checked="true" disabled=""><nav class="myml-nav" role="complementary"><div class="myml-nav__container"><section class="myml-nav__section myml-nav__section--toggle"><div class="myml-nav__section-heading"><span class="myml-nav__section-icon"><label class="myml-nav__toggle" for="myml-menu-toggle"><span class="myml-nav__ham--top"></span><span class="myml-nav__ham--middle"></span><span class="myml-nav__ham--bottom"></span><span class="myml-nav__ham--cross"></span></label></span><p class="myml-nav__section-title"><span class="myml-nav__user-permalink">Mi cuenta</span><span class="myml-nav__section-subtitle">¡Hola Eliberto!</span></p></div></section><div class="myml-nav__menu"><section class="myml-nav__section  myml-nav__section--active"><a href="https://myaccount.mercadolibre.com.mx/summary" class="myml-nav__section-heading"><span class="myml-nav__section-icon myml-nav__section-icon--myml_summary" data-tooltip="Resumen"><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
     <path d="M1 1v12h12V1H1zm0-1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1zm2.5 3.5a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1zm2.477 0h4a.5.5 0 1 1 0 1h-4a.5.5 0 0 1 0-1zM3.5 6.5a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1zm2.477 0h4a.5.5 0 1 1 0 1h-4a.5.5 0 0 1 0-1zM3.5 9.5a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1zm2.477 0h4a.5.5 0 1 1 0 1h-4a.5.5 0 0 1 0-1z" fill="#999"></path>
@@ -161,7 +162,8 @@
 
             <h1 class="main-title title title--primary" data-js="main-title">
                 Preguntas
-                        (<span class="questions-total" data-js="questions-total">1</span>)
+                <?php $pp=count($articulos);?>
+                        (<span class="questions-total" data-js="questions-total"> <?php echo count($articulos);?> </span>)
             </h1>
 
                             <div class="open-all">
@@ -178,23 +180,25 @@
 <section data-js="ml-card" class="card"><!-- questions.ItemsGroup.hbs -->
 <div data-js="item"><div id="83333"><!-- questions.item.hbs -->
 
-
+<?php
+                for($i=0; $i<count($articulos); $i++){ 
+                    ?>
 <article class="item item-header" data-id="item-MLM656797491" data-js="item">
     <a href="https://servicio.mercadolibre.com.mx/MLM-656797491-cartel-usado-_JM" class="u--arrange-fit item__image">
-        <img src="https://mlm-s2-p.mlstatic.com/984021-MLM28958746911_122018-I.jpg" alt="Imágen producto" width="90" height="90">
+        <img src="images/{{ $articulos[$i]->idUser}}/{{$articulos[$i]->idPublicacion}}/{{$articulos[$i]->urlPrincipal}}" alt="Imágen producto" width="90" height="90">
     </a>
     <div class="u--arrange-fill item__content">
         <h2 class="item__title">
-            <a href="https://servicio.mercadolibre.com.mx/MLM-656797491-cartel-usado-_JM" class="u--no-visited">Cartel Usado</a>
+            <a href="#" class="u--no-visited">{{$articulos[$i]->titulo}}</a>
         </h2>
 
         <div class="item__price">
             <strong class="ch-price">
-                <i class="ch-price-symbol">$</i> 5,000<sup>00</sup>
+                <i class="ch-price-symbol">$</i> {{$articulos[$i]->precio}}<sup>00</sup>
             </strong>
 
                 <p class="item__data item__data--quantity">
-                        <span class="u--text-light quantity">x 1 disponible</span>
+                        <span class="u--text-light quantity">x {{$articulos[$i]->cantidad}} disponible</span>
                 </p>
         </div>
 
@@ -227,7 +231,7 @@
         </div>
         <div class="u--arrange-fill">
                     <p class="question__text" data-js="question-row-text">
-                        Es el orginal o es la copia?
+                            {{$preguntas[$i]->pregunta}}
                     </p>
 
             <p class="question__date" data-js="question-row-date">
@@ -236,7 +240,7 @@
 
                 <div class="question__info u--clearfix">
                     <a href="http://www.mercadolibre.com.mx/jm/profile?id=236377324&amp;oper=S" data-js="reputation-link" class="u--float-left u--no-visited" target="_blank">
-                            Erick Labrada Sanchez (1)
+                            {{$comprador[$i]->nombre}} {{$comprador[$i]->apellido}} (1)
                     </a>
 
                 </div>
@@ -244,8 +248,8 @@
     </div>
 
     <div data-js="answer-form"><div><!-- questions.answerForm.hbs -->
-<form class="question-replay" data-js="form-question-replay" action="#" method="post">
-    <textarea class="question-replay__textarea" data-js="question-replay__textarea" name="text" rows="1" cols="40" maxlength="2000" placeholder="Escribe tu respuesta..." style="overflow-y: hidden;"></textarea>
+<form class="question-replay"  action="{{route('responder')}}" method="post" accept-charset="utf-8">
+    <textarea class="question-replay__textarea" data-js="question-replay__textarea" id="resp" required="" name="resp" rows="1" cols="40" maxlength="2000" placeholder="Escribe tu respuesta..." style="overflow-y: hidden;"></textarea>
 
     <!-- mensaje de error de validación -->
     <div class="ch-box-icon ch-box-error empty-field">
@@ -268,20 +272,32 @@
                             <i class="question-actions__icon icon-ellipsis"><span>Otras acciones</span></i>
                         </label>
                         <div class="question-replay__btn-container">
-                            <button type="submit" data-js="question-replay__btn-submit" class="question-replay__btn-submit ch-btn">Responder</button>
+                        
+                                
+                                        <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" id="token">
+                                        <input type="hidden" name="itemId" id="itemId" value=" {{$preguntas[$i]->_id}}">
+                                       
+
+
+                                   
+                                     
+                                
+                          
+     
+                            <button type="submit" data-js="question-replay__btn-submit" class="question-replay__btn-submit ch-btn">Responder</button>  
                         </div>
                             <a href="#/preguntas/vendedor" class="question-replay__btn-cancel mobile-hidden u--no-visited" data-js="question-btn-cancel">Cancelar</a>
                         <!-- <a href="#/deleteQuestion/5985364100" class="question-btn-delete mobile-hidden u--no-visited"><span class="ch-icon-trash"></span> Eliminar pregunta</a> -->
                         <ul class="question-actions__options css-dropdown-options">
                                 <li class="question-actions__mail">
-                                    <a href="mailto:erick6672@gmail.com">
+                                    <a href="#">
                                         <span class="ch-icon-envelope-alt"></span>
                                         <span class="mobile-visible">Enviar mail</span>
-                                        <span class="mobile-hidden">erick6672@gmail.com</span>
+                                        <span class="mobile-hidden">{{$comprador[$i]->email}}</span>
                                     </a>
                                 </li>
                                 <li class="question-actions__telephone">
-                                        <span class="ch-icon-phone"></span>6677568894
+                                        <span class="ch-icon-phone"></span>{{$comprador[$i]->telefono}}
                                 </li>
                             <li class="question-actions__delete">
                                 <!-- link -->
@@ -300,7 +316,9 @@
 </article></div>
 <!-- / questions.questionsGroup.hbs -->
 </div></div>
-
+  <?php
+                } 
+            ?> 
 <!-- / questions.ItemsGroup.hbs -->
 </section></div>
 
