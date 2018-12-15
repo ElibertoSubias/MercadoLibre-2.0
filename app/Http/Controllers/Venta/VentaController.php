@@ -304,7 +304,7 @@ class VentaController extends Controller
 
     public function verPreguntas(Request $request)
     {
-         $preguntas = Comentarios::where(['vendedor'=>auth()->user()->_id,  'respuesta'=>''])->get();
+        $preguntas = Comentarios::where(['vendedor'=>auth()->user()->_id,  'respuesta'=>''])->get();
             
 
 
@@ -494,4 +494,30 @@ class VentaController extends Controller
             return Redirect::back()->withErrors(['Campo de comentario requerido']);
         } 
     }  
+
+
+
+ public function responder(Request $request)
+    {
+        $datos = Comentarios::where('_id', $request->itemId)->update([ 'respuesta' => $request->resp, 'estadoMsj'=>1 ]);
+
+
+        $preguntas = Comentarios::where(['vendedor'=>auth()->user()->_id,  'respuesta'=>''])->get();
+            
+        $articulos= array();
+        $compradores=array();
+        foreach ($preguntas as $id) {
+        $datos = Articulos::where(['_id' => $id->publicacion])->get();
+        $comprador = User::where(['_id'=>$id->idEmisor])->get(); 
+        
+        array_push($articulos, $datos[0]);
+           
+        array_push($compradores, $comprador[0]);
+           
+        } 
+        
+        return view('usuario.menu.preguntas')->with(['articulos'=>$articulos, 'preguntas'=>$preguntas, 'comprador'=>$compradores]); 
+    }
+
+
 }

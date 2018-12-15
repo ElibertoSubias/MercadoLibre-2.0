@@ -5,7 +5,8 @@
 @section('content')  
 {!! Html::style('css/verStyle.css') !!} 
 {!! Html::style('css/menuStyle.css') !!} 
-{!! Html::style('css/publiStyle.css') !!} 
+{!! Html::style('css/publiStyle.css') !!}
+
 <link rel="stylesheet" href="css/main-70caf8ebbf.css">
 <div class="app-wrapper app-wrapper--menu-expanded app-wrapper--menu-expanded-static"><div class="menu-wrapper"><input type="checkbox" id="myml-menu-toggle" checked="true" disabled=""><nav class="myml-nav" role="complementary"><div class="myml-nav__container"><section class="myml-nav__section myml-nav__section--toggle"><div class="myml-nav__section-heading"><span class="myml-nav__section-icon"><label class="myml-nav__toggle" for="myml-menu-toggle"><span class="myml-nav__ham--top"></span><span class="myml-nav__ham--middle"></span><span class="myml-nav__ham--bottom"></span><span class="myml-nav__ham--cross"></span></label></span><p class="myml-nav__section-title"><span class="myml-nav__user-permalink">Mi cuenta</span><span class="myml-nav__section-subtitle">¡Hola Eliberto!</span></p></div></section><div class="myml-nav__menu"><section class="myml-nav__section  myml-nav__section--active"><a href="https://myaccount.mercadolibre.com.mx/summary" class="myml-nav__section-heading"><span class="myml-nav__section-icon myml-nav__section-icon--myml_summary" data-tooltip="Resumen"><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
     <path d="M1 1v12h12V1H1zm0-1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1zm2.5 3.5a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1zm2.477 0h4a.5.5 0 1 1 0 1h-4a.5.5 0 0 1 0-1zM3.5 6.5a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1zm2.477 0h4a.5.5 0 1 1 0 1h-4a.5.5 0 0 1 0-1zM3.5 9.5a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1zm2.477 0h4a.5.5 0 1 1 0 1h-4a.5.5 0 0 1 0-1z" fill="#999"></path>
@@ -247,8 +248,8 @@
     </div>
 
     <div data-js="answer-form"><div><!-- questions.answerForm.hbs -->
-<form class="question-replay" data-js="form-question-replay" action="#" method="post">
-    <textarea class="question-replay__textarea" data-js="question-replay__textarea" name="text" rows="1" cols="40" maxlength="2000" placeholder="Escribe tu respuesta..." style="overflow-y: hidden;"></textarea>
+<form class="question-replay"  action="{{route('responder')}}" method="post" accept-charset="utf-8">
+    <textarea class="question-replay__textarea" data-js="question-replay__textarea" id="resp" required="" name="resp" rows="1" cols="40" maxlength="2000" placeholder="Escribe tu respuesta..." style="overflow-y: hidden;"></textarea>
 
     <!-- mensaje de error de validación -->
     <div class="ch-box-icon ch-box-error empty-field">
@@ -271,7 +272,19 @@
                             <i class="question-actions__icon icon-ellipsis"><span>Otras acciones</span></i>
                         </label>
                         <div class="question-replay__btn-container">
-                            <button type="submit" data-js="question-replay__btn-submit" class="question-replay__btn-submit ch-btn">Responder</button>
+                        
+                                
+                                        <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" id="token">
+                                        <input type="hidden" name="itemId" id="itemId" value=" {{$preguntas[$i]->_id}}">
+                                       
+
+
+                                   
+                                     
+                                
+                          
+     
+                            <button type="submit" data-js="question-replay__btn-submit" class="question-replay__btn-submit ch-btn">Responder</button>  
                         </div>
                             <a href="#/preguntas/vendedor" class="question-replay__btn-cancel mobile-hidden u--no-visited" data-js="question-btn-cancel">Cancelar</a>
                         <!-- <a href="#/deleteQuestion/5985364100" class="question-btn-delete mobile-hidden u--no-visited"><span class="ch-icon-trash"></span> Eliminar pregunta</a> -->

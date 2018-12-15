@@ -152,6 +152,8 @@ Route::group(['middleware' => 'autenticado'], function () {
 
 	Route::post('addComentario', 'Venta\VentaController@addComent')->name('addComentario');
 
+	Route::post('responder', 'Venta\VentaController@responder')->name('responder');
+
 	Route::any('verMensajes', 'Venta\VentaController@verMensajes')->name('verMensajes');
 
 	Route::post('enviarMjs', 'Venta\VentaController@addMensaje')->name('enviarMjs');
