@@ -465,11 +465,21 @@ class VentaController extends Controller
 
     public function cargarComentarios(Request $request){
         if ($request->ajax()) {
-            $res = Comentarios::where(['vendedor'=>auth()->user()->_id])->get();
-            return response()->json([
-                        "numComentarios" => count($res),
-                        "res" => $res 
-                    ]); 
+            $res = Comentarios::where(['vendedor'=>auth()->user()->_id,'estadoMsj'=>0])->get();
+            if ($res!="[]") {
+                $articulo = Articulos::where(['_id'=>$res[0]->publicacion])->get();
+                return response()->json([
+                            "numComentarios" => count($res),
+                            "res" => $res,
+                            "autor" => auth()->user()->_id,
+                            "art"=>$articulo
+                        ]); 
+            }else{
+                return response()->json([
+                        "res" => 0
+
+                    ]);
+            }
         }else{
             return response()->json([
                         "res" => 0

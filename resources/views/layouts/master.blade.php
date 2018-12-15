@@ -409,22 +409,10 @@
   </nav></div>
   <a href="{{route('historialComp')}}" class="option-purchases">Compras</a> 
   <a tabindex="5" href="#" class="option-bookmarks bookmarks-widget modeless-box-trigger" rel="nofollow" aria-owns="modeless-44" aria-haspopup="true" popup-hidden="true"><span class="bookmarks-text">Favoritos</span></a> 
-					<a tabindex="4" href="#" id="notiLink" class="option-notifications notifications-widget modeless-box-trigger" rel="nofollow" aria-owns="modeless-94" aria-haspopup="true" popup-hidden="true"><i class="nav-icon-notifications"><span>Notificaciones</span></i><span class="ml-count" style="display: none">0</span>
+					<a tabindex="4" onclick="abrirNotificaciones()" href="#" id="notiLink" class="option-notifications notifications-widget modeless-box-trigger" rel="nofollow" aria-owns="modeless-94" aria-haspopup="true" popup-hidden="true"><i class="nav-icon-notifications"><span>Notificaciones</span></i><span class="ml-count" style="display: none">0</span>
 					</a> 
-					<div id="cont_notificaciones" style="font-size: 12px;background: white;border-radius: 5px;"> 
-		                     <div class="col-md-12"  style="background: white;border-radius: 5px;text-align: left;">
-		                     	<a href="#" title="" style="display: block;">
-			                     	<div class="col-md-4" style="height: 50px;">
-			                     		<img src="" alt="">
-			                     	</div>
-			                     	<div class="col-md-8">
-			                     		<b>Titulo</b>
-			                     	</div>
-			                     	<div class="col-md-12">
-			                     		Pregunta
-			                     	</div>
-			                    </a>
-		                     </div>
+					<div id="cont_notificaciones" style="display: none;box-shadow: 0 15px 20px 0 rgba(0,0,0,.08), 0 1px 4px 0 rgba(0,0,0,.08);position: absolute;font-size: 12px;background: white;border-radius: 5px;"> 
+		                     
 		                </div>
 		                
 					<a tabindex="6" href="#" rel="nofollow" class="option-sell nav-header-btn-pub">Vender</a> 
