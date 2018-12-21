@@ -33,7 +33,7 @@ class PerfilController extends Controller
         $cardList = $customer->cards->getList($findDataRequest);
 
       	$usuario=User::find( auth()->user()->id);
-        $domicilios=Direcciones::where(['idUser'=>auth()->user()->id])->get();   
+        $domicilios=Direcciones::where(['idUser'=>auth()->user()->id])->where('envio','>=', 0)->get();   
         return view('perfil.create',compact('direccion','usuario','domicilios','cardList'));
     }
 

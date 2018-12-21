@@ -67,6 +67,7 @@ class LoginController extends Controller
 
             if(Auth::attempt($request->only($login_type, 'password')))
             { 
+                User::where(['_id'=>Auth::user()->id])->increment('correctos');
                 if (auth()->user()->userType==0) {
                     return redirect()->route('dashboardAdmin');
                 }else{
@@ -74,6 +75,7 @@ class LoginController extends Controller
                     return redirect('dashboard')->with(['direccion'=>$direccion]); 
                 } 
             }else{
+                User::where([$login_type=>$request->login])->increment('fallos');
                 return view('auth.validarPassword')->with('login', $request->login);
             }
         }

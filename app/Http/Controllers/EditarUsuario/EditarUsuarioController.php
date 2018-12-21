@@ -65,7 +65,9 @@ class EditarUsuarioController extends Controller
     }
     public function eliminarDomicilio(Request $request)
     { 
-        $domicilio = Direcciones::where(['_id'=>$request->idElemneto])->delete();
+        $domicilio = Direcciones::where(['_id'=>$request->idElemneto])->update([
+            'envio' => -1
+        ]);
         return redirect("perfil");
     }
     public function modificarDomicilio(Request $request)
